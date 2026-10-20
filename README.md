@@ -2,7 +2,7 @@
 
 **Status: in preparation. Nothing here is final yet.**
 
-This repository accompanies the Article *The long-range Ising CFT: perturbative and nonperturbative approaches* (arXiv: TBD). It contains the code, the data and the notes needed to reproduce every numerical result of the Article and of its Supplemental Material.
+This repository accompanies the Article *The long-range Ising CFT: perturbative and nonperturbative approaches* ([arXiv:2610.25940](https://arxiv.org/abs/2610.25940)). It contains the code, the data and the notes needed to reproduce every numerical result of the Article and of its Supplemental Material.
 
 The long-range Ising (LRI) fixed point is studied with five descriptions whose errors are unrelated. Each has its own folder, with a self-contained note, the code, the merged data, and a verifier:
 
@@ -17,7 +17,7 @@ The long-range Ising (LRI) fixed point is studied with five descriptions whose e
 | [`Resummation/`](Resummation/) | resummation and comparison: Borel resummation of the two expansions, and the comparison of all descriptions with each other and with the published literature values |
 
 Also:
-- The Article is on arXiv (arXiv: TBD) and is not part of this repository. Its Supplemental Material is the combined research notes, [`Supplementary Material.pdf`](Supplementary%20Material.pdf), built from [`LRI_combined_note/`](LRI_combined_note/). arXiv v1 contains one additional sentence in Sec. 3.5 (on Hamiltonian truncation lying above NRG), removed in v2.
+- The Article is on arXiv, [arXiv:2610.25940](https://arxiv.org/abs/2610.25940), and is not part of this repository. Its Supplemental Material is the combined research notes, [`Supplementary Material.pdf`](Supplementary%20Material.pdf), built from [`LRI_combined_note/`](LRI_combined_note/). arXiv v1 contains one additional sentence in Sec. 3.5 (on Hamiltonian truncation lying above NRG), removed in v2.
 - [`RESULTS_INDEX.md`](RESULTS_INDEX.md) and [`results.json`](results.json): the index of every number in the Article with the folder, command and tolerance that reproduce it (in preparation; until it is filled, each folder's `results_map.md` and `REPRODUCE.md` give the same information).
 - [`AGENTS.md`](AGENTS.md): instructions for AI agents that reproduce the results.
 - [`tools/`](tools/): the repository's privacy check (`check_public.py`). The statistics of the AI collaboration and the compute accounting are not part of this release.
