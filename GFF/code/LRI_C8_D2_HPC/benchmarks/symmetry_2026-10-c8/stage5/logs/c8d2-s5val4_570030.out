@@ -1,0 +1,19 @@
+job 570030 on <NODE> at 2026-10-05T05:03:59-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5val4.570030.0
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+make -q bin/c8d2_{decimal,gmp}_san exit 0 (0 = current)
+3ad3d3747ef980d84f65475fb99de7b9cc5511eba7a93e45b1718cf13785b2db  bin/c8d2_decimal_san
+bcd3fa968ca864972e49d6c690d41c849d381731262821364eea1a4721d11013  bin/c8d2_gmp_san
+sanitize FAILED
+Traceback (most recent call last):
+  File "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tests/sanitize.py", line 100, in <module>
+    if a.selftest:rec['selftest']=selftest(td)
+                                  ^^^^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tests/sanitize.py", line 88, in selftest
+    if p.returncode==0 or expect not in text:raise AssertionError(f'self-test {name}: no {expect!r} report (exit {p.returncode}): {text[-1500:]}')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: self-test glibcxx_assertions: no 'Assertion' report (exit -6): 
+    if p.returncode==0 or expect not in text:raise AssertionError(f'self-test {name}: no {expect!r} report (exit {p.returncode}): {text[-1500:]}')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: self-test glibcxx_assertions: no 'Assertion' report (exit -6): 
+finished 2026-10-05T05:04:06-04:00, status 1

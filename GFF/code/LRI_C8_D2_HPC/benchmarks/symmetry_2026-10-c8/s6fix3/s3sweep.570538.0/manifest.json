@@ -1,0 +1,1213 @@
+{
+  "schema": "c8-d2-production-1",
+  "tool_sha256": {
+    "production.py": "9bdc83a32af7c81297020c76df943151ed79c6475d4367fbb9c1c93323d95b67",
+    "common.py": "a64c589bfc3bd9e23f3cb0d2e600cdc0f145f214c6c3f1212f549afbc1d8ff69",
+    "prepare_inputs.py": "d715f836de6ca9e7273ad49ed56e30a6c0f4aefad580a1c3b9705949ca926f8d",
+    "assemble.py": "f6490c35e7f18359d383b843dc0d115f556328ccad4a90cbe2ee997fa494d2af",
+    "lanes.py": "173b12764445d9a13ce363bf5b42a7710a4b33013a63ab71b52fd29d62066aa5",
+    "slurm_submit.py": "4231d109ecfb656aa93e1ed08077dccda3255ef4f0f3af06babe40391e592679",
+    "stage_runtime.py": "6eca7432b26997907d3921fab6814d85b4263f98c737e7395e94baceca7ad640"
+  },
+  "dimension": 2,
+  "order": 8,
+  "epsilon": "2s-2",
+  "package": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f",
+  "inputs": "inputs",
+  "inputs_manifest_sha256": "3813f24ac38c7d27645733a06812f890b03e21e1f0a62d9d820fcf5495d27356",
+  "skipped_packs": [],
+  "backend": "gmp",
+  "numerics": "dd+mp256",
+  "approved_numerics_change": "user check-in 2026-10-05: dd+mp256 approved for production after the pilot (C62d PLAN-REVIEW-LOG)",
+  "numerics_route": null,
+  "build": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd+mp256",
+    "diagnostic": false,
+    "numerics_params": {
+      "dd": {
+        "dd_ratio": "1e-20",
+        "routing": "cascade",
+        "cascade_low": "1e-23",
+        "range": 300,
+        "guard": "products",
+        "product_range": [
+          "2^-900",
+          "2^900"
+        ],
+        "exp": "dd-k-ln2-r64-taylor11-x6",
+        "sum": "compensated-b8-x4",
+        "err": "double",
+        "development": false
+      },
+      "mp256": {
+        "digits10": 77,
+        "mpf_precision_bits": 320,
+        "ratio": "1e-63",
+        "error_estimate": "calculate_shared<MP77,true>",
+        "escalation": "mp350"
+      }
+    },
+    "tail_top": 16,
+    "compiler": "11.4.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "build_record": {
+    "schema": "c8-d2-build-record-1",
+    "executable": "c8d2_gmp_dd+mp256",
+    "backend": "gmp",
+    "executable_sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+    "command": [
+      "g++",
+      "-O3",
+      "-mavx2",
+      "-mfma",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_DD",
+      "-DC8_NUMERICS_MP256",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp_dd+mp256"
+    ],
+    "compiler_options": [
+      "g++",
+      "-O3",
+      "-mavx2",
+      "-mfma",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_DD",
+      "-DC8_NUMERICS_MP256"
+    ],
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "compiler_macro_version": "11.4.0",
+    "CXX": "g++",
+    "CPPFLAGS": "",
+    "OPTFLAGS": "-O3",
+    "CXXFLAGS": "",
+    "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+    "LDFLAGS": "",
+    "LDLIBS": "",
+    "NUMERICS": "dd+mp256",
+    "numerics_sources": {
+      "defines": [
+        "-DC8_NUMERICS",
+        "-DC8_NUMERICS_DD",
+        "-DC8_NUMERICS_MP256"
+      ],
+      "files": {
+        "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+        "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+        "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+        "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb"
+      }
+    },
+    "parameter_overrides": [],
+    "macro_overrides": [],
+    "development": false,
+    "GMP_PREFIX": "",
+    "diagnostic": null,
+    "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+        7,
+        8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "dd+mp256",
+      "diagnostic": false,
+      "numerics_params": {
+        "dd": {
+          "dd_ratio": "1e-20",
+          "routing": "cascade",
+          "cascade_low": "1e-23",
+          "range": 300,
+          "guard": "products",
+          "product_range": [
+            "2^-900",
+            "2^900"
+          ],
+          "exp": "dd-k-ln2-r64-taylor11-x6",
+          "sum": "compensated-b8-x4",
+          "err": "double",
+          "development": false
+        },
+        "mp256": {
+          "digits10": 77,
+          "mpf_precision_bits": 320,
+          "ratio": "1e-63",
+          "error_estimate": "calculate_shared<MP77,true>",
+          "escalation": "mp350"
+        }
+      },
+      "tail_top": 16,
+      "compiler": "11.4.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+    },
+    "required_flags_present": true,
+    "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+    },
+    "BOOST_LIB_VERSION": "1_77",
+    "BOOST_VERSION": "107700",
+    "gmp_version": "6.2.1",
+    "gmp_header": {
+      "cc": "x86_64-linux-gnu-gcc",
+      "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+    },
+    "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "fat": false,
+      "rpath": null,
+      "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+      "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+    },
+    "optimized": true,
+    "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+    },
+    "host": "cn094",
+    "created_utc": "2026-10-06T10:29:00Z"
+  },
+  "executable": "c8d2_gmp_dd+mp256",
+  "executable_sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+  "rates_identity": "default",
+  "rates": {
+    "a": ".8",
+    "b": ".9"
+  },
+  "threads": 8,
+  "checkpoint_tasks": 256,
+  "allocation": {
+    "source": "pilot",
+    "points": 512,
+    "replicates": 2,
+    "label": null
+  },
+  "design": null,
+  "seed": 7431507595541975415,
+  "seed_scheme": "hashed",
+  "forbidden_seed_sources": [
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/pilot1e-20261005-07ff5c1975e5)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/r7-ebf01f62e833/pilot_exact)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/r7-ebf01f62e833/pilot_map)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/r7-ebf01f62e833/sweep_exact)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/r7-ebf01f62e833/sweep_map)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/s5e-07ff5c1975e5/t2)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/s5e-07ff5c1975e5/t3)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/s5e-07ff5c1975e5/t4)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/sweep1-81aa9770e6fe)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/sweep2e-07ff5c1975e5)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/sweep2e-07ff5c1975e5-r2)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/desb1-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/desb2-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/desc1-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/desc2-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/drills-2b3a9233353d/drR)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/drills-5d7586e9f1ab/drA)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/drills-5d7586e9f1ab/drB)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/drl23-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/io-2b3a9233353d)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/io-68ee571ee614)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/pilot1-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/smk4-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/smoke1-20261005)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/sweep2-5d7586e9f1ab)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/sweepdd-3a250eaa5918)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/y13sweep-e914701b042b)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (/mnt/beegfs/zzheng1/c8-d2/y2-e914701b042b)",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/des5-5d7586e9f1ab/plans/des5_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/des5-5d7586e9f1ab/plans/des5_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/des5-5d7586e9f1ab/plans/des5_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/des5-5d7586e9f1ab/plans/des5_5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 base seed 820262401 (tests/numerics_flags.py --seed))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (L=2 control, A-IN-6(b), Expanse job 54637264 (Stage 3 part A))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (L=2 control, A-IN-6(b), final J-VAL-3 on symmetry (package 5d7586e9f1ab, Stage 5))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage 4c R7 plan-only acceptance check (/expanse/lustre/scratch/zzheng8/temp_project/c8d2/r7-ebf01f62e833/plan_fresh, never run, removed))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage-6 fix round 1 X8 real-Slurm check (/mnt/beegfs/zzheng1/c8-d2/x8-c30bfc5f0bdf; test-only, 256 points, never a result))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/s1des-c30bfc5f0bdf/plans/b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/s1des-c30bfc5f0bdf/plans/b_5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6x_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6x_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6x_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6x_5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6b_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6des-3a250eaa5918/plans/p6b_5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/x_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/x_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/x_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/x_5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 1.35e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 1e-3 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/b_1e-3; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 2.5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 5e-4 (/mnt/beegfs/zzheng1/c8d2/work/p6bdes-77fab7153c0e/plans/b_5e-4; test-only, never submitted, deleted after measurement))"
+  ],
+  "seed_log": null,
+  "groups": [
+    {
+      "name": "a_free_L3",
+      "sha256": "cd5991105d1b3b6022b53909e037d707dc5a9bba54d1a8859915d2c9b529fcf2"
+    },
+    {
+      "name": "a_free_L4",
+      "sha256": "1d351179f4713c79017a10454c5ddfe7c1bac0e42ec36a32bb18bef78c37b3fd"
+    },
+    {
+      "name": "a_free_L5",
+      "sha256": "0c980f1b38ff9c1d4d8caeaf31e39f5c4782affb6620c0640f5a0d7f5c80b05a"
+    },
+    {
+      "name": "a_free_L6",
+      "sha256": "f83cfa2f028cf3786d58e6041ae14179cc166b6f9118992e3163cb3a391c8d2c"
+    },
+    {
+      "name": "a_free_L7",
+      "sha256": "0fa7ae014c1343d21d313bc03d194193d4de4701d985615a05315019a1273096"
+    },
+    {
+      "name": "a_free_L8",
+      "sha256": "3f71ae8c843baeb86414a71290eb71cc3bd759ec9556ae992d9a9d1e460fe6b9"
+    },
+    {
+      "name": "a_power_L3",
+      "sha256": "945935bf0351c73f8e298c11d561f0fd61ca1e78835679c752cfac16bff41dc9"
+    },
+    {
+      "name": "a_power_L4",
+      "sha256": "517ad6c5f9105eb366a457ed3e889a8a00f5d84ba4326197cd9ba8cdb90f7f4a"
+    },
+    {
+      "name": "a_power_L5",
+      "sha256": "f0b4ef6e8d06ac8f106aa26c932095fbe2d0561f5446e07eff92fdfb6e8f15a6"
+    },
+    {
+      "name": "a_power_L6",
+      "sha256": "11f0074276a73e8092f56cb4bf9a1b0cbf49bd96337a80250b89f5c91fbcd23a"
+    },
+    {
+      "name": "a_power_L7",
+      "sha256": "2aca72cce5c0b1bc4aa298248ba832466d540bb0981a8d421d4d8d2a91c9dde7"
+    },
+    {
+      "name": "a_power_L8",
+      "sha256": "7a886a06c3bec2e876a055d07786fc3ca8f81af3c45a2318ca172fe3b4984d27"
+    },
+    {
+      "name": "b_free_L3",
+      "sha256": "aae8d24106ae68eb1033d17f7f0dd472fc72f594bfdd2af369b9cb9f0ac72d9f"
+    },
+    {
+      "name": "b_free_L4",
+      "sha256": "892ff64d70a743bd4f78043902605a2d7c14d22d44daeb10a9fab9ad11b76b53"
+    },
+    {
+      "name": "b_free_L5",
+      "sha256": "064bd3acfd137c875204f6c70a1bbc65f5052ee6264fa81358fabc9725fff14c"
+    },
+    {
+      "name": "b_free_L6",
+      "sha256": "c60602af652c7b243a44d21c15d1b5bfd2c36c4fee5de0037c605c93239c5706"
+    },
+    {
+      "name": "b_free_L7",
+      "sha256": "c36e6b66bb36a5601dae0341c9e0bb7f7f4d6ebe8931d25c6e971b6d51589937"
+    },
+    {
+      "name": "b_free_L8",
+      "sha256": "5416ab8902f7cae63e75e38373d4ab6a72bdf4684215feba6a14ec242d3398e0"
+    },
+    {
+      "name": "b_power_L3",
+      "sha256": "c611ad7f42d89139e94bdfb87069989820d54f32089a7e81287b1abe90712176"
+    },
+    {
+      "name": "b_power_L4",
+      "sha256": "25ee86c307e9848a51c5531bcff6dfe44eaecd61e610d0434bddcf67b11cb4b4"
+    },
+    {
+      "name": "b_power_L5",
+      "sha256": "07ccad10b89282e8ccd81b0dd85135fe18349f416188a180da1626d556e679a0"
+    },
+    {
+      "name": "b_power_L6",
+      "sha256": "8835a27fcb48631695fad8f44d35a507dd566c6b26326408f5020d72ce532248"
+    },
+    {
+      "name": "b_power_L7",
+      "sha256": "48ac39d85c08fe4f7ba735d12e64a9f0e9d6440d6d4f03a5b00ca90422b507b5"
+    },
+    {
+      "name": "b_power_L8",
+      "sha256": "158c0ff4de8e3bd49b77c6faecaae2111cf0666317d234f1ee984f4e1f16d7de"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 0,
+      "group": "a_free_L3",
+      "campaign": "a",
+      "sector": "free",
+      "L": 3,
+      "shard": 0,
+      "tasks": 10,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L3/tasks/s000000.tsv",
+      "tasks_sha256": "8f2dce0b7322a8e44b29937c3d867858742792c21797d2b9765efe4fac6a580f",
+      "tasks_bytes": 160,
+      "est_core_seconds": 0.006214573979377747,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570445616
+    },
+    {
+      "id": 1,
+      "group": "a_free_L4",
+      "campaign": "a",
+      "sector": "free",
+      "L": 4,
+      "shard": 0,
+      "tasks": 32,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L4/tasks/s000000.tsv",
+      "tasks_sha256": "29cacf94ee44590d9368f5ce8121df98d2d23aea76615b3f92d25ce9c45b410b",
+      "tasks_bytes": 554,
+      "est_core_seconds": 0.029359357431530952,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570666836
+    },
+    {
+      "id": 2,
+      "group": "a_free_L5",
+      "campaign": "a",
+      "sector": "free",
+      "L": 5,
+      "shard": 0,
+      "tasks": 152,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L5/tasks/s000000.tsv",
+      "tasks_sha256": "f0837dc38e5d5c64d9cf54828861ea90d454ad43d21fa5fb594ccb09a9b10861",
+      "tasks_bytes": 2798,
+      "est_core_seconds": 0.23563038744032383,
+      "est_proxy_units": null,
+      "est_peak_bytes": 574787968
+    },
+    {
+      "id": 3,
+      "group": "a_free_L6",
+      "campaign": "a",
+      "sector": "free",
+      "L": 6,
+      "shard": 0,
+      "tasks": 790,
+      "blocks": 4,
+      "tasks_file": "groups/a_free_L6/tasks/s000000.tsv",
+      "tasks_sha256": "62af3a08c1b7186e1102183ec3b5749ad4938ed677cc4aff28373f846b6897d8",
+      "tasks_bytes": 15604,
+      "est_core_seconds": 2.7589270789176226,
+      "est_proxy_units": null,
+      "est_peak_bytes": 600438568
+    },
+    {
+      "id": 4,
+      "group": "a_free_L7",
+      "campaign": "a",
+      "sector": "free",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4882,
+      "blocks": 20,
+      "tasks_file": "groups/a_free_L7/tasks/s000000.tsv",
+      "tasks_sha256": "b9afdc0df1f7ce8fe9b0be740caa7a215e760ae9a71538c6906a1faaa9e417ed",
+      "tasks_bytes": 105270,
+      "est_core_seconds": 358.49748777225614,
+      "est_proxy_units": null,
+      "est_peak_bytes": 689835912
+    },
+    {
+      "id": 5,
+      "group": "a_free_L8",
+      "campaign": "a",
+      "sector": "free",
+      "L": 8,
+      "shard": 0,
+      "tasks": 32128,
+      "blocks": 126,
+      "tasks_file": "groups/a_free_L8/tasks/s000000.tsv",
+      "tasks_sha256": "ec7622e8426f0f9801529258ef0923070f4d06e6ac16fcd9e33116612c1d1630",
+      "tasks_bytes": 750252,
+      "est_core_seconds": 10119.261154197156,
+      "est_proxy_units": null,
+      "est_peak_bytes": 1066223724
+    },
+    {
+      "id": 6,
+      "group": "a_power_L3",
+      "campaign": "a",
+      "sector": "power",
+      "L": 3,
+      "shard": 0,
+      "tasks": 2,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L3/tasks/s000000.tsv",
+      "tasks_sha256": "0e00ebabcc1f193c91e0e54bc6d7148cbe87f72aae4cdbaa67a5581ac00d4bfb",
+      "tasks_bytes": 32,
+      "est_core_seconds": 0.001443842425942421,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570429060
+    },
+    {
+      "id": 7,
+      "group": "a_power_L4",
+      "campaign": "a",
+      "sector": "power",
+      "L": 4,
+      "shard": 0,
+      "tasks": 6,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L4/tasks/s000000.tsv",
+      "tasks_sha256": "bdc9733d8228696a2f429ef150f38f7bdb4577870b9ad10d257a23cdc00c4c03",
+      "tasks_bytes": 102,
+      "est_core_seconds": 0.010294880717992783,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570468152
+    },
+    {
+      "id": 8,
+      "group": "a_power_L5",
+      "campaign": "a",
+      "sector": "power",
+      "L": 5,
+      "shard": 0,
+      "tasks": 40,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L5/tasks/s000000.tsv",
+      "tasks_sha256": "23b37c05ccf72d0e3eaa558472cd15b4fca26c4a27267eff958b9aba0c3a4c4a",
+      "tasks_bytes": 722,
+      "est_core_seconds": 0.2897242549806833,
+      "est_proxy_units": null,
+      "est_peak_bytes": 571515188
+    },
+    {
+      "id": 9,
+      "group": "a_power_L6",
+      "campaign": "a",
+      "sector": "power",
+      "L": 6,
+      "shard": 0,
+      "tasks": 214,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L6/tasks/s000000.tsv",
+      "tasks_sha256": "dc6bd75b8c18bfc48569123493e3495cd56a646f1175f07ff5345e263198cafe",
+      "tasks_bytes": 4138,
+      "est_core_seconds": 6.039724934846163,
+      "est_proxy_units": null,
+      "est_peak_bytes": 593360184
+    },
+    {
+      "id": 10,
+      "group": "a_power_L7",
+      "campaign": "a",
+      "sector": "power",
+      "L": 7,
+      "shard": 0,
+      "tasks": 1418,
+      "blocks": 6,
+      "tasks_file": "groups/a_power_L7/tasks/s000000.tsv",
+      "tasks_sha256": "f8c1b29aaefd9d2ac821582fd3e4c0626e0d2a4ac43a5980dc75a356d87cb96d",
+      "tasks_bytes": 29664,
+      "est_core_seconds": 157.95462985150516,
+      "est_proxy_units": null,
+      "est_peak_bytes": 682382224
+    },
+    {
+      "id": 11,
+      "group": "a_power_L8",
+      "campaign": "a",
+      "sector": "power",
+      "L": 8,
+      "shard": 0,
+      "tasks": 8672,
+      "blocks": 34,
+      "tasks_file": "groups/a_power_L8/tasks/s000000.tsv",
+      "tasks_sha256": "2d3782eca747ce099d6f1bc00bcb23c0466ca3056f466f6dc23ec3f17ce677e7",
+      "tasks_bytes": 194288,
+      "est_core_seconds": 3716.295996883884,
+      "est_proxy_units": null,
+      "est_peak_bytes": 1041684848
+    },
+    {
+      "id": 12,
+      "group": "b_free_L3",
+      "campaign": "b",
+      "sector": "free",
+      "L": 3,
+      "shard": 0,
+      "tasks": 10,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L3/tasks/s000000.tsv",
+      "tasks_sha256": "2ca69fcb4c430ac8244cf9ae0e657cbf99790257284d32d0480f5241c8a3e2b7",
+      "tasks_bytes": 160,
+      "est_core_seconds": 0.006194315850734711,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570445616
+    },
+    {
+      "id": 13,
+      "group": "b_free_L4",
+      "campaign": "b",
+      "sector": "free",
+      "L": 4,
+      "shard": 0,
+      "tasks": 32,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L4/tasks/s000000.tsv",
+      "tasks_sha256": "f98821c8b224ca996e724c7b82622b1fa3714b5674eb2053961b1ef90b74df42",
+      "tasks_bytes": 554,
+      "est_core_seconds": 0.028684532269835472,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570666836
+    },
+    {
+      "id": 14,
+      "group": "b_free_L5",
+      "campaign": "b",
+      "sector": "free",
+      "L": 5,
+      "shard": 0,
+      "tasks": 152,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L5/tasks/s000000.tsv",
+      "tasks_sha256": "e499ced00dbe978d94c4e04dd40f5f77a24c8339fed7245b7748187406f52286",
+      "tasks_bytes": 2798,
+      "est_core_seconds": 0.23706546612083912,
+      "est_proxy_units": null,
+      "est_peak_bytes": 574787968
+    },
+    {
+      "id": 15,
+      "group": "b_free_L6",
+      "campaign": "b",
+      "sector": "free",
+      "L": 6,
+      "shard": 0,
+      "tasks": 790,
+      "blocks": 4,
+      "tasks_file": "groups/b_free_L6/tasks/s000000.tsv",
+      "tasks_sha256": "24e615b30005b7413f1b7530d374eb9086de2c29653c23469d93dc8fde6d48c3",
+      "tasks_bytes": 15604,
+      "est_core_seconds": 2.7242242712527514,
+      "est_proxy_units": null,
+      "est_peak_bytes": 600448800
+    },
+    {
+      "id": 16,
+      "group": "b_free_L7",
+      "campaign": "b",
+      "sector": "free",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4882,
+      "blocks": 20,
+      "tasks_file": "groups/b_free_L7/tasks/s000000.tsv",
+      "tasks_sha256": "6a6d270e98c74ed69d2eab0b8792f498d35c0b00e1870e082059a6f6bf0ee61b",
+      "tasks_bytes": 105270,
+      "est_core_seconds": 297.95069889351726,
+      "est_proxy_units": null,
+      "est_peak_bytes": 689880016
+    },
+    {
+      "id": 17,
+      "group": "b_free_L8",
+      "campaign": "b",
+      "sector": "free",
+      "L": 8,
+      "shard": 0,
+      "tasks": 32128,
+      "blocks": 126,
+      "tasks_file": "groups/b_free_L8/tasks/s000000.tsv",
+      "tasks_sha256": "fc4c621416206a9c9e11d3b9985173b59699b54df8b0ce4bbc0c81772c4a260a",
+      "tasks_bytes": 750252,
+      "est_core_seconds": 8730.263848997653,
+      "est_proxy_units": null,
+      "est_peak_bytes": 1067726428
+    },
+    {
+      "id": 18,
+      "group": "b_power_L3",
+      "campaign": "b",
+      "sector": "power",
+      "L": 3,
+      "shard": 0,
+      "tasks": 2,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L3/tasks/s000000.tsv",
+      "tasks_sha256": "0e00ebabcc1f193c91e0e54bc6d7148cbe87f72aae4cdbaa67a5581ac00d4bfb",
+      "tasks_bytes": 32,
+      "est_core_seconds": 0.0013783276081085205,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570429060
+    },
+    {
+      "id": 19,
+      "group": "b_power_L4",
+      "campaign": "b",
+      "sector": "power",
+      "L": 4,
+      "shard": 0,
+      "tasks": 6,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L4/tasks/s000000.tsv",
+      "tasks_sha256": "bdc9733d8228696a2f429ef150f38f7bdb4577870b9ad10d257a23cdc00c4c03",
+      "tasks_bytes": 102,
+      "est_core_seconds": 0.008582890033721924,
+      "est_proxy_units": null,
+      "est_peak_bytes": 570468152
+    },
+    {
+      "id": 20,
+      "group": "b_power_L5",
+      "campaign": "b",
+      "sector": "power",
+      "L": 5,
+      "shard": 0,
+      "tasks": 40,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L5/tasks/s000000.tsv",
+      "tasks_sha256": "4966c02009b339a271469ccc39e015b0ab1d5a2a5e1b4169cd2695308128a780",
+      "tasks_bytes": 722,
+      "est_core_seconds": 0.3370878081768751,
+      "est_proxy_units": null,
+      "est_peak_bytes": 571515188
+    },
+    {
+      "id": 21,
+      "group": "b_power_L6",
+      "campaign": "b",
+      "sector": "power",
+      "L": 6,
+      "shard": 0,
+      "tasks": 214,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L6/tasks/s000000.tsv",
+      "tasks_sha256": "54dc3edc694c5ae88f2cf30cb3b61a8dfd26c6be0fa8ca67c3d130b2437cf5df",
+      "tasks_bytes": 4138,
+      "est_core_seconds": 4.606763835996389,
+      "est_proxy_units": null,
+      "est_peak_bytes": 593360184
+    },
+    {
+      "id": 22,
+      "group": "b_power_L7",
+      "campaign": "b",
+      "sector": "power",
+      "L": 7,
+      "shard": 0,
+      "tasks": 1418,
+      "blocks": 6,
+      "tasks_file": "groups/b_power_L7/tasks/s000000.tsv",
+      "tasks_sha256": "012323cb9bd56fd038f5e22c62ed797d625333468e2d89e2ebd6241f33a8cc38",
+      "tasks_bytes": 29664,
+      "est_core_seconds": 125.96096081472933,
+      "est_proxy_units": null,
+      "est_peak_bytes": 682537020
+    },
+    {
+      "id": 23,
+      "group": "b_power_L8",
+      "campaign": "b",
+      "sector": "power",
+      "L": 8,
+      "shard": 0,
+      "tasks": 8672,
+      "blocks": 34,
+      "tasks_file": "groups/b_power_L8/tasks/s000000.tsv",
+      "tasks_sha256": "da46eb24f9d07b951d0c44e459f70eb6db05e3e8caab8f112abc0491733a1b82",
+      "tasks_bytes": 194288,
+      "est_core_seconds": 3103.608005421236,
+      "est_proxy_units": null,
+      "est_peak_bytes": 1041037376
+    }
+  ],
+  "campaign_weights": {
+    "a": 0.5,
+    "b": 0.5
+  },
+  "power_sector": "explicitly integrated; NOT assumed zero",
+  "sampling_unit": "complete graph-summed randomized replicate, not chunk",
+  "test_only": true,
+  "test_graphs": "all",
+  "test_selection": "cheapest",
+  "cost_basis": "measured",
+  "cost_model_sha256": "af7bf4b96b0e0ca61e0f9e52a6eff57cf53982ce704491577fe12bbdfd54c270",
+  "cost_model_numerics": "exact",
+  "cost_model_numerics_exception": {
+    "cost_model_numerics": "exact",
+    "plan_numerics": "dd+mp256",
+    "scope": "test-only plan",
+    "rule": "non-test plans refuse a cost model of other numerics (production.load_cost_model, X10)"
+  },
+  "calibration_sha256": null,
+  "bootstrap_proxy": null,
+  "chunking": {
+    "task_seconds": 60.0,
+    "min_chunk": 256,
+    "max_task_seconds": 120.0
+  },
+  "index_sizing": {
+    "index_hours": 1.5,
+    "shards": null,
+    "assumed_efficiency": 0.9
+  },
+  "scale": {
+    "tasks": 96692,
+    "checkpoints": 394,
+    "jobs": 24,
+    "projected_files": 690,
+    "merge_fan_in": 64,
+    "merge": {
+      "a_free_L3": {
+        "rows": 10,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0026666666666666666
+      },
+      "a_free_L4": {
+        "rows": 32,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.008533333333333334
+      },
+      "a_free_L5": {
+        "rows": 152,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.04053333333333333
+      },
+      "a_free_L6": {
+        "rows": 790,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.21066666666666667
+      },
+      "a_free_L7": {
+        "rows": 4882,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 1.3018666666666665
+      },
+      "a_free_L8": {
+        "rows": 32128,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 8.567466666666666
+      },
+      "a_power_L3": {
+        "rows": 2,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0005333333333333334
+      },
+      "a_power_L4": {
+        "rows": 6,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0016
+      },
+      "a_power_L5": {
+        "rows": 40,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.010666666666666666
+      },
+      "a_power_L6": {
+        "rows": 214,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.05706666666666667
+      },
+      "a_power_L7": {
+        "rows": 1418,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.3781333333333333
+      },
+      "a_power_L8": {
+        "rows": 8672,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 2.3125333333333336
+      },
+      "b_free_L3": {
+        "rows": 10,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0026666666666666666
+      },
+      "b_free_L4": {
+        "rows": 32,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.008533333333333334
+      },
+      "b_free_L5": {
+        "rows": 152,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.04053333333333333
+      },
+      "b_free_L6": {
+        "rows": 790,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.21066666666666667
+      },
+      "b_free_L7": {
+        "rows": 4882,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 1.3018666666666665
+      },
+      "b_free_L8": {
+        "rows": 32128,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 8.567466666666666
+      },
+      "b_power_L3": {
+        "rows": 2,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0005333333333333334
+      },
+      "b_power_L4": {
+        "rows": 6,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0016
+      },
+      "b_power_L5": {
+        "rows": 40,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.010666666666666666
+      },
+      "b_power_L6": {
+        "rows": 214,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.05706666666666667
+      },
+      "b_power_L7": {
+        "rows": 1418,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.3781333333333333
+      },
+      "b_power_L8": {
+        "rows": 8672,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 2.3125333333333336
+      }
+    },
+    "merge_projected_max_seconds": 8.567466666666666,
+    "suggested_merge_time": "01:00:00"
+  },
+  "estimates": {
+    "basis": "measured",
+    "unit": "seconds per point (cost model)",
+    "groups": {
+      "a_free_L3": {
+        "tasks": 10,
+        "shards": 1,
+        "core_hours": 1.726270549827152e-06,
+        "proxy_units": 204800,
+        "max_index_core_seconds": 0.006214573979377747
+      },
+      "a_free_L4": {
+        "tasks": 32,
+        "shards": 1,
+        "core_hours": 8.155377064314153e-06,
+        "proxy_units": 3597312,
+        "max_index_core_seconds": 0.029359357431530952
+      },
+      "a_free_L5": {
+        "tasks": 152,
+        "shards": 1,
+        "core_hours": 6.545288540008995e-05,
+        "proxy_units": 80174080,
+        "max_index_core_seconds": 0.23563038744032383
+      },
+      "a_free_L6": {
+        "tasks": 790,
+        "shards": 1,
+        "core_hours": 0.000766368633032673,
+        "proxy_units": 1979544576,
+        "max_index_core_seconds": 2.7589270789176226
+      },
+      "a_free_L7": {
+        "tasks": 4882,
+        "shards": 1,
+        "core_hours": 0.09958263549229338,
+        "proxy_units": 54541560832,
+        "max_index_core_seconds": 358.49748777225614
+      },
+      "a_free_L8": {
+        "tasks": 32128,
+        "shards": 1,
+        "core_hours": 2.8109058761658767,
+        "proxy_units": 1498925016064,
+        "max_index_core_seconds": 10119.261154197156
+      },
+      "a_power_L3": {
+        "tasks": 2,
+        "shards": 1,
+        "core_hours": 4.010673405395614e-07,
+        "proxy_units": 20480,
+        "max_index_core_seconds": 0.001443842425942421
+      },
+      "a_power_L4": {
+        "tasks": 6,
+        "shards": 1,
+        "core_hours": 2.8596890883313285e-06,
+        "proxy_units": 376832,
+        "max_index_core_seconds": 0.010294880717992783
+      },
+      "a_power_L5": {
+        "tasks": 40,
+        "shards": 1,
+        "core_hours": 8.047895971685648e-05,
+        "proxy_units": 11083776,
+        "max_index_core_seconds": 0.2897242549806833
+      },
+      "a_power_L6": {
+        "tasks": 214,
+        "shards": 1,
+        "core_hours": 0.0016777013707906007,
+        "proxy_units": 300996608,
+        "max_index_core_seconds": 6.039724934846163
+      },
+      "a_power_L7": {
+        "tasks": 1418,
+        "shards": 1,
+        "core_hours": 0.04387628606986255,
+        "proxy_units": 9544865792,
+        "max_index_core_seconds": 157.95462985150516
+      },
+      "a_power_L8": {
+        "tasks": 8672,
+        "shards": 1,
+        "core_hours": 1.0323044435788566,
+        "proxy_units": 254832189440,
+        "max_index_core_seconds": 3716.295996883884
+      },
+      "b_free_L3": {
+        "tasks": 10,
+        "shards": 1,
+        "core_hours": 1.720643291870753e-06,
+        "proxy_units": 204800,
+        "max_index_core_seconds": 0.006194315850734711
+      },
+      "b_free_L4": {
+        "tasks": 32,
+        "shards": 1,
+        "core_hours": 7.967925630509854e-06,
+        "proxy_units": 3597312,
+        "max_index_core_seconds": 0.028684532269835472
+      },
+      "b_free_L5": {
+        "tasks": 152,
+        "shards": 1,
+        "core_hours": 6.585151836689976e-05,
+        "proxy_units": 80174080,
+        "max_index_core_seconds": 0.23706546612083912
+      },
+      "b_free_L6": {
+        "tasks": 790,
+        "shards": 1,
+        "core_hours": 0.0007567289642368754,
+        "proxy_units": 1979544576,
+        "max_index_core_seconds": 2.7242242712527514
+      },
+      "b_free_L7": {
+        "tasks": 4882,
+        "shards": 1,
+        "core_hours": 0.08276408302597701,
+        "proxy_units": 54541560832,
+        "max_index_core_seconds": 297.95069889351726
+      },
+      "b_free_L8": {
+        "tasks": 32128,
+        "shards": 1,
+        "core_hours": 2.425073291388237,
+        "proxy_units": 1498925016064,
+        "max_index_core_seconds": 8730.263848997653
+      },
+      "b_power_L3": {
+        "tasks": 2,
+        "shards": 1,
+        "core_hours": 3.828687800301446e-07,
+        "proxy_units": 20480,
+        "max_index_core_seconds": 0.0013783276081085205
+      },
+      "b_power_L4": {
+        "tasks": 6,
+        "shards": 1,
+        "core_hours": 2.3841361204783122e-06,
+        "proxy_units": 376832,
+        "max_index_core_seconds": 0.008582890033721924
+      },
+      "b_power_L5": {
+        "tasks": 40,
+        "shards": 1,
+        "core_hours": 9.36355022713542e-05,
+        "proxy_units": 11083776,
+        "max_index_core_seconds": 0.3370878081768751
+      },
+      "b_power_L6": {
+        "tasks": 214,
+        "shards": 1,
+        "core_hours": 0.0012796566211101081,
+        "proxy_units": 300996608,
+        "max_index_core_seconds": 4.606763835996389
+      },
+      "b_power_L7": {
+        "tasks": 1418,
+        "shards": 1,
+        "core_hours": 0.03498915578186926,
+        "proxy_units": 9544865792,
+        "max_index_core_seconds": 125.96096081472933
+      },
+      "b_power_L8": {
+        "tasks": 8672,
+        "shards": 1,
+        "core_hours": 0.8621133348392322,
+        "proxy_units": 254832189440,
+        "max_index_core_seconds": 3103.608005421236
+      }
+    },
+    "total_core_hours": 7.396420578774995,
+    "max_index_wall_seconds": 1405.4529380829383,
+    "suggested_time_seconds": 2160,
+    "predicted_max_task_seconds": {
+      "a_free_L3": 0.0006301980465650558,
+      "a_free_L4": 0.001134944148361683,
+      "a_free_L5": 0.0017694812268018723,
+      "a_free_L6": 0.005779346451163292,
+      "a_free_L7": 0.2371201952919364,
+      "a_free_L8": 1.3683025725185871,
+      "a_power_L3": 0.0007219212129712105,
+      "a_power_L4": 0.002298688516020775,
+      "a_power_L5": 0.014847874641418457,
+      "a_power_L6": 0.06904478464275599,
+      "a_power_L7": 0.26630739867687225,
+      "a_power_L8": 1.365098568610847,
+      "b_free_L3": 0.0006409976631402969,
+      "b_free_L4": 0.0009597083553671837,
+      "b_free_L5": 0.0018736375495791435,
+      "b_free_L6": 0.005699184723198414,
+      "b_free_L7": 0.21202971506863832,
+      "b_free_L8": 1.1951346406713128,
+      "b_power_L3": 0.0006891638040542603,
+      "b_power_L4": 0.0019123340025544167,
+      "b_power_L5": 0.029477671720087528,
+      "b_power_L6": 0.05377846769988537,
+      "b_power_L7": 0.22963966708630323,
+      "b_power_L8": 1.1910408223047853
+    },
+    "estimate": "available",
+    "mem_suggestion_mb": 2552,
+    "note": "planning estimates from a hardware-specific cost model or calibration, not measurements"
+  }
+}

@@ -1,0 +1,2757 @@
+{
+  "schema": "c8-d2-production-2",
+  "tool_sha256": {
+    "production.py": "8d5b6586cb60b43729f0b3ac60991f6a0b43194c669e5a1646e325b35c328126",
+    "assemble.py": "e6604fd47d3a6a8a823f56ec2e25c423adf49b6161aebe9e2c13bbefef64a74f",
+    "common.py": "9ac6f4d01c5be4db5a0d40d6cac9dd0eb1bf58d433ede8373c3c1ac841c6dc74",
+    "prepare_inputs.py": "f295f90708750c19c044dbb818793aa1635df38931bc143cd21c432b97aba7a3",
+    "task_schedule.py": "80ec991852ba713ee722478a5a1ab7850b093708ff0d707b62d4a48565ec4ff9",
+    "stage_runtime.py": "b0db50212869e49393780929bec38b0643a5aa98e0f0ce54f89f2165883f3df6",
+    "slurm_submit.py": "e9d67333dcfd25fb6ed22e12a9b9a349ac6505fa594506603006987d3d7bedf3"
+  },
+  "dimension": 2,
+  "order": 8,
+  "epsilon": "2s-2",
+  "package": "/home/zzheng8/c8ind/LRI_C8_D2_HPC_optimized",
+  "inputs_manifest_sha256": "badc807ee6a96c88d11afafc34e76d89d928c0d8532b31d017a1d21f28b97a78",
+  "backend": "gmp",
+  "build": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "order": 8,
+    "compiler": "13.3.0",
+    "boost_version": "1_77",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "build_record": {
+    "backend": "gmp",
+    "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+    ],
+    "compiler_version": "g++ (Spack GCC) 13.3.0",
+    "executable_sha256": "e509a2e73beee04ef7437c85fc90c6c2d25106c240259ad037859947d3efaaf3",
+    "native": {
+      "boost_version": "1_77",
+      "compiler": "13.3.0",
+      "dimension": 2,
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511,
+      "order": 8,
+      "schema": "c8-d2-build-1"
+    },
+    "schema": "c8-d2-build-record-1",
+    "source_sha256": {
+      "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+      "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+      "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+    },
+    "variables": {
+      "CPPFLAGS": "",
+      "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "CXXFLAGS": "",
+      "LDFLAGS": "",
+      "LDLIBS": "",
+      "OPTFLAGS": "-O3",
+      "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+    }
+  },
+  "executable_sha256": "e509a2e73beee04ef7437c85fc90c6c2d25106c240259ad037859947d3efaaf3",
+  "threads": 128,
+  "checkpoint_tasks": 4096,
+  "primitive_mode": "recompute",
+  "task_order": "graph",
+  "checkpoint_graphs": 64,
+  "checkpoint_seconds": 76800.0,
+  "purpose": "production",
+  "allocation": {
+    "frozen": "inputs/inventory.json contains an untrained default of 4096 points; point_override and multipliers are fixed before this campaign",
+    "point_override": null,
+    "loop_points": {},
+    "multiplier": 1,
+    "power_multiplier": 1,
+    "power_divisor": 1,
+    "power_count": "max(4, points x multiplier x power_multiplier / power_divisor)",
+    "primitive_points": 4096,
+    "primitive": {
+      "allocation": "frozen pilot allocation",
+      "counts": {
+        "495": 65536,
+        "2300": 65536,
+        "2304": 131072,
+        "6339": 65536,
+        "6374": 131072,
+        "6395": 131072,
+        "6404": 131072,
+        "7023": 65536,
+        "7046": 65536,
+        "7047": 65536,
+        "7048": 262144,
+        "7055": 65536,
+        "13013": 65536,
+        "13014": 65536,
+        "13015": 65536,
+        "13016": 65536,
+        "13218": 65536,
+        "13220": 262144,
+        "13222": 65536,
+        "13223": 131072,
+        "13224": 131072,
+        "14959": 65536,
+        "15005": 65536,
+        "15007": 262144,
+        "15008": 131072,
+        "15029": 131072,
+        "15030": 65536,
+        "15034": 131072,
+        "15493": 65536,
+        "15513": 262144,
+        "15556": 65536,
+        "15558": 131072,
+        "15559": 262144,
+        "15577": 65536,
+        "15579": 131072,
+        "15580": 262144,
+        "15590": 262144,
+        "15604": 131072,
+        "15605": 262144,
+        "15606": 262144,
+        "15609": 65536,
+        "15611": 131072,
+        "17495": 65536,
+        "17497": 131072,
+        "17545": 131072,
+        "17548": 131072,
+        "17549": 131072,
+        "17581": 262144,
+        "17583": 262144,
+        "17585": 131072,
+        "17586": 262144,
+        "17587": 262144,
+        "17588": 262144,
+        "17599": 131072,
+        "17600": 262144,
+        "17601": 262144,
+        "17645": 131072,
+        "17646": 65536,
+        "17647": 131072,
+        "17648": 131072,
+        "17651": 65536,
+        "17652": 262144,
+        "17655": 131072,
+        "17656": 262144,
+        "17657": 262144,
+        "17658": 131072,
+        "18066": 131072,
+        "18091": 262144,
+        "18092": 262144,
+        "18093": 131072,
+        "18104": 262144,
+        "18105": 262144,
+        "18106": 262144,
+        "18121": 131072,
+        "18122": 262144,
+        "18123": 262144,
+        "18124": 131072,
+        "21479": 65536,
+        "21483": 65536,
+        "21486": 65536,
+        "21490": 65536,
+        "21496": 131072,
+        "21499": 65536,
+        "21506": 65536,
+        "21507": 262144,
+        "21508": 262144,
+        "21510": 131072,
+        "21512": 65536,
+        "21514": 65536,
+        "21516": 65536,
+        "21517": 131072,
+        "21519": 131072,
+        "21543": 65536,
+        "21546": 65536,
+        "21551": 65536,
+        "21552": 131072,
+        "21848": 131072,
+        "21849": 65536,
+        "21976": 65536,
+        "21978": 262144,
+        "22022": 262144,
+        "22024": 131072,
+        "22026": 262144,
+        "22027": 131072,
+        "22028": 131072,
+        "22029": 262144,
+        "22061": 262144,
+        "22064": 131072,
+        "22065": 262144,
+        "22076": 262144,
+        "22077": 262144,
+        "22078": 131072,
+        "22108": 131072,
+        "22109": 262144,
+        "22112": 131072,
+        "22113": 262144,
+        "22116": 131072,
+        "22117": 262144,
+        "22118": 262144,
+        "22119": 131072,
+        "22779": 262144,
+        "22780": 65536,
+        "22806": 262144,
+        "22807": 262144,
+        "22808": 131072,
+        "22822": 524288,
+        "22823": 262144,
+        "22824": 131072,
+        "22838": 131072,
+        "22839": 131072,
+        "22840": 131072,
+        "22859": 262144,
+        "22860": 131072,
+        "22861": 131072,
+        "22862": 524288,
+        "22868": 262144,
+        "22869": 131072,
+        "22870": 131072,
+        "22871": 262144,
+        "22876": 524288,
+        "22877": 262144,
+        "22878": 524288,
+        "22879": 524288,
+        "22880": 262144,
+        "22881": 262144,
+        "25107": 262144,
+        "25116": 262144,
+        "25117": 262144,
+        "25119": 131072,
+        "25130": 65536,
+        "25131": 65536,
+        "25132": 65536,
+        "25133": 65536,
+        "25134": 65536,
+        "25135": 262144,
+        "25136": 65536,
+        "25170": 65536,
+        "25174": 65536,
+        "25179": 262144,
+        "25182": 65536,
+        "25187": 131072,
+        "25188": 131072,
+        "25189": 131072,
+        "25190": 524288,
+        "25191": 65536,
+        "25192": 131072,
+        "25201": 131072,
+        "25202": 65536,
+        "25203": 131072,
+        "25206": 262144,
+        "25219": 262144,
+        "25235": 131072,
+        "25239": 262144,
+        "25240": 262144,
+        "25241": 262144,
+        "25243": 262144,
+        "25256": 262144,
+        "25264": 131072,
+        "25265": 262144,
+        "25266": 131072,
+        "25277": 262144,
+        "25282": 524288,
+        "25286": 131072,
+        "25294": 262144,
+        "25295": 262144,
+        "25296": 262144,
+        "25299": 262144,
+        "25300": 262144,
+        "25301": 262144,
+        "25304": 524288,
+        "25305": 524288,
+        "25306": 524288,
+        "25309": 262144,
+        "25311": 262144,
+        "25324": 131072,
+        "25326": 131072,
+        "25328": 131072,
+        "25329": 65536,
+        "25330": 131072,
+        "25332": 131072,
+        "25333": 262144,
+        "25334": 262144,
+        "25335": 262144,
+        "25336": 262144,
+        "25337": 262144,
+        "25345": 131072,
+        "25346": 65536,
+        "25347": 131072,
+        "25349": 131072,
+        "25350": 262144,
+        "25351": 262144,
+        "25352": 262144,
+        "25353": 524288,
+        "25354": 262144,
+        "25361": 262144,
+        "25373": 131072,
+        "25375": 524288,
+        "25472": 65536,
+        "25480": 131072,
+        "25481": 262144,
+        "25485": 131072,
+        "25492": 262144,
+        "25493": 262144,
+        "25496": 262144,
+        "25498": 262144,
+        "25506": 262144,
+        "25508": 524288,
+        "25510": 131072,
+        "25512": 131072,
+        "25513": 262144,
+        "25515": 262144,
+        "26126": 65536,
+        "26133": 262144,
+        "26136": 131072,
+        "26141": 131072,
+        "26148": 262144,
+        "26149": 262144,
+        "26152": 262144,
+        "26154": 262144,
+        "26155": 131072,
+        "26157": 262144,
+        "26162": 131072,
+        "26163": 131072,
+        "26164": 131072,
+        "26167": 131072,
+        "26169": 262144,
+        "26171": 524288,
+        "26173": 262144
+      },
+      "budget_points_per_replicate": 47382528,
+      "points_per_replicate": 47382528,
+      "projected_primitive_block_se": null,
+      "hypothetical": null,
+      "projection_note": "No C8 pilot variance is assumed."
+    }
+  },
+  "seed": 7522572997107493768,
+  "seed_scheme": "hashed",
+  "shard_policy": "cost",
+  "groups": [
+    {
+      "name": "a_free_L3",
+      "sha256": "2854c53a594332d1a59d18713db0f5a35f66d4de190f490f4d3c29e45afeab04"
+    },
+    {
+      "name": "a_free_L4",
+      "sha256": "c7f0fdee002668471e5110644f8d458645422919f603523c675153024b6bdd23"
+    },
+    {
+      "name": "a_free_L5",
+      "sha256": "5774cdf6ffa2aea37afcf3881432cc5db28a54c377e73ce184bd3a93ce9d3885"
+    },
+    {
+      "name": "a_free_L6",
+      "sha256": "f8a35ee6d9e51a14a789bd8baeb004a380b3925801e4a3949b446682fc9a9588"
+    },
+    {
+      "name": "a_free_L7",
+      "sha256": "f276c43e8f579d74c34a64d3186180e697e42092e16ca40b9dc2df3475f7b4c8"
+    },
+    {
+      "name": "a_free_L8",
+      "sha256": "6bdcc6c76d8243ef89d99def6c8854f92ce0d9beec06e49ef8e13f5076ceec46"
+    },
+    {
+      "name": "a_power_L3",
+      "sha256": "2783a355f2d94ced9db284e01013cbcd6047cfe760e7bfb268738df653dfc9fa"
+    },
+    {
+      "name": "a_power_L4",
+      "sha256": "3d4de00f49ab19a9c3e1cbe733c8268597c5d93c10bb06d3f6184867efc61ac3"
+    },
+    {
+      "name": "a_power_L5",
+      "sha256": "aca1ebd09f9fb705992afde20aa09f9ab123650a6229391be1b4e5257fcf8f72"
+    },
+    {
+      "name": "a_power_L6",
+      "sha256": "23d3bea51d4d66996f1e9cf089045fa36bcffd3f61662f8c9007daaf7fcf0197"
+    },
+    {
+      "name": "a_power_L7",
+      "sha256": "805ecb2c30dff2144d01f0dda216baecbd27849fb727086e4d0c63f187f152ae"
+    },
+    {
+      "name": "a_power_L8",
+      "sha256": "40ec42e58df822d57520cdf4e09e29f159d5cf36277d2beabb4d8d9cdc390cca"
+    },
+    {
+      "name": "b_free_L3",
+      "sha256": "951503e632ca2699a2669dbcef39d4fd518b74bfbd663fdab487ff5c43a3a83c"
+    },
+    {
+      "name": "b_free_L4",
+      "sha256": "3504d6ccb26627a6d6ddc2e6e0e9da4f846279263357def66435520353e4f76e"
+    },
+    {
+      "name": "b_free_L5",
+      "sha256": "d272c1656fce2c75806584fe52f4aff879d1fc43df85bc58fc3e499fa444fd72"
+    },
+    {
+      "name": "b_free_L6",
+      "sha256": "ad1a444b9283b27e85c47e37658ab188408d0f608aa88189d6c6c9281e638c94"
+    },
+    {
+      "name": "b_free_L7",
+      "sha256": "bd045ac719f87e30ff113d113112d440d3adffad88f0283752c7114af8250d12"
+    },
+    {
+      "name": "b_free_L8",
+      "sha256": "134c0e813a8a1c3261b90df7f3be97c3cf332131f2d021f09e314fedf2ca48bc"
+    },
+    {
+      "name": "b_power_L3",
+      "sha256": "800b0562770f577550dbec32bb1c0ded67ed73ef01c2485f51e6dce1f57d6fd3"
+    },
+    {
+      "name": "b_power_L4",
+      "sha256": "f4d9b040add5ea9dc76241183411393352033c855331e19ef5dba01e62c01b0e"
+    },
+    {
+      "name": "b_power_L5",
+      "sha256": "5f803fd63a3106cb9fbc5795f9e130e17455114a9bbf2b3b61755475476cc005"
+    },
+    {
+      "name": "b_power_L6",
+      "sha256": "250769a797e1c6d80aa18df1ffb4ee448d9b6001e2cadff9b019d5d9923b38c9"
+    },
+    {
+      "name": "b_power_L7",
+      "sha256": "83a6a2ec0e1e2a4a488d4d82582fe7e7b8b57f60870834ef6c555d455105570b"
+    },
+    {
+      "name": "b_power_L8",
+      "sha256": "e0b8090a24692813e2d9c0ebe87495a796c9ab08a744d5064f2a18f7491d32bd"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 0,
+      "group": "a_free_L3",
+      "shard": 0
+    },
+    {
+      "id": 1,
+      "group": "a_free_L4",
+      "shard": 0
+    },
+    {
+      "id": 2,
+      "group": "a_free_L5",
+      "shard": 0
+    },
+    {
+      "id": 3,
+      "group": "a_free_L6",
+      "shard": 0
+    },
+    {
+      "id": 4,
+      "group": "a_free_L7",
+      "shard": 0
+    },
+    {
+      "id": 5,
+      "group": "a_free_L7",
+      "shard": 1
+    },
+    {
+      "id": 6,
+      "group": "a_free_L7",
+      "shard": 2
+    },
+    {
+      "id": 7,
+      "group": "a_free_L7",
+      "shard": 3
+    },
+    {
+      "id": 8,
+      "group": "a_free_L7",
+      "shard": 4
+    },
+    {
+      "id": 9,
+      "group": "a_free_L7",
+      "shard": 5
+    },
+    {
+      "id": 10,
+      "group": "a_free_L7",
+      "shard": 6
+    },
+    {
+      "id": 11,
+      "group": "a_free_L7",
+      "shard": 7
+    },
+    {
+      "id": 12,
+      "group": "a_free_L7",
+      "shard": 8
+    },
+    {
+      "id": 13,
+      "group": "a_free_L7",
+      "shard": 9
+    },
+    {
+      "id": 14,
+      "group": "a_free_L7",
+      "shard": 10
+    },
+    {
+      "id": 15,
+      "group": "a_free_L7",
+      "shard": 11
+    },
+    {
+      "id": 16,
+      "group": "a_free_L7",
+      "shard": 12
+    },
+    {
+      "id": 17,
+      "group": "a_free_L7",
+      "shard": 13
+    },
+    {
+      "id": 18,
+      "group": "a_free_L7",
+      "shard": 14
+    },
+    {
+      "id": 19,
+      "group": "a_free_L7",
+      "shard": 15
+    },
+    {
+      "id": 20,
+      "group": "a_free_L7",
+      "shard": 16
+    },
+    {
+      "id": 21,
+      "group": "a_free_L7",
+      "shard": 17
+    },
+    {
+      "id": 22,
+      "group": "a_free_L7",
+      "shard": 18
+    },
+    {
+      "id": 23,
+      "group": "a_free_L7",
+      "shard": 19
+    },
+    {
+      "id": 24,
+      "group": "a_free_L7",
+      "shard": 20
+    },
+    {
+      "id": 25,
+      "group": "a_free_L7",
+      "shard": 21
+    },
+    {
+      "id": 26,
+      "group": "a_free_L7",
+      "shard": 22
+    },
+    {
+      "id": 27,
+      "group": "a_free_L8",
+      "shard": 0
+    },
+    {
+      "id": 28,
+      "group": "a_free_L8",
+      "shard": 1
+    },
+    {
+      "id": 29,
+      "group": "a_free_L8",
+      "shard": 2
+    },
+    {
+      "id": 30,
+      "group": "a_free_L8",
+      "shard": 3
+    },
+    {
+      "id": 31,
+      "group": "a_free_L8",
+      "shard": 4
+    },
+    {
+      "id": 32,
+      "group": "a_free_L8",
+      "shard": 5
+    },
+    {
+      "id": 33,
+      "group": "a_free_L8",
+      "shard": 6
+    },
+    {
+      "id": 34,
+      "group": "a_free_L8",
+      "shard": 7
+    },
+    {
+      "id": 35,
+      "group": "a_free_L8",
+      "shard": 8
+    },
+    {
+      "id": 36,
+      "group": "a_free_L8",
+      "shard": 9
+    },
+    {
+      "id": 37,
+      "group": "a_free_L8",
+      "shard": 10
+    },
+    {
+      "id": 38,
+      "group": "a_free_L8",
+      "shard": 11
+    },
+    {
+      "id": 39,
+      "group": "a_free_L8",
+      "shard": 12
+    },
+    {
+      "id": 40,
+      "group": "a_free_L8",
+      "shard": 13
+    },
+    {
+      "id": 41,
+      "group": "a_free_L8",
+      "shard": 14
+    },
+    {
+      "id": 42,
+      "group": "a_free_L8",
+      "shard": 15
+    },
+    {
+      "id": 43,
+      "group": "a_free_L8",
+      "shard": 16
+    },
+    {
+      "id": 44,
+      "group": "a_free_L8",
+      "shard": 17
+    },
+    {
+      "id": 45,
+      "group": "a_free_L8",
+      "shard": 18
+    },
+    {
+      "id": 46,
+      "group": "a_free_L8",
+      "shard": 19
+    },
+    {
+      "id": 47,
+      "group": "a_free_L8",
+      "shard": 20
+    },
+    {
+      "id": 48,
+      "group": "a_free_L8",
+      "shard": 21
+    },
+    {
+      "id": 49,
+      "group": "a_free_L8",
+      "shard": 22
+    },
+    {
+      "id": 50,
+      "group": "a_free_L8",
+      "shard": 23
+    },
+    {
+      "id": 51,
+      "group": "a_free_L8",
+      "shard": 24
+    },
+    {
+      "id": 52,
+      "group": "a_free_L8",
+      "shard": 25
+    },
+    {
+      "id": 53,
+      "group": "a_free_L8",
+      "shard": 26
+    },
+    {
+      "id": 54,
+      "group": "a_free_L8",
+      "shard": 27
+    },
+    {
+      "id": 55,
+      "group": "a_free_L8",
+      "shard": 28
+    },
+    {
+      "id": 56,
+      "group": "a_free_L8",
+      "shard": 29
+    },
+    {
+      "id": 57,
+      "group": "a_free_L8",
+      "shard": 30
+    },
+    {
+      "id": 58,
+      "group": "a_free_L8",
+      "shard": 31
+    },
+    {
+      "id": 59,
+      "group": "a_free_L8",
+      "shard": 32
+    },
+    {
+      "id": 60,
+      "group": "a_free_L8",
+      "shard": 33
+    },
+    {
+      "id": 61,
+      "group": "a_free_L8",
+      "shard": 34
+    },
+    {
+      "id": 62,
+      "group": "a_free_L8",
+      "shard": 35
+    },
+    {
+      "id": 63,
+      "group": "a_free_L8",
+      "shard": 36
+    },
+    {
+      "id": 64,
+      "group": "a_free_L8",
+      "shard": 37
+    },
+    {
+      "id": 65,
+      "group": "a_free_L8",
+      "shard": 38
+    },
+    {
+      "id": 66,
+      "group": "a_free_L8",
+      "shard": 39
+    },
+    {
+      "id": 67,
+      "group": "a_free_L8",
+      "shard": 40
+    },
+    {
+      "id": 68,
+      "group": "a_free_L8",
+      "shard": 41
+    },
+    {
+      "id": 69,
+      "group": "a_free_L8",
+      "shard": 42
+    },
+    {
+      "id": 70,
+      "group": "a_free_L8",
+      "shard": 43
+    },
+    {
+      "id": 71,
+      "group": "a_free_L8",
+      "shard": 44
+    },
+    {
+      "id": 72,
+      "group": "a_free_L8",
+      "shard": 45
+    },
+    {
+      "id": 73,
+      "group": "a_free_L8",
+      "shard": 46
+    },
+    {
+      "id": 74,
+      "group": "a_free_L8",
+      "shard": 47
+    },
+    {
+      "id": 75,
+      "group": "a_free_L8",
+      "shard": 48
+    },
+    {
+      "id": 76,
+      "group": "a_free_L8",
+      "shard": 49
+    },
+    {
+      "id": 77,
+      "group": "a_free_L8",
+      "shard": 50
+    },
+    {
+      "id": 78,
+      "group": "a_free_L8",
+      "shard": 51
+    },
+    {
+      "id": 79,
+      "group": "a_free_L8",
+      "shard": 52
+    },
+    {
+      "id": 80,
+      "group": "a_free_L8",
+      "shard": 53
+    },
+    {
+      "id": 81,
+      "group": "a_free_L8",
+      "shard": 54
+    },
+    {
+      "id": 82,
+      "group": "a_free_L8",
+      "shard": 55
+    },
+    {
+      "id": 83,
+      "group": "a_free_L8",
+      "shard": 56
+    },
+    {
+      "id": 84,
+      "group": "a_free_L8",
+      "shard": 57
+    },
+    {
+      "id": 85,
+      "group": "a_free_L8",
+      "shard": 58
+    },
+    {
+      "id": 86,
+      "group": "a_free_L8",
+      "shard": 59
+    },
+    {
+      "id": 87,
+      "group": "a_free_L8",
+      "shard": 60
+    },
+    {
+      "id": 88,
+      "group": "a_free_L8",
+      "shard": 61
+    },
+    {
+      "id": 89,
+      "group": "a_free_L8",
+      "shard": 62
+    },
+    {
+      "id": 90,
+      "group": "a_free_L8",
+      "shard": 63
+    },
+    {
+      "id": 91,
+      "group": "a_free_L8",
+      "shard": 64
+    },
+    {
+      "id": 92,
+      "group": "a_free_L8",
+      "shard": 65
+    },
+    {
+      "id": 93,
+      "group": "a_free_L8",
+      "shard": 66
+    },
+    {
+      "id": 94,
+      "group": "a_free_L8",
+      "shard": 67
+    },
+    {
+      "id": 95,
+      "group": "a_free_L8",
+      "shard": 68
+    },
+    {
+      "id": 96,
+      "group": "a_free_L8",
+      "shard": 69
+    },
+    {
+      "id": 97,
+      "group": "a_free_L8",
+      "shard": 70
+    },
+    {
+      "id": 98,
+      "group": "a_free_L8",
+      "shard": 71
+    },
+    {
+      "id": 99,
+      "group": "a_free_L8",
+      "shard": 72
+    },
+    {
+      "id": 100,
+      "group": "a_free_L8",
+      "shard": 73
+    },
+    {
+      "id": 101,
+      "group": "a_free_L8",
+      "shard": 74
+    },
+    {
+      "id": 102,
+      "group": "a_free_L8",
+      "shard": 75
+    },
+    {
+      "id": 103,
+      "group": "a_free_L8",
+      "shard": 76
+    },
+    {
+      "id": 104,
+      "group": "a_free_L8",
+      "shard": 77
+    },
+    {
+      "id": 105,
+      "group": "a_free_L8",
+      "shard": 78
+    },
+    {
+      "id": 106,
+      "group": "a_free_L8",
+      "shard": 79
+    },
+    {
+      "id": 107,
+      "group": "a_free_L8",
+      "shard": 80
+    },
+    {
+      "id": 108,
+      "group": "a_free_L8",
+      "shard": 81
+    },
+    {
+      "id": 109,
+      "group": "a_free_L8",
+      "shard": 82
+    },
+    {
+      "id": 110,
+      "group": "a_free_L8",
+      "shard": 83
+    },
+    {
+      "id": 111,
+      "group": "a_free_L8",
+      "shard": 84
+    },
+    {
+      "id": 112,
+      "group": "a_free_L8",
+      "shard": 85
+    },
+    {
+      "id": 113,
+      "group": "a_free_L8",
+      "shard": 86
+    },
+    {
+      "id": 114,
+      "group": "a_free_L8",
+      "shard": 87
+    },
+    {
+      "id": 115,
+      "group": "a_free_L8",
+      "shard": 88
+    },
+    {
+      "id": 116,
+      "group": "a_free_L8",
+      "shard": 89
+    },
+    {
+      "id": 117,
+      "group": "a_free_L8",
+      "shard": 90
+    },
+    {
+      "id": 118,
+      "group": "a_free_L8",
+      "shard": 91
+    },
+    {
+      "id": 119,
+      "group": "a_free_L8",
+      "shard": 92
+    },
+    {
+      "id": 120,
+      "group": "a_free_L8",
+      "shard": 93
+    },
+    {
+      "id": 121,
+      "group": "a_free_L8",
+      "shard": 94
+    },
+    {
+      "id": 122,
+      "group": "a_free_L8",
+      "shard": 95
+    },
+    {
+      "id": 123,
+      "group": "a_free_L8",
+      "shard": 96
+    },
+    {
+      "id": 124,
+      "group": "a_free_L8",
+      "shard": 97
+    },
+    {
+      "id": 125,
+      "group": "a_free_L8",
+      "shard": 98
+    },
+    {
+      "id": 126,
+      "group": "a_free_L8",
+      "shard": 99
+    },
+    {
+      "id": 127,
+      "group": "a_free_L8",
+      "shard": 100
+    },
+    {
+      "id": 128,
+      "group": "a_free_L8",
+      "shard": 101
+    },
+    {
+      "id": 129,
+      "group": "a_free_L8",
+      "shard": 102
+    },
+    {
+      "id": 130,
+      "group": "a_free_L8",
+      "shard": 103
+    },
+    {
+      "id": 131,
+      "group": "a_free_L8",
+      "shard": 104
+    },
+    {
+      "id": 132,
+      "group": "a_free_L8",
+      "shard": 105
+    },
+    {
+      "id": 133,
+      "group": "a_free_L8",
+      "shard": 106
+    },
+    {
+      "id": 134,
+      "group": "a_free_L8",
+      "shard": 107
+    },
+    {
+      "id": 135,
+      "group": "a_free_L8",
+      "shard": 108
+    },
+    {
+      "id": 136,
+      "group": "a_free_L8",
+      "shard": 109
+    },
+    {
+      "id": 137,
+      "group": "a_free_L8",
+      "shard": 110
+    },
+    {
+      "id": 138,
+      "group": "a_free_L8",
+      "shard": 111
+    },
+    {
+      "id": 139,
+      "group": "a_free_L8",
+      "shard": 112
+    },
+    {
+      "id": 140,
+      "group": "a_free_L8",
+      "shard": 113
+    },
+    {
+      "id": 141,
+      "group": "a_free_L8",
+      "shard": 114
+    },
+    {
+      "id": 142,
+      "group": "a_free_L8",
+      "shard": 115
+    },
+    {
+      "id": 143,
+      "group": "a_free_L8",
+      "shard": 116
+    },
+    {
+      "id": 144,
+      "group": "a_free_L8",
+      "shard": 117
+    },
+    {
+      "id": 145,
+      "group": "a_free_L8",
+      "shard": 118
+    },
+    {
+      "id": 146,
+      "group": "a_free_L8",
+      "shard": 119
+    },
+    {
+      "id": 147,
+      "group": "a_free_L8",
+      "shard": 120
+    },
+    {
+      "id": 148,
+      "group": "a_free_L8",
+      "shard": 121
+    },
+    {
+      "id": 149,
+      "group": "a_free_L8",
+      "shard": 122
+    },
+    {
+      "id": 150,
+      "group": "a_free_L8",
+      "shard": 123
+    },
+    {
+      "id": 151,
+      "group": "a_free_L8",
+      "shard": 124
+    },
+    {
+      "id": 152,
+      "group": "a_free_L8",
+      "shard": 125
+    },
+    {
+      "id": 153,
+      "group": "a_free_L8",
+      "shard": 126
+    },
+    {
+      "id": 154,
+      "group": "a_free_L8",
+      "shard": 127
+    },
+    {
+      "id": 155,
+      "group": "a_power_L3",
+      "shard": 0
+    },
+    {
+      "id": 156,
+      "group": "a_power_L4",
+      "shard": 0
+    },
+    {
+      "id": 157,
+      "group": "a_power_L5",
+      "shard": 0
+    },
+    {
+      "id": 158,
+      "group": "a_power_L6",
+      "shard": 0
+    },
+    {
+      "id": 159,
+      "group": "a_power_L7",
+      "shard": 0
+    },
+    {
+      "id": 160,
+      "group": "a_power_L7",
+      "shard": 1
+    },
+    {
+      "id": 161,
+      "group": "a_power_L8",
+      "shard": 0
+    },
+    {
+      "id": 162,
+      "group": "a_power_L8",
+      "shard": 1
+    },
+    {
+      "id": 163,
+      "group": "a_power_L8",
+      "shard": 2
+    },
+    {
+      "id": 164,
+      "group": "a_power_L8",
+      "shard": 3
+    },
+    {
+      "id": 165,
+      "group": "a_power_L8",
+      "shard": 4
+    },
+    {
+      "id": 166,
+      "group": "a_power_L8",
+      "shard": 5
+    },
+    {
+      "id": 167,
+      "group": "a_power_L8",
+      "shard": 6
+    },
+    {
+      "id": 168,
+      "group": "a_power_L8",
+      "shard": 7
+    },
+    {
+      "id": 169,
+      "group": "a_power_L8",
+      "shard": 8
+    },
+    {
+      "id": 170,
+      "group": "a_power_L8",
+      "shard": 9
+    },
+    {
+      "id": 171,
+      "group": "b_free_L3",
+      "shard": 0
+    },
+    {
+      "id": 172,
+      "group": "b_free_L4",
+      "shard": 0
+    },
+    {
+      "id": 173,
+      "group": "b_free_L5",
+      "shard": 0
+    },
+    {
+      "id": 174,
+      "group": "b_free_L6",
+      "shard": 0
+    },
+    {
+      "id": 175,
+      "group": "b_free_L7",
+      "shard": 0
+    },
+    {
+      "id": 176,
+      "group": "b_free_L7",
+      "shard": 1
+    },
+    {
+      "id": 177,
+      "group": "b_free_L7",
+      "shard": 2
+    },
+    {
+      "id": 178,
+      "group": "b_free_L7",
+      "shard": 3
+    },
+    {
+      "id": 179,
+      "group": "b_free_L7",
+      "shard": 4
+    },
+    {
+      "id": 180,
+      "group": "b_free_L7",
+      "shard": 5
+    },
+    {
+      "id": 181,
+      "group": "b_free_L7",
+      "shard": 6
+    },
+    {
+      "id": 182,
+      "group": "b_free_L7",
+      "shard": 7
+    },
+    {
+      "id": 183,
+      "group": "b_free_L7",
+      "shard": 8
+    },
+    {
+      "id": 184,
+      "group": "b_free_L7",
+      "shard": 9
+    },
+    {
+      "id": 185,
+      "group": "b_free_L7",
+      "shard": 10
+    },
+    {
+      "id": 186,
+      "group": "b_free_L7",
+      "shard": 11
+    },
+    {
+      "id": 187,
+      "group": "b_free_L7",
+      "shard": 12
+    },
+    {
+      "id": 188,
+      "group": "b_free_L7",
+      "shard": 13
+    },
+    {
+      "id": 189,
+      "group": "b_free_L7",
+      "shard": 14
+    },
+    {
+      "id": 190,
+      "group": "b_free_L7",
+      "shard": 15
+    },
+    {
+      "id": 191,
+      "group": "b_free_L7",
+      "shard": 16
+    },
+    {
+      "id": 192,
+      "group": "b_free_L7",
+      "shard": 17
+    },
+    {
+      "id": 193,
+      "group": "b_free_L7",
+      "shard": 18
+    },
+    {
+      "id": 194,
+      "group": "b_free_L7",
+      "shard": 19
+    },
+    {
+      "id": 195,
+      "group": "b_free_L7",
+      "shard": 20
+    },
+    {
+      "id": 196,
+      "group": "b_free_L7",
+      "shard": 21
+    },
+    {
+      "id": 197,
+      "group": "b_free_L7",
+      "shard": 22
+    },
+    {
+      "id": 198,
+      "group": "b_free_L8",
+      "shard": 0
+    },
+    {
+      "id": 199,
+      "group": "b_free_L8",
+      "shard": 1
+    },
+    {
+      "id": 200,
+      "group": "b_free_L8",
+      "shard": 2
+    },
+    {
+      "id": 201,
+      "group": "b_free_L8",
+      "shard": 3
+    },
+    {
+      "id": 202,
+      "group": "b_free_L8",
+      "shard": 4
+    },
+    {
+      "id": 203,
+      "group": "b_free_L8",
+      "shard": 5
+    },
+    {
+      "id": 204,
+      "group": "b_free_L8",
+      "shard": 6
+    },
+    {
+      "id": 205,
+      "group": "b_free_L8",
+      "shard": 7
+    },
+    {
+      "id": 206,
+      "group": "b_free_L8",
+      "shard": 8
+    },
+    {
+      "id": 207,
+      "group": "b_free_L8",
+      "shard": 9
+    },
+    {
+      "id": 208,
+      "group": "b_free_L8",
+      "shard": 10
+    },
+    {
+      "id": 209,
+      "group": "b_free_L8",
+      "shard": 11
+    },
+    {
+      "id": 210,
+      "group": "b_free_L8",
+      "shard": 12
+    },
+    {
+      "id": 211,
+      "group": "b_free_L8",
+      "shard": 13
+    },
+    {
+      "id": 212,
+      "group": "b_free_L8",
+      "shard": 14
+    },
+    {
+      "id": 213,
+      "group": "b_free_L8",
+      "shard": 15
+    },
+    {
+      "id": 214,
+      "group": "b_free_L8",
+      "shard": 16
+    },
+    {
+      "id": 215,
+      "group": "b_free_L8",
+      "shard": 17
+    },
+    {
+      "id": 216,
+      "group": "b_free_L8",
+      "shard": 18
+    },
+    {
+      "id": 217,
+      "group": "b_free_L8",
+      "shard": 19
+    },
+    {
+      "id": 218,
+      "group": "b_free_L8",
+      "shard": 20
+    },
+    {
+      "id": 219,
+      "group": "b_free_L8",
+      "shard": 21
+    },
+    {
+      "id": 220,
+      "group": "b_free_L8",
+      "shard": 22
+    },
+    {
+      "id": 221,
+      "group": "b_free_L8",
+      "shard": 23
+    },
+    {
+      "id": 222,
+      "group": "b_free_L8",
+      "shard": 24
+    },
+    {
+      "id": 223,
+      "group": "b_free_L8",
+      "shard": 25
+    },
+    {
+      "id": 224,
+      "group": "b_free_L8",
+      "shard": 26
+    },
+    {
+      "id": 225,
+      "group": "b_free_L8",
+      "shard": 27
+    },
+    {
+      "id": 226,
+      "group": "b_free_L8",
+      "shard": 28
+    },
+    {
+      "id": 227,
+      "group": "b_free_L8",
+      "shard": 29
+    },
+    {
+      "id": 228,
+      "group": "b_free_L8",
+      "shard": 30
+    },
+    {
+      "id": 229,
+      "group": "b_free_L8",
+      "shard": 31
+    },
+    {
+      "id": 230,
+      "group": "b_free_L8",
+      "shard": 32
+    },
+    {
+      "id": 231,
+      "group": "b_free_L8",
+      "shard": 33
+    },
+    {
+      "id": 232,
+      "group": "b_free_L8",
+      "shard": 34
+    },
+    {
+      "id": 233,
+      "group": "b_free_L8",
+      "shard": 35
+    },
+    {
+      "id": 234,
+      "group": "b_free_L8",
+      "shard": 36
+    },
+    {
+      "id": 235,
+      "group": "b_free_L8",
+      "shard": 37
+    },
+    {
+      "id": 236,
+      "group": "b_free_L8",
+      "shard": 38
+    },
+    {
+      "id": 237,
+      "group": "b_free_L8",
+      "shard": 39
+    },
+    {
+      "id": 238,
+      "group": "b_free_L8",
+      "shard": 40
+    },
+    {
+      "id": 239,
+      "group": "b_free_L8",
+      "shard": 41
+    },
+    {
+      "id": 240,
+      "group": "b_free_L8",
+      "shard": 42
+    },
+    {
+      "id": 241,
+      "group": "b_free_L8",
+      "shard": 43
+    },
+    {
+      "id": 242,
+      "group": "b_free_L8",
+      "shard": 44
+    },
+    {
+      "id": 243,
+      "group": "b_free_L8",
+      "shard": 45
+    },
+    {
+      "id": 244,
+      "group": "b_free_L8",
+      "shard": 46
+    },
+    {
+      "id": 245,
+      "group": "b_free_L8",
+      "shard": 47
+    },
+    {
+      "id": 246,
+      "group": "b_free_L8",
+      "shard": 48
+    },
+    {
+      "id": 247,
+      "group": "b_free_L8",
+      "shard": 49
+    },
+    {
+      "id": 248,
+      "group": "b_free_L8",
+      "shard": 50
+    },
+    {
+      "id": 249,
+      "group": "b_free_L8",
+      "shard": 51
+    },
+    {
+      "id": 250,
+      "group": "b_free_L8",
+      "shard": 52
+    },
+    {
+      "id": 251,
+      "group": "b_free_L8",
+      "shard": 53
+    },
+    {
+      "id": 252,
+      "group": "b_free_L8",
+      "shard": 54
+    },
+    {
+      "id": 253,
+      "group": "b_free_L8",
+      "shard": 55
+    },
+    {
+      "id": 254,
+      "group": "b_free_L8",
+      "shard": 56
+    },
+    {
+      "id": 255,
+      "group": "b_free_L8",
+      "shard": 57
+    },
+    {
+      "id": 256,
+      "group": "b_free_L8",
+      "shard": 58
+    },
+    {
+      "id": 257,
+      "group": "b_free_L8",
+      "shard": 59
+    },
+    {
+      "id": 258,
+      "group": "b_free_L8",
+      "shard": 60
+    },
+    {
+      "id": 259,
+      "group": "b_free_L8",
+      "shard": 61
+    },
+    {
+      "id": 260,
+      "group": "b_free_L8",
+      "shard": 62
+    },
+    {
+      "id": 261,
+      "group": "b_free_L8",
+      "shard": 63
+    },
+    {
+      "id": 262,
+      "group": "b_free_L8",
+      "shard": 64
+    },
+    {
+      "id": 263,
+      "group": "b_free_L8",
+      "shard": 65
+    },
+    {
+      "id": 264,
+      "group": "b_free_L8",
+      "shard": 66
+    },
+    {
+      "id": 265,
+      "group": "b_free_L8",
+      "shard": 67
+    },
+    {
+      "id": 266,
+      "group": "b_free_L8",
+      "shard": 68
+    },
+    {
+      "id": 267,
+      "group": "b_free_L8",
+      "shard": 69
+    },
+    {
+      "id": 268,
+      "group": "b_free_L8",
+      "shard": 70
+    },
+    {
+      "id": 269,
+      "group": "b_free_L8",
+      "shard": 71
+    },
+    {
+      "id": 270,
+      "group": "b_free_L8",
+      "shard": 72
+    },
+    {
+      "id": 271,
+      "group": "b_free_L8",
+      "shard": 73
+    },
+    {
+      "id": 272,
+      "group": "b_free_L8",
+      "shard": 74
+    },
+    {
+      "id": 273,
+      "group": "b_free_L8",
+      "shard": 75
+    },
+    {
+      "id": 274,
+      "group": "b_free_L8",
+      "shard": 76
+    },
+    {
+      "id": 275,
+      "group": "b_free_L8",
+      "shard": 77
+    },
+    {
+      "id": 276,
+      "group": "b_free_L8",
+      "shard": 78
+    },
+    {
+      "id": 277,
+      "group": "b_free_L8",
+      "shard": 79
+    },
+    {
+      "id": 278,
+      "group": "b_free_L8",
+      "shard": 80
+    },
+    {
+      "id": 279,
+      "group": "b_free_L8",
+      "shard": 81
+    },
+    {
+      "id": 280,
+      "group": "b_free_L8",
+      "shard": 82
+    },
+    {
+      "id": 281,
+      "group": "b_free_L8",
+      "shard": 83
+    },
+    {
+      "id": 282,
+      "group": "b_free_L8",
+      "shard": 84
+    },
+    {
+      "id": 283,
+      "group": "b_free_L8",
+      "shard": 85
+    },
+    {
+      "id": 284,
+      "group": "b_free_L8",
+      "shard": 86
+    },
+    {
+      "id": 285,
+      "group": "b_free_L8",
+      "shard": 87
+    },
+    {
+      "id": 286,
+      "group": "b_free_L8",
+      "shard": 88
+    },
+    {
+      "id": 287,
+      "group": "b_free_L8",
+      "shard": 89
+    },
+    {
+      "id": 288,
+      "group": "b_free_L8",
+      "shard": 90
+    },
+    {
+      "id": 289,
+      "group": "b_free_L8",
+      "shard": 91
+    },
+    {
+      "id": 290,
+      "group": "b_free_L8",
+      "shard": 92
+    },
+    {
+      "id": 291,
+      "group": "b_free_L8",
+      "shard": 93
+    },
+    {
+      "id": 292,
+      "group": "b_free_L8",
+      "shard": 94
+    },
+    {
+      "id": 293,
+      "group": "b_free_L8",
+      "shard": 95
+    },
+    {
+      "id": 294,
+      "group": "b_free_L8",
+      "shard": 96
+    },
+    {
+      "id": 295,
+      "group": "b_free_L8",
+      "shard": 97
+    },
+    {
+      "id": 296,
+      "group": "b_free_L8",
+      "shard": 98
+    },
+    {
+      "id": 297,
+      "group": "b_free_L8",
+      "shard": 99
+    },
+    {
+      "id": 298,
+      "group": "b_free_L8",
+      "shard": 100
+    },
+    {
+      "id": 299,
+      "group": "b_free_L8",
+      "shard": 101
+    },
+    {
+      "id": 300,
+      "group": "b_free_L8",
+      "shard": 102
+    },
+    {
+      "id": 301,
+      "group": "b_free_L8",
+      "shard": 103
+    },
+    {
+      "id": 302,
+      "group": "b_free_L8",
+      "shard": 104
+    },
+    {
+      "id": 303,
+      "group": "b_free_L8",
+      "shard": 105
+    },
+    {
+      "id": 304,
+      "group": "b_free_L8",
+      "shard": 106
+    },
+    {
+      "id": 305,
+      "group": "b_free_L8",
+      "shard": 107
+    },
+    {
+      "id": 306,
+      "group": "b_free_L8",
+      "shard": 108
+    },
+    {
+      "id": 307,
+      "group": "b_free_L8",
+      "shard": 109
+    },
+    {
+      "id": 308,
+      "group": "b_free_L8",
+      "shard": 110
+    },
+    {
+      "id": 309,
+      "group": "b_free_L8",
+      "shard": 111
+    },
+    {
+      "id": 310,
+      "group": "b_free_L8",
+      "shard": 112
+    },
+    {
+      "id": 311,
+      "group": "b_free_L8",
+      "shard": 113
+    },
+    {
+      "id": 312,
+      "group": "b_free_L8",
+      "shard": 114
+    },
+    {
+      "id": 313,
+      "group": "b_free_L8",
+      "shard": 115
+    },
+    {
+      "id": 314,
+      "group": "b_free_L8",
+      "shard": 116
+    },
+    {
+      "id": 315,
+      "group": "b_free_L8",
+      "shard": 117
+    },
+    {
+      "id": 316,
+      "group": "b_free_L8",
+      "shard": 118
+    },
+    {
+      "id": 317,
+      "group": "b_free_L8",
+      "shard": 119
+    },
+    {
+      "id": 318,
+      "group": "b_free_L8",
+      "shard": 120
+    },
+    {
+      "id": 319,
+      "group": "b_free_L8",
+      "shard": 121
+    },
+    {
+      "id": 320,
+      "group": "b_free_L8",
+      "shard": 122
+    },
+    {
+      "id": 321,
+      "group": "b_free_L8",
+      "shard": 123
+    },
+    {
+      "id": 322,
+      "group": "b_free_L8",
+      "shard": 124
+    },
+    {
+      "id": 323,
+      "group": "b_free_L8",
+      "shard": 125
+    },
+    {
+      "id": 324,
+      "group": "b_free_L8",
+      "shard": 126
+    },
+    {
+      "id": 325,
+      "group": "b_free_L8",
+      "shard": 127
+    },
+    {
+      "id": 326,
+      "group": "b_power_L3",
+      "shard": 0
+    },
+    {
+      "id": 327,
+      "group": "b_power_L4",
+      "shard": 0
+    },
+    {
+      "id": 328,
+      "group": "b_power_L5",
+      "shard": 0
+    },
+    {
+      "id": 329,
+      "group": "b_power_L6",
+      "shard": 0
+    },
+    {
+      "id": 330,
+      "group": "b_power_L7",
+      "shard": 0
+    },
+    {
+      "id": 331,
+      "group": "b_power_L7",
+      "shard": 1
+    },
+    {
+      "id": 332,
+      "group": "b_power_L8",
+      "shard": 0
+    },
+    {
+      "id": 333,
+      "group": "b_power_L8",
+      "shard": 1
+    },
+    {
+      "id": 334,
+      "group": "b_power_L8",
+      "shard": 2
+    },
+    {
+      "id": 335,
+      "group": "b_power_L8",
+      "shard": 3
+    },
+    {
+      "id": 336,
+      "group": "b_power_L8",
+      "shard": 4
+    },
+    {
+      "id": 337,
+      "group": "b_power_L8",
+      "shard": 5
+    },
+    {
+      "id": 338,
+      "group": "b_power_L8",
+      "shard": 6
+    },
+    {
+      "id": 339,
+      "group": "b_power_L8",
+      "shard": 7
+    },
+    {
+      "id": 340,
+      "group": "b_power_L8",
+      "shard": 8
+    },
+    {
+      "id": 341,
+      "group": "b_power_L8",
+      "shard": 9
+    }
+  ],
+  "campaign_weights": {
+    "a": 0.5,
+    "b": 0.5
+  },
+  "groups_independent_by_loop_campaign_sector": true,
+  "sampling_unit": "complete graph-summed randomized replicate, not chunk",
+  "power_sector": "explicitly integrated; NOT assumed zero",
+  "test_only": false,
+  "test_graphs": 0,
+  "cost_model_sha256": "7bafaf79b394ca0f34775f4ae299f766f63d6c1f073ccf652072624c3b5382e8",
+  "point_override": null,
+  "allocation_multiplier": 1,
+  "allocation_file_sha256": "2e7350591609cecd62af67f56bb49979941fd98c9eff4300b8bcfdfac9914ee3",
+  "power_multiplier": 1,
+  "power_divisor": 1,
+  "primitive_points": 4096,
+  "estimates": {
+    "basis": "measured (--cost-model: seconds per point, no calibration factor)",
+    "backend": "gmp",
+    "calibration_rows": null,
+    "calibration_sha256": null,
+    "shard_basis": "estimated core-seconds",
+    "assumed_thread_efficiency": 0.8,
+    "groups": {
+      "a_free_L3": {
+        "cost_units": 685.2051556110382,
+        "shards": 1,
+        "tasks": 8704,
+        "core_hours": 0.1903347654475106,
+        "max_shard_core_seconds": 685.2051556110382,
+        "max_shard_wall_seconds": 6.691456597764045,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 3,
+          "graph_loads": 5,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 340.5862784385681,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_free_L4": {
+        "cost_units": 4920.6410838365555,
+        "shards": 1,
+        "tasks": 42496,
+        "core_hours": 1.3668447455101542,
+        "max_shard_core_seconds": 4920.6410838365555,
+        "max_shard_wall_seconds": 48.05313558434136,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 11,
+          "graph_loads": 18,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 4,
+          "max_estimated_cost_per_block": 496.5894947052002,
+          "graph_bundles_split_for_task_limit": 2,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_free_L5": {
+        "cost_units": 37308.859768390656,
+        "shards": 1,
+        "tasks": 189440,
+        "core_hours": 10.363572157886294,
+        "max_shard_core_seconds": 37308.859768390656,
+        "max_shard_wall_seconds": 364.34433367569,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 47,
+          "graph_loads": 85,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 8,
+          "max_estimated_cost_per_block": 924.5390014648438,
+          "graph_bundles_split_for_task_limit": 5,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_free_L6": {
+        "cost_units": 236538.91430997849,
+        "shards": 1,
+        "tasks": 563968,
+        "core_hours": 65.70525397499402,
+        "max_shard_core_seconds": 236538.91430997849,
+        "max_shard_wall_seconds": 2309.9503350583836,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 138,
+          "graph_loads": 417,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 16,
+          "max_estimated_cost_per_block": 2616.60026884079,
+          "graph_bundles_split_for_task_limit": 14,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_free_L7": {
+        "cost_units": 6668921.371520162,
+        "shards": 23,
+        "tasks": 1399424,
+        "core_hours": 1852.4781587556004,
+        "max_shard_core_seconds": 290112.01154756546,
+        "max_shard_wall_seconds": 2833.125112769194,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 406,
+          "graph_loads": 2441,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 18,
+          "max_estimated_cost_per_block": 73398.58189344406,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_free_L8": {
+        "cost_units": 36739707.00658938,
+        "shards": 128,
+        "tasks": 1520640,
+        "core_hours": 10205.47416849705,
+        "max_shard_core_seconds": 287085.7793263197,
+        "max_shard_wall_seconds": 2803.5720637335908,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 652,
+          "graph_loads": 16064,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 49,
+          "max_estimated_cost_per_block": 76735.68728637695,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L3": {
+        "cost_units": 22.45561096072197,
+        "shards": 1,
+        "tasks": 256,
+        "core_hours": 0.006237669711311658,
+        "max_shard_core_seconds": 22.45561096072197,
+        "max_shard_wall_seconds": 0.21929307578830048,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 1,
+          "max_tasks_per_block": 256,
+          "max_graphs_per_block": 1,
+          "max_estimated_cost_per_block": 22.45561096072197,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L4": {
+        "cost_units": 533.4850413799286,
+        "shards": 1,
+        "tasks": 2560,
+        "core_hours": 0.14819028927220237,
+        "max_shard_core_seconds": 533.4850413799286,
+        "max_shard_wall_seconds": 5.209814857225865,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 3,
+          "max_tasks_per_block": 2560,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 533.4850413799286,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L5": {
+        "cost_units": 6463.840137004852,
+        "shards": 1,
+        "tasks": 9792,
+        "core_hours": 1.7955111491680145,
+        "max_shard_core_seconds": 6463.840137004852,
+        "max_shard_wall_seconds": 63.12343883793801,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 3,
+          "graph_loads": 20,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 10,
+          "max_estimated_cost_per_block": 2760.638172864914,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L6": {
+        "cost_units": 82856.54026657343,
+        "shards": 1,
+        "tasks": 33536,
+        "core_hours": 23.01570562960373,
+        "max_shard_core_seconds": 82856.54026657343,
+        "max_shard_wall_seconds": 809.1459010407561,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 9,
+          "graph_loads": 107,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 49,
+          "max_estimated_cost_per_block": 14850.21231174469,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L7": {
+        "cost_units": 658379.5905788988,
+        "shards": 2,
+        "tasks": 81920,
+        "core_hours": 182.88321960524965,
+        "max_shard_core_seconds": 329190.2783475071,
+        "max_shard_wall_seconds": 3214.748811987374,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 21,
+          "graph_loads": 709,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 63,
+          "max_estimated_cost_per_block": 64316.30615615845,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "a_power_L8": {
+        "cost_units": 2776967.352957468,
+        "shards": 10,
+        "tasks": 280832,
+        "core_hours": 771.3798202659633,
+        "max_shard_core_seconds": 277703.63610731065,
+        "max_shard_wall_seconds": 2711.9495713604556,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 80,
+          "graph_loads": 4336,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 76700.58306366205,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L3": {
+        "cost_units": 685.2051556110382,
+        "shards": 1,
+        "tasks": 8704,
+        "core_hours": 0.1903347654475106,
+        "max_shard_core_seconds": 685.2051556110382,
+        "max_shard_wall_seconds": 6.691456597764045,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 3,
+          "graph_loads": 5,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 340.5862784385681,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L4": {
+        "cost_units": 4920.6410838365555,
+        "shards": 1,
+        "tasks": 42496,
+        "core_hours": 1.3668447455101542,
+        "max_shard_core_seconds": 4920.6410838365555,
+        "max_shard_wall_seconds": 48.05313558434136,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 11,
+          "graph_loads": 18,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 4,
+          "max_estimated_cost_per_block": 496.5894947052002,
+          "graph_bundles_split_for_task_limit": 2,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L5": {
+        "cost_units": 37308.859768390656,
+        "shards": 1,
+        "tasks": 189440,
+        "core_hours": 10.363572157886294,
+        "max_shard_core_seconds": 37308.859768390656,
+        "max_shard_wall_seconds": 364.34433367569,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 47,
+          "graph_loads": 85,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 8,
+          "max_estimated_cost_per_block": 924.5390014648438,
+          "graph_bundles_split_for_task_limit": 5,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L6": {
+        "cost_units": 236538.91430997849,
+        "shards": 1,
+        "tasks": 563968,
+        "core_hours": 65.70525397499402,
+        "max_shard_core_seconds": 236538.91430997849,
+        "max_shard_wall_seconds": 2309.9503350583836,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 138,
+          "graph_loads": 417,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 16,
+          "max_estimated_cost_per_block": 2616.60026884079,
+          "graph_bundles_split_for_task_limit": 14,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L7": {
+        "cost_units": 6668921.371520162,
+        "shards": 23,
+        "tasks": 1399424,
+        "core_hours": 1852.4781587556004,
+        "max_shard_core_seconds": 290112.01154756546,
+        "max_shard_wall_seconds": 2833.125112769194,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 406,
+          "graph_loads": 2441,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 18,
+          "max_estimated_cost_per_block": 73398.58189344406,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_free_L8": {
+        "cost_units": 36739707.00658938,
+        "shards": 128,
+        "tasks": 1520640,
+        "core_hours": 10205.47416849705,
+        "max_shard_core_seconds": 287085.7793263197,
+        "max_shard_wall_seconds": 2803.5720637335908,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 652,
+          "graph_loads": 16064,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 49,
+          "max_estimated_cost_per_block": 76735.68728637695,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L3": {
+        "cost_units": 22.45561096072197,
+        "shards": 1,
+        "tasks": 256,
+        "core_hours": 0.006237669711311658,
+        "max_shard_core_seconds": 22.45561096072197,
+        "max_shard_wall_seconds": 0.21929307578830048,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 1,
+          "max_tasks_per_block": 256,
+          "max_graphs_per_block": 1,
+          "max_estimated_cost_per_block": 22.45561096072197,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L4": {
+        "cost_units": 533.4850413799286,
+        "shards": 1,
+        "tasks": 2560,
+        "core_hours": 0.14819028927220237,
+        "max_shard_core_seconds": 533.4850413799286,
+        "max_shard_wall_seconds": 5.209814857225865,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 3,
+          "max_tasks_per_block": 2560,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 533.4850413799286,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L5": {
+        "cost_units": 6463.840137004852,
+        "shards": 1,
+        "tasks": 9792,
+        "core_hours": 1.7955111491680145,
+        "max_shard_core_seconds": 6463.840137004852,
+        "max_shard_wall_seconds": 63.12343883793801,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 3,
+          "graph_loads": 20,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 10,
+          "max_estimated_cost_per_block": 2760.638172864914,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L6": {
+        "cost_units": 82856.54026657343,
+        "shards": 1,
+        "tasks": 33536,
+        "core_hours": 23.01570562960373,
+        "max_shard_core_seconds": 82856.54026657343,
+        "max_shard_wall_seconds": 809.1459010407561,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 9,
+          "graph_loads": 107,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 49,
+          "max_estimated_cost_per_block": 14850.21231174469,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L7": {
+        "cost_units": 658379.5905788988,
+        "shards": 2,
+        "tasks": 81920,
+        "core_hours": 182.88321960524965,
+        "max_shard_core_seconds": 329190.2783475071,
+        "max_shard_wall_seconds": 3214.748811987374,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 21,
+          "graph_loads": 709,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 63,
+          "max_estimated_cost_per_block": 64316.30615615845,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      },
+      "b_power_L8": {
+        "cost_units": 2776967.352957468,
+        "shards": 10,
+        "tasks": 280832,
+        "core_hours": 771.3798202659633,
+        "max_shard_core_seconds": 277703.63610731065,
+        "max_shard_wall_seconds": 2711.9495713604556,
+        "estimate": "available",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 80,
+          "graph_loads": 4336,
+          "max_tasks_per_block": 4096,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 76700.58306366205,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": 76800.0
+        }
+      }
+    },
+    "total_core_hours": 26229.614035010916,
+    "max_shard_wall_seconds": 3214.748811987374,
+    "suggested_time_seconds": 9660,
+    "power_divisor_effect": {
+      "power_divisor": 1,
+      "core_hours": 26229.614035010916,
+      "core_hours_at_power_divisor_1": 26229.614035010916,
+      "proxy_or_cost_units": 94426610.5260393,
+      "units_at_power_divisor_1": 94426610.5260393,
+      "change_core_hours": 0.0,
+      "change_fraction_of_units": 0.0
+    },
+    "estimate": "available",
+    "note": "planning estimates from a hardware-specific calibration, not measurements"
+  }
+}

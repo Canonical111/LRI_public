@@ -1,0 +1,52 @@
+{
+  "campaign": "calib",
+  "comment": "Stage-1 cost calibration (R16/R18): x=0.6 (cheap end) and 0.5182 (near SRI, most expensive in the baseline); full window ladder to L14 with nz16; one array per thread count. L16 is NOT here: after this campaign and the setup probe finish, fill calibration_L16.template.json from the measured L14 RSS/time and the L16 probe and freeze it as a separate continuation campaign. Memory sized from the setup probe (job 54739261: L14 setup peak 0.45 GiB, L16 2.0 GiB): 8G/4 cores and 16G/8 cores, so memory never sets the charge (Expanse SU/h = max(cpus, GB/2)).",
+  "x": [
+    0.6,
+    0.5182
+  ],
+  "teacher": {
+    "L": 6,
+    "nz": 24,
+    "osc": 192,
+    "keep": 20,
+    "diagnostics": "first"
+  },
+  "ladder": [
+    8,
+    10,
+    12,
+    14
+  ],
+  "window": {
+    "nz": 16,
+    "diagnostics": "first"
+  },
+  "per_L": {
+    "14": {
+      "max_bath_states": 2000000,
+      "memory_limit_gib": 7
+    }
+  },
+  "groups": [
+    {
+      "name": "t4",
+      "cpus": 4,
+      "threads": 4,
+      "mem_gib": 8,
+      "wall": "12:00:00",
+      "lead_s": 1800,
+      "partition": "shared"
+    },
+    {
+      "name": "t8",
+      "cpus": 8,
+      "threads": 8,
+      "mem_gib": 16,
+      "wall": "12:00:00",
+      "lead_s": 1800,
+      "partition": "shared"
+    }
+  ],
+  "throttle": 8
+}

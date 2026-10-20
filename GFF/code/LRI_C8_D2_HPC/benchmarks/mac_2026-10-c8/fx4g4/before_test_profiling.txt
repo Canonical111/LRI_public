@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 773, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 511, in test_e2e_perf
+    assert 'perf'not in r['blocks']['heavy_free_L8']and r['settings']['concurrent']and r['fallback']['ltrace']is not None and not r['errors']
+AssertionError
+FAIL e2e_perf
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 773, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 603, in test_perf_binding
+    assert cp.returncode==1,(cp.returncode,cp.stdout[-1500:]+cp.stderr[-800:])
+AssertionError: (0, "[09:02:15] P1 blocks ['heavy_free_L8']; perf UNAVAILABLE: perf stat probe exit 255: Error:\nNo permission to enable cycles event.\nConsider tweaking /proc/sys/kernel/perf_event_paranoid; perf stream on 4 cores 0..3; tier timers on 0..3 (sequential)\n[09:02:15] tier timers heavy_free_L8\n[09:02:16] wrote /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp8sot_sxw/skewfb/p1.json (stage runs)\n[09:02:16] wrote /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp8sot_sxw/skewfb/p1.json (stage final)\n")
+FAIL perf_binding
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 773, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 699, in test_perf_expect
+    assert cp.returncode==code and why in cp.stderr,(mode,val,cp.returncode,cp.stdout[-800:]+cp.stderr[-800:])
+AssertionError: ('p3', '0000000000000000', 2, 'usage: perf_profile.py [-h] {p1,p2,p3,p1-reparse} ...\nperf_profile.py: error: unrecognized arguments: --worker-exe /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp1740bb3_/c8d2_gmp_release\n')
+FAIL perf_expect
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 773, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 631, in test_p3_binding
+    assert cp.returncode==1,(cp.returncode,cp.stdout[-1500:]+cp.stderr[-800:])
+AssertionError: (2, 'usage: perf_profile.py [-h] {p1,p2,p3,p1-reparse} ...\nperf_profile.py: error: unrecognized arguments: --worker-exe /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmpf1izacjk/c8d2_gmp_release\n')
+FAIL p3_binding
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 773, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/test_profiling.py", line 676, in test_tool_cleanup
+    assert not alive(w),('the worker of the timed-out tool survives',w)
+AssertionError: ('the worker of the timed-out tool survives', 35856)
+FAIL tool_cleanup
+{"passed": false, "tests": 5, "failed": ["e2e_perf", "perf_binding", "perf_expect", "p3_binding", "tool_cleanup"]}

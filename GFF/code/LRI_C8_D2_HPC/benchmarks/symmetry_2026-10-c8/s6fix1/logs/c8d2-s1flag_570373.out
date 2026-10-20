@@ -1,0 +1,82 @@
+job 570373 on <NODE> at 2026-10-05T22:12:07-04:00; package <SCRATCH>/c8d2/pkg/c30bfc5f0bdf; seeds log <SCRATCH>/c8-d2/forbidden_seeds.json; evidence <SCRATCH>/c8d2/evidence/c30bfc5f0bdf/s1flag.570373.0
+CPU(s):                                  64
+Model name:                              AMD EPYC 7543 32-Core Processor
+NUMA node(s):                            8
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+d1e900e98aeb1bf4bf4ae980b4a7ed4be5d69e25ce77e9d62b4748978b1f2f46  <HOME>/c8d2/env.sh
+TMPDIR /tmp/c8d2_570373
+7b515f1be71c1a103c7c70d8aba239b4d172a303a2ecec8a469867395890b187  <SCRATCH>/c8-d2/forbidden_seeds.json
+619ddf7d1cf94d6229c841cd3fbe22574045ec65a1b69f8b827f1e26f180895f  bin/c8d2_decimal
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d  bin/c8d2_gmp_dd+mp256
+identity ok
+== numerics_flags.py --profile dd+mp256 (full scale) 2026-10-05T22:12:08-04:00
+[22:12:13] X2: c8d2_gmp reproduced byte for byte from the source snapshot b48e0d2e5a86 in 5 s
+[22:12:18] X2: c8d2_gmp_dd+mp256 reproduced byte for byte from the source snapshot b48e0d2e5a86 in 5 s
+[22:12:19] F2 seeds: 0 added, 49 present in <SCRATCH>/c8-d2/forbidden_seeds.json
+[22:12:19] F1: the exact baseline (450-digit references)
+[22:12:24] compiled numerics_f1_exact from c8d2_gmp's build command in the source snapshot in 5 s
+[22:12:42] F1 baseline free L7 [0,256) in 16 s
+[22:13:12] F1 baseline free L8 [0,64) in 30 s
+[22:13:25] F1 baseline power L7 [0,256) in 13 s
+[22:13:47] F1 baseline power L8 [0,64) in 22 s
+[22:13:54] compiled numerics_f1_profile from c8d2_gmp_dd+mp256's build command in the source snapshot in 6 s
+[22:13:55] F1 free L7 [0,256) in 1 s
+[22:14:03] F1 free L8 [0,64) in 8 s
+[22:14:05] F1 power L7 [0,256) in 1 s
+[22:14:13] F1 power L8 [0,64) in 8 s
+[22:14:13] F2: paired mini-campaign
+[22:23:01] F2: replicates [0,4) done (772 blocks, 508 s)
+[22:23:02] F4: speed
+[22:23:25] F4 exact r0: lane-thread s 1333.9 (free 953.6, power 380.3), digest 17384d2a1463
+[22:23:34] F4 profile r0: lane-thread s 522.0 (free 377.9, power 144.0), digest 978c77cb408a
+[22:23:42] F4 profile r1: lane-thread s 513.3 (free 375.7, power 137.5), digest 978c77cb408a
+[22:24:03] F4 exact r1: lane-thread s 1323.1 (free 946.9, power 376.2), digest 17384d2a1463
+[22:24:24] F4 exact r2: lane-thread s 1325.4 (free 949.4, power 375.9), digest 17384d2a1463
+[22:24:32] F4 profile r2: lane-thread s 528.5 (free 387.8, power 140.7), digest 978c77cb408a
+[22:24:32] F5: thread identity
+[22:24:37] F5 free: identical, teams as requested
+[22:24:45] F5 power: identical, teams as requested
+{
+ "mode": "profile",
+ "profile_name": "dd+mp256",
+ "status": "passed",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+numerics_flags.py exit 0 after 758 s
+identity ok
+a5dfb82f5eec60dad3ba1e8a7eeac0a6ad1b56b91fc5634af10a8b4c38821d88  <SCRATCH>/c8-d2/forbidden_seeds.json
+{
+ "mode": "profile",
+ "profile_name": "dd+mp256",
+ "status": "passed",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [],
+ "error": null,
+ "wall_seconds": 758.2,
+ "f2_seeds": {
+  "log": "<SCRATCH>/c8-d2/forbidden_seeds.json",
+  "base_seed": 820262401,
+  "entries": 49,
+  "added": 0,
+  "present": 49,
+  "log_sha256_after": "7b515f1be71c1a103c7c70d8aba239b4d172a303a2ecec8a469867395890b187"
+ }
+}
+F2 total {"dC8": 1.3129279229249093e-16, "se": 9.773883363567203e-17, "bound": 4.24509293199507e-16, "passed": true, "resolved": true} per_task {"normalized": {"p50": 0.0, "p90": 0.0, "p99": 0.0, "p999": 2.0140906111759582e-19, "max": 5.5799972582428456e-14, "n": 193384.0, "zero": 192545.0}, "relative": {"p50": 0.0, "p90": 0.0, "p99": 0.0, "p999": 5.488823141760716e-19, "max": 5.5799972582428456e-14, "n": 193384.0, "zero": 192545.0}, "hist_normalized": {"zero": 192545, "-19": 289, "-20": 334, "-18": 61, "-17": 17, "-21": 89, "-16": 2, "-22": 40, "-23": 5, "-15": 1, "-14": 1}, "hist_relative": {"zero": 192545, "-19": 431, "-20": 263, "-18": 104, "-17": 31, "-16": 8, "-15": 1, "-14": 1}, "max_normalized": "5.579997258242845471237876047E
+F4 speedup {"total": 2.5392255117635174, "free": 2.512197045322472, "power": 2.673302327285248} medians {"exact": {"total": 1325.3777270880528, "free": 949.4362088881899, "power": 376.1681419762317}, "profile": {"total": 521.9614094722783, "free": 377.9306287522195, "power": 140.7129070800729}}
+design.check_gate: PASSED
+finished 2026-10-05T22:24:47-04:00, status 0

@@ -1,0 +1,47 @@
+{
+ "schema": "c8-d2-fx4g1-demo-1",
+ "root": "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g1",
+ "cases": {
+  "W1": {
+   "defect": false,
+   "finding_run": {
+    "exit": 2,
+    "stderr": [
+     "quad_differential.py: error: unrecognized arguments: --min-pairs 4"
+    ]
+   },
+   "without_min_pairs": {
+    "exit": 3,
+    "status": "development run (ranges on blocks [], not the six default blocks ['heavy_free_L8', 'heavy_power_L8', 'random_free_L8', 'random_power_L8', 'random_free_L7', 'random_power_L7'] (--no-ranges or --ranges-"
+   }
+  },
+  "W2": {
+   "defect": false,
+   "G-BK8 item on an mp>0 row with a tampered": {
+    "max_abs": "refused: gmp: row 0 with mp>0: max_abs differs by 1E-20 > 1E-30 (normalized)",
+    "tail_top": "refused: gmp: row 0 tail_top not descending finite |t|",
+    "tail_argmax": "refused: gmp: row 0 with mp>0: tail_argmax 1 != 0 without a near tie (tail_argmax: equal; an mp > 0 row may differ only at a near tie, i.e. when in BOTH rows the two lar"
+   }
+  },
+  "W22": {
+   "defect": false,
+   "backends_gmp_only": {
+    "exit": 3,
+    "status": "development run (blocks [('gmp', 'free'), ('gmp', 'power')], not one per (backend, sector) of [('gmp', 'free'), ('gmp', 'power'), ('decimal', 'free'), ('decimal', 'power')] (--backends or --executable"
+   }
+  },
+  "W3": {
+   "defect": false,
+   "relative_include_worker_bound_from_its_build_directory": {
+    "reproduced": true,
+    "mirrored": [
+     {
+      "link": "boost_rel",
+      "word": "../boost_rel"
+     }
+    ]
+   }
+  }
+ },
+ "defects": []
+}

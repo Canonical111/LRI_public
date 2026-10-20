@@ -1,0 +1,34 @@
+# Files of the compendium that the public export leaves out (author decision, 2026-10-17: each direction of the release
+# has exactly one TeX note, SRI/note/sri_short_range.tex, and nothing else; code that only builds a note goes with it).
+# public/replay_dual_d1.py checks that they are absent. One package-relative path per line; comment lines start with #.
+#
+# The compendium's TeX source (OpenAI GPT-6 astra), 2865 lines, shipped from commit a2bf74d1 until 2026-10-17:
+#   sha256 aa89593a29bee72e802bf3e9198f7024802e4130de51d34b0d3d53aa31b8b200 (the pin of reproduction/MANIFEST.json).
+# The four blocks that the public checks parse (eq:thermal-main, eq:C8-candidate-main, eq:C8assembly and the
+# old-input polynomial of its appendix) are kept verbatim, at their original line numbers, in
+# public/compendium_extract.json. Line numbers quoted by the verbatim records ("note/LRI_perturbation_compendium.tex
+# l.NNN", e.g. in indep_d1's RESULTS*.md and spec/) refer to that original.
+# Where its material now is (SRI note at commit f38ce3c or later):
+#   eq:thermal-main (C_1..C_7)          -> Eq. (2.12) eq:closed, Sec. 2.4; Table 1
+#   eq:C8-candidate-main                -> Eq. (2.15) eq:C8cand, Sec. 2.5
+#   eq:C8trace (C_8 = 8 T_4)            -> Eq. (2.8) eq:conv; App. C.3
+#   eq:C8F, eq:C8H (the jets of F, H)   -> App. C.3, Eq. (C.24) eq:dualC:C8jets
+#   eq:C8assembly                       -> Eq. (2.10) eq:C8assembly; App. C.3
+#   eq:normalization, eq:subtraction    -> App. A.7 Eq. (A.37), App. A.9 Eq. (A.47)
+#   Secs. 1-7 (status, model, gas, regulator, spectrum, moments, invariants) -> Secs. 1, 2.1-2.3; Apps. A.1-A.10
+#   Secs. 8-10 (D2, T2; D3; the x^3 coefficient)                             -> Apps. B.1-B.4
+#   Sec. 11 (exact integration, certificates)                                -> Sec. 2.4; App. C.1
+#   Sec. 12 (shadow relation), Sec. 13 (logarithmic endpoint)                -> Apps. C.10, C.11
+#   Sec. 14 (seventh coefficient, weight-six certificate)                    -> App. C.2
+#   Secs. 15-18 (eighth coefficient: trace, rational part, packages, assembly) -> Sec. 2.5; Apps. C.3-C.6
+#   Sec. 19 (numerical periods), 20 (conjectures), 21 (the two ends)         -> Apps. C.7, C.8, C.9
+#   Sec. 22 (reproduction)                                                   -> SRI note App. H; SRI/docs/dual_d1
+#   App. A (worked integrals), App. B (finite-part tables, trilogarithm)     -> Apps. B.5-B.9
+#   App. C (three-kink and endpoint inputs)                                  -> App. B.10
+#   App. D (old-input polynomial B_old)                                      -> App. C.12, Eq. (C.92)
+#   App. E (result inventory)                                                -> Secs. 2.4, 2.5; Table 1
+note/LRI_perturbation_compendium.tex
+# Scripts that only build (stage) notes of the compendium:
+code/build_note.py
+code/archived/LRI_alternative_models/code/build_note.py
+code/archived/LRI_1d_complete/note/build.sh

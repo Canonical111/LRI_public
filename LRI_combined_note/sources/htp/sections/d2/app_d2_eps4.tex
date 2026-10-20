@@ -1,0 +1,494 @@
+% app_d2_eps4.tex -- d = 2 appendix, part 1 of 3 (HT2dPert, 2026-10-16): operators and schemes at low order, solver
+% checks, exact C4(L), the mechanism of the ln L divergence class by class, and the complete window at eps^4.
+% Merged from the method write-up of package I (public edition of 2026-10-14), which these appendices
+% replace; superseded material is not carried over, and what Sec. d2:sec states is not repeated.
+% Notation of Sec. d2:sec and Table tab:notation (level l, operator \hat l, sub-cutoff lambda, e_1 = E_1 - E_0).
+% Numbers quoted in Sec. d2:sec use the macros of numbers_d2.tex (replay rows in repro_d2.tex); every other number is
+% read from, or (where marked) evaluated from, the records named in the subsection (all shipped in package I).
+\section{Two dimensions: operators, exact fourth order and the complete window}\label{d2:app:eps4}
+
+Appendices~\ref{d2:app:eps4} to~\ref{d2:app:legs} give the derivations and the supporting data behind
+Section~\ref{d2:sec}. This appendix covers the operators and schemes at low order, the solver checks, the exact $C_4(L)$,
+the cause of its $\ln L$ divergence class by class, and the complete window at $\eps^4$. Appendix~\ref{d2:app:eps5}
+treats order $\eps^5$: the window at all orders, the double counting that rule $W_c$ removes, and the tail of $C_5$.
+Appendix~\ref{d2:app:legs} treats the descendant spacings and the external-line windows $W_{cs}$ and $W_{cs4\chi}$, and
+ends with the status of each window component. Paths are relative to the package
+\code{code/\allowbreak{}lri\_2d\_coeff\_independent\_check/} (package I of Section~\ref{sec:repro}), and each subsection names its
+records. Numbers that Section~\ref{d2:sec} also quotes have reproduction rows in Section~\ref{sec:repro}. The other numbers
+of these appendices are read from the records named in each subsection, or evaluated from them where the text says
+so; the reproduction scripts do not recompute them. ``Exact'' data
+are rationals, or float64 evaluations of exact finite sums with a measured rounding error of at most
+$1.4\times10^{-11}$. Limits $L\to\infty$ are fits; their uncertainties are spreads over tail models and fit windows, not
+standard deviations.
+
+\subsection{Operators and schemes at low order}\label{d2:app:ops}
+{\small\raggedright\noindent Records: \code{SPEC.md}, \code{rs\_exact/\allowbreak{}README.md}, \code{zeromode\_exact/\allowbreak{}README.md},
+\code{cauchy/\allowbreak{}README.md}.\par}
+
+\paragraph{Factorized vertices.} With $Z=a_0+a_0^\dagger$, $a_0=A_{00}$, and $\chi=\phi-Z$, normal ordering factorizes:
+\begin{equation}
+ V=\sum_{m=0}^4\frac1{12}\binom4m{:}Z^{4-m}{:}\otimes\langle{:}\chi^m{:}\rangle_\theta,\qquad
+ M=\sum_{m=0}^2\binom2m{:}Z^{2-m}{:}\otimes\langle{:}\chi^m{:}\rangle_\theta .
+ \label{d2:eq:factorize}
+\end{equation}
+At $\eps=0$ the weights factorize holomorphically, $w_{ab}=v(a)v(b)$ with $v(a)=(\frac12)_a/a!$. The squared
+$V$-vertex coefficient times the Wick count of a bundle of $m$ $\chi$ lines is
+$\gamma_m=m!\,\big[\binom4m/12\big]^2$: $\gamma_1=\frac19$, $\gamma_2=\frac12$, $\gamma_3=\frac23$, $\gamma_4=\frac16$.
+
+\paragraph{Space and particle cap.} The truncated space holds the occupation states with spin zero, even under
+$(a,b)\to(b,a)$, and $\ell\le L$; spin zero forces $\ell$ even, and the field parity $(-1)^P$ is conserved. Truncated
+operators are the projections of the full ones; nothing else is truncated. The level cutoff does not bound $P$, because
+zero-mode quanta cost no level. A path argument shows that a contribution to the order-$\eps^n$ energy of $|p\rangle$
+reaches at most $P=p+4\lfloor n/2\rfloor$, which gives the cap $P\le p+16$ through $\eps^8$. It was also tested: caps
+$p+18$ and $p+20$ reproduce the $p+16$ rationals identically, while $p+14$ changes $C_8$ and nothing below. The Cauchy
+code confirms it with absolute caps: $P\le21$ and $P\le23$ reproduce $P\le19$, and $P\le17$, 18 change only $C_8$.
+
+\paragraph{References and the projection $\Pi$.} Each reference $|p\rangle$ is non-degenerate in its sector, so $E_p(\eps)$
+is unique. Because $w_{00}=1$ and every window has vanishing diagonal elements on level-0 states, $\langle p|M|p\rangle=2p$ and
+$\langle p|V|p\rangle=\frac12p(p-1)$ at every $\eps$. With $\mathcal E_p^{(n)}$ the order-$n$ energy without the $r_n$,
+$g_n$ terms, Eq.~\eqref{eq:Pi} reads $C_n=\Pi[\mathcal E^{(n)}]$ with
+\begin{equation}
+ \Pi f=f(2)-f(1)-\tfrac13\big[f(3)-f(0)\big]=-\tfrac13\Delta^3f(0),\qquad \Pi[p^3]=-2,\qquad \Pi[p^4]=-12 ,
+ \label{d2:eq:Pi}
+\end{equation}
+and $\Pi$ annihilates every polynomial of degree at most two in $p$. Only the part of an energy shift that is at least
+cubic in $p$ reaches $C_n$.
+
+\paragraph{Where the schemes differ.} The diagonal windows (consistent, literal, zero-mode) are of order $\eps^2$ and
+vanish on $|p\rangle$, so they first enter through $\langle p|H_1G_pD_2G_pH_1|p\rangle$ at $\eps^4$, with $H_1=F_1+g_1V$ and the resolvent
+$G_p=Q_p/(\frac p2-H_0)$, $Q_p$ the projection off $|p\rangle$. Raw and consistent therefore differ first at $C_4$. Raw
+and consistent vacua agree through $\eps^3$, so the consistent and literal windows differ first at $C_6$; the exact data
+confirm both statements for every $L>0$. At $\eps^4$ only the $\eps^2$ parts of the windows matter:
+\begin{equation}
+ D^{\rm cons}_2(\ell)=E_v^{(2)}(L)-E_v^{(2)}(L-\ell),\qquad
+ E_v^{(2)}(\lambda)=g_1^2\langle0|VG_0V|0\rangle_\lambda=-\frac{(\lambda+2)(\lambda+4)}{864},
+ \label{d2:eq:Ev2}
+\end{equation}
+where $\langle\cdot\rangle_\lambda$ restricts the intermediate states to level $\le\lambda$, and the zero-mode window is
+$D_2^{\rm zm}(z,\ell)=h^{(2)}_{zz}(L)-h^{(2)}_{zz}(L-\ell)$, the diagonal of Eq.~\eqref{d2:eq:Dzm}. The $r_2$ and $g_2$ terms of
+the sub-cutoff energies cancel in these differences, and for $z=0$ the two windows coincide.
+
+\paragraph{Degenerate partners.} For $z\ge5$ the zero-mode channel $|z\rangle$ has degenerate partners with level
+$\ell=2,4,\dots\le\frac{z-1}2$ and $P=z-2\ell$. First order lifts the degeneracy (smallest separation $\frac73$, at $z=5$,
+$\ell=2$), so the branch through $|z\rangle$ is unique; the references are never degenerate. The window objects project
+the partners out (Appendix~\ref{d2:app:Wall}).
+
+\subsection{Solver checks in detail}\label{d2:app:checks}
+{\small\raggedright\noindent Records: \code{compare\_with\_package.txt}, \code{compare\_three\_way.txt}, \code{rs\_exact/\allowbreak{}README.md},
+\code{cauchy/\allowbreak{}README.md}, the production records \code{../\allowbreak{}../\allowbreak{}data/\allowbreak{}HT\_2d/\allowbreak{}prod/}, \code{continuum/\allowbreak{}exact\_C2\_C3.csv}, \code{continuum/\allowbreak{}asymptotics\_C2\_C3.txt}; code
+\code{continuum/\allowbreak{}exact\_low\_orders.py}.\par}
+
+\paragraph{The three computations.} Section~\ref{d2:solvers} and the independent-checks paragraph of
+Section~\ref{sec:checks} give their scope and agreement. The production solver propagates Taylor jets of the wave
+functions in float64, with scalar reductions in extended long double; its consistent run at $L=34$ took 2893\,s on 64
+threads with a peak memory of 463\,GiB. The exact solver works in a similarity frame in which every matrix element is
+rational; its modular code uses 72 primes with Chinese remaindering, and every rational reconstruction is verified on
+eight held-out primes. The Cauchy solver evaluates $\DE$ at $\eps_k=\rho\,e^{2\pi\mathrm ik/K}$ with $\rho=\frac1{64}$,
+$K=128$ and 256-bit arithmetic, and $C_n=K^{-1}\sum_k\DE(\eps_k)\eps_k^{-n}$. It solves the consistent vacua exactly. On states with
+$\ell\ge2$ the window is $E_v(\lambda)-E_v(\lambda-\ell)$, so the self-consistent condition $(H_\lambda+D_\lambda)\psi=E_v(\lambda)\psi$
+becomes the linear generalized eigenproblem $A_\lambda\psi=E_v(\lambda)\,\mathcal P_0\psi$, with
+$A_\lambda=H_\lambda-E_v(\lambda-\hat\ell)(1-\mathcal P_0)$, $\mathcal P_0$ the projection on level-0 states, and the
+sub-cutoff vacua $E_v(\lambda-\ell)$ known from smaller $\lambda$.
+
+\paragraph{Internal checks of the exact codes.}
+\begin{itemize}
+\item $C_0=1$, $C_1=-\frac16$, $r_1=0$, $g_1=\frac13$ for every $L$ and scheme, and the tuning conditions hold exactly at
+ every order. The fraction and modular codes agree identically for every number at $L\le12$.
+\item A third, Hermitian construction of $H$ was diagonalized at 110 digits at $\eps=10^{-3}$, $10^{-5}$, $10^{-8}$, with the
+ exact series for $r$, $g$ and the vacua inserted ($L\le6$, every scheme and channel). The residual divided by $\eps^9$
+ tends to a constant, which confirms every coefficient through $\eps^8$ to about $10^{-8}$.
+\item The Cauchy results do not change with the circle radius, the number of points, the precision, the continuation path
+ or the particle cap; the quoted errors (about $10^{-45}$ on $C_8$) are set by the most aliased variant. All 882 rational
+ identifications have denominators of the form $2^a3^b5^c7^d$.
+\end{itemize}
+
+\paragraph{$C_2$ and $C_3$.} The closed form~\eqref{d2:eq:C2} gives $C_2(0)=\frac{17}{81}$, $C_2(2)=\frac{19}{72}$,
+$C_2(4)=\frac{179}{640}$ and $C_2(6)=\frac{833719}{2903040}$, equal to the exact rationals (evaluated against
+\code{rs\_exact/\allowbreak{}results/\allowbreak{}raw\_L\{0,2,4,6\}.json}). Its approach to the limit is
+$C_2(L)-C_2=-\frac{40}{81\pi}L^{-1}+0.235785\,L^{-2}+\dots$. An independent diagrammatic code, which contracts the factorized
+vertices~\eqref{d2:eq:factorize} with the level cutoff on every intermediate state, gives $C_3(L)$ in float64 to
+$L=\NTwoCthreeLmax$, where $C_3(600)=-0.865794525554$. Its $\ln L/L$ coefficient is $\NTwoCthreeTail$, which is
+$4.4999\times\frac{40}{81\pi}$; the factor $\frac92$ is identified numerically from this fit. It is not the one-loop $\phi^6$
+value $\omega_1=\frac72$ of Eq.~\eqref{eq:omega}, and which operator sets the $d=2$ tail is not derived. With the tower
+$1$, $\ln L/L$, $1/L$, $\ln^kL/L^2$ ($k\le2$), $\ln L/L^3$, $1/L^3$ the limit is $-0.8748500372$, $-0.8748500106$ and
+$-0.8748500065$ for $L_{\min}=32$, 64 and 128, which gives $C_3=\HTpCthreeTwo$.
+
+\subsection{Exact \texorpdfstring{$C_4(L)$}{C4(L)} to \texorpdfstring{$L=2000$}{L=2000}}\label{d2:app:c4exact}
+{\small\raggedright\noindent Records: \code{c4\_exact/\allowbreak{}README.md}, \code{c4\_exact/\allowbreak{}C4\_by\_L.csv},
+\code{c4\_exact/\allowbreak{}results/\allowbreak{}\{c4\_L1000,\allowbreak{}c4\_L2000,\allowbreak{}windows\_L20000\}.npz}, \code{c4\_exact/\allowbreak{}fits/\allowbreak{}fit\_summary.txt},
+\code{c4\_exact/\allowbreak{}fits/\allowbreak{}blind\_predictions\_L1200\_2000.json}, \code{c4\_exact/\allowbreak{}validate\_\{rs,\allowbreak{}pkg,\allowbreak{}corrected\}.txt},
+\code{zeromode\_exact/\allowbreak{}README.md}, \code{continuum/\allowbreak{}\{fits\_summary,\allowbreak{}zm\_corrected\_fits\}.txt}; code \code{c4\_exact/\allowbreak{}\{c4lib,\allowbreak{}c4\_compute,\allowbreak{}c4\_run,\allowbreak{}windows,\allowbreak{}fitlib,\allowbreak{}fits\_c4\}.py}.\par}
+
+At $L\le30$ the production data could not separate a slow power tail from a logarithm. Fits of the consistent $C_4$ with
+towers that contain $\ln L/L$ landed 2.4 to 5\% below the continuum value, and the same fits with the zero-mode window added
+gave 4.90 to 5.04 (\code{continuum/\allowbreak{}zm\_corrected\_fits.txt}). The exact $C_4(L)$ settles the question.
+
+\paragraph{Fourth-order perturbation theory.} Write $H=H_0+\sum_{k\ge1}\eps^kH_k$ with
+\begin{equation}
+ H_1=F_1+g_1V,\qquad H_2=r_2M+g_2V+g_1\dot V+D_2,\qquad H_3=r_3M+g_3V+g_2\dot V+\tfrac12g_1\ddot V+r_2\dot M+D_3 ,
+\end{equation}
+where $\dot V=\partial_\eps V$ and $\dot M=\partial_\eps M$ act through $w_{ab}(\eps)$. With $G=G_p$, $\langle\cdot\rangle=\langle
+p|\cdot|p\rangle$ and $E^{(1)}=\langle H_1\rangle$,
+\begin{align}
+ E^{(4)}={}&\langle H_4\rangle+2\langle H_1GH_3\rangle+\langle H_2GH_2\rangle+2\langle H_1G(H_1-E^{(1)})GH_2\rangle
+ +\langle H_1G(H_2-\langle H_2\rangle)GH_1\rangle\nonumber\\
+ &+\langle H_1G(H_1-E^{(1)})G(H_1-E^{(1)})GH_1\rangle-\langle H_1GH_1\rangle\langle H_1G^2H_1\rangle .
+\end{align}
+A diagonal window enters $C_4$ only through $g_1^2\langle VGD_2GV\rangle$; the mass window $D^M$ enters through more
+terms (Appendix~\ref{d2:app:window}). The order-3 couplings $r_3$, $g_3$ need the complete
+$\mathcal E^{(3)}_p$ for $p=0,1,3$, not only its part that survives $\Pi$.
+
+\paragraph{Diagram evaluation.} With Eq.~\eqref{d2:eq:factorize}, a $K$-vertex chain is a sum over $\chi$-line patterns
+$n_{ij}$ (lines between vertices $i<j$) of a Wick count, the vertex coefficients, an exact rational zero-mode path sum and
+a $\chi$ level sum. A time slice $s$ with $n_s$ $\chi$ lines and $z_s$ zero-mode quanta has the energy denominator
+$\frac12(z_s-p)+\frac12n_s+(\text{level of the slice})$. The $\chi$ sums use the holomorphic factorization: with
+$v_k(y)=(1-y)^{-k/2}$, $\sum_{ab}w_{ab}y^a\bar y^b=v_1(y)v_1(\bar y)$, and a bundle of $n$ $\chi$ lines has the generating
+function $[v_1(y)v_1(\bar y)-1]^n=\sum_k\binom nk(-1)^{n-k}v_k(y)v_k(\bar y)$. Angular averaging at every vertex forces spin
+zero in every slice, so the holomorphic and antiholomorphic levels of a slice are equal, $j_s$, and its level is $2j_s$.
+The density of a pattern is then a sum of squares of one-variable coefficients, with no angular-momentum sum left.
+$\eps$-derivative vertices differentiate the line weights.
+
+\paragraph{One run for all cutoffs.} The densities do not depend on $L$; the cutoff only imposes $\max_s2j_s\le L$.
+Accumulating by $\max_sj_s$ and summing cumulatively gives every even $L\le L_{\max}$ in one run. The window terms
+depend on $L$ explicitly and are evaluated separately.
+
+\paragraph{Pruning and symmetry.} The zero-mode amplitude of a four-$V$ chain with $n$ $\chi$ lines is a polynomial of
+degree $8-n$ in $p$. Since $\Pi$ kills degree $\le2$, only $n\le5$ reaches $C_4$: 384 of the 641 four-vertex patterns.
+Time reversal maps them onto each other in 168 pairs with identical contributions, so 216 patterns are computed. The full set reproduces every
+individual $E_p^{(4)}$ of the exact solver.
+
+\paragraph{Window shifts without cancellation.} Evaluated naively, the window $h^{(2)}_{zz}(L)-h^{(2)}_{zz}(L-\ell)$ is built from
+terms of size $h^{(2)}_{zz}\sim L^2$, while the part that survives $\Pi$ is of order $1/L$: a relative cancellation of about
+$L^3$. The script \code{windows.py} applies $\Pi$ to the
+rational zero-mode polynomials first and only then multiplies by single-signed level sums. It runs to $L=20000$ and agrees
+with the full computation to $6\times10^{-13}$ for $L\le1000$.
+
+\paragraph{Cost and precision.} On one 40-core node the run to $L_{\max}=600$ takes 51\,s, to 1000 four minutes and to
+2000 about 77 minutes (two Slurm jobs on the symmetry cluster, 59 minutes to the time limit and 17 minutes from the
+checkpoint; the package README's 80 to 90 minutes is the estimate made during the run). Everything is float64. Overlapping
+runs agree to $6.7\times10^{-12}$ (600 against 1000, from the README) and $1.4\times10^{-11}$ (1000 against 2000, evaluated
+from \code{c4\_L1000.npz} and \code{c4\_L2000.npz}), and the cancellation in the assembly is about $4\times10^3$ at $L=1000$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{8.6cm}p{2.2cm}p{3.7cm}@{}}
+\toprule
+check & range & worst deviation \\\midrule
+$r_2$, $g_2$, $r_3$, $g_3$, $C_2$, $C_3$ against the exact rationals & $L=0$ to 18 & $3.4\times10^{-15}$ relative ($C_3$: $1.3\times10^{-14}$) \\
+raw and consistent $C_4$ against the exact rationals & $L=0$ to 18 & $1.1\times10^{-13}$ relative \\
+every $E_p^{(4)}-2pr_4-\frac12p(p-1)g_4$, $p=0$ to 3, raw, all 641 patterns & $L=0$ to 18 & $2.1\times10^{-14}$ relative \\
+$E_v^{(2)}(\lambda)$ of Eq.~\eqref{d2:eq:Ev2} & $\lambda\le18$ & $2.2\times10^{-16}$; exact for $\lambda\le12$ \\
+$C_2$, $C_3$, raw and consistent $C_4$, $r_3$, $g_3$ against the production solver & $L=2$ to 34 & $1.1\times10^{-13}$ relative \\
+zero-mode $C_4$ against brute-force fraction arithmetic & $L=0$ to 12 & $1.1\times10^{-13}$ relative \\
+zero-mode $C_4$ against the exact zero-mode solver & $L=0$ to 18 & $1.1\times10^{-13}$ relative \\
+pruned ($n\le5$) against the full pattern set & $L\le18$ & $10^{-13}$ \\
+time-reversal pairs & 168 pairs, $L=40$ & $5.5\times10^{-16}$ \\
+\bottomrule
+\end{tabular}
+\caption{Validation of the large-$L$ $C_4$ code (\code{c4\_exact/\allowbreak{}README.md}, \code{c4\_exact/\allowbreak{}validate\_*.txt}).}
+\label{d2:tab:c4valid}
+\end{table}
+
+\paragraph{Validation.} Table~\ref{d2:tab:c4valid} lists the checks. The zero-mode scheme itself was solved exactly through
+$\eps^8$ for $L=0$ to 18 (\code{zeromode\_exact/}), by exact perturbation theory with the degenerate partners treated by
+a projected equation. Two implementations (modular and fraction) are identical for $L\le10$. A non-perturbative Cauchy
+check covers every coefficient and every sub-cutoff energy $E_z^{(k)}(\lambda)$ at $L\le6$, and closure tests show that this scheme
+needs only the zero-mode channels $z\le14$ through $\eps^8$. The zero-mode $C_4$ minus the consistent $C_4$ equals an exact
+closed form in $L$ (\code{zeromode\_exact/\allowbreak{}closed\_form\_dC4.py}) at every $L$; for example
+$C_4^{\rm zm}(2)=\frac{6786263}{3732480}$.
+
+\paragraph{Exact window shifts.} Fits of the cancellation-free shifts to $L=20000$ (residuals $\le5\times10^{-14}$) give
+\begin{align}
+ \Delta C_4^{\rm cons}(L)&\equiv C_4^{\rm cons}-C_4^{\rm raw}=\kappa L-\frac5{8748\pi}\ln L+0.000446687+o(1),\nonumber\\
+ \Delta C_4^{\rm zm}(L)&\equiv C_4^{\rm zm}-C_4^{\rm cons}=\Big(\frac4{81\pi}+\frac5{4374\pi}\Big)\ln L+0.0187584+o(1),
+ \label{d2:eq:dC4shifts}
+\end{align}
+with $\kappa=\NTwoKappa$; the analytic evaluation in \code{continuum/\allowbreak{}asymptotics\_C2\_C3.txt} gives
+$\kappa=2.20729299645\times10^{-4}$. The $\ln L$ coefficients are those of Table~\ref{d2:tab:logs}. Split by the number of
+outer $\chi$ lines, $\Delta C_4^{\rm zm}$ has logarithms only for two lines ($\frac4{81\pi}$) and four lines
+($3.6387\times10^{-4}$). Evaluated from \code{C4\_by\_L.csv}, it has a minimum of $0.0982$ near $L=36$ and then grows logarithmically: $0.1028$ at $L=100$,
+$0.1313$ at 1000 and $0.1418$ at 2000.
+
+\paragraph{Fits.} The tail models (\code{fitlib.py}) are towers $T_{jk}$: a constant, $\ln^iL/L$ for $i\le j$ and
+$\ln^iL/L^2$ for $i\le k$; $T_{jkm}$ adds $\ln^iL/L^3$ for $i\le m$. A model may add a free $\ln L$ and single terms such
+as $\ln^3L/L$. The table of Section~\ref{d2:c4} uses $T_{22}$ and $T_{22}+\ln^3L/L$, each with a free $\ln L$, the $\ln^2L/L$
+coefficient free or fixed to $-5/\pi$ (end of Appendix~\ref{d2:app:window}), and $L_{\min}\in\{200,300,400\}$, $L\le2000$: twelve fits, with the median and half
+the full spread quoted. At $L=2000$ the data are $C_4=4.29126$ (raw), $4.73178$ (consistent) and $4.87359$ (zero-mode). The
+raw fit uses $C_4^{\rm raw}=C_4^{\rm cons}-\Delta C_4^{\rm cons}$ with the exact shift. The difference of the two fitted
+$\beta$, $0.016082$, equals the $\ln L$ coefficient of $\Delta C_4^{\rm zm}$. Subtracting the fitted $1/L$ and $1/L^2$
+terms from $C_4(L)$ leaves straight lines in $\ln L$: $5.0026-0.02656\ln L$ (consistent) and $5.0213-0.01048\ln L$
+(zero-mode). Without a $\ln L$ term every tower drifts with
+the fit window, and the limits, 4.881 to 4.896 (zero-mode) and 4.648 to 4.684 (consistent), are far from $5.0489$ and from
+each other. The fitted $\beta$ of the consistent scheme alone would not exclude the nearby simple value $-1/(12\pi)=-0.0265258$; the class
+decomposition of Appendix~\ref{d2:app:mech} fixes it at $-\frac{365}{4374\pi}$.
+
+\paragraph{Out-of-sample and blind tests.} Fitted on $[200,600]$ and used to predict $(600,2000]$, the zero-mode model
+$T_{22}$ with $\ln L$ misses by at most $9.0\times10^{-8}$, and models without $\ln L$ miss by $5.0\times10^{-6}$ to
+$2.5\times10^{-5}$. Fitted on $[200,1000]$, the models with $\ln L$ miss by $8.5\times10^{-9}$ ($T_{22}$) and
+$5.5\times10^{-8}$ ($T_{232}$), those without by $4.3\times10^{-7}$ to $6.7\times10^{-6}$. Before the $L=2000$ run finished,
+predictions for $L=1200$ to 2000 were recorded from fits on $L\le1000$. At $L=2000$, prediction minus data is
+$-8.6\times10^{-9}$ ($T_{22}$) and $-6.4\times10^{-8}$ ($T_{232}$) for the models with $\ln L$ in the zero-mode and
+consistent schemes ($-7.5\times10^{-9}$ and $-8.3\times10^{-8}$ raw). For the models without $\ln L$ it is $+4.3\times10^{-7}$
+to $+1.8\times10^{-6}$ (zero-mode), $+1.2\times10^{-6}$ to $+4.6\times10^{-6}$ (consistent) and $-4.1\times10^{-7}$ to
+$-8.6\times10^{-7}$ (raw). The data are accurate to about $10^{-11}$, so the blind test favors the logarithm, by factors of 5 to
+500 (the ratios of the deviations above).
+
+\subsection{Mechanism and the \texorpdfstring{$\ln L$}{ln L} coefficients by class}\label{d2:app:mech}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}log\_coeffs.txt}; code \code{residual\_log/\allowbreak{}\{log\_coeffs,\allowbreak{}offdiag\_window,\allowbreak{}decompose\}.py}.\par}
+
+\paragraph{The budget defect.} The cutoff constrains the total level of each intermediate state. View a fourth-order
+process as an outer structure with a sub-bubble nested in one of its intermediate states. The sub-bubble may use only the
+level $L-\ell_{\rm other}$, where $\ell_{\rm other}$ is the level of everything else in that time slice, while the
+counterterm that cancels its divergence was tuned on level-0 references, where it has the full $L$. The mismatch is the
+density of the divergence at the cutoff times the level taken by the other quanta. Table~\ref{d2:tab:budget} lists the
+three divergent sub-bubbles of the $\phi^4$ vertex.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{3.1cm}p{4.3cm}p{3.7cm}p{4.1cm}@{}}
+\toprule
+sub-bubble & divergence & deficit for spectators of level $\ell$ & restored by \\\midrule
+vacuum (four $\chi$ lines) & $E_v^{(2)}(\lambda)=-\frac{(\lambda+2)(\lambda+4)}{864}$, quadratic & ${\sim}\ell L$ & consistent window \\
+sunset (three $\chi$ lines; mass) & $r_2(\lambda)=\frac{2\lambda}{27\pi}+\dots$, linear & $\frac2{27\pi}\ell$ per mass insertion; does not decay & in part by the diagonal zero-mode window; fully by $D^{\rm zm}$ and $D^M$ \\
+coupling (two $\chi$ lines) & $g_2\sim\ln\lambda$ & $\ln\frac L{L-\ell}\sim\frac\ell L$ & not needed for soft spectators; finite effects from hard ones \\
+\bottomrule
+\end{tabular}
+\caption{Divergent sub-bubbles and their level-budget deficits in $d=2$ ($\Ds=\frac12$ at $\eps=0$).}
+\label{d2:tab:budget}
+\end{table}
+
+The sunset slope is $dr_2/dL=\frac2{27\pi}=0.0235785$ (the exact $[r_2(2000)-r_2(1998)]/2$ is $\NTwoRtwoSlope$). Because the
+divergence is linear, the deficit is proportional to the spectator level and independent of $L$, and it hits every
+insertion of the mass operator $M$, not only the diagonal of its zero-mode part.
+
+\paragraph{Linked clusters with zero-mode transfer.} Take two components that share only the zero mode: an outer bubble $O$
+with $m$ $\chi$ lines and an inner bubble $B$ with $m'$. Let $E_O$, $E_B$ be their slice energies and $q=\frac12\Delta z_B$ the
+zero-mode transfer, with $\Delta z_B$ the change of $z$ caused by $B$. The four vertices
+have six time orderings: two sequential ones ($OOBB$, $BBOO$), in which no slice holds lines of both components, and four
+overlapping ones ($OBBO$, $BOOB$, $OBOB$, $BOBO$), in which some slice holds both. Since $H_0=\ell+\frac P2$ is additive, the
+six orderings and the unlinked terms of perturbation theory cancel in the continuum. At leading degree in $p$ the zero-mode
+amplitude does not depend on the ordering, and the cancellation reduces to the identity
+\begin{equation}
+ \frac1{E_OE_B(E_O+q)}+\frac1{E_OE_B(E_B-q)}-\frac1{q\,E_O(E_B-q)}+\frac1{q\,E_B(E_O+q)}=0
+\end{equation}
+for every $q$, including the limit $q\to0$; its first two terms come from the four overlapping orderings, the last two from
+the sequential orderings and the unlinked terms. With outer level $2a$ and inner level $2b$, the overlapping orderings need
+$a+b\le\frac L2$, and the others do not. The truncation therefore errs by
+\begin{equation}
+ -\sum_{a,b\le L/2<a+b}\Big[\frac1{E_OE_B(E_O+q)}+\frac1{E_OE_B(E_B-q)}\Big]\times(\text{zero-mode amplitude}).
+\end{equation}
+This is the nested insertion, into every outer state of level $\ell$, of the window part of the second-order zero-mode
+effective interaction,
+\begin{equation}
+ D_\lambda(z\to z')=g_1^2\sum_{k:\,\lambda-\ell<\ell_k\le\lambda}\frac{\langle z'|V|k\rangle\langle k|V|z\rangle}{E^0_z-E^0_k}
+ =h^{(2)}_{z'z}(\lambda)-h^{(2)}_{z'z}(\lambda-\ell),
+ \label{d2:eq:Dwindow}
+\end{equation}
+in its ket-referenced (Bloch) form and including $z'\neq z$: the window $D^{\rm zm}$ of Eq.~\eqref{d2:eq:Dzm}. The diagonal
+zero-mode scheme keeps only $q=0$. At subleading degree in $p$ the orderings differ by commutator terms. These are confined to
+the window region and are $\mathcal O(\ln L/L)$ for the numbers $(m,m')=(2,2)$, $(1,3)$ and $(3,1)$ of outer and inner $\chi$
+lines.
+
+\paragraph{The ratio $\frac23$.} Take the outer two-$\chi$ bubble, with ${:}Z^2{:}$ at each outer vertex, and the inner
+zero-mode sunset, with ${:}Z{:}$ at each inner vertex. Per unit amplitude the window of the nested sunset at outer level $2a$
+is $-\frac2\pi a$, and the outer weight (pattern density over the squared denominator) tends to $\frac1{4a^2}$. The window sum
+is therefore
+\begin{equation}
+ \sum_{a\le L/2}\frac1{4a^2}\Big(-\frac{2a}\pi\Big)=-\frac1{2\pi}\ln L+\mathcal O(1) .
+\end{equation}
+At leading degree in $p$ the zero-mode operators commute and act as $a_0\to\sqrt p\,e^{\mathrm i\theta}$,
+$a_0^\dagger\to\sqrt p\,e^{-\mathrm i\theta}$, so ${:}Z^2{:}\to p\,(e^{2\mathrm i\theta}+2+e^{-2\mathrm i\theta})$ and
+${:}Z{:}\to\sqrt p\,(2\cos\theta)$. The closed-path amplitude is the angular average $p^3\langle(2\cos\theta)^6\rangle_\theta=
+20\,p^3$. Split it by the zero-mode transfer of the inner sunset:
+\begin{itemize}
+\item $\Delta z_B=0$ (inner vertices $a_0$, $a_0^\dagger$ in either order, two ways) times the phase-free part of the outer
+ factor $(e^{2\mathrm i\theta}+2+e^{-2\mathrm i\theta})^2$, which is $1+4+1=6$: in total 12;
+\item $\Delta z_B=+2$ (inner $a_0^\dagger a_0^\dagger$) times the $e^{2\mathrm i\theta}$ coefficient of the outer factor,
+ $2\cdot2=4$, and likewise $\Delta z_B=-2$: in total 8.
+\end{itemize}
+So $20=12+8$. The coupling factor is $g_1^4\gamma_2\gamma_3=\frac1{81}\cdot\frac12\cdot\frac23=\frac1{243}$. With
+$\Pi[p^3]=-2$ the window logarithm restored in $C_4$ is
+\begin{equation}
+ (-2)\cdot20\cdot\Big(-\frac1{2\pi}\Big)\cdot\frac1{243}=\frac{20}{243\pi}
+ =\underbrace{\frac{12}{243\pi}}_{\Delta z=0\ (=\frac4{81\pi})}+\underbrace{\frac{8}{243\pi}}_{\Delta z=\pm2} .
+\end{equation}
+The part that changes the zero-mode number is $\frac8{12}=\frac23$ of the diagonal part, and a diagonal window captures
+$\frac{12}{20}=\frac35$ of this class. The split $20=12+8$ and the $\gamma_m$ follow from the algebra above; the factor
+$\frac1{243}$ is also in \code{log\_coeffs.py}.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{4.9cm}p{2.9cm}p{2.6cm}cccc@{}}
+\toprule
+class (outer state $\times$ sub-bubble) & analytic & exact fit & raw & cons & zm & $W$ \\\midrule
+one $\chi$ line $\times$ vacuum bubble (also $\kappa L$) & $-\frac5{8748\pi}=-1.81933\times10^{-4}$ & $-1.81933\times10^{-4}$ & m & r & r & r \\
+two $\chi$ lines $\times$ zero-mode sunset, $\Delta z=0$ & $\frac4{81\pi}=0.0157190067$ & $0.015719006698$ & m & m & r & r \\
+four $\chi$ lines $\times$ one-line zero-mode bubble & $\frac5{4374\pi}=3.63866\times10^{-4}$ & $3.63865887\times10^{-4}$ & m & m & r & r \\
+two $\chi$ lines $\times$ zero-mode sunset, $\Delta z=\pm2$ & $\frac8{243\pi}=0.0104793378$ & $0.010479337749$ & m & m & m & r \\
+all other zero-mode classes (diagonal and off-diagonal) & 0 & $|\cdot|<2\times10^{-10}$ & & & & \\
+$\chi$-attached sunsets ($D^M$) & 0 & $-2.9\times10^{-9}$; $-2.6\times10^{-7}$ & & & & \\
+\bottomrule
+\end{tabular}
+\caption{$\ln L$ coefficients of the $C_4$ shift that each window class restores. ``m'': missing in the scheme; ``r'':
+restored. The fits use the exact shifts to $L=20000$ (the $\chi$-attached class to $L=8000$) with $L_{\min}=2000$ and 4000
+(\code{residual\_log/\allowbreak{}results/\allowbreak{}log\_coeffs.txt}).}
+\label{d2:tab:logs}
+\end{table}
+
+\paragraph{The coefficients by class.} Table~\ref{d2:tab:logs} lists every class. The two other logarithmic classes follow the
+same pattern. For four $\chi$ lines times a one-line bubble, the outer weight tends to $\frac14$, and when the outer state has level
+$L-2j$ the inner one-line bubble keeps the budget $2j$; its window is then $-\frac1{2\pi}(\frac1j-\frac2L)$, which sums to
+$-\frac1{8\pi}\ln L$; with
+$g_1^4\gamma_4\gamma_1=\frac1{4374}$ and the amplitude $20p^3$ this gives $+\frac5{4374\pi}$. For one $\chi$ line times the vacuum,
+Eq.~\eqref{d2:eq:Ev2} gives $E_v(L)-E_v(L-2a)=-[2a(2L+6)-4a^2]/864$: the term linear in $L$ gives $\kappa L$, and the
+$4a^2$ term with weight $1/(4\pi a^3)$ gives $(864\pi)^{-1}\ln L$, which the factor $-\frac{40}{81}$ of the one-line outer state (couplings,
+zero-mode amplitude and $\Pi$; \code{log\_coeffs.py}) turns into $-\frac{40}{81\cdot864\pi}=-\frac5{8748\pi}$ in $C_4$. The $\ln L$ coefficient of each scheme is minus the sum of the logarithms it misses:
+\begin{align}
+ \beta_{\rm raw}&=-\Big(-\frac5{8748\pi}+\frac{20}{243\pi}+\frac5{4374\pi}\Big)=-\frac{725}{8748\pi},\qquad
+ \beta_{\rm cons}=-\Big(\frac{20}{243\pi}+\frac5{4374\pi}\Big)=-\frac{365}{4374\pi},\nonumber\\
+ \beta_{\rm zm}&=-\frac8{243\pi},\qquad \beta_W=0 ,
+\end{align}
+in agreement with the fitted values of Section~\ref{d2:c4} to $10^{-6}$ or better. The $\chi$-attached class has no net
+logarithm, but its two parts do: $+0.0369938\ln L$ directly at $\eps^4$ and $-0.0369938\ln L$ through the retuned $g_3$. This
+is a local vertex renormalization, a sunset with one hard external $\chi$ line, which the tuning of $g$ absorbs. The
+decomposition must be made by window class, not by diagram topology: single four-vertex topologies carry $L$, $\ln^2L$ and
+$\ln L$ terms that cancel against counterterm chains (\code{decompose.py}), and the window classes are the combinations that
+are separately finite in the continuum.
+
+\paragraph{Why the tuning cannot absorb the defect.} The two tuning conditions fix two state-independent numbers, $r_n$ and
+$g_n$. A shift of $r$ or $g$ changes the reference energies by $2p\,\delta r+\frac12p(p-1)\,\delta g$, which $\Pi$ removes.
+The budget defect is different in kind: it is an operator proportional to the level of the spectator quanta,
+${\sim}\{\hat\ell,M\}$, and through the outer amplitude $20p^3$ it is cubic in $p$. No choice of tuning conditions can
+represent it.
+
+\paragraph{Contrast with one dimension.} In $d=1$ the cutoff is on the free energy $E^0=\ell+\frac P4$
+(Eq.~\eqref{eq:Lambda}). Every four-particle vacuum shell then carries the same energy, so the vacuum window is of order one
+per missing shell and does not decay, and $D^{\rm conn}$ repairs it (Section~\ref{sec:window}). The references have
+$E^0=\frac p4$, so their own windows hold vacuum shells as well, and how many depends on where the cutoff sits relative to
+them (the cutoff placement of Section~\ref{d1:sec:window}). By power counting the sunset density falls like
+${\rm level}^{-1/2}$ ($r_2\sim\Lambda^{1/2}$), so its budget deficit ${\sim}\ell/\Lambda^{1/2}$ vanishes: this is why the
+vacuum correction suffices in $d=1$ and does not in $d=2$. The connected (``folded'') $\eps^4$ term that $D^{\rm conn}$ does
+not restore also decays; its contribution to the $\eps^4$ spacing of $\partial\phi$ is $-6.8\times10^{-4}$ at
+$\Lambda=16.25$ and $-3.8\times10^{-4}$ at $\Lambda=64.25$ (\code{lri\_hpc\_Hamitonian}, record
+\code{analysis/\allowbreak{}identity\_checks/\allowbreak{}challenge-theory/\allowbreak{}folded\_ph0.25.json}). With the
+vacuum window alone the $\eps^2$ descendant spacings vanish (Table~\ref{d1:tab:ident}). In $d=2$ every structure is one
+power worse: the vacuum window grows like $L$ (the $\kappa L$ of the raw scheme), the sunset window is of order one, and the
+coupling window is ${\sim}\ell/L$. The references have level 0, so their own windows are empty and nothing depends on where
+the cutoff sits relative to them; the zero-mode dependence that $d=1$ carries through $E^0=\ell+\frac P4$ appears in $d=2$
+as the separate zero-mode window.
+
+\subsection{The complete window at \texorpdfstring{$\eps^4$}{eps4}}\label{d2:app:window}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md}, \code{residual\_log/\allowbreak{}results/\allowbreak{}brute\_vs\_codes.txt},
+\code{residual\_log/\allowbreak{}C4W\_by\_L.csv}, \code{residual\_log/\allowbreak{}results/\allowbreak{}\{offdiag\_L20000,\allowbreak{}nm\_L8000\}.npz},
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}fits\_final.txt}; code \code{residual\_log/\allowbreak{}\{nm\_window,\allowbreak{}nm\_window\_exact,\allowbreak{}brute\_full,\allowbreak{}brute\_nm,\allowbreak{}nm\_zz\_check,\allowbreak{}offdiag\_hermitian\_check,\allowbreak{}fits\_final\}.py}.\par}
+
+\paragraph{Principle.} Section~\ref{d2:c4} defines the window, $D=D^{\rm zm}+D^M$ with Eqs.~\eqref{d2:eq:Dzm}
+and~\eqref{d2:eq:DM}, and states its principle. For a mass insertion between states of levels $\ell_s$ and $\ell_{s'}$ the
+budget is the average $L-\frac12(\ell_s+\ell_{s'})$, which comes from averaging the internal orderings of the sunset: nested
+and exchange orderings for a $\chi$ hop $A^\dagger A$, and the two assignments for pair creation $A^\dagger A^\dagger$ and pair
+annihilation $AA$. $h^{(2)}$ contains all inner bubble types with one to four $\chi$ lines; the zero-line part and the $r_2$,
+$g_2$ terms do not depend on the level and cancel. Bra-referenced and Hermitian versions of $h^{(2)}$ give the same $C_4$ to
+$10^{-16}$, because the product $\langle VG\,D^{\rm zm}GV\rangle$ through which it enters is symmetric.
+
+\paragraph{How the window enters $C_4$.} Since $D^{\rm zm}$ vanishes on level-0 states, its only contribution is
+$g_1^2\langle VG\,D^{\rm zm}GV\rangle$. $D^M$ is symmetric, but it does not vanish on $|p\rangle$, because $M'$ creates two
+quanta. It therefore enters already at $\eps^3$, through $2g_1\langle VGD^M\rangle$, which changes $r_3$ and $g_3$ but not $C_3$.
+At $\eps^4$
+\begin{align}
+ \delta\mathcal E^{(4)}_p&=g_1^2\langle VGD^MGV\rangle+2g_1\big[g_1\langle VGVGD^M\rangle-g_1V_{pp}\langle VG^2D^M\rangle
+ -\tfrac14\langle VG(P-p)GD^M\rangle\big],\nonumber\\
+ \delta C_4^M&=\Pi\big[\delta\mathcal E^{(4)}\big]+2g_1\,\delta g_3\,\Pi\big[\langle VGV\rangle\big] ;
+\end{align}
+$r_3$ drops out of $C_4$, and $\Pi$ kills $\langle H_2GD^M\rangle$ and $\langle D^MGD^M\rangle$. The complete coefficient is
+\begin{equation}
+ C_4^W(L)=C_4^{\rm zm}(L)+\delta C_4^{\rm off}(L)+\delta C_4^M(L),
+\end{equation}
+where $\delta C_4^{\rm off}$ is the shift from the elements $z'\neq z$ of $D^{\rm zm}$. All three pieces are exact for every
+even $L\le2000$, and the shifts are known further, to $L=20000$ (off-diagonal) and $L=8000$ ($D^M$).
+
+\paragraph{Derivation status.} $D^{\rm zm}$ follows from the linked-cluster argument of Appendix~\ref{d2:app:mech}; it is
+exact at leading degree in $p$, and the differences at subleading degree vanish as $L\to\infty$. $D^M$ is derived at leading
+order in $1/L$. Its slope can be replaced by the exact sum $t_M(j)$ of the sunset contributions that the cutoff removes for a
+spectator of level $2j$, with both zero-mode orderings averaged; $t_M(j)\to\frac2\pi j$ per unit amplitude
+(Appendix~\ref{d2:app:mech}). This changes $\delta C_4^M$ by $-4.5\times10^{-4}$ at $L=100$ and $-2.4\times10^{-4}$ at $L=200$
+(\code{nm\_window\_exact.py}), that is by $\mathcal O(1/L)$, with the same limit. The Newton-coefficient form of
+Appendix~\ref{d2:app:Wall}, another refinement, changes $C_4$ much less ($4.9\times10^{-7}$ at $L=100$), also with the same
+limit; why the two refinements differ this much at finite $L$ was not analyzed.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{9.4cm}p{2.0cm}p{3.0cm}@{}}
+\toprule
+check & $L$ & agreement \\\midrule
+\code{offdiag\_window.py}, diagonal part, against $C_4^{\rm zm}-C_4^{\rm raw}$ of \code{c4\_exact} & $\le2000$ & $4\times10^{-11}$ \\
+\code{nm\_window.py} against \code{brute\_nm.py} (exact perturbation theory with $\{\hat\ell,M'\}$ as an operator): $\delta C_4$ and $\delta g_3$ & 2, 4, 6 & $10^{-14}$ \\
+\code{brute\_full.py} (complete scheme as operators; off-diagonal window from auxiliary $|z\rangle$ channels) against $C_4^{\rm zm}$, $C_4^{\rm zm}+\delta C_4^{\rm off}$ and $C_4^W$ & 2 to 12 & $\le6.3\times10^{-14}$ \\
+\code{nm\_window.py} on a workstation ($L\le400$) against the symmetry cluster ($L\le2000$, 8000) & overlap & $6\times10^{-14}$ \\
+\bottomrule
+\end{tabular}
+\caption{Checks of the window codes against brute-force exact perturbation theory in fraction arithmetic, with $D$ added as
+an explicit operator (\code{residual\_log/\allowbreak{}results/\allowbreak{}brute\_vs\_codes.txt}).}
+\label{d2:tab:brute}
+\end{table}
+
+\paragraph{Verification at finite $L$.} Table~\ref{d2:tab:brute} lists the checks. The brute-force values of the complete
+scheme are $C_4^W(2)=1.966884466461$, $C_4^W(4)=2.290042077448$, $C_4^W(6)=2.546923269518$, $C_4^W(8)=2.756245037529$,
+$C_4^W(10)=2.928832263364$ and $C_4^W(12)=3.073608283249$; the comparison is limited by the float64 precision of the
+large-$L$ code, about $6\times10^{-14}$.
+
+\paragraph{What does not work.}
+\begin{itemize}
+\item Any diagonal window (consistent, zero-mode): it misses the transitions $\Delta z\neq0$ and the $\chi$ parts by
+ construction.
+\item Replacing $D^{\rm zm}$ by its leading form $-\frac{g_1^2}{3\pi}\{\hat\ell,{:}Z^2{:}\}$ (\code{nm\_zz\_check.py}). The
+ difference tends to $0.042838+\frac5{4374\pi}\ln L$: the inner coupling and one-line bubbles carry finite parts from hard
+ outer states and the four-line $\times$ one-line logarithm, so the exact zero-mode window is required. Only the $\chi$ part
+ may use the leading form.
+\item A modified tuning prescription (Appendix~\ref{d2:app:mech}).
+\end{itemize}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{5.6cm}lp{4.3cm}p{3.2cm}@{}}
+\toprule
+scheme & $C_4(2000)$ & large $L$ & limit \\\midrule
+raw & 4.29126 & $-\kappa L-\frac{725}{8748\pi}\ln L$ & diverges \\
+consistent ($=$ literal at this order) & 4.73178 & $-\frac{365}{4374\pi}\ln L$ & diverges \\
+zero-mode (diagonal) & 4.87359 & $-\frac8{243\pi}\ln L$ & diverges \\
+$+$ off-diagonal zero-mode window & 4.97161 & no $\ln L$ & $\NTwoCfourZmOff$, $0.0102545$ short \\
+$+$ mass window $D^M$ ($=W$) & 4.98172 & no $\ln L$ & $5.0488682$ \\
+\midrule
+continuum & & & $5.0488684314$ \\
+\bottomrule
+\end{tabular}
+\caption{$C_4$ at $L=2000$ and its large-$L$ form, window by window (\code{residual\_log/\allowbreak{}C4W\_by\_L.csv},
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}fits\_final.txt}).}
+\label{d2:tab:c4w}
+\end{table}
+
+\paragraph{Large $L$.} Table~\ref{d2:tab:c4w} builds the complete window up piece by piece. The off-diagonal shift is
+$\delta C_4^{\rm off}(L)=\frac8{243\pi}\ln L+0.0172932+\mathcal O(\ln^2L/L)$, from exact values to $L=20000$. It removes the
+logarithm of the zero-mode scheme but leaves a finite miss of $0.0102545$. The mass-window shift converges,
+$\delta C_4^M(\infty)=0.0102543394$ with a spread of $1.5\times10^{-8}$ over twelve fits of the exact values to $L=8000$, and
+supplies the missing finite part: the separately extrapolated pieces give $\NTwoCfourZmOff+\NTwoCfourChi=5.0488682$. The
+approach is slow, like $\ln^2L/L$: at $L=2000$, $C_4^W-C_4^{(2)}=-0.0672$ (Fig.~\ref{d2:fig}c).
+
+\paragraph{Fits of $C_4^W$.} The data are accurate to $10^{-10}$ or better, so the uncertainty is entirely the extrapolation.
+\begin{itemize}
+\item The towers $T_{22}$, $T_{22}+\ln^3L/L$ and $T_{23}$ without $\ln L$, with $L_{\min}\in\{200,300,400\}$ (nine fits), give
+ $5.04886823$ with a half spread of $5.6\times10^{-7}$, $2.0\times10^{-7}$ below the continuum value; this is the value
+ quoted in Section~\ref{d2:c4}.
+\item No-log fits outside this set (towers $T_{22}+\ln^3L/L$ and $T_{23}$ at $L_{\min}=600$, $T_{33}$ at $L_{\min}=400$) move
+ the limit by up to $1.8\times10^{-5}$ from the continuum value; $T_{33}$ at $L_{\min}=600$ is over-fitted ($\ln^2L/L$
+ coefficient $-25$, limit $2.8\times10^{-4}$ low).
+\item With a free $\ln L$ term the stable towers at $L_{\min}=200$ to 300 give its coefficient between $-1.8\times10^{-6}$ and
+ $+3.5\times10^{-6}$, and the limit moves by $-4.3\times10^{-5}$ to $+2.2\times10^{-5}$ (the tower $T_{33}$,
+ outside this set, gives a coefficient of $-8.1\times10^{-6}$ at $L_{\min}=200$). Richer towers at larger $L_{\min}$ become unstable, for example with a free $\ln L$ coefficient up to
+ $5\times10^{-4}$ and a $\ln^2L/L$ coefficient of $+16$ to $+30$; these fits have more freedom than the data constrain.
+\end{itemize}
+Hence the quoted uncertainty: the half spread of the nine stable fits, rounded up to $10^{-6}$. The fits outside the stable
+set show that the model dependence can reach $2\times10^{-5}$, and $4\times10^{-5}$ with a free $\ln L$ term, which the
+complete window excludes by construction (Table~\ref{d2:tab:logs}). The fitted tail is about $-1.40\ln^2L/L$ and comes entirely from $C_4^{\rm zm}$.
+Fixing it at $-5/\pi$, the value used as a prior in the fit scripts, makes the fits 500 times worse, so that prior is not
+supported. In the
+fits of the raw, consistent and zero-mode schemes (Section~\ref{d2:c4}) the variants with the coefficient fixed only widen the quoted spread.

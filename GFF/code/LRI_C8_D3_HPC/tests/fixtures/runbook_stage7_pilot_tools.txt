@@ -1,0 +1,9 @@
+$RAW --role stagea --dir $C8_ROOT/runs/pilotA-<date> -- $SH -c 16 --mem=32G -t 01:00:00 --wrap "$JOB; python3 -B tools/pilot_report.py stage-a $C8_ROOT/runs/pilotA-<date> --output $E/stageA.json"
+$RAW --role select --dir $C8_ROOT/runs/pilotF-<date> -- $SH -c 16 --mem=32G -t 01:00:00 --wrap "$JOB; python3 -B tools/pilot_select.py confirm \
+  --screen $C8_ROOT/runs/pilotF-<date> --pa $C8_ROOT/runs/pilotA-<date> --seed <registered> --out $E/pc.json"
+PC_N=$(python3 -B tools/pilot_select.py count $E/pc.json)    # schema-checked graph count; nonzero exit if malformed
+PC_ARGS="--pc-selection $E/pc.json --pc $C8_ROOT/runs/pilotC-<date>"
+PC_ARGS="--pc-selection $E/pc.json"                                   # PC skipped: nothing selected
+$RAW --role report --dir $E -- $SH -c 32 --mem=64G -t 02:00:00 --wrap "$JOB; python3 -B tools/pilot_report.py full \
+  --pa $C8_ROOT/runs/pilotA-<date> --pf $C8_ROOT/runs/pilotF-<date> $PC_ARGS \
+  --output $E/pilot_report.json --markdown $E/PILOT_REPORT.md"

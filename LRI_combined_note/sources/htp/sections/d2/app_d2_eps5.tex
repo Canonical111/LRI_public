@@ -1,0 +1,367 @@
+% app_d2_eps5.tex -- d = 2 appendix, part 2 of 3 (HT2dPert, 2026-10-16): order eps^5. The window at all orders, the
+% exact eps^5 data, the linear divergence of scheme W and its location, the double counting and rule W_c, tests T1-T3,
+% the tail of C5 and the residual-log question, consequences for C6-C8. Merged from the method write-up of package I.
+% Numbers: as in app_d2_eps4.tex (macros where Sec. d2:sec quotes them; otherwise read from the named records).
+\section{Two dimensions: order \texorpdfstring{$\eps^5$}{eps5}}\label{d2:app:eps5}
+
+This appendix supports Section~\ref{d2:c5}. It gives the window at all orders, shows that it diverges linearly at
+$\eps^5$ and why, derives the rule $W_c$ that removes the divergence, and gives the details of the $C_5$ extrapolation.
+
+\subsection{The window at all orders}\label{d2:app:Wall}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (status table and \S\S2.2 to 2.10),
+\code{complete\_exact/\allowbreak{}README.md}.\par}
+
+For every even $\lambda\le L$ the Hamiltonian at sub-cutoff $\lambda$ is the truncation to $\ell\le\lambda$ of
+$H_0+\eps F_1+rM+gV$ plus $D_\lambda=D^{\rm zm}_\lambda+D^M_\lambda$, with one $r(\eps)$, $g(\eps)$ fixed at $\lambda=L$. Scheme $W$ is
+this window with self-consistent auxiliary objects (last item below): through $\eps^4$ it is the complete window of
+Section~\ref{d2:c4}; at $\eps^5$ it diverges (Appendix~\ref{d2:app:Wlin}), and rule $W_c$ repairs it. The ingredients are the
+following.
+\begin{itemize}
+\item \emph{Auxiliary channels.} $E_z(\lambda)$ and $\psi_z(\lambda)$ are the eigenvalue and the right eigenvector of this
+ Hamiltonian on the branch through $|z\rangle$, normalized by $\langle z|\psi_z\rangle=1$.
+\item \emph{Bloch zero-mode window.} With $U_{z'z}(\lambda)=\langle z'|\psi_z(\lambda)\rangle$ and
+ $h(\lambda)=U\,{\rm diag}(E_z(\lambda))\,U^{-1}$,
+ \[
+  D^{\rm zm}|z,\chi\rangle=\sum_{z'}\big[h(\lambda)-h(\lambda-\ell_\chi)\big]_{z'z}|z',\chi\rangle\qquad(\ell_\chi\ge2).
+ \]
+ Here $h$ is the full Bloch matrix; at $\eps^2$ its level-dependent part is $h^{(2)}$ of Eq.~\eqref{d2:eq:Dzm}, so the
+ window reduces to that equation.
+\item \emph{Mass window.} $D^M=\frac14\{e_1(\lambda)-e_1(\lambda-\hat\ell),M'\}$ with the Newton coefficient
+ $e_1=E_1-E_0$, the combination that the mass counterterm renormalizes: $E_z=\sum_ke_k\binom zk$ and
+ $\langle z|M|z\rangle=2z$ (\S2.4 of \code{WINDOW\_SPEC.md}). At $\eps^2$, $e_1^{(2)}(\lambda)-e_1^{(2)}(\lambda-\ell)=-\frac4{27\pi}\ell+\mathcal O(\ell/\lambda)$, so
+ $D^{M,(2)}$ is Eq.~\eqref{d2:eq:DM} up to $\mathcal O(1/\lambda)$. This form changes $C_4$ relative to the slope form by
+ $1.8\times10^{-6}$, $4.9\times10^{-7}$, $1.2\times10^{-7}$ and $2.9\times10^{-8}$ at $L=50$, 100, 200 and 400, with the same
+ limit, and it makes the scheme an exact rational at every $L$.
+\item \emph{Coupling window} (scheme $W{+}V$ only). $D^V=\frac12\{e_2(\lambda)-e_2(\lambda-\hat\ell),V'\}$ with
+ $e_2=E_2-2E_1+E_0$ and $V'=V-\frac1{12}{:}Z^4{:}$.
+\item \emph{Partners.} The degenerate partners of $|z\rangle$, $z\ge5$ (Appendix~\ref{d2:app:ops}), are projected out of every
+ window object. A reading that keeps them through a projected equation in the auxiliary channels differs by
+ $2.8\times10^{-5}$ in $C_4$ and $-1.6\times10^{-4}$ in $C_5$ at $L=16$.
+\item \emph{Self-consistency} (scheme $W$). $h(\lambda-\ell)$ and $e_1(\lambda-\ell)$ belong to the Hamiltonian at
+ sub-cutoff $\lambda-\ell$ with its own window. Rule $W_c$ (Appendix~\ref{d2:app:Wc}) replaces this.
+\end{itemize}
+$C_5$ needs $D^{{\rm zm},(2)}$, $D^{{\rm zm},(3)}$, $D^{M,(2)}$ and $D^{M,(3)}$; $D^{M,(4)}$ does not enter. $C_4$ sees only the
+$\eps^2$ windows, so $C_4^W$ is the coefficient of Appendix~\ref{d2:app:window} up to the difference between the $e_1$ form
+and the slope form given above.
+
+\paragraph{The coupling window is invalid.} In the exact small-$L$ solver $C_4(W{+}V)-C_4(W)=0.484$, $0.491$ and $0.492$ at
+$L=10$, 12 and 14. This is a finite shift, although power counting (\S3 of \code{WINDOW\_SPEC.md}) suggests that the effect
+of $D^V$ vanishes. $D^V$ also makes the $\eps^3$ spacing grow (Table~\ref{d2:tab:desc3}). It is
+not used below.
+
+\subsection{Exact \texorpdfstring{$\eps^5$}{eps5} data}\label{d2:app:eps5data}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}\{validation\_c5,\allowbreak{}validation\_vs\_complete\_exact\}.txt},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}\{c5\_L160,\allowbreak{}c5\_L200,\allowbreak{}dC5\_L1000\_all\}.npz}, \code{complete\_exact/\allowbreak{}README.md}; code
+\code{residual\_log/\allowbreak{}eps5/}, \code{residual\_log/\allowbreak{}brute\_W5.py}.\par}
+
+Two independent exact computations exist.
+\begin{enumerate}
+\item \emph{Large-$L$ diagram sums} (\code{residual\_log/\allowbreak{}eps5/}). The $C_4$ machinery of Appendix~\ref{d2:app:c4exact} is
+ extended to five-vertex chains, $\eps$-Taylor orders at every vertex, open zero-mode paths and window insertions;
+ the perturbation-theory expression for $E^{(5)}$ is unrolled symbolically into 201 products of vertices, windows and
+ resolvents. The code gives $C_n(L)$, $n\le5$, for every even $L\le160$ in the raw scheme and eleven window schemes (among
+ them those of Table~\ref{d2:tab:c5lin}), raw $C_5$ to $L=200$ (extended to $L=\HTpTwoLfive$ in
+ Appendix~\ref{d2:app:c5tail}), and the scheme shifts $\delta C_n(L)=C_n(\text{scheme})-C_n(\text{raw})$ for every even
+ $L\le\NTwoShiftLmax$. The shifts need no five-vertex chain. The cost was about 25 node-hours on the symmetry cluster.
+\item \emph{Exact small-$L$ solver} (\code{complete\_exact/}). Scheme $W$ and its variants as explicit operators in exact
+ perturbation theory through $\eps^8$, $L=0$ to 16, modulo 208 primes ($L\le12$) or 128 primes ($L=14$, 16), every value
+ verified on eight held-out primes, with descendant channels in every scheme. An independent fraction implementation agrees
+ identically at $L=2$ to 10; closure tests with random entries outside the claimed window sets change nothing; and the raw,
+ consistent and zero-mode schemes reproduce the exact solvers of Appendix~\ref{d2:app:checks} exactly to $L=16$. Examples,
+ with $D^M$ in the $e_1$ form: $C_4^W(2)=\frac{11011547}{5598720}$ (the slope form of Appendix~\ref{d2:app:window} gives
+ $1.966884466461$) and $C_5^W(2)=-\frac{879593527}{80621568}$.
+\end{enumerate}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{6.4cm}p{5.4cm}p{3.0cm}@{}}
+\toprule
+quantity & reference & worst deviation \\\midrule
+raw, consistent $C_2$ to $C_5$ & exact solver, $L\le18$ & $1.0\times10^{-13}$ relative \\
+raw, consistent $C_2$ to $C_5$ & production solver, $L\le34$ & $\NTwoCfiveAgree$ relative \\
+zero-mode $C_2$ to $C_5$ & exact zero-mode solver, $L\le18$ & $9\times10^{-14}$ relative \\
+$C_5$ of $W$ and three diagnostic variants & explicit-operator fraction arithmetic (\code{brute\_W5.py}), $L\le8$ & $1.7\times10^{-14}$ relative \\
+$C_3$ to $C_5$ of $W$, $W_2$, raw, consistent, zero-mode & \code{complete\_exact}, $L\le16$ & $1.0\times10^{-15}$ relative \\
+full runs against raw plus shift & all schemes, $L\le160$ & $1.7\times10^{-11}$ absolute \\
+raw $C_5$, run to $L=200$ against run to $L=160$ & overlap & $1.3\times10^{-11}$ absolute \\
+\bottomrule
+\end{tabular}
+\caption{Validation of the exact $\eps^5$ data; scheme names as in Appendix~\ref{d2:app:Wlin} (\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}validation\_c5.txt},
+\code{validation\_vs\_complete\_exact.txt}).}
+\label{d2:tab:c5valid}
+\end{table}
+
+Table~\ref{d2:tab:c5valid} lists the checks. Raw $C_5$ is $-31.898$ at $L=160$ and $-32.597$ at $L=200$, against the
+continuum value $-38.834$. The last row of the table is evaluated from \code{c5\_L160.npz} and \code{c5\_L200.npz}.
+
+\subsection{Scheme \texorpdfstring{$W$}{W} diverges linearly}\label{d2:app:Wlin}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}classes\_c5.txt},
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}fits\_c5.txt}, \code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}dC5\_L1000\_all.npz}, \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (status after the exact $\eps^5$
+test, item~1); code \code{residual\_log/\allowbreak{}eps5/\allowbreak{}\{classes\_c5,\allowbreak{}fits\_c5\}.py}.\par}
+
+The exact shifts have the form $aL+b_2\ln^2L+b_1\ln L+c+\mathcal O(\ln^kL/L)$, with no $L\ln L$ term, and their linear
+coefficients are fixed to better than $2\times10^{-6}$. Raw $C_5$ to $L=160$ fixes its own linear coefficient only roughly.
+A free fit gives $+0.0004\pm0.002$ (half range over tail towers and $L_{\min}=30$, 40, 60; step~2 of
+\code{fits\_c5.txt}). A profile over a fixed raw coefficient $a_{\rm raw}$ (fits of $C_5^{\rm raw}(L)-a_{\rm
+raw}L$ with logarithmic towers, $L\le160$) is sharper: the intercept is most stable, and needs no logarithms, at
+$a_{\rm raw}=+0.0004(4)$; the $(4)$ is the range of $a_{\rm raw}$ over which the intercept stays most stable, a
+judgement read off the profile (step~4 of \code{fits\_c5.txt}), not a statistic. These fits were made with the data then available and were not repeated with the data to
+$L=\HTpTwoLfive$. Table~\ref{d2:tab:c5lin} gives the coefficients. The scheme names are: subscript 2 for windows of order
+$\eps^2$ only; consistent and zero-mode with their $\eps^3$ windows; Bloch for the Bloch $D^{\rm zm}$ at $\eps^2$ and
+$\eps^3$ without $D^M$; $W_{3e}$ for $W$ with the eigenvalue-diagonal $\eps^3$ zero-mode window
+$E_z^{(3)}(L)-E_z^{(3)}(L-\ell)$ in place of the Bloch one.
+
+\begin{table}[ht]
+\centering\footnotesize\setlength{\tabcolsep}{2.6pt}\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+ & consistent$_2$ & consistent & zero-mode$_2$ & zero-mode & Bloch$_2$ & Bloch & $W_2$ & $W_{3e}$ & $W$ \\\midrule
+shift & $-0.001429$ & $-0.000392$ & $+0.003119$ & $-0.001381$ & $+0.000991$ & $-0.000364$ & $-0.000974$ & $-0.005474$ & $-0.002329$ \\
+total & $-0.0010$ & $+0.0000$ & $+0.0035$ & $-0.0010$ & $+0.0014$ & $+0.0000$ & $-0.0006$ & $-0.0051$ & $-0.0019$ \\
+\bottomrule
+\end{tabular}
+\caption{Linear coefficient of $C_5^S(L)$ by scheme $S$. ``Shift'': the coefficient of $\delta C_5^S(L)=C_5^S-C_5^{\rm raw}$,
+from the exact shifts to $L=1000$ (\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}classes\_c5.txt}). ``Total'': shift plus the raw
+coefficient $+0.0004(4)$ from the profile fit of raw $C_5(L)$, $L\le160$ (\code{residual\_log/\allowbreak{}WINDOW\_SPEC.md}); every total
+carries its uncertainty $\pm0.0004$.}
+\label{d2:tab:c5lin}
+\end{table}
+
+So $C_5^W(L)$ carries about $\NTwoCfiveWLin\,L$. The Bloch zero-mode windows alone (scheme Bloch) leave no linear term; the
+eigenvalue-diagonal $\eps^3$ form leaves $-0.0051\,L$ and is excluded. The consistent scheme has no linear term but keeps
+about $+0.2\ln L$.
+
+\paragraph{Location.} Differences of schemes isolate the window classes (Table~\ref{d2:tab:c5classes}). The whole linear
+defect of $W$ is the Z--$\chi$ part $2\langle Z\chi\rangle_\theta$ of $D^{M,(2)}$, the only part of $M'$ that connects a pure
+zero-mode state to a one-$\chi$ state. That part cannot simply be dropped: at $\eps^4$ its $\ln L$ cancels that of the
+$\chi\chi$ parts, and together they give the finite $+0.0102$ that $C_4$ needs. A variant that evaluates the Z--$\chi$ window
+at the smaller of the two levels keeps the linear term of $C_5$ and adds $+0.00295\ln L$ to $C_4$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{7.4cm}p{3.2cm}p{4.4cm}@{}}
+\toprule
+class & $C_5$: coefficient of $L$ & $C_4$: finite part and $\ln L$ \\\midrule
+$\eps^2$ vacuum window & $-0.001429$ & the linear $+0.000221\,L$ \\
+$\eps^3$ vacuum window & $+0.001037$ & none \\
+$\eps^2$ diagonal $z$-dependent window & $+0.004548$ & $+0.016083\ln L$ \\
+$\eps^2$ off-diagonal Bloch window & $-0.002129$ & $+0.010479\ln L$ \\
+$\eps^3$ Bloch window & $-0.001355$ & none \\
+$\eps^3$ eigenvalue-diagonal window (instead of Bloch) & $-0.004500$ & none \\
+$D^{M,(2)}$ & $-0.001965$ & $+0.010246$, no $\ln L$ \\
+$D^{M,(3)}$ & $0.000000$ & none \\
+partner terms in $E_z^{(3)}$ & 0 & 0 \\\midrule
+$D^{M,(2)}$, Z--$\chi$ part & $-0.001965$ & $+0.012293-0.002947\ln L$ \\
+$D^{M,(2)}$, $\chi$ hop ($\chi$ in, $\chi$ out) & 0 & $-0.000894+0.001474\ln L$ \\
+$D^{M,(2)}$, pair creation & 0 & $-0.000579+0.000737\ln L$ \\
+$D^{M,(2)}$, pair annihilation & 0 & $-0.000579+0.000737\ln L$ \\
+\bottomrule
+\end{tabular}
+\caption{Window classes at $\eps^5$ and their $\eps^4$ content (\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}classes\_c5.txt}). The lower
+block splits $D^{M,(2)}$ by the leg type of its $M'$ vertex; the parts add up to $D^{M,(2)}$ within $8\times10^{-11}$. The $C_4$
+column gives fits of the shifts to $L\le1000$: for the $\eps^2$ vacuum window it lists only the linear term (its $\ln L$ is in
+Table~\ref{d2:tab:logs}), and the $D^{M,(2)}$ entry is a finite-$L$ estimate of the limit $\NTwoCfourChi$ of
+Appendix~\ref{d2:app:window}.}
+\label{d2:tab:c5classes}
+\end{table}
+
+\subsection{Double counting and the rule \texorpdfstring{$W_c$}{Wc}}\label{d2:app:Wc}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (\S2.2a); code \code{residual\_log/\allowbreak{}\{brute\_W5,\allowbreak{}brute\_desc\}.py},
+\code{residual\_log/\allowbreak{}ce\_wc/}.\par}
+
+\paragraph{Diagnosis.} A Z--$\chi$ sunset ($Z\to3\chi\to\chi_{aa}$) followed by a vertex that absorbs $\chi_{aa}$ into the zero
+mode is a connected process from a pure zero-mode state to a pure zero-mode state, that is, a term of the Bloch matrix
+$h^{(3)}$. Inside an outer state with spectator level $\ell$ its sunset has only the budget $L-\ell$. The outer $D^{M,(2)}$,
+acting on the transition $z\to(z\mp1,\chi_{aa})$, restores it once. The zero-mode window $D^{{\rm zm},(3)}=h^{(3)}(L)-h^{(3)}(L-\ell)$
+restores it a second time: in scheme $W$ the auxiliary channel at $L-\ell$ carries its own mass window, so $h(L-\ell)$
+contains this sunset restored only to $L-\ell$, while $h(L)$ contains it restored to $L$, and their difference adds the
+restoration from $L-\ell$ to $L$ once more. In general, with self-consistent
+auxiliary objects ($h$, $e_1$, $E_0$, \dots), every window nested inside them is counted twice. At $\eps^5$ this affects only
+$D^{M,(2)}$ inside $h^{(3)}$ and $e_1^{(3)}$, which is why the defect is purely Z--$\chi$ and why $C_4$ is unaffected. From
+$\eps^6$ on it affects $D^{\rm zm}$, the hop and pair parts of $D^M$ inside $h^{(4)}$, and the vacuum window inside
+$E_0^{(4)}$ of the consistent scheme.
+
+\paragraph{The rule.} An auxiliary channel at sub-cutoff $\lambda<L$ represents the zero-mode cluster embedded in a state of
+the cutoff-$L$ theory whose spectators have level $L-\lambda$. The windows inside it are therefore the cutoff-$L$ windows of
+that embedded state:
+\begin{equation}
+ D^{\rm zm}_{\rm aux}|z,\chi\rangle=\sum_{z'}\big[h(L)-h(\lambda-\ell_\chi)\big]_{z'z}|z',\chi\rangle,\qquad
+ D^M_{\rm aux}=\tfrac14\big\{e_1(L)-e_1(\lambda-\hat\ell),M'\big\}.
+\end{equation}
+$D^{\rm zm}_{\rm aux}$ is absent on auxiliary level-0 states, where $D^M_{\rm aux}$ uses $e_1(L)-e_1(\lambda)$. The outer
+windows keep their form, with $h$ and $e_1$ now computed under this rule. At the order that enters $C_5$,
+\begin{align}
+ h^{(3)}(\lambda;L)&=h^{(3)}(\lambda)+\tfrac12\big[e_1^{(2)}(L)-e_1^{(2)}(\lambda)\big]H_3^{M'}(\lambda),\nonumber\\
+ e_1^{(3)}(\lambda;L)&=e_1^{(3)}(\lambda)+g_1\big[e_1^{(2)}(L)-e_1^{(2)}(\lambda)\big]\big[A_1(\lambda)-A_0(\lambda)\big],\qquad
+ A_z(\lambda)=\langle z|M'_0G_zV_0|z\rangle_\lambda ,
+\end{align}
+where $H_3^{M'}$ is the response of $h^{(3)}$ to $M'_0$ inserted with unit coefficient at $\eps^2$, the subscript 0 marks the
+$\eps^0$ part of an operator, and $G_z=Q_z/(\frac z2-H_0)$. The added terms complete the inner sunsets to the outer cutoff
+$L$, so that the outer difference no longer restores them a second time. The rule has no fitted parameter; its status is provisional (Appendix~\ref{d2:app:status}). Three exact
+implementations agree: explicit-operator fraction arithmetic (\code{brute\_W5.py}, \code{brute\_desc.py}), the large-$L$
+diagram code, and \code{ce\_wc/}, a copy of the small-$L$ solver with the auxiliary windows referred to $L$ at all orders.
+They give identical $C_5$ at $L\le8$, $C_3$ to $C_5$ within $10^{-15}$ at $L\le16$, and the same $\eps^3$ spacing of
+$\chi_{11}$ as rationals at $L=8$ to 14.
+
+\subsection{Tests T1 to T3}\label{d2:app:tests}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}\{classes\_c5,\allowbreak{}ce\_wc\_tables\}.txt}, \code{residual\_log/\allowbreak{}fits/\allowbreak{}fits\_c5.txt},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}dC5\_L1000\_all.npz}.\par}
+
+We test each window in three ways: T1, $C_4$ stays unchanged and convergent; T2, $C_5$ converges to the continuum value; T3,
+the $\eps^3$ spacing $R_3$ of the single-quantum descendants vanishes (Appendix~\ref{d2:app:legs} adds T4, the $\eps^4$
+spacing).
+
+\paragraph{T1 passes.} Windows of order $\eps^3$ and higher do not enter $C_4$, and $|C_4^{W_c}-C_4^W|\le6\times10^{-13}$ for
+$L\le1000$. So $C_4^{W_c}$ has the limit $\HTpCfourTwo$ of Section~\ref{d2:c4}.
+
+\paragraph{T2 passes, with the caveat of Section~\ref{d2:c5log}.} The $W_c$ shift has the linear coefficient $-0.0003922$
+(half range $2\times10^{-6}$ over tail towers and fit windows; step~1 of \code{fits\_c5.txt}), equal to the consistent
+scheme's $-0.0003923$, so with the raw $+0.0004(4)$ the scheme has no linear term. Its limit and the residual-logarithm
+question are those of Appendix~\ref{d2:app:c5tail}. Table~\ref{d2:tab:c5schemes} compares the schemes.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{2.6cm}p{3.6cm}p{1.6cm}p{3.6cm}p{2.6cm}@{}}
+\toprule
+scheme & windows & linear & limit & limit $-$ continuum \\\midrule
+raw & none & $+0.0004$ & needs $L$ or $\ln L$ terms & \\
+consistent & vacuum, $\eps^2$ and $\eps^3$ & $+0.0000$ & needs $\ln L$ ($+0.2\ln L$) & \\
+zero-mode & diagonal, $\eps^2$ and $\eps^3$ & $-0.0010$ & diverges & \\
+Bloch & Bloch $D^{\rm zm}$, $\eps^2$ and $\eps^3$ & $+0.0000$ & ${\approx}-38.5$ & ${\approx}+0.3$ \\
+$W$ & $D^{\rm zm}+D^M$ & $-0.0019$ & diverges & \\
+$W_c$ & $W$ with rule $W_c$ & $+0.0000$ & $\NTwoCfiveWc$ & $+0.004$ \\
+\bottomrule
+\end{tabular}
+\caption{Large-$L$ behavior and extrapolated $C_5$ by scheme. ``Linear'' is the total linear coefficient of $C_5^S(L)$ of
+Table~\ref{d2:tab:c5lin}, with uncertainty $\pm0.0004$. The $W_c$ limit uses the protocol of
+Appendix~\ref{d2:app:c5tail} (towers with the $\ln^3L/L$ term, $L\le\HTpTwoLfive$); for Bloch, whose tail also carries
+logarithms, the limit and the miss are only approximate. Raw: fits without $L$, $\ln^2L$ and $\ln L$ terms miss the continuum
+value by 1.9 (step~3 of \code{fits\_c5.txt}, $L\le160$). Continuum value $C_5^{(2)}=-38.8336459$.}
+\label{d2:tab:c5schemes}
+\end{table}
+
+The scheme Bloch misses by about $0.3$: the finite part of $D^M$ is needed, and $W_c$ keeps it.
+
+\paragraph{T3 fails in $W_c$.} $W_c$ removes the slow growth of the $\eps^3$ spacing that $W$ has, but leaves a constant
+(Table~\ref{d2:tab:desc3}). A repair of this defect shifts $C_5$ by less than the extrapolation spread: the external-line
+window of Appendix~\ref{d2:app:legs}, which identifies the cause and derives the repair, shifts it by $\NTwoDeltaS$, against
+a spread of $\pm0.013$. So T2 cannot decide it, and T3 is the decisive test.
+
+\subsection{The tail of \texorpdfstring{$C_5$}{C5} and the residual logarithm}\label{d2:app:c5tail}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}fits/\allowbreak{}\{c5\_fits300,\allowbreak{}legw\_logs\}.txt},
+\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}results/\allowbreak{}\{regression\_opt,\allowbreak{}compare\_c5\_L300\_vs\_L200\}.txt},
+\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}results/\allowbreak{}c5\_L300.npz},
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_largeL/\allowbreak{}refit\_c5\_300.txt}; code \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}\{c5\_fits300,\allowbreak{}c5\_fits\}.py},
+\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}lib\_opt/}, \code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_largeL/\allowbreak{}refit\_c5\_300.py}.\par}
+
+$C_5^{W_{cs}}$ (Section~\ref{d2:c5}, Appendix~\ref{d2:app:wcs}) differs from $C_5^{W_c}$ by $\delta^{(3)}(L)S(L)$, which
+carries no $\ln L$. Towers without the $\ln^3L/L$ term that $C_5$ needs bias the limit, because a free $\ln L$ then stands in
+for the missing tail.
+
+\paragraph{Tail power.} The tail of $C_n(L)$ carries $\ln^{n-2}L/L$: $C_2\sim1/L$, $C_3\sim\ln L/L$, $C_4\sim\ln^2L/L$ and
+$C_5\sim\ln^3L/L$ (Appendices~\ref{d2:app:checks} and~\ref{d2:app:window}). Hold-out tests, made after the data to $L=300$ existed, support this power
+(Table~\ref{d2:tab:k1}): fit $[L_{\min},240]$ and predict $L=242$ to 300 with towers without $\ln L$ whose $1/L$ part has
+the powers $\ln^iL$, $i\le k_1$. The prediction error falls by one to two orders of magnitude for each added power up to
+$k_1=n-2$ ($k_1=2$ for $C_4^W$, 3 for $C_5^{W_{cs}}$) and changes by at most a factor of two beyond it. The test thus finds
+the smallest adequate tail, but it cannot exclude one more power: for $C_4^W$, $k_1=3$ is slightly better than 2.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & $k_1=0$ & 1 & 2 & 3 & 4 \\\midrule
+$C_4^W$: hold-out error & $6.1\times10^{-4}$ & $9.7\times10^{-6}$ & $1.1\times10^{-7}$ & $\mathbf{5.2\times10^{-8}}$ & $6.5\times10^{-8}$ \\
+$C_5^{W_{cs}}$: hold-out error & $1.2\times10^{-2}$ & $3.5\times10^{-4}$ & $5.3\times10^{-6}$ & $\mathbf{3.7\times10^{-7}}$ & $5.7\times10^{-7}$ \\
+$C_5^{W_{cs}}$: limit $-$ continuum & $+0.81$ & $+0.16$ & $+0.015$ & $-0.003$ & $+0.012$ \\
+\bottomrule
+\end{tabular}
+\caption{Selection of the tail power $k_1$ (largest $i$ in $\ln^iL/L$) by hold-out prediction of $L=242$ to 300 from fits to
+$L\le240$, towers without $\ln L$ ($1/L^2$ with $\ln^{0,1}L$ or $\ln^{0,1,2}L$; $L_{\min}=40$, 60, 80; median of the largest
+errors), and the limit of the same towers fitted to $L\le300$ (\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}fits/\allowbreak{}c5\_fits300.txt},
+\S1). Bold: smallest error.}
+\label{d2:tab:k1}
+\end{table}
+
+With the 15 fits of Eq.~\eqref{d2:eq:C5tower} ($L_{\min}=30$ to 100, $k_2=0$ to 2, $L\le300$), $k_1=4$ gives a median of
+$-38.8334$, shifted by $\NTwoCfiveKfourShift$ from the $k_1=3$ value, with a half range of $\NTwoCfiveKfourHalf$ instead of $0.013$
+(replay check \code{p2.c5\_k1}); with the towers of Table~\ref{d2:tab:k1} the limit moves by $\NTwoCfiveKfourTab$.
+
+\paragraph{Raw $C_5$ to $L=\HTpTwoLfive$.} The sum is split into 10012 independent tasks (groups of chain patterns and
+level ranges). The large-$L$ engine as first run (\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}lib/}, not the
+production solver) computed 3987 of them in about 130 node-hours.
+An optimized engine (\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}lib\_opt/\allowbreak{}engine.py}) finished the remaining 6025 tasks in 32 node-hours;
+only the density without $\eps$-derivatives changes, through a memoized tree over the inclusion--exclusion terms, a parallel
+diagonal convolution and batched axis convolutions. Per task it agrees with the first engine to $\NTwoOptRegress$
+(norm-relative; 1448 tasks, covering every kind of density kernel at $L=300$ and all tasks with a bundle of six lines at
+$L=200$).
+The $L=300$ assembly, 40\% old and 60\% new tasks, reproduces the $L\le200$ data to $\NTwoOptAssembly$ ($C_5$, relative)
+and $5.1\times10^{-13}$ ($C_4$). Raw $C_5(300)=-33.6509669991$.
+
+\paragraph{Hold-out tests with $L\le300$.} Table~\ref{d2:tab:c5log} compares fits without and with a free $\ln L$ at fixed
+$k_1$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{fit $L\le200$, predict 202 to 300} & \multicolumn{2}{c}{fit $L\le240$, predict 242 to 300} \\
+$k_1$ & no $\ln L$ & free $\ln L$ & no $\ln L$ & free $\ln L$ \\\midrule
+2 & $4.2\times10^{-5}$ & $7.1\times10^{-6}$ & $1.6\times10^{-5}$ & $2.0\times10^{-6}$ \\
+3 & $\NTwoBlindNoLog$ & $\NTwoBlindFreeLog$ & $6.0\times10^{-7}$ & $5.7\times10^{-7}$ \\
+4 & $6.5\times10^{-6}$ & $1.4\times10^{-5}$ & $6.3\times10^{-7}$ & $7.7\times10^{-7}$ \\
+\bottomrule
+\end{tabular}
+\caption{$C_5^{W_{cs}}$: hold-out prediction errors, median over the 15 fits of Eq.~\eqref{d2:eq:C5tower}
+(\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_largeL/\allowbreak{}refit\_c5\_300.txt}). The medians over twelve fits with $L_{\min}=30$ to 80
+(\code{c5\_fits300.txt}) for the fit to $L\le200$ with $k_1=3$ are $4.7\times10^{-6}$ and $9.6\times10^{-6}$.}
+\label{d2:tab:c5log}
+\end{table}
+
+With the misspecified $k_1=2$ a free logarithm helps. With $k_1=3$ and the fit ending at $L=200$, the model without $\ln L$
+predicts $L=202$ to 300 better by a factor of two. With the fit ending at $L=240$ the two are equal, so at that level the
+hold-out test no longer separates a logarithm from none; for $C_4^W$, which has no logarithm, a free one also predicts slightly
+better there.
+
+\paragraph{Drift of the free $\ln L$ coefficient.} With $k_1=3$ towers, $L_{\min}=30$ to 80 (medians of twelve fits,
+\S2 of \code{c5\_fits300.txt}):
+\begin{center}\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+$L_{\max}$ & 200 & 220 & 240 & 260 & 280 & 300 \\\midrule
+free $\ln L$ coefficient $b$ & $-0.0134$ & $-0.0080$ & $-0.0005$ & $+0.0030$ & $+0.0047$ & $+0.0054$ \\
+calibration, injected $0$ & $-0.0007$ & $-0.0021$ & $-0.0028$ & $-0.0033$ & $-0.0035$ & $-0.0036$ \\
+calibration, injected $-0.03$ & $-0.0307$ & $-0.0321$ & $-0.0328$ & $-0.0333$ & $-0.0335$ & $-0.0336$ \\
+$C_5^{W_{cs}}$: limit without $\ln L$ $-$ continuum & $-0.0049$ & $-0.0051$ & $-0.0043$ & $-0.0032$ & $-0.0024$ & $-0.0017$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The calibration applies the same estimator to the synthetic series $7.7\,C_4^W+2\ln^3L/L+b\ln L$ with a known, injected $b$:
+$C_4^W$ has no logarithm and a known limit, the factor $7.7\approx|C_5/C_4|$ gives it the size of $C_5$, and the
+$\ln^3L/L$ term gives it the top logarithm of $C_5$. The estimator settles by $L_{\max}\approx250$ and then reads about
+$\NTwoBbias$ low. An independent refit (\code{refit\_c5\_300.py}), with the 15 fits of Eq.~\eqref{d2:eq:C5tower}, gives the
+same drift ($\NTwoBfreeTwoHundred$, $-0.004$, $+0.003$ and
+$\NTwoBfreeThreeHundred$ at $L_{\max}=200$, 240, 280 and 300), and on $C_4^W$, which has no logarithm, the same estimator
+returns $\NTwoBnull$. Section~\ref{d2:c5log} draws the conclusion.
+
+\paragraph{The limit.} The 15 fits of Eq.~\eqref{d2:eq:C5tower} to $L\le300$ give Eq.~\eqref{d2:eq:C5}; their range is
+$-38.8430$ to $-38.8174$. $C_5^{W_c}$ lies higher by about $-\delta_\infty S_\infty=+0.0058$, as the external-line window
+requires. As $L_{\max}$ grows, the $W_c$ median moves away from the continuum value and the $W_{cs}$ median toward it. The
+same protocol applied to $C_4^W$ gives $5.04868\pm0.00082$ (half range of the 15 fits) against $5.0488684$.
+
+\paragraph{Classes excluded as sources of a logarithm.} The $\eps^3$ external-line class gives no $\ln L$ for any per-unit
+coefficients, because the $\ln L$ coefficients of $S(L)$ cancel within the hop sector and within the pair sector separately
+($6\times10^{-7}$ and $-1.7\times10^{-6}$; \code{legw\_logs.txt}). The spectator window $D^{M,(3)}$ has no $L$, $\ln^2L$ or
+$\ln L$ term within the fit uncertainties. The other classes that carry logarithms cannot be separated by fits of the exact shifts alone.
+
+\subsection{Consequences for \texorpdfstring{$C_6$}{C6} to \texorpdfstring{$C_8$}{C8}}\label{d2:app:c6eps5}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}ce\_wc\_tables.txt}, \code{complete\_exact/\allowbreak{}README.md}
+(\S9).\par}
+
+The double counting recurs, and grows, at every order with nested windows. Rule $W_c$ removes it by construction and is
+implemented at all orders in \code{residual\_log/\allowbreak{}ce\_wc/}. At $L=14$ the schemes $W_c$ and $W$ already differ by about 1\%:
+$C_6=157.83$ against $159.46$, $C_7=-1439.9$ against $-1458.3$, and $C_8=14710$ against $14962$. The $\eps^3$ remainder of T3
+is a constant defect attached to $\chi$ lines; it enters $C_5$ (through the shift $\delta^{(3)}S$,
+Appendix~\ref{d2:app:wcstests}) and every higher coefficient. Its repair (Appendix~\ref{d2:app:legs}) changes $C_6$ to $C_8$ by
+only about 0.01\%, but the same defect recurs at $\eps^4$ and $\eps^5$. These differences between schemes are much smaller than
+the distance of $C_6$ to $C_8$ at $L\le16$ from the continuum values, and $C_6$ to $C_8$ are not reproduced in any scheme
+(Section~\ref{d2:c6}).

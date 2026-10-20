@@ -1,0 +1,65 @@
+% Generated body; only mechanical merging changes.
+
+
+
+\begin{abstract}
+This note documents every finite-coupling Hamiltonian-truncation (HT) number quoted in the paper on the long-range
+Ising (LRI) model~\cite{ht:paper}. The perturbative HT coefficients $C_2$ to $C_8$ are documented separately, in
+\texttt{HT\_Pert/}.
+
+The LRI fixed point is the $\phi^4$ deformation of the generalized free field (GFF)~\cite{ht:Fisher:1972zz,ht:Sak:1973oqx,ht:Paulos:2015jfa}.
+We diagonalize the deformed Hamiltonian in radial quantization, in a truncated Fock space~\cite{ht:Hogervorst:2014rta,ht:Rychkov:2014eea},
+at couplings tuned to the conformal values of two levels. The zero mode costs no level, so the cutoff does not cap
+its quanta. It is kept in a small basis of states, each a superposition of many of its quanta, and the full
+Hamiltonian, including the coupling of the zero mode to the bath, is diagonalized on the product of this basis with
+the bath of all other modes, truncated at a total level $N$.
+
+In the truncated space an excited bath state can host fewer vacuum fluctuations than the vacuum. A correction for
+these missing fluctuations, the window correction, removes the dominant descendant-spacing violations of the raw
+truncation, which do not decay with $N$. A zero-mode basis selected from a reduced density matrix makes the
+strong-coupling cutoffs affordable.
+
+In $d=1$ we reach $N=40$ at 13 values of $\Ds$ and extrapolate in $N$. The results are final for
+$\Ds\geq0.1$, one-sided at $0.075$, unstable at $0.05$, and without a limit for $\Ds\leq0.025$, where the
+window-corrected model itself does not converge. In $d=2$ ($N\leq24$) and $d=3$ ($N\leq20$) we report
+finite-cutoff behaviour only.
+
+Separately written solvers reproduce the finite-cutoff spectra in all three dimensions. In $d=1$ they agree to
+$5.6\times10^{-7}$ with the density-basis records behind the quoted values ($N=12$--20) and to $5\times10^{-9}$ with
+converged energy-basis records. In $d=2$ they agree to $1.4\times10^{-12}$ ($N=12$, 16) and in $d=3$ to
+$2\times10^{-11}$ ($N=8$--12). Section~\ref{ht:sec:repro} maps each number to its code, records, command and tolerance.
+\end{abstract}
+
+
+
+\input{parts/ht/sections/s01_summary.tex}
+\input{parts/ht/sections/s02_model.tex}
+\input{parts/ht/sections/s03_window.tex}
+\input{parts/ht/sections/s04_d1.tex}
+\input{parts/ht/sections/s05_d2.tex}
+\input{parts/ht/sections/s06_d3.tex}
+\input{parts/ht/sections/s07_checks.tex}
+\input{parts/ht/sections/s08_caveats.tex}
+\input{parts/ht/sections/s09_repro.tex}
+\appendix
+\input{parts/ht/sections/sA_provenance.tex}
+
+\begin{thebibliography}{99}
+\bibitem{ht:Rychkov:2014eea} S.~Rychkov and L.~G.~Vitale, \emph{Hamiltonian truncation study of the $\phi^4$ theory in two dimensions}, Phys.\ Rev.\ D \textbf{91} (2015) 085011, arXiv:1412.3460.
+\bibitem{ht:Behan:2017emf} C.~Behan, L.~Rastelli, S.~Rychkov and B.~Zan, \emph{A scaling theory for the long-range to short-range crossover and an infrared duality}, J.\ Phys.\ A \textbf{50} (2017) 354002, arXiv:1703.05325.
+\bibitem{ht:Chang:2024whx} C.-H.~Chang, V.~Dommes, R.~S.~Erramilli, A.~Homrich, P.~Kravchuk, A.~Liu, M.~S.~Mitchell, D.~Poland and D.~Simmons-Duffin, \emph{Bootstrapping the 3d Ising stress tensor}, JHEP \textbf{03} (2025) 136, arXiv:2411.15300.
+\bibitem{ht:paper} Z.~Zheng, \emph{The long-range Ising CFT: perturbative and nonperturbative approaches} (2026), folder \texttt{paper/} of the public repository.
+\bibitem{ht:Fisher:1972zz} M.~E.~Fisher, S.-k.~Ma and B.~G.~Nickel, \emph{Critical exponents for long-range interactions}, Phys.\ Rev.\ Lett.\ \textbf{29} (1972) 917.
+\bibitem{ht:Sak:1973oqx} J.~Sak, \emph{Recursion relations and fixed points for ferromagnets with long-range interactions}, Phys.\ Rev.\ B \textbf{8} (1973) 281.
+\bibitem{ht:Paulos:2015jfa} M.~F.~Paulos, S.~Rychkov, B.~C.~van Rees and B.~Zan, \emph{Conformal invariance in the long-range Ising model}, Nucl.\ Phys.\ B \textbf{902} (2016) 246, arXiv:1509.00008.
+\bibitem{ht:Behan:2017dwr} C.~Behan, L.~Rastelli, S.~Rychkov and B.~Zan, \emph{Long-range critical exponents near the short-range crossover}, Phys.\ Rev.\ Lett.\ \textbf{118} (2017) 241601, arXiv:1703.03430.
+\bibitem{ht:Hogervorst:2014rta} M.~Hogervorst, S.~Rychkov and B.~C.~van Rees, \emph{Truncated conformal space approach in $d$ dimensions: a cheap alternative to lattice field theory?}, Phys.\ Rev.\ D \textbf{91} (2015) 025005, arXiv:1409.1581.
+\bibitem{ht:Leggett:1987zz} A.~J.~Leggett, S.~Chakravarty, A.~T.~Dorsey, M.~P.~A.~Fisher, A.~Garg and W.~Zwerger, \emph{Dynamics of the dissipative two-state system}, Rev.\ Mod.\ Phys.\ \textbf{59} (1987) 1.
+\bibitem{ht:Bulla:2003rns} R.~Bulla, N.-H.~Tong and M.~Vojta, \emph{Numerical renormalization group for bosonic systems and application to the subohmic spin-boson model}, Phys.\ Rev.\ Lett.\ \textbf{91} (2003) 170601, arXiv:cond-mat/0306708.
+\bibitem{ht:Bulla:2005bnrg} R.~Bulla, H.-J.~Lee, N.-H.~Tong and M.~Vojta, \emph{Numerical renormalization group for quantum impurities in a bosonic bath}, Phys.\ Rev.\ B \textbf{71} (2005) 045122, arXiv:cond-mat/0407559.
+\bibitem{ht:Belavin:1984vu} A.~A.~Belavin, A.~M.~Polyakov and A.~B.~Zamolodchikov, \emph{Infinite conformal symmetry in two-dimensional quantum field theory}, Nucl.\ Phys.\ B \textbf{241} (1984) 333.
+\bibitem{ht:Simmons-Duffin:2016wlq} D.~Simmons-Duffin, \emph{The lightcone bootstrap and the spectrum of the 3d Ising CFT}, JHEP \textbf{03} (2017) 086, arXiv:1612.08471.
+\bibitem{ht:Cohen:2021erm} T.~Cohen, K.~Farnsworth, R.~Houtz and M.~A.~Luty, \emph{Hamiltonian truncation effective theory}, SciPost Phys.\ \textbf{13} (2022) 011, arXiv:2110.08273.
+\bibitem{ht:EliasMiro:2022pua} J.~Elias Mir\'o and J.~Ingoldby, \emph{Effective Hamiltonians and counterterms for Hamiltonian truncation}, JHEP \textbf{07} (2023) 052, arXiv:2212.07266.
+\bibitem{ht:Elias-Miro:2020qwz} J.~Elias Mir\'o and E.~Hardy, \emph{Exploring Hamiltonian truncation in $d=2+1$}, Phys.\ Rev.\ D \textbf{102} (2020) 065001, arXiv:2003.08405.
+\end{thebibliography}

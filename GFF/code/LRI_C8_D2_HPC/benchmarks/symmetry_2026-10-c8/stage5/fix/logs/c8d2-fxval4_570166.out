@@ -1,0 +1,14 @@
+job 570166 on <NODE> at 2026-10-05T11:38:07-04:00; package <SCRATCH>/c8d2/pkg/2b3a9233353d; evidence <SCRATCH>/c8d2/evidence/2b3a9233353d/fxval4.570166.0
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+make -q bin/c8d2_{decimal,gmp}_san exit 0 (0 = current)
+f415eb7380badb6c8b0a13c33e34d7bf6124a1299797bfa8b2a9b4b7a5a2c8f3  bin/c8d2_decimal_san
+d2db02b7bf5512d0cfae8de2100e57e5fa6dc8c2b1150e7ea3cbecf860857af8  bin/c8d2_gmp_san
+sanitize.py --selftest after 674 s
+{"backend": "gmp", "sector": "power", "L": 8, "order": 8, "layout": 2, "graphs": [19553, 23573, 24114, 24402], "rows": 8, "quad": 361, "mp": 44, "seconds": 0.6}
+{"backend": "decimal300", "command": ["g++", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS", "-std=c++17", "-fopenmp", "-ffp-contract=off", "-fno-fast-math", "<SCRATCH>/c8d2/pkg/2b3a9233353d/tests/point_checks.cp
+{"backend": "gmp350", "command": ["g++", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS", "-std=c++17", "-fopenmp", "-ffp-contract=off", "-fno-fast-math", "-DC8_USE_GMP", "<SCRATCH>/c8d2/pkg/2b3a9233353d/tests/poi
+{"status": "passed", "test": "sanitize", "flags": ["-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS"], "asan_options": "detect_leaks=0:abort_on_error=1", "ubsan_options": "halt_on_error=1:print_stacktrace=1", "capture": {"piped_exit": -6, "piped_report_seen": false, "pty_exit": -6, "pty_report_seen": true}, "selftest": [{"probe": "glibcxx_assertions", "exit": -6, "expected": "Assertion", "captured": "pty (stdout and stderr)", "report": "/usr/include/c++/11/array:188: constexpr std::array<_Tp, _Nm>::value_type& std::arra
+{"piped_exit": -6, "piped_report_seen": false, "pty_exit": -6, "pty_report_seen": true}
+finished 2026-10-05T11:49:22-04:00, status 0

@@ -1,0 +1,80 @@
+\section{The window correction}\label{ht:sec:window}
+
+\paragraph{The truncation artifact.} In the CFT every descendant spacing $E(\partial^n\mathcal O)-E(\mathcal O)=n$
+is exact. The raw truncation violates these spacings by amounts that do not decay with $N$. In $d=1$ the level-1
+violations are $\HTq{V1}$ at $\Ds\le0.1$ over $N=16$--28 (Table~\ref{ht:tab:d1-ident} shows $N=28$). The mechanism is that a bath state of level $\ell$ can carry
+vacuum fluctuations of the bath only up to level $N-\ell$, whereas the vacuum keeps all fluctuations up to $N$. The
+same mechanism spoils the cancellation of disconnected vacuum diagrams in $\phi^4$ theory in $2+1$ dimensions with an
+energy cutoff, where the effect does not decouple as the cutoff is removed; there it was addressed with perturbative
+state-dependent counterterms~\cite{ht:Elias-Miro:2020qwz}. The missing vacuum window is the truncation artifact; in
+the perturbative truncation it is analysed in \texttt{HT\_Pert/}.
+
+\paragraph{The correction.} We add to every bath state of level $\ell$, in all sectors, the shift
+\begin{equation}
+ D(\ell)=E_v(N)-E_v(N-\ell),\qquad D(0)=0,
+ \label{ht:eq:window}
+\end{equation}
+where $E_v(M)$ is the vacuum energy at bath cutoff $M$ of the same Hamiltonian, with the same $\Ds$, couplings, zero
+mode and basis. The definition of $E_v$ has three features:
+\begin{itemize}
+\item \emph{Zero mode included.} Vacua of the bath alone miss the zero-mode tadpole $\frac g2\langle q^2\rangle$,
+ which cancels the $-\frac g2$ in $A$, and remove only part of the violation.
+\item \emph{Consistent.} The production mode is \emph{consistent}: $E_v(M)$ is the lowest eigenvalue of the
+ \emph{corrected} Hamiltonian at cutoff $M$,
+ \begin{equation}
+ E_v(M)=\lambda_{\min}\big[H(M)+D_M\big],\qquad D_M(\ell)=E_v(M)-E_v(M-\ell),
+ \label{ht:eq:Ev}
+ \end{equation}
+ built level by level from the corrected lower cutoffs.
+\item \emph{Odd cutoffs.} $E_v$ of an odd $M$ equals $E_v(M-1)$, since only even levels exist in the sector.
+\end{itemize}
+The \emph{literal} mode uses the uncorrected $\lambda_{\min}H(M)$ and serves as a diagnostic. Energies are measured
+from the lowest even eigenvalue of the zero mode alone, so $E_v(0)=0$.
+
+\paragraph{Precedent.} $D(\ell)$ is the counterpart, with a level cutoff, of the state-dependent counterterms that
+Ref.~\cite{ht:Elias-Miro:2020qwz} adds with an energy cutoff to restore the missing states of disconnected bubbles.
+\begin{itemize}
+\item At second order in the interaction, $D(\ell)$ corresponds to their single-bubble counterterm (Patch~I, their
+ Eq.~(5.38)). Their denominators contain the unperturbed energy of the level being computed; ours contain the bubble
+ energy alone.
+\item They add such terms order by order, including towers of repeated bubbles (Patch~II, up to five bubbles), as a
+ pragmatic fix. $D(\ell)$ is a nonperturbative analogue: it takes all disconnected bubbles at once from the vacuum
+ energies of the same truncated Hamiltonian at lower cutoffs. The consistent definition, Eq.~\eqref{ht:eq:Ev}, also
+ corrects the states inside those vacuum energies, which is the role of their Patch~II.
+\end{itemize}
+
+\paragraph{Fixed point.} At each $M$, Eq.~\eqref{ht:eq:Ev} is a scalar fixed point $s=\lambda_{\min}[H(M)+D_M(s)]$,
+because $s=E_v(M)$ enters every $D_M(\ell>0)$. We write $F(s)=\lambda_{\min}-s$. Then $F'(s)=-p_0$, with $p_0$ the
+weight of the vacuum vector on bath level 0. $F$ is concave, so Newton's method converges monotonically after at most
+one step, and the fixed points are solved to $10^{-12}$. At $M=N$, $s$ is the ground energy of the main problem.
+
+\paragraph{Derivatives.} For the tuning Jacobian, Hellmann--Feynman on the stored vacuum vectors gives
+\begin{equation}
+ \partial E_v(M)=\frac{\langle\partial H\rangle-\sum_{\ell>0}w_\ell\,\partial E_v(M-\ell)}{p_0},
+ \label{ht:eq:dEv}
+\end{equation}
+with $w_\ell$ the weight of the vacuum vector on bath level $\ell$. The package tests compare it with finite differences.
+
+\paragraph{What it removes and what it misses.}
+\begin{itemize}
+\item In $d=1$ the correction reduces the level-1 violation of $\sigma$ by a factor $\HTq{V2}$ at $N=28$,
+ $\Ds\le0.15$.
+\item At $\eps\ge0.6$ ($\Ds\le0.1$), non-decaying residuals remain:
+ \begin{itemize}
+ \item about $\HTq{V3}$ for $\sigma$ and $\phi^3$;
+ \item up to $\HTq{V4}$ for $\varepsilon$ at $\Ds\le0.05$ (Table~\ref{ht:tab:d1-ident}).
+ \end{itemize}
+\item The correction restores only disconnected vacuum fluctuations. At finite coupling it therefore models the
+ truncation artifact rather than removing it completely, and the residuals show what it misses.
+\item Expanded in $\eps$, the corrected $d=1$ model changes $\DE$ only at $O(\eps^4)$: in the blind solver the
+ difference to the raw $\DE$ scales as $\eps^{4}$ (Section~\ref{ht:sec:checks}). $C_2$ and $C_3$ are therefore unaffected.
+\item The perturbative windows of \texttt{HT\_Pert/} are built in the same spirit. In $d=1$ the finite-coupling
+ window has not been compared with them order by order, so whether its $O(\eps^4)$ term is the one the continuum
+ requires is not known.
+\item In $d=2,3$ the consistent window is the same construction (Sections~\ref{ht:d2:sec}, \ref{ht:d3:sec}). In $d=2$ its
+ $\eps$ expansion reproduces the consistent-window scheme of \texttt{HT\_Pert/}, whose fourth-order coefficient
+ grows like $\ln N$; the model is therefore correct only through third order. In $d=3$ its coefficients $C_n(N)$
+ come from \texttt{HT\_Pert/}: $C_2$ and $C_3$ approach their continuum values, while the fourth-order coefficient at
+ $N=20$ is 60\% of $C_4(3)$ and still growing slowly, a finite-$N$ statement.
+\end{itemize}
+We have not constructed an effective Hamiltonian beyond the window~\cite{ht:Cohen:2021erm,ht:EliasMiro:2022pua}.

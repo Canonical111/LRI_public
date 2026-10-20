@@ -1,0 +1,21 @@
+{
+  "name": "M4d completion rows (PLAN_ANALYSIS rev 6/7, A6-1): DIAGNOSTIC records only, never estimates",
+  "physical_delta": 0,
+  "status": "PLANNED_2026-10-13",
+  "description": "Full-coverage extraction comparisons for the 20 primary points that had none after the rev-4 build (PLAN_ANALYSIS.md rev 6, A6-1; rev 7 approved). Stage M4D6A: the seven remaining N=768 primaries on the published N=1024 grid (oversample 4, radius_cost 4.5), overlap n <= 768, as rows 0-2 of cluster/analysis_checks_plan.json. Stage M4D6B: the two remaining N=1024 primaries on the published variant N=1024 grid (oversample 4, radius_cost 4.0), overlap n <= 1024, as rows 3-4 there. Stage M4D6C: the eleven N <= 384 primaries (N=256: (1,0.125), (1,0.15), (1,0.2), (1,0.25), (2,0.175), (2,0.25), (2,0.35), (3,0.25), (3,0.35); N=384: (3,0.2); N=128: (3,0.5)) on the published N=512 pilot grid (oversample 4, radius_cost 4.5), a different Cauchy grid from both archived grids (N=256 o5/r4.0, N=384 o4/r4.5); overlap n <= N. One regulator order per row, its lambda values evaluated in sequence on one grid. All auxiliary cutoffs equal the production values. These records join the DIAGNOSTIC pool of the continuum analysis (M5): they enter only epsilon_grid on their overlap with the primary record they check and are never promoted to estimates.",
+  "science_rules": {
+    "lambda_N_minimum": {"1": 50, "2": 60, "3": 75},
+    "lambda_N_basis": "Same science rules as cluster/production_plan.json.",
+    "minimum_mixed_cutoff": 16384
+  },
+  "jobs": [
+    {"id": "M4d6_N1024_r4p5_order1", "stage": "M4D6A", "cutoff": 1024, "order": 1, "lambda": [0.0875, 0.1], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d6_N1024_r4p5_order2", "stage": "M4D6A", "cutoff": 1024, "order": 2, "lambda": [0.125, 0.15], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d6_N1024_r4p5_order3", "stage": "M4D6A", "cutoff": 1024, "order": 3, "lambda": [0.125, 0.15, 0.175], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d6_N1024_r4p0_order1", "stage": "M4D6B", "cutoff": 1024, "order": 1, "lambda": [0.0625], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.0},
+    {"id": "M4d6_N1024_r4p0_order2", "stage": "M4D6B", "cutoff": 1024, "order": 2, "lambda": [0.075], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.0},
+    {"id": "M4d6_N512_r4p5_order1", "stage": "M4D6C", "cutoff": 512, "order": 1, "lambda": [0.125, 0.15, 0.2, 0.25], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d6_N512_r4p5_order2", "stage": "M4D6C", "cutoff": 512, "order": 2, "lambda": [0.175, 0.25, 0.35], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d6_N512_r4p5_order3", "stage": "M4D6C", "cutoff": 512, "order": 3, "lambda": [0.2, 0.25, 0.35, 0.5], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5}
+  ]
+}

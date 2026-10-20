@@ -1,0 +1,4988 @@
+{
+ "schema": "c8-d2-r4f-profile-1",
+ "stage": "final",
+ "identity": {
+  "utc": "2026-10-05T00:48:24Z",
+  "host": "<NODE>",
+  "cpu_model": "AMD EPYC 7742 64-Core Processor",
+  "kernel": "4.18.0-513.24.1.el8_9.x86_64",
+  "platform": "Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28",
+  "python": "3.11.9",
+  "package": "<SCRATCH>/temp_project/c8d2/pkg/ef705e395924",
+  "package_commit": "export ef705e395924",
+  "cpu_count": 128,
+  "affinity": [
+   36,
+   37,
+   38,
+   39,
+   44,
+   45,
+   46,
+   47,
+   52,
+   53,
+   54,
+   55,
+   60,
+   61,
+   62,
+   63,
+   68,
+   69,
+   70,
+   71,
+   76,
+   77,
+   78,
+   79,
+   84,
+   85,
+   86,
+   87,
+   92,
+   93,
+   94,
+   95
+  ],
+  "slurm": {
+   "SLURM_JOB_ID": "54668998",
+   "SLURM_JOB_NAME": "c8d2-r4f-ctrl",
+   "SLURM_JOB_NODELIST": "<NODE>",
+   "SLURM_JOB_PARTITION": "shared",
+   "SLURM_CPUS_ON_NODE": "32",
+   "SLURM_RESTART_COUNT": null,
+   "SLURM_MEM_PER_NODE": "61440"
+  },
+  "omp_env": {},
+  "lscpu": "Architecture:        x86_64\nCPU op-mode(s):      32-bit, 64-bit\nByte Order:          Little Endian\nCPU(s):              128\nOn-line CPU(s) list: 0-127\nThread(s) per core:  1\nCore(s) per socket:  64\nSocket(s):           2\nNUMA node(s):        8\nVendor ID:           AuthenticAMD\nCPU family:          23\nModel:               49\nModel name:          AMD EPYC 7742 64-Core Processor\nStepping:            0\nCPU MHz:             3370.946\nBogoMIPS:            4491.79\nVirtualization:      AMD-V\nL1d cache:           32K\nL1i cache:           32K\nL2 cache:            512K\nL3 cache:            16384K\nNUMA node0 CPU(s):   0-15\nNUMA node1 CPU(s):   16-31\nNUMA node2 CPU(s):   32-47\nNUMA node3 CPU(s):   48-63\nNUMA node4 CPU(s):   64-79\nNUMA node5 CPU(s):   80-95\nNUMA node6 CPU(s):   96-111\nNUMA node7 CPU(s):   112-127\nFlags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es\n",
+  "numactl_hardware": "available: 8 nodes (0-7)\nnode 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\nnode 0 size: 31799 MB\nnode 0 free: 15673 MB\nnode 1 cpus: 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31\nnode 1 size: 32250 MB\nnode 1 free: 25077 MB\nnode 2 cpus: 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47\nnode 2 size: 32250 MB\nnode 2 free: 24838 MB\nnode 3 cpus: 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63\nnode 3 size: 32238 MB\nnode 3 free: 23170 MB\nnode 4 cpus: 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79\nnode 4 size: 32250 MB\nnode 4 free: 21583 MB\nnode 5 cpus: 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95\nnode 5 size: 32195 MB\nnode 5 free: 20019 MB\nnode 6 cpus: 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111\nnode 6 size: 32250 MB\nnode 6 free: 24622 MB\nnode 7 cpus: 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127\nnode 7 size: 32249 MB\nnode 7 free: 23750 MB\nnode distances:\nnode   0   1   2   3   4   5   6   7 \n  0:  10  12  12  12  32  32  32  32 \n  1:  12  10  12  12  32  32  32  32 \n  2:  12  12  10  12  32  32  32  32 \n  3:  12  12  12  10  32  32  32  32 \n  4:  32  32  32  32  10  12  12  12 \n  5:  32  32  32  32  12  10  12  12 \n  6:  32  32  32  32  12  12  10  12 \n  7:  32  32  32  32  12  12  12  10 \n",
+  "perf_version": "perf version 4.18.0-513.24.1.el8_9.x86_64\n",
+  "perf_event_paranoid": "1",
+  "kptr_restrict": "1",
+  "executables": {
+   "host": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp",
+    "present": true,
+    "sha256": "0a77b88e81e4e8b779684fcacf078a817a5f7ff866b861726ebb1a1c6cc622ee",
+    "bytes": 211656,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": false,
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp",
+     "backend": "gmp",
+     "executable_sha256": "0a77b88e81e4e8b779684fcacf078a817a5f7ff866b861726ebb1a1c6cc622ee",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-zen2/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-L<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "-Wl,-rpath,<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "-Wl,--disable-new-dtags",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-zen2/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-zen2",
+     "diagnostic": null,
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=znver2 -march=znver2"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10",
+      "realpath": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+      "sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:41Z"
+    },
+    "build_text": null
+   },
+   "spak": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp",
+    "present": true,
+    "sha256": "b9de4709b9b9645f37c2bf3adcd17723bc71661b94d929a672ccfc82cf30cc95",
+    "bytes": 211656,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": false,
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp",
+     "backend": "gmp",
+     "executable_sha256": "b9de4709b9b9645f37c2bf3adcd17723bc71661b94d929a672ccfc82cf30cc95",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-spak/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-L<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "-Wl,-rpath,<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "-Wl,--disable-new-dtags",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-spak/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-spak",
+     "diagnostic": null,
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "<HOME>/c8d2/opt/gmp-6.2.1-spak/lib/libgmp.so.10",
+      "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+      "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:34Z"
+    },
+    "build_text": null
+   },
+   "base": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp",
+    "present": true,
+    "sha256": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3",
+    "bytes": 211656,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": false,
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp",
+     "backend": "gmp",
+     "executable_sha256": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "",
+     "diagnostic": null,
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10",
+      "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+      "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:28Z"
+    },
+    "build_text": null
+   },
+   "host_prof": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp_prof",
+    "present": true,
+    "sha256": "c722d5f81e592f449c74029ceecc7c871942b41b2d8a8f47a8105003dfb0b94d",
+    "bytes": 216128,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": true,
+     "diagnostic_kind": "tier_timers",
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp_prof",
+     "backend": "gmp",
+     "executable_sha256": "c722d5f81e592f449c74029ceecc7c871942b41b2d8a8f47a8105003dfb0b94d",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-zen2/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS",
+      "src/c8d2_integrate.cpp",
+      "-L<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "-Wl,-rpath,<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "-Wl,--disable-new-dtags",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp_prof"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-zen2/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-zen2",
+     "diagnostic": "tier_timers",
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": true,
+      "diagnostic_kind": "tier_timers",
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=znver2 -march=znver2"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10",
+      "realpath": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+      "sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:42Z"
+    },
+    "build_text": null
+   },
+   "spak_prof": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp_prof",
+    "present": true,
+    "sha256": "5923acc520008721aa603aff9e5eb83976da4fb8fc7e2d5eb0a2f6742555c735",
+    "bytes": 216128,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": true,
+     "diagnostic_kind": "tier_timers",
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp_prof",
+     "backend": "gmp",
+     "executable_sha256": "5923acc520008721aa603aff9e5eb83976da4fb8fc7e2d5eb0a2f6742555c735",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-spak/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS",
+      "src/c8d2_integrate.cpp",
+      "-L<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "-Wl,-rpath,<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "-Wl,--disable-new-dtags",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp_prof"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-I<HOME>/c8d2/opt/gmp-6.2.1-spak/include",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-spak",
+     "diagnostic": "tier_timers",
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": true,
+      "diagnostic_kind": "tier_timers",
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "<HOME>/c8d2/opt/gmp-6.2.1-spak/lib/libgmp.so.10",
+      "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+      "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-spak/lib",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:35Z"
+    },
+    "build_text": null
+   },
+   "base_prof": {
+    "path": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp_prof",
+    "present": true,
+    "sha256": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+    "bytes": 216128,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": true,
+     "diagnostic_kind": "tier_timers",
+     "tail_top": 16,
+     "compiler": "13.3.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp_prof",
+     "backend": "gmp",
+     "executable_sha256": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+     "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp_prof"
+     ],
+     "compiler_options": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_TIER_TIMERS"
+     ],
+     "compiler": "g++ (Spack GCC) 13.3.0",
+     "compiler_macro_version": "13.3.0",
+     "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "GMP_PREFIX": "",
+     "diagnostic": "tier_timers",
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": true,
+      "diagnostic_kind": "tier_timers",
+      "tail_top": 16,
+      "compiler": "13.3.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "gmp_header": {
+      "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+      "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+     },
+     "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10",
+      "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+      "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+      "fat": false,
+      "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64",
+      "runpath": null,
+      "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+     },
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-05T00:39:27Z"
+    },
+    "build_text": null
+   }
+  },
+  "fake_topology": null,
+  "pinned": true
+ },
+ "fixtures_manifest_sha256": "d22d6a43b9fa869670eec370abb26d68e04f18df13a5ef9653ee4896aa8fcf00",
+ "settings": {
+  "blocks": [
+   "heavy_free_L8",
+   "heavy_power_L8"
+  ],
+  "stride": 8,
+  "threads": 32,
+  "cpus": [
+   36,
+   37,
+   38,
+   39,
+   44,
+   45,
+   46,
+   47,
+   52,
+   53,
+   54,
+   55,
+   60,
+   61,
+   62,
+   63,
+   68,
+   69,
+   70,
+   71,
+   76,
+   77,
+   78,
+   79,
+   84,
+   85,
+   86,
+   87,
+   92,
+   93,
+   94,
+   95
+  ],
+  "freq": 999
+ },
+ "executables": {
+  "host": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp",
+  "spak": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp",
+  "base": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp"
+ },
+ "prof_executables": {
+  "host": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp_prof",
+  "spak": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp_prof",
+  "base": "<SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp_prof"
+ },
+ "results": {
+  "heavy_free_L8": {
+   "tasks": 32,
+   "of": 256,
+   "perf": {
+    "host": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1133.2440996840596,
+      "load_seconds": 0.4362987317144871,
+      "integration_seconds": 39.0195578224957,
+      "threads": 32,
+      "openmp_efficiency": 0.9075930146678886,
+      "max_rss_kb": 109792,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2161.4915841752236,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 40.22497100383043
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3614552212022
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 58.98,
+       "binary128_other": 1.2,
+       "expq": 0.02,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 6.05,
+       "gmpn": 23.76,
+       "gmp_other": 0.06,
+       "malloc_free": 0.32,
+       "mp_to_ld_lower": 0.01,
+       "mp_to_ld_likely": 0.95,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.04,
+       "fenv": 0.09,
+       "kernel": 0.44,
+       "worker_other": 8.51,
+       "unknown": 0.01,
+       "other": 0.02,
+       "gmp_total": 29.88
+      },
+      "binary128_ops": {
+       "__addtf3": 55.24,
+       "__subtf3": 0.11,
+       "__multf3": 3.04,
+       "__divtf3": 0.59
+      },
+      "named": {
+       "__addtf3": 55.24,
+       "__subtf3": 0.11,
+       "__multf3": 3.04,
+       "__divtf3": 0.59,
+       "expq": 0.02,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.01,
+       "malloc": 0.13,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.12
+      },
+      "plt_stubs": 1.12,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.86
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 54.25,
+        "__divtf3": 0.59,
+        "__multf3": 2.86
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.13,
+        "__multf3": 0.18,
+        "__subtf3": 0.11
+       }
+      },
+      "total_listed": 99.54
+     },
+     "gmp": {
+      "libgmp_total": 29.87,
+      "symbols": [
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.0
+       },
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 6.96
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.46
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 5.22
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.94
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.74
+       },
+       {
+        "symbol": "__gmpn_toom22_mul",
+        "percent": 0.42
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.34
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.29
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.24
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.23
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.13
+       },
+       {
+        "symbol": "__gmpn_mul_n",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.08
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.01
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.0
+       },
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 6.96
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.46
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 5.22
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.94
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.74
+       },
+       {
+        "symbol": "__gmpn_toom22_mul",
+        "percent": 0.42
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.34
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.29
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.24
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.23
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.13
+       },
+       {
+        "symbol": "__gmpn_mul_n",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.08
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.01
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 54.38,
+       "samples": 615711,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 7.92,
+       "samples": 89706,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 6.94,
+       "samples": 78601,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 5.88,
+       "samples": 66527,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 5.46,
+       "samples": 61883,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 5.11,
+       "samples": 57880,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 3.04,
+       "samples": 34472,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 2.21,
+       "samples": 25039,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 0.94,
+       "samples": 10662,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.89,
+       "samples": 10047,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.86,
+       "samples": 9727,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sub_n",
+       "overhead": 0.72,
+       "samples": 8107,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.59,
+       "samples": 6676,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_toom22_mul",
+       "overhead": 0.42,
+       "samples": 4728,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.36,
+       "samples": 4026,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.34,
+       "samples": 3813,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.34,
+       "samples": 3854,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.29,
+       "samples": 3336,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.24,
+       "samples": 2693,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.2,
+       "samples": 2231,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.16,
+       "samples": 1776,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.13,
+       "samples": 1487,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.13,
+       "samples": 1445,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.13,
+       "samples": 1494,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.12,
+       "samples": 1326,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.11,
+       "samples": 1256,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.11,
+       "samples": 1227,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_n",
+       "overhead": 0.09,
+       "samples": 1055,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.08,
+       "samples": 891,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.08,
+       "samples": 925,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n@plt",
+       "overhead": 0.08,
+       "samples": 896,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.07,
+       "samples": 769,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.07,
+       "samples": 806,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.07,
+       "samples": 831,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa100b5b0",
+       "overhead": 0.05,
+       "samples": 533,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.05,
+       "samples": 566,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >",
+       "overhead": 0.05,
+       "samples": 543,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa106b5eb",
+       "overhead": 0.04,
+       "samples": 445,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa11957bc",
+       "overhead": 0.04,
+       "samples": 417,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.04,
+       "samples": 501,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    },
+    "spak": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1165.2237042561173,
+      "load_seconds": 0.43756673112511635,
+      "integration_seconds": 40.623042492195964,
+      "threads": 32,
+      "openmp_efficiency": 0.8963691177242316,
+      "max_rss_kb": 107528,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2222.4878392336223,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 41.86027869209647
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3729933615044
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 57.2,
+       "binary128_other": 1.14,
+       "expq": 0.02,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 6.21,
+       "gmpn": 23.8,
+       "gmp_other": 0.07,
+       "malloc_free": 0.31,
+       "mp_to_ld_lower": 0.01,
+       "mp_to_ld_likely": 0.9,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.04,
+       "fenv": 0.08,
+       "kernel": 0.3,
+       "worker_other": 10.29,
+       "unknown": 0.01,
+       "other": 0.02,
+       "gmp_total": 30.09
+      },
+      "binary128_ops": {
+       "__addtf3": 53.56,
+       "__subtf3": 0.1,
+       "__multf3": 2.97,
+       "__divtf3": 0.57
+      },
+      "named": {
+       "__addtf3": 53.56,
+       "__subtf3": 0.1,
+       "__multf3": 2.97,
+       "__divtf3": 0.57,
+       "expq": 0.02,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.01,
+       "malloc": 0.12,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.13
+      },
+      "plt_stubs": 1.05,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.83
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 52.6,
+        "__divtf3": 0.57,
+        "__multf3": 2.79
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.13,
+        "__multf3": 0.18,
+        "__subtf3": 0.1
+       }
+      },
+      "total_listed": 99.53
+     },
+     "gmp": {
+      "libgmp_total": 30.08,
+      "symbols": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 10.01
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 7.27
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.62
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.17
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.89
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.37
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.19
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.01
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 10.01
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 7.27
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.62
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.17
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.89
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.37
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.19
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.01
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 52.730000000000004,
+       "samples": 614206,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 10.01,
+       "samples": 116507,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 7.22,
+       "samples": 84046,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 5.69,
+       "samples": 66330,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 5.62,
+       "samples": 65369,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 4.19,
+       "samples": 48743,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 4.04,
+       "samples": 46987,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 2.97,
+       "samples": 34583,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 0.89,
+       "samples": 10402,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.85,
+       "samples": 9946,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.83,
+       "samples": 9620,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.57,
+       "samples": 6662,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.37,
+       "samples": 4345,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.36,
+       "samples": 4173,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.33,
+       "samples": 3854,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.32,
+       "samples": 3697,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.28,
+       "samples": 3289,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.16,
+       "samples": 1822,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.16,
+       "samples": 1824,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.14,
+       "samples": 1579,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.13,
+       "samples": 1504,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.13,
+       "samples": 1462,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.12,
+       "samples": 1450,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.12,
+       "samples": 1369,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.1,
+       "samples": 1185,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.08,
+       "samples": 926,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.07,
+       "samples": 862,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.07,
+       "samples": 847,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.06,
+       "samples": 685,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.06,
+       "samples": 727,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n@plt",
+       "overhead": 0.05,
+       "samples": 551,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >",
+       "overhead": 0.05,
+       "samples": 595,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "fesetenv",
+       "overhead": 0.05,
+       "samples": 534,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa11957bc",
+       "overhead": 0.04,
+       "samples": 432,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.04,
+       "samples": 495,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.04,
+       "samples": 511,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_div_q",
+       "overhead": 0.04,
+       "samples": 439,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa106b5eb",
+       "overhead": 0.03,
+       "samples": 390,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__expl_finite",
+       "overhead": 0.03,
+       "samples": 299,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_free",
+       "overhead": 0.03,
+       "samples": 313,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    },
+    "base": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1206.4163573160768,
+      "load_seconds": 0.4298316016793251,
+      "integration_seconds": 42.20798550359905,
+      "threads": 32,
+      "openmp_efficiency": 0.8932080201485262,
+      "max_rss_kb": 107472,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2301.0565897294555,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 43.47594979405403
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3724726252555
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 57.33,
+       "binary128_other": 1.14,
+       "expq": 0.02,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 6.21,
+       "gmpn": 23.69,
+       "gmp_other": 0.07,
+       "malloc_free": 0.3,
+       "mp_to_ld_lower": 0.01,
+       "mp_to_ld_likely": 0.91,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.04,
+       "fenv": 0.07,
+       "kernel": 0.31,
+       "worker_other": 10.27,
+       "unknown": 0.01,
+       "other": 0.02,
+       "gmp_total": 29.98
+      },
+      "binary128_ops": {
+       "__addtf3": 53.67,
+       "__subtf3": 0.1,
+       "__multf3": 2.98,
+       "__divtf3": 0.58
+      },
+      "named": {
+       "__addtf3": 53.67,
+       "__subtf3": 0.1,
+       "__multf3": 2.98,
+       "__divtf3": 0.58,
+       "expq": 0.02,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.01,
+       "malloc": 0.12,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.12
+      },
+      "plt_stubs": 1.03,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.81
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 52.72,
+        "__divtf3": 0.58,
+        "__multf3": 2.8
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.14,
+        "__multf3": 0.18,
+        "__subtf3": 0.1
+       }
+      },
+      "total_listed": 99.52
+     },
+     "gmp": {
+      "libgmp_total": 29.97,
+      "symbols": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 9.99
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 7.18
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.62
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.16
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.9
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.19
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 9.99
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 7.18
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 5.62
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.16
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 0.9
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.36
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.19
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.01
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 52.86,
+       "samples": 637344,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 9.99,
+       "samples": 120402,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 7.13,
+       "samples": 85941,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 5.68,
+       "samples": 68537,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 5.62,
+       "samples": 67695,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 4.21,
+       "samples": 50726,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 4.03,
+       "samples": 48525,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 2.98,
+       "samples": 35928,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 0.9,
+       "samples": 10813,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.85,
+       "samples": 10308,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.81,
+       "samples": 9807,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.58,
+       "samples": 7047,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.36,
+       "samples": 4299,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.36,
+       "samples": 4330,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.32,
+       "samples": 3907,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.32,
+       "samples": 3859,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.28,
+       "samples": 3325,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.16,
+       "samples": 1934,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.15,
+       "samples": 1803,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.14,
+       "samples": 1633,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.13,
+       "samples": 1549,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.13,
+       "samples": 1518,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.12,
+       "samples": 1443,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.12,
+       "samples": 1461,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.1,
+       "samples": 1183,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.08,
+       "samples": 952,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.07,
+       "samples": 862,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.07,
+       "samples": 887,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.06,
+       "samples": 676,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.06,
+       "samples": 778,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.05,
+       "samples": 579,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.05,
+       "samples": 546,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n@plt",
+       "overhead": 0.05,
+       "samples": 565,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa106b5eb",
+       "overhead": 0.04,
+       "samples": 427,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa11957bc",
+       "overhead": 0.04,
+       "samples": 472,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpn_div_q",
+       "overhead": 0.04,
+       "samples": 465,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "fesetenv",
+       "overhead": 0.04,
+       "samples": 498,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1c01cc0",
+       "overhead": 0.03,
+       "samples": 307,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__expl_finite",
+       "overhead": 0.03,
+       "samples": 347,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpf_init2",
+       "overhead": 0.03,
+       "samples": 376,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    }
+   },
+   "tiers": {
+    "host": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1228.4672625828534,
+      "load_seconds": 0.45593342557549477,
+      "integration_seconds": 42.998514361679554,
+      "threads": 32,
+      "openmp_efficiency": 0.8928122872525832,
+      "max_rss_kb": 110048,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2343.1153537423197,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 43.47741817496717,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 72.69367683100015,
+       "first_pass_calls": 524288,
+       "quad_seconds": 758.9799791770006,
+       "quad_calls": 429167,
+       "mp_seconds": 395.19890543200006,
+       "mp_calls": 119775
+      }
+     },
+     "seconds": {
+      "first_pass": 72.69367683100015,
+      "quad": 758.9799791770006,
+      "mp": 395.19890543200006
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 429167,
+      "mp": 119775
+     },
+     "us_per_call": {
+      "first_pass": 138.65218511772184,
+      "quad": 1768.4956652701644,
+      "mp": 3299.510794673346
+     },
+     "speedup_per_call": {
+      "first_pass": 1.0,
+      "quad": 1.0,
+      "mp": 1.0
+     }
+    },
+    "spak": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1314.4165681842715,
+      "load_seconds": 0.4660256803035736,
+      "integration_seconds": 45.77964789047837,
+      "threads": 32,
+      "openmp_efficiency": 0.8972440734805588,
+      "max_rss_kb": 107744,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2507.050644272368,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 46.26894679106772,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 74.56836660700003,
+       "first_pass_calls": 524288,
+       "quad_seconds": 779.6427984360001,
+       "quad_calls": 429167,
+       "mp_seconds": 458.46579960599985,
+       "mp_calls": 119775
+      }
+     },
+     "seconds": {
+      "first_pass": 74.56836660700003,
+      "quad": 779.6427984360001,
+      "mp": 458.46579960599985
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 429167,
+      "mp": 119775
+     },
+     "us_per_call": {
+      "first_pass": 142.22787209892277,
+      "quad": 1816.6420028473767,
+      "mp": 3827.725315015653
+     },
+     "speedup_per_call": {
+      "first_pass": 0.9748594496392805,
+      "quad": 0.9734970690418099,
+      "mp": 0.8620030235006174
+     }
+    },
+    "base": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 429167,
+      "mp": 119775,
+      "quad_fraction": 0.8185710906982422,
+      "mp_fraction": 0.2284526824951172,
+      "task_seconds": 1256.8145527150482,
+      "load_seconds": 0.4860745333135128,
+      "integration_seconds": 43.20496414229274,
+      "threads": 32,
+      "openmp_efficiency": 0.9090495861307535,
+      "max_rss_kb": 107744,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2397.183518819901,
+      "rows_digest": "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36",
+      "wall_seconds": 43.71476858481765,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 71.3020189360001,
+       "first_pass_calls": 524288,
+       "quad_seconds": 745.814646779,
+       "quad_calls": 429167,
+       "mp_seconds": 438.0442278709999,
+       "mp_calls": 119775
+      }
+     },
+     "seconds": {
+      "first_pass": 71.3020189360001,
+      "quad": 745.814646779,
+      "mp": 438.0442278709999
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 429167,
+      "mp": 119775
+     },
+     "us_per_call": {
+      "first_pass": 135.99780833435076,
+      "quad": 1737.8191864216028,
+      "mp": 3657.225864086829
+     },
+     "speedup_per_call": {
+      "first_pass": 1.0195177908811979,
+      "quad": 1.0176522845922358,
+      "mp": 0.9021895057327008
+     }
+    }
+   },
+   "rows": {
+    "digests": [
+     "1685427c5ffea56ffa755a2b6d7a192a0a7bc049241085242bf393b735afbd36"
+    ],
+    "identical": true
+   }
+  },
+  "heavy_power_L8": {
+   "tasks": 32,
+   "of": 256,
+   "perf": {
+    "host": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1109.7023035343736,
+      "load_seconds": 0.40813416615128517,
+      "integration_seconds": 42.2387572620064,
+      "threads": 32,
+      "openmp_efficiency": 0.8210041969355495,
+      "max_rss_kb": 93928,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2116.5891714751697,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 43.49496636353433
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3370842860033
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 51.49,
+       "binary128_other": 1.12,
+       "expq": 0.03,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 7.69,
+       "gmpn": 30.23,
+       "gmp_other": 0.11,
+       "malloc_free": 0.48,
+       "mp_to_ld_lower": 0.03,
+       "mp_to_ld_likely": 1.66,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.05,
+       "fenv": 0.11,
+       "kernel": 0.42,
+       "worker_other": 7.68,
+       "unknown": 0.02,
+       "other": 0.03,
+       "gmp_total": 38.06
+      },
+      "binary128_ops": {
+       "__addtf3": 47.6,
+       "__subtf3": 0.13,
+       "__multf3": 3.2,
+       "__divtf3": 0.56
+      },
+      "named": {
+       "__addtf3": 47.6,
+       "__subtf3": 0.13,
+       "__multf3": 3.2,
+       "__divtf3": 0.56,
+       "expq": 0.03,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.02,
+       "malloc": 0.2,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.17
+      },
+      "plt_stubs": 1.09,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.71
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 46.72,
+        "__divtf3": 0.56,
+        "__multf3": 2.97
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.17,
+        "__multf3": 0.23,
+        "__subtf3": 0.13
+       }
+      },
+      "total_listed": 99.52
+     },
+     "gmp": {
+      "libgmp_total": 38.04,
+      "symbols": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 9.66
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 9.0
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.77
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 6.15
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.63
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 1.01
+       },
+       {
+        "symbol": "__gmpn_toom22_mul",
+        "percent": 0.61
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.52
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.49
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.41
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.39
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_mul_n",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.13
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_get_prec",
+        "percent": 0.01
+       },
+       {
+        "symbol": "mpn_bc_get_str",
+        "percent": 0.01
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 9.66
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 9.0
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.77
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 6.15
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.63
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 1.01
+       },
+       {
+        "symbol": "__gmpn_toom22_mul",
+        "percent": 0.61
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.52
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.49
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.41
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.39
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.33
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_mul_n",
+        "percent": 0.14
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.13
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.07
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_get_prec",
+        "percent": 0.01
+       },
+       {
+        "symbol": "mpn_bc_get_str",
+        "percent": 0.01
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 46.89,
+       "samples": 519658,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 9.63,
+       "samples": 106728,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 8.91,
+       "samples": 98688,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 6.77,
+       "samples": 74988,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 5.97,
+       "samples": 66176,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 4.44,
+       "samples": 49182,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 3.2,
+       "samples": 35482,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 2.8,
+       "samples": 31017,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 1.63,
+       "samples": 18023,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sub_n",
+       "overhead": 0.98,
+       "samples": 10912,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.75,
+       "samples": 8298,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.71,
+       "samples": 7829,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_toom22_mul",
+       "overhead": 0.61,
+       "samples": 6812,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.56,
+       "samples": 6254,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.52,
+       "samples": 5776,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.49,
+       "samples": 5406,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.41,
+       "samples": 4553,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.39,
+       "samples": 4296,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.32,
+       "samples": 3558,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.28,
+       "samples": 3122,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.22,
+       "samples": 2403,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.2,
+       "samples": 2212,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.19,
+       "samples": 2061,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.18,
+       "samples": 1965,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.17,
+       "samples": 1926,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.16,
+       "samples": 1736,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_n",
+       "overhead": 0.14,
+       "samples": 1505,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.13,
+       "samples": 1433,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.13,
+       "samples": 1446,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.11,
+       "samples": 1191,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n@plt",
+       "overhead": 0.09,
+       "samples": 1049,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.09,
+       "samples": 1033,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >",
+       "overhead": 0.08,
+       "samples": 840,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa100b5b0",
+       "overhead": 0.07,
+       "samples": 728,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.07,
+       "samples": 739,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.07,
+       "samples": 812,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.07,
+       "samples": 746,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.07,
+       "samples": 758,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "fesetenv",
+       "overhead": 0.06,
+       "samples": 658,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpf_cmp",
+       "overhead": 0.05,
+       "samples": 515,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    },
+    "spak": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1157.7539380993694,
+      "load_seconds": 0.4213798623532057,
+      "integration_seconds": 44.15394437499344,
+      "threads": 32,
+      "openmp_efficiency": 0.819401552403452,
+      "max_rss_kb": 91604,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2208.24039096712,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 45.40469440072775
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3552215875246
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 48.85,
+       "binary128_other": 1.05,
+       "expq": 0.03,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 7.81,
+       "gmpn": 31.1,
+       "gmp_other": 0.1,
+       "malloc_free": 0.44,
+       "mp_to_ld_lower": 0.03,
+       "mp_to_ld_likely": 1.53,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.04,
+       "fenv": 0.11,
+       "kernel": 0.35,
+       "worker_other": 9.47,
+       "unknown": 0.01,
+       "other": 0.04,
+       "gmp_total": 39.04
+      },
+      "binary128_ops": {
+       "__addtf3": 45.16,
+       "__subtf3": 0.12,
+       "__multf3": 3.05,
+       "__divtf3": 0.52
+      },
+      "named": {
+       "__addtf3": 45.16,
+       "__subtf3": 0.12,
+       "__multf3": 3.05,
+       "__divtf3": 0.52,
+       "expq": 0.03,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.02,
+       "malloc": 0.17,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.18
+      },
+      "plt_stubs": 0.97,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.67
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 44.33,
+        "__divtf3": 0.52,
+        "__multf3": 2.83
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.16,
+        "__multf3": 0.22,
+        "__subtf3": 0.12
+       }
+      },
+      "total_listed": 99.46
+     },
+     "gmp": {
+      "libgmp_total": 39.02,
+      "symbols": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 14.49
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.03
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.95
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.96
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.5
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.54
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.48
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.44
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.29
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.1
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       },
+       {
+        "symbol": "mpn_bc_get_str",
+        "percent": 0.01
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 14.49
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.03
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.95
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.96
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.5
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.54
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.48
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.44
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.29
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.1
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       },
+       {
+        "symbol": "mpn_bc_get_str",
+        "percent": 0.01
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 44.489999999999995,
+       "samples": 514095,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 14.48,
+       "samples": 167351,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 7.99,
+       "samples": 92349,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 6.95,
+       "samples": 80299,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 4.83,
+       "samples": 55825,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 4.77,
+       "samples": 55122,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 4.23,
+       "samples": 48898,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 3.0500000000000003,
+       "samples": 35224,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 1.5,
+       "samples": 17349,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.71,
+       "samples": 8190,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.67,
+       "samples": 7746,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.54,
+       "samples": 6209,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.52,
+       "samples": 6020,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.48,
+       "samples": 5535,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.47,
+       "samples": 5485,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.43,
+       "samples": 4940,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.3,
+       "samples": 3479,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.24,
+       "samples": 2812,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.22,
+       "samples": 2547,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.19,
+       "samples": 2250,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.18,
+       "samples": 2054,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.18,
+       "samples": 2132,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.17,
+       "samples": 1988,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.14,
+       "samples": 1655,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.12,
+       "samples": 1415,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.1,
+       "samples": 1125,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.09,
+       "samples": 1065,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.09,
+       "samples": 1048,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.08,
+       "samples": 932,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.08,
+       "samples": 874,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >",
+       "overhead": 0.08,
+       "samples": 919,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.06,
+       "samples": 690,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.06,
+       "samples": 685,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "fesetenv",
+       "overhead": 0.06,
+       "samples": 640,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpf_cmp",
+       "overhead": 0.05,
+       "samples": 521,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_div_q",
+       "overhead": 0.05,
+       "samples": 588,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul@plt",
+       "overhead": 0.05,
+       "samples": 525,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_qr",
+       "overhead": 0.05,
+       "samples": 546,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa11957bc",
+       "overhead": 0.04,
+       "samples": 489,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_free",
+       "overhead": 0.04,
+       "samples": 411,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    },
+    "base": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1164.9794871099293,
+      "load_seconds": 0.4051782302558422,
+      "integration_seconds": 44.124475525692105,
+      "threads": 32,
+      "openmp_efficiency": 0.8250661008081015,
+      "max_rss_kb": 91532,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2222.022031993731,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 45.38844589330256
+     },
+     "header": {
+      "lost": 0,
+      "samples_text": "1M",
+      "event": "cycles",
+      "event_count": 3552426143333
+     },
+     "shares": {
+      "categories": {
+       "binary128_arith": 48.86,
+       "binary128_other": 1.06,
+       "expq": 0.03,
+       "expl": 0.03,
+       "logl": 0.0,
+       "gmpf": 7.79,
+       "gmpn": 31.13,
+       "gmp_other": 0.11,
+       "malloc_free": 0.43,
+       "mp_to_ld_lower": 0.02,
+       "mp_to_ld_likely": 1.53,
+       "calculate_reference_ld": 0.0,
+       "libgomp": 0.04,
+       "fenv": 0.1,
+       "kernel": 0.34,
+       "worker_other": 9.45,
+       "unknown": 0.01,
+       "other": 0.03,
+       "gmp_total": 39.05
+      },
+      "binary128_ops": {
+       "__addtf3": 45.17,
+       "__subtf3": 0.12,
+       "__multf3": 3.04,
+       "__divtf3": 0.53
+      },
+      "named": {
+       "__addtf3": 45.17,
+       "__subtf3": 0.12,
+       "__multf3": 3.04,
+       "__divtf3": 0.53,
+       "expq": 0.03,
+       "expl": 0.0,
+       "logl": 0.0,
+       "__gmpf_get_str": 0.0,
+       "__gmpn_get_str": 0.0,
+       "strtold": 0.0,
+       "____strtold_l_internal": 0.02,
+       "malloc": 0.18,
+       "free": 0.0,
+       "_int_malloc": 0.0,
+       "_int_free": 0.17
+      },
+      "plt_stubs": 0.97,
+      "binary128_ops_by_dso": {
+       "c8d2_gmp": {
+        "__addtf3": 0.67
+       },
+       "libgcc_s.so.1": {
+        "__addtf3": 44.34,
+        "__divtf3": 0.53,
+        "__multf3": 2.82
+       },
+       "libquadmath.so.0.0.0": {
+        "__addtf3": 0.16,
+        "__multf3": 0.22,
+        "__subtf3": 0.12
+       }
+      },
+      "total_listed": 99.43
+     },
+     "gmp": {
+      "libgmp_total": 39.03,
+      "symbols": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 14.5
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.03
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.94
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.99
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.51
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.53
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.44
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.1
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.08
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       }
+      ],
+      "functions": [
+       {
+        "symbol": "__gmpn_mul_basecase",
+        "percent": 14.5
+       },
+       {
+        "symbol": "__gmpn_add_n",
+        "percent": 8.03
+       },
+       {
+        "symbol": "__gmpf_add",
+        "percent": 6.94
+       },
+       {
+        "symbol": "__gmpn_copyi",
+        "percent": 4.99
+       },
+       {
+        "symbol": "__gmpn_divrem_1",
+        "percent": 1.51
+       },
+       {
+        "symbol": "__gmpf_mul",
+        "percent": 0.53
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_q",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_sqr_basecase",
+        "percent": 0.47
+       },
+       {
+        "symbol": "__gmpn_submul_1",
+        "percent": 0.44
+       },
+       {
+        "symbol": "__gmpn_mul",
+        "percent": 0.28
+       },
+       {
+        "symbol": "__gmpn_invert_limb",
+        "percent": 0.22
+       },
+       {
+        "symbol": "__gmpn_lshift",
+        "percent": 0.1
+       },
+       {
+        "symbol": "__gmpf_div_ui",
+        "percent": 0.09
+       },
+       {
+        "symbol": "__gmp_default_allocate",
+        "percent": 0.08
+       },
+       {
+        "symbol": "__gmpf_sub",
+        "percent": 0.06
+       },
+       {
+        "symbol": "__gmpn_div_q",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpn_sbpi1_div_qr",
+        "percent": 0.05
+       },
+       {
+        "symbol": "__gmpf_init2",
+        "percent": 0.04
+       },
+       {
+        "symbol": "__gmpf_cmp",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmp_default_free",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_clear",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpf_set_si",
+        "percent": 0.03
+       },
+       {
+        "symbol": "__gmpn_sub_n",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_set",
+        "percent": 0.02
+       },
+       {
+        "symbol": "__gmpf_div",
+        "percent": 0.02
+       }
+      ]
+     },
+     "top40": [
+      {
+       "symbol": "__addtf3",
+       "overhead": 44.5,
+       "samples": 517954,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul_basecase",
+       "overhead": 14.49,
+       "samples": 168618,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n",
+       "overhead": 7.98,
+       "samples": 92834,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_add",
+       "overhead": 6.94,
+       "samples": 80570,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>",
+       "overhead": 4.82,
+       "samples": 56079,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi",
+       "overhead": 4.81,
+       "samples": 55956,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "main._omp_fn.0",
+       "overhead": 4.22,
+       "samples": 49135,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__multf3",
+       "overhead": 3.04,
+       "samples": 35367,
+       "dsos": [
+        "libgcc_s.so.1",
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_divrem_1",
+       "overhead": 1.51,
+       "samples": 17524,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__sfp_handle_exceptions",
+       "overhead": 0.71,
+       "samples": 8295,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__addtf3@plt",
+       "overhead": 0.67,
+       "samples": 7832,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__divtf3",
+       "overhead": 0.53,
+       "samples": 6195,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_mul",
+       "overhead": 0.53,
+       "samples": 6167,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_q",
+       "overhead": 0.47,
+       "samples": 5488,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sqr_basecase",
+       "overhead": 0.47,
+       "samples": 5454,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_submul_1",
+       "overhead": 0.43,
+       "samples": 4967,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "calculate_shared<__float128, true>",
+       "overhead": 0.31,
+       "samples": 3620,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul",
+       "overhead": 0.23,
+       "samples": 2707,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_invert_limb",
+       "overhead": 0.22,
+       "samples": 2526,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__floatsitf",
+       "overhead": 0.18,
+       "samples": 2088,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_copyi@plt",
+       "overhead": 0.18,
+       "samples": 2064,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "malloc",
+       "overhead": 0.18,
+       "samples": 2097,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "_int_free",
+       "overhead": 0.17,
+       "samples": 1930,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__lttf2@@GCC_4.3.0",
+       "overhead": 0.15,
+       "samples": 1696,
+       "dsos": [
+        "libgcc_s.so.1"
+       ]
+      },
+      {
+       "symbol": "__subtf3",
+       "overhead": 0.12,
+       "samples": 1382,
+       "dsos": [
+        "libquadmath.so.0.0.0"
+       ]
+      },
+      {
+       "symbol": "__gmpn_lshift",
+       "overhead": 0.1,
+       "samples": 1162,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpf_div_ui",
+       "overhead": 0.09,
+       "samples": 1072,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa10770f5",
+       "overhead": 0.08,
+       "samples": 939,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa1077296",
+       "overhead": 0.08,
+       "samples": 915,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmp_default_allocate",
+       "overhead": 0.08,
+       "samples": 936,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "cfree@GLIBC_2.2.5",
+       "overhead": 0.08,
+       "samples": 947,
+       "dsos": [
+        "libc-2.28.so"
+       ]
+      },
+      {
+       "symbol": "__gmpf_sub",
+       "overhead": 0.06,
+       "samples": 723,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >",
+       "overhead": 0.06,
+       "samples": 670,
+       "dsos": [
+        "c8d2_gmp"
+       ]
+      },
+      {
+       "symbol": "__gmpn_add_n@plt",
+       "overhead": 0.05,
+       "samples": 637,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_div_q",
+       "overhead": 0.05,
+       "samples": 577,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_mul@plt",
+       "overhead": 0.05,
+       "samples": 569,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "__gmpn_sbpi1_div_qr",
+       "overhead": 0.05,
+       "samples": 564,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      },
+      {
+       "symbol": "fesetenv",
+       "overhead": 0.05,
+       "samples": 619,
+       "dsos": [
+        "libm-2.28.so"
+       ]
+      },
+      {
+       "symbol": "0xffffffffa11957bc",
+       "overhead": 0.04,
+       "samples": 419,
+       "dsos": [
+        "[unknown]"
+       ]
+      },
+      {
+       "symbol": "__gmpf_init2",
+       "overhead": 0.04,
+       "samples": 461,
+       "dsos": [
+        "libgmp.so.10.4.1"
+       ]
+      }
+     ]
+    }
+   },
+   "tiers": {
+    "host": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1101.3421653807163,
+      "load_seconds": 0.39682074449956417,
+      "integration_seconds": 41.61286240071058,
+      "threads": 32,
+      "openmp_efficiency": 0.8270746274728672,
+      "max_rss_kb": 94192,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2100.6434733976675,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 42.034310542047024,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 48.665463189000015,
+       "first_pass_calls": 524288,
+       "quad_seconds": 591.8069208369998,
+       "quad_calls": 492096,
+       "mp_seconds": 459.1231478099999,
+       "mp_calls": 189248
+      }
+     },
+     "seconds": {
+      "first_pass": 48.665463189000015,
+      "quad": 591.8069208369998,
+      "mp": 459.1231478099999
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 492096,
+      "mp": 189248
+     },
+     "us_per_call": {
+      "first_pass": 92.82200467872623,
+      "quad": 1202.624936672925,
+      "mp": 2426.039629533733
+     },
+     "speedup_per_call": {
+      "first_pass": 1.0,
+      "quad": 1.0,
+      "mp": 1.0
+     }
+    },
+    "spak": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1150.4503123704344,
+      "load_seconds": 0.41590502113103867,
+      "integration_seconds": 43.85307491198182,
+      "threads": 32,
+      "openmp_efficiency": 0.819818731838874,
+      "max_rss_kb": 91888,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2194.3098304184614,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 44.29464836604893,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 48.245330232000036,
+       "first_pass_calls": 524288,
+       "quad_seconds": 585.4347110090005,
+       "quad_calls": 492096,
+       "mp_seconds": 515.0923110639998,
+       "mp_calls": 189248
+      }
+     },
+     "seconds": {
+      "first_pass": 48.245330232000036,
+      "quad": 585.4347110090005,
+      "mp": 515.0923110639998
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 492096,
+      "mp": 189248
+     },
+     "us_per_call": {
+      "first_pass": 92.02066465759285,
+      "quad": 1189.6758173384876,
+      "mp": 2721.784700836996
+     },
+     "speedup_per_call": {
+      "first_pass": 1.0087082616074896,
+      "quad": 1.0108845780890183,
+      "mp": 0.8913414895703118
+     }
+    },
+    "base": {
+     "native": {
+      "tasks": 32,
+      "points": 524288,
+      "quad": 492096,
+      "mp": 189248,
+      "quad_fraction": 0.9385986328125,
+      "mp_fraction": 0.3609619140625,
+      "task_seconds": 1129.7029757909477,
+      "load_seconds": 0.3974415510892868,
+      "integration_seconds": 42.547383297234774,
+      "threads": 32,
+      "openmp_efficiency": 0.8297388759924404,
+      "max_rss_kb": 91840,
+      "graphs_loaded": 16,
+      "microseconds_per_point_thread": 2154.737426359077,
+      "rows_digest": "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39",
+      "wall_seconds": 42.98400437273085,
+      "tier_timers": {
+       "clock": "steady_clock",
+       "first_pass_seconds": 47.47258256600007,
+       "first_pass_calls": 524288,
+       "quad_seconds": 575.6891269300003,
+       "quad_calls": 492096,
+       "mp_seconds": 504.9106966230004,
+       "mp_calls": 189248
+      }
+     },
+     "seconds": {
+      "first_pass": 47.47258256600007,
+      "quad": 575.6891269300003,
+      "mp": 504.9106966230004
+     },
+     "calls": {
+      "first_pass": 524288,
+      "quad": 492096,
+      "mp": 189248
+     },
+     "us_per_call": {
+      "first_pass": 90.54676545333876,
+      "quad": 1169.871583857622,
+      "mp": 2667.98432016719
+     },
+     "speedup_per_call": {
+      "first_pass": 1.0251277802580365,
+      "quad": 1.0279973915660894,
+      "mp": 0.909315550018564
+     }
+    }
+   },
+   "rows": {
+    "digests": [
+     "07a9727c41ffa390e541cadade415025c1d2850fdf3b307eaa5dfffa1dbb8b39"
+    ],
+    "identical": true
+   }
+  }
+ },
+ "errors": [],
+ "written_utc": "2026-10-05T00:57:20Z"
+}

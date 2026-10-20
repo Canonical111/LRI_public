@@ -1,0 +1,102 @@
+job 54643232 on <NODE> at 2026-10-03T21:21:31-07:00; package <SCRATCH>/temp_project/c8d2/pkg/1d25d9e1deec; evidence <SCRATCH>/temp_project/c8d2/evidence/1d25d9e1deec/s3bbuild.54643232.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+python3 -B tools/prepare_inputs.py
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+python3 -B tools/prepare_inputs.py
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_inspect.cpp -lquadmath -o bin/c8d2_inspect
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal_san
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_san
+python3 -B tools/build_record.py bin/c8d2_gmp_san gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_san
+bin/c8d2_gmp_san.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+python3 -B tools/build_record.py bin/c8d2_decimal_san decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal_san
+bin/c8d2_decimal_san.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+rm -rf build/c7ref
+cp -R reference/c7d2_hpc_a55958f build/c7ref
+make -C build/c7ref bin/c7d2_decimal bin/c7d2_gmp
+make[1]: Entering directory '<SCRATCH>/temp_project/c8d2/pkg/1d25d9e1deec/build/c7ref'
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+bin/c7d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+bin/c7d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+make[1]: Leaving directory '<SCRATCH>/temp_project/c8d2/pkg/1d25d9e1deec/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/
+builds in 62 s
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  bin/c8d2_gmp
+034db6a160e63621a6ac58f57428e228b5c6f713b28acbf19f1730a06c98857c  bin/c8d2_inspect
+ffff33b2bfc5e4135a9275a4aa7f38267a017a469160a7a8327a3bfc1f9f3a84  bin/c8d2_decimal_san
+bd1e19b6f0db2a398f18cde533af53dcf9e5957a7a4ebf58ccfdd268f17fb5cf  bin/c8d2_gmp_san
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+{"log": "<SCRATCH>/temp_project/c8d2/forbidden_seeds.json", "seed": 7082694491065029298, "source": "L=2 control, A-IN-6(b), Expanse job 54637264 (Stage 3 part A)", "state": "present"}
+{
+ "schema": "c8-d2-seeds-1",
+ "seeds": [
+  {
+   "seed": 7082694491065029298,
+   "source": "L=2 control, A-IN-6(b), Expanse job 54637264 (Stage 3 part A)",
+   "added_utc": "2026-10-04T02:51:36Z",
+   "host": "<NODE>"
+  },
+  {
+   "seed": 516670960489998667,
+   "source": "<SCRATCH>/temp_project/c8d2/sweep1-81aa9770e6fe",
+   "added_utc": "2026-10-04T03:01:18Z",
+   "host": "<NODE>"
+  }
+ ]
+}
+finished 2026-10-03T21:22:33-07:00

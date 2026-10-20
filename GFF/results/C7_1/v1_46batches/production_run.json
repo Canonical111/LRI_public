@@ -1,0 +1,11 @@
+{
+ "code (workers, planning)": "LRI_C7_HPC commit 3213ce0 (frozen copy on Expanse); final combine with commit 3129a97 tools",
+ "executable sha256": "33bab738a258f80561f6bb980ec6fa1f0416879b4132eff77276433eeee5518c (GCC 13.3 Spack module, Boost 1.86, x86-64 AMD EPYC 7742)",
+ "design": "design_v1.json sha256 fd356a15ecb4cc8eaa829ee9d4a6cfbc8d2e592ce10c1739769a0700fb668fb0e; predicted SE 203.2 per batch; K_max 46",
+ "pilot": "independent, multiplier 1, >=32 replicates, seed 2026092501 (design and validation only; not combined)",
+ "batches": "46 (b001-b046), seed_k = int.from_bytes(sha256(b\"C7-expanse-2026-09:batch:k\")[:8], \"little\"); stopping rule (iv) K_max reached",
+ "elements": "2530 x 16 CPUs on the shared partition; 2 transient srun step failures (b011#37, b018#13) rerun",
+ "wall clock": "2026-09-25 20:59 to 2026-09-26 06:58 PDT (elements); final combine 1 h 29 min",
+ "cost": "29,725 core-hours (SU) for the batches; about 25 more for the pilot and checks",
+ "machine": "SDSC Expanse, account <ACCOUNT>, Slurm 23.02.7"
+}

@@ -1,0 +1,33 @@
+\section{Provenance and reviews}\label{app:prov}
+
+\paragraph{Who wrote what.} Every package records its origin in \code{PROVENANCE.md}, and every review is summarized
+in \code{REVIEWS.md}.
+
+\paragraph{$d=1$ solver.} \code{lri\_dressed\_phi4\_hpc} went through three stages.
+\begin{itemize}
+\item The author supplied it as a matrix-free rewrite of an earlier dressed zero-mode solver (commit e637dfd), written by
+ OpenAI GPT-6 astra.
+\item Claude Code sessions (Anthropic, model claude-opus-5-5) added the layer that runs it on the symmetry cluster
+ (node packing, cross-node locks, validation records), the window correction and the descendant diagnostic
+ (157a2c6 to e2ca07c). Codex (OpenAI, gpt-6-astra) reviewed the plan, which
+ was approved in round 4, and inspected the code twice. All 20 findings were fixed; the last eight fixes were not
+ re-inspected.
+\item The density basis was supplied by the author as a patch (33998bb). A fresh Codex inspection found two medium
+ defects in scripts the production does not use; they were deferred.
+\end{itemize}
+Both supplied archives (e637dfd and the density-basis patch) were written by OpenAI GPT-6 astra via ChatGPT (model stated by the author).
+
+\paragraph{$d=1$ analysis and records.}
+\begin{itemize}
+\item The analysis scripts, the campaigns and this note were written by Claude Code sessions.
+\item The blind $d=1$ solver was written by a Claude Code subagent (Section~\ref{sec:checks}).
+\item No Codex results review was run on the $d=1$ finite-coupling numbers. The public-release replay found three
+ paper values that the stated estimators did not reproduce: the $\Ds=0.05$ range, the bound on the weak-coupling
+ spreads, and the basis error. It also found one value quoted beyond its reproducible precision, the $\eps$-series
+ difference at $\Ds=0.249$. All four were corrected on 2026-10-13.
+\end{itemize}
+
+\paragraph{$d=2,3$.} See the provenance files of \code{lri\_2d\_window\_hpc} and \code{lri\_3d\_window\_hpc}.
+
+\paragraph{This note.} Written by the Claude Code session \code{phi4HT1d}. The $d=2$ and $d=3$ sections were written by
+the sessions \code{phi4HT2d} and \code{phi4HT3d} and edited here only for consistency.

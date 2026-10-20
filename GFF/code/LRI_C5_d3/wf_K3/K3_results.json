@@ -1,0 +1,39 @@
+{
+ "K3_430_digits": "1.1485946495271793365566463108106731876338481012643178421117015121184545900277289889983896689063188035835547868671729294605193618816563271678021090656560510809885719580014051772316820016647454901433614562395511112365975099382034160653960645260606491870805745415733505072515407265286626115095409606248299781596860813066231487203054174604292603618097011278619230754690095486971501993770011878097394866280135517720457036471226466348342",
+ "established_digits": 430,
+ "Phi3_eq_2K3_minus_AU": "10.9457632283938902271930975283950951251289690252384313962285",
+ "method": "Residue series gs:Kseries at q=3/4 in Arb ball arithmetic (k3flint.py): head l<L, n<N0 by exact Pochhammer/polygamma recurrences; per-spin n-tail by exact Bernoulli-polynomial asymptotic series in u=1/(n+1/2) summed with Hurwitz zeta and its s-derivative; spin tail l>=L from the centred Stirling expansion of the spectral integrand <t^2(R_tau-S_tau)> with tau as an exact power series (the k+kb=0 pole terms of R and S coincide and are dropped). K3=-AU/4+sum_l (2l+1)I_l + tail.",
+ "runs": {
+  "hp1": "prec 800, L=256,N0=4000,KN=190,KL=320",
+  "hp2": "prec 820,L=200,N0=5000,KN=210,KL=300",
+  "hp3": "prec 1450,L=400,N0=8000,KN=330,KL=500",
+  "hp4": "prec 1480,L=360,N0=10000,KN=300,KL=560"
+ },
+ "agreement": {
+  "hp3-hp4": "2.47e-433",
+  "hp2-hp3": "5.05e-244",
+  "hp1-hp3": "4.70e-234"
+ },
+ "independent_checks": {
+  "spectral run C (hp_masters_d3 tau-circle, dps110, symmetry 567509/567508; combined locally)": "+1.48e-96",
+  "spectral run B (dps56)": "-5.96e-49",
+  "spectral run A (dps50)": "-1.11e-47",
+  "d=1 residue code vs proved K(d=1)": "5e-60",
+  "per-spin residue sums vs per-spin spectral quadrature (l=0,1,4, dps20)": "<=5e-21"
+ },
+ "pslq": {
+  "files": [
+   "pslq_K3_results_420.json",
+   "pslq_K3_results_300.json",
+   "pslq_K3.log"
+  ],
+  "summary": "No admissible relation at 420 digits in any basis; bounds = Gram-Schmidt lower bounds on max|coeff| of any relation.",
+  "rejected": "300-digit run of the CM-L-value test returned a 49-term vector with |c|<=8.2e5 (at the chance level); its residual with the 430-digit values is 9.5e-301, i.e. it holds only to the precision used: chance relation, fails the second-precision rule; at 420 digits the same basis gives no relation with max|c|<2.0e7."
+ },
+ "structure": {
+  "d1_d2_pattern": "K_d=(1/2)[Phi_d + A_d U_d]: Phi_1=psi1(1/4)(3psi1(1/4)-psi1(3/4)) (proved, note eq:KLpsiReflected), Phi_2=(psi1(1/4)-psi1(3/4))^2/4 (from C62d numerical identity); checked 1e-59. Phi_3 is not such a quadratic form (bound 1.8e19).",
+  "single_spins": "Single-spin values I_0,I_1,I_2 (d=1 and d=3, 240 digits) are not level-4 classical (bounds ~2e6), although I_0+I_1 at d=1 is: classicality at d=1,2 is a lattice-completion effect.",
+  "lattice": "Exact: g_l(s)^2 R_tau(s) at s=a_l+n+t equals c(t) rho_tau(t) Phi1(x) Phi1(y), x=l+n+t+5/8, y=n+t+1/8, d_l=2(x-y), c=sin^2 pi(3/4-t)/sin^2 pi t, rho=sin pi(3/4-t)/sin pi(3/4-t-tau), Phi1(w)=Gamma(w+1/8)^3/(Gamma(w+7/8)^2 Gamma(w+1/8+tau)); k(-s) analogue with sigma=sin pi(t-tau)/sin pi t, Phi2(w)=Gamma(w+1/8)^2 Gamma(w+7/8-tau)/Gamma(w+7/8)^3 (check_lattice.py, ratios 1 to 1e-30). In residue variables the K summand is a symmetric function G(x,y) on the half-offset lattices x in 5/8+N, y in 1/8+N with weight 2(x-y): the d=2 square becomes a triangle; only the lattice-swap-antisymmetric part factorizes.",
+  "modes": "Derivation sketch (not separately verified numerically): D c rho = cos^3(2 pi t)/8 exactly, Xi=cos^3(2pi t) Sigma_tau(t)/8 has <=5 Fourier modes for Re tau>1/2; t->t+1/2 fixes the even modes by one-variable bilateral moments; the odd modes need the two-variable samples Sigma_tau(0), Sigma_tau'(0); the residue functional for R(tau)=<t^2 R_tau> weights the odd modes at O(1) ((24+-18i)/(3 pi)+O(tau), modes.py). Hence K3 is expected to need tau-Laurent data of V(tau)=sum_{k>=j>=0} 2(x-y)Phi1(x)Phi1(y) (pole at tau=0), the r=2 analogue of H3(0) in Q3."
+ }
+}

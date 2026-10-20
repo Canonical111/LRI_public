@@ -1,0 +1,33 @@
+PASS B2: the 7-entry inputs/two_loop.json extends C7(2)'s 6 entries
+PASS A-ASM-2: order-7 coefficients bitwise equal to C7(2)'s assemble.py and analyze.py (96 sets and the 2026 production means, B2 with 6 or 7 entries)
+PASS A-ASM-2: the Jacobians are equal (every 8th set and the production means)
+PASS A = -B2[0]/6 = 4 log 2 to 1e-12
+PASS A-ASM-4: top-slot rule (-1,+3)/3^(L+1), L = 3..8, to 1e-12 with no lower-order dependence (17 points)
+PASS A-ASM-4: loop-7 entry (-16A, 42A)/19683 to 1e-12
+PASS A-ASM-4: float affinity of loops 5..8 to 1e-10 at every point
+PASS A-ASM-4: the affinity gate fails when loop 4 is perturbed (loops=[4,5])
+PASS A-ASM-4: Fraction mode, all 210 exact second differences over loops 5..8 vanish
+PASS A-ASM-4: Fraction mode, coefficients = ms8_value (both forms) and reproduces C4, C5, c6:RGassembly and ms7 (16 constant-coefficient cases)
+PASS A-ASM-4: ms8_rows equals the RECON section 1.1 polynomial (34 monomials)
+PASS A-ASM-4: tools/assemble.py evaluates the top-slot, loop-7 and affinity gates on synthetic data built on the production means
+PASS A-ASM-4: an injected gate violation (monkeypatched coefficients) is a hard failure
+PASS PP1: C8_full = F8(f+p)[8], recomputed by hand from the replicates
+PASS PP2: C8^pf, Delta_p C8 = C8 - C8^pf with SE sqrt(V_Delta[8,8]), and the cross term
+PASS PP3: null rows 3..7 with pull = Delta/SE (hand values)
+PASS PP4: |pull| > 3 is flagged "not proved zero"
+PASS PP5: order 3 at rounding level (|Delta| < 1e-12), no pull
+PASS PP7: the order-8 pull is a diagnostic with no flag
+PASS PP8: a flag at order 6, or at order 5 (d=2), is marked "must be investigated"; order 7 is not
+PASS guard: a non-finite power difference is refused
+PASS guard: a null row with SE 0 is flagged explicitly
+PASS PP6: flags never change C8, C8^pf, Delta_p C8 or any uncertainty (every null row forced flagged)
+PASS PP9: V_C = sum_L J_L (V_f + V_p) J_L^T and V_C = V_pf + V_Delta + cross + cross^T
+PASS PP10: the result pins POWER_PROTOCOL.md at the HANDOFF sha256, recorded in docs/NUMERICS.md
+PASS A-ASM-5: lower-order pulls C3..C7 use both SEs (hand values), with the C6 secondary reference
+PASS A-ASM-5: an injected 4-sigma C7 deviation prints a FLAG line
+PASS A-ASM-5: error_by_loop sums to Var(C8) and its shares to 1
+PASS A-ASM-5: the half streams equal hand values
+PASS A-ASM-5: the bootstrap (seed 70530413, 16 replicates) equals hand values
+PASS A-ASM-5: a test-only result holds no physical number (every field null at the top level, values under test_partial)
+PASS A-ASM-5: verify_result accepts the synthetic result and its test-only form
+assembly_checks: 32/32 checks passed

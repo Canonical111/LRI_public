@@ -1,0 +1,40 @@
+job 570028 on <NODE> at 2026-10-05T05:03:59-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5val2.570028.0
+Model name:                              AMD EPYC 7543 32-Core Processor
+NUMA node(s):                            8
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+619ddf7d1cf94d6229c841cd3fbe22574045ec65a1b69f8b827f1e26f180895f  bin/c8d2_decimal
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+69e990c03cfc0256024763fda615cb1a9cffca41ec9f0518defaf5945b2fe62f  bin/c8d2_gmp_prof
+4f4638a210fe9ec5f383b1201885890562f6e40986952162aff4ee40a1d977e8  bin/c8d2_gmp_ratiohist
+10fe813393ac4ce1fa82140d6262407481659833cf10097359035c1c623a29d9  bin/c8d2_inspect
+e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5  bin/ref/c7d2_decimal
+7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3  bin/ref/c7d2_gmp
+c7ref: e696d7f3... and 7e3c8c92... as the plan expects on symmetry
+== make test-full 2026-10-05T05:03:59-04:00
+== make test-full exit 0 after 254 s
+describe: passed in 0 s
+bad_inputs: passed in 2 s
+replay: passed in 77 s
+invariance: passed in 24 s
+inspector: passed in 13 s
+class_b: passed in 15 s
+diagnostics: passed in 3 s
+ "status": "passed",
+   "status": "passed",
+   "status": "passed",
+   "status": "passed",
+{"status":"passed","checks":172,"backend":"decimal300","max_error_scaled_by_absolute_terms":"1.84140410802270215193e-302","reference_digits":450}
+{"status":"passed","checks":172,"backend":"gmp350","max_error_scaled_by_absolute_terms":"2.14242116783189203521e-353","reference_digits":450}
+check_inputs: 10/10 checks passed, 2 skipped
+  "status": "passed",
+      "status": "passed",
+      "wrong_sector_message": "ValueError: existing merged.json does not belong to this plan: /tmp/c8d2_570028/c8d2_workflow_opjcdsgb/decimal_wrong_sector/groups/a_power_L5/merged.json"
+      "status": "passed",
+      "wrong_sector_message": "ValueError: existing merged.json does not belong to this plan: /tmp/c8d2_570028/c8d2_workflow_opjcdsgb/gmp_wrong_sector/groups/a_power_L5/merged.json"
+            "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+  "status": "passed",
+      "status": "passed",
+      "status": "passed",
+            "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+executables unchanged by make test-full
+finished 2026-10-05T05:08:13-04:00, status 0

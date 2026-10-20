@@ -1,0 +1,10 @@
+# Independent C8(3) check (GFF/code/LRI_C8_D3_OPT). Production versions pinned in the comments.
+# replay (any OS) and the Python tests:
+numpy>=1.24        # production 2.3.5; replay also tested with 1.24.4
+scipy>=1.11        # production 1.17.0 (tools/sobol_net.py uses scipy.stats.qmc); replay tested with 1.11.1
+mpmath>=1.3,<1.4   # production 1.3.0 (tools/prepare_low.py, tests)
+# graph regeneration and low-loop input regeneration only (not needed by test, replay or a production rerun):
+# sympy>=1.13,<1.15    # production 1.14.0
+# pynauty>=2.8.8,<3    # production 2.8.8.1
+# Native (make -f public.mk test, production rerun): x86-64 Linux, GNU C++17 with OpenMP and libquadmath,
+# GMP (production 6.2.1) and Boost multiprecision headers (production 1.77); production compiler GCC 13.3.0.

@@ -1,0 +1,197 @@
+diff --git a/cluster/expanse/campaign.py b/cluster/expanse/campaign.py
+index 63afc5e1ba01112b70b2023a6bceba0dc4f8c913..86188dfd0c1e98d104988db0a2a1311ffece6fd8 100644
+--- a/cluster/expanse/campaign.py
++++ b/cluster/expanse/campaign.py
+@@ -141,6 +141,7 @@ def freeze(req,release,env_python,receipt_path,root):
+             raise SpecError(f'{name}: ladder must be consecutive even cutoffs')
+         for part in [c['main'],*c.get('checks',[])]:
+             if part['diagnostics'] not in ALLOWED_DIAG:raise SpecError('bad diagnostics')
++            if part.get('jacobian','response') not in ('response','fd'):raise SpecError('jacobian must be response or fd')
+         inputs=root/'inputs'/name;inputs.mkdir(parents=True,exist_ok=True)
+         out={'x':float(c['x']),'ladder':ladder,'main':c['main'],'checks':c.get('checks',[]),'common':common,'slurm':cs,
+              'max_bath_states':{str(L):max(2_000_000,bath_dimension(L)) for L in ladder}}
+diff --git a/cluster/expanse/common.py b/cluster/expanse/common.py
+index 378ea50b585452dfb9c00caac870e6f32f57e99a..644f3c6391dda3048426d3d3b72785aa2dde544a 100644
+--- a/cluster/expanse/common.py
++++ b/cluster/expanse/common.py
+@@ -75,6 +75,7 @@ def _argv(c,common,part,L):
+        '--eig-tol',repr(float(common['eig_tol'])),'--residual-tol',repr(float(common['residual_tol'])),
+        '--tuning-tol',repr(float(common['tuning_tol'])),'--ncv',str(common['ncv']),'--maxiter',str(common['maxiter'])]
+     if part.get('train_keep'):a+=['--train-keep',str(part['train_keep'])]
++    if part.get('jacobian','response')!='response':a+=['--jacobian',part['jacobian']]
+     if part.get('guess') is not None:a+=['--guess',*(repr(float(v)) for v in part['guess'])]
+     if c.get('basis'):a+=['--basis',c['basis']['path']]
+     return a
+diff --git a/code/ht2d/density.py b/code/ht2d/density.py
+index 7ccf07eead9082641e1597a724841be8af774ea9..c5b746996256d86548744eba2951bcd288a47557 100644
+--- a/code/ht2d/density.py
++++ b/code/ht2d/density.py
+@@ -170,9 +170,11 @@ class DensitySolver(DressedSolver):
+         self.timings['jacobian'] += time.perf_counter() - start
+         return jac
+ 
+-    def solve(self, *args, **kwargs):
+-        row = super().solve(*args, **kwargs)
+-        row['solver'] = 'factorized operator; fixed density span; full-density Hellmann-Feynman/window Jacobian'
++    def solve(self, guess=None, tol=5e-10, maxiter=30, diagnostics=True, jacobian='response'):
++        row = super().solve(guess, tol, maxiter, diagnostics, jacobian)
++        row['solver'] = 'factorized operator; fixed density span; ' + (
++            'full-density Hellmann-Feynman/window Jacobian' if jacobian == 'response'
++            else 'central finite-difference Jacobian of the full residual')
+         row['local_retained_edge_weights_scope'] = 'top two eigenstates inside the retained span; not discarded density weight'
+         return row
+ 
+diff --git a/code/ht2d/hpc.py b/code/ht2d/hpc.py
+index 6e11d7919bdb62e0eab4cbf52114f24b7eac0a0a..8c2087e6aedcc9a318ec35618b05fd7b19385b84 100644
+--- a/code/ht2d/hpc.py
++++ b/code/ht2d/hpc.py
+@@ -131,6 +131,8 @@ def parser():
+     p.add_argument('--threads',type=int,default=1);p.add_argument('--ncv',type=int,default=40)
+     p.add_argument('--eig-tol',type=float,default=1e-12);p.add_argument('--residual-tol',type=float,default=1e-8)
+     p.add_argument('--tuning-tol',type=float,default=3e-11);p.add_argument('--maxiter',type=int,default=50)
++    p.add_argument('--jacobian',choices=['response','fd'],default='response',
++                   help='Newton Jacobian: analytic response (default) or central finite differences of the full residual')
+     p.add_argument('--diagnostics',choices=['none','first','all'],default='all')
+     p.add_argument('--max-bath-states',type=int,default=2_000_000)
+     p.add_argument('--memory-limit-gib',type=float,default=8.)
+@@ -162,6 +164,8 @@ def run(args):
+     except OSError as exc:raise IntegrityError(f'Unreadable input: {exc}') from exc
+     configuration={k:str(v.resolve()) if isinstance(v,Path) else v for k,v in vars(args).items()
+                    if k not in ('resume','check_only','output')}
++    # The default Jacobian is left out so that default requests keep their configuration keys.
++    if configuration.get('jacobian')=='response':del configuration['jacobian']
+     # Bind file CONTENT as well as path; input mutation cannot silently reuse a result.
+     for key in ('basis','seed'):
+         path=getattr(args,key)
+@@ -239,7 +243,7 @@ def run(args):
+         estimate=512*1024**2+6*storage+16*sum(op.dim for op in ops)*(max(args.ncv,24)+10)
+         if estimate>args.memory_limit_gib*1024**3:
+             raise MemoryError(f'Estimated {estimate/1024**3:.2f} GiB exceeds requested budget. Increase budget or explicitly choose a smaller problem; no automatic cap reduction.')
+-        row=s.solve(seed,tol=args.tuning_tol,maxiter=args.maxiter)
++        row=s.solve(seed,tol=args.tuning_tol,maxiter=args.maxiter,jacobian=args.jacobian)
+         # Stop here only if expensive work (training/diagnostics) remains; a finished
+         # solve with nothing left to compute is published instead of discarded.
+         if stop['requested'] and (args.train_keep or args.diagnostics!='none'):
+diff --git a/code/ht2d/solver.py b/code/ht2d/solver.py
+index 49084e45fbc4419001744be85081b783e347fe01..1edb94289a5c02ccf174a5994ddaee387d874993 100644
+--- a/code/ht2d/solver.py
++++ b/code/ht2d/solver.py
+@@ -237,8 +237,24 @@ class DressedSolver:
+         self.timings['jacobian']+=time.perf_counter()-t
+         return jac
+ 
+-    def solve(self,guess=None,tol=5e-10,maxiter=30,diagnostics=True):
++    def fd_jacobian(self,theta,step_scale=1e-4):
++        """Central finite differences of the full tuning residual (4 complete spectra, window included).
++
++        Opt-in alternative to response_jacobian; it changes only the Newton direction, never the
++        residual, the gates or the accepted root."""
++        t=time.perf_counter();jac=np.empty((2,2))
++        for j in range(2):
++            h=step_scale*max(1,abs(theta[j]));vals=[]
++            for sign in (1,-1):
++                th=np.array(theta,dtype=float);th[j]+=sign*h
++                vals.append(self.spectrum(th,k=3)[0])
++            jac[:,j]=(vals[0]-vals[1])/(2*h)
++        self.timings['jacobian']+=time.perf_counter()-t
++        return jac
++
++    def solve(self,guess=None,tol=5e-10,maxiter=30,diagnostics=True,jacobian='response'):
+         if self.angular!=0:raise ValueError('Primary tuning requires angular=0; use separate J-sector operators for diagnostics')
++        if jacobian not in ('response','fd'):raise ValueError('jacobian must be response or fd')
+         theta=self.initial(2-4*self.delta) if guess is None else np.array(guess,dtype=float)
+         history=[];start=time.perf_counter();calls=self.calls;cache=None
+         for it in range(maxiter):
+@@ -246,7 +262,7 @@ class DressedSolver:
+             err=float(max(abs(f)));history.append({'iteration':it,'theta':theta.tolist(),'residual':err})
+             if self.checkpoint:self.checkpoint(theta,history)
+             if err<tol:break
+-            jac=self.response_jacobian(theta,out,U)
++            jac=self.response_jacobian(theta,out,U) if jacobian=='response' else self.fd_jacobian(theta)
+             history[-1]['jacobian_condition']=float(np.linalg.cond(jac))
+             # Persist the condition before the line search (same theta, so a stop here is still a
+             # Newton boundary); iterates and stopping decisions are unchanged (IR3-02).
+@@ -282,7 +298,8 @@ class DressedSolver:
+             'scope':('Finite-cutoff raw Hamiltonian only. No claim of complete physical matching.' if self.win is None else
+                 'Finite-cutoff Hamiltonian plus the opt-in full-vacuum window shift D(N); no other matching.'),
+             'window':'none' if self.win is None else self.window,
+-            'solver':'factorized operator; moving-subspace reduced-density response Jacobian',
++            'solver':'factorized operator; '+('moving-subspace reduced-density response Jacobian' if jacobian=='response' else
++                'central finite-difference Jacobian of the full residual'),
+             'backend':self.backend,'timings':dict(self.timings),'matvec_count':self.op.matvec_count,
+             'matvec_seconds':self.op.matvec_seconds,'operator_storage_bytes':self.op.nbytes}
+         if self.win is not None:
+diff --git a/tests/test_expanse.py b/tests/test_expanse.py
+index 204b7a9b8cf086213448e1315d006f258656ac85..06e0667697e8dd6debc979827047d69c71dfe93e 100644
+--- a/tests/test_expanse.py
++++ b/tests/test_expanse.py
+@@ -573,3 +573,15 @@ def test_malformed_basis_artifact_is_integrity(tmp_path,damage):
+     bad=tmp_path/'bad.json';bad.write_text(json.dumps(d))
+     argv=['--L','6','--x','.3','--nz','12','--basis',str(bad),'--diagnostics','none','--threads','1','--output',str(tmp_path/'o.json')]
+     assert hpc.main(argv)==65                                                                       # IR3-03
++
++
++def test_jacobian_option_reaches_point_argv_only_when_requested():
++    c={'x':.3,'max_bath_states':{'8':2000000}}
++    common_={'backend':'tensor','threads':8,'memory_limit_gib':12.,'eig_tol':1e-12,'residual_tol':1e-8,
++             'tuning_tol':3e-11,'ncv':40,'maxiter':50}
++    plain=common._argv(c,common_,{'nz':16,'diagnostics':'none'},8)
++    assert '--jacobian' not in plain
++    assert common._argv(c,common_,{'nz':16,'diagnostics':'none','jacobian':'response'},8)==plain
++    fd=common._argv(c,common_,{'nz':16,'diagnostics':'none','jacobian':'fd'},8)
++    assert fd[fd.index('--jacobian')+1]=='fd'
++    args=hpc.parser().parse_args(fd+['--output','x.json']);assert args.jacobian=='fd'
+diff --git a/tests/test_hpc.py b/tests/test_hpc.py
+index c345e2ee40e56f1a3c32e18857290b97074351f4..70a00fb82829e47d387a0fb1f7f1cdbafe35607b 100644
+--- a/tests/test_hpc.py
++++ b/tests/test_hpc.py
+@@ -117,3 +117,15 @@ def test_driver_rechecks_frozen_source_and_input_bytes(tmp_path,monkeypatch):
+  seed=tmp_path/'seed.json';seed.write_text(json.dumps({'theta':[-.01,-3.]}))
+  monkeypatch.setenv('HT2D_FROZEN_INPUTS',json.dumps({str(seed.resolve()):'bad'}))
+  with pytest.raises(ValueError,match='Inputs changed'):hpc.run(hpc.parser().parse_args(argv+['--seed',str(seed)]))
++
++
++def test_cli_fd_jacobian_option(tmp_path):
++ a=options(tmp_path);cli(a);d=json.loads((tmp_path/'point.json').read_text())
++ assert 'jacobian' not in d['configuration']           # default requests keep their configuration keys
++ b=['--L','4','--x','.3','--nz','12','--osc','96','--diagnostics','first','--threads','1','--jacobian','fd',
++    '--output',str(tmp_path/'fd.json')]
++ cli(b);f=json.loads((tmp_path/'fd.json').read_text());hpc.validate_record(f,f['request_digest'])
++ assert f['configuration']['jacobian']=='fd' and 'finite-difference' in f['solver']
++ assert f['request_digest']!=d['request_digest']
++ assert abs(f['Delta_thermal']-d['Delta_thermal'])<1e-9
++ cli(b+['--check-only'])
+diff --git a/tests/test_port.py b/tests/test_port.py
+index c8b252ee918b6a105b9b79e767201534f7d5a459..18370f01945864dcdb5309db55e3c5d5bedaeea7 100644
+--- a/tests/test_port.py
++++ b/tests/test_port.py
+@@ -118,5 +118,29 @@ def test_parameter_contracts():
+     with pytest.raises(ValueError):FixedLocal(np.ones((64,12)),1.)
+ 
+ 
++def test_fd_jacobian_matches_response_and_reaches_same_root():
++    s=DressedSolver(4,16,128,window='vacuum',eig_tol=1e-13);s.set_delta(.3)
++    r=s.solve(tol=1e-11);u,t,meta=select_density_basis(s,r['theta'],10)
++    d=DensitySolver(4,u,t,window='vacuum',eig_tol=1e-13);d.set_delta(.3)
++    th=np.array(r['theta'])+np.array([.05,-.02])
++    _,info,out,U=d.spectrum(th,k=3)
++    err=np.max(abs(d.fd_jacobian(th)-d.response_jacobian(th,out,U)))
++    METRICS['fd_vs_response_jacobian_off_root']=float(err);assert err<1e-6
++    rows={}
++    for jac in ('response','fd'):
++        d=DensitySolver(4,u,t,window='vacuum',eig_tol=1e-13);d.set_delta(.3)
++        rows[jac]=d.solve(th.tolist(),tol=1e-11,jacobian=jac)
++    assert 'finite-difference' in rows['fd']['solver'] and 'finite-difference' not in rows['response']['solver']
++    np.testing.assert_allclose(rows['fd']['theta'],rows['response']['theta'],rtol=0,atol=1e-9)
++    for key in ('even_gaps','odd_gaps'):
++        np.testing.assert_allclose(rows['fd'][key],rows['response'][key],rtol=0,atol=1e-10)
++    # Positional binding: execution and metadata use the same effective Jacobian (FDJAC-01).
++    d=DensitySolver(4,u,t,window='vacuum',eig_tol=1e-13);d.set_delta(.3)
++    pos=d.solve(th.tolist(),1e-11,30,True,'fd')
++    assert 'finite-difference' in pos['solver']
++    np.testing.assert_allclose(pos['theta'],rows['response']['theta'],rtol=0,atol=1e-9)
++    with pytest.raises(ValueError):d.solve(th.tolist(),jacobian='broyden')
++
++
+ def test_z_write_metrics():
+     (ROOT/'validation/independent_metrics.json').write_text(json.dumps(METRICS,indent=2)+'\n')

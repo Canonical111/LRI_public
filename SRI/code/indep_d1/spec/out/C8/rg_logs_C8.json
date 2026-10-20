@@ -1,0 +1,1860 @@
+{
+ "note": "ARCHIVE-FREE RG higher-log predictions (scripts/rg_logs_C8.py); see the module docstring for the derivation.",
+ "conventions": "X_k[vidj] = [eps^0 l^k] d_v^i d_delta^j X at (v,delta) = (1,0), full derivatives; X in C3..C9, K2..K8 (K2 = Q2), EC3..EC7, EK2..EK6 (EK2 = EQ2); beta inputs as in the dictionary (note l.1122-1137); z2..z7 = zeta values.",
+ "derivation": "RG (Callan-Symanzik) higher-log predictions for the normalized responses, at general (v, delta), derived here.\n\nARCHIVE-FREE.  Derivation (written out in out/C8/rg_logs_C8.json -> derivation):\n  * Auxiliary responses at h = 0 (framework.md Sec. 1, note Secs. 4-5):\n        F_G = sum_{n odd} g^n C_n(v,delta;l),            d_h F_G = sqrt2 b0 sum_n g^n [-2n f_d(l) C_n - 2 d_v C_n + E C_n],\n        F_H = sqrt2 b0 sum_{n even} g^n K_n(v,delta;l),   d_h F_H = 1 - 2 sum g^n K_n + 2v sum g^n [-2n f_d(l) K_n - 2 d_v K_n + E K_n],\n    f_d(l) = (e^{delta l} - 1)/delta (normal-ordering factor N(h)^n), v = b0^2, C_1 = A_1 = 1, E C_1 = j1 = -2/(1+delta).\n  * Essential couplings in cutoff units (note eq:matching): Y = g exp[l - v f_d(l)], v_B = (b0 - sqrt2 h)^2 e^{delta l}.\n    Their flow is autonomous: beta_u = 2uF(u,z), beta_z = (1+z)H(u,z) with F = z + sum_k b_{2k+1}(v_B,delta) u^k,\n    H = -delta - 4 sum_k h_{2k}(v_B,delta) u^k (h2 = -1).  The auxiliary beta along h = 0 at scale l is therefore\n        beta^g(l) = g sum_{k>=1} b_{2k+1}(V(l),delta) u(l)^k,   beta^h(l) = sqrt2 b0 sum_{k>=1} h_{2k}(V(l),delta) u(l)^k,\n        V(l) = v e^{delta l},  u(l) = g^2 exp[2l - 2v f_d(l)]   (= the nonautonomous auxiliary flow of the note's checks).\n  * The renormalized responses are l-independent, so d_l F = beta(l) . grad F at fixed bare (g, h=0):\n        d_l C_n = sum_{m+2k=n} b_{2k+1}(V,d) e_k(l) m C_m + 2v sum_{m+2k=n} h_{2k}(V,d) e_k(l) [-2m f_d C_m - 2 d_v C_m + E C_m]\n        d_l K_n = sum_{m+2k=n} b_{2k+1} e_k m K_m + h_n(V,d) e_{n/2} + sum_{m+2k=n} h_{2k} e_k [-2K_m + 2v(-2m f_d K_m - 2 d_v K_m + E K_m)]\n    with e_k(l) = exp[2k(l - v f_d(l))].  Only FIRST source derivatives enter (beta^h multiplies d_h F at h = 0).\n  * [l^0] of this identity is the finite-response recurrence J0 beta = R1 (b3..b9, h4..h8): checked here symbolically for\n    every jet the C8 inputs use (independent of derive_requirements_C8.py).  [l^k], k >= 1, predicts [l^(k+1)] of every jet\n    of an order-n response from lower-order data (all log powers <= k, incl. d_v and E jets) and the beta inputs.\n  * At (v,delta) = (1,0) it reduces to the assembly's second-log formula (assembly/README.md).\nValidations (all archive-free): note higher logs of C3, d_v C3, d_delta C3, K4 (l.550-552, 2231-2264) exactly;\nthree-kink log polynomials of review/three_kink_independent.json (independent numerics, all 9 jets, all logs).\nOutputs: ../out/C8/rg_logs_C8.json  (closed-form predictions for the C3/K4 jets incl. W, L3, M21, M12; formulas for the\n         second log of every other C8 jet in terms of normalized atoms and beta inputs, and the raw scalars they need)\n",
+ "l0_identity_equals_recurrence": {
+  "a": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "p": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "A": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "E": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "V": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "alpha": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "beta": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "gamma": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "W": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "b": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "G": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "R": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Phi": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Psi": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "S": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "J": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Omega": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "U": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "J9": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "c": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "f": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "q": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "L": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "M": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Q": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "L3": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "M21": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "M12": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "k": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "N": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "P": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "N2": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Ndelta": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "K": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  },
+  "Kv": {
+   "equal_to_derive_requirements_C8 (given C3_1[v0d0] = 5)": true
+  }
+ },
+ "C3_jets_all_logs": {
+  "note": "closed form in the b3 Taylor coefficients (a, p, A, E, V, alpha, beta, gamma, W); value with note closed forms of a, p, A, E and the independent three-kink V, alpha, beta, gamma, W; compared with the independent three-kink log polynomials (review/three_kink_independent.json, review/three_kink_C8.json)",
+  "max_relative_difference": "1.33e-28",
+  "jets": {
+   "C3[base]": {
+    "2": {
+     "prediction": "2",
+     "value": "2.0",
+     "three_kink_independent": "2.0",
+     "difference": "0.0"
+    },
+    "3": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "4": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[v]": {
+    "2": {
+     "prediction": "-3",
+     "value": "-3.0",
+     "three_kink_independent": "-3.0",
+     "difference": "0.0"
+    },
+    "3": {
+     "prediction": "-8/3",
+     "value": "-2.666666666666666666666667",
+     "three_kink_independent": "-2.666666666666666666666667",
+     "difference": "-1.67e-31"
+    },
+    "4": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "5": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[d]": {
+    "2": {
+     "prediction": "a/2",
+     "value": "-3.28986813369645287294483",
+     "three_kink_independent": "-3.28986813369645287294483",
+     "difference": "-1.5e-31"
+    },
+    "3": {
+     "prediction": "-1",
+     "value": "-1.0",
+     "three_kink_independent": "-1.0",
+     "difference": "-2.0e-31"
+    },
+    "4": {
+     "prediction": "-1",
+     "value": "-1.0",
+     "three_kink_independent": "-1.0",
+     "difference": "0.0"
+    },
+    "5": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "6": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[vv]": {
+    "2": {
+     "prediction": "-2*a - 8",
+     "value": "5.159472534785811491779321",
+     "three_kink_independent": "5.159472534785811491779321",
+     "difference": "6.9e-30"
+    },
+    "3": {
+     "prediction": "4/3",
+     "value": "1.333333333333333333333333",
+     "three_kink_independent": "1.333333333333333333333333",
+     "difference": "4.33e-31"
+    },
+    "4": {
+     "prediction": "4",
+     "value": "4.0",
+     "three_kink_independent": "4.0",
+     "difference": "0.0"
+    },
+    "5": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "6": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[vd]": {
+    "2": {
+     "prediction": "A + a/2 - p + 4",
+     "value": "4.066080581843753107122601",
+     "three_kink_independent": "4.066080581843753107122601",
+     "difference": "1.07e-29"
+    },
+    "3": {
+     "prediction": "-a - 7/3",
+     "value": "4.246402934059572412556327",
+     "three_kink_independent": "4.246402934059572412556327",
+     "difference": "3.17e-30"
+    },
+    "4": {
+     "prediction": "-1/2",
+     "value": "-0.5",
+     "three_kink_independent": "-0.5",
+     "difference": "0.0"
+    },
+    "5": {
+     "prediction": "8/5",
+     "value": "1.6",
+     "three_kink_independent": "1.6",
+     "difference": "1.0e-31"
+    },
+    "6": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "7": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[dd]": {
+    "2": {
+     "prediction": "E",
+     "value": "-21.66387667418461008102015",
+     "three_kink_independent": "-21.66387667418461008102015",
+     "difference": "-6.41e-29"
+    },
+    "3": {
+     "prediction": "2*A/3 + a/3 - 2*p/3 + 8/3",
+     "value": "2.710720387895835404748401",
+     "three_kink_independent": "2.710720387895835404748401",
+     "difference": "-1.23e-29"
+    },
+    "4": {
+     "prediction": "-a/2 - 1/2",
+     "value": "2.78986813369645287294483",
+     "three_kink_independent": "2.78986813369645287294483",
+     "difference": "1.35e-30"
+    },
+    "5": {
+     "prediction": "-1/3",
+     "value": "-0.3333333333333333333333333",
+     "three_kink_independent": "-0.3333333333333333333333333",
+     "difference": "-1.33e-32"
+    },
+    "6": {
+     "prediction": "2/3",
+     "value": "0.6666666666666666666666667",
+     "three_kink_independent": "0.6666666666666666666666667",
+     "difference": "3.67e-32"
+    },
+    "7": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "8": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[vvv]": {
+    "2": {
+     "prediction": "-6*A",
+     "value": "35.36097110851781619608054",
+     "three_kink_independent": "35.36097110851781619608054",
+     "difference": "6.91e-29"
+    },
+    "3": {
+     "prediction": "4*a + 16",
+     "value": "-10.31894506957162298355864",
+     "three_kink_independent": "-10.31894506957162298355864",
+     "difference": "-1.34e-29"
+    },
+    "4": {
+     "prediction": "2",
+     "value": "2.0",
+     "three_kink_independent": "2.0",
+     "difference": "0.0"
+    },
+    "5": {
+     "prediction": "-32/5",
+     "value": "-6.4",
+     "three_kink_independent": "-6.4",
+     "difference": "-3.0e-31"
+    },
+    "6": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "7": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[vvd]": {
+    "2": {
+     "prediction": "2*A - 2*E + 3*alpha + 8",
+     "value": "34.56780972725325974624211",
+     "three_kink_independent": "34.56780972725325974624211",
+     "difference": "-3.73e-29"
+    },
+    "3": {
+     "prediction": "-10*A/3 - 2*a + 4*p/3 - 8",
+     "value": "12.47186461690480891704959",
+     "three_kink_independent": "12.47186461690480891704959",
+     "difference": "-1.44e-29"
+    },
+    "4": {
+     "prediction": "2*a + 5",
+     "value": "-8.159472534785811491779321",
+     "three_kink_independent": "-8.159472534785811491779321",
+     "difference": "-6.02e-31"
+    },
+    "5": {
+     "prediction": "4",
+     "value": "4.0",
+     "three_kink_independent": "4.0",
+     "difference": "0.0"
+    },
+    "6": {
+     "prediction": "-8/3",
+     "value": "-2.666666666666666666666667",
+     "three_kink_independent": "-2.666666666666666666666667",
+     "difference": "-1.67e-31"
+    },
+    "7": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "8": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[vdd]": {
+    "2": {
+     "prediction": "E - 2*V + 2*beta - 8",
+     "value": "-22.68221203187269069251092",
+     "three_kink_independent": "-22.68221203187269069251092",
+     "difference": "8.82e-28"
+    },
+    "3": {
+     "prediction": "2*A - 2*E + a/3 + 2*alpha - 2*p/3 + 16/3",
+     "value": "37.53184465552108195625658",
+     "three_kink_independent": "37.53184465552108195625658",
+     "difference": "-1.6e-28"
+    },
+    "4": {
+     "prediction": "-2*A - 5*a/3 + p - 31/6",
+     "value": "8.337106914867606295762093",
+     "three_kink_independent": "8.337106914867606295762093",
+     "difference": "-2.56e-30"
+    },
+    "5": {
+     "prediction": "a + 14/15",
+     "value": "-5.646402934059572412556327",
+     "three_kink_independent": "-5.646402934059572412556327",
+     "difference": "-1.17e-30"
+    },
+    "6": {
+     "prediction": "23/9",
+     "value": "2.555555555555555555555556",
+     "three_kink_independent": "2.555555555555555555555556",
+     "difference": "-4.44e-31"
+    },
+    "7": {
+     "prediction": "-8/7",
+     "value": "-1.142857142857142857142857",
+     "three_kink_independent": "-1.142857142857142857142857",
+     "difference": "-4.29e-32"
+    },
+    "8": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "9": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   },
+   "C3[ddd]": {
+    "2": {
+     "prediction": "3*gamma",
+     "value": "-132.0290521943033745711436",
+     "three_kink_independent": "-132.0290521943033745711436",
+     "difference": "-1.76e-26"
+    },
+    "3": {
+     "prediction": "E - 2*V + 2*beta - 8",
+     "value": "-22.68221203187269069251092",
+     "three_kink_independent": "-22.68221203187269069251092",
+     "difference": "1.39e-27"
+    },
+    "4": {
+     "prediction": "3*A/2 - 3*E/2 + a/4 + 3*alpha/2 - p/2 + 2",
+     "value": "26.14888349164081146719243",
+     "three_kink_independent": "26.14888349164081146719243",
+     "difference": "2.34e-28"
+    },
+    "5": {
+     "prediction": "-6*A/5 - a + 3*p/5 - 27/10",
+     "value": "5.402264148920563777457256",
+     "three_kink_independent": "5.402264148920563777457256",
+     "difference": "2.49e-29"
+    },
+    "6": {
+     "prediction": "a/2",
+     "value": "-3.28986813369645287294483",
+     "three_kink_independent": "-3.28986813369645287294483",
+     "difference": "6.5e-31"
+    },
+    "7": {
+     "prediction": "9/7",
+     "value": "1.285714285714285714285714",
+     "three_kink_independent": "1.285714285714285714285714",
+     "difference": "-1.14e-31"
+    },
+    "8": {
+     "prediction": "-1/2",
+     "value": "-0.5",
+     "three_kink_independent": "-0.5",
+     "difference": "-5.0e-32"
+    },
+    "9": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    },
+    "10": {
+     "prediction": "0",
+     "value": "0.0",
+     "three_kink_independent": "0.0",
+     "difference": "0.0"
+    }
+   }
+  }
+ },
+ "C3_note_checks": {
+  "C3 l^2 = 2 (l.550)": true,
+  "d_v C3 l^3 = -8/3, l^2 = -3 (l.2231-2234)": true,
+  "d_delta C3 l^4 = -1, l^3 = -1, l^2 = -2 z2 (l.2263-2264; a = -4 z2)": true,
+  "A3_dd/2 l^6..l^2 = phase-1 note-closed-forms relation (1/3, -1/15, -1/3 - a/4, 4/3 + a/6 + A/3 - p/3, E/2)": true
+ },
+ "K4_jets_all_logs": {
+  "note": "closed form in the b3 and h4 Taylor coefficients (c = -4 h4 etc.) and zeta values (exact two-kink Q2, EQ2 of out/C8/two_kink_exact_C8.json); the [l^k] of K4 = Q4 - Q2 Z2 jets",
+  "note_checks": {
+   "K4 l^3 = -4/3, l^2 = -6 (l.551-552)": true
+  },
+  "jets": {
+   "K4[base]": {
+    "2": {
+     "prediction": "-6",
+     "value_with_note_and_three_kink_inputs": "-6.0"
+    },
+    "3": {
+     "prediction": "-4/3",
+     "value_with_note_and_three_kink_inputs": "-1.333333333333333333333333"
+    },
+    "4": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "5": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[v]": {
+    "2": {
+     "prediction": "-a + c/2 - 4*z2",
+     "value_with_note_and_three_kink_inputs": "-8.0"
+    },
+    "3": {
+     "prediction": "8",
+     "value_with_note_and_three_kink_inputs": "8.0"
+    },
+    "4": {
+     "prediction": "8/3",
+     "value_with_note_and_three_kink_inputs": "2.666666666666666666666667"
+    },
+    "5": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "6": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[d]": {
+    "2": {
+     "prediction": "-a - f/8 - p + 8",
+     "value_with_note_and_three_kink_inputs": "26.4270904645862016633068"
+    },
+    "3": {
+     "prediction": "-2*a/3 + c/6 - 4*z2/3 + 8/3",
+     "value_with_note_and_three_kink_inputs": "2.193245422464301915296554"
+    },
+    "4": {
+     "prediction": "8/3",
+     "value_with_note_and_three_kink_inputs": "2.666666666666666666666667"
+    },
+    "5": {
+     "prediction": "14/15",
+     "value_with_note_and_three_kink_inputs": "0.9333333333333333333333333"
+    },
+    "6": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "7": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[vv]": {
+    "2": {
+     "prediction": "-2*A + 4*a + f - 24*z2 - 16*z3 + 48",
+     "value_with_note_and_three_kink_inputs": "-46.02656513017759186395587"
+    },
+    "3": {
+     "prediction": "4*a - 4*c/3 + 16*z2/3 + 16",
+     "value_with_note_and_three_kink_inputs": "19.7873699536189180109609"
+    },
+    "4": {
+     "prediction": "-12",
+     "value_with_note_and_three_kink_inputs": "-12.0"
+    },
+    "5": {
+     "prediction": "-88/15",
+     "value_with_note_and_three_kink_inputs": "-5.866666666666666666666667"
+    },
+    "6": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "7": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[vd]": {
+    "2": {
+     "prediction": "-2*A - E - L/4 - 3*a - f/8 + 2*p + q/2 + 12*z2 + 12*z3 + 8*z4"
+    },
+    "3": {
+     "prediction": "-4*A/3 + 4*a/3 + c/6 + f/2 + 2*p - 16*z2/3 - 8*z3/3 + 16/3",
+     "value_with_note_and_three_kink_inputs": "-39.11731719665620723959403"
+    },
+    "4": {
+     "prediction": "13*a/6 - c/2 + 2*z2 + 14/3",
+     "value_with_note_and_three_kink_inputs": "1.700439554345157090183899"
+    },
+    "5": {
+     "prediction": "-16/5",
+     "value_with_note_and_three_kink_inputs": "-3.2"
+    },
+    "6": {
+     "prediction": "-32/15",
+     "value_with_note_and_three_kink_inputs": "-2.133333333333333333333333"
+    },
+    "7": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "8": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[dd]": {
+    "2": {
+     "prediction": "-2*E - M/4 - 2*V + 4*a - 112"
+    },
+    "3": {
+     "prediction": "-4*A/3 - 4*E/3 - L/6 - 2*a/3 - f/12 + 4*p/3 + q/3 + 8*z2 + 8*z3 + 16*z4/3 - 112/3"
+    },
+    "4": {
+     "prediction": "-A + a/2 + c/12 + f/4 + 4*p/3 - 2*z2/3 - 20/3",
+     "value_with_note_and_three_kink_inputs": "-24.02140812103344273536007"
+    },
+    "5": {
+     "prediction": "16*a/15 - c/5 + 4*z2/5 + 8/15",
+     "value_with_note_and_three_kink_inputs": "-1.969104765073851646437706"
+    },
+    "6": {
+     "prediction": "-46/45",
+     "value_with_note_and_three_kink_inputs": "-1.022222222222222222222222"
+    },
+    "7": {
+     "prediction": "-4/5",
+     "value_with_note_and_three_kink_inputs": "-0.8"
+    },
+    "8": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "9": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[vvv]": {
+    "2": {
+     "prediction": "12*A + 3*L + 24*a - 6*alpha - 144*z2 - 144*z3 - 96*z4 + 576"
+    },
+    "3": {
+     "prediction": "12*A - 8*a - 4*f + 48*z2 + 32*z3",
+     "value_with_note_and_three_kink_inputs": "182.471733532733357941185"
+    },
+    "4": {
+     "prediction": "-14*a + 4*c - 8*z2 - 48",
+     "value_with_note_and_three_kink_inputs": "-33.04316479128513104932407"
+    },
+    "5": {
+     "prediction": "96/5",
+     "value_with_note_and_three_kink_inputs": "19.2"
+    },
+    "6": {
+     "prediction": "208/15",
+     "value_with_note_and_three_kink_inputs": "13.86666666666666666666667"
+    },
+    "7": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "8": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[vvd]": {
+    "2": {
+     "prediction": "-12*A + 4*E - L/2 - 3*L3/4 + M - 20*a - 6*alpha - 2*beta + 8*p + 168*z2 + 168*z3 + 132*z4 + 96*z5 - 592"
+    },
+    "3": {
+     "prediction": "4*A + 4*E + 5*L/3 + 12*a - 4*alpha + f - 8*p/3 - 4*q/3 - 40*z2 - 112*z3/3 - 64*z4/3 + 80/3"
+    },
+    "4": {
+     "prediction": "22*A/3 + a/3 - c - 2*f - 14*p/3 + 16*z2 + 8*z3 + 4",
+     "value_with_note_and_three_kink_inputs": "95.25382646929904742378615"
+    },
+    "5": {
+     "prediction": "-106*a/15 + 8*c/5 - 16*z2/5 - 316/15",
+     "value_with_note_and_three_kink_inputs": "-5.43365272433779065909146"
+    },
+    "6": {
+     "prediction": "104/45",
+     "value_with_note_and_three_kink_inputs": "2.311111111111111111111111"
+    },
+    "7": {
+     "prediction": "544/105",
+     "value_with_note_and_three_kink_inputs": "5.180952380952380952380952"
+    },
+    "8": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "9": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   },
+   "K4[vdd]": {
+    "2": {
+     "prediction": "8*A - 6*E - M/4 - M21/2 + Q + 4*V + 32*a - 4*beta - 2*gamma - 8*p + 16*z2*z3 - 168*z2 - 168*z3 - 140*z4 - 144*z5 - 96*z6"
+    },
+    "3": {
+     "prediction": "-20*A/3 + 8*E/3 - L/2 - L3/2 + M + 4*V - 10*a - 4*alpha - 8*beta/3 - f/12 + 4*p + q/3 + 64*z2 + 64*z3 + 148*z4/3 + 32*z5 - 736/3"
+    },
+    "4": {
+     "prediction": "A + 13*E/3 + L + 29*a/6 - 3*alpha + c/12 + 5*f/6 - 2*p/3 - q - 44*z2/3 - 40*z3/3 - 8*z4 - 8"
+    },
+    "5": {
+     "prediction": "68*A/15 + 5*a/3 - 2*c/3 - f - 10*p/3 + 76*z2/15 + 8*z3/5 + 36/5",
+     "value_with_note_and_three_kink_inputs": "42.05564707672960982331602"
+    },
+    "6": {
+     "prediction": "-17*a/5 + 2*c/3 - 4*z2/3 - 328/45",
+     "value_with_note_and_three_kink_inputs": "2.222302331116022065172737"
+    },
+    "7": {
+     "prediction": "-8/21",
+     "value_with_note_and_three_kink_inputs": "-0.3809523809523809523809524"
+    },
+    "8": {
+     "prediction": "208/105",
+     "value_with_note_and_three_kink_inputs": "1.980952380952380952380952"
+    },
+    "9": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    },
+    "10": {
+     "prediction": "0",
+     "value_with_note_and_three_kink_inputs": "0.0"
+    }
+   }
+  }
+ },
+ "second_log_formulas": {
+  "note": "X_2[vidj] (= [eps^0 l^2] d_v^i d_delta^j X) predicted from l^0, l^1 data of lower orders and the beta inputs; evaluate with the same data as the inputs (per replicate) and compare with the engine [l^2]. Exact two-kink K2 = Q2, EK2 = EQ2 substituted. At (v,delta) = (1,0) these reduce to the assembly second-log formula.",
+  "formulas": {
+   "C5_2[v0d0]": {
+    "prediction": "6*C3_0[v0d0] + 3*C3_1[v0d0]/2 + 2*C3_1[v1d0] - EC3_1[v0d0] + c/2",
+    "n_terms": 5,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "EC3_1[v0d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]"
+    ],
+    "beta_inputs": [
+     "c"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C5_2[v0d1]": {
+    "prediction": "3*C3_0[v0d0]*a/2 + 6*C3_0[v0d1] + 3*C3_1[v0d0]*p/2 + 3*C3_1[v0d1]/2 + 2*C3_1[v1d1] - EC3_1[v0d1] + G/2 + f/2 + q/2",
+    "n_terms": 9,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v0d1]",
+     "C3_1[v0d0]",
+     "C3_1[v0d1]",
+     "C3_1[v1d1]",
+     "EC3_1[v0d1]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d1]"
+    ],
+    "beta_inputs": [
+     "G",
+     "a",
+     "f",
+     "p",
+     "q"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C5_2[v0d2]": {
+    "prediction": "3*C3_0[v0d0]*E + 3*C3_0[v0d1]*a + 6*C3_0[v0d2] + 3*C3_1[v0d0]*V + 3*C3_1[v0d1]*p + 3*C3_1[v0d2]/2 + 2*C3_1[v1d2] - EC3_1[v0d2] + M + Psi + Q - f",
+    "n_terms": 12,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v0d1]",
+     "C3_0[v0d2]",
+     "C3_1[v0d0]",
+     "C3_1[v0d1]",
+     "C3_1[v0d2]",
+     "C3_1[v1d2]",
+     "EC3_1[v0d2]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d2]"
+    ],
+    "beta_inputs": [
+     "E",
+     "M",
+     "Psi",
+     "Q",
+     "V",
+     "a",
+     "f",
+     "p"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C5_2[v1d0]": {
+    "prediction": "3*C3_0[v0d0] + 2*C3_0[v1d0] + 3*C3_1[v0d0]*a/2 + 7*C3_1[v1d0]/2 + 2*C3_1[v2d0] + 2*EC3_0[v0d0] - EC3_1[v0d0] - EC3_1[v1d0] - 2*b - 3*c/2 + f/2",
+    "n_terms": 11,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v1d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "C3_1[v2d0]",
+     "EC3_0[v0d0]",
+     "EC3_1[v0d0]",
+     "EC3_1[v1d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]",
+     "EC3_1[v1d0]"
+    ],
+    "beta_inputs": [
+     "a",
+     "b",
+     "c",
+     "f"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C5_2[v1d1]": {
+    "prediction": "3*A*C3_0[v0d0] + 3*C3_0[v0d0]*a/2 - 3*C3_0[v0d0]*p + 3*C3_0[v0d1] + 3*C3_0[v1d0]*a/2 + 2*C3_0[v1d1] + 3*C3_1[v0d0]*E/2 + 3*C3_1[v0d1]*a/2 + 3*C3_1[v1d0]*p/2 + 7*C3_1[v1d1]/2 + 2*C3_1[v2d1] + 2*EC3_0[v0d1] - EC3_1[v0d1] - EC3_1[v1d1] + G/2 + L + M/2 + Phi - 2*R + 2*c + f - 3*q/2",
+    "n_terms": 22,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v0d1]",
+     "C3_0[v1d0]",
+     "C3_0[v1d1]",
+     "C3_1[v0d0]",
+     "C3_1[v0d1]",
+     "C3_1[v1d0]",
+     "C3_1[v1d1]",
+     "C3_1[v2d1]",
+     "EC3_0[v0d1]",
+     "EC3_1[v0d1]",
+     "EC3_1[v1d1]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d1]",
+     "EC3_1[v1d1]"
+    ],
+    "beta_inputs": [
+     "A",
+     "E",
+     "G",
+     "L",
+     "M",
+     "Phi",
+     "R",
+     "a",
+     "c",
+     "f",
+     "p",
+     "q"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C5_2[v2d0]": {
+    "prediction": "3*A*C3_1[v0d0] - 6*C3_0[v0d0]*a - 2*C3_0[v1d0] - 2*C3_0[v2d0] + 3*C3_1[v1d0]*a + 11*C3_1[v2d0]/2 + 2*C3_1[v3d0] + 4*EC3_0[v0d0] + 4*EC3_0[v1d0] - 2*EC3_1[v1d0] - EC3_1[v2d0] - 4*G + L - 4*c - 3*f",
+    "n_terms": 15,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v1d0]",
+     "C3_0[v2d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "C3_1[v2d0]",
+     "C3_1[v3d0]",
+     "EC3_0[v0d0]",
+     "EC3_0[v1d0]",
+     "EC3_1[v1d0]",
+     "EC3_1[v2d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v1d0]",
+     "EC3_1[v2d0]"
+    ],
+    "beta_inputs": [
+     "A",
+     "G",
+     "L",
+     "a",
+     "c",
+     "f"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C7_2[v0d0]": {
+    "prediction": "3*C3_0[v0d0]*c/2 + 3*C3_1[v0d0]*b/2 + C3_1[v1d0]*c/2 + 10*C5_0[v0d0] + 5*C5_1[v0d0]/2 + 2*C5_1[v1d0] - EC3_1[v0d0]*c/4 - EC5_1[v0d0] + k/2",
+    "n_terms": 9,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "C5_0[v0d0]",
+     "C5_1[v0d0]",
+     "C5_1[v1d0]",
+     "EC3_1[v0d0]",
+     "EC5_1[v0d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]",
+     "EC5_1[v0d0]"
+    ],
+    "beta_inputs": [
+     "b",
+     "c",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C7_2[v0d1]": {
+    "prediction": "3*C3_0[v0d0]*G/2 + 3*C3_0[v0d0]*q/2 + 3*C3_0[v0d1]*c/2 + C3_0[v1d0]*f/2 + 3*C3_1[v0d0]*R/2 + 3*C3_1[v0d1]*b/2 + C3_1[v1d0]*q/2 + C3_1[v1d1]*c/2 + 5*C5_0[v0d0]*a/2 + 10*C5_0[v0d1] + 5*C5_1[v0d0]*p/2 + 5*C5_1[v0d1]/2 + 2*C5_1[v1d1] - EC3_0[v0d0]*f/4 - EC3_1[v0d0]*q/4 - EC3_1[v0d1]*c/4 - EC5_1[v0d1] + N/2 + Omega/2 + P/2",
+    "n_terms": 20,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v0d1]",
+     "C3_0[v1d0]",
+     "C3_1[v0d0]",
+     "C3_1[v0d1]",
+     "C3_1[v1d0]",
+     "C3_1[v1d1]",
+     "C5_0[v0d0]",
+     "C5_0[v0d1]",
+     "C5_1[v0d0]",
+     "C5_1[v0d1]",
+     "C5_1[v1d1]",
+     "EC3_0[v0d0]",
+     "EC3_1[v0d0]",
+     "EC3_1[v0d1]",
+     "EC5_1[v0d1]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]",
+     "EC3_1[v0d1]",
+     "EC5_1[v0d1]"
+    ],
+    "beta_inputs": [
+     "G",
+     "N",
+     "Omega",
+     "P",
+     "R",
+     "a",
+     "b",
+     "c",
+     "f",
+     "p",
+     "q"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C7_2[v1d0]": {
+    "prediction": "-6*C3_0[v0d0]*b + 3*C3_0[v0d0]*c/2 + 3*C3_0[v0d0]*f/2 - C3_0[v1d0]*c/2 + 3*C3_1[v0d0]*G/2 + 3*C3_1[v1d0]*b/2 + C3_1[v1d0]*c/2 + C3_1[v1d0]*f/2 + C3_1[v2d0]*c/2 + 5*C5_0[v0d0] + 6*C5_0[v1d0] + 5*C5_1[v0d0]*a/2 + 9*C5_1[v1d0]/2 + 2*C5_1[v2d0] + EC3_0[v0d0]*c - EC3_1[v0d0]*c/4 - EC3_1[v0d0]*f/4 - EC3_1[v1d0]*c/4 + 2*EC5_0[v0d0] - EC5_1[v0d0] - EC5_1[v1d0] - 3*J + N/2 - 5*k/2",
+    "n_terms": 24,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_0[v1d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "C3_1[v2d0]",
+     "C5_0[v0d0]",
+     "C5_0[v1d0]",
+     "C5_1[v0d0]",
+     "C5_1[v1d0]",
+     "C5_1[v2d0]",
+     "EC3_0[v0d0]",
+     "EC3_1[v0d0]",
+     "EC3_1[v1d0]",
+     "EC5_0[v0d0]",
+     "EC5_1[v0d0]",
+     "EC5_1[v1d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]",
+     "EC3_1[v1d0]",
+     "EC5_1[v0d0]",
+     "EC5_1[v1d0]"
+    ],
+    "beta_inputs": [
+     "G",
+     "J",
+     "N",
+     "a",
+     "b",
+     "c",
+     "f",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "C9_2[v0d0]": {
+    "prediction": "3*C3_0[v0d0]*k/2 + 3*C3_1[v0d0]*J/2 + C3_1[v1d0]*k/2 + 5*C5_0[v0d0]*c/2 + 5*C5_1[v0d0]*b/2 + C5_1[v1d0]*c/2 + 14*C7_0[v0d0] + 7*C7_1[v0d0]/2 + 2*C7_1[v1d0] - EC3_1[v0d0]*k/4 - EC5_1[v0d0]*c/4 - EC7_1[v0d0] + K/2",
+    "n_terms": 13,
+    "normalized_atoms": [
+     "C3_0[v0d0]",
+     "C3_1[v0d0]",
+     "C3_1[v1d0]",
+     "C5_0[v0d0]",
+     "C5_1[v0d0]",
+     "C5_1[v1d0]",
+     "C7_0[v0d0]",
+     "C7_1[v0d0]",
+     "C7_1[v1d0]",
+     "EC3_1[v0d0]",
+     "EC5_1[v0d0]",
+     "EC7_1[v0d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EC3_1[v0d0]",
+     "EC5_1[v0d0]",
+     "EC7_1[v0d0]"
+    ],
+    "beta_inputs": [
+     "J",
+     "K",
+     "b",
+     "c",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K6_2[v0d0]": {
+    "prediction": "-EK4_1[v0d0] + 8*K4_0[v0d0] + 3*K4_1[v0d0] + 2*K4_1[v1d0] - b - 5*c/4",
+    "n_terms": 6,
+    "normalized_atoms": [
+     "EK4_1[v0d0]",
+     "K4_0[v0d0]",
+     "K4_1[v0d0]",
+     "K4_1[v1d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d0]"
+    ],
+    "beta_inputs": [
+     "b",
+     "c"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K6_2[v0d1]": {
+    "prediction": "-EK4_1[v0d1] - G + 2*K4_0[v0d0]*a + 8*K4_0[v0d1] + 2*K4_1[v0d0]*p + 3*K4_1[v0d1] + 2*K4_1[v1d1] - N/8 - R + 2*c + f*z2/2 - 5*f/4 - 5*q/4",
+    "n_terms": 13,
+    "normalized_atoms": [
+     "EK4_1[v0d1]",
+     "K4_0[v0d0]",
+     "K4_0[v0d1]",
+     "K4_1[v0d0]",
+     "K4_1[v0d1]",
+     "K4_1[v1d1]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d1]"
+    ],
+    "beta_inputs": [
+     "G",
+     "N",
+     "R",
+     "a",
+     "c",
+     "f",
+     "p",
+     "q"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K6_2[v1d0]": {
+    "prediction": "2*EK4_0[v0d0] - EK4_1[v0d0] - EK4_1[v1d0] - G + 2*K4_0[v0d0] + 4*K4_0[v1d0] + 2*K4_1[v0d0]*a + 5*K4_1[v1d0] + 2*K4_1[v2d0] + 4*b - 2*c*z2 + 2*c - 5*f/4 + 3*k/4",
+    "n_terms": 14,
+    "normalized_atoms": [
+     "EK4_0[v0d0]",
+     "EK4_1[v0d0]",
+     "EK4_1[v1d0]",
+     "K4_0[v0d0]",
+     "K4_0[v1d0]",
+     "K4_1[v0d0]",
+     "K4_1[v1d0]",
+     "K4_1[v2d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d0]",
+     "EK4_1[v1d0]"
+    ],
+    "beta_inputs": [
+     "G",
+     "a",
+     "b",
+     "c",
+     "f",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K6_2[v1d1]": {
+    "prediction": "4*A*K4_0[v0d0] + 2*E*K4_1[v0d0] + 2*EK4_0[v0d1] - EK4_1[v0d1] - EK4_1[v1d1] - 3*G + 2*K4_0[v0d0]*a - 4*K4_0[v0d0]*p + 2*K4_0[v0d1] + 2*K4_0[v1d0]*a + 4*K4_0[v1d1] + 2*K4_1[v0d1]*a + 2*K4_1[v1d0]*p + 5*K4_1[v1d1] + 2*K4_1[v2d1] + L*z2 - 5*L/2 - 5*M/4 - N/8 - N2/4 + 3*P/4 - 2*Phi - Psi + 4*R - 8*b + 6*c*z2 + 6*c*z3 + 4*c*z4 - 14*c + 2*f*z2 + f*z3 - 19*f/4 - 2*q*z2 + 2*q",
+    "n_terms": 34,
+    "normalized_atoms": [
+     "EK4_0[v0d1]",
+     "EK4_1[v0d1]",
+     "EK4_1[v1d1]",
+     "K4_0[v0d0]",
+     "K4_0[v0d1]",
+     "K4_0[v1d0]",
+     "K4_0[v1d1]",
+     "K4_1[v0d0]",
+     "K4_1[v0d1]",
+     "K4_1[v1d0]",
+     "K4_1[v1d1]",
+     "K4_1[v2d1]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d1]",
+     "EK4_1[v1d1]"
+    ],
+    "beta_inputs": [
+     "A",
+     "E",
+     "G",
+     "L",
+     "M",
+     "N",
+     "N2",
+     "P",
+     "Phi",
+     "Psi",
+     "R",
+     "a",
+     "b",
+     "c",
+     "f",
+     "p",
+     "q"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K6_2[v2d0]": {
+    "prediction": "4*A*K4_1[v0d0] + 4*EK4_0[v0d0] + 4*EK4_0[v1d0] - 2*EK4_1[v1d0] - EK4_1[v2d0] + 8*G - 8*K4_0[v0d0]*a - 4*K4_0[v1d0] + 4*K4_1[v1d0]*a + 7*K4_1[v2d0] + 2*K4_1[v3d0] - 5*L/2 + 3*N/2 - 2*Phi + 16*b - 12*c*z2 - 8*c*z3 + 32*c - 4*f*z2 + 4*f",
+    "n_terms": 20,
+    "normalized_atoms": [
+     "EK4_0[v0d0]",
+     "EK4_0[v1d0]",
+     "EK4_1[v1d0]",
+     "EK4_1[v2d0]",
+     "K4_0[v0d0]",
+     "K4_0[v1d0]",
+     "K4_1[v0d0]",
+     "K4_1[v1d0]",
+     "K4_1[v2d0]",
+     "K4_1[v3d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v1d0]",
+     "EK4_1[v2d0]"
+    ],
+    "beta_inputs": [
+     "A",
+     "G",
+     "L",
+     "N",
+     "Phi",
+     "a",
+     "b",
+     "c",
+     "f"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K8_2[v0d0]": {
+    "prediction": "-EK4_1[v0d0]*c/4 - EK6_1[v0d0] - J + 2*K4_0[v0d0]*c + 2*K4_1[v0d0]*b + K4_1[v0d0]*c/4 + K4_1[v1d0]*c/2 + 12*K6_0[v0d0] + 4*K6_1[v0d0] + 2*K6_1[v1d0] - 5*k/4",
+    "n_terms": 11,
+    "normalized_atoms": [
+     "EK4_1[v0d0]",
+     "EK6_1[v0d0]",
+     "K4_0[v0d0]",
+     "K4_1[v0d0]",
+     "K4_1[v1d0]",
+     "K6_0[v0d0]",
+     "K6_1[v0d0]",
+     "K6_1[v1d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d0]",
+     "EK6_1[v0d0]"
+    ],
+    "beta_inputs": [
+     "J",
+     "b",
+     "c",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   },
+   "K8_2[v1d0]": {
+    "prediction": "EK4_0[v0d0]*c - EK4_1[v0d0]*c/4 - EK4_1[v0d0]*f/4 - EK4_1[v1d0]*c/4 + 2*EK6_0[v0d0] - EK6_1[v0d0] - EK6_1[v1d0] + 2*G*K4_1[v0d0] + 6*J + K - 8*K4_0[v0d0]*b + K4_0[v0d0]*c + 2*K4_0[v0d0]*f + K4_1[v0d0]*f/4 + 2*K4_1[v1d0]*b + 3*K4_1[v1d0]*c/4 + K4_1[v1d0]*f/2 + K4_1[v2d0]*c/2 + 4*K6_0[v0d0] + 8*K6_0[v1d0] + 3*K6_1[v0d0]*a + 6*K6_1[v1d0] + 2*K6_1[v2d0] - 5*N/4 - Omega - 3*k*z2 + 9*k/2",
+    "n_terms": 27,
+    "normalized_atoms": [
+     "EK4_0[v0d0]",
+     "EK4_1[v0d0]",
+     "EK4_1[v1d0]",
+     "EK6_0[v0d0]",
+     "EK6_1[v0d0]",
+     "EK6_1[v1d0]",
+     "K4_0[v0d0]",
+     "K4_1[v0d0]",
+     "K4_1[v1d0]",
+     "K4_1[v2d0]",
+     "K6_0[v0d0]",
+     "K6_0[v1d0]",
+     "K6_1[v0d0]",
+     "K6_1[v1d0]",
+     "K6_1[v2d0]"
+    ],
+    "atoms_not_in_the_C8_input_set": [
+     "EK4_1[v0d0]",
+     "EK4_1[v1d0]",
+     "EK6_1[v0d0]",
+     "EK6_1[v1d0]"
+    ],
+    "beta_inputs": [
+     "G",
+     "J",
+     "K",
+     "N",
+     "Omega",
+     "a",
+     "b",
+     "c",
+     "f",
+     "k"
+    ],
+    "unknown_taylor_coefficients": []
+   }
+  },
+  "extra_normalized_atoms_needed": [
+   "EC3_1[v0d0]",
+   "EC3_1[v0d1]",
+   "EC3_1[v0d2]",
+   "EC3_1[v1d0]",
+   "EC3_1[v1d1]",
+   "EC3_1[v2d0]",
+   "EC5_1[v0d0]",
+   "EC5_1[v0d1]",
+   "EC5_1[v1d0]",
+   "EC7_1[v0d0]",
+   "EK4_1[v0d0]",
+   "EK4_1[v0d1]",
+   "EK4_1[v1d0]",
+   "EK4_1[v1d1]",
+   "EK4_1[v2d0]",
+   "EK6_1[v0d0]",
+   "EK6_1[v1d0]"
+  ]
+ },
+ "higher_log_formulas": {
+  "note": "X_k[vidj] for k = 3 .. top+1 predicted from lower-order data at log powers <= k-1 (normalized C, K and E jets) and the beta inputs; [l^(top+1)] must vanish. top = n - 1 + i + 2j (each d_v adds one log, each d_delta two).",
+  "jets": {
+   "C5[v0d0]": {
+    "structural_top_log": 4,
+    "logs": {
+     "3": {
+      "prediction": "4*C3_1[v0d0] + C3_2[v0d0] + 4*C3_2[v1d0]/3 - 2*EC3_2[v0d0]/3",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*C3_2[v0d0] + 3*C3_3[v0d0]/4 + C3_3[v1d0] - EC3_3[v0d0]/2",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "12*C3_3[v0d0]/5 + 3*C3_4[v0d0]/5 + 4*C3_4[v1d0]/5 - 2*EC3_4[v0d0]/5",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C5[v0d1]": {
+    "structural_top_log": 6,
+    "logs": {
+     "3": {
+      "prediction": "C3_0[v0d0] - 4*C3_0[v1d0]/3 + C3_1[v0d0]*a + 4*C3_1[v0d1] + C3_2[v0d0]*p + C3_2[v0d1] + 4*C3_2[v1d1]/3 + 2*EC3_0[v0d0]/3 - 2*EC3_2[v0d1]/3 - 2*b/3 - c/2 + f/3",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-3*C3_0[v0d0] + 3*C3_1[v0d0]/4 - C3_1[v1d0] + 3*C3_2[v0d0]*a/4 + 3*C3_2[v0d1] + 3*C3_3[v0d0]*p/4 + 3*C3_3[v0d1]/4 + C3_3[v1d1] + EC3_1[v0d0]/2 - EC3_3[v0d1]/2 - c/2",
+      "n_terms": 11,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-12*C3_1[v0d0]/5 + 3*C3_2[v0d0]/5 - 4*C3_2[v1d0]/5 + 3*C3_3[v0d0]*a/5 + 12*C3_3[v0d1]/5 + 3*C3_4[v0d0]*p/5 + 3*C3_4[v0d1]/5 + 4*C3_4[v1d1]/5 + 2*EC3_2[v0d0]/5 - 2*EC3_4[v0d1]/5",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-2*C3_2[v0d0] + C3_3[v0d0]/2 - 2*C3_3[v1d0]/3 + C3_4[v0d0]*a/2 + 2*C3_4[v0d1] + C3_5[v0d0]*p/2 + C3_5[v0d1]/2 + 2*C3_5[v1d1]/3 + EC3_3[v0d0]/3 - EC3_5[v0d1]/3",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "-12*C3_3[v0d0]/7 + 3*C3_4[v0d0]/7 - 4*C3_4[v1d0]/7 + 3*C3_5[v0d0]*a/7 + 12*C3_5[v0d1]/7 + 3*C3_6[v0d0]*p/7 + 3*C3_6[v0d1]/7 + 4*C3_6[v1d1]/7 + 2*EC3_4[v0d0]/7 - 2*EC3_6[v0d1]/7",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C5[v0d2]": {
+    "structural_top_log": 8,
+    "logs": {
+     "3": {
+      "prediction": "2*A*C3_0[v0d0] + C3_0[v0d0]*a - 2*C3_0[v0d0]*p + 2*C3_0[v0d1] - 8*C3_0[v1d1]/3 + 2*C3_1[v0d0]*E + 2*C3_1[v0d1]*a + 4*C3_1[v0d2] + 2*C3_2[v0d0]*V + 2*C3_2[v0d1]*p + C3_2[v0d2] + 4*C3_2[v1d2]/3 + 4*EC3_0[v0d1]/3 - 2*EC3_2[v0d2]/3 + G/3 + 2*L/3 + 2*M/3 + 2*Phi/3 - 4*R/3 + 4*c/3 + f/3 - q",
+      "n_terms": 22,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*A*C3_1[v0d0]/2 - 3*C3_0[v0d0]*a/2 + C3_0[v0d0]/2 - 6*C3_0[v0d1] - 2*C3_0[v1d0]/3 + 3*C3_1[v0d0]*a/4 - 3*C3_1[v0d0]*p/2 + 3*C3_1[v0d1]/2 - 2*C3_1[v1d1] + 3*C3_2[v0d0]*E/2 + 3*C3_2[v0d1]*a/2 + 3*C3_2[v0d2] + 3*C3_3[v0d0]*V/2 + 3*C3_3[v0d1]*p/2 + 3*C3_3[v0d2]/4 + C3_3[v1d2] + EC3_0[v0d0]/3 + EC3_1[v0d1] - EC3_3[v0d2]/2 - G + L/2 - b/3 - c/4 - f/2 - q",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "6*A*C3_2[v0d0]/5 - 17*C3_0[v0d0]/5 + 4*C3_0[v1d0]/5 - 6*C3_1[v0d0]*a/5 + 2*C3_1[v0d0]/5 - 24*C3_1[v0d1]/5 - 8*C3_1[v1d0]/15 + 3*C3_2[v0d0]*a/5 - 6*C3_2[v0d0]*p/5 + 6*C3_2[v0d1]/5 - 8*C3_2[v1d1]/5 + 6*C3_3[v0d0]*E/5 + 6*C3_3[v0d1]*a/5 + 12*C3_3[v0d2]/5 + 6*C3_4[v0d0]*V/5 + 6*C3_4[v0d1]*p/5 + 3*C3_4[v0d2]/5 + 4*C3_4[v1d2]/5 - 2*EC3_0[v0d0]/5 + 4*EC3_1[v0d0]/15 + 4*EC3_2[v0d1]/5 - 2*EC3_4[v0d2]/5 + 4*b/5 + 2*c/15 - 4*f/5",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "A*C3_3[v0d0] + 2*C3_0[v0d0] - 17*C3_1[v0d0]/6 + 2*C3_1[v1d0]/3 - C3_2[v0d0]*a + C3_2[v0d0]/3 - 4*C3_2[v0d1] - 4*C3_2[v1d0]/9 + C3_3[v0d0]*a/2 - C3_3[v0d0]*p + C3_3[v0d1] - 4*C3_3[v1d1]/3 + C3_4[v0d0]*E + C3_4[v0d1]*a + 2*C3_4[v0d2] + C3_5[v0d0]*V + C3_5[v0d1]*p + C3_5[v0d2]/2 + 2*C3_5[v1d2]/3 - EC3_1[v0d0]/3 + 2*EC3_2[v0d0]/9 + 2*EC3_3[v0d1]/3 - EC3_5[v0d2]/3 + 2*c/3",
+      "n_terms": 24,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "6*A*C3_4[v0d0]/7 + 12*C3_1[v0d0]/7 - 17*C3_2[v0d0]/7 + 4*C3_2[v1d0]/7 - 6*C3_3[v0d0]*a/7 + 2*C3_3[v0d0]/7 - 24*C3_3[v0d1]/7 - 8*C3_3[v1d0]/21 + 3*C3_4[v0d0]*a/7 - 6*C3_4[v0d0]*p/7 + 6*C3_4[v0d1]/7 - 8*C3_4[v1d1]/7 + 6*C3_5[v0d0]*E/7 + 6*C3_5[v0d1]*a/7 + 12*C3_5[v0d2]/7 + 6*C3_6[v0d0]*V/7 + 6*C3_6[v0d1]*p/7 + 3*C3_6[v0d2]/7 + 4*C3_6[v1d2]/7 - 2*EC3_2[v0d0]/7 + 4*EC3_3[v0d0]/21 + 4*EC3_4[v0d1]/7 - 2*EC3_6[v0d2]/7",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "3*A*C3_5[v0d0]/4 + 3*C3_2[v0d0]/2 - 17*C3_3[v0d0]/8 + C3_3[v1d0]/2 - 3*C3_4[v0d0]*a/4 + C3_4[v0d0]/4 - 3*C3_4[v0d1] - C3_4[v1d0]/3 + 3*C3_5[v0d0]*a/8 - 3*C3_5[v0d0]*p/4 + 3*C3_5[v0d1]/4 - C3_5[v1d1] + 3*C3_6[v0d0]*E/4 + 3*C3_6[v0d1]*a/4 + 3*C3_6[v0d2]/2 + 3*C3_7[v0d0]*V/4 + 3*C3_7[v0d1]*p/4 + 3*C3_7[v0d2]/8 + C3_7[v1d2]/2 - EC3_3[v0d0]/4 + EC3_4[v0d0]/6 + EC3_5[v0d1]/2 - EC3_7[v0d2]/4",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "9": {
+      "prediction": "2*A*C3_6[v0d0]/3 + 4*C3_3[v0d0]/3 - 17*C3_4[v0d0]/9 + 4*C3_4[v1d0]/9 - 2*C3_5[v0d0]*a/3 + 2*C3_5[v0d0]/9 - 8*C3_5[v0d1]/3 - 8*C3_5[v1d0]/27 + C3_6[v0d0]*a/3 - 2*C3_6[v0d0]*p/3 + 2*C3_6[v0d1]/3 - 8*C3_6[v1d1]/9 + 2*C3_7[v0d0]*E/3 + 2*C3_7[v0d1]*a/3 + 4*C3_7[v0d2]/3 + 2*C3_8[v0d0]*V/3 + 2*C3_8[v0d1]*p/3 + C3_8[v0d2]/3 + 4*C3_8[v1d2]/9 - 2*EC3_4[v0d0]/9 + 4*EC3_5[v0d0]/27 + 4*EC3_6[v0d1]/9 - 2*EC3_8[v0d2]/9",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C5[v1d0]": {
+    "structural_top_log": 5,
+    "logs": {
+     "3": {
+      "prediction": "-8*C3_0[v0d0] + 2*C3_1[v0d0] + 4*C3_1[v1d0]/3 + C3_2[v0d0]*a + 7*C3_2[v1d0]/3 + 4*C3_2[v2d0]/3 + 4*EC3_1[v0d0]/3 - 2*EC3_2[v0d0]/3 - 2*EC3_2[v1d0]/3 - 4*c/3",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-6*C3_1[v0d0] + 3*C3_2[v0d0]/2 + C3_2[v1d0] + 3*C3_3[v0d0]*a/4 + 7*C3_3[v1d0]/4 + C3_3[v2d0] + EC3_2[v0d0] - EC3_3[v0d0]/2 - EC3_3[v1d0]/2",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-24*C3_2[v0d0]/5 + 6*C3_3[v0d0]/5 + 4*C3_3[v1d0]/5 + 3*C3_4[v0d0]*a/5 + 7*C3_4[v1d0]/5 + 4*C3_4[v2d0]/5 + 4*EC3_3[v0d0]/5 - 2*EC3_4[v0d0]/5 - 2*EC3_4[v1d0]/5",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-4*C3_3[v0d0] + C3_4[v0d0] + 2*C3_4[v1d0]/3 + C3_5[v0d0]*a/2 + 7*C3_5[v1d0]/6 + 2*C3_5[v2d0]/3 + 2*EC3_4[v0d0]/3 - EC3_5[v0d0]/3 - EC3_5[v1d0]/3",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C5[v1d1]": {
+    "structural_top_log": 7,
+    "logs": {
+     "3": {
+      "prediction": "2*A*C3_1[v0d0] - 3*C3_0[v0d0]*a + C3_0[v0d0] - 8*C3_0[v0d1] - 5*C3_0[v1d0]/3 - 4*C3_0[v2d0]/3 + C3_1[v0d0]*a - 2*C3_1[v0d0]*p + 2*C3_1[v0d1] + C3_1[v1d0]*a + 4*C3_1[v1d1]/3 + C3_2[v0d0]*E + C3_2[v0d1]*a + C3_2[v1d0]*p + 7*C3_2[v1d1]/3 + 4*C3_2[v2d1]/3 + 4*EC3_0[v0d0]/3 + 2*EC3_0[v1d0]/3 + 4*EC3_1[v0d1]/3 - 2*EC3_2[v0d1]/3 - 2*EC3_2[v1d1]/3 - 2*G + 2*L/3 - 2*b/3 - 7*c/6 - 7*f/6 - 4*q/3",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*A*C3_2[v0d0]/2 - 15*C3_0[v0d0]/2 - C3_0[v1d0] - 9*C3_1[v0d0]*a/4 + 3*C3_1[v0d0]/4 - 6*C3_1[v0d1] - 5*C3_1[v1d0]/4 - C3_1[v2d0] + 3*C3_2[v0d0]*a/4 - 3*C3_2[v0d0]*p/2 + 3*C3_2[v0d1]/2 + 3*C3_2[v1d0]*a/4 + C3_2[v1d1] + 3*C3_3[v0d0]*E/4 + 3*C3_3[v0d1]*a/4 + 3*C3_3[v1d0]*p/4 + 7*C3_3[v1d1]/4 + C3_3[v2d1] - EC3_0[v0d0] + EC3_1[v0d0] + EC3_1[v1d0]/2 + EC3_2[v0d1] - EC3_3[v0d1]/2 - EC3_3[v1d1]/2 + 2*b + c/2 - 3*f/2",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "6*A*C3_3[v0d0]/5 + 24*C3_0[v0d0]/5 - 6*C3_1[v0d0] - 4*C3_1[v1d0]/5 - 9*C3_2[v0d0]*a/5 + 3*C3_2[v0d0]/5 - 24*C3_2[v0d1]/5 - C3_2[v1d0] - 4*C3_2[v2d0]/5 + 3*C3_3[v0d0]*a/5 - 6*C3_3[v0d0]*p/5 + 6*C3_3[v0d1]/5 + 3*C3_3[v1d0]*a/5 + 4*C3_3[v1d1]/5 + 3*C3_4[v0d0]*E/5 + 3*C3_4[v0d1]*a/5 + 3*C3_4[v1d0]*p/5 + 7*C3_4[v1d1]/5 + 4*C3_4[v2d1]/5 - 4*EC3_1[v0d0]/5 + 4*EC3_2[v0d0]/5 + 2*EC3_2[v1d0]/5 + 4*EC3_3[v0d1]/5 - 2*EC3_4[v0d1]/5 - 2*EC3_4[v1d1]/5 + 8*c/5",
+      "n_terms": 26,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "A*C3_4[v0d0] + 4*C3_1[v0d0] - 5*C3_2[v0d0] - 2*C3_2[v1d0]/3 - 3*C3_3[v0d0]*a/2 + C3_3[v0d0]/2 - 4*C3_3[v0d1] - 5*C3_3[v1d0]/6 - 2*C3_3[v2d0]/3 + C3_4[v0d0]*a/2 - C3_4[v0d0]*p + C3_4[v0d1] + C3_4[v1d0]*a/2 + 2*C3_4[v1d1]/3 + C3_5[v0d0]*E/2 + C3_5[v0d1]*a/2 + C3_5[v1d0]*p/2 + 7*C3_5[v1d1]/6 + 2*C3_5[v2d1]/3 - 2*EC3_2[v0d0]/3 + 2*EC3_3[v0d0]/3 + EC3_3[v1d0]/3 + 2*EC3_4[v0d1]/3 - EC3_5[v0d1]/3 - EC3_5[v1d1]/3",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "6*A*C3_5[v0d0]/7 + 24*C3_2[v0d0]/7 - 30*C3_3[v0d0]/7 - 4*C3_3[v1d0]/7 - 9*C3_4[v0d0]*a/7 + 3*C3_4[v0d0]/7 - 24*C3_4[v0d1]/7 - 5*C3_4[v1d0]/7 - 4*C3_4[v2d0]/7 + 3*C3_5[v0d0]*a/7 - 6*C3_5[v0d0]*p/7 + 6*C3_5[v0d1]/7 + 3*C3_5[v1d0]*a/7 + 4*C3_5[v1d1]/7 + 3*C3_6[v0d0]*E/7 + 3*C3_6[v0d1]*a/7 + 3*C3_6[v1d0]*p/7 + C3_6[v1d1] + 4*C3_6[v2d1]/7 - 4*EC3_3[v0d0]/7 + 4*EC3_4[v0d0]/7 + 2*EC3_4[v1d0]/7 + 4*EC3_5[v0d1]/7 - 2*EC3_6[v0d1]/7 - 2*EC3_6[v1d1]/7",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "3*A*C3_6[v0d0]/4 + 3*C3_3[v0d0] - 15*C3_4[v0d0]/4 - C3_4[v1d0]/2 - 9*C3_5[v0d0]*a/8 + 3*C3_5[v0d0]/8 - 3*C3_5[v0d1] - 5*C3_5[v1d0]/8 - C3_5[v2d0]/2 + 3*C3_6[v0d0]*a/8 - 3*C3_6[v0d0]*p/4 + 3*C3_6[v0d1]/4 + 3*C3_6[v1d0]*a/8 + C3_6[v1d1]/2 + 3*C3_7[v0d0]*E/8 + 3*C3_7[v0d1]*a/8 + 3*C3_7[v1d0]*p/8 + 7*C3_7[v1d1]/8 + C3_7[v2d1]/2 - EC3_4[v0d0]/2 + EC3_5[v0d0]/2 + EC3_5[v1d0]/4 + EC3_6[v0d1]/2 - EC3_7[v0d1]/4 - EC3_7[v1d1]/4",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C5[v2d0]": {
+    "structural_top_log": 6,
+    "logs": {
+     "3": {
+      "prediction": "2*A*C3_2[v0d0] - 12*C3_0[v0d0] - 32*C3_0[v1d0]/3 - 4*C3_1[v0d0]*a - 4*C3_1[v1d0]/3 - 4*C3_1[v2d0]/3 + 2*C3_2[v1d0]*a + 11*C3_2[v2d0]/3 + 4*C3_2[v3d0]/3 - 8*EC3_0[v0d0]/3 + 8*EC3_1[v0d0]/3 + 8*EC3_1[v1d0]/3 - 4*EC3_2[v1d0]/3 - 2*EC3_2[v2d0]/3 + 16*b/3 + 8*c/3 - 8*f/3",
+      "n_terms": 17,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*A*C3_3[v0d0]/2 + 12*C3_0[v0d0] - 9*C3_1[v0d0] - 8*C3_1[v1d0] - 3*C3_2[v0d0]*a - C3_2[v1d0] - C3_2[v2d0] + 3*C3_3[v1d0]*a/2 + 11*C3_3[v2d0]/4 + C3_3[v3d0] - 2*EC3_1[v0d0] + 2*EC3_2[v0d0] + 2*EC3_2[v1d0] - EC3_3[v1d0] - EC3_3[v2d0]/2 + 4*c",
+      "n_terms": 16,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "6*A*C3_4[v0d0]/5 + 48*C3_1[v0d0]/5 - 36*C3_2[v0d0]/5 - 32*C3_2[v1d0]/5 - 12*C3_3[v0d0]*a/5 - 4*C3_3[v1d0]/5 - 4*C3_3[v2d0]/5 + 6*C3_4[v1d0]*a/5 + 11*C3_4[v2d0]/5 + 4*C3_4[v3d0]/5 - 8*EC3_2[v0d0]/5 + 8*EC3_3[v0d0]/5 + 8*EC3_3[v1d0]/5 - 4*EC3_4[v1d0]/5 - 2*EC3_4[v2d0]/5",
+      "n_terms": 15,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "A*C3_5[v0d0] + 8*C3_2[v0d0] - 6*C3_3[v0d0] - 16*C3_3[v1d0]/3 - 2*C3_4[v0d0]*a - 2*C3_4[v1d0]/3 - 2*C3_4[v2d0]/3 + C3_5[v1d0]*a + 11*C3_5[v2d0]/6 + 2*C3_5[v3d0]/3 - 4*EC3_3[v0d0]/3 + 4*EC3_4[v0d0]/3 + 4*EC3_4[v1d0]/3 - 2*EC3_5[v1d0]/3 - EC3_5[v2d0]/3",
+      "n_terms": 15,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "6*A*C3_6[v0d0]/7 + 48*C3_3[v0d0]/7 - 36*C3_4[v0d0]/7 - 32*C3_4[v1d0]/7 - 12*C3_5[v0d0]*a/7 - 4*C3_5[v1d0]/7 - 4*C3_5[v2d0]/7 + 6*C3_6[v1d0]*a/7 + 11*C3_6[v2d0]/7 + 4*C3_6[v3d0]/7 - 8*EC3_4[v0d0]/7 + 8*EC3_5[v0d0]/7 + 8*EC3_5[v1d0]/7 - 4*EC3_6[v1d0]/7 - 2*EC3_6[v2d0]/7",
+      "n_terms": 15,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C7[v0d0]": {
+    "structural_top_log": 6,
+    "logs": {
+     "3": {
+      "prediction": "C3_1[v0d0]*c + C3_2[v0d0]*b + C3_2[v1d0]*c/3 + 20*C5_1[v0d0]/3 + 5*C5_2[v0d0]/3 + 4*C5_2[v1d0]/3 - EC3_2[v0d0]*c/6 - 2*EC5_2[v0d0]/3",
+      "n_terms": 8,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*C3_2[v0d0]*c/4 + 3*C3_3[v0d0]*b/4 + C3_3[v1d0]*c/4 + 5*C5_2[v0d0] + 5*C5_3[v0d0]/4 + C5_3[v1d0] - EC3_3[v0d0]*c/8 - EC5_3[v0d0]/2",
+      "n_terms": 8,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "3*C3_3[v0d0]*c/5 + 3*C3_4[v0d0]*b/5 + C3_4[v1d0]*c/5 + 4*C5_3[v0d0] + C5_4[v0d0] + 4*C5_4[v1d0]/5 - EC3_4[v0d0]*c/10 - 2*EC5_4[v0d0]/5",
+      "n_terms": 8,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "C3_4[v0d0]*c/2 + C3_5[v0d0]*b/2 + C3_5[v1d0]*c/6 + 10*C5_4[v0d0]/3 + 5*C5_5[v0d0]/6 + 2*C5_5[v1d0]/3 - EC3_5[v0d0]*c/12 - EC5_5[v0d0]/3",
+      "n_terms": 8,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "3*C3_5[v0d0]*c/7 + 3*C3_6[v0d0]*b/7 + C3_6[v1d0]*c/7 + 20*C5_5[v0d0]/7 + 5*C5_6[v0d0]/7 + 4*C5_6[v1d0]/7 - EC3_6[v0d0]*c/14 - 2*EC5_6[v0d0]/7",
+      "n_terms": 8,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C7[v0d1]": {
+    "structural_top_log": 8,
+    "logs": {
+     "3": {
+      "prediction": "-2*C3_0[v0d0]*b + C3_0[v0d0]*c/2 + C3_0[v0d0]*f - 2*C3_0[v1d0]*c/3 + C3_1[v0d0]*G + C3_1[v0d0]*q + C3_1[v0d1]*c + C3_1[v1d0]*f/3 + C3_2[v0d0]*R + C3_2[v0d1]*b + C3_2[v1d0]*q/3 + C3_2[v1d1]*c/3 + 5*C5_0[v0d0]/3 - 4*C5_0[v1d0]/3 + 5*C5_1[v0d0]*a/3 + 20*C5_1[v0d1]/3 + 5*C5_2[v0d0]*p/3 + 5*C5_2[v0d1]/3 + 4*C5_2[v1d1]/3 + EC3_0[v0d0]*c/3 - EC3_1[v0d0]*f/6 - EC3_2[v0d0]*q/6 - EC3_2[v0d1]*c/6 + 2*EC5_0[v0d0]/3 - 2*EC5_2[v0d1]/3 - J + N/3 - 5*k/6",
+      "n_terms": 28,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-3*C3_0[v0d0]*c/2 - 3*C3_1[v0d0]*b/2 + 3*C3_1[v0d0]*c/8 + 3*C3_1[v0d0]*f/4 - C3_1[v1d0]*c/2 + 3*C3_2[v0d0]*G/4 + 3*C3_2[v0d0]*q/4 + 3*C3_2[v0d1]*c/4 + C3_2[v1d0]*f/4 + 3*C3_3[v0d0]*R/4 + 3*C3_3[v0d1]*b/4 + C3_3[v1d0]*q/4 + C3_3[v1d1]*c/4 - 5*C5_0[v0d0] + 5*C5_1[v0d0]/4 - C5_1[v1d0] + 5*C5_2[v0d0]*a/4 + 5*C5_2[v0d1] + 5*C5_3[v0d0]*p/4 + 5*C5_3[v0d1]/4 + C5_3[v1d1] + EC3_1[v0d0]*c/4 - EC3_2[v0d0]*f/8 - EC3_3[v0d0]*q/8 - EC3_3[v0d1]*c/8 + EC5_1[v0d0]/2 - EC5_3[v0d1]/2 - 3*k/4",
+      "n_terms": 28,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-6*C3_1[v0d0]*c/5 - 6*C3_2[v0d0]*b/5 + 3*C3_2[v0d0]*c/10 + 3*C3_2[v0d0]*f/5 - 2*C3_2[v1d0]*c/5 + 3*C3_3[v0d0]*G/5 + 3*C3_3[v0d0]*q/5 + 3*C3_3[v0d1]*c/5 + C3_3[v1d0]*f/5 + 3*C3_4[v0d0]*R/5 + 3*C3_4[v0d1]*b/5 + C3_4[v1d0]*q/5 + C3_4[v1d1]*c/5 - 4*C5_1[v0d0] + C5_2[v0d0] - 4*C5_2[v1d0]/5 + C5_3[v0d0]*a + 4*C5_3[v0d1] + C5_4[v0d0]*p + C5_4[v0d1] + 4*C5_4[v1d1]/5 + EC3_2[v0d0]*c/5 - EC3_3[v0d0]*f/10 - EC3_4[v0d0]*q/10 - EC3_4[v0d1]*c/10 + 2*EC5_2[v0d0]/5 - 2*EC5_4[v0d1]/5",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-C3_2[v0d0]*c - C3_3[v0d0]*b + C3_3[v0d0]*c/4 + C3_3[v0d0]*f/2 - C3_3[v1d0]*c/3 + C3_4[v0d0]*G/2 + C3_4[v0d0]*q/2 + C3_4[v0d1]*c/2 + C3_4[v1d0]*f/6 + C3_5[v0d0]*R/2 + C3_5[v0d1]*b/2 + C3_5[v1d0]*q/6 + C3_5[v1d1]*c/6 - 10*C5_2[v0d0]/3 + 5*C5_3[v0d0]/6 - 2*C5_3[v1d0]/3 + 5*C5_4[v0d0]*a/6 + 10*C5_4[v0d1]/3 + 5*C5_5[v0d0]*p/6 + 5*C5_5[v0d1]/6 + 2*C5_5[v1d1]/3 + EC3_3[v0d0]*c/6 - EC3_4[v0d0]*f/12 - EC3_5[v0d0]*q/12 - EC3_5[v0d1]*c/12 + EC5_3[v0d0]/3 - EC5_5[v0d1]/3",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "-6*C3_3[v0d0]*c/7 - 6*C3_4[v0d0]*b/7 + 3*C3_4[v0d0]*c/14 + 3*C3_4[v0d0]*f/7 - 2*C3_4[v1d0]*c/7 + 3*C3_5[v0d0]*G/7 + 3*C3_5[v0d0]*q/7 + 3*C3_5[v0d1]*c/7 + C3_5[v1d0]*f/7 + 3*C3_6[v0d0]*R/7 + 3*C3_6[v0d1]*b/7 + C3_6[v1d0]*q/7 + C3_6[v1d1]*c/7 - 20*C5_3[v0d0]/7 + 5*C5_4[v0d0]/7 - 4*C5_4[v1d0]/7 + 5*C5_5[v0d0]*a/7 + 20*C5_5[v0d1]/7 + 5*C5_6[v0d0]*p/7 + 5*C5_6[v0d1]/7 + 4*C5_6[v1d1]/7 + EC3_4[v0d0]*c/7 - EC3_5[v0d0]*f/14 - EC3_6[v0d0]*q/14 - EC3_6[v0d1]*c/14 + 2*EC5_4[v0d0]/7 - 2*EC5_6[v0d1]/7",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "-3*C3_4[v0d0]*c/4 - 3*C3_5[v0d0]*b/4 + 3*C3_5[v0d0]*c/16 + 3*C3_5[v0d0]*f/8 - C3_5[v1d0]*c/4 + 3*C3_6[v0d0]*G/8 + 3*C3_6[v0d0]*q/8 + 3*C3_6[v0d1]*c/8 + C3_6[v1d0]*f/8 + 3*C3_7[v0d0]*R/8 + 3*C3_7[v0d1]*b/8 + C3_7[v1d0]*q/8 + C3_7[v1d1]*c/8 - 5*C5_4[v0d0]/2 + 5*C5_5[v0d0]/8 - C5_5[v1d0]/2 + 5*C5_6[v0d0]*a/8 + 5*C5_6[v0d1]/2 + 5*C5_7[v0d0]*p/8 + 5*C5_7[v0d1]/8 + C5_7[v1d1]/2 + EC3_5[v0d0]*c/8 - EC3_6[v0d0]*f/16 - EC3_7[v0d0]*q/16 - EC3_7[v0d1]*c/16 + EC5_5[v0d0]/4 - EC5_7[v0d1]/4",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     },
+     "9": {
+      "prediction": "-2*C3_5[v0d0]*c/3 - 2*C3_6[v0d0]*b/3 + C3_6[v0d0]*c/6 + C3_6[v0d0]*f/3 - 2*C3_6[v1d0]*c/9 + C3_7[v0d0]*G/3 + C3_7[v0d0]*q/3 + C3_7[v0d1]*c/3 + C3_7[v1d0]*f/9 + C3_8[v0d0]*R/3 + C3_8[v0d1]*b/3 + C3_8[v1d0]*q/9 + C3_8[v1d1]*c/9 - 20*C5_5[v0d0]/9 + 5*C5_6[v0d0]/9 - 4*C5_6[v1d0]/9 + 5*C5_7[v0d0]*a/9 + 20*C5_7[v0d1]/9 + 5*C5_8[v0d0]*p/9 + 5*C5_8[v0d1]/9 + 4*C5_8[v1d1]/9 + EC3_6[v0d0]*c/9 - EC3_7[v0d0]*f/18 - EC3_8[v0d0]*q/18 - EC3_8[v0d1]*c/18 + 2*EC5_6[v0d0]/9 - 2*EC5_8[v0d1]/9",
+      "n_terms": 27,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C7[v1d0]": {
+    "structural_top_log": 7,
+    "logs": {
+     "3": {
+      "prediction": "-4*C3_0[v0d0]*c - 4*C3_1[v0d0]*b + C3_1[v0d0]*c + C3_1[v0d0]*f - C3_1[v1d0]*c/3 + C3_2[v0d0]*G + C3_2[v1d0]*b + C3_2[v1d0]*c/3 + C3_2[v1d0]*f/3 + C3_2[v2d0]*c/3 - 40*C5_0[v0d0]/3 + 10*C5_1[v0d0]/3 + 4*C5_1[v1d0] + 5*C5_2[v0d0]*a/3 + 3*C5_2[v1d0] + 4*C5_2[v2d0]/3 + 2*EC3_1[v0d0]*c/3 - EC3_2[v0d0]*c/6 - EC3_2[v0d0]*f/6 - EC3_2[v1d0]*c/6 + 4*EC5_1[v0d0]/3 - 2*EC5_2[v0d0]/3 - 2*EC5_2[v1d0]/3 - 2*k",
+      "n_terms": 24,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-3*C3_1[v0d0]*c - 3*C3_2[v0d0]*b + 3*C3_2[v0d0]*c/4 + 3*C3_2[v0d0]*f/4 - C3_2[v1d0]*c/4 + 3*C3_3[v0d0]*G/4 + 3*C3_3[v1d0]*b/4 + C3_3[v1d0]*c/4 + C3_3[v1d0]*f/4 + C3_3[v2d0]*c/4 - 10*C5_1[v0d0] + 5*C5_2[v0d0]/2 + 3*C5_2[v1d0] + 5*C5_3[v0d0]*a/4 + 9*C5_3[v1d0]/4 + C5_3[v2d0] + EC3_2[v0d0]*c/2 - EC3_3[v0d0]*c/8 - EC3_3[v0d0]*f/8 - EC3_3[v1d0]*c/8 + EC5_2[v0d0] - EC5_3[v0d0]/2 - EC5_3[v1d0]/2",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-12*C3_2[v0d0]*c/5 - 12*C3_3[v0d0]*b/5 + 3*C3_3[v0d0]*c/5 + 3*C3_3[v0d0]*f/5 - C3_3[v1d0]*c/5 + 3*C3_4[v0d0]*G/5 + 3*C3_4[v1d0]*b/5 + C3_4[v1d0]*c/5 + C3_4[v1d0]*f/5 + C3_4[v2d0]*c/5 - 8*C5_2[v0d0] + 2*C5_3[v0d0] + 12*C5_3[v1d0]/5 + C5_4[v0d0]*a + 9*C5_4[v1d0]/5 + 4*C5_4[v2d0]/5 + 2*EC3_3[v0d0]*c/5 - EC3_4[v0d0]*c/10 - EC3_4[v0d0]*f/10 - EC3_4[v1d0]*c/10 + 4*EC5_3[v0d0]/5 - 2*EC5_4[v0d0]/5 - 2*EC5_4[v1d0]/5",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-2*C3_3[v0d0]*c - 2*C3_4[v0d0]*b + C3_4[v0d0]*c/2 + C3_4[v0d0]*f/2 - C3_4[v1d0]*c/6 + C3_5[v0d0]*G/2 + C3_5[v1d0]*b/2 + C3_5[v1d0]*c/6 + C3_5[v1d0]*f/6 + C3_5[v2d0]*c/6 - 20*C5_3[v0d0]/3 + 5*C5_4[v0d0]/3 + 2*C5_4[v1d0] + 5*C5_5[v0d0]*a/6 + 3*C5_5[v1d0]/2 + 2*C5_5[v2d0]/3 + EC3_4[v0d0]*c/3 - EC3_5[v0d0]*c/12 - EC3_5[v0d0]*f/12 - EC3_5[v1d0]*c/12 + 2*EC5_4[v0d0]/3 - EC5_5[v0d0]/3 - EC5_5[v1d0]/3",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "-12*C3_4[v0d0]*c/7 - 12*C3_5[v0d0]*b/7 + 3*C3_5[v0d0]*c/7 + 3*C3_5[v0d0]*f/7 - C3_5[v1d0]*c/7 + 3*C3_6[v0d0]*G/7 + 3*C3_6[v1d0]*b/7 + C3_6[v1d0]*c/7 + C3_6[v1d0]*f/7 + C3_6[v2d0]*c/7 - 40*C5_4[v0d0]/7 + 10*C5_5[v0d0]/7 + 12*C5_5[v1d0]/7 + 5*C5_6[v0d0]*a/7 + 9*C5_6[v1d0]/7 + 4*C5_6[v2d0]/7 + 2*EC3_5[v0d0]*c/7 - EC3_6[v0d0]*c/14 - EC3_6[v0d0]*f/14 - EC3_6[v1d0]*c/14 + 4*EC5_5[v0d0]/7 - 2*EC5_6[v0d0]/7 - 2*EC5_6[v1d0]/7",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "-3*C3_5[v0d0]*c/2 - 3*C3_6[v0d0]*b/2 + 3*C3_6[v0d0]*c/8 + 3*C3_6[v0d0]*f/8 - C3_6[v1d0]*c/8 + 3*C3_7[v0d0]*G/8 + 3*C3_7[v1d0]*b/8 + C3_7[v1d0]*c/8 + C3_7[v1d0]*f/8 + C3_7[v2d0]*c/8 - 5*C5_5[v0d0] + 5*C5_6[v0d0]/4 + 3*C5_6[v1d0]/2 + 5*C5_7[v0d0]*a/8 + 9*C5_7[v1d0]/8 + C5_7[v2d0]/2 + EC3_6[v0d0]*c/4 - EC3_7[v0d0]*c/16 - EC3_7[v0d0]*f/16 - EC3_7[v1d0]*c/16 + EC5_6[v0d0]/2 - EC5_7[v0d0]/4 - EC5_7[v1d0]/4",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "C9[v0d0]": {
+    "structural_top_log": 8,
+    "logs": {
+     "3": {
+      "prediction": "C3_1[v0d0]*k + C3_2[v0d0]*J + C3_2[v1d0]*k/3 + 5*C5_1[v0d0]*c/3 + 5*C5_2[v0d0]*b/3 + C5_2[v1d0]*c/3 + 28*C7_1[v0d0]/3 + 7*C7_2[v0d0]/3 + 4*C7_2[v1d0]/3 - EC3_2[v0d0]*k/6 - EC5_2[v0d0]*c/6 - 2*EC7_2[v0d0]/3",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "3*C3_2[v0d0]*k/4 + 3*C3_3[v0d0]*J/4 + C3_3[v1d0]*k/4 + 5*C5_2[v0d0]*c/4 + 5*C5_3[v0d0]*b/4 + C5_3[v1d0]*c/4 + 7*C7_2[v0d0] + 7*C7_3[v0d0]/4 + C7_3[v1d0] - EC3_3[v0d0]*k/8 - EC5_3[v0d0]*c/8 - EC7_3[v0d0]/2",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "3*C3_3[v0d0]*k/5 + 3*C3_4[v0d0]*J/5 + C3_4[v1d0]*k/5 + C5_3[v0d0]*c + C5_4[v0d0]*b + C5_4[v1d0]*c/5 + 28*C7_3[v0d0]/5 + 7*C7_4[v0d0]/5 + 4*C7_4[v1d0]/5 - EC3_4[v0d0]*k/10 - EC5_4[v0d0]*c/10 - 2*EC7_4[v0d0]/5",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "C3_4[v0d0]*k/2 + C3_5[v0d0]*J/2 + C3_5[v1d0]*k/6 + 5*C5_4[v0d0]*c/6 + 5*C5_5[v0d0]*b/6 + C5_5[v1d0]*c/6 + 14*C7_4[v0d0]/3 + 7*C7_5[v0d0]/6 + 2*C7_5[v1d0]/3 - EC3_5[v0d0]*k/12 - EC5_5[v0d0]*c/12 - EC7_5[v0d0]/3",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "3*C3_5[v0d0]*k/7 + 3*C3_6[v0d0]*J/7 + C3_6[v1d0]*k/7 + 5*C5_5[v0d0]*c/7 + 5*C5_6[v0d0]*b/7 + C5_6[v1d0]*c/7 + 4*C7_5[v0d0] + C7_6[v0d0] + 4*C7_6[v1d0]/7 - EC3_6[v0d0]*k/14 - EC5_6[v0d0]*c/14 - 2*EC7_6[v0d0]/7",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "3*C3_6[v0d0]*k/8 + 3*C3_7[v0d0]*J/8 + C3_7[v1d0]*k/8 + 5*C5_6[v0d0]*c/8 + 5*C5_7[v0d0]*b/8 + C5_7[v1d0]*c/8 + 7*C7_6[v0d0]/2 + 7*C7_7[v0d0]/8 + C7_7[v1d0]/2 - EC3_7[v0d0]*k/16 - EC5_7[v0d0]*c/16 - EC7_7[v0d0]/4",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "9": {
+      "prediction": "C3_7[v0d0]*k/3 + C3_8[v0d0]*J/3 + C3_8[v1d0]*k/9 + 5*C5_7[v0d0]*c/9 + 5*C5_8[v0d0]*b/9 + C5_8[v1d0]*c/9 + 28*C7_7[v0d0]/9 + 7*C7_8[v0d0]/9 + 4*C7_8[v1d0]/9 - EC3_8[v0d0]*k/18 - EC5_8[v0d0]*c/18 - 2*EC7_8[v0d0]/9",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K6[v0d0]": {
+    "structural_top_log": 5,
+    "logs": {
+     "3": {
+      "prediction": "-2*EK4_2[v0d0]/3 + 16*K4_1[v0d0]/3 + 2*K4_2[v0d0] + 4*K4_2[v1d0]/3 - c/3",
+      "n_terms": 5,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-EK4_3[v0d0]/2 + 4*K4_2[v0d0] + 3*K4_3[v0d0]/2 + K4_3[v1d0]",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-2*EK4_4[v0d0]/5 + 16*K4_3[v0d0]/5 + 6*K4_4[v0d0]/5 + 4*K4_4[v1d0]/5",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-EK4_5[v0d0]/3 + 8*K4_4[v0d0]/3 + K4_5[v0d0] + 2*K4_5[v1d0]/3",
+      "n_terms": 4,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K6[v0d1]": {
+    "structural_top_log": 7,
+    "logs": {
+     "3": {
+      "prediction": "2*EK4_0[v0d0]/3 - 2*EK4_2[v0d1]/3 - 2*G/3 + 2*K4_0[v0d0]/3 - 4*K4_0[v1d0]/3 + 4*K4_1[v0d0]*a/3 + 16*K4_1[v0d1]/3 + 4*K4_2[v0d0]*p/3 + 2*K4_2[v0d1] + 4*K4_2[v1d1]/3 + 4*b/3 - 2*c*z2/3 + 4*c/3 - 5*f/6 + k/4 - q/3",
+      "n_terms": 16,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "EK4_1[v0d0]/2 - EK4_3[v0d1]/2 - 4*K4_0[v0d0] + K4_1[v0d0]/2 - K4_1[v1d0] + K4_2[v0d0]*a + 4*K4_2[v0d1] + K4_3[v0d0]*p + 3*K4_3[v0d1]/2 + K4_3[v1d1] + 7*b/6 + 9*c/8 - f/4",
+      "n_terms": 13,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "2*EK4_2[v0d0]/5 - 2*EK4_4[v0d1]/5 - 16*K4_1[v0d0]/5 + 2*K4_2[v0d0]/5 - 4*K4_2[v1d0]/5 + 4*K4_3[v0d0]*a/5 + 16*K4_3[v0d1]/5 + 4*K4_4[v0d0]*p/5 + 6*K4_4[v0d1]/5 + 4*K4_4[v1d1]/5 + 13*c/30",
+      "n_terms": 11,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "EK4_3[v0d0]/3 - EK4_5[v0d1]/3 - 8*K4_2[v0d0]/3 + K4_3[v0d0]/3 - 2*K4_3[v1d0]/3 + 2*K4_4[v0d0]*a/3 + 8*K4_4[v0d1]/3 + 2*K4_5[v0d0]*p/3 + K4_5[v0d1] + 2*K4_5[v1d1]/3",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "2*EK4_4[v0d0]/7 - 2*EK4_6[v0d1]/7 - 16*K4_3[v0d0]/7 + 2*K4_4[v0d0]/7 - 4*K4_4[v1d0]/7 + 4*K4_5[v0d0]*a/7 + 16*K4_5[v0d1]/7 + 4*K4_6[v0d0]*p/7 + 6*K4_6[v0d1]/7 + 4*K4_6[v1d1]/7",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "EK4_5[v0d0]/4 - EK4_7[v0d1]/4 - 2*K4_4[v0d0] + K4_5[v0d0]/4 - K4_5[v1d0]/2 + K4_6[v0d0]*a/2 + 2*K4_6[v0d1] + K4_7[v0d0]*p/2 + 3*K4_7[v0d1]/4 + K4_7[v1d1]/2",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K6[v1d0]": {
+    "structural_top_log": 6,
+    "logs": {
+     "3": {
+      "prediction": "4*EK4_1[v0d0]/3 - 2*EK4_2[v0d0]/3 - 2*EK4_2[v1d0]/3 - 32*K4_0[v0d0]/3 + 4*K4_1[v0d0]/3 + 8*K4_1[v1d0]/3 + 4*K4_2[v0d0]*a/3 + 10*K4_2[v1d0]/3 + 4*K4_2[v2d0]/3 + 10*b/3 + 19*c/6 - f/3",
+      "n_terms": 12,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "EK4_2[v0d0] - EK4_3[v0d0]/2 - EK4_3[v1d0]/2 - 8*K4_1[v0d0] + K4_2[v0d0] + 2*K4_2[v1d0] + K4_3[v0d0]*a + 5*K4_3[v1d0]/2 + K4_3[v2d0] + 7*c/6",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "4*EK4_3[v0d0]/5 - 2*EK4_4[v0d0]/5 - 2*EK4_4[v1d0]/5 - 32*K4_2[v0d0]/5 + 4*K4_3[v0d0]/5 + 8*K4_3[v1d0]/5 + 4*K4_4[v0d0]*a/5 + 2*K4_4[v1d0] + 4*K4_4[v2d0]/5",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "2*EK4_4[v0d0]/3 - EK4_5[v0d0]/3 - EK4_5[v1d0]/3 - 16*K4_3[v0d0]/3 + 2*K4_4[v0d0]/3 + 4*K4_4[v1d0]/3 + 2*K4_5[v0d0]*a/3 + 5*K4_5[v1d0]/3 + 2*K4_5[v2d0]/3",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "4*EK4_5[v0d0]/7 - 2*EK4_6[v0d0]/7 - 2*EK4_6[v1d0]/7 - 32*K4_4[v0d0]/7 + 4*K4_5[v0d0]/7 + 8*K4_5[v1d0]/7 + 4*K4_6[v0d0]*a/7 + 10*K4_6[v1d0]/7 + 4*K4_6[v2d0]/7",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K6[v1d1]": {
+    "structural_top_log": 8,
+    "logs": {
+     "3": {
+      "prediction": "8*A*K4_1[v0d0]/3 + 4*E*K4_2[v0d0]/3 + 4*EK4_0[v0d0]/3 + 2*EK4_0[v1d0]/3 + 4*EK4_1[v0d1]/3 - 2*EK4_2[v0d1]/3 - 2*EK4_2[v1d1]/3 + 10*G/3 - 4*K4_0[v0d0]*a + 2*K4_0[v0d0]/3 - 32*K4_0[v0d1]/3 - 2*K4_0[v1d0] - 4*K4_0[v2d0]/3 + 4*K4_1[v0d0]*a/3 - 8*K4_1[v0d0]*p/3 + 4*K4_1[v0d1]/3 + 4*K4_1[v1d0]*a/3 + 8*K4_1[v1d1]/3 + 4*K4_2[v0d1]*a/3 + 4*K4_2[v1d0]*p/3 + 10*K4_2[v1d1]/3 + 4*K4_2[v2d1]/3 - 5*L/3 - M/3 + 3*N/4 - 4*Phi/3 + 10*R/3 + 4*b - 8*c*z2/3 - 4*c*z3/3 + 8*c/3 - 2*f*z2 + 11*f/6 + k/4 + 19*q/6",
+      "n_terms": 35,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "2*A*K4_2[v0d0] + E*K4_3[v0d0] - EK4_0[v0d0] + EK4_1[v0d0] + EK4_1[v1d0]/2 + EK4_2[v0d1] - EK4_3[v0d1]/2 - EK4_3[v1d1]/2 + 11*G/3 - 9*K4_0[v0d0] - 2*K4_0[v1d0] - 3*K4_1[v0d0]*a + K4_1[v0d0]/2 - 8*K4_1[v0d1] - 3*K4_1[v1d0]/2 - K4_1[v2d0] + K4_2[v0d0]*a - 2*K4_2[v0d0]*p + K4_2[v0d1] + K4_2[v1d0]*a + 2*K4_2[v1d1] + K4_3[v0d1]*a + K4_3[v1d0]*p + 5*K4_3[v1d1]/2 + K4_3[v2d1] - L/2 - 17*b/6 + 2*c*z2 + c/8 + 13*f/4 - 9*k/8 + 7*q/6",
+      "n_terms": 32,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "8*A*K4_3[v0d0]/5 + 4*E*K4_4[v0d0]/5 - 4*EK4_1[v0d0]/5 + 4*EK4_2[v0d0]/5 + 2*EK4_2[v1d0]/5 + 4*EK4_3[v0d1]/5 - 2*EK4_4[v0d1]/5 - 2*EK4_4[v1d1]/5 + 32*K4_0[v0d0]/5 - 36*K4_1[v0d0]/5 - 8*K4_1[v1d0]/5 - 12*K4_2[v0d0]*a/5 + 2*K4_2[v0d0]/5 - 32*K4_2[v0d1]/5 - 6*K4_2[v1d0]/5 - 4*K4_2[v2d0]/5 + 4*K4_3[v0d0]*a/5 - 8*K4_3[v0d0]*p/5 + 4*K4_3[v0d1]/5 + 4*K4_3[v1d0]*a/5 + 8*K4_3[v1d1]/5 + 4*K4_4[v0d1]*a/5 + 4*K4_4[v1d0]*p/5 + 2*K4_4[v1d1] + 4*K4_4[v2d1]/5 - 71*b/15 - 173*c/60 + 41*f/30",
+      "n_terms": 28,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "4*A*K4_4[v0d0]/3 + 2*E*K4_5[v0d0]/3 - 2*EK4_2[v0d0]/3 + 2*EK4_3[v0d0]/3 + EK4_3[v1d0]/3 + 2*EK4_4[v0d1]/3 - EK4_5[v0d1]/3 - EK4_5[v1d1]/3 + 16*K4_1[v0d0]/3 - 6*K4_2[v0d0] - 4*K4_2[v1d0]/3 - 2*K4_3[v0d0]*a + K4_3[v0d0]/3 - 16*K4_3[v0d1]/3 - K4_3[v1d0] - 2*K4_3[v2d0]/3 + 2*K4_4[v0d0]*a/3 - 4*K4_4[v0d0]*p/3 + 2*K4_4[v0d1]/3 + 2*K4_4[v1d0]*a/3 + 4*K4_4[v1d1]/3 + 2*K4_5[v0d1]*a/3 + 2*K4_5[v1d0]*p/3 + 5*K4_5[v1d1]/3 + 2*K4_5[v2d1]/3 - 17*c/10",
+      "n_terms": 26,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "8*A*K4_5[v0d0]/7 + 4*E*K4_6[v0d0]/7 - 4*EK4_3[v0d0]/7 + 4*EK4_4[v0d0]/7 + 2*EK4_4[v1d0]/7 + 4*EK4_5[v0d1]/7 - 2*EK4_6[v0d1]/7 - 2*EK4_6[v1d1]/7 + 32*K4_2[v0d0]/7 - 36*K4_3[v0d0]/7 - 8*K4_3[v1d0]/7 - 12*K4_4[v0d0]*a/7 + 2*K4_4[v0d0]/7 - 32*K4_4[v0d1]/7 - 6*K4_4[v1d0]/7 - 4*K4_4[v2d0]/7 + 4*K4_5[v0d0]*a/7 - 8*K4_5[v0d0]*p/7 + 4*K4_5[v0d1]/7 + 4*K4_5[v1d0]*a/7 + 8*K4_5[v1d1]/7 + 4*K4_6[v0d1]*a/7 + 4*K4_6[v1d0]*p/7 + 10*K4_6[v1d1]/7 + 4*K4_6[v2d1]/7",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "A*K4_6[v0d0] + E*K4_7[v0d0]/2 - EK4_4[v0d0]/2 + EK4_5[v0d0]/2 + EK4_5[v1d0]/4 + EK4_6[v0d1]/2 - EK4_7[v0d1]/4 - EK4_7[v1d1]/4 + 4*K4_3[v0d0] - 9*K4_4[v0d0]/2 - K4_4[v1d0] - 3*K4_5[v0d0]*a/2 + K4_5[v0d0]/4 - 4*K4_5[v0d1] - 3*K4_5[v1d0]/4 - K4_5[v2d0]/2 + K4_6[v0d0]*a/2 - K4_6[v0d0]*p + K4_6[v0d1]/2 + K4_6[v1d0]*a/2 + K4_6[v1d1] + K4_7[v0d1]*a/2 + K4_7[v1d0]*p/2 + 5*K4_7[v1d1]/4 + K4_7[v2d1]/2",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     },
+     "9": {
+      "prediction": "8*A*K4_7[v0d0]/9 + 4*E*K4_8[v0d0]/9 - 4*EK4_5[v0d0]/9 + 4*EK4_6[v0d0]/9 + 2*EK4_6[v1d0]/9 + 4*EK4_7[v0d1]/9 - 2*EK4_8[v0d1]/9 - 2*EK4_8[v1d1]/9 + 32*K4_4[v0d0]/9 - 4*K4_5[v0d0] - 8*K4_5[v1d0]/9 - 4*K4_6[v0d0]*a/3 + 2*K4_6[v0d0]/9 - 32*K4_6[v0d1]/9 - 2*K4_6[v1d0]/3 - 4*K4_6[v2d0]/9 + 4*K4_7[v0d0]*a/9 - 8*K4_7[v0d0]*p/9 + 4*K4_7[v0d1]/9 + 4*K4_7[v1d0]*a/9 + 8*K4_7[v1d1]/9 + 4*K4_8[v0d1]*a/9 + 4*K4_8[v1d0]*p/9 + 10*K4_8[v1d1]/9 + 4*K4_8[v2d1]/9",
+      "n_terms": 25,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K6[v2d0]": {
+    "structural_top_log": 7,
+    "logs": {
+     "3": {
+      "prediction": "8*A*K4_2[v0d0]/3 - 8*EK4_0[v0d0]/3 + 8*EK4_1[v0d0]/3 + 8*EK4_1[v1d0]/3 - 4*EK4_2[v1d0]/3 - 2*EK4_2[v2d0]/3 + 20*G/3 - 40*K4_0[v0d0]/3 - 16*K4_0[v1d0] - 16*K4_1[v0d0]*a/3 - 8*K4_1[v1d0]/3 + 8*K4_2[v1d0]*a/3 + 14*K4_2[v2d0]/3 + 4*K4_2[v3d0]/3 - 2*L/3 - 32*b/3 + 16*c*z2/3 + 8*c/3 + 19*f/3 - 3*k",
+      "n_terms": 20,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "2*A*K4_3[v0d0] - 2*EK4_1[v0d0] + 2*EK4_2[v0d0] + 2*EK4_2[v1d0] - EK4_3[v1d0] - EK4_3[v2d0]/2 + 16*K4_0[v0d0] - 10*K4_1[v0d0] - 12*K4_1[v1d0] - 4*K4_2[v0d0]*a - 2*K4_2[v1d0] + 2*K4_3[v1d0]*a + 7*K4_3[v2d0]/2 + K4_3[v3d0] - 38*b/3 - 53*c/6 + 7*f/3",
+      "n_terms": 17,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "8*A*K4_4[v0d0]/5 - 8*EK4_2[v0d0]/5 + 8*EK4_3[v0d0]/5 + 8*EK4_3[v1d0]/5 - 4*EK4_4[v1d0]/5 - 2*EK4_4[v2d0]/5 + 64*K4_1[v0d0]/5 - 8*K4_2[v0d0] - 48*K4_2[v1d0]/5 - 16*K4_3[v0d0]*a/5 - 8*K4_3[v1d0]/5 + 8*K4_4[v1d0]*a/5 + 14*K4_4[v2d0]/5 + 4*K4_4[v3d0]/5 - 22*c/5",
+      "n_terms": 15,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "4*A*K4_5[v0d0]/3 - 4*EK4_3[v0d0]/3 + 4*EK4_4[v0d0]/3 + 4*EK4_4[v1d0]/3 - 2*EK4_5[v1d0]/3 - EK4_5[v2d0]/3 + 32*K4_2[v0d0]/3 - 20*K4_3[v0d0]/3 - 8*K4_3[v1d0] - 8*K4_4[v0d0]*a/3 - 4*K4_4[v1d0]/3 + 4*K4_5[v1d0]*a/3 + 7*K4_5[v2d0]/3 + 2*K4_5[v3d0]/3",
+      "n_terms": 14,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "8*A*K4_6[v0d0]/7 - 8*EK4_4[v0d0]/7 + 8*EK4_5[v0d0]/7 + 8*EK4_5[v1d0]/7 - 4*EK4_6[v1d0]/7 - 2*EK4_6[v2d0]/7 + 64*K4_3[v0d0]/7 - 40*K4_4[v0d0]/7 - 48*K4_4[v1d0]/7 - 16*K4_5[v0d0]*a/7 - 8*K4_5[v1d0]/7 + 8*K4_6[v1d0]*a/7 + 2*K4_6[v2d0] + 4*K4_6[v3d0]/7",
+      "n_terms": 14,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "A*K4_7[v0d0] - EK4_5[v0d0] + EK4_6[v0d0] + EK4_6[v1d0] - EK4_7[v1d0]/2 - EK4_7[v2d0]/4 + 8*K4_4[v0d0] - 5*K4_5[v0d0] - 6*K4_5[v1d0] - 2*K4_6[v0d0]*a - K4_6[v1d0] + K4_7[v1d0]*a + 7*K4_7[v2d0]/4 + K4_7[v3d0]/2",
+      "n_terms": 14,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K8[v0d0]": {
+    "structural_top_log": 7,
+    "logs": {
+     "3": {
+      "prediction": "-EK4_2[v0d0]*c/6 - 2*EK6_2[v0d0]/3 + 4*K4_1[v0d0]*c/3 + 4*K4_2[v0d0]*b/3 + K4_2[v0d0]*c/6 + K4_2[v1d0]*c/3 + 8*K6_1[v0d0] + 8*K6_2[v0d0]/3 + 4*K6_2[v1d0]/3 - k/3",
+      "n_terms": 10,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "-EK4_3[v0d0]*c/8 - EK6_3[v0d0]/2 + K4_2[v0d0]*c + K4_3[v0d0]*b + K4_3[v0d0]*c/8 + K4_3[v1d0]*c/4 + 6*K6_2[v0d0] + 2*K6_3[v0d0] + K6_3[v1d0]",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "-EK4_4[v0d0]*c/10 - 2*EK6_4[v0d0]/5 + 4*K4_3[v0d0]*c/5 + 4*K4_4[v0d0]*b/5 + K4_4[v0d0]*c/10 + K4_4[v1d0]*c/5 + 24*K6_3[v0d0]/5 + 8*K6_4[v0d0]/5 + 4*K6_4[v1d0]/5",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "-EK4_5[v0d0]*c/12 - EK6_5[v0d0]/3 + 2*K4_4[v0d0]*c/3 + 2*K4_5[v0d0]*b/3 + K4_5[v0d0]*c/12 + K4_5[v1d0]*c/6 + 4*K6_4[v0d0] + 4*K6_5[v0d0]/3 + 2*K6_5[v1d0]/3",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "-EK4_6[v0d0]*c/14 - 2*EK6_6[v0d0]/7 + 4*K4_5[v0d0]*c/7 + 4*K4_6[v0d0]*b/7 + K4_6[v0d0]*c/14 + K4_6[v1d0]*c/7 + 24*K6_5[v0d0]/7 + 8*K6_6[v0d0]/7 + 4*K6_6[v1d0]/7",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "-EK4_7[v0d0]*c/16 - EK6_7[v0d0]/4 + K4_6[v0d0]*c/2 + K4_7[v0d0]*b/2 + K4_7[v0d0]*c/16 + K4_7[v1d0]*c/8 + 3*K6_6[v0d0] + K6_7[v0d0] + K6_7[v1d0]/2",
+      "n_terms": 9,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   },
+   "K8[v1d0]": {
+    "structural_top_log": 8,
+    "logs": {
+     "3": {
+      "prediction": "2*EK4_1[v0d0]*c/3 - EK4_2[v0d0]*c/6 - EK4_2[v0d0]*f/6 - EK4_2[v1d0]*c/6 + 4*EK6_1[v0d0]/3 - 2*EK6_2[v0d0]/3 - 2*EK6_2[v1d0]/3 + 4*G*K4_2[v0d0]/3 + 14*J/3 - 16*K4_0[v0d0]*c/3 - 16*K4_1[v0d0]*b/3 + 2*K4_1[v0d0]*c/3 + 4*K4_1[v0d0]*f/3 + K4_2[v0d0]*f/6 + 4*K4_2[v1d0]*b/3 + K4_2[v1d0]*c/2 + K4_2[v1d0]*f/3 + K4_2[v2d0]*c/3 - 16*K6_0[v0d0] + 8*K6_1[v0d0]/3 + 16*K6_1[v1d0]/3 + 2*K6_2[v0d0]*a + 4*K6_2[v1d0] + 4*K6_2[v2d0]/3 - N/3 + 29*k/6",
+      "n_terms": 26,
+      "unknown_taylor_coefficients": []
+     },
+     "4": {
+      "prediction": "EK4_2[v0d0]*c/2 - EK4_3[v0d0]*c/8 - EK4_3[v0d0]*f/8 - EK4_3[v1d0]*c/8 + EK6_2[v0d0] - EK6_3[v0d0]/2 - EK6_3[v1d0]/2 + G*K4_3[v0d0] - 4*K4_1[v0d0]*c - 4*K4_2[v0d0]*b + K4_2[v0d0]*c/2 + K4_2[v0d0]*f + K4_3[v0d0]*f/8 + K4_3[v1d0]*b + 3*K4_3[v1d0]*c/8 + K4_3[v1d0]*f/4 + K4_3[v2d0]*c/4 - 12*K6_1[v0d0] + 2*K6_2[v0d0] + 4*K6_2[v1d0] + 3*K6_3[v0d0]*a/2 + 3*K6_3[v1d0] + K6_3[v2d0] + 5*k/3",
+      "n_terms": 24,
+      "unknown_taylor_coefficients": []
+     },
+     "5": {
+      "prediction": "2*EK4_3[v0d0]*c/5 - EK4_4[v0d0]*c/10 - EK4_4[v0d0]*f/10 - EK4_4[v1d0]*c/10 + 4*EK6_3[v0d0]/5 - 2*EK6_4[v0d0]/5 - 2*EK6_4[v1d0]/5 + 4*G*K4_4[v0d0]/5 - 16*K4_2[v0d0]*c/5 - 16*K4_3[v0d0]*b/5 + 2*K4_3[v0d0]*c/5 + 4*K4_3[v0d0]*f/5 + K4_4[v0d0]*f/10 + 4*K4_4[v1d0]*b/5 + 3*K4_4[v1d0]*c/10 + K4_4[v1d0]*f/5 + K4_4[v2d0]*c/5 - 48*K6_2[v0d0]/5 + 8*K6_3[v0d0]/5 + 16*K6_3[v1d0]/5 + 6*K6_4[v0d0]*a/5 + 12*K6_4[v1d0]/5 + 4*K6_4[v2d0]/5",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "6": {
+      "prediction": "EK4_4[v0d0]*c/3 - EK4_5[v0d0]*c/12 - EK4_5[v0d0]*f/12 - EK4_5[v1d0]*c/12 + 2*EK6_4[v0d0]/3 - EK6_5[v0d0]/3 - EK6_5[v1d0]/3 + 2*G*K4_5[v0d0]/3 - 8*K4_3[v0d0]*c/3 - 8*K4_4[v0d0]*b/3 + K4_4[v0d0]*c/3 + 2*K4_4[v0d0]*f/3 + K4_5[v0d0]*f/12 + 2*K4_5[v1d0]*b/3 + K4_5[v1d0]*c/4 + K4_5[v1d0]*f/6 + K4_5[v2d0]*c/6 - 8*K6_3[v0d0] + 4*K6_4[v0d0]/3 + 8*K6_4[v1d0]/3 + K6_5[v0d0]*a + 2*K6_5[v1d0] + 2*K6_5[v2d0]/3",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "7": {
+      "prediction": "2*EK4_5[v0d0]*c/7 - EK4_6[v0d0]*c/14 - EK4_6[v0d0]*f/14 - EK4_6[v1d0]*c/14 + 4*EK6_5[v0d0]/7 - 2*EK6_6[v0d0]/7 - 2*EK6_6[v1d0]/7 + 4*G*K4_6[v0d0]/7 - 16*K4_4[v0d0]*c/7 - 16*K4_5[v0d0]*b/7 + 2*K4_5[v0d0]*c/7 + 4*K4_5[v0d0]*f/7 + K4_6[v0d0]*f/14 + 4*K4_6[v1d0]*b/7 + 3*K4_6[v1d0]*c/14 + K4_6[v1d0]*f/7 + K4_6[v2d0]*c/7 - 48*K6_4[v0d0]/7 + 8*K6_5[v0d0]/7 + 16*K6_5[v1d0]/7 + 6*K6_6[v0d0]*a/7 + 12*K6_6[v1d0]/7 + 4*K6_6[v2d0]/7",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "8": {
+      "prediction": "EK4_6[v0d0]*c/4 - EK4_7[v0d0]*c/16 - EK4_7[v0d0]*f/16 - EK4_7[v1d0]*c/16 + EK6_6[v0d0]/2 - EK6_7[v0d0]/4 - EK6_7[v1d0]/4 + G*K4_7[v0d0]/2 - 2*K4_5[v0d0]*c - 2*K4_6[v0d0]*b + K4_6[v0d0]*c/4 + K4_6[v0d0]*f/2 + K4_7[v0d0]*f/16 + K4_7[v1d0]*b/2 + 3*K4_7[v1d0]*c/16 + K4_7[v1d0]*f/8 + K4_7[v2d0]*c/8 - 6*K6_5[v0d0] + K6_6[v0d0] + 2*K6_6[v1d0] + 3*K6_7[v0d0]*a/4 + 3*K6_7[v1d0]/2 + K6_7[v2d0]/2",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     },
+     "9": {
+      "prediction": "2*EK4_7[v0d0]*c/9 - EK4_8[v0d0]*c/18 - EK4_8[v0d0]*f/18 - EK4_8[v1d0]*c/18 + 4*EK6_7[v0d0]/9 - 2*EK6_8[v0d0]/9 - 2*EK6_8[v1d0]/9 + 4*G*K4_8[v0d0]/9 - 16*K4_6[v0d0]*c/9 - 16*K4_7[v0d0]*b/9 + 2*K4_7[v0d0]*c/9 + 4*K4_7[v0d0]*f/9 + K4_8[v0d0]*f/18 + 4*K4_8[v1d0]*b/9 + K4_8[v1d0]*c/6 + K4_8[v1d0]*f/9 + K4_8[v2d0]*c/9 - 16*K6_6[v0d0]/3 + 8*K6_7[v0d0]/9 + 16*K6_7[v1d0]/9 + 2*K6_8[v0d0]*a/3 + 4*K6_8[v1d0]/3 + 4*K6_8[v2d0]/9",
+      "n_terms": 23,
+      "unknown_taylor_coefficients": []
+     }
+    }
+   }
+  }
+ }
+}

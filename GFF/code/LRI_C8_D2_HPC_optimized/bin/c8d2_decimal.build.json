@@ -1,0 +1,48 @@
+{
+  "backend": "decimal",
+  "command": [
+    "g++",
+    "-I../dependencies/boost/usr/include",
+    "-I../dependencies/gmp/usr/include",
+    "-I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "src/c8d2_integrate.cpp",
+    "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+    "-lquadmath",
+    "-o",
+    "bin/c8d2_decimal"
+  ],
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "executable_sha256": "22915c466d251432e0f075f421c6159f89f423e4b6dff5ab3375ad3f17f4deef",
+  "native": {
+    "boost_version": "1_74",
+    "compiler": "13.3.0",
+    "dimension": 2,
+    "long_double_bits": 64,
+    "mp_backend": "decimal300",
+    "mp_digits10": 300,
+    "mp_max_digits10": 328,
+    "openmp": 201511,
+    "order": 8,
+    "schema": "c8-d2-build-1"
+  },
+  "schema": "c8-d2-build-record-1",
+  "source_sha256": {
+    "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+    "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+    "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+  },
+  "variables": {
+    "CPPFLAGS": "-I../dependencies/boost/usr/include -I../dependencies/gmp/usr/include -I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+    "CXX": "g++",
+    "CXXFLAGS": "",
+    "LDFLAGS": "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+    "LDLIBS": "",
+    "OPTFLAGS": "-O3",
+    "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+  }
+}

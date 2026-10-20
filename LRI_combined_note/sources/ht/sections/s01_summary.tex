@@ -1,0 +1,66 @@
+\section{Summary}\label{sec:summary}
+
+\paragraph{What is computed.} The long-range Ising (LRI) fixed point in $d$ dimensions is reached from the generalized
+free field (GFF) $\phi$ of dimension $\Ds$ by the relevant $\phi^4$
+deformation~\cite{Fisher:1972zz,Sak:1973oqx,Paulos:2015jfa,Behan:2017emf}. In radial quantization the GFF
+becomes a set of free oscillators. We diagonalize the deformed Hamiltonian in a truncated Fock space and tune its two
+couplings, the mass $r$ and the quartic $g$, so that two levels take their conformal values: $\sigma=\phi$ at $\Ds$
+and its shadow at $d-\Ds$. The first excited $\mathbb Z_2$-even scalar level is then the prediction for the
+dimension $\DE$ of the energy operator $\varepsilon$ (Section~\ref{sec:model}). The method is Hamiltonian truncation
+in radial quantization~\cite{Hogervorst:2014rta,Rychkov:2014eea}, applied to a nonlocal GFF.
+
+\paragraph{The three ingredients.}
+\begin{enumerate}
+\item \emph{Zero mode and bath} (Section~\ref{sec:split}). The zero mode costs no level, so its quanta are not capped
+ by the level cutoff, and at strong coupling its fluctuations are large. The full Hamiltonian, including the
+ couplings of the zero mode to the bath, is diagonalized on the product of $n_z$ zero-mode states per parity, each a
+ superposition of many zero-mode quanta, with the bath states of total level $\ell\le N$. In $d=1$ this zero-mode
+ basis reproduces the $\DE$ of a converged zero mode to $\HTq{S9}$ (Section~\ref{sec:zerobasis}); only the bath
+ cutoff $N$ is extrapolated.
+\item \emph{Window correction} (Section~\ref{sec:window}). A bath state of level $\ell$ can host vacuum fluctuations
+ only up to level $N-\ell$. The raw spectrum therefore violates the exact descendant spacings by amounts that do not
+ decay with $N$. We add to every bath state the difference $D(\ell)=E_v(N)-E_v(N-\ell)$, where $E_v(M)$ is the
+ vacuum energy at bath cutoff $M$ of the corrected theory itself, zero mode included. With an energy cutoff, the
+ same missing states were added back order by order with perturbative counterterms in $\phi^4$ theory in $2+1$
+ dimensions~\cite{Elias-Miro:2020qwz}.
+\item \emph{Zero-mode basis} (Section~\ref{sec:zerobasis}). If the $n_z$ states are the lowest eigenstates of the
+ zero-mode part $H_z$ of $H$, the number needed at strong coupling grows with $N$, and the zero mode then sets the
+ cost. We keep instead the leading eigenvectors of a reduced density matrix of the states the calculation needs,
+ trained once per $\Ds$.
+\end{enumerate}
+
+\paragraph{Results.}
+\begin{itemize}
+\item In $d=1$ (Section~\ref{sec:d1}, Table~\ref{tab:d1}) the cutoff reaches $N=\HTq{S2}$ at all 13 values
+ $0.001\le\Ds\le0.249$, and the series are extrapolated with a fixed family of fits.
+ \begin{itemize}
+ \item At $\Ds=0.249$ the result differs from the $\eps$ expansion by $\HTq{P1}$, well below the $\HTq{P4}$ to
+ which we trust this check.
+ \item The values are \emph{final} for $\Ds\geq0.1$ as limits of the window-corrected model. Their half-spreads
+ are at most $\HTq{D14}$; at $\Ds\ge0.15$ we judge the total error to be about $\HTq{D12}$.
+ \item The quoted errors are half-spreads of the extrapolations in the cutoff, not standard deviations, and they do
+ not include the dependence on the window prescription. That dependence is $\HTq{M10}$ at $0.075\le\Ds\le0.125$,
+ as large as the gap there to the numerical renormalization group (NRG) of the sub-ohmic spin-boson
+ model~\cite{Bulla:2003rns,Bulla:2005bnrg} (Section~\ref{sec:d1-model}).
+ \item At $\Ds=0.075$ the error is \emph{one-sided}, and at $0.05$ the extrapolation is \emph{unstable}.
+ \item At $\Ds\le0.025$ the corrected sequence turns over and keeps falling, so it has \emph{no limit}. This is a
+ property of the window-corrected model, not of the numerics.
+ \end{itemize}
+\item In $d=2$ (Section~\ref{d2:sec}, $N\le24$) and $d=3$ (Section~\ref{d3:sec}, $N\le20$) the cutoffs are too few
+ for a controlled extrapolation, and we report finite-$N$ behaviour with status words.
+\end{itemize}
+
+\paragraph{Checks.}
+\begin{itemize}
+\item Separately written solvers, built from the definition of the model without using the production code, reproduce
+ the production spectra in each dimension (Section~\ref{sec:checks}). The $d=1$ and $d=3$ solvers were written blind
+ to the production code. The $d=2$ solver is not blind: its author had earlier prepared the production code for the
+ cluster.
+\item These checks verify that we compute the stated model. Whether its $N\to\infty$ limit is the CFT is a separate
+ question, and the answer is negative in parts of the range (Section~\ref{sec:caveats}).
+\end{itemize}
+
+\paragraph{Status words.} \emph{Final}, \emph{one-sided}, \emph{unstable}, \emph{no limit} and \emph{finite-$N$}
+are part of the results (Section~\ref{sec:d1-extrap}). A quoted error is a half-spread: half the difference between
+the largest and the smallest limit of the accepted fits. It is a model spread, not a standard deviation, and it
+covers the extrapolation only.

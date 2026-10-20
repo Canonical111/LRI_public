@@ -1,0 +1,69 @@
+{
+ "schema": "c8-d2-ckpt-fix-verdict-1",
+ "commit_under_test": "ffbc8afe87c0b4c1f5e76639f0135ee9376a4338",
+ "fix_commits": {"tools": "127b6e1", "kernel_and_tests": "ffbc8af"},
+ "base": "601b102",
+ "date": "2026-10-04",
+ "verifier": "independent verifier of workflow wf_09f16832-536 (checkpoint-review fix validation)",
+ "expanse": {
+  "status": "not run",
+  "reason": "no Expanse session: ssh needs MFA and no ControlMaster socket was open at any check during this step (last check 2026-10-04 06:08 EDT); 0 SU used",
+  "ready": "scripts/submit_ckpt_expanse.sh (H7E-R queue check, export + export check, build vs Stage-3 hashes, J-VAL-1, merge scale with single-shard RSS and the 601b102 control), about 15-25 SU",
+  "owed": ["build and default-binary byte identity vs Stage 3 (decimal 3dbd51bb..., gmp 5c5328af...)",
+           "J-VAL-1 (make test sequence, incl. validate inspector on L7/L8: the cluster parts of CK-K03 and T-04)",
+           "merge_scale --rows 1000000 and the 32->256-point scaling incl. one shard, with RSS",
+           "J-GEN-1 rerun of gen/regress.py L3-L7 threads 1,8 (CK-K02, owed by the kernel fixer)"]
+ },
+ "substitute_cluster": {
+  "site": "canonical (2 x Xeon Gold 6226R, 2 cores of a shared box; GCC 11.4, Boost 1_74; Python 3.10.12 venv)",
+  "why": "personal desktop C-Short/C-Infinite/R-Infinite estimates of weeks (FIFO behind 79+ pending jobs), symmetry down since 2026-10-03, pi fully allocated",
+  "jobs": {"269": "main verification", "271": "signals test rerun", "273": "token comparison of the preprocessed workers (270 superseded, 272 cancelled)"}
+ },
+ "binaries": {
+  "canonical_make_built_601b102_vs_ffbc8af": {"c8d2_decimal": "230c532b39b3b2c07d2a3f75b2c226f7ec56984451cd201d463685db21486da9 both",
+                                             "c8d2_gmp": "f5ccc18f3f0425c91209b9b54fd7134193c764b443373ddc69207b9cb7f9eb91 both",
+                                             "c8d2_inspect": "differs (CK-K03 changes the inspector; not a default worker)"},
+  "preprocessed_units": "g++ -E -P with the Makefile flags, default and -DC8_USE_GMP: equal without whitespace; the only word difference is a line break after ';' before 'try' (same C++ tokens, no __LINE__ dependence); -DC8_ORDER_TRACE differs (control)",
+  "expanse_vs_stage3": "not checked (no session)"
+ },
+ "findings": [
+  {"id": "CK-K01", "status": "resolved", "same_as": "O05"},
+  {"id": "CK-K02", "status": "resolved", "cluster_owed": "J-GEN-1 rerun"},
+  {"id": "CK-K03", "status": "resolved"},
+  {"id": "O01", "status": "resolved"},
+  {"id": "O02", "status": "resolved", "same_as": "T-01"},
+  {"id": "O03", "status": "resolved"},
+  {"id": "O04", "status": "resolved"},
+  {"id": "O05", "status": "resolved"},
+  {"id": "O06", "status": "resolved"},
+  {"id": "O07", "status": "resolved"},
+  {"id": "O08", "status": "resolved"},
+  {"id": "O09", "status": "resolved"},
+  {"id": "O10", "status": "resolved", "documented_limit": "a coordinated edit of power_free_se and power_free_correction_covariance that keeps the variance identity is accepted (no statistics stored to recompute power_free_se); the docstring says so"},
+  {"id": "O11", "status": "partial", "residual": "design.py's eta_node path (tools/accounting.py -> tools/ledger.py) reads only c8-d2-ledger-1 records; a C8(3) pilot with its own c8-d3-ledger-1 ledger (C8(3) PLAN HD7) is refused by freeze/report ('submissions.jsonl line 1 is not a c8-d2-ledger-1 record'); the O11 test's c8-d3 view keeps the copied c8-d2 ledger, so it does not see this (probe_o11_ledger.log)"},
+  {"id": "T-01", "status": "resolved", "same_as": "O02"},
+  {"id": "T-02", "status": "resolved"},
+  {"id": "T-03", "status": "resolved"},
+  {"id": "T-04", "status": "resolved"},
+  {"id": "T-05", "status": "resolved"},
+  {"id": "T-06", "status": "resolved"}
+ ],
+ "other_observations": [
+  "canonical 269: unit_orchestration 34 of 35 tests; `signals` (run_array.sh launch boundary stage 0: scratch not empty within 10 s) failed once under the full suite on the loaded 2-core node; code and test untouched by the fixes; rerun in isolation 9/9 passes (ffbc8af and 601b102, HDD and SSD TMPDIR, job 271); the same test timed out once on Expanse in Stage 3 (job 54643233): a timing flake, not a checkpoint finding",
+  "Mac merge_scale memory scaling (4 -> 32 points): peak RSS growth 12.4 MB in one shard (limit 16 MB; the fixer measured 4.4 MB) while the traced Python heap stays flat; on Linux the same case grows 1.4 MB and 0.5 MB at 16 -> 128 points, so this is the macOS allocator, but the Mac gate has little margin"
+ ],
+ "expanse_d98e3a1": {
+  "date": "2026-10-04",
+  "commit_under_test": "d98e3a10c6e978852812e9715d4fd4a3939160d1",
+  "status": "passed",
+  "export_check": "setup/export_check_d98e3a10c6e9.json: 5,230 files equal to git archive (content, paths, modes)",
+  "evidence": "expanse_d98e3a1/ (one directory per job, logs/, submit.log)",
+  "jobs": {"54658871": "build: bin/c8d2_decimal 3dbd51bb... and bin/c8d2_gmp 5c5328af... identical to Stage 3; c7ref unchanged; inspector 034db6a1... -> 63c194fd... (CK-K03); sanitizer builds differ (debug info and source locations); no worker changed, so A-RPL-1..3 need no rerun",
+           "54658872": "J-VAL-1 passed: validate (incl. inspector_private_tempdir and inspector_execution_order at L7/L8), unit_orchestration 35 tests incl. signals lost_term0, test_pipeline 11 incl. O11 c8-d3 ledger, ast_scan 0, test_regress 42/42, merge_scale, check_vendored 16/16, vendored_isolated 10/10, delivery verifier, check_inputs 10/10, workflow, staging, verify_result_tamper 54/54, combine_core 11/11",
+           "54658873": "merge scale passed: --rows 1000000 (1,249,792 rows, 16 shards) byte-identical, 39.8 MB per merge process; 32 -> 256 points (156,224 -> 1,249,792 rows) RSS +0.96 MB (1 shard) and +0.63 MB (4 shards), traced +0.13 MB and 0; with 601b102's production.py +611 MB and +163 MB, gate fails (control)",
+           "54658874": "J-GEN-1 rerun (CK-K02) passed: regress.py L3-L7 threads 1 and 8, every verdict equal to J-GEN-1 54631551 (compare_vs_54631551.json); header checks clean; test_regress 42/42",
+           "54658970": "diagnostic builds c8d2_gmp_prof d1cc6551... and c8d2_gmp_ratiohist c307f2a3... identical to Stage 3 part A; validate --only diagnostics passed"},
+  "su": 26.6,
+  "owed_resolved": ["build and default-binary byte identity vs Stage 3", "J-VAL-1", "merge_scale --rows 1000000 and the 32->256-point scaling incl. one shard, with RSS", "J-GEN-1 rerun (CK-K02)"]
+ }
+}

@@ -1,0 +1,786 @@
+{
+ "manifest": "plan/prplan.570722.0/manifest.json",
+ "manifest_sha256": "be215e0e89bd5c323b725770dcdcbba4c4063628b7bd1373406e1ed9b12a1a70",
+ "seed": 6274393056071737300,
+ "threads": 8,
+ "checkpoint_tasks": 256,
+ "rule": "Estimate and wall-time schedule of the planned C8(2) production campaign on symmetry amdq (8 x 8 lanes per node), from\nthe plan's own index estimates (manifest.json `jobs`: est_core_seconds, est_peak_bytes; `scale`, `estimates`).\nStandard library only; runs on the Mac on the evidence copy of the manifest, or on the login node.\n\n  prod_lanes.py plan MANIFEST OUT.json [--nodes 8] [--wall-hours 24]\n  prod_lanes.py remaining RUN [--nodes 8] [--wall-hours 24]      (read-only; on symmetry with the export's tools: the\n                                                                  indices still incomplete, from the checkpoint blocks,\n                                                                  and the schedule of the next submit round)\n\nThe lane rule is tools/lanes.py's (cmd_lane): when a lane is free it takes the HEAVIEST unclaimed index whose claim\nrequirement fits the job's remaining time, need = est x f / (8 x 0.9) x C8_LANE_SAFETY 1.5 + C8_LANE_MARGIN 300 s, with\nf = 1.0 on the cost model's CPU model (EPYC 7543, the only nodes of the production pool); a lane that finds nothing it\ncan fit stops, and a worker job ends when its 8 lanes have stopped (or at the wall limit). Every worker of a round\nstarts at t = 0 (the probe and the idle 7543 nodes say so; a late start only shifts that worker). Speed models for the\ntime an index actually runs on its 8-core lane:\n  planner : est / (8 x 0.9)                       the planner's assumed lane efficiency (what the deadline rule uses)\n  pilot   : est / (8 x 0.990)                     the pilot's measured in-index efficiency (analysis/README.md, sec. 2)\n  stress  : est x 1.08 / (8 x 0.990) at free L8   the exact cost model under-estimated free L8 by 7-8% in the pilot; the\n            (other indices as pilot)              profile model was measured by the same kind of sweep (570538)\nAllocated core-hours = sum over workers of (end x 64). The merge job is extra (one amdq node).",
+ "summary": {
+  "indices": 1129,
+  "tasks": 6192256,
+  "checkpoints": 24848,
+  "projected_files": 28485,
+  "estimated_core_hours": 12025.121924839943,
+  "estimated_core_hours_manifest": 12025.121924839947,
+  "lane_hours_planner": 1670.1558228944364,
+  "lane_hours_pilot": 1518.3234753585787,
+  "largest_index": {
+   "id": 596,
+   "group": "a_power_L8",
+   "est_core_seconds": 38847.97051554732,
+   "wall_seconds_8_lane_planner": 5395.551460492683,
+   "wall_seconds_8_lane_pilot": 4905.046782266076,
+   "claim_requirement_seconds": 8393.327190739024
+  },
+  "smallest_index_est_core_seconds": 20.38335084915161,
+  "median_index_est_core_seconds": 38796.285904283635,
+  "max_index_wall_seconds_manifest": 5395.551460492683,
+  "latest_claim_of_largest_index_hours_into_a_24h_job": 21.668520224794715,
+  "peak_memory": {
+   "largest_est_peak_bytes": 1586501780,
+   "largest_est_peak_GiB": 1.4775449223816395,
+   "lane_mem": "245G",
+   "per_lane_share_GiB": 30.625,
+   "guard_GiB_per_lane_8_lanes": 26.03125,
+   "guard_ok_8_lanes": true,
+   "headroom_x": 17.617907655924597
+  },
+  "merge": {
+   "fan_in": 64,
+   "projected_max_seconds": 583.0592,
+   "suggested_merge_time": "01:00:00",
+   "groups": 24,
+   "largest_group": "a_free_L8",
+   "passes": [
+    1,
+    2
+   ],
+   "rows_total": 6192256,
+   "projected_seconds_sum_over_groups": 1730.2869333333338
+  },
+  "by_sector_L": {
+   "free_L3": {
+    "indices": 2,
+    "est_core_hours": 1.355120129055447,
+    "tasks": 1280
+   },
+   "free_L4": {
+    "indices": 2,
+    "est_core_hours": 2.7541747273339166,
+    "tasks": 4096
+   },
+   "free_L5": {
+    "indices": 4,
+    "est_core_hours": 22.96421322928535,
+    "tasks": 19456
+   },
+   "free_L6": {
+    "indices": 13,
+    "est_core_hours": 131.1010797050264,
+    "tasks": 101120
+   },
+   "free_L7": {
+    "indices": 234,
+    "est_core_hours": 2517.7179727901353,
+    "tasks": 626688
+   },
+   "free_L8": {
+    "indices": 774,
+    "est_core_hours": 8345.467912185017,
+    "tasks": 4114432
+   },
+   "power_L3": {
+    "indices": 2,
+    "est_core_hours": 0.012210590177112155,
+    "tasks": 256
+   },
+   "power_L4": {
+    "indices": 2,
+    "est_core_hours": 1.0386122661166721,
+    "tasks": 768
+   },
+   "power_L5": {
+    "indices": 2,
+    "est_core_hours": 2.412550145255195,
+    "tasks": 5120
+   },
+   "power_L6": {
+    "indices": 2,
+    "est_core_hours": 18.278609821663963,
+    "tasks": 27392
+   },
+   "power_L7": {
+    "indices": 22,
+    "est_core_hours": 230.07294166121218,
+    "tasks": 181632
+   },
+   "power_L8": {
+    "indices": 70,
+    "est_core_hours": 751.9465275896581,
+    "tasks": 1110016
+   }
+  }
+ },
+ "no_deadline_wall_hours": {
+  "planner": {
+   "4": 52.35834012174871,
+   "8": 26.917239790672912,
+   "16": 13.466026631813497
+  },
+  "pilot": {
+   "4": 47.598491019771544,
+   "8": 24.470217991520837,
+   "16": 12.241842392557725
+  },
+  "stress": {
+   "4": 50.21484424351786,
+   "8": 25.779880701071193,
+   "16": 12.895309380644138
+  }
+ },
+ "schedule": {
+  "planner": {
+   "round1": {
+    "nodes": 8,
+    "model": "planner",
+    "claimed_indices": 974,
+    "worker_end_hours": [
+     22.464,
+     22.464,
+     23.259,
+     23.259,
+     23.253,
+     22.464,
+     22.464,
+     22.464
+    ],
+    "wall_hours": 23.25921667389443,
+    "allocated_core_hours": 11653.872584692695,
+    "busy_lane_hours": 1441.754423127739,
+    "lane_occupancy": 0.9897169632841029,
+    "left_indices": 155,
+    "left_est_core_hours": 1644.4900783202343,
+    "left_lane_hours_planner": 228.40139976669946,
+    "left_by_group": {
+     "a_free_L7": {
+      "indices": 92,
+      "est_core_hours": 987.7656995878904
+     },
+     "b_power_L8": {
+      "indices": 32,
+      "est_core_hours": 341.8857626335818
+     },
+     "a_power_L7": {
+      "indices": 12,
+      "est_core_hours": 127.95177675684292
+     },
+     "a_power_L6": {
+      "indices": 1,
+      "est_core_hours": 10.231261912054485
+     },
+     "b_power_L7": {
+      "indices": 10,
+      "est_core_hours": 102.12116490436922
+     },
+     "b_free_L6": {
+      "indices": 7,
+      "est_core_hours": 66.48706461588542
+     },
+     "b_power_L6": {
+      "indices": 1,
+      "est_core_hours": 8.047347909609476
+     }
+    }
+   },
+   "round2_by_nodes": [
+    {
+     "nodes": 1,
+     "model": "planner",
+     "claimed_indices": 120,
+     "worker_end_hours": [
+      22.346
+     ],
+     "wall_hours": 22.345866901133874,
+     "allocated_core_hours": 1430.135481672568,
+     "busy_lane_hours": 178.7382974850385,
+     "lane_occupancy": 0.9998398041338068,
+     "left_indices": 35,
+     "left_est_core_hours": 357.5743364279593,
+     "left_lane_hours_planner": 49.663102281661025,
+     "left_by_group": {
+      "b_power_L8": {
+       "indices": 4,
+       "est_core_hours": 42.73572032919775
+      },
+      "a_power_L7": {
+       "indices": 12,
+       "est_core_hours": 127.95177675684292
+      },
+      "a_power_L6": {
+       "indices": 1,
+       "est_core_hours": 10.231261912054485
+      },
+      "b_power_L7": {
+       "indices": 10,
+       "est_core_hours": 102.12116490436922
+      },
+      "b_free_L6": {
+       "indices": 7,
+       "est_core_hours": 66.48706461588542
+      },
+      "b_power_L6": {
+       "indices": 1,
+       "est_core_hours": 8.047347909609476
+      }
+     },
+     "complete": false
+    },
+    {
+     "nodes": 2,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      14.708,
+      14.752
+     ],
+     "wall_hours": 14.751562738310573,
+     "allocated_core_hours": 1885.4010972898823,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9691365942027242,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 3,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      10.186,
+      10.285,
+      10.244
+     ],
+     "wall_hours": 10.285346017693122,
+     "allocated_core_hours": 1965.8296202863667,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9294860446081903,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 4,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      7.436,
+      7.376,
+      7.435,
+      7.431
+     ],
+     "wall_hours": 7.435515006284379,
+     "allocated_core_hours": 1899.3822511927492,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9620028811926444,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 5,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      5.793,
+      5.95,
+      5.947,
+      5.947,
+      5.95
+     ],
+     "wall_hours": 5.950197398115271,
+     "allocated_core_hours": 1893.5931619715266,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9649439144737844,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 6,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      5.778,
+      4.466,
+      4.466,
+      5.819,
+      5.819,
+      5.723
+     ],
+     "wall_hours": 5.819130907109493,
+     "allocated_core_hours": 2052.5741821733154,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.8902047068520078,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 7,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      4.456,
+      4.459,
+      4.459,
+      4.401,
+      4.463,
+      4.403,
+      2.982
+     ],
+     "wall_hours": 4.463250509504212,
+     "allocated_core_hours": 1895.9178278683464,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9637607554901257,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 8,
+     "model": "planner",
+     "claimed_indices": 155,
+     "worker_end_hours": [
+      4.453,
+      4.294,
+      4.393,
+      4.396,
+      4.456,
+      2.982,
+      2.982,
+      2.982
+     ],
+     "wall_hours": 4.456015705338242,
+     "allocated_core_hours": 1980.1621062623587,
+     "busy_lane_hours": 228.40139976669946,
+     "lane_occupancy": 0.9227583905150754,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    }
+   ]
+  },
+  "pilot": {
+   "round1": {
+    "nodes": 8,
+    "model": "pilot",
+    "claimed_indices": 1057,
+    "worker_end_hours": [
+     22.5,
+     22.495,
+     23.062,
+     23.065,
+     23.062,
+     21.86,
+     21.777,
+     21.777
+    ],
+    "wall_hours": 23.06451855247896,
+    "allocated_core_hours": 11494.324392982824,
+    "busy_lane_hours": 1421.044589543242,
+    "lane_occupancy": 0.9890408803223101,
+    "left_indices": 72,
+    "left_est_core_hours": 770.448775657465,
+    "left_lane_hours_planner": 107.00677439687009,
+    "left_by_group": {
+     "a_free_L7": {
+      "indices": 28,
+      "est_core_hours": 300.61123626704017
+     },
+     "b_power_L8": {
+      "indices": 32,
+      "est_core_hours": 341.8857626335818
+     },
+     "a_power_L7": {
+      "indices": 12,
+      "est_core_hours": 127.95177675684292
+     }
+    }
+   },
+   "round2_by_nodes": [
+    {
+     "nodes": 1,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      12.162
+     ],
+     "wall_hours": 12.16177851908177,
+     "allocated_core_hours": 778.3538252212333,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9998423098922824,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 2,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      6.753,
+      6.753
+     ],
+     "wall_hours": 6.7526961991334264,
+     "allocated_core_hours": 864.3451134846802,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9003707828984969,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 3,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      4.051,
+      4.054,
+      4.057
+     ],
+     "wall_hours": 4.0574064350206935,
+     "allocated_core_hours": 778.3584411334577,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9998363805105259,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 4,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      4.048,
+      2.705,
+      2.705,
+      4.044
+     ],
+     "wall_hours": 4.04824896170141,
+     "allocated_core_hours": 864.1011402728382,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9006249966027898,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 5,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      1.356,
+      2.702,
+      2.705,
+      2.705,
+      2.698
+     ],
+     "wall_hours": 2.7045411582696217,
+     "allocated_core_hours": 778.5309088180629,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.999614887100852,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 6,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      1.356,
+      1.356,
+      1.356,
+      2.702,
+      2.698,
+      2.695
+     ],
+     "wall_hours": 2.7018463485086377,
+     "allocated_core_hours": 778.3598361718316,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9998345885242832,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 7,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      1.356,
+      1.356,
+      1.356,
+      2.698,
+      2.695,
+      2.695,
+      1.349
+     ],
+     "wall_hours": 2.697962141994807,
+     "allocated_core_hours": 864.2735677244837,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.900445316836045,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 8,
+     "model": "pilot",
+     "claimed_indices": 72,
+     "worker_end_hours": [
+      1.356,
+      1.356,
+      1.356,
+      2.695,
+      1.349,
+      1.349,
+      1.349,
+      2.693
+     ],
+     "wall_hours": 2.695267333021423,
+     "allocated_core_hours": 864.1011402728382,
+     "busy_lane_hours": 97.27888581533647,
+     "lane_occupancy": 0.9006249966027898,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    }
+   ]
+  },
+  "stress": {
+   "round1": {
+    "nodes": 8,
+    "model": "stress",
+    "claimed_indices": 993,
+    "worker_end_hours": [
+     21.729,
+     21.729,
+     21.895,
+     22.452,
+     23.013,
+     23.015,
+     23.013,
+     23.013
+    ],
+    "wall_hours": 23.015480736369593,
+    "allocated_core_hours": 11511.043143098537,
+    "busy_lane_hours": 1418.5803180349023,
+    "lane_occupancy": 0.9858917565679801,
+    "left_indices": 136,
+    "left_est_core_hours": 1457.6032389783156,
+    "left_lane_hours_planner": 202.44489430254413,
+    "left_by_group": {
+     "a_free_L7": {
+      "indices": 92,
+      "est_core_hours": 987.7656995878904
+     },
+     "b_power_L8": {
+      "indices": 32,
+      "est_core_hours": 341.8857626335818
+     },
+     "a_power_L7": {
+      "indices": 12,
+      "est_core_hours": 127.95177675684292
+     }
+    }
+   },
+   "round2_by_nodes": [
+    {
+     "nodes": 1,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      23.007
+     ],
+     "wall_hours": 23.007019405582884,
+     "allocated_core_hours": 1472.4492419573046,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.9999166436877378,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 2,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      12.175,
+      12.175
+     ],
+     "wall_hours": 12.175316784313072,
+     "allocated_core_hours": 1558.4405302389134,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.9447434633856641,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 3,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      8.118,
+      8.118,
+      8.118
+     ],
+     "wall_hours": 8.117792303510733,
+     "allocated_core_hours": 1558.611584595416,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.944639779769562,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 4,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      6.76,
+      5.416,
+      6.759,
+      6.756
+     ],
+     "wall_hours": 6.759559096622163,
+     "allocated_core_hours": 1644.1879492019013,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.895473357977826,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 5,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      4.067,
+      5.409,
+      5.407,
+      5.407,
+      5.409
+     ],
+     "wall_hours": 5.409270361922974,
+     "allocated_core_hours": 1644.696343738849,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.8951965568741382,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 6,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      4.06,
+      4.06,
+      4.06,
+      4.06,
+      4.058,
+      4.058
+     ],
+     "wall_hours": 4.060197213381517,
+     "allocated_core_hours": 1558.7854463546028,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.9445344177812957,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 7,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      4.051,
+      4.054,
+      4.054,
+      2.711,
+      4.058,
+      2.711,
+      2.711
+     ],
+     "wall_hours": 4.057500463185647,
+     "allocated_core_hours": 1558.3689661877172,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.9447868482778481,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    },
+    {
+     "nodes": 8,
+     "model": "stress",
+     "claimed_indices": 136,
+     "worker_end_hours": [
+      4.048,
+      2.705,
+      2.705,
+      2.705,
+      4.051,
+      2.711,
+      2.711,
+      2.711
+     ],
+     "wall_hours": 4.050923368489311,
+     "allocated_core_hours": 1558.1966614823216,
+     "busy_lane_hours": 184.04081300231272,
+     "lane_occupancy": 0.9448913223943561,
+     "left_indices": 0,
+     "left_est_core_hours": 0.0,
+     "left_lane_hours_planner": 0.0,
+     "left_by_group": {},
+     "complete": true
+    }
+   ]
+  }
+ }
+}

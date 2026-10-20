@@ -1,0 +1,11 @@
+# Public targets of GFF/code/LRI_C7_HPC (see public.mk).
+# replay (Tier 1) and replay-full (Tier 2): Python >= 3.8 and NumPy. Tested: Python 3.10.11, NumPy 1.23.5 (Mac, Tier 1).
+# The production combination ran Python 3.11 with the package's requirements (below); byte identity of Tier 2 may need
+# the same NumPy version (np.cov, np.random.default_rng stream of the bootstrap).
+numpy>=1.20
+# test and the production rerun: the package's own ../requirements.txt
+#   numpy>=1.24, scipy>=1.9, mpmath>=1.2
+# plus a C++17 compiler with __float128 and libquadmath (GCC >= 9; GCC 8 with -lstdc++fs), OpenMP, Boost
+# multiprecision headers (CPPFLAGS=-I$BOOST_ROOT/include), GNU make, x86-64 Linux. Tested: GCC 13.3 + Boost 1.86
+# (SDSC Expanse, cpu/0.21.2a gcc/13.3.0 boost/1.86.0) and GCC 13.3 on an i9-13900K workstation; GCC 14.2 on the
+# delivery machine. Slurm for the cluster templates (tested 23.02.7).

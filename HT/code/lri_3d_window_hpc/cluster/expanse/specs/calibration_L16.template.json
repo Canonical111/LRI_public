@@ -1,0 +1,39 @@
+{
+  "campaign": "calibL16",
+  "comment": "TEMPLATE, do not freeze as is. L16 continuation of the stage-1 calibration (continue_from its validated teacher_L6 and window_L14). Replace every FILL_* value from the stage-1 calib_report (L14 peak RSS, elapsed) and the L16 setup probe (graph/vertex RSS) before freezing; freeze refuses non-numeric resources.",
+  "x": [
+    0.6,
+    0.5182
+  ],
+  "continue_from": {
+    "campaign_dir": "FILL_ABSOLUTE_PATH_TO_STAGE1_CAMPAIGN",
+    "group": "t8",
+    "teacher": "teacher_L6",
+    "seed": "window_L14"
+  },
+  "ladder": [
+    16
+  ],
+  "window": {
+    "nz": 16,
+    "diagnostics": "first"
+  },
+  "per_L": {
+    "16": {
+      "max_bath_states": "FILL_FROM_PROBE",
+      "memory_limit_gib": "FILL_FROM_L14_AND_PROBE"
+    }
+  },
+  "groups": [
+    {
+      "name": "t8",
+      "cpus": 8,
+      "threads": 8,
+      "mem_gib": "FILL",
+      "wall": "FILL",
+      "lead_s": 3600,
+      "partition": "shared"
+    }
+  ],
+  "throttle": 8
+}

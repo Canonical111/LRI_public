@@ -1,0 +1,153 @@
+{
+ "builders": {
+  "build_free": {
+   "command": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off build_free.cpp -o /expanse/lustre/scratch/zzheng8/temp_project/c8d2/gen/36043bbc2117/gen2.54631552.0/bin/build_free",
+   "compiler": "g++ (Spack GCC) 13.3.0",
+   "sha256": "d291c5ba66e1c0b5f51597de5c6a857129b6e4e2a2e9172d4bb7b9753b779c50"
+  },
+  "build_power": {
+   "command": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off build_power.cpp -o /expanse/lustre/scratch/zzheng8/temp_project/c8d2/gen/36043bbc2117/gen2.54631552.0/bin/build_power",
+   "compiler": "g++ (Spack GCC) 13.3.0",
+   "sha256": "6a4e70bb62a6e991d37368f78507233533838342e07fbdf6973ae0a1901aaa02"
+  },
+  "check_edge_forests": {
+   "command": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off check_edge_forests.cpp -o /expanse/lustre/scratch/zzheng8/temp_project/c8d2/gen/36043bbc2117/gen2.54631552.0/bin/check_edge_forests",
+   "compiler": "g++ (Spack GCC) 13.3.0",
+   "sha256": "e8f50872e019cd108ddc78542de119edbb8a71b19e7dcc89d9a1b2d15926d430"
+  }
+ },
+ "checksum_hierarchy": "G-file members -> MEMBERS.sha256; every file except MANIFEST.json and SHA256SUMS -> SHA256SUMS; SHA256SUMS -> MANIFEST.json (sha256sums_sha256); MANIFEST.json is pinned only from outside the tree (HANDOFF_inventory8_d2.json). Verify a copy with gen/verify_inventory.py TREE --pin <sha256 of MANIFEST.json>.",
+ "classes_sha256": {
+  "classes1.txt": "57675cdacab8fcd265c2fb4a6d05180fa8eb4ebbaa827c1dc7041d1457c98230",
+  "classes2.txt": "8bb6840a4c6b2534d4d3de29dcb298358c94f606b0fa4ea35f5310fac44b8a85",
+  "classes3.txt": "d9e6a86a1437074bfb8b1e0441b286cfb978a1b2c94dc7c9112c96eefacc6382",
+  "classes4.txt": "860465333328e1e1248ab5979ddb91ccd05dc792c8606ac1a146376713c2d3e9",
+  "classes5.txt": "164023f6592a20f60b96ca12e9f57bf796be98b157b18d46bb35ae56cd8e54a7",
+  "classes6.txt": "c06860333290e333ed33f4a83e0da21e477ed5edf78c2022fe4d3f0f5ab5b7a6",
+  "classes7.txt": "a890210f35dccee5f45a5394a920e5e1d36265fdbe2e52b6780b3573ed7bf724",
+  "classes8.txt": "7ff5c27852ea30cff3bfc78e7ba7a9ef4f746f5fdb20f2e28cd9ee413f0ef57e"
+ },
+ "counts": {
+  "L7_free": {
+   "exact-zero-kernel": 454,
+   "finite-kernel": 2441,
+   "power-sector-not-integrated": 1091
+  },
+  "L7_power": {
+   "exact-zero-kernel": 382,
+   "finite-kernel": 709,
+   "not-power": 2895
+  },
+  "L8_free": {
+   "exact-zero-kernel": 2511,
+   "finite-kernel": 16798,
+   "power-sector-not-integrated": 7231
+  },
+  "L8_power": {
+   "exact-zero-kernel": 2340,
+   "finite-kernel": 4891,
+   "not-power": 19309
+  }
+ },
+ "cpu": "AMD EPYC 7742 64-Core Processor",
+ "created_utc": "2026-10-03T21:35:43Z",
+ "d_pipeline": "The builder bodies (masks, terms, forests, weights, statuses) do not depend on d and come from gen/build_free and gen/build_power. The rate line (last line of a G-file) is the only d-dependent part: these builders write it at d=2 (parity rule, rate[S] = max(|S| odd ? 1 : 2, twice[S])/2 for 0 < S < 2^E - 1, and 0 at S = 0 and S = 2^E - 1); the d=3 rate line is rewritten from these d=2 G-files by C63d's regenerate_rates.cpp. The builders take no d parameter (DECISIONS.md C1, acknowledged by C63d on 2026-10-03).",
+ "defects": "A published tree is never modified. A defect found later is published as inventory8_d2_r2/ with SUPERSEDES.json naming it and the affected classes; the HANDOFF is updated and both packages re-pin.",
+ "dimension": 2,
+ "files_listed": 52,
+ "gates": {
+  "a_zero_dim": true,
+  "b_metadata": true,
+  "c_zeros": true,
+  "d_primitives": true,
+  "e_counts": true,
+  "f_coverage": true,
+  "g_edge_forests": true,
+  "h_kirchhoff": true,
+  "i_sizes": true,
+  "j_rates": true,
+  "k_forests": true
+ },
+ "gen_sources_sha256": {
+  "gen/Makefile": "23786c35647a7fd5644d44750c220d169cc8c1243bdf096b6fe0bbc5a76a8359",
+  "gen/SOURCES.json": "8941544b878821e87353b9ea7a2613e966a306954b2544345d9f96809d437c2f",
+  "gen/build_free.cpp": "bf8fe84c017b64aa2fdbd589bccd967e41eeb4e92a4cd053aeec25307af93f3a",
+  "gen/build_power.cpp": "59e49afb8cd06c1557a4b195af4f8bc0be0b2a5a1cb6876c24eee2b3eed49ff2",
+  "gen/c8gen.hpp": "fcbe11f50961e830c6492b1020aafc854433c76bea9d7f25c8d08fa930fd6bf1",
+  "gen/check_edge_forests.cpp": "837c7d55a3c9b5ff7703a2c54a7303cf0641048e18af7031299369c3c05a3591",
+  "gen/check_sources.py": "486c5954cc2157521c8633097db1502f2f883b1ed6913917c33c5a02dbadc581",
+  "gen/coverage.py": "8a67382ffd54fe0f719ad0d2b7482428a8e42558886eedc6c5476c4f220768e8",
+  "gen/forest_counts.py": "cc2ef4e942ea08a1a7c5de863fee871fb741974544b74c717af3c1460d545dff",
+  "gen/gates.py": "f8941a27a6f878c6767628c075b585b257d7597fc2f329d29ca0b020d2a730df",
+  "gen/handoff_inventory.py": "8764a0cf46c578da9ae69754a67787a746b533de9496768bf7f2c3bd255e91f7",
+  "gen/kirchhoff.py": "e70fc7da45ac65e3762618dafc53a74031b79aa3b46ed5601086771b2f978ec9",
+  "gen/publish_inventory.py": "469bb5293db97524c588bd07dcc66424cc286aa65721fe01598b169fcef3cb2b",
+  "gen/regress.py": "f8811f787f5df9e6f042cf43cb0f718858a5f7b8fd663840454474d11810fd81",
+  "gen/run_l8.sh": "92bbb0494487adad7e76f509a442e11b6f13803921001009eda80fc555f62267",
+  "gen/test_handoff_inventory.py": "dcd83f8c6eee918fd2c79689a5baa1df72cd2680b0d0e626781319999af755c4",
+  "gen/test_keys.cpp": "587282cd02c6ee3ff79e7463cc4dae7d640e014988f207e2442af02209dce161",
+  "gen/test_keys.py": "4505b34fdb06cfa73ccb95d8f9ced28042c512a86b0cdc6b8acc4717b217219d",
+  "gen/test_run_l8.py": "c1cee72b25c7011d673840f71e293f613d0225e3a584ee3f0a4d21a7f10a72bd",
+  "gen/test_verify_inventory.py": "a0c91676b2af180821351f942f96b02bceb542cfb34fba94adca7aa8a936d869",
+  "gen/verify_inventory.py": "3cccd3d265f2aaba9c0a968b5d3cc43ef5e57bc457ee2c8e10cc7171d0a3c194",
+  "gen/zero_dim_check.py": "365edf4513b9fc4113ecb4172f6bc754fd02713b285a2be5040805dbab4db9bd",
+  "slurm/gen/build_l8.slurm": "16ae1009c071c5d5b829d7fd93520a7ecfa20f0c3f402cf9c9be035721f00009",
+  "slurm/gen/crossnode.slurm": "95e25b707e134dac2ec505e53d99f78e2663ed460869837b0c9fb0f7a53df29f",
+  "slurm/gen/expanse_build_l8.slurm": "a1e45996a488a399ffeab6ae706ca85bd1acffd049382b467b8783a3241739a2",
+  "slurm/gen/expanse_crossnode.slurm": "ce9228dfc4e6fd72fb652592ed4cb7c2f638332cee4a154d480f4f949906991d",
+  "slurm/gen/expanse_regress.slurm": "67d7bb43ad29a501eaa8a15e0374631a55974b7f6387831b43ec748614b40171",
+  "slurm/gen/regress.slurm": "3aebd343ea301b68a0585c861235c2f323873370a543af3cf09169ff8be6380f"
+ },
+ "git_commit": "36043bbc211743de7e68000b8f2077d1d456e098",
+ "host": "exp-2-06",
+ "loops": [
+  7,
+  8
+ ],
+ "machine": "x86_64",
+ "member_layout": "payload/<stem>.tar holds <stem>/G<id>.txt, id = class id in classesL.txt; text G-files, magic C7D2GRAPH1, the C7(2) format",
+ "members_file": "MEMBERS.sha256",
+ "package": "LRI_C8_D2_HPC",
+ "payload": {
+  "L7_free": {
+   "bytes": 233338880,
+   "file": "payload/L7_free.tar",
+   "md5": "d6f5f218aa787076b8f8643a897e9b23",
+   "members": 2441,
+   "sha256": "74ecb589e1b7cf893ec0ee9659c052404ddceac39056433fe69e4ba660e4cecb"
+  },
+  "L7_power": {
+   "bytes": 57630720,
+   "file": "payload/L7_power.tar",
+   "md5": "6b3ecad5c8e7f6ccb436f81f9548fd85",
+   "members": 709,
+   "sha256": "f9a2688fdc56a98faa74d9e27483de2da8465a9bbdc5e7f55ee4f09f0c7c4c7b"
+  },
+  "L8_free": {
+   "bytes": 6431672320,
+   "file": "payload/L8_free.tar",
+   "md5": "3269539203ba466139a8da78450d312a",
+   "members": 16798,
+   "sha256": "25e2fc1d2f60b523428b6baa99b537dccbcccbb679d1b30e5f1fb83b2bb01d8c"
+  },
+  "L8_power": {
+   "bytes": 1615616000,
+   "file": "payload/L8_power.tar",
+   "md5": "d2451baf275ec7da45898c838c427703",
+   "members": 4891,
+   "sha256": "4bc418cf45333ac9b56bb5e6e63cdd5e2a9f05d2c99a0aaa566942624f37420e"
+  }
+ },
+ "schema": "c8-inventory-d2-1",
+ "selection_counts": {
+  "L7_free": 2441,
+  "L7_power": 709,
+  "L8_free": 16064,
+  "L8_power": 4336
+ },
+ "sha256sums_sha256": "0e0e0a58cf77a9ea1fc24bbf8e912b265e518ee71759ec731b7b3cf70f0c5520",
+ "slurm_job_ids": [
+  "54631552"
+ ],
+ "threads": "128"
+}

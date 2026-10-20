@@ -1,0 +1,152 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-IN-3/4/5 check_inputs",
+ "passed": true,
+ "failed": [],
+ "skipped": [
+  "the L8 packs are not here (C8_ALLOW_NO_L8=1): their bytes are checked where they are built (J-IN-2)",
+  "the inspector fields of inventory.json (no x86-64 bin/c8d2_inspect here; J-IN-2 regenerates them)"
+ ],
+ "checks": [
+  {
+   "check": "make_lowloop regenerates inputs/gamma_d2_8.txt byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/two_loop.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/verification/two_loop_extension8.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "prepare_inputs.verify(): every listed file and every vendored pin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "manifest: schema, dimension 2, order 8, the twelve packs and the counts of the plan",
+   "passed": true,
+   "detail": "{\"counts\": {\"free\": {\"3\": 5, \"4\": 16, \"5\": 76, \"6\": 395, \"7\": 2441, \"8\": 16064}, \"power\": {\"3\": 1, \"4\": 3, \"5\": 20, \"6\": 107, \"7\": 709, \"8\": 4336}}}"
+  },
+  {
+   "check": "the L3..L6 packs are at C7(2)'s manifest sha256s",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the manifest pins the vendored assembly from tools/VENDORED.json (A-IN-4, A-ASM-1(b))",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "inventory.json rows carry the inspector fields, products, addends and kernel_bytes positive (A-IN-3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the 2,298 and 590 members of C7(2)'s L7 packs are among the new L7 members, same bytes",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L3.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L4.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L5.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L6.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L7.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/free_L8.pack regenerates at the manifest pin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L3.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L4.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L5.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L6.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L7.pack regenerates byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "packs/power_L8.pack regenerates at the manifest pin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the regenerated L7 packs hold 2,441 and 709 members, the L8 packs 16,064 and 4,336",
+   "passed": true,
+   "detail": "{\"free\": {\"3\": 5, \"4\": 16, \"5\": 76, \"6\": 395, \"7\": 2441, \"8\": 16064}, \"power\": {\"3\": 1, \"4\": 3, \"5\": 20, \"6\": 107, \"7\": 709, \"8\": 4336}}"
+  },
+  {
+   "check": "inventory.json regenerates row for row, except the inspector fields",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "manifest.json regenerates, except the inventory.json hash",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "tests/fixtures/inputs_mini regenerates byte for byte",
+   "passed": true,
+   "detail": "{\"regen\": [\"inventory.json\", \"manifest.json\", \"packs/free_L8.pack\", \"packs/power_L8.pack\"], \"shipped\": [\"inventory.json\", \"manifest.json\", \"packs/free_L8.pack\", \"packs/power_L8.pack\"]}"
+  },
+  {
+   "check": "tests/fixtures/inputs_mini verifies (its own L8 packs, the package's L3..L7 packs)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a one-byte change to a pack makes verify() fail",
+   "passed": true,
+   "detail": "Checksum mismatch in the inputs: packs/free_L5.pack; restore the shipped files (git checkout, or make inputs-l8 INVENTORY=... for the L8 packs) before planning"
+  }
+ ],
+ "inventory": "<PROJECT>/LRI_C8_shared/inventory/inventory8_d2",
+ "inspector": null,
+ "l8_packs_present": false,
+ "host": "personal desktop",
+ "python": "3.10.11"
+}

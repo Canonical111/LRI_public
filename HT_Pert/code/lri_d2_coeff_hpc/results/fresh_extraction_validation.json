@@ -1,0 +1,20 @@
+{
+  "scope": "Fresh ZIP extraction: numerical source and tests as delivered. Native compiler/JIT warmup separated from operational-test timeouts. Not a Slurm or actual inter-node validation.",
+  "tested_archive_sha256": "cfb2b8d99e5875482b6721c3c06d1efd3db7b1aa96d0505417b5f87e18394912",
+  "outer_manifest_files_verified": 442,
+  "reference_manifest_passed": true,
+  "validation": {
+    "command": "python -m pytest -q tests --durations=8",
+    "warmup_seconds": 9.635040810000191,
+    "warmup_returncode": 0,
+    "warmup_stdout": "Native/JIT warmup complete.\n",
+    "warmup_stderr": "",
+    "scope": "Local validation, not an actual Slurm or inter-node test.",
+    "returncode": 0,
+    "seconds": 36.16748487099994,
+    "stdout": "...........................................                              [100%]\n============================= slowest 8 durations ==============================\n5.97s call     tests/test_storage.py::test_cli\n5.40s call     tests/test_campaign.py::test_real_signal\n4.05s call     tests/test_campaign.py::test_two_tasks\n2.44s call     tests/test_numerics.py::test_coefficients[0-raw]\n1.20s call     tests/test_numerics.py::test_backends_and_support\n0.82s call     tests/test_numerics.py::test_threads[numba]\n0.63s call     tests/test_numerics.py::test_coefficients[8-consistent]\n0.60s call     tests/test_storage.py::test_resume[wave-4]\n43 passed in 33.46s\n",
+    "stderr": ""
+  },
+  "numerical_source_sha256": "550e9266d37cdb879cd50236bd4b0675c8c9410ab568cc6d7aee3710e6eb358a",
+  "packaging_note": "Final archive additionally contains this receipt and updated report wording; numerical source/test files are unchanged."
+}

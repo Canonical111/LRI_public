@@ -1,0 +1,494 @@
+{
+ "schema": "c8-d2-claim-io-overread-1",
+ "run": "<SCRATCH>/c8-d2/io-2b3a9233353d",
+ "claim_io_verdict": "fail",
+ "claim_io_comparison": {
+  "non_own_bytes": {
+   "small": [
+    29848705,
+    29848705
+   ],
+   "large": [
+    701294283,
+    705783192
+   ],
+   "largest_difference": 675934487,
+   "tolerance": 2984870.5,
+   "passed": false
+  },
+  "non_own_minus_fingerprint_bytes": {
+   "small": [
+    22840878,
+    22840878
+   ],
+   "large": [
+    694286456,
+    698775365
+   ],
+   "largest_difference": 675934487,
+   "tolerance": 2284087.8000000003,
+   "passed": false
+  },
+  "non_own_minus_fingerprint_rchar": {
+   "small": [
+    22805577,
+    22805577
+   ],
+   "large": [
+    694251155,
+    698740064
+   ],
+   "largest_difference": 675934487,
+   "tolerance": 2280557.7,
+   "passed": false
+  }
+ },
+ "hypothesis": "Post-hoc analysis of the A-ORC-13 real-Slurm run (fxio): why tools/claim_io.py fails, and the comparison once the\ncause is accounted for. Run in the export (it imports tools/production.py) on the login node (reads JSON only):\n  claim_io_overread.py RUN EVIDENCE_DIR OUT.json\nHypothesis: production.stage_graphs opens the pack with Python's default buffering, whose buffer is the file system's\nst_blksize (BeeGFS: 524,288 bytes). After each seek outside the buffer, read(length) reads whole buffer blocks and then\nrefills one 512 KiB buffer, so the claim process reads pack bytes beyond its members; those bytes are the claim's own\npack data but are not counted in its own bytes. This script replays CPython's BufferedReader seek/read rules over every\nblock's sorted members (inventory offsets and lengths) and gives, per run, the predicted pack bytes read, the over-read\n(predicted - staged), and the non-own bytes minus the over-read; then the plan's comparison (smallest against largest\ngroup by tasks.sqlite, max(10%, 2 MB)) on the corrected values. Nothing in the campaign is changed.",
+ "smallest": "a_free_L3",
+ "largest": "b_free_L8",
+ "tasks_sqlite_ratio": 86.17,
+ "corrected_comparison": {
+  "non_own_bytes": {
+   "small": [
+    29327145,
+    29327145
+   ],
+   "large": [
+    30303956,
+    30303958
+   ],
+   "largest_difference": 976813,
+   "tolerance": 2932714.5,
+   "passed": true
+  },
+  "non_own_minus_fingerprint_bytes": {
+   "small": [
+    22319318,
+    22319318
+   ],
+   "large": [
+    23296129,
+    23296131
+   ],
+   "largest_difference": 976813,
+   "tolerance": 2231931.8000000003,
+   "passed": true
+  },
+  "non_own_minus_fingerprint_rchar": {
+   "small": [
+    22284017,
+    22284017
+   ],
+   "large": [
+    23260828,
+    23260830
+   ],
+   "largest_difference": 976813,
+   "tolerance": 2228401.7,
+   "passed": true
+  }
+ },
+ "corrected_passed": true,
+ "corrected_non_own_minus_fingerprint_rchar_range_all_runs": [
+  20719245,
+  23260830
+ ],
+ "runs": [
+  {
+   "index": 0,
+   "group": "a_free_L3",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 2728,
+   "own_staged_counted": 2728,
+   "predicted_pack_reads": 524288,
+   "overread": 521560,
+   "non_own_minus_fingerprint_rchar": 22805577,
+   "non_own_minus_fingerprint_bytes": 22840878,
+   "non_own_bytes": 29848705,
+   "corrected": {
+    "non_own_bytes": 29327145,
+    "non_own_minus_fingerprint_bytes": 22319318,
+    "non_own_minus_fingerprint_rchar": 22284017
+   }
+  },
+  {
+   "index": 1,
+   "group": "a_free_L4",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 33416,
+   "own_staged_counted": 33416,
+   "predicted_pack_reads": 524288,
+   "overread": 490872,
+   "non_own_minus_fingerprint_rchar": 22826301,
+   "non_own_minus_fingerprint_bytes": 22861602,
+   "non_own_bytes": 29869429,
+   "corrected": {
+    "non_own_bytes": 29378557,
+    "non_own_minus_fingerprint_bytes": 22370730,
+    "non_own_minus_fingerprint_rchar": 22335429
+   }
+  },
+  {
+   "index": 2,
+   "group": "a_free_L5",
+   "tasks_sqlite_bytes": 73728,
+   "st_blksize": 524288,
+   "staged": 627415,
+   "own_staged_counted": 627415,
+   "predicted_pack_reads": 2097152,
+   "overread": 1469737,
+   "non_own_minus_fingerprint_rchar": 23436780,
+   "non_own_minus_fingerprint_bytes": 23472081,
+   "non_own_bytes": 30479908,
+   "corrected": {
+    "non_own_bytes": 29010171,
+    "non_own_minus_fingerprint_bytes": 22002344,
+    "non_own_minus_fingerprint_rchar": 21967043
+   }
+  },
+  {
+   "index": 3,
+   "group": "a_free_L6",
+   "tasks_sqlite_bytes": 229376,
+   "st_blksize": 524288,
+   "staged": 13164237,
+   "own_staged_counted": 13164237,
+   "predicted_pack_reads": 76546048,
+   "overread": 63381811,
+   "non_own_minus_fingerprint_rchar": 84101056,
+   "non_own_minus_fingerprint_bytes": 84136357,
+   "non_own_bytes": 91144184,
+   "corrected": {
+    "non_own_bytes": 27762373,
+    "non_own_minus_fingerprint_bytes": 20754546,
+    "non_own_minus_fingerprint_rchar": 20719245
+   }
+  },
+  {
+   "index": 6,
+   "group": "a_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 867945060,
+   "own_staged_counted": 867945060,
+   "predicted_pack_reads": 1485832192,
+   "overread": 617887132,
+   "non_own_minus_fingerprint_rchar": 641118725,
+   "non_own_minus_fingerprint_bytes": 641154026,
+   "non_own_bytes": 648161853,
+   "corrected": {
+    "non_own_bytes": 30274721,
+    "non_own_minus_fingerprint_bytes": 23266894,
+    "non_own_minus_fingerprint_rchar": 23231593
+   }
+  },
+  {
+   "index": 17,
+   "group": "a_power_L3",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 349,
+   "own_staged_counted": 349,
+   "predicted_pack_reads": 524288,
+   "overread": 523939,
+   "non_own_minus_fingerprint_rchar": 22805318,
+   "non_own_minus_fingerprint_bytes": 22840619,
+   "non_own_bytes": 29848446,
+   "corrected": {
+    "non_own_bytes": 29324507,
+    "non_own_minus_fingerprint_bytes": 22316680,
+    "non_own_minus_fingerprint_rchar": 22281379
+   }
+  },
+  {
+   "index": 18,
+   "group": "a_power_L4",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 3848,
+   "own_staged_counted": 3848,
+   "predicted_pack_reads": 524288,
+   "overread": 520440,
+   "non_own_minus_fingerprint_rchar": 22825432,
+   "non_own_minus_fingerprint_bytes": 22860733,
+   "non_own_bytes": 29868560,
+   "corrected": {
+    "non_own_bytes": 29348120,
+    "non_own_minus_fingerprint_bytes": 22340293,
+    "non_own_minus_fingerprint_rchar": 22304992
+   }
+  },
+  {
+   "index": 19,
+   "group": "a_power_L5",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 94344,
+   "own_staged_counted": 94344,
+   "predicted_pack_reads": 524288,
+   "overread": 429944,
+   "non_own_minus_fingerprint_rchar": 22846615,
+   "non_own_minus_fingerprint_bytes": 22881916,
+   "non_own_bytes": 29889743,
+   "corrected": {
+    "non_own_bytes": 29459799,
+    "non_own_minus_fingerprint_bytes": 22451972,
+    "non_own_minus_fingerprint_rchar": 22416671
+   }
+  },
+  {
+   "index": 20,
+   "group": "a_power_L6",
+   "tasks_sqlite_bytes": 81920,
+   "st_blksize": 524288,
+   "staged": 2128024,
+   "own_staged_counted": 2128024,
+   "predicted_pack_reads": 6291456,
+   "overread": 4163432,
+   "non_own_minus_fingerprint_rchar": 26418768,
+   "non_own_minus_fingerprint_bytes": 26454069,
+   "non_own_bytes": 33461896,
+   "corrected": {
+    "non_own_bytes": 29298464,
+    "non_own_minus_fingerprint_bytes": 22290637,
+    "non_own_minus_fingerprint_rchar": 22255336
+   }
+  },
+  {
+   "index": 33,
+   "group": "b_free_L3",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 2728,
+   "own_staged_counted": 2728,
+   "predicted_pack_reads": 524288,
+   "overread": 521560,
+   "non_own_minus_fingerprint_rchar": 22814025,
+   "non_own_minus_fingerprint_bytes": 22849326,
+   "non_own_bytes": 29857153,
+   "corrected": {
+    "non_own_bytes": 29335593,
+    "non_own_minus_fingerprint_bytes": 22327766,
+    "non_own_minus_fingerprint_rchar": 22292465
+   }
+  },
+  {
+   "index": 34,
+   "group": "b_free_L4",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 33416,
+   "own_staged_counted": 33416,
+   "predicted_pack_reads": 524288,
+   "overread": 490872,
+   "non_own_minus_fingerprint_rchar": 22837821,
+   "non_own_minus_fingerprint_bytes": 22873122,
+   "non_own_bytes": 29880949,
+   "corrected": {
+    "non_own_bytes": 29390077,
+    "non_own_minus_fingerprint_bytes": 22382250,
+    "non_own_minus_fingerprint_rchar": 22346949
+   }
+  },
+  {
+   "index": 35,
+   "group": "b_free_L5",
+   "tasks_sqlite_bytes": 73728,
+   "st_blksize": 524288,
+   "staged": 626771,
+   "own_staged_counted": 626771,
+   "predicted_pack_reads": 2097152,
+   "overread": 1470381,
+   "non_own_minus_fingerprint_rchar": 23452017,
+   "non_own_minus_fingerprint_bytes": 23487318,
+   "non_own_bytes": 30495145,
+   "corrected": {
+    "non_own_bytes": 29024764,
+    "non_own_minus_fingerprint_bytes": 22016937,
+    "non_own_minus_fingerprint_rchar": 21981636
+   }
+  },
+  {
+   "index": 36,
+   "group": "b_free_L6",
+   "tasks_sqlite_bytes": 229376,
+   "st_blksize": 524288,
+   "staged": 13186068,
+   "own_staged_counted": 13186068,
+   "predicted_pack_reads": 73924608,
+   "overread": 60738540,
+   "non_own_minus_fingerprint_rchar": 82204157,
+   "non_own_minus_fingerprint_bytes": 82239458,
+   "non_own_bytes": 89247285,
+   "corrected": {
+    "non_own_bytes": 28508745,
+    "non_own_minus_fingerprint_bytes": 21500918,
+    "non_own_minus_fingerprint_rchar": 21465617
+   }
+  },
+  {
+   "index": 38,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 953253897,
+   "own_staged_counted": 953253897,
+   "predicted_pack_reads": 1624244224,
+   "overread": 670990327,
+   "non_own_minus_fingerprint_rchar": 694251156,
+   "non_own_minus_fingerprint_bytes": 694286457,
+   "non_own_bytes": 701294284,
+   "corrected": {
+    "non_own_bytes": 30303957,
+    "non_own_minus_fingerprint_bytes": 23296130,
+    "non_own_minus_fingerprint_rchar": 23260829
+   }
+  },
+  {
+   "index": 39,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 953253897,
+   "own_staged_counted": 953253897,
+   "predicted_pack_reads": 1624244224,
+   "overread": 670990327,
+   "non_own_minus_fingerprint_rchar": 694251155,
+   "non_own_minus_fingerprint_bytes": 694286456,
+   "non_own_bytes": 701294283,
+   "corrected": {
+    "non_own_bytes": 30303956,
+    "non_own_minus_fingerprint_bytes": 23296129,
+    "non_own_minus_fingerprint_rchar": 23260828
+   }
+  },
+  {
+   "index": 40,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 955167526,
+   "own_staged_counted": 955167526,
+   "predicted_pack_reads": 1626865664,
+   "overread": 671698138,
+   "non_own_minus_fingerprint_rchar": 694958968,
+   "non_own_minus_fingerprint_bytes": 694994269,
+   "non_own_bytes": 702002096,
+   "corrected": {
+    "non_own_bytes": 30303958,
+    "non_own_minus_fingerprint_bytes": 23296131,
+    "non_own_minus_fingerprint_rchar": 23260830
+   }
+  },
+  {
+   "index": 41,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 955167526,
+   "own_staged_counted": 955167526,
+   "predicted_pack_reads": 1626865664,
+   "overread": 671698138,
+   "non_own_minus_fingerprint_rchar": 694958966,
+   "non_own_minus_fingerprint_bytes": 694994267,
+   "non_own_bytes": 702002094,
+   "corrected": {
+    "non_own_bytes": 30303956,
+    "non_own_minus_fingerprint_bytes": 23296129,
+    "non_own_minus_fingerprint_rchar": 23260828
+   }
+  },
+  {
+   "index": 42,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 960299324,
+   "own_staged_counted": 960299324,
+   "predicted_pack_reads": 1635778560,
+   "overread": 675479236,
+   "non_own_minus_fingerprint_rchar": 698740064,
+   "non_own_minus_fingerprint_bytes": 698775365,
+   "non_own_bytes": 705783192,
+   "corrected": {
+    "non_own_bytes": 30303956,
+    "non_own_minus_fingerprint_bytes": 23296129,
+    "non_own_minus_fingerprint_rchar": 23260828
+   }
+  },
+  {
+   "index": 43,
+   "group": "b_free_L8",
+   "tasks_sqlite_bytes": 2117632,
+   "st_blksize": 524288,
+   "staged": 960299324,
+   "own_staged_counted": 960299324,
+   "predicted_pack_reads": 1635778560,
+   "overread": 675479236,
+   "non_own_minus_fingerprint_rchar": 698740064,
+   "non_own_minus_fingerprint_bytes": 698775365,
+   "non_own_bytes": 705783192,
+   "corrected": {
+    "non_own_bytes": 30303956,
+    "non_own_minus_fingerprint_bytes": 23296129,
+    "non_own_minus_fingerprint_rchar": 23260828
+   }
+  },
+  {
+   "index": 48,
+   "group": "b_power_L3",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 349,
+   "own_staged_counted": 349,
+   "predicted_pack_reads": 524288,
+   "overread": 523939,
+   "non_own_minus_fingerprint_rchar": 22813767,
+   "non_own_minus_fingerprint_bytes": 22849068,
+   "non_own_bytes": 29856895,
+   "corrected": {
+    "non_own_bytes": 29332956,
+    "non_own_minus_fingerprint_bytes": 22325129,
+    "non_own_minus_fingerprint_rchar": 22289828
+   }
+  },
+  {
+   "index": 50,
+   "group": "b_power_L5",
+   "tasks_sqlite_bytes": 24576,
+   "st_blksize": 524288,
+   "staged": 94344,
+   "own_staged_counted": 94344,
+   "predicted_pack_reads": 524288,
+   "overread": 429944,
+   "non_own_minus_fingerprint_rchar": 22861207,
+   "non_own_minus_fingerprint_bytes": 22896508,
+   "non_own_bytes": 29904335,
+   "corrected": {
+    "non_own_bytes": 29474391,
+    "non_own_minus_fingerprint_bytes": 22466564,
+    "non_own_minus_fingerprint_rchar": 22431263
+   }
+  },
+  {
+   "index": 51,
+   "group": "b_power_L6",
+   "tasks_sqlite_bytes": 81920,
+   "st_blksize": 524288,
+   "staged": 2129009,
+   "own_staged_counted": 2129009,
+   "predicted_pack_reads": 6291456,
+   "overread": 4162447,
+   "non_own_minus_fingerprint_rchar": 26511863,
+   "non_own_minus_fingerprint_bytes": 26547164,
+   "non_own_bytes": 33554991,
+   "corrected": {
+    "non_own_bytes": 29392544,
+    "non_own_minus_fingerprint_bytes": 22384717,
+    "non_own_minus_fingerprint_rchar": 22349416
+   }
+  }
+ ]
+}

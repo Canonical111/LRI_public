@@ -1,0 +1,16 @@
+diff --git a/tests/unit_orchestration.py b/tests/unit_orchestration.py
+index 1efaa5f..febd353 100644
+--- a/tests/unit_orchestration.py
++++ b/tests/unit_orchestration.py
+@@ -531,7 +531,10 @@ def gate_doc(inv:dict,profile='dd+mp256',profile_sha='e'*64)->dict:
+             'build_binding':{'schema':'c8-d2-build-binding-1','snapshot':{'sha256':snap,'files':{}},'executables':{'exact':bound('0'*64),'profile':bound(profile_sha)}},
+             'F1':{'verdict':{'passed':True,'violations':0},'coverage':cov,'tool_snapshot_sha256':snap,'baseline_binding':bound('0'*64),'tool_gmp_library':gate_libs()['_libs']['tool']},
+             'F2':{'graphs':graphs,'total':{'dC8':1e-16,'se':1e-16,'bound':4e-16,'passed':True,'resolved':True}},'F5':{'passed':True,'team_sizes_verified':True},
+-            'environment':{'host':'fake','cpu_model':'fake CPU'},'utc_start':'2026-10-05T00:00:00Z','f1_baseline':gate_libs()['f1_baseline']}
++            'environment':{'host':'fake','cpu_model':'fake CPU'},'utc_start':'2026-10-05T00:00:00Z',
++            'f1_baseline':dict(gate_libs()['f1_baseline'],inputs_manifest_sha256=digest(ROOT/'inputs/manifest.json')),
++            'inputs':{'schema':'c8-d2-gate-inputs-1','folder':'inputs','manifest_sha256':digest(ROOT/'inputs/manifest.json'),'verified':True,'verified_at_end':True,
++                      'skipped':[],'complete':True}}
+ 
+ def gate_libs(w:str='1'*64)->dict:
+     """Z19 downstream (fix round 3): the libgmp provenance check_gate requires; merged into gate_doc's record."""

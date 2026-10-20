@@ -1,0 +1,21 @@
+% d = 3 caveats for the HT note (phi4HT3d, 2026-10-13; readability review 2026-10-15).
+\textit{Three dimensions.}
+\begin{itemize}
+\item We reach $N=20$ at every $\Delta_\sigma$, too few cutoffs for a controlled extrapolation, and quote finite-$N$
+ values only. Small steps do not mean convergence. At $\Delta_\sigma=0.7$ the sequence moves away from the resummed
+ $\epsilon$ series; it reaches the continuum, if at all, only after a turnover at larger $N$, so extrapolations of
+ these data are biased low. At 0.65 and 0.675 the steps do not yet shrink.
+\item Expanded in $\epsilon$, the window model has $C_2(N)$ and $C_3(N)$ approaching their continuum values
+ (\code{HT\_Pert/}). Its fourth-order coefficient at $N=20$ is 60\% of $C_4(3)$ and still growing slowly with $N$;
+ whether its $N\to\infty$ limit is wrong is not shown.
+\item The method fails toward the short-range end, where the tuned couplings are largest. At $\Delta_\sigma=0.518149$
+ the $N=20$ value lies $6.6\times10^{-3}$ above the 3d Ising value~\cite{ht:Chang:2024whx} and still rises; there an
+ approach logarithmic in $N$ is expected.
+\item The cost limits the cutoff. At $N=20$ the scalar SO(3) projector takes about 9\,h of single-threaded LAPACK,
+ and an $N=20$ point needs 84--87\,GiB, or 328\,GiB with the $J=1$ diagnostics. $N=22$ was not attempted.
+\item Four changes to the Expanse campaign tooling of \code{lri\_3d\_window\_hpc} were not independently inspected:
+ the fixes of the second Codex inspection round (630a217) with a test-fixture fix (e895443), and two campaign options
+ (ccd055a, b330ee7). They change only the cluster tooling and its tests. The numerical source is unchanged, and every
+ record carries its hash (check \texttt{REC-SRC}). The production results had no separate review; the independent
+ solver and \code{HT\_Pert/} cross-check them (\code{code/lri\_3d\_window\_hpc/public/REVIEWS.md}).
+\end{itemize}

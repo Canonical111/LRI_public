@@ -1,0 +1,26 @@
+{
+ "status": "failed",
+ "requested": [
+  "lane_units",
+  "lanes"
+ ],
+ "executed": [
+  "lane_units",
+  "lanes"
+ ],
+ "tests": [],
+ "failed": [
+  {
+   "test": "lane_units",
+   "error": "AssertionError: ",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1999, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1966, in <lambda>\n    ('arrays',lambda c:test_slurm_arrays(c.E)),('lane_units',lambda c:test_lane_units(c.E)),('lanes',lambda c:test_lanes(c.E)),('scan',lambda c:test_lane_scan_cost(c.E)),\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1090, in test_lane_units\n    assert L.memory_limit({'SLURM_MEM_PER_NODE':'2048'})==(2048*2**20,'SLURM_MEM_PER_NODE')\nAssertionError\n"
+  },
+  {
+   "test": "lanes",
+   "error": "AssertionError: ); log idx20.4242.0.0.1791108636832184000.log\nlane 1: index 4 done in 0 s (estimate 0 s, class factor 1.5); log idx4.4242.0.1.1791108636980443000.log\nlane 0: index 6 done in 0 s (estimate 0 s, class factor 1.5); log idx6.4242.0.0.1791108637145885000.log\nlane 1: index 16 done in 0 s (estimate 0 s, class factor 1.5); log idx16.4242.0.1.1791108637287568000.log\nlane 1: finished, 12 indices run, 0 failed\nlane 0: index 18 done in 0 s (estimate 0 s, class factor 1.5); log idx18.4242.0.0.1791108637448146000.log\nlane 0: finished, 12 indices run, 0 failed\nC8 lanes: job 4242 done, lane exit codes [0, 0]\n",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1999, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1966, in <lambda>\n    ('arrays',lambda c:test_slurm_arrays(c.E)),('lane_units',lambda c:test_lane_units(c.E)),('lanes',lambda c:test_lanes(c.E)),('scan',lambda c:test_lane_scan_cost(c.E)),\n  File \"<TMP>/scratchpad/mut_verifier_t06/tests/unit_orchestration.py\", line 1174, in test_lanes\n    assert f'memory guard: 2 lanes x {peak/2**30:.1f} GiB > 0.85 x {mib*2**20/2**30:.1f} GiB (SLURM_MEM_PER_NODE); running 1 lanes'in cp.stdout,cp.stdout[-600:]\nAssertionError: ); log idx20.4242.0.0.1791108636832184000.log\nlane 1: index 4 done in 0 s (estimate 0 s, class factor 1.5); log idx4.4242.0.1.1791108636980443000.log\nlane 0: index 6 done in 0 s (estimate 0 s, class factor 1.5); log idx6.4242.0.0.1791108637145885000.log\nlane 1: index 16 done in 0 s (estimate 0 s, class factor 1.5); log idx16.4242.0.1.1791108637287568000.log\nlane 1: finished, 12 indices run, 0 failed\nlane 0: index 18 done in 0 s (estimate 0 s, class factor 1.5); log idx18.4242.0.0.1791108637448146000.log\nlane 0: finished, 12 indices run, 0 failed\nC8 lanes: job 4242 done, lane exit codes [0, 0]\n\n"
+  }
+ ],
+ "python": "3.10.11",
+ "platform": "darwin"
+}

@@ -1,0 +1,42 @@
+python3 -B tools/prepare_inputs.py
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_inspect.cpp -lquadmath -o bin/c8d2_inspect
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+bin/c8d2_gmp.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1 (/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1), optimized=True
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+rm -rf build/c7ref
+cp -R reference/c7d2_hpc_a55958f build/c7ref
+make -C build/c7ref bin/c7d2_decimal bin/c7d2_gmp
+make[1]: Entering directory '<SCRATCH>/c8d2/pkg/ba68f401e46e/build/c7ref'
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+bin/c7d2_decimal.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+bin/c7d2_gmp.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1, optimized=True
+make[1]: Leaving directory '<SCRATCH>/c8d2/pkg/ba68f401e46e/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/

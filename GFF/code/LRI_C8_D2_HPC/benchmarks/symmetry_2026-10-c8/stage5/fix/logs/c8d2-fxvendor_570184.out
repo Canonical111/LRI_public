@@ -1,0 +1,27 @@
+job 570184 on <NODE> at 2026-10-05T11:57:00-04:00; package <SCRATCH>/c8d2/pkg/2b3a9233353d; run <SCRATCH>/c8-d2/io-2b3a9233353d; index 49; evidence <SCRATCH>/c8d2/evidence/2b3a9233353d/fxvendor.570184.0
+vendor_id	: GenuineIntel
+model name	: Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+{
+  "schema": "c8-d2-cpu-vendor-1",
+  "vendor": "AuthenticAMD",
+  "family": "25",
+  "model": "1",
+  "model_name": "AMD EPYC 7543 32-Core Processor",
+  "first_claim": {
+    "index": 6,
+    "host": "<NODE>",
+    "slurm_job": "570170",
+    "utc": "2026-10-05T15:39:56Z"
+  },
+  "rule": "every claim of this campaign runs on this CPU vendor (F5); production.py run refuses another one (exit 64)"
+}
+production.py run --index 49 exit 64 (expected 64)
+C8: index 49: this node (<NODE>) has CPU vendor GenuineIntel (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz), but the campaign's first claim (index 6 on <NODE>) ran on AuthenticAMD (AMD EPYC 7543 32-Core Processor); <SCRATCH>/c8-d2/io-2b3a9233353d/cpu_vendor.json. Native rows differ between CPU vendors (x87 expl/logl, docs/HPC.md): keep a campaign on one vendor and submit it to the partitions of that vendor only (symmetry: amdq, not defq). Nothing run (exit 64).
+claim_io {"cpu_vendor": "GenuineIntel", "fingerprint_bytes": 7042283, "fingerprint_key": "d4ea3511eba6", "fingerprint_rchar": 7077584, "index": 49, "native": {"launches": 0, "rchar": 0, "unmeasured": 0}, "non_own_bytes": 29896815, "non_own_minus_fingerprint_bytes": 22854532, "non_own_minus_fingerprint_rchar": 22819231, "own": {"task_file": {"bytes": 350, "files": 1}}, "own_bytes": 350, "rchar": 29897165, "rchar_start": 1811801, "schema": "c8-d2-claim-io-1", "status": "cpu vendor refused"}
+lanes.py worker exit 64 (expected 64)
+C8: this node's CPU vendor is GenuineIntel (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz), but the campaign's first claim ran on AuthenticAMD (AMD EPYC 7543 32-Core Processor; cpu_vendor.json). Native rows differ between CPU vendors (x87 expl/logl, docs/HPC.md): keep a campaign on one vendor, i.e. submit it to the partitions of that vendor only (symmetry: amdq, not defq)
+campaign unchanged (every file, size and mtime)
+checkpoints: 108
+status exit 1 (1 expected: incomplete)
+cpu vendor: AuthenticAMD (AMD EPYC 7543 32-Core Processor), pinned by the first claim (index 6 on <NODE>); claims on another vendor are refused (F5)
+finished 2026-10-05T11:57:01-04:00, status 0

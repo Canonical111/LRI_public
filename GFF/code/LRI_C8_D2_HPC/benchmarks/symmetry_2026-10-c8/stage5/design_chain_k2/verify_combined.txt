@@ -1,0 +1,34 @@
+== C8_test_partial.json on <NODE> (Xeon Silver 4214R), OPENBLAS_NUM_THREADS=1
+{
+ "verified": true,
+ "problem_count": 0,
+ "first": []
+}
+exit 0
+== C8_test_partial.json on <NODE> (Xeon Silver 4214R), OPENBLAS_NUM_THREADS=1 OPENBLAS_CORETYPE=Haswell
+{
+ "verified": false,
+ "problem_count": 3,
+ "first": [
+  "/test_partial/gates/affinity/linear_response_residual[7]: 1.8616219676914625e-12 differs from the recomputed 4.632738637155853e-12",
+  "/test_partial/power_null_checks/null_rows[0]/delta: -5.551115123125783e-16 differs from the recomputed -1.1102230246251565e-16",
+  "/test_partial/power_null_checks/null_rows[1]/pull: 0.06239285349839986 differs from the recomputed 0.062392853473700785"
+ ]
+}
+exit 1
+== C8_test_final.json on <NODE> (Xeon Silver 4214R), OPENBLAS_NUM_THREADS=1
+{
+ "verified": true,
+ "problem_count": 0,
+ "first": []
+}
+exit 0
+== C8_test_final.json on <NODE> (Xeon Silver 4214R), OPENBLAS_NUM_THREADS=1 OPENBLAS_CORETYPE=Haswell
+{
+ "verified": false,
+ "problem_count": 1,
+ "first": [
+  "/test_partial/gates/affinity/linear_response_residual[8]: 4.8203219193965197e-11 differs from the recomputed 3.3651303965598345e-11"
+ ]
+}
+exit 1

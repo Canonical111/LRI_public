@@ -1,0 +1,107 @@
+job 570416 on <NODE> at 2026-10-06T02:27:29-04:00; package <SCRATCH>/c8d2/pkg/e914701b042b; evidence <SCRATCH>/c8d2/evidence/e914701b042b/s2prec.570416.0
+CPU(s):                                  64
+Model name:                              AMD EPYC 7543 32-Core Processor
+NUMA node(s):                            8
+d1e900e98aeb1bf4bf4ae980b4a7ed4be5d69e25ce77e9d62b4748978b1f2f46  <HOME>/c8d2/env.sh
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+619ddf7d1cf94d6229c841cd3fbe22574045ec65a1b69f8b827f1e26f180895f  bin/c8d2_decimal
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d  bin/c8d2_gmp_dd+mp256
+69e990c03cfc0256024763fda615cb1a9cffca41ec9f0518defaf5945b2fe62f  bin/c8d2_gmp_prof
+4f4638a210fe9ec5f383b1201885890562f6e40986952162aff4ee40a1d977e8  bin/c8d2_gmp_ratiohist
+9ff6865a2ff267d6c73b82e9f22b376cdfb273680e1de42e6975f8ed52243a1b  bin/c8d2_decimal_san
+0dd06cf935b2d47de96aeeeabad8ab7f2194da41b4624679cd85b80235a248b7  bin/c8d2_gmp_san
+== y6_y7 2026-10-06T02:27:29-04:00
+== y6_y7 exit 0 after 0 s
+  "SLURM_MEM_PER_NODE": "250880"
+ }
+}
+== forced_tiers 2026-10-06T02:27:29-04:00
+== forced_tiers exit 0 after 154 s
+power L7 points [0,256) in 34 s
+power L8 points [0,64) in 33 s
+{"status": "passed", "test": "forced_tiers", "scale": 1.0, "sample": {"7": {"heaviest": 50, "random": 150, "points": 256}, "8": {"heaviest": 100, "random": 300, "points": 64}}, "sectors": {"free": {"doublings": 0, "binary128_accepted": 29284, "mp_promoted": 3541, "by_L": {"7": {"graphs": 200, "point
+== check_points 2026-10-06T02:30:03-04:00
+== check_points exit 0 after 60 s
+
+{"status":"passed","checks":172,"backend":"gmp350","max_error_scaled_by_absolute_terms":"2.14242116783189203521e-353","reference_digits":450}
+
+== y1_class 2026-10-06T02:31:03-04:00
+== y1_class exit 0 after 47 s
+  ]
+ }
+}
+{
+ "forced_tiers": {
+  "status": "passed",
+  "wall_seconds": 153.6,
+  "GMP_PREFIX": null,
+  "linked_match": true,
+  "libgmp_sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+  "tool_command": [
+   "g++",
+   "-O3",
+   "-std=c++17",
+   "-fopenmp",
+   "-ffp-contract=off",
+   "-fno-fast-math",
+   "-DC8_USE_GMP",
+   "<SCRATCH>/c8d2/pkg/e914701b042b/tests/forced_tiers.cpp",
+   "-lquadmath",
+   "-lgmp",
+   "-o",
+   "/tmp/c8d2_570416/c8d2_tiers_6mq4ij07/forced_tiers"
+  ]
+ },
+ "point_checks": {
+  "status": "passed",
+  "results": [
+   {
+    "backend": "decimal",
+    "GMP_PREFIX": null,
+    "linked_match": null
+   },
+   {
+    "backend": "gmp",
+    "GMP_PREFIX": null,
+    "linked_match": true
+   }
+  ]
+ }
+}
+== p4_omp_inherited 2026-10-06T02:31:50-04:00
+== p4_omp_inherited exit 0 after 127 s
+[02:32:50] shape 1x64: 1 lanes, blocks of 1024 tasks, lane shares [4059] cost-model s
+[02:33:57] shape 1x64: wall 67.1 s, throughput 60.5 cost-model s per node-second, busy 0.758, errors []
+[02:33:57] wrote <SCRATCH>/c8d2/evidence/e914701b042b/s2prec.570416.0/p4/p4.json; best shape 8x8; identical rows across shapes: True
+{
+ "team_sizes_verified": true,
+ "team_check": true,
+ "shapes": [
+  {
+   "shape": "8x8",
+   "team_sizes_verified": true,
+   "teams": [
+    "verified"
+   ],
+   "errors": [],
+   "rows_digest": "74a45ffd79c9833f5505e01c2c209e7ed90ac972ac044edfd34dafa8e8c4df76",
+   "blocks": 16,
+   "wall_seconds": 59.35910987854004
+  },
+  {
+   "shape": "1x64",
+   "team_sizes_verified": true,
+   "teams": [
+    "verified"
+   ],
+   "errors": [],
+   "rows_digest": "74a45ffd79c9833f5505e01c2c209e7ed90ac972ac044edfd34dafa8e8c4df76",
+   "blocks": 2,
+   "wall_seconds": 67.14070677757263
+  }
+ ],
+ "rows_equal_across_shapes": true
+}
+executables unchanged
+finished 2026-10-06T02:33:57-04:00, status 0

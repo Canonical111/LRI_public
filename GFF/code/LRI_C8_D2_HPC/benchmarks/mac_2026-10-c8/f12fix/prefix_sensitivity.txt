@@ -1,0 +1,10 @@
+# F12 sensitivity check (Mac, 2026-10-05): tools/production.py stage_graphs and tools/stage_runtime.py's member copy
+# temporarily given back the pre-fix buffered read (open(pack,'rb'), seek, read; stage_graphs keeping the new return
+# value), then `tests/unit_orchestration.py --only pack_reads,staging,claim`; both files restored afterwards and checked
+# by sha256 against the fixed versions. All three tests fail on the pre-fix read:
+FAIL staging: AssertionError: ('bytes read from the shared pack', 0, 117280)
+FAIL pack_reads: AssertionError: (3748335, 30, 3748335, 0)
+FAIL claim: AssertionError: ('small', 2155, {'bytes': 2155, 'files': 4}, [['<td>/pkg/inputs/packs/free_L3.pack', 'r', 'other', 'production.py:stage_graphs']])
+{"status": "failed", "requested": ["staging", "pack_reads", "claim"], "executed": 3, "tests": 0, "failed": ["staging", "pack_reads", "claim"]}
+# staging and pack_reads: no byte went through os.pread (the buffered reader read the pack); claim: the pack was opened
+# through io.open (audit mode 'r'), not os.open.

@@ -1,0 +1,176 @@
+{
+  "status": "Complete fresh reproduction of the final special-function expression and the implemented exact/local checks.",
+  "physical_status": "Project formal C2 result in the specified critically tuned analytic-MS prescription. This package does not independently prove every global nested-sector subtraction or a uniform remainder bound.",
+  "convention": {
+    "delta": "(7/4-s)/2",
+    "energy_dimension": "Delta_epsilon=1+C2*delta^2+O(delta^3)",
+    "coefficient_of_(7/4-s)^2": "C2/4"
+  },
+  "working_dps": 80,
+  "C2": "-4.06627014813252155274002760857287648752990114118661794969937395607493972",
+  "C2_in_s_convention": "-1.01656753703313038818500690214321912188247528529665448742484348901873493",
+  "constants": [
+    {
+      "quantity": "Gamma_ratio",
+      "value": "2.95867511918863889231082135772771956647489819605798253065629284503059482",
+      "origin": "fresh three-4F3 evaluation"
+    },
+    {
+      "quantity": "P",
+      "value": "1.62562945952539344424227866559966327492897000260547064135470911490220705",
+      "origin": "fresh three-4F3 evaluation"
+    },
+    {
+      "quantity": "Q",
+      "value": "1.28812240964200676061691126571896308252888506981593433091811562803450405",
+      "origin": "fresh three-4F3 evaluation"
+    },
+    {
+      "quantity": "T",
+      "value": "0.763853524761013351679458971849332265066509002148870018085019850276502426",
+      "origin": "fresh three-4F3 evaluation"
+    },
+    {
+      "quantity": "C2_delta_convention",
+      "value": "-4.06627014813252155274002760857287648752990114118661794969937395607493972",
+      "origin": "fresh three-4F3 evaluation"
+    },
+    {
+      "quantity": "b0",
+      "value": "1.2684043089391425437948799174033603432608419633593005673143429383260832",
+      "origin": "fresh evaluation or algebraically derived quantity; see note"
+    },
+    {
+      "quantity": "B31",
+      "value": "-0.342239706924080236549834240917969264854452673394608211380351493033262665",
+      "origin": "fresh evaluation or algebraically derived quantity; see note"
+    },
+    {
+      "quantity": "I_from_closed_expression",
+      "value": "4.3447446523188856307478297419988789906384521212995982556256956789337815",
+      "origin": "fresh evaluation or algebraically derived quantity; see note"
+    },
+    {
+      "quantity": "z41",
+      "value": "1.63550416445718870487899130132540097427965408142638258832671680832229166",
+      "origin": "fresh evaluation or algebraically derived quantity; see note"
+    },
+    {
+      "quantity": "I_from_independent_Carlson_periods",
+      "value": "4.3447446523188856307478297419988789906384521212995982556256959666",
+      "origin": "fresh endpoint-subtracted Carlson quadrature"
+    },
+    {
+      "quantity": "C2_s_convention",
+      "value": "-1.01656753703313038818500690214321912188247528529665448742484348901873493",
+      "origin": "C2_delta_convention divided by four"
+    },
+    {
+      "quantity": "period_contribution_to_C2",
+      "value": "-2.12099049015343120710734321683557467129934760978611419670445288000431578",
+      "origin": "fresh derived decomposition"
+    },
+    {
+      "quantity": "contact_contribution_to_C2",
+      "value": "-1.94527965797909034563268439173730181623055353140050375299492107607062395",
+      "origin": "fresh derived decomposition"
+    }
+  ],
+  "validation": [
+    {
+      "check": "three rational telescoping identities",
+      "result": "PASS: exact residual 0",
+      "scope": "exact algebra"
+    },
+    {
+      "check": "three infinite endpoint terms",
+      "result": "PASS: exact residual 0; nonzero boundary terms retained",
+      "scope": "exact gamma/rational algebra"
+    },
+    {
+      "check": "analytic bridge differential, monodromy, Landen and IBP certificates",
+      "result": "PASS: exact residuals 0; contour reflection assertions passed",
+      "scope": "exact algebra; no global quartic integration"
+    },
+    {
+      "check": "elliptic cut boundary values",
+      "result": "2.65618223608e-40",
+      "scope": "maximum observed absolute discrepancy at stated finite boundary displacement"
+    },
+    {
+      "check": "Landen area, Wronskian and complete transformed integrand",
+      "result": "1.55915899231e-50",
+      "scope": "maximum observed relative discrepancy at selected complex points"
+    },
+    {
+      "check": "six-to-three and Frobenius agreement",
+      "result": "2.53012750637532557384365777230480456185039073176844181201866312602595463e-80",
+      "scope": "observed absolute numerical discrepancy"
+    },
+    {
+      "check": "independent Carlson period agreement",
+      "result": "-1.404476324368072835487116093616469453042217928783290133352439658e-61",
+      "scope": "observed discrepancy; finite u cutoff, no rigorous quadrature bound"
+    },
+    {
+      "check": "elliptic-cover pointwise identity",
+      "result": "1.5733191120259426007547179604060480085814714352154968668902566355289828e-81",
+      "scope": "observed relative numerical discrepancy"
+    },
+    {
+      "check": "Gaussian B31 quadrature",
+      "result": "5.27109897161526161217428702563500950385498069118425377503888151255407215e-82",
+      "scope": "observed absolute numerical discrepancy"
+    },
+    {
+      "check": "general source contacts",
+      "result": "2.108439589e-80",
+      "scope": "maximum observed contact-identity residual"
+    },
+    {
+      "check": "regulated map, local OPE, local two-energy corner",
+      "result": "PASS: inherited independent assertions",
+      "scope": "selected local checks, not a uniform global nested-sector proof"
+    },
+    {
+      "check": "lower-order gamma reductions and C2 scheme covariance",
+      "result": "PASS: exact symbolic identities",
+      "scope": "exact algebra in specified analytic continuation"
+    },
+    {
+      "check": "analytic series-tail inequalities",
+      "result": "PASS: exact polynomial sign certificates",
+      "scope": "analytic tail bounds evaluated with non-certified floating-point sums"
+    },
+    {
+      "check": "archived final expression comparison",
+      "result": "1.87455838974548826110000000001804008358744695891104579232960675592633646e-72",
+      "scope": "fresh result minus saved 100-dps reference; reference never used as a computational input"
+    }
+  ],
+  "analytic_bridges": {
+    "file": "outputs/raw/analytic_bridges.json",
+    "scope": "Exact algebra and pointwise elliptic checks; not global quartic integration.",
+    "exact_algebra_status": "passed",
+    "pointwise_assertions_status": "passed",
+    "working_digits": 50,
+    "finite_boundary_displacement": "1.0e-40",
+    "max_boundary_absolute_difference": "2.65618223608e-40",
+    "max_interior_relative_difference": "1.55915899231e-50"
+  },
+  "saved_reference_comparison": {
+    "file": "inputs/reference/three_4f3_100dps.json",
+    "fresh_minus_reference": "1.87455838974548826110000000001804008358744695891104579232960675592633646e-72"
+  },
+  "independent_series_envelope": {
+    "lower": "-4.0662701481330178007009648737758914419788930649617812069719857514",
+    "upper": "-4.0662701481312059641566858705810078135101056729983104962084771108",
+    "width": "0.0000000000018118365442790031948836284687873919634707107635086405997222267104",
+    "status": "Analytic tail bounds with non-certified floating-point evaluation"
+  },
+  "not_claimed": [
+    "elementary or gamma-only reduction",
+    "interval-certified rounding or physical derivation",
+    "new global renormalized integral evaluation"
+  ]
+}

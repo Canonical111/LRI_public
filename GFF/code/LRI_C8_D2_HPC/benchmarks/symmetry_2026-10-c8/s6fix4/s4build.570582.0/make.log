@@ -1,0 +1,63 @@
+python3 -B tools/prepare_inputs.py
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_inspect.cpp -lquadmath -o bin/c8d2_inspect
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_RATIO_HISTOGRAM src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_ratiohist
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math tests/quad_differential.cpp -o bin/c8d2_quad_differential
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP tests/quad_ranges.cpp -lquadmath -lgmp -o bin/c8d2_quad_ranges
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP benchmarks/probes/interleave_probe.cpp -lquadmath -lgmp -o bin/c8d2_interleave_probe
+g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal_san
+g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_san
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+python3 -B tools/build_record.py bin/c8d2_gmp_prof gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+python3 -B tools/build_record.py bin/c8d2_gmp_ratiohist gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_RATIO_HISTOGRAM src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_ratiohist
+bin/c8d2_gmp_ratiohist.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1 (/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1), optimized=True
+bin/c8d2_gmp_prof.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1 (/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1), optimized=True
+bin/c8d2_gmp.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1 (/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1), optimized=True
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+python3 -B tools/build_record.py bin/c8d2_gmp_san gmp -- g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_san
+bin/c8d2_gmp_san.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1 (/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1), optimized=True
+In file included from src/kernel.hpp:26,
+                 from src/c8d2_integrate.cpp:18:
+/cm/local/apps/boost/1.77.0//include/boost/multiprecision/cpp_dec_float.hpp: In static member function ‘static boost::multiprecision::backends::cpp_dec_float<Digits10, ExponentType, Allocator> boost::multiprecision::backends::cpp_dec_float<Digits10, ExponentType, Allocator>::pow2(boost::long_long_type) [with unsigned int Digits10 = 300; ExponentType = int; Allocator = void]’:
+/cm/local/apps/boost/1.77.0//include/boost/multiprecision/cpp_dec_float.hpp:2676:50: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+ 2676 | cpp_dec_float<Digits10, ExponentType, Allocator> cpp_dec_float<Digits10, ExponentType, Allocator>::pow2(const boost::long_long_type p)
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+python3 -B tools/build_record.py bin/c8d2_decimal_san decimal -- g++ -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -D_GLIBCXX_ASSERTIONS -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal_san
+bin/c8d2_decimal_san.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+rm -rf build/c7ref
+cp -R reference/c7d2_hpc_a55958f build/c7ref
+make -C build/c7ref bin/c7d2_decimal bin/c7d2_gmp
+make[1]: Entering directory '<SCRATCH>/c8d2/pkg/900e5906522a/build/c7ref'
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+bin/c7d2_decimal.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+bin/c7d2_gmp.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1, optimized=True
+make[1]: Leaving directory '<SCRATCH>/c8d2/pkg/900e5906522a/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/

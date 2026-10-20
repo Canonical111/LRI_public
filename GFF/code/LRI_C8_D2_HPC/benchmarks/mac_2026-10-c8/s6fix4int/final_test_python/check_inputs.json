@@ -1,0 +1,132 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-IN-3/4/5 check_inputs",
+ "passed": true,
+ "failed": [],
+ "skipped": [
+  "the L8 packs are not here (C8_ALLOW_NO_L8=1): their bytes are checked where they are built (J-IN-2)",
+  "regeneration from inventory8_d2 (give --inventory TREE or C8_INVENTORY)"
+ ],
+ "checks": [
+  {
+   "check": "make_lowloop regenerates inputs/gamma_d2_8.txt byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/two_loop.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/verification/two_loop_extension8.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "prepare_inputs.verify(): every listed file and every vendored pin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "manifest: schema, dimension 2, order 8, the twelve packs and the counts of the plan",
+   "passed": true,
+   "detail": "{\"counts\": {\"free\": {\"3\": 5, \"4\": 16, \"5\": 76, \"6\": 395, \"7\": 2441, \"8\": 16064}, \"power\": {\"3\": 1, \"4\": 3, \"5\": 20, \"6\": 107, \"7\": 709, \"8\": 4336}}}"
+  },
+  {
+   "check": "the L3..L6 packs are at C7(2)'s manifest sha256s",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the manifest pins the vendored assembly from tools/VENDORED.json (A-IN-4, A-ASM-1(b))",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "inventory.json rows carry the inspector fields, products, addends and kernel_bytes positive (A-IN-3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the 2,298 and 590 members of C7(2)'s L7 packs are among the new L7 members, same bytes",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "tests/fixtures/inputs_mini verifies (its own L8 packs, the package's L3..L7 packs)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a one-byte change to a pack makes verify() fail",
+   "passed": true,
+   "detail": "Checksum mismatch in the inputs: packs/free_L5.pack; restore the shipped files (git checkout, or make inputs-l8 INVENTORY=... for the L8 packs) before planning"
+  },
+  {
+   "check": "S6-B-01: make inputs-l8 builds missing L8 packs at their pins",
+   "passed": true,
+   "detail": "{\n \"schema\": \"c8-d2-hpc-inputs-1\",\n \"counts\": {\n  \"free\": {\n   \"8\": 3\n  },\n  \"power\": {\n   \"8\": 3\n  }\n },\n \"inventory8_d2_manifest_sha256\": \"65153f7938a9d2b724b059c2f9349074ec1de886d79c0cefae5116679db2bcbe\"\n}\n"
+  },
+  {
+   "check": "S6-B-01: make inputs-l8 replaces a corrupt and a truncated L8 pack with the pinned bytes",
+   "passed": true,
+   "detail": "{\n \"schema\": \"c8-d2-hpc-inputs-1\",\n \"counts\": {\n  \"free\": {\n   \"8\": 3\n  },\n  \"power\": {\n   \"8\": 3\n  }\n },\n \"inventory8_d2_manifest_sha256\": \"65153f7938a9d2b724b059c2f9349074ec1de886d79c0cefae5116679db2bcbe\"\n}\n"
+  },
+  {
+   "check": "S6-B-01: a corrupt immutable input stops the rebuild; the L8 packs stay as they were",
+   "passed": true,
+   "detail": "r)\n  File \"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\", line 414, in build_l8\n    m = verify(p, allow_no_l8=True, rebuild=L8_PACKS)\n  File \"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\", line 339, in verify\n    raise ValueError('Checksum mismatch in the inputs: ' + ', '.join(bad) + '; restore the shipped files '\nValueError: Checksum mismatch in the inputs: packs/free_L3.pack; restore the shipped files (git checkout, or make inputs-l8 INVENTORY=... for the L8 packs) before planning\n"
+  },
+  {
+   "check": "S6-B-01: a tree that does not verify against the pin stops the rebuild; the L8 packs stay as they were",
+   "passed": true,
+   "detail": "/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/tree_edited does not verify against the inventory8_d2 pin 65153f7938a9d2b724b059c2f9349074ec1de886d79c0cefae5116679db2bcbe:\n1_sha256sums: FAIL (1): sha256 mismatch: selection.json\n2_manifest_pins_sha256sums: PASS\n3_members: PASS\n4_external_pin: PASS\nverify_inventory FAILED /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/tree_edited\n\n"
+  },
+  {
+   "check": "S6-B-01: a rebuilt pack off its pin installs neither pack (no partial replacement), no temporary file",
+   "passed": true,
+   "detail": "the rebuilt power_L8.pack differs from the manifest pin; the existing pack is kept\n"
+  },
+  {
+   "check": "S6-B-01: ... and the next make inputs-l8 repairs both",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "S6R2-B-03: a directory at packs/power_L8.pack (and a corrupt free pack) is refused before anything is built; the free pack stays byte for byte",
+   "passed": true,
+   "detail": "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/inputs/packs/power_L8.pack exists but is not a regular file (a symlink, a directory or a special file): build_l8 replaces only regular packs; move it away first. Nothing was changed\n"
+  },
+  {
+   "check": "S6R2-B-03: a symlink at packs/power_L8.pack (and a corrupt free pack) is refused before anything is built; the free pack stays byte for byte",
+   "passed": true,
+   "detail": "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/inputs/packs/power_L8.pack exists but is not a regular file (a symlink, a directory or a special file): build_l8 replaces only regular packs; move it away first. Nothing was changed\n"
+  },
+  {
+   "check": "S6R2-B-03: a failure of the second replacement restores the first pack (damaged originals stay byte for byte), no temporary or backup file",
+   "passed": true,
+   "detail": "{\"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 15, in <module>\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 440, in build_l8\\n    install_all(staged)\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 374, in install_all\\n    os.replace(tmp, target)\\n  File \\\"<string>\\\", line 8, in replace\\nOSError: injected failure of the second replacement\\n\", \"free_restored\": true, \"names\": [\"free_L3.pack\", \"free_L8.pack\", \"power_L8.pack\"]}"
+  },
+  {
+   "check": "S6R2-B-03: a failure of the second replacement restores the first pack (no hard links: originals renamed aside) (damaged originals stay byte for byte), no temporary or backup file",
+   "passed": true,
+   "detail": "{\"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 15, in <module>\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 440, in build_l8\\n    install_all(staged)\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 374, in install_all\\n    os.replace(tmp, target)\\n  File \\\"<string>\\\", line 8, in replace\\nOSError: injected failure of the second replacement\\n\", \"free_restored\": true, \"names\": [\"free_L3.pack\", \"free_L8.pack\", \"power_L8.pack\"]}"
+  },
+  {
+   "check": "S6R2-B-03: a failure of the second replacement with both packs missing leaves both missing (the first one is removed again), no temporary or backup file",
+   "passed": true,
+   "detail": "{\"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 15, in <module>\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 440, in build_l8\\n    install_all(staged)\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_l8_repair_ohvorvg4/pkg/tools/prepare_inputs.py\\\", line 374, in install_all\\n    os.replace(tmp, target)\\n  File \\\"<string>\\\", line 8, in replace\\nOSError: injected failure of the second replacement\\n\", \"names\": [\"free_L3.pack\"]}"
+  },
+  {
+   "check": "S6R2-B-03: ... and the next make inputs-l8 builds both",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "inventory": null,
+ "inspector": null,
+ "l8_packs_present": false,
+ "host": "personal desktop",
+ "python": "3.10.11"
+}

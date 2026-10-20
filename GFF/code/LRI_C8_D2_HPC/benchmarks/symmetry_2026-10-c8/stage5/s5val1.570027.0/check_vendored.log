@@ -1,0 +1,26 @@
+PASS the HANDOFF copy is at the sha256 VENDORED.json records
+PASS VENDORED.json records an accepting review of this HANDOFF with a step-0 verdict-gate decision
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS every vendored file is a regular file at the sha256, md5 and size the HANDOFF records
+PASS VENDORED.json lists the HANDOFF deliverables with the HANDOFF pins
+PASS vendor/c8_assembly_fixtures holds exactly the VENDORED.json fixtures
+PASS every fixture is a regular file at its pin (reference copies at their checksum-list entries)
+PASS no symlink is tracked anywhere in the package
+PASS the vendored order8_assembly exports every used name with the signature VENDORED.json records
+PASS vendor/ rule: prepare_inputs build opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: prepare_inputs verify opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: production.py plan (test-only, scratch copy) opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: production.py run --index 0 (test-only, scratch copy) opens nothing under vendor/ and imports nothing from vendor/
+PASS A-ASM-1(b): inputs/manifest.json records the HANDOFF sha256 and every vendored pin, equal to VENDORED.json and the HANDOFF
+PASS A-ASM-1(b): prepare_inputs.verify() passes with the vendored pins
+PASS A-ASM-1(b): a one-byte change to a vendored file makes prepare_inputs.verify() fail (the untouched scratch export verifies)
+NOTE git pin of LRI_C7_D3_HPC/inputs/gamma_d3_7.txt not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/inputs/two_loop.json not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/tools/assemble.py not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE review record not checked here (--no-review-record): LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json
+NOTE none: the HANDOFF arrived before Stage 3, so no stand-in Jacobian module was written
+NOTE prepare_inputs build opened 0 vendored files (it reads the pins from tools/VENDORED.json)
+NOTE prepare_inputs verify opened 14 vendored files, each through common.digest
+NOTE production.py plan opened 14 vendored files (the inputs manifest pins, through common.digest)
+NOTE production.py run opened 0 vendored files
+check_vendored: 16/16 checks passed

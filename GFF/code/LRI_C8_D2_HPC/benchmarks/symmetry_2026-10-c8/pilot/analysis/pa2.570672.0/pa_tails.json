@@ -1,0 +1,380 @@
+{
+ "schema": "c8-d2-pilot-tails-1",
+ "rule": "Heavy-tail context for the user's decision (docs/DESIGN.md, \"After the pilot\", step 2): how much of the design\nweight the screened L8 graphs carry, and whether the frozen bundles give them the 32,768 points per replicate that the\nconfirmation needs.\n\n  pa_tails.py --package PKG --run PILOT --tails TAILS.csv --bundles DIR [DIR ...] --out OUT.json\n\nReads only. Per (sector, L) and campaign, from design.graph_table (sigma_g^2 = n_g Var_rep(J8 . jet), c_g the pilot's\nseconds per point) and the report's --tails-out rows (xi_hat, largest share per graph and campaign):\n- L8 graph-campaigns screened by C63d's rule (xi_hat > 0.38 or largest share > 0.05; the report lists a graph when either\n  campaign is screened), their share of sum_g sigma_g sqrt(c_g) (the Neyman weight, i.e. of the design's cost and\n  variance at the optimum), of sum_g sigma_g^2 and of sum_g c_g;\n- the xi_hat quantiles, and the Spearman rank correlation of xi_hat with sigma_g (do heavy-tailed graphs carry larger\n  per-graph standard deviations?) and with the largest share;\n- the same summary at L <= 7 (diagnostic, no threshold);\n- per bundle: the L8 graph-campaigns at >= 32,768 points per replicate (count x s; the confirmation threshold), and how\n  many of the screened graphs reach it in both campaigns.",
+ "strata": {
+  "free_L3": {
+   "graph_campaigns": 10,
+   "xi_q10": 0.031545860790046135,
+   "xi_median": 0.04497916324597584,
+   "xi_q90": 0.05776252902104984,
+   "xi_max": 0.05903066852381948,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": -0.16363636363636364,
+   "spearman_xi_share": 0.9030303030303028,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "free_L4": {
+   "graph_campaigns": 32,
+   "xi_q10": 0.07469444957261356,
+   "xi_median": 0.0899253525223924,
+   "xi_q90": 0.11572237118919125,
+   "xi_max": 0.12591740483585906,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": -0.1004398826979472,
+   "spearman_xi_share": 0.8427419354838708,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "free_L5": {
+   "graph_campaigns": 152,
+   "xi_q10": 0.09752660962875334,
+   "xi_median": 0.1390312159217969,
+   "xi_q90": 0.19062535145613424,
+   "xi_max": 0.224864244724764,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": -0.3704098579131896,
+   "spearman_xi_share": 0.935726050615436,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "free_L6": {
+   "graph_campaigns": 790,
+   "xi_q10": 0.10977081256010261,
+   "xi_median": 0.18333955419701714,
+   "xi_q90": 0.26917075580692046,
+   "xi_max": 0.37291181016004016,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": -0.4268329750750961,
+   "spearman_xi_share": 0.9585608588024038,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "free_L7": {
+   "graph_campaigns": 4882,
+   "xi_q10": 0.14379696386052954,
+   "xi_median": 0.4538439228934115,
+   "xi_q90": 0.9375928174117343,
+   "xi_max": 1.4419157712778372,
+   "frac_xi_gt_0_38": 0.5383039737812372,
+   "frac_xi_ge_0_5": 0.4723473986071282,
+   "spearman_xi_sigma": -0.10004738808451275,
+   "spearman_xi_share": 0.9850092493904821,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "free_L8": {
+   "graph_campaigns": 32128,
+   "xi_q10": 0.16611733686283534,
+   "xi_median": 0.5058449558216485,
+   "xi_q90": 1.2916996578417066,
+   "xi_max": 2.0701687552277144,
+   "frac_xi_gt_0_38": 0.5969248007968128,
+   "frac_xi_ge_0_5": 0.5051668326693227,
+   "spearman_xi_sigma": -0.05078922516192368,
+   "spearman_xi_share": 0.9854016536272797,
+   "screened_graph_campaigns": 19772,
+   "screened_share_neyman_weight": 0.8268201563812055,
+   "screened_share_sigma2": 0.6402454625207971,
+   "screened_share_cost": 0.9380723842871265
+  },
+  "power_L3": {
+   "graph_campaigns": 2,
+   "xi_q10": 0.08494740529701224,
+   "xi_median": 0.08932800849469524,
+   "xi_q90": 0.09370861169237824,
+   "xi_max": 0.09480376249179899,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": null,
+   "spearman_xi_share": null,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "power_L4": {
+   "graph_campaigns": 6,
+   "xi_q10": 0.1324304221655031,
+   "xi_median": 0.23445712991078543,
+   "xi_q90": 0.32615045743597826,
+   "xi_max": 0.3353870135601931,
+   "frac_xi_gt_0_38": 0.0,
+   "frac_xi_ge_0_5": 0.0,
+   "spearman_xi_sigma": -0.7714285714285715,
+   "spearman_xi_share": 0.942857142857143,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "power_L5": {
+   "graph_campaigns": 40,
+   "xi_q10": 0.23080245447814182,
+   "xi_median": 0.5279956947297606,
+   "xi_q90": 0.974386517608482,
+   "xi_max": 1.1319675636221833,
+   "frac_xi_gt_0_38": 0.675,
+   "frac_xi_ge_0_5": 0.525,
+   "spearman_xi_sigma": -0.6613508442776737,
+   "spearman_xi_share": 0.9335834896810509,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "power_L6": {
+   "graph_campaigns": 214,
+   "xi_q10": 0.4829626032832957,
+   "xi_median": 0.9025795277671127,
+   "xi_q90": 1.2055583576952085,
+   "xi_max": 1.7810114732472535,
+   "frac_xi_gt_0_38": 0.9392523364485982,
+   "frac_xi_ge_0_5": 0.883177570093458,
+   "spearman_xi_sigma": -0.43362343152590827,
+   "spearman_xi_share": 0.8696890755530794,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "power_L7": {
+   "graph_campaigns": 1418,
+   "xi_q10": 0.8369217100531163,
+   "xi_median": 1.3589174917284574,
+   "xi_q90": 1.7979590177082894,
+   "xi_max": 2.7686159827144468,
+   "frac_xi_gt_0_38": 0.9894217207334274,
+   "frac_xi_ge_0_5": 0.9724964739069112,
+   "spearman_xi_sigma": -0.19041614378865962,
+   "spearman_xi_share": 0.712596480963085,
+   "screened_graph_campaigns": null,
+   "screened_share_neyman_weight": null,
+   "screened_share_sigma2": null,
+   "screened_share_cost": null
+  },
+  "power_L8": {
+   "graph_campaigns": 8672,
+   "xi_q10": 1.236488040947042,
+   "xi_median": 1.79849482731596,
+   "xi_q90": 2.3056251515351693,
+   "xi_max": 3.936371892581116,
+   "frac_xi_gt_0_38": 0.9997693726937269,
+   "frac_xi_ge_0_5": 0.9943496309963099,
+   "spearman_xi_sigma": -0.15397440694696923,
+   "spearman_xi_share": 0.6809012137160826,
+   "screened_graph_campaigns": 8672,
+   "screened_share_neyman_weight": 1.0,
+   "screened_share_sigma2": 1.0,
+   "screened_share_cost": 1.0
+  }
+ },
+ "bundles": {
+  "pilot1-20261006-exact-1e-3": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 6663,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 453,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 260,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 75,
+    "points_per_replicate_quantiles": {
+     "min": 4096.0,
+     "median": 4096.0,
+     "max": 65536.0
+    }
+   }
+  },
+  "pilot1-20261006-exact-5e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 6779,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 453,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 260,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 75,
+    "points_per_replicate_quantiles": {
+     "min": 4096.0,
+     "median": 4096.0,
+     "max": 65536.0
+    }
+   }
+  },
+  "pilot1-20261006-exact-2.5e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 32128,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 9886,
+    "points_per_replicate_quantiles": {
+     "min": 32768.0,
+     "median": 32768.0,
+     "max": 524288.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 1095,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 362,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   }
+  },
+  "pilot1-20261006-exact-1.35e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 32128,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 9886,
+    "points_per_replicate_quantiles": {
+     "min": 131072.0,
+     "median": 131072.0,
+     "max": 2097152.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 2752,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 1059,
+    "points_per_replicate_quantiles": {
+     "min": 16384.0,
+     "median": 16384.0,
+     "max": 262144.0
+    }
+   }
+  },
+  "pilot1-20261006-ddmp256-1e-3": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 6663,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 453,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 260,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 75,
+    "points_per_replicate_quantiles": {
+     "min": 4096.0,
+     "median": 4096.0,
+     "max": 65536.0
+    }
+   }
+  },
+  "pilot1-20261006-ddmp256-5e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 6779,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 453,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 260,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 75,
+    "points_per_replicate_quantiles": {
+     "min": 4096.0,
+     "median": 4096.0,
+     "max": 65536.0
+    }
+   }
+  },
+  "pilot1-20261006-ddmp256-2.5e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 32128,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 9886,
+    "points_per_replicate_quantiles": {
+     "min": 32768.0,
+     "median": 32768.0,
+     "max": 524288.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 1095,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 362,
+    "points_per_replicate_quantiles": {
+     "min": 8192.0,
+     "median": 8192.0,
+     "max": 131072.0
+    }
+   }
+  },
+  "pilot1-20261006-ddmp256-1.35e-4": {
+   "free": {
+    "graph_campaigns": 32128,
+    "at_confirm_points": 32128,
+    "screened_graphs": 9886,
+    "screened_at_confirm_points_both_campaigns": 9886,
+    "points_per_replicate_quantiles": {
+     "min": 131072.0,
+     "median": 131072.0,
+     "max": 2097152.0
+    }
+   },
+   "power": {
+    "graph_campaigns": 8672,
+    "at_confirm_points": 2818,
+    "screened_graphs": 4336,
+    "screened_at_confirm_points_both_campaigns": 1086,
+    "points_per_replicate_quantiles": {
+     "min": 16384.0,
+     "median": 16384.0,
+     "max": 262144.0
+    }
+   }
+  }
+ }
+}

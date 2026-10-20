@@ -1,0 +1,930 @@
+{
+  "phase": "solve",
+  "cutoff": 14,
+  "order": 8,
+  "scheme": "consistent",
+  "numpy": "2.5.3",
+  "python": "3.12.14",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "dtype": "float128",
+  "precision_significand_bits": 64,
+  "environment_threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "NUMBA_NUM_THREADS": "1"
+  },
+  "cache_load_seconds": 0.9427390010023373,
+  "vertex_metadata": {
+    "cutoff": 14,
+    "degree": 6,
+    "field_dimension": "(3-epsilon)/4",
+    "series_convention": "ordinary Taylor coefficients, derivative/factorial",
+    "dtype": "float128",
+    "projector_source_dtype": "float64",
+    "full_bath_states": 1784949,
+    "magnetic_zero_states": 175057,
+    "scalar_bath_states": 4486,
+    "bath_graph_array_bytes": 152208934,
+    "vertex_array_bytes": 374904784,
+    "vertex_nnz": [
+      [
+        27912,
+        27912,
+        27912,
+        27912,
+        27912,
+        27912,
+        27912
+      ],
+      [
+        188633,
+        188629,
+        188631,
+        188393,
+        188579,
+        188514,
+        188524
+      ],
+      [
+        724732,
+        724732,
+        724732,
+        724732,
+        724732,
+        724730,
+        724726
+      ],
+      [
+        1733150,
+        1733150,
+        1733150,
+        1733150,
+        1733142,
+        1733054,
+        1732913
+      ]
+    ],
+    "basis_seconds": 0.4735545900002762,
+    "projector_seconds": 3.1867564439999114,
+    "vertex_seconds": 27.33742934700058,
+    "projector_diagnostics": {
+      "Jplus_residual": 3.3306690738754696e-15,
+      "orthogonality": 1.5543122344752192e-15,
+      "svd_statistics": {
+        "spin": 0,
+        "inversion": 0,
+        "blocks": 2961,
+        "gesdd_blocks": 2916,
+        "gesvd_fallbacks": 0,
+        "trivial_blocks": 45,
+        "largest_source": 846,
+        "largest_target": 826,
+        "largest_dense_bytes": 5590368,
+        "largest_block": {
+          "L": 14,
+          "spin": 0,
+          "inversion": 0,
+          "N": 14,
+          "particles": 7,
+          "species_rank": 717,
+          "targets": 826,
+          "sources": 846,
+          "expected_nullity": 20
+        },
+        "fallback_blocks": [],
+        "rcond": 5e-13
+      }
+    }
+  },
+  "rss_before_profile_kib": 465060,
+  "coefficient_result": {
+    "dimension": 3,
+    "cutoff": 14,
+    "cutoff_definition": "bath N_b=sum(2n+l) occupancy <= L",
+    "epsilon": "2s-3",
+    "x": "(3-epsilon)/4",
+    "thermal_expansion": "Delta_thermal = sum_n C[n] epsilon^n; C0=3/2, C1=-1/6",
+    "scheme": "consistent",
+    "order": 8,
+    "arithmetic": "float128",
+    "scalar_bath_states": 4486,
+    "local_occupation_max": 19,
+    "dimension_per_field_parity": 44860,
+    "C": [
+      "1.5",
+      "-0.16666666666666666666",
+      "0.17973692027259926689",
+      "-0.31962483382517770363",
+      "0.69677210905147531333",
+      "-3.0241599931924549307",
+      "14.908908422038431207",
+      "-80.276583297533050956",
+      "514.89139615504091485"
+    ],
+    "r": [
+      "0.0",
+      "0.0",
+      "0.5294721689489152056",
+      "2.158462307469229183",
+      "3.7158592198421730385",
+      "3.1231088246923333412",
+      "-14.059254497853631518",
+      "-29.65718968503445556",
+      "-197.51588363503570675"
+    ],
+    "g": [
+      "0.0",
+      "0.33333333333333333334",
+      "1.1542282451316465419",
+      "2.0508463029723280292",
+      "2.4347898210320825837",
+      "-2.5372218302745842926",
+      "-7.245367603002251413",
+      "-68.07659399460933108",
+      "226.66531429502138102"
+    ],
+    "energies_by_seed": {
+      "0": [
+        "0.0",
+        "0.0",
+        "-0.74074074074074061294",
+        "-2.9643110970843839103",
+        "-5.332846869180911775",
+        "-5.2570481066801511404",
+        "18.185242661017472748",
+        "43.471600151305758577",
+        "293.37686431608321486"
+      ],
+      "1": [
+        "0.75",
+        "-0.25",
+        "-0.7407407407407406129",
+        "-2.9643110970843839103",
+        "-5.332846869180911775",
+        "-5.2570481066801511404",
+        "18.185242661017472748",
+        "43.471600151305758577",
+        "293.37686431608321486"
+      ],
+      "2": [
+        "1.5",
+        "-0.16666666666666666666",
+        "-0.56100382046814134605",
+        "-3.283935930909561614",
+        "-4.636074760129436462",
+        "-8.281208099872606071",
+        "33.094151083055903955",
+        "-36.804983146227292376",
+        "808.2682604711241297"
+      ],
+      "3": [
+        "2.25",
+        "0.25",
+        "-0.7407407407407406131",
+        "-2.9643110970843839103",
+        "-5.332846869180911775",
+        "-5.2570481066801511404",
+        "18.185242661017472748",
+        "43.471600151305758594",
+        "293.37686431608321486"
+      ]
+    },
+    "vacuum_energies_by_subcutoff": {
+      "0": [
+        "0.0",
+        "0.0",
+        "-0.0061728395061728395066",
+        "-0.040691581095410777274",
+        "-0.4563212602081694962",
+        "-2.8035001776367179768",
+        "-8.352312418501756661",
+        "-9.933795274010917941",
+        "33.98140173843433982"
+      ],
+      "2": [
+        "0.0",
+        "0.0",
+        "-0.024691358024691349685",
+        "-0.14671694166559368047",
+        "-0.81551594715179755185",
+        "-3.5760158498578386202",
+        "-8.2139660306154846665",
+        "-5.6452614365707090354",
+        "49.931159855026432993"
+      ],
+      "4": [
+        "0.0",
+        "0.0",
+        "-0.06172839506172839512",
+        "-0.3368099908482876721",
+        "-1.2518548839078915355",
+        "-3.9090883037326722355",
+        "-6.1754918718919039034",
+        "0.29742150789600911348",
+        "64.57057621538492255"
+      ],
+      "6": [
+        "0.0",
+        "0.0",
+        "-0.123456790123456779476",
+        "-0.6256090077596754244",
+        "-1.8042355569193142596",
+        "-4.1087234580033586626",
+        "-3.1202185596220590182",
+        "7.1363141707313704288",
+        "85.098067833048218596"
+      ],
+      "8": [
+        "0.0",
+        "0.0",
+        "-0.216049382716049381",
+        "-1.024669860100195266",
+        "-2.4862684886048836681",
+        "-4.2934286431854619204",
+        "0.77735830298566071963",
+        "14.8679682312492469675",
+        "115.49830327416005579"
+      ],
+      "10": [
+        "0.0",
+        "0.0",
+        "-0.34567901234567895255",
+        "-1.5430805131023824404",
+        "-3.302179932935874281",
+        "-4.5237816916641331055",
+        "5.5489409035473069814",
+        "23.540364494649654555",
+        "158.69603188866509222"
+      ],
+      "12": [
+        "0.0",
+        "0.0",
+        "-0.5185185185185184092",
+        "-2.1878717984601579695",
+        "-4.2518464894588835117",
+        "-4.836870128316409255",
+        "11.302877748573832163",
+        "33.117347218953410902",
+        "217.20050511534333079"
+      ],
+      "14": [
+        "0.0",
+        "0.0",
+        "-0.74074074074074061294",
+        "-2.9643110970843839103",
+        "-5.332846869180911775",
+        "-5.2570481066801511404",
+        "18.185242661017472748",
+        "43.471600151305758577",
+        "293.37686431608321486"
+      ]
+    },
+    "tuning_residuals": [
+      {
+        "order": 1,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      },
+      {
+        "order": 2,
+        "sigma_residual": 5.421010862427522e-20,
+        "chi_residual": -1.6263032587282567e-19
+      },
+      {
+        "order": 3,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      },
+      {
+        "order": 4,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      },
+      {
+        "order": 5,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      },
+      {
+        "order": 6,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      },
+      {
+        "order": 7,
+        "sigma_residual": 0.0,
+        "chi_residual": 1.734723475976807e-17
+      },
+      {
+        "order": 8,
+        "sigma_residual": 0.0,
+        "chi_residual": 0.0
+      }
+    ],
+    "max_scaled_seed_recursion_residual": 6.505806442716209e-19,
+    "seconds": 168.4274191690056,
+    "scope": "finite-cutoff formal coefficients; no continuum extrapolation or complete connected matching"
+  },
+  "profiled_wall_seconds": 169.27710349500558,
+  "peak_rss_kib": 1517436,
+  "process_cpu_seconds": 69.375874,
+  "top_cumulative": [
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 157,
+      "function": "solve_coefficients",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 0.239774648,
+      "cumulative_seconds": 169.266772658
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 129,
+      "function": "apply",
+      "primitive_calls": 616,
+      "total_calls": 616,
+      "self_seconds": 0.622366575,
+      "cumulative_seconds": 160.95103965200002
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 76,
+      "function": "apply",
+      "primitive_calls": 616,
+      "total_calls": 616,
+      "self_seconds": 24.17691556,
+      "cumulative_seconds": 160.32867307700002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 788,
+      "function": "_matmul_dispatch",
+      "primitive_calls": 3542,
+      "total_calls": 3542,
+      "self_seconds": 0.167738709,
+      "cumulative_seconds": 136.387159257
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 919,
+      "function": "__matmul__",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 0.138381589,
+      "cumulative_seconds": 133.48314049
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 399,
+      "function": "_matmul_multivector",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 0.34586935100000005,
+      "cumulative_seconds": 132.856722627
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matvecs>",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 132.130604564,
+      "cumulative_seconds": 132.130604564
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 144,
+      "function": "advance",
+      "primitive_calls": 77,
+      "total_calls": 77,
+      "self_seconds": 0.599348995,
+      "cumulative_seconds": 83.407118384
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 135,
+      "function": "provisional",
+      "primitive_calls": 88,
+      "total_calls": 88,
+      "self_seconds": 0.053332210000000005,
+      "cumulative_seconds": 78.22786338600001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 57,
+      "function": "build",
+      "primitive_calls": 7,
+      "total_calls": 7,
+      "self_seconds": 0.03983863,
+      "cumulative_seconds": 6.540165483
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_matrix.py",
+      "line": 44,
+      "function": "__mul__",
+      "primitive_calls": 154,
+      "total_calls": 154,
+      "self_seconds": 0.004468613000000001,
+      "cumulative_seconds": 3.3608565990000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 134,
+      "function": "_mul_scalar",
+      "primitive_calls": 154,
+      "total_calls": 154,
+      "self_seconds": 2.523697803,
+      "cumulative_seconds": 3.353583387
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 740,
+      "function": "__add__",
+      "primitive_calls": 114,
+      "total_calls": 114,
+      "self_seconds": 0.0028803960000000003,
+      "cumulative_seconds": 2.75662053
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 257,
+      "function": "_add_sparse",
+      "primitive_calls": 114,
+      "total_calls": 114,
+      "self_seconds": 0.005738595,
+      "cumulative_seconds": 2.7514102680000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1189,
+      "function": "_binopt",
+      "primitive_calls": 114,
+      "total_calls": 114,
+      "self_seconds": 0.021762442,
+      "cumulative_seconds": 2.7456716730000004
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_plus_csr>",
+      "primitive_calls": 114,
+      "total_calls": 114,
+      "self_seconds": 2.519041671,
+      "cumulative_seconds": 2.519041671
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_index.py",
+      "line": 29,
+      "function": "__getitem__",
+      "primitive_calls": 2184,
+      "total_calls": 2184,
+      "self_seconds": 0.056655902,
+      "cumulative_seconds": 2.4933763890000002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 550,
+      "function": "_get_sliceXslice",
+      "primitive_calls": 2184,
+      "total_calls": 2184,
+      "self_seconds": 0.006702806,
+      "cumulative_seconds": 2.3539680300000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 706,
+      "function": "_get_submatrix",
+      "primitive_calls": 2184,
+      "total_calls": 2184,
+      "self_seconds": 0.040784042,
+      "cumulative_seconds": 2.347020525
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.get_csr_submatrix>",
+      "primitive_calls": 2156,
+      "total_calls": 2156,
+      "self_seconds": 1.650980791,
+      "cumulative_seconds": 1.650980791
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'copy' of 'numpy.ndarray' objects>",
+      "primitive_calls": 476,
+      "total_calls": 476,
+      "self_seconds": 1.2308548990000001,
+      "cumulative_seconds": 1.2308548990000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1175,
+      "function": "_with_data",
+      "primitive_calls": 210,
+      "total_calls": 210,
+      "self_seconds": 0.058653713,
+      "cumulative_seconds": 1.0735040550000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 30,
+      "function": "__init__",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.12353390400000001,
+      "cumulative_seconds": 0.9842934010000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 94,
+      "function": "copy",
+      "primitive_calls": 56,
+      "total_calls": 56,
+      "self_seconds": 0.000313024,
+      "cumulative_seconds": 0.7783389580000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 69,
+      "function": "astype",
+      "primitive_calls": 28,
+      "total_calls": 28,
+      "self_seconds": 7.506800000000001e-05,
+      "cumulative_seconds": 0.637453371
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 1525,
+      "function": "_get_index_dtype",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.040389465,
+      "cumulative_seconds": 0.38903026100000004
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1025,
+      "function": "eliminate_zeros",
+      "primitive_calls": 40,
+      "total_calls": 40,
+      "self_seconds": 0.009661474,
+      "cumulative_seconds": 0.378228071
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_eliminate_zeros>",
+      "primitive_calls": 40,
+      "total_calls": 40,
+      "self_seconds": 0.355339665,
+      "cumulative_seconds": 0.355339665
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 264,
+      "function": "get_index_dtype",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.212521692,
+      "cumulative_seconds": 0.32259398300000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 345,
+      "function": "isscalarlike",
+      "primitive_calls": 3656,
+      "total_calls": 3656,
+      "self_seconds": 0.16711909800000002,
+      "cumulative_seconds": 0.31691072200000003
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/numeric.py",
+      "line": 675,
+      "function": "flatnonzero",
+      "primitive_calls": 1243,
+      "total_calls": 1243,
+      "self_seconds": 0.015783817000000002,
+      "cumulative_seconds": 0.213997074
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.zeros>",
+      "primitive_calls": 4213,
+      "total_calls": 4213,
+      "self_seconds": 0.18815383500000002,
+      "cumulative_seconds": 0.18815383500000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "primitive_calls": 50995,
+      "total_calls": 50995,
+      "self_seconds": 0.088127591,
+      "cumulative_seconds": 0.182033727
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 21,
+      "function": "__init__",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.05718770200000001,
+      "cumulative_seconds": 0.14327446100000002
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/numeric.py",
+      "line": 1911,
+      "function": "isscalar",
+      "primitive_calls": 3656,
+      "total_calls": 3656,
+      "self_seconds": 0.048127979,
+      "cumulative_seconds": 0.13823142900000002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 166,
+      "function": "check_format",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.048717518,
+      "cumulative_seconds": 0.137778127
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/fromnumeric.py",
+      "line": 1917,
+      "function": "ravel",
+      "primitive_calls": 1243,
+      "total_calls": 1243,
+      "self_seconds": 0.051577066000000005,
+      "cumulative_seconds": 0.132002571
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/numeric.py",
+      "line": 97,
+      "function": "zeros_like",
+      "primitive_calls": 709,
+      "total_calls": 709,
+      "self_seconds": 0.120040639,
+      "cumulative_seconds": 0.123251444
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1118,
+      "function": "prune",
+      "primitive_calls": 2748,
+      "total_calls": 2748,
+      "self_seconds": 0.050488075,
+      "cumulative_seconds": 0.09844483100000001
+    },
+    {
+      "file": "<frozen abc>",
+      "line": 117,
+      "function": "__instancecheck__",
+      "primitive_calls": 6210,
+      "total_calls": 6210,
+      "self_seconds": 0.008891808000000001,
+      "cumulative_seconds": 0.093906136
+    }
+  ],
+  "top_self": [
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matvecs>",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 132.130604564,
+      "cumulative_seconds": 132.130604564
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 76,
+      "function": "apply",
+      "primitive_calls": 616,
+      "total_calls": 616,
+      "self_seconds": 24.17691556,
+      "cumulative_seconds": 160.32867307700002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 134,
+      "function": "_mul_scalar",
+      "primitive_calls": 154,
+      "total_calls": 154,
+      "self_seconds": 2.523697803,
+      "cumulative_seconds": 3.353583387
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_plus_csr>",
+      "primitive_calls": 114,
+      "total_calls": 114,
+      "self_seconds": 2.519041671,
+      "cumulative_seconds": 2.519041671
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.get_csr_submatrix>",
+      "primitive_calls": 2156,
+      "total_calls": 2156,
+      "self_seconds": 1.650980791,
+      "cumulative_seconds": 1.650980791
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'copy' of 'numpy.ndarray' objects>",
+      "primitive_calls": 476,
+      "total_calls": 476,
+      "self_seconds": 1.2308548990000001,
+      "cumulative_seconds": 1.2308548990000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 129,
+      "function": "apply",
+      "primitive_calls": 616,
+      "total_calls": 616,
+      "self_seconds": 0.622366575,
+      "cumulative_seconds": 160.95103965200002
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 144,
+      "function": "advance",
+      "primitive_calls": 77,
+      "total_calls": 77,
+      "self_seconds": 0.599348995,
+      "cumulative_seconds": 83.407118384
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_eliminate_zeros>",
+      "primitive_calls": 40,
+      "total_calls": 40,
+      "self_seconds": 0.355339665,
+      "cumulative_seconds": 0.355339665
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 399,
+      "function": "_matmul_multivector",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 0.34586935100000005,
+      "cumulative_seconds": 132.856722627
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/reference/perturbative.py",
+      "line": 157,
+      "function": "solve_coefficients",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 0.239774648,
+      "cumulative_seconds": 169.266772658
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 264,
+      "function": "get_index_dtype",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.212521692,
+      "cumulative_seconds": 0.32259398300000003
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.zeros>",
+      "primitive_calls": 4213,
+      "total_calls": 4213,
+      "self_seconds": 0.18815383500000002,
+      "cumulative_seconds": 0.18815383500000002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 788,
+      "function": "_matmul_dispatch",
+      "primitive_calls": 3542,
+      "total_calls": 3542,
+      "self_seconds": 0.167738709,
+      "cumulative_seconds": 136.387159257
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 345,
+      "function": "isscalarlike",
+      "primitive_calls": 3656,
+      "total_calls": 3656,
+      "self_seconds": 0.16711909800000002,
+      "cumulative_seconds": 0.31691072200000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 919,
+      "function": "__matmul__",
+      "primitive_calls": 3388,
+      "total_calls": 3388,
+      "self_seconds": 0.138381589,
+      "cumulative_seconds": 133.48314049
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 30,
+      "function": "__init__",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.12353390400000001,
+      "cumulative_seconds": 0.9842934010000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/numeric.py",
+      "line": 97,
+      "function": "zeros_like",
+      "primitive_calls": 709,
+      "total_calls": 709,
+      "self_seconds": 0.120040639,
+      "cumulative_seconds": 0.123251444
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "primitive_calls": 50995,
+      "total_calls": 50995,
+      "self_seconds": 0.088127591,
+      "cumulative_seconds": 0.182033727
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'ravel' of 'numpy.ndarray' objects>",
+      "primitive_calls": 8019,
+      "total_calls": 8019,
+      "self_seconds": 0.087119428,
+      "cumulative_seconds": 0.087119428
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method _abc._abc_instancecheck>",
+      "primitive_calls": 6210,
+      "total_calls": 6210,
+      "self_seconds": 0.084824781,
+      "cumulative_seconds": 0.085014328
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 138,
+      "function": "__init__",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.075244481,
+      "cumulative_seconds": 0.086086759
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 94,
+      "function": "ndim",
+      "primitive_calls": 5544,
+      "total_calls": 5544,
+      "self_seconds": 0.058718946,
+      "cumulative_seconds": 0.08323255800000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1175,
+      "function": "_with_data",
+      "primitive_calls": 210,
+      "total_calls": 210,
+      "self_seconds": 0.058653713,
+      "cumulative_seconds": 1.0735040550000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 21,
+      "function": "__init__",
+      "primitive_calls": 2594,
+      "total_calls": 2594,
+      "self_seconds": 0.05718770200000001,
+      "cumulative_seconds": 0.14327446100000002
+    }
+  ]
+}

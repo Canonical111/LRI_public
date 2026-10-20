@@ -1,0 +1,56 @@
+{
+ "status": "failed",
+ "requested": [
+  "z3_build_record",
+  "z15_plan_seed",
+  "z11_seeds_init",
+  "z6_ldd_absolute",
+  "z7_mem_env",
+  "z13_cleanup"
+ ],
+ "executed": [
+  "z3_build_record",
+  "z15_plan_seed",
+  "z11_seeds_init",
+  "z6_ldd_absolute",
+  "z7_mem_env",
+  "z13_cleanup"
+ ],
+ "tests": [
+  {
+   "test": "Z13_cleanup_kills_and_reaps_owned_processes_on_failure_fifo_and_detached_sessions",
+   "old_pattern_leaked": 1,
+   "runs_outliving_the_worker_session": 2,
+   "natives": 2
+  }
+ ],
+ "failed": [
+  {
+   "test": "z3_build_record",
+   "error": "AssertionError: non-test plan z3_0: exit 0, expected 1\nwarning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores\nwarning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions\nprojected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)\n",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3762, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3731, in <lambda>\n    TESTS+=(('z3_build_record',lambda c:test_build_record_required(c.E)),('z15_plan_seed',lambda c:test_plan_registers_seed(c.E)),\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3497, in test_build_record_required\n    d=E.td/f'z3_{n}';cp=N.plan(d,seed=SEED+200,expect=1)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3472, in plan\n    if (cp.returncode==0)!=(expect==0):raise AssertionError(f'non-test plan {d.name}: exit {cp.returncode}, expected {expect}\\n{cp.stderr[-2500:]}')\nAssertionError: non-test plan z3_0: exit 0, expected 1\nwarning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores\nwarning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions\nprojected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)\n\n"
+  },
+  {
+   "test": "z15_plan_seed",
+   "error": "AssertionError: warning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores\nprojected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)\n",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3762, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3731, in <lambda>\n    TESTS+=(('z3_build_record',lambda c:test_build_record_required(c.E)),('z15_plan_seed',lambda c:test_plan_registers_seed(c.E)),\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3521, in test_plan_registers_seed\n    assert [e['source']for e in entries(SEED+210)]==[str(d.resolve())]and manifest(d)['seed_log']==str(log.resolve())and 'registered in'in cp.stderr,cp.stderr[-400:]\nAssertionError: warning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores\nprojected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)\n\n"
+  },
+  {
+   "test": "z11_seeds_init",
+   "error": "AssertionError: ('seeds.py init wrote the log while another writer held its lock', 0, True)",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3762, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3732, in <lambda>\n    ('z11_seeds_init',lambda c:test_seeds_init_locked(c.E)),('z6_ldd_absolute',lambda c:test_fingerprint_absolute_entries(c.E)),\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3562, in test_seeds_init_locked\n    assert not log.exists()and pr.poll()is None,('seeds.py init wrote the log while another writer held its lock',pr.poll(),log.exists())\nAssertionError: ('seeds.py init wrote the log while another writer held its lock', 0, True)\n"
+  },
+  {
+   "test": "z6_ldd_absolute",
+   "error": "AssertionError: ['libc.so.6', 'libgmp.so.10']",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3762, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3732, in <lambda>\n    ('z11_seeds_init',lambda c:test_seeds_init_locked(c.E)),('z6_ldd_absolute',lambda c:test_fingerprint_absolute_entries(c.E)),\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3598, in test_fingerprint_absolute_entries\n    assert set(f1['libraries'])=={str(pre),'libgmp.so.10','libc.so.6'}and f1['libraries'][str(pre)]['sha256']==digest(pre),sorted(f1['libraries'])\nAssertionError: ['libc.so.6', 'libgmp.so.10']\n"
+  },
+  {
+   "test": "z7_mem_env",
+   "error": "AssertionError: ({'SBATCH_MEM_PER_CPU': '2000'}, 64, 'C8: merge job refused before submission: its effective options break the merge contract: mem-per-cpu is set (2000); a merge takes its memory from C8_MERGE_MEM only; work array(s) 701 are live without a merge: once the problem is fixed, run slurm/resubmit.sh (it submits a merge that waits for them)\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3762, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3733, in <lambda>\n    ('z7_mem_env',lambda c:test_memory_env(c.E)),('z13_cleanup',lambda c:test_cleanup_harness(c.E)))\n  File \"<TMP>/scratchpad/fx3g2/base_a42cfb7_newtests/tests/unit_orchestration.py\", line 3630, in test_memory_env\n    S.queue();cp,calls=S.call('submit.sh',[t5],**envx);assert cp.returncode==0,(envx,cp.returncode,cp.stderr[-600:])\nAssertionError: ({'SBATCH_MEM_PER_CPU': '2000'}, 64, 'C8: merge job refused before submission: its effective options break the merge contract: mem-per-cpu is set (2000); a merge takes its memory from C8_MERGE_MEM only; work array(s) 701 are live without a merge: once the problem is fixed, run slurm/resubmit.sh (it submits a merge that waits for them)\\n')\n"
+  }
+ ],
+ "python": "3.10.11",
+ "platform": "darwin"
+}

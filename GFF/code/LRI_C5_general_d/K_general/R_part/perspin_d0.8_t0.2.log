@@ -1,0 +1,18 @@
+d 0.8 q 0.2 tau 0.2
+  l 0 t (0.31 + 0.11j) mode-check rel err 1.85e-8
+  l 0 t (-0.42 - 0.07j) mode-check rel err 6.44e-8
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/check_perspin.py", line 82, in <module>
+    lhs = sum(rho(k, q, tau) * c[k] for k in c)
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/check_perspin.py", line 82, in <genexpr>
+    lhs = sum(rho(k, q, tau) * c[k] for k in c)
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/check_perspin.py", line 52, in rho
+    r0 = (2j * pi * k - pi * (3 * mp.cot(pi * q) + mp.cot(pi * (tau - q)))) / (pi ** 2 * mp.sin(pi * q) ** 3 * mp.sin(pi * (tau - q)))
+  File "<HOME>/mambaforge/envs/sage/lib/python3.10/site-packages/mpmath/ctx_mp_python.py", line 1023, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+  File "<HOME>/mambaforge/envs/sage/lib/python3.10/site-packages/mpmath/functions/functions.py", line 94, in cot
+    def cot(ctx, z): return ctx.one / ctx.tan(z)
+  File "<string>", line 7, in __div__
+  File "<HOME>/mambaforge/envs/sage/lib/python3.10/site-packages/mpmath/libmp/libmpf.py", line 960, in mpf_div
+    raise ZeroDivisionError
+ZeroDivisionError

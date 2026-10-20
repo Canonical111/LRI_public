@@ -1,0 +1,19 @@
+# replay_prod.py output on the exported tree: symmetry, AMD EPYC 7532 (job 574973), Python 3.12.9, numpy 2.3.5, mpmath 1.4.1; 2026-10-14
+PASS  p2.prod.records     41 records, 0 self-hash failures
+                          expected: 41 lri-coeff-v1 records, sha256 = sha256(canonical payload)  [exact]
+PASS  p2.prod.campaigns   3 campaign manifests, 3 self-hash and source digest OK
+                          expected: 3 self-hashed campaign manifests (check_small_symmetry, prod1_symmetry, prod2_expanse)  [exact]
+PASS  p2.prod.source      source digest 550e9266d37cdb87...; equal in 41/41 records
+                          expected: 550e9266d37cdb87... (storage.source_digest of src/lri_coeff)  [exact]
+PASS  p2.prod.tables      20 table rows, 0 mismatches
+                          expected: coefficients.csv rows = records (C0..C8 exact, identity, source digest)  [exact]
+PASS  p2.prod.cited       prod1_symmetry/coefficients.csv: d86743c1e259...; reference/lri_d2_perturbative_C8/results/coefficients_C0_C8.csv: ee72158e2d98...
+                          expected: d86743c1..., ee72158e... (cited by HT/data/HT_2d/pert_crosscheck)  [sha256]
+PASS  p2.prod.lprod       raw, consistent L = 2..34; literal L = 2..14
+                          expected: 34 (\HTpTwoLprod)  [exact]
+PASS  p2.prod.degree      degree [8]; C0..C8 in every record
+                          expected: eighth order  [exact]
+PASS  p2.prod.validation  symmetry job 571623: passed, expanse job 54765932: passed
+                          expected: release validated on symmetry (571623) and Expanse (54765932): tests + L = 22 replay  [receipts]
+
+8/8 PASS

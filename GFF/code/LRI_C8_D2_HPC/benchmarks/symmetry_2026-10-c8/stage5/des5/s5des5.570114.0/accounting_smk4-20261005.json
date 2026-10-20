@@ -1,0 +1,71 @@
+{
+  "schema": "c8-d2-accounting-1",
+  "schema_prefix": "c8-d2",
+  "ledger_schema": "c8-d2-ledger-1",
+  "campaign": "<SCRATCH>/c8-d2/smk4-20261005",
+  "manifest_sha256": "57f05a10fead75f41df5ec4e50512364c7eb4fd00b5c2dc0c9f975e7496702c0",
+  "derived_utc": "2026-10-05T12:18:55Z",
+  "ledger_jobs": 3,
+  "sacct_records": 3,
+  "jobs_without_sacct_record": [],
+  "records": [
+    {
+      "jobid_raw": "570061",
+      "jobid": "570061",
+      "elapsed": 32,
+      "alloc_cpus": 8,
+      "nodelist": "<NODE>",
+      "state": "COMPLETED",
+      "partition": "sharedq",
+      "role": "plan",
+      "threads_per_core": 2,
+      "physical_cores": 4.0,
+      "core_seconds": 128.0
+    },
+    {
+      "jobid_raw": "570083",
+      "jobid": "570083",
+      "elapsed": 4967,
+      "alloc_cpus": 64,
+      "nodelist": "<NODE>",
+      "state": "COMPLETED",
+      "partition": "amdq",
+      "role": "lane",
+      "threads_per_core": 1,
+      "physical_cores": 64.0,
+      "core_seconds": 317888.0
+    },
+    {
+      "jobid_raw": "570084",
+      "jobid": "570084",
+      "elapsed": 6,
+      "alloc_cpus": 64,
+      "nodelist": "<NODE>",
+      "state": "COMPLETED",
+      "partition": "amdq",
+      "role": "merge",
+      "threads_per_core": 1,
+      "physical_cores": 64.0,
+      "core_seconds": 384.0
+    }
+  ],
+  "complete": true,
+  "incomplete": [],
+  "malformed_sacct_lines": [],
+  "core_hours_by_role": {
+    "lane": 88.30222222222223,
+    "merge": 0.10666666666666667,
+    "plan": 0.035555555555555556
+  },
+  "hours_are": "exact",
+  "allocated_core_hours": 88.44444444444444,
+  "work_core_hours": 88.30222222222223,
+  "overhead_core_hours": 0.14222222222222222,
+  "busy_thread_core_hours": 80.76165548935093,
+  "busy_source": "merged.json thread_seconds_sum",
+  "eta_node": 0.9146050173698389,
+  "eta_node_unavailable": null,
+  "checkpoints_with_slurm_id": 587,
+  "unaccounted_local_checkpoints": 0,
+  "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}

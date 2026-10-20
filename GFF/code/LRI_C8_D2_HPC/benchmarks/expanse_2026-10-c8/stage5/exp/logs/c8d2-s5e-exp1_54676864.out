@@ -1,0 +1,115 @@
+job 54676864 on <NODE> partition debug at 2026-10-05T02:05:54-07:00; package <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5; packs <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs; evidence <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1.54676864.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+NUMA node(s):        8
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+TMPDIR /scratch/<USER>/job_54676864/tmp
+== 2026-10-05T02:05:54-07:00 1. re-hash the L8 packs against inputs/manifest.json, then hard-link
+{
+ "free": {
+  "source": "<SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs/free_L8.pack",
+  "bytes": 6093071533,
+  "inode": 162135497701883868,
+  "sha256": "e5dd7271ad074a6c4373c1952c705b86d660b753f4771416f47ee6a4d6f69017",
+  "manifest": "e5dd7271ad074a6c4373c1952c705b86d660b753f4771416f47ee6a4d6f69017",
+  "equal": true
+ },
+ "power": {
+  "source": "<SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs/power_L8.pack",
+  "bytes": 1402876509,
+  "inode": 162135497701883869,
+  "sha256": "3d77d0c4e222779e767420a3a733970030007f6d7fe5bfb8d7b79f7ed44c1899",
+  "manifest": "3d77d0c4e222779e767420a3a733970030007f6d7fe5bfb8d7b79f7ed44c1899",
+  "equal": true
+ }
+}
+== 2026-10-05T02:06:05-07:00 2. make && make gmp; make c7ref; make inspect
+builds in 33 s
+99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf  bin/c8d2_decimal
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+== 2026-10-05T02:06:38-07:00 3. checks: BOOST_LIB_VERSION 1_77, executables against the final default build
+{
+ "executables": {
+  "bin/c8d2_decimal": {
+   "sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "expected": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "expected": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  },
+  "bin/c8d2_inspect": {
+   "sha256": "63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002",
+   "expected": "63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002",
+   "identical": true
+  },
+  "bin/ref/c7d2_decimal": {
+   "sha256": "4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf",
+   "expected": "4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf",
+   "identical": true
+  },
+  "bin/ref/c7d2_gmp": {
+   "sha256": "6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52",
+   "expected": "6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52",
+   "identical": true
+  }
+ },
+ "BOOST_LIB_VERSION": {
+  "bin/c8d2_decimal.build.json": "1_77",
+  "bin/c8d2_gmp.build.json": "1_77",
+  "bin/ref/c7d2_decimal.build.json": "1_77",
+  "bin/ref/c7d2_gmp.build.json": "1_77"
+ },
+ "boost_1_77_everywhere": true,
+ "identical": true,
+ "ok": true
+}
+== 2026-10-05T02:06:38-07:00 4. make test OUTPUT=<SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1.54676864.0/test
+== make test exit 2 after 322 s
+PASS bootstrap_regenerated_from_export_after_update_R18
+PASS run_private_runtime_failure_threads_offset_fingerprints
+PASS status_recovery_lines_max_blocks_recompute
+PASS duplicate_runs_verified_duplicate
+PASS merge_jobs_equals_serial_resume_idempotent_assembly_permissions
+PASS runtime_digest_rates_tail_tamper_and_foreign_checkpoint_rejected
+PASS merge_assemble_without_bin_and_tool_change_provenance
+PASS sigterm_cleanup_run_and_run_array
+PASS uri_reserved_path_concurrent_merge_collision_and_refusal
+PASS zero_task_groups_without_l8_packs
+PASS bounded_fan_in_passes_identical_and_refusal
+PASS merge_phase2_resumes_from_complete_runs_after_interrupt
+PASS merge_cached_runs_verified_rebuilt_on_tamper_O01_multiblock_phase1_spills_O02
+PASS recovery_plan_and_cli
+PASS slurm_arrays_recovery_refusals_windows_status_lines_memory
+PASS sequential_repeats_submit_once
+PASS time_policy_unlimited_and_finite
+PASS submission_lock_and_percent_escape
+PASS lane_shapes_timeleft_memory_guard_class_factor
+PASS p4_defaults_plan_sizing_and_lane_shapes
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676864/tmp/c8d2_orch_zu4erbky/lanes')) failed (64):
+    if check and cp.returncode:raise AssertionError(f'{script} {args} failed ({cp.returncode}):\n{cp.stderr[-3000:]}\n{cp.stdout[-1000:]}')
+AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676864/tmp/c8d2_orch_zu4erbky/lanes')) failed (64):
+PASS lane_scan_cost_bounded_and_generations
+PASS done_markers_hints_rebuild_stale_view_claim_holder_not_evidence
+PASS lane_submission_merge_replacement_running_merge_lanes0_memory_mixed_mode_uid_snapshot
+PASS lane_drill_mode_shapes_and_refusals_effective_options_no_exclusive_directive
+PASS admission_h7er_superseded_merges_site_lock_amd_pool_cap
+PASS admission_squeue_job_names_with_pipes_counted_unparsable_line_refused
+PASS submission_roles_merge_keeps_overrides_admission_and_ledger_per_role_O04
+PASS unverified_job_stops_the_submission_recovery_waits_on_every_live_worker_O07
+PASS superseded_merge_cancelled_only_while_pending_by_the_scheduler_O08
+PASS ledger_register_once_accounting_attempts_physical_cores_unknown_allocation_incomplete_fails_closed
+PASS frozen_rate_maps_validation_identity_staging_checkpoints_native_D15
+PASS staging_members_only_runs_equal_whole_pack_refused
+PASS sobol_export_checks_all_order8_shapes
+PASS per_claim_reads_bounded_platform_contract_fingerprint_bytes
+PASS drivers_only_refuses_unknown_and_empty_selections_vendored_isolated_records_early_stops
+make[1]: *** [Makefile:234: test-python] Error 1
+make: *** [Makefile:254: test] Error 2
+executables unchanged by make test
+finished 2026-10-05T02:12:02-07:00, status 1

@@ -1,0 +1,63 @@
+PASS Stage 2b: the L8 packs are present (make link-l8 STORE=$C8_STORE) or C8_ALLOW_NO_L8=1 (the Mac)
+PASS make inputs (prepare_inputs.py build) runs into a scratch directory
+PASS the generated set equals the tracked inputs (23 pinned files and the manifest; the L8 packs are not generated here)
+PASS the Stage-2b regeneration ran in 2b-carry mode, the L8 rows re-derived from the packs
+PASS every regenerated file is byte-identical to the package's
+PASS no stale file in inputs/ (the C7(3) gamma_d3_7.txt and primitive_reference.json are gone)
+PASS prepare_inputs.py verify accepts the Stage-2b inputs with the L8 packs (nothing skipped, no test-only reason)
+PASS manifest: schema c8-d3-hpc-inputs-1, dimension 3, order 8, epsilon 2s-3
+PASS manifest: pins exactly the 25 input files (2 low-loop, 2 order-7, the inventory, 12 packs L3-L8, selection.json, h1/ and d3/), each at its sha256
+PASS manifest: the L3-L6 packs at the sha256 of LRI_C7_D3_HPC@a6ce987; the L7 packs (complete) differ
+PASS manifest: the order-7 files at a6ce987's sha256 (3dddb802..., d5008ca0...)
+PASS A-IN-3: counts L3-L6 as C7(3), L7 2,441 / 709, L8 16,064 / 4,336 (24,173 kernels)
+PASS A-IN-3 / A-IN-4: l7_complete and l8_present true; inspect_complete true exactly when inspect/inspect.json covers all 24,173 kernels; the H1 pin is the HANDOFF's (46341a3c...)
+PASS A-IN-3 / A.2 step 6: the Stage-2b chain (MANIFEST_d3 -> SHA256SUMS -> MEMBERS_d3.sha256 and the rate audits; H1 MANIFEST -> SHA256SUMS -> selection.json) ends at the two pins; selection.json has H1's counts and primitives (44 at L7, 248 at L8)
+PASS manifest: the vendored HANDOFF and file pins equal tools/VENDORED.json and the HANDOFF (A-ASM-1(b))
+PASS manifest: reference_manifest_sha256 is reference/DELIVERY_MANIFEST.json's
+PASS A-IN-1: make inputs ran the vendored prepare_low8.py --d 3 in compare mode with the fixture LRI_ROOT: exit 0, three files identical
+PASS A-IN-1: inputs/two_loop.json is byte-equal to vendor/c8_assembly/inputs_d3/two_loop.json at the HANDOFF sha256 6c31bf7f...
+PASS A-IN-1: inputs/gamma_d3_8.txt is byte-equal to vendor/c8_assembly/inputs_d3/gamma_d3_8.txt at the HANDOFF sha256 f868fbe2...
+PASS A-IN-1: gamma_d3_8.txt has 7 rows of 9 tokens with labels 6..0
+PASS A-IN-1: rows L = 2..7 repeat tokens 2..8 (norm, l_0..l_5) of inputs/order7/gamma_d3_7.txt
+PASS A-IN-1: the L = 8 norm equals -2 Gamma(3/2)^8 / Gamma(3/4)^16 to 60 digits
+PASS A-IN-2: B2 lengths 7 / 6 / 5 (order 8, order 7, historical), order-8 [:6] string-equal to order 7
+PASS A-IN-2: gen3/check_dimension8.py on the package inputs: (ii) counts 6, 5, 5, 7, 7 within 1e-46 / 1e-50, (iii) 42 gamma comparisons within 1e-46, (iv) -16 pi / 15
+PASS inventory: keys inspect_complete, free, power; loops 3..8; inspect_complete = the manifest's
+PASS inventory: every row has the PLAN B fields in order; members contiguous, at their sha256, headers equal to the row (id, wa, wb, M, T); cost = max(1, M T); s_G = 12 wb / wa; inspect fields from inspect/inspect.json (else null); every L7/L8 row at its MEMBERS_d3.sha256 hash and the rate audit's double_lift; the C7(3) L7 members in id order are a6ce987's L7 pack
+PASS inventory: rows equal LRI_C7_D3_HPC@a6ce987's on id, primitive, offset, length, sha256, cost, monomials, terms (L3-L6; the C7(3) L7 rows apart from the offset)
+PASS gate 6 (L <= 7): the C7(3) members, with free/L2/G0.txt, hash to gen3/pins/PINS.json's C7(3) payload digest
+PASS inventory: primitives 1 / 1 / 3 / 10 / 44 (free L3..L7), 248 at L8 (selection.json's), none in the power sector
+PASS A-IN-3: L7 = C7(3)'s kernels (s_G != 4) and the 143 + 119 new s_G = 4 kernels; L8 s_G != 4; the L7 and L8 ids are selection.json's
+PASS double_lift: prepare_inputs.raw_valuations equals gen3/g3common.d3_rates (all L3-L5, every 25th L6, the two smallest C7(3) L7 kernels per sector and two power-L7 double-lift kernels, the two smallest new L7 kernels per sector) and the rows' counts follow from it; at L8 the numpy count equals the row (= the C++ rate audit) on the 2 smallest kernels per sector
+PASS double_lift: the C7(3) kernels: power L7 106 subsets in 42 kernels (Stage 1a, RECON:1346); none in the free sector
+PASS A-IN-3: tests/fixtures/inputs_mini/ (its four files; the package's L3-L7 rows and pins; the 8 smallest L8 kernels per sector with the package's fields, contiguous, at their inventory and MEMBERS_d3.sha256 hashes)
+PASS A-IN-3: inputs_mini verifies: materialized (its files copied, the package files hard-linked) it passes the gate as a test plan (test-only, nothing skipped), and a non-test plan on it is refused
+PASS A-IN-3: prepare_inputs.py mini regenerates tests/fixtures/inputs_mini/ byte for byte from the L8 packs
+PASS A-IN-4: the untouched Stage-2b inputs with the L8 packs pass the gate as a non-test plan (no test-only reason)
+PASS A-IN-4: a test plan passes the gate
+PASS A-IN-4: a one-byte change to 12 of the 23 pinned small inputs and packs (packs/free_L7.pack, the L8 analogue, among them) makes the gate refuse, test plan or not, naming the file
+PASS A-IN-4: a one-byte change to packs/free_L8.pack makes the gate refuse, naming it
+PASS A-IN-4: a missing pack is refused
+PASS A-IN-4 / A-ASM-1(b): a one-byte change to a vendored file (or the HANDOFF copy) makes the gate refuse, naming it
+PASS A-IN-4: the gate creates and changes nothing (the scratch package is as before, the restored files apart)
+PASS A-IN-4: a one-byte change to packs/free_L8.pack makes `production.py plan` (non-test) refuse before creating anything (no campaign directory, nothing beside it or in TMPDIR, the package unchanged)
+PASS A-IN-4: a non-test plan with a foreign C8_INPUTS is refused
+PASS A-IN-4: a test plan with a foreign C8_INPUTS passes, the foreign directory recorded as a test-only reason
+PASS A-IN-4: C8_INPUTS naming the package inputs/ (another spelling) is not foreign
+PASS A-IN-4 / HD7: a C7(3) inputs manifest is refused naming LRI_C7_D3_HPC@a6ce987
+PASS A-IN-4 / HD7: a dimension-2 inputs manifest is refused
+PASS S4-003: prepare_inputs.inventory_complete (what a non-test plan now needs) accepts the package inputs: L7 and L8 exactly selection.json's kernels at their MEMBERS_d3.sha256 hashes, C7(3)'s L3-L6, the manifest's counts
+PASS R2-S1-03: a duplicated graph id with the counts, the packs and their pins kept and only the inventory hash refreshed (free L3: G6 replaced by a second G3 row, the finding's case; power L7) is refused by inventory_complete, naming the repeated id
+PASS S4-003: inputs_mini installed as a package's own inputs/: its test_inputs marker makes a non-test plan test-only
+PASS S4-003: the same without the marker: a non-test plan is refused, its inventory incomplete against selection.json (8 L8 kernels per sector); a test plan still passes
+PASS R2-S1-02 on a real site (symmetry): no synthetic or unpinned manifest variant, seam or not, gives a non-test plan (each is refused or test-only); the seam-honoured case is the Mac's
+PASS S4-003: prepare_inputs.py mini --out and mini-materialize --to refuse a destination equal to, inside, containing or symlinked to the package inputs/ before reading or writing anything
+PASS R2-S1-05: `prepare_inputs.py mini` with its default destination symlinked to the package inputs, with an --out whose packs/ links into them or holding a temporary path linked into them, and `mini-materialize` into a destination whose packs/ or manifest.json links into them, each refuse before writing anything; every byte of the package inputs is unchanged
+PASS R2-S1-05: mini on a fresh --out publishes exactly the four inputs_mini files (equal to the committed fixture) through its private staging directory, which it removes; a second run changes nothing
+PASS verify: a missing pinned L8 pack is refused, skipped (SKIPPED, test-only) only with C8_ALLOW_NO_L8=1, and a present but different one is refused even then (synthetic manifest)
+PASS transitional: prepare_inputs.prepare() (the unported C7(3) planner's call) refuses the C8(3) inputs
+PASS A-IN-4 fixed input state (l7_complete and l8_present false, no pin or row above L7, whatever the live stage): the package's own gate passes it, skips nothing and makes a non-test plan test-only for l7_complete
+PASS A-IN-4 production.py plan [wired]: the untouched fixed state (l7_complete: false), a non-test plan request: accepted as a test-only plan (manifest test_only true)
+PASS A-IN-4 production.py plan [wired]: a one-byte change to inputs/packs/free_L7.pack: refused naming free_L7.pack; no campaign directory, nothing beside it or in TMPDIR, the scratch package unchanged
+PASS A-IN-4 production.py plan [wired]: a one-byte change to vendor/c8_assembly/order8_assembly.py: refused naming order8_assembly.py; no campaign directory, nothing beside it or in TMPDIR, the scratch package unchanged
+PASS A-IN-4 production.py plan [wired]: a non-test plan with a foreign C8_INPUTS (a byte-identical copy elsewhere): refused naming non-test plan reads only the package inputs; no campaign directory, nothing beside it or in TMPDIR, the scratch package unchanged

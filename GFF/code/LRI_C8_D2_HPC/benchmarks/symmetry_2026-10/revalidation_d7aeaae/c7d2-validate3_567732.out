@@ -1,0 +1,27 @@
+host <NODE> job 567732 2026-10-02T02:53:50-04:00
+Model name:                              AMD EPYC 7543 32-Core Processor
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Python 3.11.3
+=== D1 start 2026-10-02T02:53:50-04:00
+e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5  bin/c7d2_decimal
+7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3  bin/c7d2_gmp
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5  bin/c7d2_decimal
+7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3  bin/c7d2_gmp
+D1_IDENTICAL
+=== A-L18 start 2026-10-02T02:54:08-04:00
+#define BOOST_LIB_VERSION "1_86"
+base decimal: compiles
+base gmp: compiles
+final decimal: compiles
+final gmp: compiles
+=== make_test start 2026-10-02T02:54:25-04:00
+make test PASS
+=== make_test_full start 2026-10-02T02:56:43-04:00
+make test-full PASS
+=== strict start 2026-10-02T02:58:50-04:00
+strict PASS
+=== done 2026-10-02T02:58:58-04:00

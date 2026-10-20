@@ -1,0 +1,118 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ASM-7 verify_result_tamper",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "an untouched result verifies",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "its test-only form verifies",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "rejects a tampered C8_full (relative 1e-6)",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a tampered coefficient",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a tampered loop-3 mean (the stored coefficients no longer follow)",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a tampered stored pull",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a forged null-row flag",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a tampered gate value",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a deleted gates block",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a deleted gate inside the gates block",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects an added top-level key",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects an added key inside a block",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects error_by_loop no longer summing to Var(C8)",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a test-only result with a physical value at the top level",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "rejects a tampered test-only partial value",
+   "passed": true,
+   "detail": "accepted"
+  },
+  {
+   "check": "the coverage guard accepts the complete campaign (24 groups)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the coverage guard refuses a campaign with one L8 group removed",
+   "passed": true,
+   "detail": "coverage: groups missing [('a', 'free', 8)], unexpected []"
+  },
+  {
+   "check": "the coverage guard refuses a group with one graph removed",
+   "passed": true,
+   "detail": "coverage: group b_power_L8 has 7 graphs, the inventory 8"
+  },
+  {
+   "check": "the coverage guard refuses a graph with no points",
+   "passed": true,
+   "detail": "coverage: group a_power_L5 has a graph with no points"
+  },
+  {
+   "check": "the coverage guard accepts counts equal to the bundle counts x s",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the coverage guard refuses counts that are not the bundle counts x s",
+   "passed": true,
+   "detail": "coverage: group a_free_L3 counts differ from the bundle counts x s"
+  },
+  {
+   "check": "the coverage guard refuses a bundle counts file altered after the freeze (its digest)",
+   "passed": true,
+   "detail": "coverage: counts/a_free_L8.txt differs from the digest in design_meta.json"
+  }
+ ]
+}

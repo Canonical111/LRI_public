@@ -1,0 +1,243 @@
+{
+  "implementation": "original",
+  "task": "solve",
+  "L": 12,
+  "x": 0.25,
+  "nz": 16,
+  "backend": "tensor",
+  "threads": 1,
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "numba": "0.65.1",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "sparse_parallel_min_work": "250000",
+  "source_files": {
+    "ht2d/__init__.py": "92b28fc357ccc950ad928864822c2b3b9ab3f960c26cae06fef50ab113344e97",
+    "ht2d/basis.py": "604cc1b5b91fa62a70197d0a29f50a0b0636506436f54e8233cf3da7c8d59e1f",
+    "ht2d/density.py": "38b91b219075e754f47a4f8200c40a6f8d895df1b46f0ae1d964bf3bc9b094a2",
+    "ht2d/kernels.py": "86dc99d6e54615677e160de52808fae933c14d26e2e2df167648a48bbde87f53",
+    "ht2d/local.py": "9be68cecdecade294880133dad613848aa2d3198a362b9aec3a243def49797ba",
+    "ht2d/operators.py": "26d097ec5c299ef9fac3b86b3541ce65c4362813b04c4cc05c718fb4cb1b25d0",
+    "ht2d/solver.py": "ddc946389e5074e05b52be82f6fdd78749b12ceb9ef020870abb61280ea40abc",
+    "ht2d/window.py": "c15b87eb7b7e7d56869674be9f077cdd949062f7d1df3f58645178787e77a1ed"
+  },
+  "result": {
+    "spacetime_dimension": 2,
+    "s": 1.5,
+    "delta": 0.25,
+    "epsilon": 1.0,
+    "Delta_thermal": 0.9734278782403416,
+    "Delta_sigma_measured": 0.24999999999995248,
+    "Delta_shadow_measured": 1.7500000000001203,
+    "even_gaps": [
+      0.0,
+      0.9734278782403416,
+      2.3749012897729664,
+      2.8853877018819496,
+      2.972671371671699
+    ],
+    "odd_gaps": [
+      0.24999999999995248,
+      1.7500000000001203,
+      2.2815968318657136,
+      3.23357231831453,
+      3.744539169103546
+    ],
+    "bath_cut": 12,
+    "nz_per_parity": 16,
+    "auxiliary_oscillator_size": 192,
+    "theta": [
+      1.49427539136555,
+      -1.880909731843955
+    ],
+    "dimension": 27328,
+    "tuning_residual": 1.2034817586936697e-13,
+    "local_retained_edge_weights": [
+      2.1542251422864534e-10,
+      6.963066693163095e-10,
+      3.404476617764639e-09,
+      1.7737254211940955e-08
+    ],
+    "bath_edge_weights": [
+      0.012374164985371763,
+      0.013472047048050068,
+      0.013318459209837725,
+      0.013929607250232425
+    ],
+    "seconds": 32.20646676499996,
+    "spectral_evaluations": 7,
+    "history": [
+      {
+        "iteration": 0,
+        "theta": [
+          -1.4799630541395028,
+          -1.9942176087406307
+        ],
+        "residual": 0.3226736262763885,
+        "jacobian_condition": 8.179089385357855
+      },
+      {
+        "iteration": 1,
+        "theta": [
+          2.7212901981369515,
+          -1.826278732901711
+        ],
+        "residual": 0.1506936831387118,
+        "jacobian_condition": 53.46846293760053
+      },
+      {
+        "iteration": 2,
+        "theta": [
+          1.441958843639506,
+          -1.8852396872425736
+        ],
+        "residual": 0.00410381164561735,
+        "jacobian_condition": 35.11985858845926
+      },
+      {
+        "iteration": 3,
+        "theta": [
+          1.4941166667938761,
+          -1.8809109917687048
+        ],
+        "residual": 2.6371942369429746e-05,
+        "jacobian_condition": 35.80208512475329
+      },
+      {
+        "iteration": 4,
+        "theta": [
+          1.494275394292713,
+          -1.8809097316874404
+        ],
+        "residual": 3.2922486958852915e-10,
+        "jacobian_condition": 35.80382388231675
+      },
+      {
+        "iteration": 5,
+        "theta": [
+          1.49427539136555,
+          -1.880909731843955
+        ],
+        "residual": 1.0125233984581428e-13
+      }
+    ],
+    "regulator": "Circle bath total N<=L times local basis; J=0 and spatial reflection even for primaries",
+    "scope": "Finite-cutoff Hamiltonian plus the opt-in full-vacuum window shift D(N); no other matching.",
+    "window": "vacuum",
+    "solver": "factorized operator; fixed density span; full-density Hellmann-Feynman/window Jacobian",
+    "backend": "tensor",
+    "timings": {
+      "basis": 0.04693664600017655,
+      "bath_operators": 0.04251027999998769,
+      "local": 0.0050432460000138235,
+      "eigensolver": 32.064038799000855,
+      "jacobian": 0.024290859000075216
+    },
+    "matvec_count": 12297,
+    "matvec_seconds": 25.731564812975876,
+    "operator_storage_bytes": 3541988,
+    "window_correction": {
+      "prescription": "full-vacuum window, D(N)=Ev(cut)-Ev(cut-N)",
+      "mode": "consistent",
+      "D_by_N": {
+        "0": 0.0,
+        "1": -0.28689277523086765,
+        "2": -0.28689277523086765,
+        "3": -0.5478020580650984,
+        "4": -0.5478020580650984,
+        "5": -0.7751930364057292,
+        "6": -0.7751930364057292,
+        "7": -0.9578343369796916,
+        "8": -0.9578343369796916,
+        "9": -1.0982480557465997,
+        "10": -1.0982480557465997,
+        "11": -1.2827916748943358,
+        "12": -1.2827916748943358
+      },
+      "Ev": {
+        "0": 0.0,
+        "2": -0.18454361914773607,
+        "4": -0.32495733791464415,
+        "6": -0.5075986384886065,
+        "8": -0.7349896168292374,
+        "10": -0.9958988996634681,
+        "12": -1.2827916748943358
+      },
+      "sublevel_iterations": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 1
+      },
+      "sublevel_fixed_point_residuals": {
+        "2": 7.827072323607354e-15,
+        "4": 2.0539125955565396e-15,
+        "6": 2.375877272697835e-14,
+        "8": 2.220446049250313e-16,
+        "10": 2.220446049250313e-16
+      },
+      "top_iterations": 1,
+      "top_fixed_point_residual": 1.270095140171179e-13,
+      "fixed_point_tolerance": 1e-12,
+      "seconds": 1.5591809689999536,
+      "setup_seconds": 0.029705425999964064,
+      "operator_storage_bytes": 1112220,
+      "cumulative_seconds": 24.11741283900028
+    },
+    "r": 5.935497586850387,
+    "g": 10.884664791236965,
+    "A": 0.5556651912319044,
+    "local_scale": 0.6776085235126684,
+    "zero_basis_scale": 1.0,
+    "local_auxiliary_residual": 2.2507853380280753e-13,
+    "local_auxiliary_residual_scope": "eigensolve inside the fixed local span; not its truncation error",
+    "local_edge_max": 0.0036917204680530684,
+    "local_basis_mode": "density",
+    "max_eigenvector_residual": 9.993456901188396e-13,
+    "max_orthogonality_residual": 9.103828801926284e-15,
+    "local_retained_edge_weights_scope": "top two eigenstates inside the retained span; not discarded density weight"
+  },
+  "operators": [
+    {
+      "L": 2,
+      "matvecs": 960,
+      "matvec_seconds": 0.0007067649999044079,
+      "operator_bytes": 764
+    },
+    {
+      "L": 4,
+      "matvecs": 3200,
+      "matvec_seconds": 0.004030900000316251,
+      "operator_bytes": 6316
+    },
+    {
+      "L": 6,
+      "matvecs": 9920,
+      "matvec_seconds": 0.05962952800018684,
+      "operator_bytes": 38398
+    },
+    {
+      "L": 8,
+      "matvecs": 2560,
+      "matvec_seconds": 0.2954129930003546,
+      "operator_bytes": 195206
+    },
+    {
+      "L": 10,
+      "matvecs": 3021,
+      "matvec_seconds": 1.4740167619945623,
+      "operator_bytes": 871536
+    },
+    {
+      "L": 12,
+      "matvecs": 12297,
+      "matvec_seconds": 25.731564812975876,
+      "operator_bytes": 3541988
+    }
+  ],
+  "elapsed_seconds": 32.30598803199996,
+  "peak_rss_kib": 209684,
+  "scope": "Finite implementation benchmark; setup included, imports and warmup excluded. No continuum accuracy claim."
+}

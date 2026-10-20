@@ -1,0 +1,186 @@
+% s03_d1.tex (HT1dPert): results in d = 1.
+\section{Results in one dimension}\label{htp:d1:sec}
+
+\subsection{Computations and data}\label{htp:d1:sec:data}
+Table~\ref{htp:d1:tab:data} lists the computations behind the $d=1$ numbers. All of them use the Hamiltonian
+\eqref{htp:eq:H}, the cutoff \eqref{htp:eq:Lambda} and the tuning \eqref{htp:eq:tune}; they differ in the order reached, in how the
+$\eps$ series is evaluated, and in the window. The eighth order needs, besides third-order trial states, the scalar
+$\langle b_4,R_pb_4\rangle$, with $b_4$ the fourth-order source vector of the reference state $|p\rangle$ and $R_p$ its
+reduced resolvent. Production runs used SDSC Expanse and the symmetry cluster of the Perimeter Institute.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{3.6cm}p{3.6cm}p{7.6cm}@{}}
+\toprule
+computation & reach & method, where \\
+\midrule
+HT solver, thermal & $C_0$--$C_7$, every even $\Lambda\le\HTpLamThermal$ & Rayleigh quotient of third-order trial states in the Fock basis (up to $\HTpStatesMax$ states at $\Lambda=\HTpLamThermal$); Expanse, 111 new cutoffs; \code{code/lri\_hpc\_Hamitonian} \\
+HT solver, $\phi^6$ gap & $\Delta_6$ to $\eps^5$ for $\Lambda\le160$, to $\eps^3$ for $\Lambda\le832$ & same solver; exponents $\omega_k$ of Eq.~\eqref{htp:eq:omega} \\
+eighth-order code & $C_8$, every even $\Lambda\le\HTpLamCeight$ & third-order trial states plus $\langle b_4,R_pb_4\rangle$; raw and isolated $g^2D$ window; symmetry; \code{code/lri\_c8\_hpc} \\
+window engines & $\Delta C_4$, $\Delta C_5$ exact, $\Lambda\le152$ & two independent engines plus closed-form sums over the states at the top of the window; \code{code/lri\_hpc\_Hamitonian/analysis}, \code{code/lri\_eh\_hpc} \\
+complete-window solver & $C_0$--$C_8$ with $D^{\rm conn}$, every even $\Lambda\le\HTpWinLamEight$ & numerical, eighth order; beyond $\HTpWinLamEight$ a continuation validated blind (Section~\ref{htp:d1:sec:extrap}); symmetry; \code{code/lri\_d1\_full\_coefficient\_flow} \\
+exact sums & $C_2$--$C_4$ to $\Lambda=\HTpOneLexact$, $C_5$ to $\Lambda=\NOneCfiveLmax$, raw and $D^{\rm conn}$ & Rayleigh--Schr\"odinger summed over intermediate states; symmetry; \code{code/lri\_1d\_c4\_exact}, \code{code/lri\_1d\_c5\_exact} \\
+\bottomrule
+\end{tabular}
+\caption{The $d=1$ computations. Where they overlap they agree to $\HTpSTenMatch$ or better (Section~\ref{htp:sec:checks}).
+The eighth-order code also reproduces the saved records of its original version to $2.1\times10^{-8}$.}
+\label{htp:d1:tab:data}
+\end{table}
+
+\subsection{Raw coefficients and slow convergence}
+The tails are long. At $\Lambda=\HTpLamThermal$ the raw $C_4$ reaches only $\HTpRawFracFour$\% of its limit and the
+raw $C_7$ only $\HTpRawFracSeven$\%, and even at $\Lambda=\NOneCfiveLmax$ the exact
+$C_5^{\rm conn}(\NOneCfiveLmax)=\NOneCfiveFiveHundred$ is still far from $C_5=-731.14$. The tail
+model of Section~\ref{htp:sec:tails} therefore carries a large part of every limit. Every extrapolation of the raw
+truncation, with any of the bases A--F, gives a $C_4$ about $\HTpRawOffsetFour$\% below the exact value; the window
+explains this offset.
+
+\subsection{The window in one dimension}\label{htp:d1:sec:window}
+With $D^{\rm conn}$ added, the shift of the coefficients does not decay:
+\begin{equation}
+ C_4^{\rm conn}(\Lambda)-C_4^{\rm raw}(\Lambda)\simeq\HTpWinCfourInf+\frac{\log\Lambda}{17496},
+ \label{htp:eq:dC4}
+\end{equation}
+where $\HTpWinCfourInf=K+\eta_4$, with $K$ the finite part of the isolated $g^2D$ window and $\eta_4=0.0186910$ the
+limit of the remaining fourth-order shift. At $\Lambda=\HTpLamThermal$, $\Delta C_4=\HTpWinCfour$ and $\Delta
+C_5=\HTpWinCfive$. The exact sums follow $\Delta C_5$ to $\Lambda=\NOneCfiveLmax$, where it is $\NOneDCfiveFiveHundred$:
+the two $\log\Lambda$ terms of its pieces nearly cancel, and $\Delta C_5$ tends to a constant near $0.72$. Beyond
+$\eps^5$ the complete window is computed numerically to $\Lambda=\HTpWinLamEight$; there $\Delta C_6$, $\Delta C_7$,
+$\Delta C_8$ are \NOneDCSeventyTwo, respectively.
+
+\paragraph{Descendant spacings.} The spacings $v_n$ test the window without any continuum input
+(Table~\ref{htp:d1:tab:ident}). States are labeled by their particle number $P$ and level $\ell$; a sector is a pair
+$(P,\ell)$. The raw truncation gives $N_{\rm w}/54$ at $\eps^2$ and about $0.146\,N_{\rm w}$ at $\eps^3$. With
+$D^{\rm conn}$ the $\eps^2$ violation vanishes, and the $\eps^3$ one is within $\HTpIdentThree\,N_{\rm w}$ in the
+sectors with a single state; the degenerate block $P=2$, $\ell=2$ gives $+0.004$ to $+0.006\,N_{\rm w}$ over the fit
+models, and whether it vanishes is not settled. At $\eps^4$, $D^{\rm conn}$ removes $\HTpIdentFour$\% of the violation
+left by $g^2D$ alone. At $\eps^5$ the violation is consistent with zero within about $\pm(\HTpIdentFive)\,N_{\rm w}$,
+against $+2.3$ to $+2.8\,N_{\rm w}$ raw and $-1.3$ to $-1.6\,N_{\rm w}$ with $g^2D$ alone; the $\partial\phi$ residual is
+not converged.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}llll@{}}
+\toprule
+order & raw & $g^2D$ alone & with $D^{\rm conn}$ \\
+\midrule
+$[\eps^2]v_n$ & $N_{\rm w}/54$ & 0 & 0 \\
+$[\eps^3]v_n$ & $\approx0.146\,N_{\rm w}$ & $-N_{\rm w}/27$ & $|\cdot|\le\HTpIdentThree\,N_{\rm w}$ (single-state sectors) \\
+$[\eps^4]v_n$ & & $\approx-0.46\,N_{\rm w}$ & \HTpIdentFour\% of the $g^2D$ value removed \\
+$[\eps^5]v_n$ & $+2.3$ to $+2.8\,N_{\rm w}$ & $-1.3$ to $-1.6\,N_{\rm w}$ & $0$ within $\pm(\HTpIdentFive)\,N_{\rm w}$ \\
+\bottomrule
+\end{tabular}
+\caption{Violations of the descendant spacings in $d=1$, per missing shell $N_{\rm w}$ (Eq.~\eqref{htp:eq:window}). Values
+from $\eps^3$ on are extrapolated in $\Lambda$; ranges are spreads over fit models. The raw value at $\eps^4$ was not
+extrapolated. The $g^2D$ column and the $\eps^5$ raw value are from \code{analysis/DIAGNOSIS.md} of
+\code{lri\_hpc\_Hamitonian}.}
+\label{htp:d1:tab:ident}
+\end{table}
+
+\paragraph{Cutoff placement.} If the cutoff sits at $\Lambda=2m+\tfrac14$ or $2m+\tfrac12$, with $m$ an integer, the
+window of $\phi$ is empty, and raw HT satisfies $E(\partial\phi)-E(\phi)=1$ exactly through
+$\eps^3$ (to $10^{-14}$). At $\Lambda=2m+\tfrac14$ the $\eps^4$ spacing of $\partial\phi$ measures the part
+$\eta_4$ of the $C_4$ window that $g^2D$ leaves out, without extrapolating $C_4$: with $g^2D$ alone it should equal
+\begin{equation}
+ [\eps^4]\,v_1(\phi)=3\eta_4=0.0561 .
+ \label{htp:eq:phase}
+\end{equation}
+The fits give $\NOneGtwoDPhase$ (median), $12\%$ below this prediction, which lies just above the range of the fits.
+With $D^{\rm conn}$ a residual of about a tenth of $3\eta_4$, with the opposite sign, remains. The test thus confirms
+$\eta_4$ at the level of $12\%$.
+
+\subsection{Extrapolations of \texorpdfstring{$C_2$}{C2} to \texorpdfstring{$C_8$}{C8}}\label{htp:d1:sec:extrap}
+Table~\ref{htp:d1:tab:results} collects the $d=1$ results.
+
+\paragraph{$C_2$ and $C_3$.} The exact $C_2(\Lambda)$, $C_3(\Lambda)$ at every even $\Lambda\le\HTpOneLexact$ are fitted
+by a rule fixed before any fit was run: free intercept; for $C_2$ the bases $\Lambda^{-j/2}$, $j\le6$ and $j\le8$; for
+$C_3$ the bases $\{\Lambda^{-1/2},\Lambda^{-1/2}\log\Lambda,\Lambda^{-1},\Lambda^{-1}\log\Lambda,\Lambda^{-3/2},
+\Lambda^{-3/2}\log\Lambda,\Lambda^{-2}\}$ and the same with $\Lambda^{-2}\log\Lambda$, $\Lambda^{-5/2}$ added; lower
+cutoffs 100, 200, 400; the median of the six fits, with half their range. This gives $C_2=\HTpCtwoOne$
+($\delta=\HTpCtwoOneDev$) and $C_3=\HTpCthreeOne$ ($\delta=\HTpCthreeOneDev$). The same rule on the solver range
+$\Lambda\le118$ gives $\NOneCtwoSolver$ and $\NOneCthreeSolver$. Earlier drafts of the paper quoted, instead, the
+closest of twenty solver fits to the exact values; that selection used the exact values and is no longer used.
+
+\paragraph{$C_4$ from the solver.} With the complete window, the bases A--F at lower cutoffs 40--70 give
+$\NOneCfourAF$, all below the exact value. Two further extrapolations extend the range upward
+(\code{lri\_1d\_dconn\_refit}). The first is an ensemble of joint fits of $C_4$ to $C_8$ that share their tail
+parameters, kept when their residuals reach the noise floor of the data. The second is a model-independent
+extrapolation that fits a grid of tail sets and selects among them with rules calibrated on held-out cutoffs. The union of the three is $\NOneCfourSolver$. It lies below the exact $C_4$ and
+excludes it; its largest deviation is $\NOneCfourSolverDev$. The fit windows were chosen after the data were seen.
+
+\paragraph{$C_4$ from the exact sums.} With $C_4^{\rm conn}(\Lambda)$ to $\Lambda=\HTpOneLexact$, fits of the form
+$A+\sum c_{jk}\Lambda^{-j/2}\log^k\Lambda$ were frozen from the $\Lambda\le1000$ result before the $\Lambda=2000$ run
+existed, for several bases and lower cutoffs. In the basis L2 ($\Lambda^{-1/2}$ and $\Lambda^{-1}$ with $\log^{0,1,2}$,
+$\Lambda^{-3/2}$ with $\log^{0,1}$, and $\Lambda^{-2}$) they predict $C_4^{\rm conn}(2000)$ to $\NOneCfourBlind$, while
+fits without logarithms miss by up to $10^{-2}$. Which frozen fits to quote was decided after their intercepts had been
+compared with the exact $C_4$: basis L2, lower cutoffs 100, 200, 300, median and half-range. This gives
+$C_4=\HTpCfourOne$, $\HTpCfourOneDev$ from the exact value; the refit on all data gives $\NOneCfourRefit$ at lower
+cutoff 200. The quoted uncertainty is the half-range of these three fits only; fits with larger lower cutoffs have
+condition numbers above $10^{12}$ and scatter by up to $3\times10^{-3}$.
+
+\paragraph{$C_5$ from the solver.} The bases A--F miss $C_5$ by $\NOneCfiveAFmiss$, i.e.\ by up to $\NOneCfivePre$
+relative. Freeing the leading tail amplitudes (the coefficients of $\Lambda^{-1/2}$ and $\Lambda^{-1/2}\log\Lambda$ at
+orders 4 and 5) after the data were seen moves the misses to $\NOneCfiveFreedMiss$, and the ensemble of joint fits
+extends the range upward. The union is $\NOneCfiveSolver$; it contains the exact $C_5$, and its largest deviation is
+$\NOneCfiveSolverDev$. The fits that reach the exact $C_5$ need an effective $\omega_3$ of $\HTpOmegaThreeEff$, not the
+gap value $\HTpOmegaThree$; Section~\ref{htp:sec:caveats} discusses this.
+
+\paragraph{$C_5$ from the exact sums.}\label{htp:d1:sec:exact} The exact $C_5^{\rm conn}(\Lambda)$ to
+$\Lambda=\NOneCfiveLmax$ carries $\Lambda^{-1/2}\log^k\Lambda$ up to $k=3$. Frozen fits predict the unseen cutoffs to
+$\NOneCfiveBlindFour$ (records frozen at $\Lambda\le400$) and $\NOneCfiveBlindThree$ ($\Lambda\le320$). Their free
+intercepts, however, determine $C_5$ only to a few tenths: without the $\log^3$ term (basis L2) the intercept
+$\NOneCfiveFreeLtwo$ is biased; with it (basis M3, which adds $\Lambda^{-1/2}\log^3\Lambda$ to L2) the intercept is
+$\NOneCfiveFreeMthree$ at the lowest cutoff and unstable above. With the intercept fixed to the exact $C_5$, only the
+bases with $\log^3$ fit at the noise floor, and the fitted $\log^3$ coefficient is $\NOneCfiveTopLog$.
+Eq.~\eqref{htp:eq:toplog} predicts it from the $C_4$ data, $c_5=-\tfrac{\omega_1}{3}c_4=\NOneCfiveTopLogPred$. The relation
+\eqref{htp:eq:toplog} holds at $\eps^3$ to $\NOneTopLogThree$ and at $\eps^4$ to $\NOneTopLogFour$
+(Section~\ref{htp:sec:caveats}); the step from $c_4$ to $c_5$ itself is not tested independently. Fixing $c_5$ at this value
+and fitting the rest with a free intercept gives $\NOneCfiveConstrained$ for the three best-conditioned fits. A
+separately written fit of the same constrained model gives $C_5=\HTpCfiveOne$, the quoted determination. Its
+uncertainty is the spread over tail bases and fit windows, and the deviation from the exact value, $\HTpCfiveOneDev$,
+lies well inside it. This is post hoc: the constraint was adopted after free-intercept fits had left $C_5$ open to
+about $\pm0.3$, with the exact value known, and the selection thresholds of the first constrained fit were set after a
+run had printed the exact $C_5$.
+
+\paragraph{$C_6$, $C_7$ and $C_8$.} Beyond $\Lambda=\HTpWinLamEight$ an ensemble of fits to the computed shifts continues
+$\Delta C_6$, $\Delta C_7$ to $\Lambda=118$ and $\Delta C_8$ to $\Lambda=92$. The same rule, frozen on $\Lambda\le44$ before the data at $46\le\Lambda\le72$ existed, predicted those data within a tenth
+of its own uncertainty. The window changes the order-6 to order-8 extrapolations little; the spread of tail models
+dominates. The bases A--F, the ensemble of joint fits (16th to 84th percentiles) and the model-independent
+extrapolation give $C_6\in\HTpCsixOne$
+(at most $\HTpCsixOneDev$ from $C_6$) and $C_7\in\HTpCsevenOne$ (at most $\HTpCsevenOneDev$; the range includes the
+uncertainty of the continuation). For $C_8$ the eighth-order data to $\Lambda=\HTpLamCeight$ with the continued window
+are used, and the tail models are selected by their reproduction of $C_6$ and $C_7$: the selected estimators span
+$(\HTpCeightOneCalRange)\times10^6$, with central value $\HTpCeightOne$, $\HTpCeightOneDev$ from the reference and inside
+its uncertainty ($2\times10^{-3}$). Unselected tail models span $(\HTpCeightOneUncal)\times10^6$. This $C_8$ is calibrated
+on the diagrammatic $C_6$ and $C_7$ and is not an independent determination.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}cllp{6.5cm}@{}}
+\toprule
+order & HT & $\delta$ & source, status \\
+\midrule
+$C_2$ & $\HTpCtwoOne$ & $\HTpCtwoOneDev$ & exact sums, $\Lambda\le\HTpOneLexact$; rule fixed in advance \\
+$C_3$ & $\HTpCthreeOne$ & $\HTpCthreeOneDev$ & same \\
+$C_4$ & $\HTpCfourOne$ & $\HTpCfourOneDev$ & exact sums to $\Lambda=1000$, fits frozen before $\Lambda=2000$; choice of fits post hoc \\
+ & $\NOneCfourSolver$ & $\NOneCfourSolverDev$ & solver, $\Lambda\le\HTpLamThermal$, $D^{\rm conn}$; fit windows post hoc; excludes $C_4$ \\
+$C_5$ & $\HTpCfiveOne$ & $\HTpCfiveOneDev$ & exact sums to $\Lambda=\NOneCfiveLmax$, $\log^3$ tail fixed by Eq.~\eqref{htp:eq:toplog}; post hoc \\
+ & $\NOneCfiveSolver$ & $\NOneCfiveSolverDev$ & solver; leading tail freed post hoc (bases A--F alone: $\NOneCfivePre$) \\
+$C_6$ & $\HTpCsixOne$ & $\HTpCsixOneDev$ & solver plus complete window to $\HTpWinLamEight$; post hoc; spread of tail models \\
+$C_7$ & $\HTpCsevenOne$ & $\HTpCsevenOneDev$ & same \\
+$C_8$ & $\HTpCeightOne$ & $\HTpCeightOneDev$ & $\Lambda\le\HTpLamCeight$; calibrated on $C_6$, $C_7$ \\
+\bottomrule
+\end{tabular}
+\caption{$d=1$ results; $\delta$ against Table~\ref{htp:tab:refvals}. Ranges and uncertainties are spreads over tail
+models and fit windows, not standard errors.}
+\label{htp:d1:tab:results}
+\end{table}
+
+\subsection{A test protocol fixed before most of the data}
+A test protocol for the raw $C_4$ and $C_5$ was written after the first new thermal cutoff ($\Lambda=84$) had been seen
+and before the rest. It set numeric thresholds for three criteria, evaluated in the bases A, B and C: stability under
+changes of the fit window, prediction of held-out cutoffs, and insensitivity to the tail model. Outcome: the held-out
+predictions pass for both orders; window stability fails for $C_4$ in one basis and for $C_5$ in two of the three; tail
+insensitivity passes for $C_4$ and fails for $C_5$. The protocol's verdict for this mixed outcome is
+``unresolved'', and no later analysis has revised it. Everything above beyond $C_3$, apart from the blind checks of the
+exact sums, is post hoc.

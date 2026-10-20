@@ -1,0 +1,125 @@
+# regression_opt.txt: lib_opt (large_L/lib_opt, engine.py changed only) against the unmodified production code
+# requirement: <= 1e-12 relative per task (norm-relative per output array), <= 1e-11 on assembled C_5(L)
+# columns of the per-task files: task file, K, density dimension nd, long bundles nl, inclusion-exclusion terms nk, lines | lib_opt wall time [s] (one process, 64 threads, AMD), norm-relative diff, elementwise relative diff (entries > 1e-8 max)
+
+== regress_A4_L300.txt
+# regress_opt.py Lmax=300 cache=<SCRATCH>/indep2d/residual_log/large_L/cache5_L300 host=<NODE> OMP=64 NUMBA=64
+# file K nd n_long n_terms lines | t_new[s] normrel elemrel | (t_orig[s])
+raw_9cb32cf0bb7eb756.pkl K=5 nd=4 nl=5 nk=72 lines=7 | 146.0s 2.47e-16 3.97e-16
+raw_1af85ec5507482fd.pkl K=5 nd=4 nl=5 nk=64 lines=6 | 200.5s 1.18e-16 1.19e-16
+raw_7c7d258945e93a6e.pkl K=5 nd=4 nl=5 nk=64 lines=6 | 113.7s 1.90e-16 2.22e-16
+raw_9729fcde422633fb.pkl K=5 nd=4 nl=4 nk=128 lines=7 | 195.2s 3.56e-16 3.93e-16
+raw_34ed9b2ff45835b6.pkl K=5 nd=4 nl=4 nk=128 lines=7 | 201.2s 3.39e-16 4.05e-16
+raw_c78441c39ee3b34b.pkl K=5 nd=4 nl=3 nk=96 lines=7 | 108.6s 3.18e-16 3.84e-16
+raw_fd5debc5eafec822.pkl K=5 nd=4 nl=3 nk=96 lines=7 | 157.1s 4.17e-16 4.20e-16
+raw_c1cd1468b71a8939.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 121.5s 3.27e-16 4.25e-16
+raw_0420f80767260a15.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 116.2s 3.79e-16 4.18e-16
+raw_294061ad25c85319.pkl K=5 nd=4 nl=1 nk=32 lines=7 | 78.8s 3.55e-16 5.18e-16
+raw_081e145cfb8e40a5.pkl K=5 nd=4 nl=0 nk=1 lines=5 | 7.3s 2.69e-16 2.99e-16
+raw_f1cb5090ae5ef814.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 128.2s 3.32e-16 3.50e-16
+raw_d8df046dcf8cfd2b.pkl K=5 nd=4 nl=3 nk=96 lines=7 | 128.9s 2.60e-16 2.71e-16
+raw_f87a486cd51cf4a7.pkl K=5 nd=4 nl=4 nk=128 lines=7 | 206.9s 2.39e-16 3.26e-16
+# worst norm-relative difference over 14 tasks: 4.17e-16
+
+== regress_B3_L200.txt
+# regress_opt.py Lmax=200 cache=<SCRATCH>/indep2d/residual_log/cache5_L200 host=<NODE> OMP=64 NUMBA=64
+# file K nd n_long n_terms lines | t_new[s] normrel elemrel | (t_orig[s])
+raw_68ffbe08b6db1442.pkl K=5 nd=4 nl=6 nk=128 lines=7 | 158.6s 3.84e-16 4.03e-16
+raw_239a2f4698288bef.pkl K=5 nd=4 nl=6 nk=128 lines=7 | 200.1s 3.33e-16 3.42e-16
+raw_7e4a7967d1baeb64.pkl K=5 nd=4 nl=6 nk=128 lines=7 | 173.7s 1.66e-16 2.11e-16
+raw_197ce1b5a94d058e.pkl K=5 nd=4 nl=6 nk=128 lines=7 | 159.4s 2.58e-16 3.03e-16
+raw_35991bba7cb73bb6.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 203.2s 0.00e+00 0.00e+00
+raw_6463f541b200439d.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 184.2s 2.04e-16 2.05e-16
+raw_1c4af7cb08eb3e94.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 180.9s 3.07e-16 3.29e-16
+raw_3bd1ebb35dce9d80.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 242.9s 3.06e-16 3.67e-16
+raw_165faa58cc540111.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 251.4s 4.00e-16 4.21e-16
+raw_76ec65519f250861.pkl K=5 nd=4 nl=6 nk=96 lines=7 | 283.9s 2.50e-16 3.08e-16
+raw_94de5d93994e226a.pkl K=5 nd=4 nl=6 nk=64 lines=6 | 159.3s 0.00e+00 0.00e+00
+raw_2379e60dde34cd45.pkl K=5 nd=4 nl=5 nk=128 lines=7 | 103.6s 1.96e-16 2.51e-16
+raw_b9446326a92ae801.pkl K=5 nd=4 nl=5 nk=128 lines=7 | 93.5s 3.25e-16 3.93e-16
+raw_699fc9085e27d6b6.pkl K=5 nd=4 nl=5 nk=128 lines=7 | 148.6s 3.25e-16 3.49e-16
+raw_0c8c922fbe88f4f5.pkl K=5 nd=4 nl=4 nk=128 lines=7 | 86.4s 2.79e-16 3.80e-16
+raw_bac7461a2cfd0edb.pkl K=5 nd=4 nl=3 nk=128 lines=7 | 51.9s 3.82e-16 3.87e-16
+raw_16b527cdbfe7d5c6.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 32.3s 2.62e-16 3.86e-16
+# worst norm-relative difference over 17 tasks: 4.00e-16
+
+== regress_D_L200_kernels.txt
+# regress_opt.py Lmax=200 cache=<SCRATCH>/indep2d/residual_log/cache5_L200 host=<NODE> OMP=64 NUMBA=64
+# file K nd n_long n_terms lines | t_new[s] normrel elemrel | (t_orig[s])
+raw_4cf60a0c0537f96f.pkl K=5 nd=3 nl=3 nk=96 lines=7 | 1.2s 1.94e-16 4.34e-16
+raw_bbaa36c206e30bf1.pkl K=5 nd=3 nl=3 nk=96 lines=7 | 0.9s 1.97e-17 2.09e-16
+raw_1ae26afca4b01fd1.pkl K=5 nd=3 nl=3 nk=96 lines=7 | 0.8s 1.85e-16 5.25e-16
+raw_ae1b5bb242028d5d.pkl K=5 nd=2 nl=1 nk=27 lines=6 | 0.0s 0.00e+00 0.00e+00
+raw_a623b7a07ddff1b3.pkl K=5 nd=2 nl=1 nk=27 lines=6 | 0.0s 3.19e-16 4.26e-16
+raw_039d8922a79e610d.pkl K=5 nd=2 nl=1 nk=27 lines=6 | 0.0s 0.00e+00 0.00e+00
+raw_9abb0204c8a04dc9.pkl K=5 nd=1 nl=0 nk=1 lines=1 | 0.0s 0.00e+00 0.00e+00
+raw_10bc52604b69bff8.pkl K=5 nd=1 nl=0 nk=1 lines=2 | 0.0s 0.00e+00 0.00e+00
+raw_e4b24a77b8aa1a4e.pkl K=5 nd=0 nl=0 nk=1 lines=0 | 0.0s 0.00e+00 0.00e+00
+raw_83039bff84e15647.pkl K=4 nd=3 nl=3 nk=72 lines=7 | 4.3s 2.51e-16 2.78e-16
+raw_ad5429c99f36c855.pkl K=4 nd=3 nl=1 nk=64 lines=8 | 2.4s 3.48e-16 3.85e-16
+raw_74149042dbaa7030.pkl K=4 nd=3 nl=3 nk=54 lines=7 | 1.4s 3.62e-16 3.88e-16
+raw_222e5a4302137d0f.pkl K=4 nd=2 nl=1 nk=27 lines=6 | 1.3s 0.00e+00 0.00e+00
+raw_913467df44e49066.pkl K=4 nd=2 nl=1 nk=16 lines=5 | 1.1s 4.95e-16 6.86e-16
+raw_af22925b7d854f1a.pkl K=4 nd=2 nl=1 nk=8 lines=3 | 0.2s 3.16e-16 3.59e-16
+raw_71c25d54b858cb24.pkl K=4 nd=1 nl=0 nk=1 lines=4 | 1.6s 3.49e-16 3.91e-16
+raw_fff4aede6491af03.pkl K=4 nd=1 nl=0 nk=1 lines=4 | 6.6s 0.00e+00 0.00e+00
+raw_e8ac7976bcdca0fe.pkl K=4 nd=0 nl=0 nk=1 lines=0 | 0.3s 0.00e+00 0.00e+00
+raw_4dffbc6b54f1d8ff.pkl K=3 nd=2 nl=1 nk=16 lines=5 | 0.0s 3.30e-16 3.30e-16
+raw_68ed8ae1a0987e98.pkl K=3 nd=2 nl=1 nk=16 lines=5 | 0.1s 0.00e+00 0.00e+00
+raw_cf449e4ca3e7027c.pkl K=3 nd=1 nl=0 nk=1 lines=2 | 0.0s 0.00e+00 0.00e+00
+raw_cd071835e6eddc44.pkl K=3 nd=1 nl=0 nk=1 lines=2 | 0.0s 0.00e+00 0.00e+00
+raw_69206db543b85d1d.pkl K=3 nd=0 nl=0 nk=1 lines=0 | 0.3s 0.00e+00 0.00e+00
+raw_90378b0b511de3da.pkl K=2 nd=0 nl=0 nk=1 lines=0 | 0.1s 0.00e+00 0.00e+00
+raw_ec09cfe50297f389.pkl K=5 nd=4 nl=0 nk=1 lines=4 | 3.9s 0.00e+00 0.00e+00
+raw_5dcdaf4b5adc8836.pkl K=5 nd=4 nl=0 nk=1 lines=5 | 4.6s 3.20e-16 3.87e-16
+raw_344bb28804549021.pkl K=5 nd=4 nl=1 nk=72 lines=7 | 22.1s 3.11e-16 3.88e-16
+raw_3bf12a3edd26f891.pkl K=5 nd=4 nl=1 nk=72 lines=7 | 21.8s 3.98e-16 4.44e-16
+raw_3df73b67572c66ab.pkl K=5 nd=4 nl=1 nk=72 lines=7 | 27.8s 5.92e-16 6.31e-16
+raw_09cbea1c6248c76f.pkl K=5 nd=4 nl=1 nk=72 lines=7 | 25.5s 3.82e-16 4.56e-16
+raw_16b527cdbfe7d5c6.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 35.1s 2.62e-16 3.86e-16
+raw_23e9057d8c01e5fb.pkl K=5 nd=4 nl=2 nk=96 lines=7 | 39.6s 3.72e-16 4.06e-16
+# worst norm-relative difference over 32 tasks: 5.92e-16
+
+== regress_C (timing, log logs/indep2d-ll-regC_574506.out; job TIMEOUT after 2 tasks): lib_opt v1 vs ENGINE_TREE=0 (= original algorithm), same node, 64 threads
+raw_c78441c39ee3b34b.pkl K=5 nd=4 nl=3 nk=96 lines=7 | 253.5s 3.18e-16 3.84e-16 | orig 996.5s (orig vs cache 3.0e-16)
+raw_9729fcde422633fb.pkl K=5 nd=4 nl=4 nk=128 lines=7 | 393.1s 3.56e-16 3.93e-16 | orig 1555.3s (orig vs cache 0.0e+00)
+
+== assembled raw C_n, lib_opt Lmax = 60 full run vs ../results/eps5/c5_L200.npz
+# compare_c5 lib_opt Lmax=60 vs production: results/c5_L60_opt.npz vs ../results/eps5/c5_L200.npz, L = 2..60
+  raw_C2: max relative difference 0.00e+00 (at L = 2); max absolute 0.00e+00
+  raw_C3: max relative difference 1.75e-14 (at L = 56); max absolute 1.42e-14
+  raw_C4: max relative difference 2.41e-14 (at L = 44); max absolute 9.24e-14
+  raw_C5: max relative difference 1.18e-13 (at L = 48); max absolute 3.13e-12
+  raw_r5: max relative difference 7.59e-15 (at L = 58); max absolute 1.48e-12
+  raw_g5: max relative difference 3.70e-13 (at L = 10); max absolute 2.56e-12
+  L= 10: C_5 new -16.870784804371034  ref -16.870784804370864  rel 1.0e-14
+  L= 20: C_5 new -21.220896745679340  ref -21.220896745679212  rel 6.0e-15
+  L= 40: C_5 new -25.501582906692761  ref -25.501582906692988  rel 8.9e-15
+  L= 60: C_5 new -27.730582331769028  ref -27.730582331771643  rel 9.4e-14
+
+== superseded variants (correct but slower): v1 regress_A_L300_v1_partial.txt, v2 regress_*_v2_partial.txt, v3 regress_B3 (streaming diagonal kernel, bitwise identical to v4)
+
+== timing summary (one 64-thread process per AMD node, L = 300, N = 150)
+  original algorithm (ENGINE_TREE=0): (n_long 3, 96 terms) 996.5 s, (n_long 4, 128 terms) 1555.3 s
+  lib_opt v4:                          (3, 96) 108.6-157.1 s, (4, 128) 195.2-206.9 s, (5, 72) 146.0 s, (5, 64) 113.7-200.5 s
+  speedup 6-9x on these; for 5-6 long bundles (serial odometer / serial diagonal convolution in the original) the model
+  gives ~30-100x (original 5-long tasks ~4-5 h single process; lib_opt 2-3 min).
+  Per-task outputs agree to <= 7.3e-16 (norm-relative) in every check: 14 L = 300 tasks (all 4D kernel classes),
+  17 L = 200 heavy tasks (all 11 six-long-bundle tasks), 32 L = 200 tasks of every kernel type (K = 2..5, nd = 0..4),
+  1385 tasks of a full lib_opt L = 200 run; assembled C_5(L <= 60) agrees to 1.2e-13 relative.
+
+== assembled raw C_n, L = 300 run (3987 tasks from lib/, 6025 from lib_opt/) vs ../results/eps5/c5_L200.npz, every L <= 200
+# compare_c5 L300 (40% lib, 60% lib_opt) vs production L200: results/c5_L300.npz vs ../results/eps5/c5_L200.npz, L = 2..200
+  raw_C2: max relative difference 5.78e-14 (at L = 198); max absolute 1.78e-14
+  raw_C3: max relative difference 4.84e-13 (at L = 192); max absolute 4.12e-13
+  raw_C4: max relative difference 5.14e-13 (at L = 196); max absolute 2.27e-12
+  raw_C5: max relative difference 7.55e-13 (at L = 194); max absolute 2.46e-11
+  raw_r5: max relative difference 6.97e-14 (at L = 150); max absolute 8.55e-11
+  raw_g5: max relative difference 6.17e-14 (at L = 10); max absolute 2.76e-11
+  L= 10: C_5 new -16.870784804370892  ref -16.870784804370864  rel 1.7e-15
+  L= 20: C_5 new -21.220896745679227  ref -21.220896745679212  rel 6.7e-16
+  L= 40: C_5 new -25.501582906693386  ref -25.501582906692988  rel 1.6e-14
+  L= 60: C_5 new -27.730582331771188  ref -27.730582331771643  rel 1.6e-14
+  L=100: C_5 new -30.126579014818390  ref -30.126579014818162  rel 7.5e-15
+  L=150: C_5 new -31.678825400238566  ref -31.678825400238566  rel 0.0e+00
+  L=200: C_5 new -32.597179924267039  ref -32.597179924268403  rel 4.2e-14

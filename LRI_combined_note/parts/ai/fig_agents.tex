@@ -1,0 +1,132 @@
+\begin{figure*}[tp]
+\centering
+\colorlet{paperc}{brown!80!black}%
+\colorlet{authc}{olive!85!black}%
+\colorlet{hubc}{black!70}%
+\newcommand{\agtiny}{\fontsize{6}{7}\selectfont}%
+\newcommand{\agtag}[1]{\\[-0.5pt]{\ttfamily\color{black!65}#1}}%
+\newcommand{\agcyc}{\tikz[baseline=-0.55ex]\draw[teal!80!black,line width=0.5pt,
+  -{Stealth[length=1.8pt,width=2.2pt]}] (20:0.07) arc (20:320:0.07);}%
+\newcommand{\agbadges}[3]{%
+ \ifx&#2&\else\node[stk,anchor=west] at ($(#1.east)+(0.07,0.2)$) {#2};\fi
+ \ifx&#3&\else\node[cdx,anchor=west] at ($(#1.east)+(0.07,-0.2)$) {\agcyc\,#3};\fi}%
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize,>={Stealth[length=4pt,width=3.2pt]},
+ sess/.style={draw=#1,fill=#1!7,rounded corners=2pt,line width=0.6pt,
+  text width=2.0cm,minimum height=1.15cm,align=center,inner sep=1.5pt},
+ grp/.style={draw=#1!60,rounded corners=4pt,line width=0.5pt,fill=#1!2},
+ gtitle/.style={anchor=north west,inner sep=2pt,font=\footnotesize\bfseries,text=#1},
+ ext/.style={draw=#1,fill=#1!8,rounded corners=3pt,line width=0.7pt,align=center,
+  inner sep=3pt,minimum height=0.95cm},
+ flow/.style={->,black!75,line width=1.2pt},
+ bflow/.style={<->,black!75,line width=1.2pt},
+ relay/.style={->,authc,line width=0.9pt,dash pattern=on 3.5pt off 2pt},
+ review/.style={<->,teal!80!black,line width=1.3pt},
+ cnt/.style={font=\scriptsize,inner sep=1.2pt},
+ stk/.style={draw=black!60,fill=yellow!30,rounded corners=0.8pt,inner sep=1.3pt,
+  font=\agtiny\sffamily\bfseries,
+  double copy shadow={shadow xshift=0.7pt,shadow yshift=0.7pt,draw=black!55,fill=yellow!12}},
+ cdx/.style={draw=teal!80!black,fill=teal!10,rounded corners=0.8pt,inner sep=1.2pt,
+  font=\agtiny\sffamily},
+ box/.style={draw=black!40,fill=white,rounded corners=2pt,align=center,inner sep=1.5pt,
+  minimum height=1.05cm},
+]
+
+\node[ext=teal!80!black,text width=3.7cm] (gpt) at (2.1,12.05)
+ {{\footnotesize\textbf{GPT-6 astra}} (OpenAI)\\[-0.5pt]initial HPC codes, short-range coefficients};
+\node[ext=authc,text width=3.3cm] (author) at (9.3,12.05)
+ {{\footnotesize\textbf{Author}}\\[-0.5pt]directions, decisions, approvals};
+\node[ext=teal!80!black,text width=5.0cm] (codex) at (14.6,12.05)
+ {{\footnotesize\textbf{Codex}} (OpenAI)\\[-0.5pt]review of plans, codes and results};
+\coordinate (ftop) at (0,11.05);
+
+\draw[black!45,rounded corners=6pt,line width=0.8pt,fill=black!1] (0,2.15) rectangle (17.4,11.05);
+\node[anchor=north west,inner sep=2pt,font=\footnotesize] at (0.1,11.02)
+ {\textbf{Claude Code} (Anthropic): the key host sessions};
+
+\draw[grp=cEps] (0.15,8.75) rectangle (12.25,10.6);
+\node[gtitle=cEps] at (0.2,10.58) {Perturbation theory};
+\draw[grp=cHT] (0.15,5.55) rectangle (12.25,8.7);
+\node[gtitle=cHT] at (0.2,8.68) {Hamiltonian truncation};
+\draw[grp=cNRG] (0.15,2.35) rectangle (4.0,5.4);
+\node[gtitle=cNRG!80!black] at (0.2,5.38) {NRG};
+\draw[grp=cMC] (4.15,2.35) rectangle (8.05,5.4);
+\node[gtitle=cMC] at (4.2,5.38) {Monte Carlo};
+\draw[grp=cRes] (8.2,2.35) rectangle (12.25,5.4);
+\node[gtitle=cRes] at (8.25,5.38) {Resummation};
+\draw[grp=black] (12.45,2.35) rectangle (17.25,10.6);
+\node[gtitle=hubc] at (12.5,10.58) {Coordination and output};
+
+\node[sess=cEps] (c81) at (1.45,9.5) {$\epsilon$ expansion, $d=1$\agtag{C81d}};
+\node[sess=cEps] (c82) at (4.45,9.5) {$\epsilon$ expansion, $d=2$, general $d$\agtag{C82d}};
+\node[sess=cEps] (c83) at (7.45,9.5) {$\epsilon$ expansion, $d=3$\agtag{C83d}};
+\node[sess=cSR] (sri) at (10.3,9.5) {short-range end\agtag{SRI}};
+\node[sess=cHT] (ht1) at (1.6,7.6) {perturbative, $d=1$\agtag{HT1dPert}};
+\node[sess=cHT] (ht2) at (5.2,7.6) {perturbative, $d=2$\agtag{HT2dPert}};
+\node[sess=cHT] (ht3) at (8.8,7.6) {perturbative, $d=3$\agtag{HT3dPert}};
+\node[sess=cHT] (np1) at (1.6,6.2) {finite coupling, $d=1$\agtag{phi4HT1d}};
+\node[sess=cHT] (np2) at (5.2,6.2) {finite coupling, $d=2$\agtag{phi4HT2d}};
+\node[sess=cHT] (np3) at (8.8,6.2) {finite coupling, $d=3$\agtag{phi4HT3d}};
+\node[sess=cNRG!80!black] (sb) at (1.5,3.85) {spin-boson NRG, $d=1$\agtag{spin-boson HT}};
+\node[sess=cMC] (mc) at (5.5,3.85) {cluster MC, $d=1$--$3$\agtag{MC}};
+\node[sess=cRes,text width=2.4cm] (res) at (9.65,3.85) {resummation, large orders, comparison of all descriptions\agtag{resum}};
+\node[sess=hubc,text width=3.0cm] (sup) at (14.45,9.4) {audits, relayed decisions, coordination notes\agtag{Sup}};
+\node[sess=hubc,text width=3.0cm] (pub) at (14.45,6.9) {public release: export, privacy scan, tests on two clusters\agtag{Public\_repo}};
+\node[sess=paperc,text width=3.0cm] (draft) at (14.45,3.85) {writes the article\agtag{Draft}};
+
+\agbadges{c81}{142}{74}
+\agbadges{c82}{348}{39}
+\agbadges{c83}{442}{34}
+\agbadges{sri}{102}{11}
+\agbadges{ht1}{100}{28}
+\agbadges{ht2}{13}{4}
+\agbadges{ht3}{3}{11}
+\agbadges{np1}{1}{7}
+\agbadges{np2}{}{12}
+\agbadges{np3}{}{8}
+\agbadges{sb}{2}{6}
+\agbadges{mc}{2}{69}
+\agbadges{res}{5}{}
+\agbadges{sup}{24}{}
+\agbadges{pub}{1}{}
+\agbadges{draft}{154}{}
+
+\draw[bflow] (12.25,9.4) -- node[cnt,above] {217} (sup.west);
+\draw[bflow] (12.25,6.9) -- node[cnt,above] {470} (pub.west);
+\draw[bflow] (12.25,3.85) -- node[cnt,above] {137} (draft.west);
+\draw[flow] (10.75,5.55) -- ($(res.north)+(1.1,0)$);
+\draw[flow] ($(mc.east)+(0.75,0)$) -- (res.west);
+\draw[bflow,black!55,line width=0.8pt] (sup.south) -- node[cnt,right] {91} (pub.north);
+\draw[bflow,black!55,line width=0.8pt] (pub.south) -- node[cnt,right] {146} (draft.north);
+\draw[bflow,black!55,line width=0.8pt] (sup.east) -- (16.95,9.4) -- node[cnt,left,pos=0.5] {41} (16.95,3.85) -- (draft.east);
+
+\draw[relay] (gpt.south) -- node[cnt,right,text=authc!80!black] {$\geq\AIfigGPTPackages$ code packages} (gpt.south |- ftop);
+\draw[<->,authc,line width=0.9pt] (author.west) -- node[cnt,above,text=authc!80!black] {discussions} node[cnt,below,text=authc!80!black,font=\agtiny] {about half of the prompts} (gpt.east);
+\draw[->,authc,line width=0.9pt] (author.south) -- node[cnt,right,text=authc!80!black] {tasks, decisions} (author.south |- ftop);
+\draw[review] (codex.south) -- node[cnt,right,text=teal!60!black] {reviews and verdicts} (codex.south |- ftop);
+
+\draw[black!45,rounded corners=4pt,fill=black!3] (0,0.05) rectangle (8.9,1.65);
+\node[anchor=north west,inner sep=2pt,font=\footnotesize\bfseries] at (0.05,1.63) {Compute (Slurm)};
+\node[box,text width=2.45cm] at (1.45,0.65) {\textbf{Expanse} (SDSC)};
+\node[box,text width=2.45cm] at (4.25,0.65) {\textbf{symmetry} (Perimeter)};
+\node[box,text width=2.45cm] at (7.15,0.65) {\textbf{two personal desktops}};
+\draw[black!45,rounded corners=4pt,fill=black!3] (9.1,0.05) rectangle (17.4,1.65);
+\node[anchor=north west,inner sep=2pt,font=\footnotesize\bfseries] at (9.15,1.63) {Outputs};
+\node[box,text width=2.3cm] at (10.65,0.65) {research notes\agtag{\agtiny owner sessions}};
+\node[box,text width=2.3cm] at (13.25,0.65) {public release\agtag{\agtiny Public\_repo}};
+\node[box,text width=2.3cm] at (15.85,0.65) {the article\agtag{\agtiny Draft}};
+\draw[<->,black!50,line width=1.3pt] (4.25,2.15) -- node[cnt,right,black!70] {jobs, \AIfigCoreHours} (4.25,1.65);
+\draw[->,black!50,line width=1.3pt] (14.45,2.15) -- (14.45,1.65);
+
+\begin{scope}[shift={(0.1,-0.4)}]
+ \draw[bflow] (0,0) -- (0.7,0); \node[anchor=west,cnt] (l1) at (0.75,0) {messages and files, with count};
+ \draw[relay] ($(l1.east)+(0.4,0)$) -- ++(0.7,0) node[anchor=west,cnt,black] (l2) {relayed by the author};
+ \draw[review] ($(l2.east)+(0.4,0)$) -- ++(0.7,0) node[anchor=west,cnt,black] (l3) {Codex review};
+ \node[stk,anchor=west] (k1) at ($(l3.east)+(0.4,0)$) {$n$};
+ \node[anchor=west,cnt] (k1t) at ($(k1.east)+(0.06,0)$) {subagents};
+ \node[cdx,anchor=west] (k2) at ($(k1t.east)+(0.35,0)$) {\agcyc\,$r$};
+ \node[anchor=west,cnt] at ($(k2.east)+(0.04,0)$) {Codex rounds};
+\end{scope}
+\end{tikzpicture}
+\caption{Collaboration of the AI agents. GPT-6 astra drafted the initial codes in discussions with the author (olive; dashed arrows: work relayed by the author). Inside the Claude Code frame, sessions that each own one topic produce the results, grouped and colored by method; Sup coordinates them, Public\_repo assembles the public release, resum combines the numbers of all descriptions, and Draft writes the article. Badges count the subagents each session spawned (yellow, \AIfigSubagents{} in all) and the rounds of review by Codex (teal, about \AIfigCodexRounds{} in all); arrows count the messages between sessions. The bottom row shows where the jobs ran and what the work produced. Of the \AIsessions{} Claude Code sessions, not counting subagents, the key ones are shown.}
+\label{ai:fig:agents}
+\end{figure*}

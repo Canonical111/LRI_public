@@ -1,0 +1,76 @@
+{
+  "_about": "Numbers and exact statements that the condensed note (GFF/note/long_range_ising_condensed.tex, edition fa71533 of 13 October 2026) quotes in its section 'Three dimensions: half-shift determinants and rank-two functions' (label app:threeDimensionalReduction), and that the research-bundle packages lri_d3_reduction_update and lri_d3_matrix_update produce. Read by public/replay.py of both packages. 'shown' strings are the note's digits; 'eq' is the note's equation label. Written by Claude (session C63d) on 2026-10-13 for the public release; the values themselves were produced in September 2026 by the research conversation that made the bundle.",
+  "periods": {
+    "eq": "values listed in subsection 'Three-dimensional values and limits of the reduction'",
+    "note_says": "The fixed rational formulas give Q_3, P_4(3), P_5(3) (33 digits after the point shown, followed by \\ldots).",
+    "tolerance": "one unit in the last shown digit: the note truncates or rounds after 33 decimals",
+    "Q3": "5.01710256455385536959085484569018",
+    "P4_3": "62.0583279434066724664633885840967",
+    "P5_3": "240.340317759083549816366546388004"
+  },
+  "spectral_residuals": {
+    "note_says": "Changed-precision formula evaluations and fresh Gamma-kernel integrations agreed at about 10^-51, 10^-52 and 10^-53, respectively.",
+    "definition": "formula-side value at 90 working digits (verify_d3.py) minus the fresh real-axis Gamma-kernel value at 60 working digits (check_spectral.py), as recorded in verification/general_d3/comparison_summary.json",
+    "about_power_of_ten": {"Q3": -51, "P4_3": -52, "P5_3": -53},
+    "tolerance": "'about 10^k' read as 10^(k-1) < |residual| < 10^(k+1)"
+  },
+  "residue_weights": {
+    "eq": "td:residueWeights",
+    "note_says": "the weights B_{r,k}/pi^(r-1) at q=3/4",
+    "3": ["8", "-6*sqrt(2)", "12"],
+    "4": ["32", "-24*sqrt(2)", "40", "-40*sqrt(2)"],
+    "7": ["2624", "-1904*sqrt(2)", "2912", "-2352*sqrt(2)", "4032", "-3696*sqrt(2)", "7392"],
+    "tolerance": "exact (SymPy)"
+  },
+  "exact_identities": {
+    "note_eqs": {
+      "Q3 Gamma and Horn formula": "td:Qanswer",
+      "P4 real-node formula": "td:P4answer",
+      "P5 normalization": "td:P5answer",
+      "quadratic real-node quadrature": "td:quadraticRule",
+      "odd-sector Chebyshev expansion": "td:sevenOddCoefficients",
+      "r7 even residue functional": "td:evenPolynomial (residue weight -32(9p0+13p1+22p2))"
+    },
+    "package_readme_counts": {"symbolic_checks": 25, "horn_coefficient_checks": 288, "horn_arrays": 8},
+    "tolerance": "exact: every SymPy residual is 0"
+  },
+  "horn_nodes": {
+    "eq": "td:Hbase, td:Hseven, td:fiveHornNodes, td:P4answer",
+    "note_says": "Q_3 needs H_3(0); P_4(3) needs H_4(0), H_4(1/8); P_5(3) needs H_7(0), H_7(+-1/16), H_7(3/16), H_7(5/16); arguments (1,1) for r=3,4 and (-1,1) for r=7; all uncancelled parameters positive rational",
+    "3": ["0"],
+    "4": ["0", "1/8"],
+    "7": ["0", "1/16", "-1/16", "3/16", "5/16"],
+    "arguments": {"3": [1, 1], "4": [1, 1], "7": [-1, 1]}
+  },
+  "gamma_amplitudes": {
+    "eq": "td:gammaAmplitudes",
+    "note_says": "a_3 b_3 = Gamma(1/4)^10/(16 sqrt2 pi^4) (Dixon), b_4 = Gamma(1/4)^6/(16 pi^(5/2)) (Rogers-Dougall)",
+    "bound_at_90_digits": "1e-75",
+    "tolerance": "absolute; the recorded errors are 1.4e-79 and 5e-88 at 90 working digits"
+  },
+  "section1_table_d3": {
+    "note_says": "Section 1 coefficient table, column d=3 (these entries are owned by the general-d rows; listed here only as a cross-check of the record comparison_summary.json, whose assembly script is not in the package)",
+    "C2": "0.181221785406",
+    "C3": "-0.353581520433",
+    "C4": "1.228063545",
+    "tolerance": "rounds to the shown digits (one unit in the last shown digit)"
+  },
+  "rank_two": {
+    "eq": "rt:scalarDistinction",
+    "note_says": "3F2^(alpha=2)(3/4,3/4,3/4;3/2,3/2;zI_2) = 1 + 3/8 z + 2769/12800 z^2 + 15113/102400 z^3 + O(z^4); ordinary 3F2(3/4,3/4,3/4;3/2,3/2;z) = 1 + 3/16 z + 1029/12800 z^2 + 9317/204800 z^3 + O(z^4)",
+    "matrix_H3_local_coefficients": ["1", "3/8", "2769/12800", "15113/102400"],
+    "ordinary_3F2_local_coefficients": ["1", "3/16", "1029/12800", "9317/204800"],
+    "dictionary": {
+      "eq": "rt:Q3, rt:P4blocks, rt:H7matrix",
+      "H3(0)": {"upper": ["3/4", "3/4", "3/4"], "lower": ["3/2", "3/2"], "matrix_argument": "I_2"},
+      "H4(0)": {"upper": ["3/4", "3/4", "3/4", "3/4"], "lower": ["3/2", "3/2", "3/2"], "matrix_argument": "I_2"},
+      "H4(1/8)": {"upper": ["7/8", "7/8", "7/8", "7/8", "3/2"], "lower": ["13/8", "13/8", "13/8", "13/8"], "matrix_argument": "I_2"},
+      "H7_matrix_argument": "-I_2",
+      "Jack_alpha": 2,
+      "matrix_size": 2
+    },
+    "package_readme_counts": {"exact_checks_total": 1107, "interior_precision_digits": 90},
+    "interior_bound": "1e-85",
+    "tolerance": "exact for coefficients and counts; interior partial sums at 90 working digits within 1e-85"
+  }
+}

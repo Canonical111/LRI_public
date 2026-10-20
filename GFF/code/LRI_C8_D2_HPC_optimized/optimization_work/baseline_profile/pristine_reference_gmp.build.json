@@ -1,0 +1,44 @@
+{
+  "schema": "c8-native-benchmark-reference-build-1",
+  "status": "passed",
+  "command": [
+    "g++",
+    "-I../dependencies/boost/usr/include",
+    "-I../dependencies/gmp/usr/include",
+    "-I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "/workspace/scratch/ff48dc5e25b3/LRI_C8_D2_HPC_optimized/optimization_work/baseline_profile/original/src/c8d2_integrate.cpp",
+    "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "/workspace/scratch/ff48dc5e25b3/LRI_C8_D2_HPC_optimized/optimization_work/baseline_profile/pristine_reference_gmp"
+  ],
+  "working_directory": "/workspace/scratch/ff48dc5e25b3/LRI_C8_D2_HPC_optimized",
+  "source_sha256": {
+    "src/kernel.hpp": "616be7da89ec9bb8ef0da4cf8629b1c06069539f0c616a62a891d0a4dafc1662",
+    "src/c8d2_integrate.cpp": "ed17a904ffee3479017c7f0ed237f4b192480016d83df43fba7c95a491f64073"
+  },
+  "baseline_identity_sha256": "07f805716451f577792fe81b027cb917c7e16be44a19080ed96081288d237913",
+  "toolchain_build_record_sha256": "3d88061c99c65cedb799fcbd3085f60bdc898c72c9bc794408ba824d5be3ed16",
+  "executable_sha256": "db6c330ef9808121f2c0b843601345164151a7c9bbe255b020a0215e126afd88",
+  "native": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "order": 8,
+    "compiler": "13.3.0",
+    "boost_version": "1_74",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "original_executable_byte_identical": true,
+  "note": "Compilation succeeded; fixed CompletedProcess.stdout metadata serialization and wrote this record without recompilation."
+}

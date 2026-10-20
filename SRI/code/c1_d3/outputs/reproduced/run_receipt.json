@@ -1,0 +1,275 @@
+{
+  "profile": "full",
+  "from_scratch": true,
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cached_dependencies": [],
+  "steps": [
+    {
+      "group": "precision",
+      "script": "run_diagnostics.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 20.197749376296997,
+      "generated_files": [
+        "diagnostics_results.json"
+      ],
+      "stdout_tail": "central 3.3474594916917857 12.254914105481044 0.27315242382601645\n{'diagonal_3F2_max_abs_error': 5.551115123125783e-17, 'independent_z_series_max_abs_error': np.float64(2.220446049250313e-16)}\nsaved /tmp/ising-c1-togl20qq/c1_precision/diagnostics_results.json\n"
+    },
+    {
+      "group": "precision",
+      "script": "errors_and_crossing.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 11.270246028900146,
+      "generated_files": [
+        "expanded_spectrum.json",
+        "analysis_results.json"
+      ],
+      "stdout_tail": "1.9188888711380667e-06), 'error_effect_h': np.float64(-4.2885565756321e-07), 'error_effect_Delta': np.float64(4.43832980959436e-08), 'quadrature': 1.9667286421749624e-06}\n{'name': 'even_other_l0_d6.8956', 'Delta': 6.8956, 'ell': 0, 'sector': 'even', 'error_effect_f': np.float64(-3.817031403750516e-07), 'error_effect_h': np.float64(-1.2069841941435813e-06), 'error_effect_Delta': np.float64(1.4136756496400863e-07), 'quadrature': 1.2737711414176645e-06}\n{'name': 'odd_other_l2_d6.9873', 'Delta': 6.9873, 'ell': 2, 'sector': 'odd', 'error_effect_f': np.float64(1.2102333414209896e-06), 'error_effect_h': 0.0, 'error_effect_Delta': np.float64(-5.257334998658085e-08), 'quadrature': 1.2113747140401374e-06}\ncrossing sigma max 2.7327442241440484e-05 first [-3.6998035269719085e-06, -1.248457081422233e-05, 0.0, 0.0, 3.6998035272169462e-06, 1.248457081422233e-05]\ncrossing epsilon max 0.010418905746206266 first [0.006603389880876444, 0.0019536359087876836, 0.0, 0.0, -0.006603389880876184, -0.0019536359087876836]\ncrossing mixed max 0.0006065282997321727 first [3.816655433556527e-05, 4.009154952635113e-06, -7.358545789818791e-05, 0.00012633619749185211, -0.00013031906147075375, 0.000508827220742303]\n"
+    },
+    {
+      "group": "precision",
+      "script": "complete_input_errors.py",
+      "arguments": [
+        "global"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 19.21881675720215,
+      "generated_files": [
+        "global_input_results.json"
+      ],
+      "stdout_tail": "S 5.615736904829305e-06\nE -8.341283348312079e-06\nsse -1.7619076625452479e-06\neee 3.3374906381195e-06\nct -1.2330026125106919e-08\n"
+    },
+    {
+      "group": "precision",
+      "script": "complete_input_errors.py",
+      "arguments": [
+        "box"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 11.404630422592163,
+      "generated_files": [
+        "input_box_results.json"
+      ],
+      "stdout_tail": "{'delta_b_min': -0.0014273881184284922, 'delta_b_max': 0.001423555540296785, 'delta_F_min': -0.042242138323316636, 'delta_F_max': 0.042616485969179954, 'C1_min': 0.2697050672241918, 'C1_max': 0.2766303307226457}\n"
+    },
+    {
+      "group": "precision",
+      "script": "compute_tail_scenarios.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 5.1513285636901855,
+      "generated_files": [
+        "tail_estimates.json",
+        "tail_gap8_results.json"
+      ],
+      "stdout_tail": "e': np.float64(0.5045131967822652), 'C1_tail_estimate': np.float64(0.04638667976836934)}\n{'input_box_multiplier': 2, 'even_gap': 5, 'odd_gap': 4, 'b_tail_estimate': np.float64(0.003910503555572485), 'a_even_tail_estimate': np.float64(0.06288341589296945), 'a_odd_tail_estimate': np.float64(0.20726205051313878), 'C1_tail_estimate': np.float64(0.022131010270352938)}\n{'input_box_multiplier': 2, 'even_gap': 5, 'odd_gap': 6, 'b_tail_estimate': np.float64(0.003910503555572485), 'a_even_tail_estimate': np.float64(0.06288341589296945), 'a_odd_tail_estimate': np.float64(0.09494650043640579), 'C1_tail_estimate': np.float64(0.012966070466613308)}\n{'input_box_multiplier': 2, 'even_gap': 5, 'odd_gap': 7, 'b_tail_estimate': np.float64(0.003910503555572485), 'a_even_tail_estimate': np.float64(0.06288341589296945), 'a_odd_tail_estimate': np.float64(0.050420029106892215), 'C1_tail_estimate': np.float64(0.009332714006807595)}\n{'input_box_multiplier': 2, 'even_gap': 5, 'odd_gap': 8, 'b_tail_estimate': np.float64(0.003910503555572485), 'a_even_tail_estimate': np.float64(0.06288341589296945), 'a_odd_tail_estimate': np.float64(0.027412798384440218), 'C1_tail_estimate': np.float64(0.0074553258403607945)}\n"
+    },
+    {
+      "group": "precision",
+      "script": "finalize_results.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 0.6110823154449463,
+      "generated_files": [
+        "SUMMARY_RESULTS.json"
+      ],
+      "stdout_tail": " \"C1_tail_estimate\": 0.0029902771832442886\n  },\n  \"conditional_C1_interval\": [\n    0.2667143082712306,\n    0.27962109030997684\n  ],\n  \"recommended_provisional_C1\": 0.273,\n  \"recommended_provisional_error\": 0.007,\n  \"physical_certified_interval\": null,\n  \"correlated_low_input_rss_assuming_independent_other_errors\": 0.0009034865633957899,\n  \"input_one_error_l1_sensitivity\": 0.0017310989483356365,\n  \"assumptions\": [\n    \"No unlisted primary exchanged in the relevant OPEs below dimension 8.\",\n    \"True tabulated CFT inputs lie in twice-quoted-error ranges. EFM errors are not statistical or rigorous.\",\n    \"First-order/sampled parameter envelopes and finite block/quadrature estimates are sufficiently accurate; interval arithmetic was not performed.\",\n    \"The full correlators obey reflection positivity and crossing.\"\n  ],\n  \"limitations\": [\n    \"Completeness below 8 was not established. Published extremal spectra can omit trajectories.\",\n    \"Global leading-dimension dependences are propagated in retained integrals, but are not separately certified in the tail envelope.\",\n    \"The conditional interval is neither an assumption-independent physical bound nor a confidence interval.\"\n  ]\n}\n"
+    },
+    {
+      "group": "precision",
+      "script": "tail_validation.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 2.803434133529663,
+      "generated_files": [
+        "tail_validation_results.json"
+      ],
+      "stdout_tail": "ctual_over_upper': np.float64(0.6511496418379703)}, {'D': 0.518148806, 'x': 0.49, 'max_actual_over_upper': np.float64(0.619395072527736)}, {'D': 1.41262528, 'x': 0.2, 'max_actual_over_upper': np.float64(0.8059551051201984)}, {'D': 1.41262528, 'x': 0.35, 'max_actual_over_upper': np.float64(0.6500812562983844)}, {'D': 1.41262528, 'x': 0.49, 'max_actual_over_upper': np.float64(0.48497390807498686)}], 'mixed_radial_prefactor_relative_error': 1.537763566315232e-15}, 'quadrature': [{'nodes': 60, 'b_tail_estimate': np.float64(0.0002539687032331713), 'a_even_tail_estimate': np.float64(0.009167232938731291), 'a_odd_tail_estimate': np.float64(0.027409003325333744), 'C1_tail_estimate': np.float64(0.0029902786845759617)}, {'nodes': 100, 'b_tail_estimate': np.float64(0.00025396870323316515), 'a_even_tail_estimate': np.float64(0.009167214540041506), 'a_odd_tail_estimate': np.float64(0.02740900332533284), 'C1_tail_estimate': np.float64(0.0029902771832442886)}, {'nodes': 140, 'b_tail_estimate': np.float64(0.00025396870323314617), 'a_even_tail_estimate': np.float64(0.009167178316894365), 'a_odd_tail_estimate': np.float64(0.02740900332533001), 'C1_tail_estimate': np.float64(0.002990274227438181)}]}\n"
+    },
+    {
+      "group": "precision",
+      "script": "alternative_domain.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 69.89918565750122,
+      "generated_files": [
+        "cap_results.json"
+      ],
+      "stdout_tail": "0.45 3.2887792520224632 12.25330341118798 0.2683993974245032 6.714858055114746\n0.5 3.307397286689788 12.254256203428476 0.2698978405367802 6.181725025177002\n0.55 3.321222053243537 12.254703886292894 0.2710160999449675 6.10783839225769\n0.6 3.331066818109069 12.254897990215875 0.2718151404253664 6.281749248504639\n0.65 3.33795383348549 12.254968667356328 0.2723755502024928 6.164708137512207\n0.7 3.3427572943091217 12.254982744632612 0.27276719714462017 6.291109085083008\n0.75 3.346163945671588 12.254974105666406 0.27304537054259476 6.277575969696045\n0.8 3.3487298475630576 12.254959590291133 0.2732550705606614 6.43417501449585\n0.85 3.3509966299345404 12.254947469731302 0.27344030957384535 6.290109157562256\n0.9 3.3537719416182408 12.254942383269674 0.27366688775271414 6.284341812133789\n0.95 3.359287007709233 12.254950071165673 0.2741167436996096 6.180248737335205\n"
+    },
+    {
+      "group": "precision",
+      "script": "validate_cap.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 1.5897936820983887,
+      "generated_files": [
+        "cap_validation.json"
+      ],
+      "stdout_tail": "GFF I analytically zero: {'0.45': 4.745004389405949e-11, '0.6': 6.433964472307707e-11, '0.7': 7.932499102025758e-11, '0.8': 9.546496926304826e-11, '0.9': 1.1191048088221578e-10}\nboundary {'0.5': {'sigma': 0.01287802024909151, 'mixed': 0.32287699601952136}, '0.7': {'sigma': -2.2736498465890103e-05, 'mixed': 0.08008480497511672}, '0.8': {'sigma': -0.0002852219680401218, 'mixed': 0.046367005530164845}, '0.9': {'sigma': -2.284556951146822e-06, 'mixed': 0.07023111343889418}}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "build_crossing.py",
+      "arguments": [
+        32
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 5.86773419380188,
+      "generated_files": [
+        "basis_L32.npz",
+        "basis_L32.json"
+      ],
+      "stdout_tail": "row 10 of 60\nrow 20 of 60\nrow 30 of 60\nrow 40 of 60\nrow 50 of 60\nfinished 92 154 maxpad [1.68867342e-05 2.40473485e-01 2.04986288e-03]\n"
+    },
+    {
+      "group": "refinement",
+      "script": "build_crossing.py",
+      "arguments": [
+        40
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 10.655078887939453,
+      "generated_files": [
+        "basis_L40.npz",
+        "basis_L40.json"
+      ],
+      "stdout_tail": "row 10 of 60\nrow 20 of 60\nrow 30 of 60\nrow 40 of 60\nrow 50 of 60\nfinished 92 154 maxpad [1.68867342e-05 2.40473485e-01 2.04986288e-03]\n"
+    },
+    {
+      "group": "refinement",
+      "script": "build_crossing.py",
+      "arguments": [
+        48
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 17.345120668411255,
+      "generated_files": [
+        "basis_L48.json",
+        "basis_L48.npz"
+      ],
+      "stdout_tail": "row 10 of 60\nrow 20 of 60\nrow 30 of 60\nrow 40 of 60\nrow 50 of 60\nfinished 92 154 maxpad [1.68867342e-05 2.40473485e-01 2.04986288e-03]\n"
+    },
+    {
+      "group": "refinement",
+      "script": "final_run.py",
+      "arguments": [
+        8,
+        7,
+        1,
+        10
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 29.001831531524658,
+      "generated_files": [
+        "final_8_7_pad1_summary.json",
+        "final_8_7_pad1_angular.json",
+        "final_8_7_pad1_lp.npz",
+        "final_8_7_pad1.json"
+      ],
+      "stdout_tail": "e-05, 0.0045527389368844795, 0.01653734641685179], 'tail_C1': np.float64(0.001722515940701034), 'interval': [np.float64(0.2697945050548069), np.float64(0.27618174934557965)]}\n8.0 7.0 10 {'iteration': 10, 'input_linear_C1_shift': [-0.0015846182751480778, 0.0012561443188988206], 'objective_nonlinear_allowance': 5e-05, 'tail_integrals': [7.026870100737228e-05, 0.0045520892944341295, 0.016525214050742316], 'tail_C1': np.float64(0.0017214724827602217), 'interval': [np.float64(0.2697959227069642), np.float64(0.2761804108251415)]}\n{'interval': [0.2697959227069642, 0.27521350074603207], 'midpoint': 0.27250471172649815, 'halfwidth': 0.002708789019533947, 'baseline_C1': 0.27315242382601645, 'input_linear_shift': [-0.0015846182751480778, 0.0012561443188988206], 'tail_b': 7.026870100737228e-05, 'tail_a_even': 0.0045520892944341295, 'tail_a_odd': [-0.016525214050742316, 0.0046772627746407445], 'objective_nonlinear_allowance': 5e-05, 'even_gap': 8.0, 'odd_gap': 7.0, 'crossing_padfactor': 1.0, 'h_epsilonprime_interval': [1.5349, 1.5375], 'level': 40, 'npoints': 92, 'nparams': 154, 'iterations': 10, 'status': 'Conditional numerical envelope, not a certified physical bound or confidence interval'}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "final_run.py",
+      "arguments": [
+        8,
+        7,
+        2,
+        8
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 23.24722647666931,
+      "generated_files": [
+        "final_8_7_pad2_summary.json",
+        "final_8_7_pad2.json",
+        "final_8_7_pad2_angular.json",
+        "final_8_7_pad2_lp.npz"
+      ],
+      "stdout_tail": "75487897e-05, 0.004722061507837475, 0.02172990457913712], 'tail_C1': np.float64(0.0021601418055728736), 'interval': [np.float64(0.26927221200494905), np.float64(0.27668292634283265)]}\n8.0 7.0 8 {'iteration': 8, 'input_linear_C1_shift': [-0.0016686459501595483, 0.0013189068368875305], 'objective_nonlinear_allowance': 5e-05, 'tail_integrals': [7.457297040859314e-05, 0.004720160788216353, 0.02172369774545392], 'tail_C1': np.float64(0.002159478890957962), 'interval': [np.float64(0.2692738234303526), np.float64(0.2766812422216957)]}\n{'interval': [0.2692738234303526, 0.27541036263294777], 'midpoint': 0.2723420930316502, 'halfwidth': 0.0030682696012975796, 'baseline_C1': 0.27315242382601645, 'input_linear_shift': [-0.0016686459501595483, 0.0013189068368875305], 'tail_b': 7.457297040859314e-05, 'tail_a_even': 0.004720160788216353, 'tail_a_odd': [-0.02172369774545392, 0.006151087136257578], 'objective_nonlinear_allowance': 5e-05, 'even_gap': 8.0, 'odd_gap': 7.0, 'crossing_padfactor': 2.0, 'h_epsilonprime_interval': [1.5349, 1.5375], 'level': 40, 'npoints': 92, 'nparams': 154, 'iterations': 8, 'status': 'Conditional numerical envelope, not a certified physical bound or confidence interval'}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "final_run.py",
+      "arguments": [
+        6,
+        6,
+        1,
+        8
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 21.759672164916992,
+      "generated_files": [
+        "final_6_6_pad1.json",
+        "final_6_6_pad1_summary.json",
+        "final_6_6_pad1_angular.json",
+        "final_6_6_pad1_lp.npz"
+      ],
+      "stdout_tail": "32314299856, 0.023552172162405127, 0.059952935348833315], 'tail_C1': np.float64(0.006837798480552847), 'interval': [np.float64(0.2638528610806585), np.float64(0.2821562393152843)]}\n6.0 6.0 8 {'iteration': 8, 'input_linear_C1_shift': [-0.0023982027011878113, 0.0021139244531609568], 'objective_nonlinear_allowance': 5e-05, 'tail_integrals': [0.0010343139637543552, 0.023185762739331654, 0.058661003079643434], 'tail_C1': np.float64(0.006701743519233572), 'interval': [np.float64(0.26400063878666075), np.float64(0.28201987348736746)]}\n{'interval': [0.26400063878666075, 0.2784178764133668], 'midpoint': 0.2712092576000138, 'halfwidth': 0.007208618813353024, 'baseline_C1': 0.27315242382601645, 'input_linear_shift': [-0.0023982027011878113, 0.0021139244531609568], 'tail_b': 0.0010343139637543552, 'tail_a_even': 0.023185762739331654, 'tail_a_odd': [-0.058661003079643434, 0.014527707577264334], 'objective_nonlinear_allowance': 5e-05, 'even_gap': 6.0, 'odd_gap': 6.0, 'crossing_padfactor': 1.0, 'h_epsilonprime_interval': [1.5349, 1.5375], 'level': 40, 'npoints': 92, 'nparams': 154, 'iterations': 8, 'status': 'Conditional numerical envelope, not a certified physical bound or confidence interval'}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "check_nonlinear.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 29.153407096862793,
+      "generated_files": [
+        "nonlinear_crossing_validation.json"
+      ],
+      "stdout_tail": "interior', 'max_actual_over_allowance': 0.4293617043994584, 'absolute_error_by_correlator': [6.490496545160621e-06, 0.06317781436933911, 0.0007854121956379773]}\n5 {'kind': 'interior', 'max_actual_over_allowance': 0.24606512307552827, 'absolute_error_by_correlator': [8.93667014373171e-07, 0.011705160380082735, 3.355181773474075e-05]}\n10 {'kind': 'interior', 'max_actual_over_allowance': 0.3231308302696986, 'absolute_error_by_correlator': [5.810377985533905e-07, 0.041775268729900616, 0.0006035351270967659]}\n15 {'kind': 'interior', 'max_actual_over_allowance': 0.3722148644015916, 'absolute_error_by_correlator': [8.626792387642123e-07, 0.07740461013294986, 0.0006044023402925688]}\n20 {'kind': 'corners', 'max_actual_over_allowance': 0.6666446863363847, 'absolute_error_by_correlator': [9.674235193972468e-06, 0.1381116010484953, 0.0013660089057251218]}\n25 {'kind': 'corners', 'max_actual_over_allowance': 0.6650089017321447, 'absolute_error_by_correlator': [9.52011561437924e-06, 0.13167621346071234, 0.001347194974135081]}\n30 {'kind': 'corners', 'max_actual_over_allowance': 0.6665097748958605, 'absolute_error_by_correlator': [9.578220807978776e-06, 0.13331954840650473, 0.0013445044241197426]}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "validate_refinement.py",
+      "arguments": [
+        "objective"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 15.470451354980469,
+      "generated_files": [
+        "validation_objective.json"
+      ],
+      "stdout_tail": "{'low_input_remainder': 5.3659215943925076e-11, 'total_sampled_remainder': np.float64(2.395203880495278e-05), 'allowance_used': 5e-05, 'ratio_to_allowance': np.float64(0.47904077609905554), 'numerical_quad': {'level': 24, 'nr': 64, 'na': 64}, 'continuous_dimension_sampling': 'nine points over each two-error interval'}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "validate_refinement.py",
+      "arguments": [
+        "radial"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9046194553375244,
+      "generated_files": [
+        "validation_radial.json"
+      ],
+      "stdout_tail": "'radial_positive': [{'Delta': 0.518148806, 'ell': 0, 'min_coefficient': -1.419177275696626e-13, 'relative_negative': -2.423331956031947e-15}, {'Delta': 4.180305, 'ell': 2, 'min_coefficient': -3.4948606508766744e-14, 'relative_negative': -2.0404542773984796e-14}, {'Delta': 4.63804, 'ell': 3, 'min_coefficient': -5.339478859056612e-15, 'relative_negative': -2.6398286594570014e-15}, {'Delta': 7.0, 'ell': 0, 'min_coefficient': -2.7385862674811356e-14, 'relative_negative': -1.3403590152681254e-14}, {'Delta': 7.0, 'ell': 1, 'min_coefficient': -2.989926015106725e-14, 'relative_negative': -2.847131113753421e-14}, {'Delta': 7.0, 'ell': 3, 'min_coefficient': -2.380300817561576e-14, 'relative_negative': -2.3803008175615648e-14}, {'Delta': 7.73, 'ell': 6, 'min_coefficient': -1.2259941326031587e-14, 'relative_negative': -8.768689516637988e-15}, {'Delta': 10.0, 'ell': 5, 'min_coefficient': -1.6417422976644502e-14, 'relative_negative': -1.6417422976644285e-14}, {'Delta': 12.0, 'ell': 8, 'min_coefficient': -1.1925573376037057e-14, 'relative_negative': -1.1925573376036551e-14}], 'descendant_order_comparison': {'d0': 2.6478751635750086e-08, 'J': 1.699038132407793e-11, 'pad': 1.5803421939131201e-12}}\n"
+    },
+    {
+      "group": "refinement",
+      "script": "run_numerical_checks.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 2.5824475288391113,
+      "generated_files": [
+        "final_numerical_checks.json",
+        "lp_optimality_checks.json"
+      ],
+      "stdout_tail": "numerical checks saved {'d0': 5.7488236393510306e-11, 'J': 3.302913498259841e-14, 'pad': 7.09432512735475e-14} [{'objective_sign': 1, 'primal_value': -0.0015846182751480782, 'dual_value': -0.0015846182751480774, 'primal_dual_gap': 8.673617379884035e-19, 'max_constraint_violation': 8.869976697578608e-10}, {'objective_sign': -1, 'primal_value': -0.0012561443188988206, 'dual_value': -0.0012561443188988202, 'primal_dual_gap': 4.336808689942018e-19, 'max_constraint_violation': 8.869979195580413e-10}]\n"
+    },
+    {
+      "group": "refinement",
+      "script": "cap_tail_check.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 25.578404903411865,
+      "generated_files": [
+        "alternative_domain_tail_checks.json"
+      ],
+      "stdout_tail": "ned_C1': 0.26989784053597343, 'max_rho': 0.3817462001332603, 'tail_magnitudes': [0.0012384486687396937, 0.000636663825075955, 0.2824484088650851], 'remainder_C1_scale': 0.023128235823269398, 'status': 'Tail-only sensitivity, not full physical interval; no averaging of domain values'}\n{'h': 0.65, 'retained_C1': 0.27237555020160203, 'max_rho': 0.33741882442916193, 'tail_magnitudes': [0.00024034654382615978, 0.0035464207252127325, 0.06772994259965921], 'remainder_C1_scale': 0.005821461464611688, 'status': 'Tail-only sensitivity, not full physical interval; no averaging of domain values'}\n{'h': 0.7, 'retained_C1': 0.2727671971436593, 'max_rho': 0.3251021732757786, 'tail_magnitudes': [0.00017808537917615182, 0.006085047343198992, 0.04450254000977008], 'remainder_C1_scale': 0.004131883680123255, 'status': 'Tail-only sensitivity, not full physical interval; no averaging of domain values'}\n{'h': 0.8, 'retained_C1': 0.27325507055952003, 'max_rho': 0.3813317585959658, 'tail_magnitudes': [0.0002007732527102555, 0.018391990244131518, 0.020457242965149773], 'remainder_C1_scale': 0.0031745592657421258, 'status': 'Tail-only sensitivity, not full physical interval; no averaging of domain values'}\n"
+    }
+  ],
+  "status": "passed",
+  "elapsed_seconds": 323.7362594604492
+}

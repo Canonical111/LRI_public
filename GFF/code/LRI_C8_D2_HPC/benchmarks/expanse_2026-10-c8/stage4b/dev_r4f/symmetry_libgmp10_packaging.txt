@@ -1,0 +1,24 @@
+# symmetry's libgmp10 (Ubuntu 22.04 jammy): fat or not? Read-only reasoning from the packaging (2026-10-04); symmetry itself not used.
+# Source: https://git.launchpad.net/ubuntu/+source/gmp/plain/debian/rules?h=ubuntu/jammy  sha256 cf8c28221676be76e9cacd84801e4a4c9a5baba8f282f278f5c1e357288c1189
+# Debian bookworm 2:6.2.1+dfsg1-1.1: https://sources.debian.org/data/main/g/gmp/2:6.2.1+dfsg1-1.1/debian/rules (same block)
+# Excerpt (lines 41-55 of the jammy rules):
+confflags = --prefix=/usr --enable-cxx
+
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 kfreebsd-amd64 lpia))
+  confflags += --disable-fat
+else
+  confflags += --enable-fat
+endif
+
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  AR = ar
+  confflags_build += --build $(DEB_BUILD_GNU_TYPE)
+else
+  AR = $(DEB_HOST_GNU_TYPE)-ar
+  confflags_build += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE) --target $(DEB_HOST_GNU_TYPE)
+endif
+# configure line:
+90:	cd build && ../configure $(confflags_ma) \
+91-	    AR=$(AR) CC="$(CC)" CFLAGS="$(CFLAGS)" \
+92-	    CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)"
+93-	touch $@

@@ -1,0 +1,27 @@
+% d = 3 independent-check paragraph for the HT note (phi4HT3d, 2026-10-13; readability review 2026-10-15).
+% Check ids: lri_3d_window_indep `make replay`.
+\textit{Three dimensions.} A second solver, written from the definition of the model without reading or importing the
+production code (\code{code/lri\_3d\_window\_indep}), reproduces the $d=3$ spectra. It makes different choices at
+every step:
+\begin{itemize}
+\item a complex $Y_{lm}$ Fock space with all magnetic sectors;
+\item the $J=0$ space as the null space of the Casimir $J_-J_+$, from a dense eigensolver, rather than an SVD null space;
+\item the vertices at a generic point of the sphere, checked at a second point;
+\item the zero mode in a number-state basis truncated to its $K$ lowest local eigenstates, not the trained density
+ basis;
+\item window fixed points by bracketed root finding.
+\end{itemize}
+
+Its $J=0$ state counts at $N=2,4,6,8$ (3, 10, 33, 110) equal those of the perturbative package in
+\code{HT\_Pert/}. % test_indep
+In 23 comparisons at $N=8,10,12$, in the window and the raw scheme and over the whole range of $\Delta_\sigma$, it
+reproduces the production $\Delta_\varepsilon$:
+\begin{itemize}
+\item at the production couplings to at most $1.8\times10^{-12}$, with 16 or 24 local states; % INDEP-FIXED
+\item after tuning $(r,g)$ independently from a start displaced by 2\%, to at most $1.9\times10^{-11}$, quoted as
+ $2\times10^{-11}$, % INDEP-TUNED
+ with every tuning converged to $10^{-12}$. % INDEP-RESID
+\end{itemize}
+The production values it compares with are those of the shipped records. % INDEP-PKG
+This verifies that the stated model is computed at $N\leq12$, not that its limit is the CFT. The quoted results are at
+$N=14$--20, beyond the reach of this check.

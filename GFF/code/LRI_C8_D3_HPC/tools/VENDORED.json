@@ -1,0 +1,1289 @@
+{
+ "schema": "c8-d3-vendored-1",
+ "rule": "PLAN E.1 \"One read rule\": vendored files are hashed by prepare_inputs.verify() (hence plan), verify_base (merge, assemble) and verify_delivery; imported only by assemble.py, combine.py, verify_result.py, report.py, pilot_report.py, design.py/design_fallback.py and the tests; `make inputs` copies inputs_d3/ after the hash check and executes prepare_low8.py --d 3 in compare mode (writing nothing into inputs/, HD4); run never opens vendor/ (A-ORC-13). tools/vendor_assembly.py is the vendoring writer. The allowlist of tests/check_vendored.py is this list.",
+ "handoff": {
+  "path": "vendor/c8_assembly/HANDOFF_assembly.json",
+  "source": "LRI_C8_shared/assembly/HANDOFF_assembly.json",
+  "sha256": "f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437",
+  "md5": "b4bc3acf2f081abbed05a0dfcfa08568",
+  "bytes": 5712,
+  "date": "2026-10-03",
+  "owner": "C63d",
+  "checker": "C62d",
+  "handoff": "H2/H3 (order-8 assembly and power-sector protocol), C63d -> C62d",
+  "rule": "Only this file counts as delivery (DECISIONS.md A6). Vendor exactly these files at these sha256s; any later revision gets a new HANDOFF and needs a new review and pin.",
+  "tests_at_handoff": "30 passed (pytest 9.1.1, PYTHONDONTWRITEBYTECODE=1 -p no:cacheprovider, 24.4 s); a vendored copy without LRI_ROOT: 21 passed, 9 skipped (tests needing the delivered C7 packages)",
+  "platform_at_handoff": "macOS-26.6.2-arm64-arm-64bit; Python 3.10.12; numpy 1.24.4; mpmath 1.3.0"
+ },
+ "files": [
+  {
+   "path": "order8_assembly.py",
+   "vendored_path": "vendor/c8_assembly/order8_assembly.py",
+   "source": "LRI_C8_shared/assembly/order8_assembly.py",
+   "sha256": "2127196f2c712700617834bf157b881b802bd32d67e6a5c8dbb17b1425bc1d77",
+   "md5": "bdf84d47f24976732ce9e87dea26e7e5",
+   "bytes": 28520
+  },
+  {
+   "path": "exact_check.py",
+   "vendored_path": "vendor/c8_assembly/exact_check.py",
+   "source": "LRI_C8_shared/assembly/exact_check.py",
+   "sha256": "e41f244bc9759ed4c74533d97b8b76c9b31052b224bbeef710f81ea1d8f104ea",
+   "md5": "6f04d40e09cbcb78ab54c60986ba374c",
+   "bytes": 27361
+  },
+  {
+   "path": "exact_check_results.json",
+   "vendored_path": "vendor/c8_assembly/exact_check_results.json",
+   "source": "LRI_C8_shared/assembly/exact_check_results.json",
+   "sha256": "c3e802345f05e6d4d58d9d3c86baee79c62b42b82c06e939e10929476d1d8dae",
+   "md5": "3c5b337b8a1b10d7e374c5506bf22ed6",
+   "bytes": 4770
+  },
+  {
+   "path": "prepare_low8.py",
+   "vendored_path": "vendor/c8_assembly/prepare_low8.py",
+   "source": "LRI_C8_shared/assembly/prepare_low8.py",
+   "sha256": "6923c89a3d081d84f530f75a3d90fb43daac8c69e9984170155a062a6315bee6",
+   "md5": "ac3cc558a9ca2639999dd842c28c497e",
+   "bytes": 14914
+  },
+  {
+   "path": "POWER_PROTOCOL.md",
+   "vendored_path": "vendor/c8_assembly/POWER_PROTOCOL.md",
+   "source": "LRI_C8_shared/assembly/POWER_PROTOCOL.md",
+   "sha256": "95e91d2c77988e6da5f9066e3a1dc829111b728e8e9cc676fab66601e7958244",
+   "md5": "20d3db75de78ea22888240e8a8bcd4de",
+   "bytes": 13450
+  },
+  {
+   "path": "README.md",
+   "vendored_path": "vendor/c8_assembly/README.md",
+   "source": "LRI_C8_shared/assembly/README.md",
+   "sha256": "9d130000ec14997d66cfc9fcf5875b12789ad1dae8cfb2d5e59d4fdc20ba8ca5",
+   "md5": "d2e5f16094d743283b486e19a0ddd086",
+   "bytes": 54951
+  },
+  {
+   "path": "tests/test_order8_assembly.py",
+   "vendored_path": "vendor/c8_assembly/tests/test_order8_assembly.py",
+   "source": "LRI_C8_shared/assembly/tests/test_order8_assembly.py",
+   "sha256": "f65617da63567e4f1dbc8ee9b71c28624d3ced742e7ee9e271f2029e96f32561",
+   "md5": "ab6475e0cad4fa7c34a24b82d60e072b",
+   "bytes": 41471
+  },
+  {
+   "path": "inputs_d3/two_loop.json",
+   "vendored_path": "vendor/c8_assembly/inputs_d3/two_loop.json",
+   "source": "LRI_C8_shared/assembly/inputs_d3/two_loop.json",
+   "sha256": "6c31bf7fcea49e1c16b52c82ca117502932a0f6a890e5d58b4846b3cb91fbffc",
+   "md5": "4e497df018a5b5c9a7c79029e88a11f3",
+   "bytes": 569
+  },
+  {
+   "path": "inputs_d3/gamma_d3_8.txt",
+   "vendored_path": "vendor/c8_assembly/inputs_d3/gamma_d3_8.txt",
+   "source": "LRI_C8_shared/assembly/inputs_d3/gamma_d3_8.txt",
+   "sha256": "f868fbe27855ea0474e633e221629d5c5c1011b7dd07c2d6a4df6853b4b7293d",
+   "md5": "080475725c8c00302eda28a3e6ecca37",
+   "bytes": 3112
+  },
+  {
+   "path": "inputs_d3/checks.json",
+   "vendored_path": "vendor/c8_assembly/inputs_d3/checks.json",
+   "source": "LRI_C8_shared/assembly/inputs_d3/checks.json",
+   "sha256": "e73f42e2a9036333fbb6aeeef34a07963bb368b2addb42dcf78a92c362783b7e",
+   "md5": "fccced3ae56b65f2ddd16c2070d5ab40",
+   "bytes": 4829
+  },
+  {
+   "path": "inputs_d2_check/two_loop.json",
+   "vendored_path": "vendor/c8_assembly/inputs_d2_check/two_loop.json",
+   "source": "LRI_C8_shared/assembly/inputs_d2_check/two_loop.json",
+   "sha256": "565c388025a414746541040c34660c942a88e364c5fcf4fe8093927b100b00ad",
+   "md5": "c101463cf393b47320976ec8a2010ee1",
+   "bytes": 640
+  },
+  {
+   "path": "inputs_d2_check/gamma_d2_8.txt",
+   "vendored_path": "vendor/c8_assembly/inputs_d2_check/gamma_d2_8.txt",
+   "source": "LRI_C8_shared/assembly/inputs_d2_check/gamma_d2_8.txt",
+   "sha256": "2ace6971bdbcf13bf15c74311443a302fd971923633e91261323a1283128fefd",
+   "md5": "b68eb33c887f4cc4a1b8770b2e576fed",
+   "bytes": 3362
+  },
+  {
+   "path": "inputs_d2_check/checks.json",
+   "vendored_path": "vendor/c8_assembly/inputs_d2_check/checks.json",
+   "source": "LRI_C8_shared/assembly/inputs_d2_check/checks.json",
+   "sha256": "16731d14c564b3019d3ed6a77f948e4d8d2d0d91a33f4aef321260bfa27df41b",
+   "md5": "b851b8353228bf5a866bf3d183276311",
+   "bytes": 5199
+  }
+ ],
+ "review": {
+  "record": "LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json",
+  "record_sha256_at_vendoring": "9334c955c5177e7ef570e32e99b4bc8430f366a80178c1f8e931b964c5d49da3",
+  "reviewer": "C62d (Claude workflow)",
+  "date": "2026-10-03",
+  "overall_verdict": "ACCEPT_WITH_MINOR",
+  "required_changes_for_C63d": [],
+  "verdict_gate": "accepted_documentation_only_minor_fixes",
+  "verdict_gate_decision": "The PLAN gate 'every verifier verdict is a pass' is treated as met: the only non-pass verdict concerned documentation citations, the post-verification edits were diffed by the handoff-tests lens and are documentation only, and every code, data and test file is byte-identical to the round-4 verified copy. This decision is the recorded input for check_vendored.py (field step_0_handoff.verdict_gate). It does not extend to any later HANDOFF revision.",
+  "verdict_gate_scope": "this HANDOFF version only (checklist.step_0_handoff.host_decision of the review record: \"It does not extend to any later HANDOFF revision.\")"
+ },
+ "power_protocol": {
+  "path": "vendor/c8_assembly/POWER_PROTOCOL.md",
+  "sha256": "95e91d2c77988e6da5f9066e3a1dc829111b728e8e9cc676fab66601e7958244",
+  "implemented_by": "the vendored power_null_rows and tools/assemble.py reporting (PLAN HD10, E.2; PP1-PP10 with one A-ASM-5 test each)"
+ },
+ "interface": {
+  "module": "vendor/c8_assembly/order8_assembly.py",
+  "signatures": {
+   "coefficients": [
+    {
+     "name": "vals",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "B2",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "half_d",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ],
+   "jacobians": [
+    {
+     "name": "means",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "B2",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "half_d",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ],
+   "campaign_moments": [
+    {
+     "name": "ar",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "loops",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ],
+   "sector_assembly": [
+    {
+     "name": "means",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "vc",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "B2",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "half_d",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ],
+   "power_null_rows": [
+    {
+     "name": "delta",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "dse",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ],
+   "top_slot_gate": [
+    {
+     "name": "J",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "rtol",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": "1e-12"
+    }
+   ],
+   "loop7_gate": [
+    {
+     "name": "J",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "B2",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": "8"
+    },
+    {
+     "name": "rtol",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": "1e-12"
+    }
+   ],
+   "affinity_gate": [
+    {
+     "name": "means",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "B2",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "half_d",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "loops",
+     "kind": "KEYWORD_ONLY",
+     "default": "None"
+    },
+    {
+     "name": "rel_step",
+     "kind": "KEYWORD_ONLY",
+     "default": "0.01"
+    },
+    {
+     "name": "seed",
+     "kind": "KEYWORD_ONLY",
+     "default": "20261003"
+    },
+    {
+     "name": "rtol",
+     "kind": "KEYWORD_ONLY",
+     "default": "1e-10"
+    }
+   ],
+   "ms8_rows": [
+    {
+     "name": "general",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": "False"
+    }
+   ],
+   "ms8_value": [
+    {
+     "name": "env",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    },
+    {
+     "name": "general",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": "False"
+    }
+   ],
+   "slots": [
+    {
+     "name": "order",
+     "kind": "POSITIONAL_OR_KEYWORD",
+     "default": null
+    }
+   ]
+  },
+  "constants": {
+   "ORDERS": "(7, 8)",
+   "COMPLEX_STEP": "1e-20",
+   "FLAG_PULL": "3.0",
+   "ORDER3_ROUNDING": "1e-12"
+  },
+  "signature_method": "ast of the vendored source (no import); tests/check_vendored.py compares it with inspect.signature of the imported module (names, kinds, default reprs)",
+  "notes": {
+   "loop7_gate": "an order-8 gate: it raises ValueError at any other order (order8_assembly.py:272; at order 7 loop 7 is the top loop). assemble.combine(order=7) skips it and records \"loop7_gate\": \"not applicable at order 7\" (PLAN E.2).",
+   "jacobians": "takes float or complex means only: a complex-step derivative with no exact mode. B2 must be real float or the strings of two_loop.json (an exact-mode or complex B2 raises ValueError); rational means are read as complex floats (order8_assembly.py:136-157).",
+   "power_null_rows": "compared on its numeric fields (delta, se, pull, flag), not on its output layout, which differs from C7(2)'s power_null_checks (H2 record step 5). It has no length or finiteness guards (:391-412: SE = 0 or NaN gives an unflagged row, a short vector an IndexError) and no PP8 marker: assemble.py guards its inputs and adds the marker (PLAN E.2).",
+   "top_slot_gate": "skips loops absent from J (`if L not in J: continue`, :256): assemble.py asserts one row for every L = 3..order (PLAN E.2).",
+   "affinity_gate": "perturbs only the loops 5..order present in `means` (:301; DECISIONS B3): assemble.py asserts loops == [5, ..., order] (PLAN E.2)."
+  }
+ },
+ "run_rules": [
+  "PYTHONPYCACHEPREFIX unset, in the child environment too (H2 record checklist.step_1_runs.env_notes)",
+  "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, pytest -p no:cacheprovider, python -B (env_notes, actions_for_C62d)",
+  "exact_check.py is never given --write (actions_for_C62d)",
+  "after a run vendor/c8_assembly/ holds exactly the 13 listed files and the HANDOFF copy, byte-identical, and no bytecode (actions_for_C62d)",
+  "test_order7_production_reassembly (tests/test_order8_assembly.py:134, <= 8 ulp) depends on numpy and CPU: a lone failure there is environmental only if A-ASM-3 passes on the same stack in the same job, and it is recorded (ulp count, numpy, Python, CPU); otherwise it is red (PLAN A-ASM-1)"
+ ],
+ "fixtures": {
+  "root": "vendor/c8_assembly_fixtures",
+  "lri_root": "LRI_ROOT=<package>/vendor/c8_assembly_fixtures",
+  "measurement": {
+   "schema": "c8-d3-vendored-readset-1",
+   "date": "2026-10-04",
+   "measured_by": "tools/vendor_assembly.py: sys.addaudithook open/listdir/scandir log in every Python process (sitecustomize), on a temporary copy of the 13 verified HANDOFF files in the package layout, LRI_ROOT=<agent-lri>",
+   "audited_events": 4150,
+   "files": 50,
+   "total_bytes": 555995,
+   "directory_listings": {
+    "count": 519,
+    "top_level": [
+     "LRI_C7_D2_HPC",
+     "LRI_C7_D2_HPC_production",
+     "LRI_C7_D3_HPC",
+     "LRI_C7_D3_HPC_production"
+    ],
+    "note": "directory listings only (rglob of the delivered C7 packages by test_no_bytecode_written_into_delivered_packages; iterdir of the production groups); no file read"
+   },
+   "environment": {
+    "python": "3.10.12",
+    "implementation": "CPython",
+    "executable": "<TMP>/scratchpad/venv/bin/python",
+    "numpy": "1.24.4",
+    "mpmath": "1.3.0",
+    "sympy": "1.12",
+    "pytest": "9.1.1",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "cpu_model": "Apple M1 Max",
+    "host": "personal desktop",
+    "slurm_job_id": null
+   },
+   "runs": {
+    "tests": {
+     "returncode": 0,
+     "counts": {
+      "passed": 30,
+      "skipped": 0,
+      "failed": 0,
+      "errors": 0
+     },
+     "seconds": 24.3
+    },
+    "exact_check": {
+     "command": "-B vendor/c8_assembly/exact_check.py",
+     "returncode": 0,
+     "seconds": 5.5
+    },
+    "prepare_low8_d3": {
+     "command": "-B vendor/c8_assembly/prepare_low8.py --d 3",
+     "returncode": 0,
+     "seconds": 2.8
+    }
+   }
+  },
+  "c62d_read_set": {
+   "path": "LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json",
+   "sha256": "7b14f50a300fc7fd69ad57e9669adabaed87135b7e4d26ef0aababcc2bcc9be0",
+   "files": 50,
+   "total_bytes": 555995,
+   "comparison": "identical: the same paths at the same sha256"
+  },
+  "count": 50,
+  "bytes": 555995,
+  "files": [
+   {
+    "path": "LRI_C7_D2_HPC/inputs/gamma_d2_7.txt",
+    "sha256": "e6286dedf4a27b45c2b6669ace4a94a167e892dd4b83fee020777b674ed35f96",
+    "md5": "7405d393917da465707c4cec080978ba",
+    "bytes": 2477,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C7_D2_HPC",
+     "commit": "a55958fc757f3f6e971c73cb5fe08b5dd24e78eb",
+     "path": "inputs/gamma_d2_7.txt"
+    },
+    "measured_live_sha256": "e6286dedf4a27b45c2b6669ace4a94a167e892dd4b83fee020777b674ed35f96",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC/inputs/two_loop.json",
+    "sha256": "0e130549945ea3a52420b6508a15521649ec14f212e4eba6ab2713bd973278d0",
+    "md5": "840ccf997df0f1ffcc67829bc4654690",
+    "bytes": 523,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C7_D2_HPC",
+     "commit": "a55958fc757f3f6e971c73cb5fe08b5dd24e78eb",
+     "path": "inputs/two_loop.json"
+    },
+    "measured_live_sha256": "0e130549945ea3a52420b6508a15521649ec14f212e4eba6ab2713bd973278d0",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC/reference/LRI_C7_d2_progress/code/check_assembly.py",
+    "sha256": "0300f1a711736ed9f2ad1666ff45ba01de5bfee3c78778871248a41cc66cb579",
+    "md5": "f3c72eec0fa44629d3c39db2a18c04eb",
+    "bytes": 2898,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C7_D2_HPC",
+     "commit": "a55958fc757f3f6e971c73cb5fe08b5dd24e78eb",
+     "path": "reference/LRI_C7_d2_progress/code/check_assembly.py"
+    },
+    "measured_live_sha256": "0300f1a711736ed9f2ad1666ff45ba01de5bfee3c78778871248a41cc66cb579",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC/tools/assemble.py",
+    "sha256": "18794965478ab780088ba8281ca1d4e8075845a757594e39db80c56fb880adfa",
+    "md5": "f8f5ccf7e2835c9d590e2bdac82ba528",
+    "bytes": 12970,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C7_D2_HPC",
+     "commit": "a55958fc757f3f6e971c73cb5fe08b5dd24e78eb",
+     "path": "tools/assemble.py"
+    },
+    "measured_live_sha256": "18794965478ab780088ba8281ca1d4e8075845a757594e39db80c56fb880adfa",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/C7_result.json",
+    "sha256": "5c7a331874e480399156631c63b21a625f42cb891714912f5ef7d1beb23bdc45",
+    "md5": "75bbc468096d2f51f1e2c9e9dff66221",
+    "bytes": 9390,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/C7_result.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/C7_result.json"
+    },
+    "measured_live_sha256": "5c7a331874e480399156631c63b21a625f42cb891714912f5ef7d1beb23bdc45",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L3/merged.json",
+    "sha256": "b29c5b4912a39ddbb430ded4bff66fd2f0b5807b7750ec4f6ad46eea4b88c9e9",
+    "md5": "90f73748ea9d5c0de4fb4379ab13b441",
+    "bytes": 18004,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L3/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L3/merged.json"
+    },
+    "measured_live_sha256": "b29c5b4912a39ddbb430ded4bff66fd2f0b5807b7750ec4f6ad46eea4b88c9e9",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L4/merged.json",
+    "sha256": "061062d2fb0b71fa076c64ebe8ba2544fe30e9ee49c9f3ae44cd0126fac974fe",
+    "md5": "2b7e520471993bed68f06919c85d471d",
+    "bytes": 14773,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L4/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L4/merged.json"
+    },
+    "measured_live_sha256": "061062d2fb0b71fa076c64ebe8ba2544fe30e9ee49c9f3ae44cd0126fac974fe",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L5/merged.json",
+    "sha256": "2bdf5b5c13646abb81adab90083cc1a7de715fdcff33b9c863202e1cfa30a939",
+    "md5": "9b72a3e06517d8437d8315e7b5024191",
+    "bytes": 11172,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L5/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L5/merged.json"
+    },
+    "measured_live_sha256": "2bdf5b5c13646abb81adab90083cc1a7de715fdcff33b9c863202e1cfa30a939",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L6/merged.json",
+    "sha256": "2c3ebff1facb8583daf64f366b0768644780c2d25480d08c133eee123879775b",
+    "md5": "807d6f03c0f409bf4c42e1323f65cd00",
+    "bytes": 8138,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L6/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L6/merged.json"
+    },
+    "measured_live_sha256": "2c3ebff1facb8583daf64f366b0768644780c2d25480d08c133eee123879775b",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L7/merged.json",
+    "sha256": "023c2089f11c6dc38d7564542100a06b914ab0d8497ec9a589080578af9bd74b",
+    "md5": "f3b6b8dde5cccedd4cf1c67bdaac7229",
+    "bytes": 4699,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L7/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_free_L7/merged.json"
+    },
+    "measured_live_sha256": "023c2089f11c6dc38d7564542100a06b914ab0d8497ec9a589080578af9bd74b",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L3/merged.json",
+    "sha256": "6c5ab957046f33f0f32562931ec84824c29a8240ea2fd9130e88c82abbce4a2d",
+    "md5": "4b210347ed64ea6eb6b3202f24357266",
+    "bytes": 18009,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L3/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L3/merged.json"
+    },
+    "measured_live_sha256": "6c5ab957046f33f0f32562931ec84824c29a8240ea2fd9130e88c82abbce4a2d",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L4/merged.json",
+    "sha256": "ddc26153e30b7f4ec82dd6fef359356c4fdf54c09cfb17b71e74d90880f0f4dd",
+    "md5": "e81cdea3ed0131e5731a3703ce106721",
+    "bytes": 14728,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L4/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L4/merged.json"
+    },
+    "measured_live_sha256": "ddc26153e30b7f4ec82dd6fef359356c4fdf54c09cfb17b71e74d90880f0f4dd",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L5/merged.json",
+    "sha256": "fb6089efe4325901160298411402f365c0084a55251855de726ca35fd594a483",
+    "md5": "3c7b86e2a036867bfa68cfd2186fd67a",
+    "bytes": 11466,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L5/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L5/merged.json"
+    },
+    "measured_live_sha256": "fb6089efe4325901160298411402f365c0084a55251855de726ca35fd594a483",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L6/merged.json",
+    "sha256": "8cabf66f479b53fd986b99261a47323e116ae68a64a31721a3f84b71c526ff66",
+    "md5": "377e3081efe697645f7e10f4f58ff48a",
+    "bytes": 8184,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L6/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L6/merged.json"
+    },
+    "measured_live_sha256": "8cabf66f479b53fd986b99261a47323e116ae68a64a31721a3f84b71c526ff66",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L7/merged.json",
+    "sha256": "c5073435ed200916f908fe1c53fabb762f235c64deaee4462d22667c5d99b5ad",
+    "md5": "dfbf8764e6fbceb25444836908518156",
+    "bytes": 4840,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L7/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/a_power_L7/merged.json"
+    },
+    "measured_live_sha256": "c5073435ed200916f908fe1c53fabb762f235c64deaee4462d22667c5d99b5ad",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L3/merged.json",
+    "sha256": "38497d20b8727e7f9cec74277396f35e81821ab44624d83c949e752978160645",
+    "md5": "28d5f5156ae50de86d758b2c7af01b10",
+    "bytes": 18008,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L3/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L3/merged.json"
+    },
+    "measured_live_sha256": "38497d20b8727e7f9cec74277396f35e81821ab44624d83c949e752978160645",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L4/merged.json",
+    "sha256": "f852fcaeb15fd3eeb9e842d71a6b2bf1cc544e1c0028e2dbf840793025d4eb35",
+    "md5": "1f62dd6c877a42d81567798e127f12d4",
+    "bytes": 14761,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L4/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L4/merged.json"
+    },
+    "measured_live_sha256": "f852fcaeb15fd3eeb9e842d71a6b2bf1cc544e1c0028e2dbf840793025d4eb35",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L5/merged.json",
+    "sha256": "32a9b3f897080995c74397ac4c32c4df75d56f1ebff477cd1ba889ea62c61d66",
+    "md5": "4bb1efa68c453caf202f438eb5dc77cb",
+    "bytes": 11176,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L5/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L5/merged.json"
+    },
+    "measured_live_sha256": "32a9b3f897080995c74397ac4c32c4df75d56f1ebff477cd1ba889ea62c61d66",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L6/merged.json",
+    "sha256": "a6860975ad1c1f11017d3177db4bdd0ac66b0e6ca9c53b093fb3304c4fb1188b",
+    "md5": "8553c9952f71496c961c7e9cf16487ed",
+    "bytes": 8154,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L6/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L6/merged.json"
+    },
+    "measured_live_sha256": "a6860975ad1c1f11017d3177db4bdd0ac66b0e6ca9c53b093fb3304c4fb1188b",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L7/merged.json",
+    "sha256": "1bd579f685b1bddad4628bdc76ad61a22dd984dda125edbc11dd69544fdca2e3",
+    "md5": "d42350c43d971c463a2c589c941555a6",
+    "bytes": 4705,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L7/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_free_L7/merged.json"
+    },
+    "measured_live_sha256": "1bd579f685b1bddad4628bdc76ad61a22dd984dda125edbc11dd69544fdca2e3",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L3/merged.json",
+    "sha256": "baf7ba8ab5702aa7a4d8b006c7284e49e0acff1455edef730aa25e55b2dabada",
+    "md5": "168efa96edd6471742d9cff0e420d27e",
+    "bytes": 18037,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L3/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L3/merged.json"
+    },
+    "measured_live_sha256": "baf7ba8ab5702aa7a4d8b006c7284e49e0acff1455edef730aa25e55b2dabada",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L4/merged.json",
+    "sha256": "506403fbacdf39cabb6515fabe0948ac6c627f71cba8fbfc179daecd05724612",
+    "md5": "77d4754262173c1cc10d5237c2c88722",
+    "bytes": 14745,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L4/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L4/merged.json"
+    },
+    "measured_live_sha256": "506403fbacdf39cabb6515fabe0948ac6c627f71cba8fbfc179daecd05724612",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L5/merged.json",
+    "sha256": "328142fd54c2dec65306278ecfd95b858fec7887224f3718de24721c0683f23f",
+    "md5": "2af11a8c9990b85e6d09572db38a468d",
+    "bytes": 11467,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L5/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L5/merged.json"
+    },
+    "measured_live_sha256": "328142fd54c2dec65306278ecfd95b858fec7887224f3718de24721c0683f23f",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L6/merged.json",
+    "sha256": "b0b05b73572ec9932d88b07121c6098b9d4c4a662cede01d1b20ef6a0a660c96",
+    "md5": "e64ff612821c1486969fed0153252008",
+    "bytes": 8170,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L6/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L6/merged.json"
+    },
+    "measured_live_sha256": "b0b05b73572ec9932d88b07121c6098b9d4c4a662cede01d1b20ef6a0a660c96",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L7/merged.json",
+    "sha256": "cbbb1f2eb0e848807544a3f5b94a3d39378899a26fee1cffe79568f31d57c48c",
+    "md5": "27c84beb55cc2c6b6510bddb147d63f1",
+    "bytes": 4845,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L7/merged.json",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C7_D2_HPC_production/symmetry/c7-d2/run1-20260930-m4096/groups/b_power_L7/merged.json"
+    },
+    "measured_live_sha256": "cbbb1f2eb0e848807544a3f5b94a3d39378899a26fee1cffe79568f31d57c48c",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC/inputs/gamma_d3_7.txt",
+    "sha256": "d5008ca0c882f34bffc2e7713b7ed8ed9a2cdeda940ecd4f8c5b715fb43522c0",
+    "md5": "202832abc94c337ee819557f200f5f48",
+    "bytes": 2294,
+    "source_pin": {
+     "kind": "git",
+     "repository": ".",
+     "commit": "a6ce987cea13ae1dfd85f88cfa7674cd2c219fc2",
+     "path": "inputs/gamma_d3_7.txt",
+     "note": "this repository at tag c8-base = LRI_C7_D3_HPC@a6ce987 (PLAN HD1)"
+    },
+    "measured_live_sha256": "d5008ca0c882f34bffc2e7713b7ed8ed9a2cdeda940ecd4f8c5b715fb43522c0",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC/inputs/two_loop.json",
+    "sha256": "3dddb80233989e2397ede19d575a80437297d3d59c70e444a67daf3a0df34aca",
+    "md5": "8134b24e5c7bcb6e73a661c9d620a086",
+    "bytes": 494,
+    "source_pin": {
+     "kind": "git",
+     "repository": ".",
+     "commit": "a6ce987cea13ae1dfd85f88cfa7674cd2c219fc2",
+     "path": "inputs/two_loop.json",
+     "note": "this repository at tag c8-base = LRI_C7_D3_HPC@a6ce987 (PLAN HD1)"
+    },
+    "measured_live_sha256": "3dddb80233989e2397ede19d575a80437297d3d59c70e444a67daf3a0df34aca",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC/tools/assemble.py",
+    "sha256": "f11cdfcb2ba4e6989a6d8681292a924fe1a5b839398d38624211978770163f98",
+    "md5": "d230ee036ed7f3dc6663cdda512af051",
+    "bytes": 21348,
+    "source_pin": {
+     "kind": "git",
+     "repository": ".",
+     "commit": "a6ce987cea13ae1dfd85f88cfa7674cd2c219fc2",
+     "path": "tools/assemble.py",
+     "note": "this repository at tag c8-base = LRI_C7_D3_HPC@a6ce987 (PLAN HD1)"
+    },
+    "measured_live_sha256": "f11cdfcb2ba4e6989a6d8681292a924fe1a5b839398d38624211978770163f98",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/C7_result.json",
+    "sha256": "6ab1043807ca38e2fe9483e69992dfc4a79f52d0011a21345dc3bdfb804d53b9",
+    "md5": "214dba36043e0b0a3e54c4d5e534fae7",
+    "bytes": 9410,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/C7_result.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "6ab1043807ca38e2fe9483e69992dfc4a79f52d0011a21345dc3bdfb804d53b9",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/C7_result.json"
+    },
+    "measured_live_sha256": "6ab1043807ca38e2fe9483e69992dfc4a79f52d0011a21345dc3bdfb804d53b9",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L3/merged.json",
+    "sha256": "72fef66f4dfe9d60599814a0434cd9f82805f31501e4b151d2c534fa2a3461c8",
+    "md5": "f1ed725a9c4af785efd494c0de24f439",
+    "bytes": 17899,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_free_L3/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "72fef66f4dfe9d60599814a0434cd9f82805f31501e4b151d2c534fa2a3461c8",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L3/merged.json"
+    },
+    "measured_live_sha256": "72fef66f4dfe9d60599814a0434cd9f82805f31501e4b151d2c534fa2a3461c8",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L4/merged.json",
+    "sha256": "231c4dd59ab46cbf49c1ba74f502103f43959a95ca0bd7f4429a4fa4518a1e2d",
+    "md5": "ce030bf75fb43ff853abf7f62f6cdf8b",
+    "bytes": 14668,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_free_L4/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "231c4dd59ab46cbf49c1ba74f502103f43959a95ca0bd7f4429a4fa4518a1e2d",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L4/merged.json"
+    },
+    "measured_live_sha256": "231c4dd59ab46cbf49c1ba74f502103f43959a95ca0bd7f4429a4fa4518a1e2d",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L5/merged.json",
+    "sha256": "9d3ae906bcd5da3a394fa54e36976f7822a5f611832168f193279408c8585817",
+    "md5": "181f462c1a1cd18d7ed51f912f666db9",
+    "bytes": 11227,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_free_L5/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "9d3ae906bcd5da3a394fa54e36976f7822a5f611832168f193279408c8585817",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L5/merged.json"
+    },
+    "measured_live_sha256": "9d3ae906bcd5da3a394fa54e36976f7822a5f611832168f193279408c8585817",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L6/merged.json",
+    "sha256": "064f20ffa9ed44d21a8af10afaacc0ee783e69ab1ba32ee9d72e95be9a142b40",
+    "md5": "11f7976b596e73471caa3f444f07b65c",
+    "bytes": 8203,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_free_L6/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "064f20ffa9ed44d21a8af10afaacc0ee783e69ab1ba32ee9d72e95be9a142b40",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L6/merged.json"
+    },
+    "measured_live_sha256": "064f20ffa9ed44d21a8af10afaacc0ee783e69ab1ba32ee9d72e95be9a142b40",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L7/merged.json",
+    "sha256": "69f025e61e508a5f060d1d423e2ae6e1905ff4ed59422a5be16afda45a041791",
+    "md5": "0fe27a78b5e278d0ec070399e51944ff",
+    "bytes": 4739,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_free_L7/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "69f025e61e508a5f060d1d423e2ae6e1905ff4ed59422a5be16afda45a041791",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_free_L7/merged.json"
+    },
+    "measured_live_sha256": "69f025e61e508a5f060d1d423e2ae6e1905ff4ed59422a5be16afda45a041791",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L3/merged.json",
+    "sha256": "53ec0abfc7e54d3399a463226ed46ca6a1b4c86c62768ecc14bcf4d996e42099",
+    "md5": "bf1e530dbed22b8e4d68fe013988de3e",
+    "bytes": 18080,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_power_L3/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "53ec0abfc7e54d3399a463226ed46ca6a1b4c86c62768ecc14bcf4d996e42099",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L3/merged.json"
+    },
+    "measured_live_sha256": "53ec0abfc7e54d3399a463226ed46ca6a1b4c86c62768ecc14bcf4d996e42099",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L4/merged.json",
+    "sha256": "baa5b6fb0974e408516e7a9f0b79cabe0fa789278afe29d98aacb4b54743a3e2",
+    "md5": "17cb7336db8240630277092c8d85358a",
+    "bytes": 14595,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_power_L4/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "baa5b6fb0974e408516e7a9f0b79cabe0fa789278afe29d98aacb4b54743a3e2",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L4/merged.json"
+    },
+    "measured_live_sha256": "baa5b6fb0974e408516e7a9f0b79cabe0fa789278afe29d98aacb4b54743a3e2",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L5/merged.json",
+    "sha256": "a526b220bf293c8f6d541b47d76d6101096dd055d69c98bf3b509fed1a505faf",
+    "md5": "0d80c3b76ead4f6fe9a051dba9356236",
+    "bytes": 11483,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_power_L5/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "a526b220bf293c8f6d541b47d76d6101096dd055d69c98bf3b509fed1a505faf",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L5/merged.json"
+    },
+    "measured_live_sha256": "a526b220bf293c8f6d541b47d76d6101096dd055d69c98bf3b509fed1a505faf",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L6/merged.json",
+    "sha256": "4bbc34e60bc52099f20ee8181a630b34b2b603cf5e7a5c7a270a4dad094b10ec",
+    "md5": "dd2045ba3d86979bc3394e4fe1bfbd6c",
+    "bytes": 8117,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_power_L6/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "4bbc34e60bc52099f20ee8181a630b34b2b603cf5e7a5c7a270a4dad094b10ec",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L6/merged.json"
+    },
+    "measured_live_sha256": "4bbc34e60bc52099f20ee8181a630b34b2b603cf5e7a5c7a270a4dad094b10ec",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L7/merged.json",
+    "sha256": "366bf6d2c253ef67c53ce6e1d668219668e687fb282101df253481f6815c165f",
+    "md5": "a492371c442d3f83812b3e660064b91e",
+    "bytes": 4698,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/a_power_L7/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "366bf6d2c253ef67c53ce6e1d668219668e687fb282101df253481f6815c165f",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/a_power_L7/merged.json"
+    },
+    "measured_live_sha256": "366bf6d2c253ef67c53ce6e1d668219668e687fb282101df253481f6815c165f",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L3/merged.json",
+    "sha256": "af70efa2bafa9a2699c63e44ce8a070c47e1884030de609c05ba144b249ac467",
+    "md5": "0a7b24f93b4ba8628eff48d178c11738",
+    "bytes": 17902,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_free_L3/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "af70efa2bafa9a2699c63e44ce8a070c47e1884030de609c05ba144b249ac467",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L3/merged.json"
+    },
+    "measured_live_sha256": "af70efa2bafa9a2699c63e44ce8a070c47e1884030de609c05ba144b249ac467",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L4/merged.json",
+    "sha256": "8be3878b5fe548b209cd419f6cbe88265cf01f655c9fc6f710ec789911b2b231",
+    "md5": "5abd5f69b68bdf75d8b43b57bff59cf0",
+    "bytes": 14681,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_free_L4/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "8be3878b5fe548b209cd419f6cbe88265cf01f655c9fc6f710ec789911b2b231",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L4/merged.json"
+    },
+    "measured_live_sha256": "8be3878b5fe548b209cd419f6cbe88265cf01f655c9fc6f710ec789911b2b231",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L5/merged.json",
+    "sha256": "44614b5e41eb94b274745feaf9e1c5eb164eb9a69bc5447dafe15472702b2c8b",
+    "md5": "20e6f5e241c54d75c139079c73808cdc",
+    "bytes": 11235,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_free_L5/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "44614b5e41eb94b274745feaf9e1c5eb164eb9a69bc5447dafe15472702b2c8b",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L5/merged.json"
+    },
+    "measured_live_sha256": "44614b5e41eb94b274745feaf9e1c5eb164eb9a69bc5447dafe15472702b2c8b",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L6/merged.json",
+    "sha256": "68a53502082ffbd1b9e33a8e12dd31cb1bff784ab47d497beebea1305df8980e",
+    "md5": "db83ac9f1a0e7c4d89266174e16b6aa3",
+    "bytes": 8183,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_free_L6/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "68a53502082ffbd1b9e33a8e12dd31cb1bff784ab47d497beebea1305df8980e",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L6/merged.json"
+    },
+    "measured_live_sha256": "68a53502082ffbd1b9e33a8e12dd31cb1bff784ab47d497beebea1305df8980e",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L7/merged.json",
+    "sha256": "e7fb77c404917afd532eb637fc45d220779397d6c3ed7609e55f0bd9238462df",
+    "md5": "6653428740ae99232241039033c28eb2",
+    "bytes": 4738,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_free_L7/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "e7fb77c404917afd532eb637fc45d220779397d6c3ed7609e55f0bd9238462df",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_free_L7/merged.json"
+    },
+    "measured_live_sha256": "e7fb77c404917afd532eb637fc45d220779397d6c3ed7609e55f0bd9238462df",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L3/merged.json",
+    "sha256": "a6c921d7eb9f2412334cc86c3ea080cc3de9d005119167edf938aa33181d4fef",
+    "md5": "546dfea1af5002b95fa2bedc1c30b2df",
+    "bytes": 18105,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_power_L3/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "a6c921d7eb9f2412334cc86c3ea080cc3de9d005119167edf938aa33181d4fef",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L3/merged.json"
+    },
+    "measured_live_sha256": "a6c921d7eb9f2412334cc86c3ea080cc3de9d005119167edf938aa33181d4fef",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L4/merged.json",
+    "sha256": "0de3567dfac50667dd0d5e7d716de8ff424cb480e4e8088e0322f144dcebcb82",
+    "md5": "ef2b732be77218cfd0277e121b81ae4c",
+    "bytes": 14605,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_power_L4/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "0de3567dfac50667dd0d5e7d716de8ff424cb480e4e8088e0322f144dcebcb82",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L4/merged.json"
+    },
+    "measured_live_sha256": "0de3567dfac50667dd0d5e7d716de8ff424cb480e4e8088e0322f144dcebcb82",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L5/merged.json",
+    "sha256": "6668ad6404b1b868cb3d0f37db844a7e9446be871afcc458e276bfc69cecfd0c",
+    "md5": "9b79b19b01dd1e559681fd5102424702",
+    "bytes": 11493,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_power_L5/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "6668ad6404b1b868cb3d0f37db844a7e9446be871afcc458e276bfc69cecfd0c",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L5/merged.json"
+    },
+    "measured_live_sha256": "6668ad6404b1b868cb3d0f37db844a7e9446be871afcc458e276bfc69cecfd0c",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L6/merged.json",
+    "sha256": "9af3b10954e209743758f5289d00764088206cffabc798b4158e514d9e57eb3a",
+    "md5": "cca1afe5f54a4e0809f91dba5b3ed116",
+    "bytes": 8123,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_power_L6/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "9af3b10954e209743758f5289d00764088206cffabc798b4158e514d9e57eb3a",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L6/merged.json"
+    },
+    "measured_live_sha256": "9af3b10954e209743758f5289d00764088206cffabc798b4158e514d9e57eb3a",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L7/merged.json",
+    "sha256": "592fe724be5fc2fa7218b06b3c2813f16981e29b11ff2f1e4217f253668220a4",
+    "md5": "dea88bc080abeab077c3305430dfad21",
+    "bytes": 4694,
+    "source_pin": {
+     "kind": "reference_checksum",
+     "source": "reference/c7d3_run1_results/groups/b_power_L7/merged.json",
+     "list": "reference/SHA256SUMS_c8",
+     "sha256": "592fe724be5fc2fa7218b06b3c2813f16981e29b11ff2f1e4217f253668220a4",
+     "entry_source": "LRI_C7_D3_HPC_production/results_run1-20260930-m4096/groups/b_power_L7/merged.json"
+    },
+    "measured_live_sha256": "592fe724be5fc2fa7218b06b3c2813f16981e29b11ff2f1e4217f253668220a4",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   },
+   {
+    "path": "LRI_C8_D2_HPC_loop/RECON.md",
+    "sha256": "6311812a7c62f1867dab65ceb5e0824cc8a3fe851479a9a050b8e3f249107090",
+    "md5": "93224b42799f201ebcb7c68a04fb0153",
+    "bytes": 38642,
+    "source_pin": {
+     "kind": "git",
+     "repository": "LRI_C8_D2_HPC",
+     "commit": "1769abc8403794e9bbcbe6ad85e5fe8b717736b9",
+     "path": "vendor/c8_assembly_fixtures/LRI_C8_D2_HPC_loop/RECON.md",
+     "note": "C62d's vendoring commit; the bytes C62d's H2 review measured (sha256 recorded first in LRI_C8_shared/inventory/reviews/handoff-tests/external_read_set.json); the live file is LRI_C8_D2_HPC_loop/RECON.md"
+    },
+    "measured_live_sha256": "6311812a7c62f1867dab65ceb5e0824cc8a3fe851479a9a050b8e3f249107090",
+    "opened_by": [
+     "pathlib.py:open"
+    ]
+   }
+  ]
+ },
+ "exact_check_keys": "tests/fixtures/exact_check_keys.json"
+}

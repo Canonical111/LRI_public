@@ -1,0 +1,2966 @@
+{
+  "status": "passed",
+  "parts": [
+    "bad_inputs",
+    "class_b",
+    "describe",
+    "diagnostics",
+    "inspector",
+    "invariance",
+    "replay"
+  ],
+  "executed": [
+    "describe",
+    "bad_inputs",
+    "replay",
+    "invariance",
+    "inspector",
+    "class_b",
+    "diagnostics"
+  ],
+  "full": false,
+  "bk8": false,
+  "l2_control": false,
+  "l8self": null,
+  "tests": [
+    {
+      "test": "describe",
+      "status": "passed",
+      "describe": {
+        "decimal": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "gmp": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        }
+      }
+    },
+    {
+      "test": "bad_inputs",
+      "status": "passed",
+      "refusals": [
+        {
+          "case": "order 8, L=9",
+          "exit": 2,
+          "message": "task L=9 outside [2, order=8]"
+        },
+        {
+          "case": "order 8, L=1",
+          "exit": 2,
+          "message": "task L=1 outside [2, order=8]"
+        },
+        {
+          "case": "order 7, L=8",
+          "exit": 2,
+          "message": "task L=8 outside [2, order=7]"
+        },
+        {
+          "case": "order 9",
+          "exit": 2,
+          "message": "task order 9 outside [7, 8]"
+        },
+        {
+          "case": "order 6",
+          "exit": 2,
+          "message": "task order 6 outside [7, 8]"
+        },
+        {
+          "case": "C7 task header",
+          "exit": 2,
+          "message": "invalid task header: expected C8D2TASKS1 <order> <L> <nt>"
+        },
+        {
+          "case": "order-8 task with gamma_d2_7.txt",
+          "exit": 2,
+          "message": "gamma label mismatch: the row of L=2 has label 5, expected order-L=6 (a gamma file of another order?)"
+        },
+        {
+          "case": "order-7 task with gamma_d2_8.txt",
+          "exit": 2,
+          "message": "gamma label mismatch: the row of L=2 has label 6, expected order-L=5 (a gamma file of another order?)"
+        },
+        {
+          "case": "gamma trailing token",
+          "exit": 2,
+          "message": "gamma file: trailing token '1.0' in the row of L=5 (exactly 7 log values per row at order 8)"
+        },
+        {
+          "case": "gamma data after the last row",
+          "exit": 2,
+          "message": "gamma file: data after the row of L=8: '-1'"
+        },
+        {
+          "case": "gamma row with a missing log value",
+          "exit": 2,
+          "message": "gamma file: the row of L=4 has fewer than 6 log values (a gamma file of another order?)"
+        },
+        {
+          "case": "dim=32",
+          "exit": 2,
+          "message": "net dimension 32 exceeds DIMMAX=31"
+        },
+        {
+          "case": "graph with E>16",
+          "exit": 2,
+          "message": "graph has 9 loops, i.e. more than EMAX=16 propagators (E=2L): /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/big/L8/G1.txt"
+        },
+        {
+          "case": "G-file mask_list",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_mask_list/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_mask",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_mask/L3/G3.txt"
+        },
+        {
+          "case": "G-file denominator_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_denominator_size/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_denominator_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_denominator_size/L3/G3.txt"
+        },
+        {
+          "case": "G-file monomial_ids",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_monomial_ids/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_monomial_id",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_monomial_id/L3/G3.txt"
+        },
+        {
+          "case": "G-file coefficients",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_coefficients/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_coefficient",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_coefficient/L3/G3.txt"
+        },
+        {
+          "case": "G-file last_term",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_last_term/L3/G3.txt"
+        },
+        {
+          "case": "G-file rate_table_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_rate_table_size/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_rate_table_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_rate_table_size/L3/G3.txt"
+        },
+        {
+          "case": "G-file rate_table",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_rate_table/L3/G3.txt"
+        },
+        {
+          "case": "G-file unreadable_rate",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_unreadable_rate/L3/G3.txt"
+        },
+        {
+          "case": "G-file rate_table_last",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/trunc_rate_table_last/L3/G3.txt"
+        },
+        {
+          "case": "inspector: G-file mask_list",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.TPbWUx/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_mask",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.c178Tj/g0.txt"
+        },
+        {
+          "case": "inspector: G-file denominator_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.Wg4hpj/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_denominator_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.e7rz0w/g0.txt"
+        },
+        {
+          "case": "inspector: G-file monomial_ids",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.KTWJOk/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_monomial_id",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.JQbrpA/g0.txt"
+        },
+        {
+          "case": "inspector: G-file coefficients",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.9WcyXJ/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_coefficient",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.I8ywl4/g0.txt"
+        },
+        {
+          "case": "inspector: G-file last_term",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.7D9Xjw/g0.txt"
+        },
+        {
+          "case": "inspector: G-file rate_table_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.XleqMR/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_rate_table_size",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.QIHC70/g0.txt"
+        },
+        {
+          "case": "inspector: G-file rate_table",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.2TShTN/g0.txt"
+        },
+        {
+          "case": "inspector: G-file unreadable_rate",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.Rhb78W/g0.txt"
+        },
+        {
+          "case": "inspector: G-file rate_table_last",
+          "exit": 2,
+          "message": "truncated graph: /tmp/c8d2_570573/c8d2_inspect.58G87r/g0.txt"
+        },
+        {
+          "case": "scalar rate '0'",
+          "exit": 2,
+          "message": "invalid rate argument: '0' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "scalar rate '1.5'",
+          "exit": 2,
+          "message": "invalid rate argument: '1.5' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "scalar rate '0.8x'",
+          "exit": 2,
+          "message": "invalid rate argument: '0.8x' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "scalar rate '-0.5'",
+          "exit": 2,
+          "message": "invalid rate argument: '-0.5' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "scalar rate 'nan'",
+          "exit": 2,
+          "message": "invalid rate argument: 'nan' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "scalar rate ''",
+          "exit": 2,
+          "message": "invalid rate argument: '' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "rate file missing graph",
+          "exit": 2,
+          "message": "rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt has no rate for graph 3 of the task file"
+        },
+        {
+          "case": "rate file extra graph",
+          "exit": 2,
+          "message": "rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt lists graph 0, which is not in the task file"
+        },
+        {
+          "case": "rate file duplicate graph",
+          "exit": 2,
+          "message": "rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt: duplicate graph 3"
+        },
+        {
+          "case": "rate file trailing token",
+          "exit": 2,
+          "message": "rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt line 1: expected exactly 'graph rate'"
+        },
+        {
+          "case": "rate file value 0",
+          "exit": 2,
+          "message": "invalid rate for graph 3 in /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt: '0' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "rate file value above 1",
+          "exit": 2,
+          "message": "invalid rate for graph 3 in /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt: '1.25' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "rate file value not decimal",
+          "exit": 2,
+          "message": "invalid rate for graph 3 in /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt: '0.8e' (a decimal in (0, 1] is required)"
+        },
+        {
+          "case": "rate file bad graph id",
+          "exit": 2,
+          "message": "rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/rates.txt line 1: invalid graph id 'G3'"
+        },
+        {
+          "case": "rate file missing",
+          "exit": 2,
+          "message": "cannot open rate file /tmp/c8d2_570573/c8d2_validate_cikki60r/bad/absent.txt"
+        }
+      ],
+      "valid_runs": [
+        {
+          "backend": "decimal",
+          "order": 7,
+          "L": 2,
+          "K": 5,
+          "row_width": 12,
+          "max_rss_kb": 4384
+        },
+        {
+          "backend": "decimal",
+          "order": 8,
+          "L": 2,
+          "K": 6,
+          "row_width": 14,
+          "max_rss_kb": 4384
+        },
+        {
+          "backend": "decimal",
+          "order": 7,
+          "L": 3,
+          "K": 4,
+          "row_width": 10,
+          "max_rss_kb": 4384
+        },
+        {
+          "backend": "decimal",
+          "order": 8,
+          "L": 3,
+          "K": 5,
+          "row_width": 12,
+          "max_rss_kb": 4384
+        },
+        {
+          "backend": "decimal",
+          "order": 8,
+          "L": 8,
+          "K": 0,
+          "row_width": 2,
+          "max_rss_kb": 8124
+        },
+        {
+          "backend": "decimal",
+          "rate_file": "echoed rates equal the scalar header rate; rows identical to the scalar run"
+        },
+        {
+          "backend": "gmp",
+          "order": 7,
+          "L": 2,
+          "K": 5,
+          "row_width": 12,
+          "max_rss_kb": 4472
+        },
+        {
+          "backend": "gmp",
+          "order": 8,
+          "L": 2,
+          "K": 6,
+          "row_width": 14,
+          "max_rss_kb": 4472
+        },
+        {
+          "backend": "gmp",
+          "order": 7,
+          "L": 3,
+          "K": 4,
+          "row_width": 10,
+          "max_rss_kb": 4472
+        },
+        {
+          "backend": "gmp",
+          "order": 8,
+          "L": 3,
+          "K": 5,
+          "row_width": 12,
+          "max_rss_kb": 4472
+        },
+        {
+          "backend": "gmp",
+          "order": 8,
+          "L": 8,
+          "K": 0,
+          "row_width": 2,
+          "max_rss_kb": 8212
+        },
+        {
+          "backend": "gmp",
+          "rate_file": "echoed rates equal the scalar header rate; rows identical to the scalar run"
+        }
+      ],
+      "l8_pack_present": true
+    },
+    {
+      "test": "replay_summary",
+      "status": "passed",
+      "kernels": 117,
+      "full": false,
+      "reference_worker_command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "<SCRATCH>/c8d2/pkg/392ed22d1d02/reference/LRI_C7_d2_progress/code/c7d2_integrate.cpp",
+        "-lquadmath",
+        "-o",
+        "/tmp/c8d2_570573/c8d2_validate_cikki60r/reference_worker"
+      ],
+      "reference_binaries": {
+        "decimal": "e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5",
+        "gmp": "7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3"
+      },
+      "c8_binaries": {
+        "decimal": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+        "gmp": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41"
+      },
+      "rules": {
+        "G-REF": "decimal exact strings; gmp exact if mp=0, <=1e-30 normalized if mp>0; counters identical",
+        "G-C7": "exact strings in every row field the C7(2) worker writes (identity, values, quad, mp, max_abs), mp>0 rows included",
+        "G-JET": "b and c slots 0..7-L exact (c offset 8-L -> 9-L); quad, mp, max_abs and tail fields identical; new slot finite"
+      },
+      "wall_seconds": 2.8
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 2,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 1,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 3,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 5,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 4,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 12,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 5,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 3,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 3,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 6,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 16,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 16,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 1037,
+          "mp_points": 108,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 1037,
+          "mp_points": 108,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1049,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1049,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 23,
+          "quad_points": 1028,
+          "mp_points": 104,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 23,
+          "quad_points": 1028,
+          "mp_points": 104,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 21,
+          "quad_points": 932,
+          "mp_points": 70,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 21,
+          "quad_points": 932,
+          "mp_points": 70,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 26,
+          "quad_points": 921,
+          "mp_points": 84,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 26,
+          "quad_points": 921,
+          "mp_points": 84,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 17,
+          "quad_points": 910,
+          "mp_points": 66,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 17,
+          "quad_points": 910,
+          "mp_points": 66,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 3,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 1,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 1,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 1,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 4,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 3,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 58,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 58,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 5,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 15,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 782,
+          "mp_points": 17,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 782,
+          "mp_points": 17,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 6,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1268,
+          "mp_points": 69,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1268,
+          "mp_points": 69,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1669,
+          "mp_points": 226,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1669,
+          "mp_points": 226,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1695,
+          "mp_points": 228,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1695,
+          "mp_points": 228,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1687,
+          "mp_points": 224,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1687,
+          "mp_points": 224,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 30,
+          "quad_points": 1563,
+          "mp_points": 142,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 30,
+          "quad_points": 1563,
+          "mp_points": 142,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1609,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1609,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1587,
+          "mp_points": 138,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1587,
+          "mp_points": 138,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 7,
+      "layout": 0,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.13628806276626211835046094371760920584859902294098006826385E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.81474407431129465110902820899013238620673181377217562712912E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 7,
+      "layout": 1,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.55346150914887677049180433987276137073353574794311219699124E-18",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.56718738746034413313336121952659008885112406913128153943223E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 7,
+      "layout": 2,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.27706854076533001012660965410141321264829546712413628165548E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.43337021326536673890320803344258234432619474052603990177639E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 8,
+      "layout": 0,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "6.21324173268105397852658645652808687156169585106964598635292E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.62883129788573669836761285094161467270946298575124885476463E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 8,
+      "layout": 1,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "1.65601659987557961486509274317990150292533338952643354441080E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.75335089700999061627115879659037092238450643814481848976550E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "free",
+      "L": 8,
+      "layout": 2,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "8.08316389436102838354431303664021165055866267066505904319341E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.06231385950566342876085811038476261561458870140732924282609E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 7,
+      "layout": 0,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "8.93149113599166015541065639922379199604332345497413463431720E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.10156647526256604709365130217472220444285995473964959744976E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 7,
+      "layout": 1,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "9.91238278773400310656313679602742723944806393054569725853315E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.37178591965406426722854570136217422805761813843204055036271E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 7,
+      "layout": 2,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "8.62766483088441163503036244442831094245031962534890214918025E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "9.72560093768850471232369503469172769081224894916013109847755E-20",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 8,
+      "layout": 0,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "1.11001665067239715032941918129943898305010070570933913869057E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.49011393528016486169495717040729931094102359059520998405118E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 8,
+      "layout": 1,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "2.14407982822069071792764040992080495242616719647478841298512E-18",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.14004335003508331348885861346321484822196468772627032364071E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "decimal",
+      "sector": "power",
+      "L": 8,
+      "layout": 2,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "8.57282087547791170091186773538741786740929643457592348358588E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "9.88686957920616964779021796557919581329009692330316022775268E-20",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 7,
+      "layout": 0,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.13628806276626211835046094371760920584859902294098006826385E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.81474407431129465110902820899013238620673181377217562712912E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 7,
+      "layout": 1,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.55346150914887677049180433987276137073353574794311219699124E-18",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.56718738746034413313336121952659008885112406913128153943223E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 7,
+      "layout": 2,
+      "graphs": [
+        2798,
+        1562,
+        3177
+      ],
+      "max_normalized_difference": "1.27706854076533001012660965410141321264829546712413628165548E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.43337021326536673890320803344258234432619474052603990177639E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 8,
+      "layout": 0,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "6.21324173268105397852658645652808687156169585106964598635292E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.62883129788573669836761285094161467270946298575124885476463E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 8,
+      "layout": 1,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "1.65601659987557961486509274317990150292533338952643354441080E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.75335089700999061627115879659037092238450643814481848976550E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "free",
+      "L": 8,
+      "layout": 2,
+      "graphs": [
+        11224,
+        23930,
+        24111
+      ],
+      "max_normalized_difference": "8.08316389436102838354431303664021165055866267066505904319341E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.06231385950566342876085811038476261561458870140732924282609E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 7,
+      "layout": 0,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "8.93149113599166015541065639922379199604332345497413463431720E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.10156647526256604709365130217472220444285995473964959744976E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 7,
+      "layout": 1,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "9.91238278773400310656313679602742723944806393054569725853315E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.37178591965406426722854570136217422805761813843204055036271E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 7,
+      "layout": 2,
+      "graphs": [
+        2034,
+        1960,
+        2033
+      ],
+      "max_normalized_difference": "8.62766483088441163503036244442831094245031962534890214918025E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "9.72560093768850471232369503469172769081224894916013109847755E-20",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 8,
+      "layout": 0,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "1.11001665067239715032941918129943898305010070570933913869057E-19",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "1.49011393528016486169495717040729931094102359059520998405118E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 8,
+      "layout": 1,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "2.14407982822069071792764040992080495242616719647478841298512E-18",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "2.14004335003508331348885861346321484822196468772627032364071E-19",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "random_access_chunks",
+      "backend": "gmp",
+      "sector": "power",
+      "L": 8,
+      "layout": 2,
+      "graphs": [
+        24402,
+        24114,
+        24400
+      ],
+      "max_normalized_difference": "8.57282087547791170091186773538741786740929643457592348358588E-20",
+      "tail_top_and_argmax_identical": true,
+      "tail_sum_max_relative_difference": "9.88686957920616964779021796557919581329009692330316022775268E-20",
+      "threads": [
+        1,
+        4
+      ],
+      "chunk_size": 23,
+      "thread_identical": true,
+      "teams_observed": {
+        "whole_1": 1,
+        "chunks_4": 4,
+        "chunks_1": 1
+      },
+      "team_sizes_verified": true,
+      "omp_environment": "controlled (common.omp_child_env: no inherited OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=FALSE; R1)"
+    },
+    {
+      "test": "inspector_private_tempdir",
+      "status": "passed",
+      "sector": "free",
+      "L": 7,
+      "threads": 2,
+      "signals": {
+        "SIGTERM": {
+          "exit": -15,
+          "private_directory": {
+            "name": "c8d2_inspect.GhIMhi",
+            "mode": "0o700",
+            "files": {
+              "g0.txt": "0o600",
+              "g1.txt": "0o600"
+            }
+          },
+          "left_behind": []
+        },
+        "SIGUSR1": {
+          "exit": -10,
+          "private_directory": {
+            "name": "c8d2_inspect.jaPyUj",
+            "mode": "0o700",
+            "files": {
+              "g0.txt": "0o600",
+              "g1.txt": "0o600"
+            }
+          },
+          "left_behind": []
+        },
+        "SIGHUP_ignored": {
+          "still_running_after_1_s": true,
+          "then_SIGTERM_exit": -15
+        }
+      },
+      "normal_run_left_behind": [],
+      "failing_run": {
+        "exit": 2,
+        "left_behind": []
+      },
+      "rule": "TMPDIR empty after a normal run, an error exit and SIGTERM/SIGUSR1; during a run exactly one mkdtemp directory c8d2_inspect.XXXXXX (0700, this user, no symlink) holding only g<k>.txt (regular, 0600); an ignored SIGHUP stays ignored"
+    },
+    {
+      "test": "inspector_execution_order",
+      "status": "passed",
+      "graphs": 100,
+      "groups": [
+        {
+          "sector": "free",
+          "L": 7,
+          "graphs": 25,
+          "tasks": 50
+        },
+        {
+          "sector": "free",
+          "L": 8,
+          "graphs": 25,
+          "tasks": 50
+        },
+        {
+          "sector": "power",
+          "L": 7,
+          "graphs": 25,
+          "tasks": 50
+        },
+        {
+          "sector": "power",
+          "L": 8,
+          "graphs": 25,
+          "tasks": 50
+        }
+      ],
+      "trace_build_command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_ORDER_TRACE",
+        "<SCRATCH>/c8d2/pkg/392ed22d1d02/src/c8d2_integrate.cpp",
+        "-lquadmath",
+        "-o",
+        "/tmp/c8d2_570573/c8d2_validate_cikki60r/c8d2_order_trace"
+      ],
+      "rule": "c8d2_inspect addends == inventory.json addends == the worker's addends.size(); the worker's executed order (-DC8_ORDER_TRACE) == the stable order by -(end-begin)*addends predicted from the inventory; trace rows == bin/c8d2_decimal rows"
+    },
+    {
+      "test": "class_b_tail_fields",
+      "status": "passed",
+      "runs": [
+        {
+          "backend": "decimal",
+          "sector": "free",
+          "order": 7,
+          "L": 7,
+          "rows": 16,
+          "quad": 508,
+          "mp": 47
+        },
+        {
+          "backend": "decimal",
+          "sector": "free",
+          "order": 8,
+          "L": 7,
+          "rows": 16,
+          "quad": 508,
+          "mp": 47
+        },
+        {
+          "backend": "decimal",
+          "sector": "free",
+          "order": 8,
+          "L": 8,
+          "rows": 16,
+          "quad": 465,
+          "mp": 30
+        },
+        {
+          "backend": "decimal",
+          "sector": "power",
+          "order": 7,
+          "L": 7,
+          "rows": 16,
+          "quad": 865,
+          "mp": 124
+        },
+        {
+          "backend": "decimal",
+          "sector": "power",
+          "order": 8,
+          "L": 7,
+          "rows": 16,
+          "quad": 865,
+          "mp": 124
+        },
+        {
+          "backend": "decimal",
+          "sector": "power",
+          "order": 8,
+          "L": 8,
+          "rows": 16,
+          "quad": 898,
+          "mp": 251
+        },
+        {
+          "backend": "gmp",
+          "sector": "free",
+          "order": 7,
+          "L": 7,
+          "rows": 16,
+          "quad": 508,
+          "mp": 47
+        },
+        {
+          "backend": "gmp",
+          "sector": "free",
+          "order": 8,
+          "L": 7,
+          "rows": 16,
+          "quad": 508,
+          "mp": 47
+        },
+        {
+          "backend": "gmp",
+          "sector": "free",
+          "order": 8,
+          "L": 8,
+          "rows": 16,
+          "quad": 465,
+          "mp": 30
+        },
+        {
+          "backend": "gmp",
+          "sector": "power",
+          "order": 7,
+          "L": 7,
+          "rows": 16,
+          "quad": 865,
+          "mp": 124
+        },
+        {
+          "backend": "gmp",
+          "sector": "power",
+          "order": 8,
+          "L": 7,
+          "rows": 16,
+          "quad": 865,
+          "mp": 124
+        },
+        {
+          "backend": "gmp",
+          "sector": "power",
+          "order": 8,
+          "L": 8,
+          "rows": 16,
+          "quad": 898,
+          "mp": 251
+        }
+      ],
+      "bindings": {
+        "decimal": {
+          "schema": "c8-d2-gmp-binding-1",
+          "worker": "<SCRATCH>/c8d2/pkg/392ed22d1d02/bin/c8d2_decimal",
+          "worker_sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+          "backend": "decimal",
+          "GMP_PREFIX": null,
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "flags": {
+            "CXX": [
+              "g++"
+            ],
+            "CPPFLAGS": [],
+            "OPTFLAGS": [
+              "-O3"
+            ],
+            "CXXFLAGS": [],
+            "LDFLAGS": [],
+            "LDLIBS": []
+          },
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "gmp_header": null,
+          "gmp_library": null,
+          "compile": {
+            "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+            "compiler_macro_version": "11.4.0",
+            "BOOST_VERSION": "107700",
+            "flags": {
+              "CXX": [
+                "g++"
+              ],
+              "CPPFLAGS": [],
+              "OPTFLAGS": [
+                "-O3"
+              ],
+              "CXXFLAGS": [],
+              "LDFLAGS": [],
+              "LDLIBS": []
+            },
+            "GMP_PREFIX_words": false
+          },
+          "source_binding": {
+            "schema": "c8-d2-source-binding-1",
+            "snapshot": {
+              "files": {
+                "src/c8d2_inspect.cpp": "66b8e418495638d5e656ecd1cb95c0d6f1f43e8fc15909695d33ed7c216f58ea",
+                "src/c8d2_integrate.cpp": "ae408b9da50e9cf2dfe39e358aa9b477a4eed265a4b7cda7882097528b0c90b8",
+                "src/diagnostics.hpp": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+                "src/kernel.hpp": "6410731d49a004e30e25f0d87524202a9730f6947d17105e85aeb867f8a900e6",
+                "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+                "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+                "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+                "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb",
+                "src/quadfast.hpp": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4"
+              },
+              "sha256": "a1c85ed03bb93cfb91f1257a7baa7d096000106936a370ce466ba066da3f95a6"
+            },
+            "tool_sources": [
+              "src/c8d2_integrate.cpp"
+            ],
+            "snapshot_dir": "/tmp/c8d2_570573/c8d2_validate_cikki60r/notail_decimal.snapshot",
+            "reproduction": {
+              "executable": "<SCRATCH>/c8d2/pkg/392ed22d1d02/bin/c8d2_decimal",
+              "sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+              "reproduced_sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+              "reproduced": true,
+              "seconds": 7.2,
+              "command": [
+                "g++",
+                "-O3",
+                "-std=c++17",
+                "-fopenmp",
+                "-ffp-contract=off",
+                "-fno-fast-math",
+                "src/c8d2_integrate.cpp",
+                "-lquadmath",
+                "-o",
+                "<reproduced>"
+              ],
+              "build_directory": "<SCRATCH>/c8d2/pkg/392ed22d1d02",
+              "relative_words": [],
+              "mirrored": []
+            },
+            "snapshot_parent_levels": 0,
+            "include_environment": {
+              "CPATH": "/cm/local/apps/boost/1.77.0//include",
+              "CPLUS_INCLUDE_PATH": null,
+              "C_INCLUDE_PATH": null,
+              "LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64",
+              "GCC_EXEC_PREFIX": null,
+              "COMPILER_PATH": null
+            },
+            "rule": "the worker rebuilt in the read-only source snapshot with its build record's command, in this environment, is byte-identical to it (sha256); the tool is compiled from the same snapshot in the same environment; relative words keep the meaning they had in the worker's build directory (W3)"
+          }
+        },
+        "gmp": {
+          "schema": "c8-d2-gmp-binding-1",
+          "worker": "<SCRATCH>/c8d2/pkg/392ed22d1d02/bin/c8d2_gmp",
+          "worker_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+          "backend": "gmp",
+          "GMP_PREFIX": null,
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "flags": {
+            "CXX": [
+              "g++"
+            ],
+            "CPPFLAGS": [],
+            "OPTFLAGS": [
+              "-O3"
+            ],
+            "CXXFLAGS": [],
+            "LDFLAGS": [],
+            "LDLIBS": []
+          },
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "gmp_header": {
+            "cc": "x86_64-linux-gnu-gcc",
+            "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+          },
+          "gmp_library": {
+            "soname": "libgmp.so.10",
+            "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+            "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0"
+          },
+          "compile": {
+            "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+            "compiler_macro_version": "11.4.0",
+            "BOOST_VERSION": "107700",
+            "gmp_version": "6.2.1",
+            "gmp_header": {
+              "cc": "x86_64-linux-gnu-gcc",
+              "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+            },
+            "flags": {
+              "CXX": [
+                "g++"
+              ],
+              "CPPFLAGS": [],
+              "OPTFLAGS": [
+                "-O3"
+              ],
+              "CXXFLAGS": [],
+              "LDFLAGS": [],
+              "LDLIBS": []
+            },
+            "GMP_PREFIX_words": false
+          },
+          "source_binding": {
+            "schema": "c8-d2-source-binding-1",
+            "snapshot": {
+              "files": {
+                "src/c8d2_inspect.cpp": "66b8e418495638d5e656ecd1cb95c0d6f1f43e8fc15909695d33ed7c216f58ea",
+                "src/c8d2_integrate.cpp": "ae408b9da50e9cf2dfe39e358aa9b477a4eed265a4b7cda7882097528b0c90b8",
+                "src/diagnostics.hpp": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+                "src/kernel.hpp": "6410731d49a004e30e25f0d87524202a9730f6947d17105e85aeb867f8a900e6",
+                "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+                "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+                "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+                "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb",
+                "src/quadfast.hpp": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4"
+              },
+              "sha256": "a1c85ed03bb93cfb91f1257a7baa7d096000106936a370ce466ba066da3f95a6"
+            },
+            "tool_sources": [
+              "src/c8d2_integrate.cpp"
+            ],
+            "snapshot_dir": "/tmp/c8d2_570573/c8d2_validate_cikki60r/notail_gmp.snapshot",
+            "reproduction": {
+              "executable": "<SCRATCH>/c8d2/pkg/392ed22d1d02/bin/c8d2_gmp",
+              "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+              "reproduced_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+              "reproduced": true,
+              "seconds": 5.8,
+              "command": [
+                "g++",
+                "-O3",
+                "-std=c++17",
+                "-fopenmp",
+                "-ffp-contract=off",
+                "-fno-fast-math",
+                "-DC8_USE_GMP",
+                "src/c8d2_integrate.cpp",
+                "-lquadmath",
+                "-lgmp",
+                "-o",
+                "<reproduced>"
+              ],
+              "build_directory": "<SCRATCH>/c8d2/pkg/392ed22d1d02",
+              "relative_words": [],
+              "mirrored": []
+            },
+            "snapshot_parent_levels": 0,
+            "include_environment": {
+              "CPATH": "/cm/local/apps/boost/1.77.0//include",
+              "CPLUS_INCLUDE_PATH": null,
+              "C_INCLUDE_PATH": null,
+              "LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64",
+              "GCC_EXEC_PREFIX": null,
+              "COMPILER_PATH": null
+            },
+            "rule": "the worker rebuilt in the read-only source snapshot with its build record's command, in this environment, is byte-identical to it (sha256); the tool is compiled from the same snapshot in the same environment; relative words keep the meaning they had in the worker's build directory (W3)"
+          },
+          "linked": {
+            "tool": {
+              "soname": "libgmp.so.10",
+              "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+              "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+              "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+              "rpath": null,
+              "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+              "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+            },
+            "worker_now": {
+              "soname": "libgmp.so.10",
+              "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+              "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+              "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+              "rpath": null,
+              "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+              "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+            },
+            "want_sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+            "match": true
+          }
+        }
+      },
+      "rule": "every non-tail field of every row identical with and without the tail fields"
+    },
+    {
+      "test": "diagnostic_builds",
+      "status": "passed",
+      "runs": [
+        {
+          "build": "prof",
+          "sector": "free",
+          "L": 7,
+          "points": 2048,
+          "quad": 913,
+          "mp": 43,
+          "seconds": {
+            "first_pass": 0.05804281000000004,
+            "quad": 0.274098499,
+            "mp": 0.057542295
+          }
+        },
+        {
+          "build": "prof",
+          "sector": "free",
+          "L": 8,
+          "points": 2048,
+          "quad": 1183,
+          "mp": 121,
+          "seconds": {
+            "first_pass": 0.20801012800000013,
+            "quad": 1.2994088689999996,
+            "mp": 0.403436783
+          }
+        },
+        {
+          "build": "prof",
+          "sector": "power",
+          "L": 7,
+          "points": 2048,
+          "quad": 1733,
+          "mp": 330,
+          "seconds": {
+            "first_pass": 0.03638568799999996,
+            "quad": 0.30446565000000014,
+            "mp": 0.278053598
+          }
+        },
+        {
+          "build": "prof",
+          "sector": "power",
+          "L": 8,
+          "points": 2048,
+          "quad": 1839,
+          "mp": 427,
+          "seconds": {
+            "first_pass": 0.159285982,
+            "quad": 1.3666598739999996,
+            "mp": 1.02316545
+          }
+        },
+        {
+          "build": "ratiohist",
+          "sector": "free",
+          "L": 7,
+          "points": 2048,
+          "quad": 913,
+          "mp": 43,
+          "histogram_counts": [
+            913,
+            913,
+            43
+          ]
+        },
+        {
+          "build": "ratiohist",
+          "sector": "free",
+          "L": 8,
+          "points": 2048,
+          "quad": 1183,
+          "mp": 121,
+          "histogram_counts": [
+            1183,
+            1183,
+            121
+          ]
+        },
+        {
+          "build": "ratiohist",
+          "sector": "power",
+          "L": 7,
+          "points": 2048,
+          "quad": 1733,
+          "mp": 330,
+          "histogram_counts": [
+            1733,
+            1733,
+            330
+          ]
+        },
+        {
+          "build": "ratiohist",
+          "sector": "power",
+          "L": 8,
+          "points": 2048,
+          "quad": 1839,
+          "mp": 427,
+          "histogram_counts": [
+            1839,
+            1839,
+            427
+          ]
+        }
+      ],
+      "rule": "rows identical to bin/c8d2_gmp; every evaluation counted once"
+    }
+  ],
+  "wall_seconds": 90.7,
+  "environment": {
+    "host": "<NODE>",
+    "platform": "Linux-5.15.0-1094-nvidia-x86_64-with-glibc2.35",
+    "cpu_model": "AMD EPYC 7532 32-Core Processor",
+    "glibc": "glibc 2.35",
+    "python": "3.11.3",
+    "cpu_count": 64,
+    "executables": {
+      "c8d2_decimal": {
+        "sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_decimal",
+          "backend": "decimal",
+          "executable_sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+          "command": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-o",
+            "bin/c8d2_decimal"
+          ],
+          "compiler_options": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math"
+          ],
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "CXX": "g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "parameter_overrides": [],
+          "macro_overrides": [],
+          "development": false,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "11.4.0",
+            "long_double_bits": 64,
+            "mp_backend": "decimal300",
+            "mp_digits10": 300,
+            "mp_max_digits10": 328,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "gmp_header": null,
+          "gmp_library": null,
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": null
+          },
+          "build_directory": "<SCRATCH>/c8d2/pkg/392ed22d1d02",
+          "host": "<NODE>",
+          "created_utc": "2026-10-06T15:15:16Z"
+        }
+      },
+      "c8d2_gmp": {
+        "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_gmp",
+          "backend": "gmp",
+          "executable_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+          "command": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-lgmp",
+            "-o",
+            "bin/c8d2_gmp"
+          ],
+          "compiler_options": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP"
+          ],
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "CXX": "g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "parameter_overrides": [],
+          "macro_overrides": [],
+          "development": false,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "11.4.0",
+            "long_double_bits": 64,
+            "mp_backend": "gmp350",
+            "mp_digits10": 350,
+            "mp_max_digits10": 372,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "gmp_header": {
+            "cc": "x86_64-linux-gnu-gcc",
+            "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+          },
+          "gmp_library": {
+            "soname": "libgmp.so.10",
+            "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+            "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+            "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+            "fat": false,
+            "rpath": null,
+            "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+            "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+          },
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": true
+          },
+          "build_directory": "<SCRATCH>/c8d2/pkg/392ed22d1d02",
+          "host": "<NODE>",
+          "created_utc": "2026-10-06T15:15:15Z"
+        }
+      }
+    },
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  },
+  "acceptance": {
+    "J-VAL-1": true,
+    "J-VAL-2": false,
+    "G-BK8": false,
+    "G-L8SELF": false,
+    "A-IN-6b": false
+  }
+}

@@ -1,0 +1,25 @@
+96
+<SCRATCH>/c8-d2/drills-2b3a9233353d/drR/lanes/done/17
+2026-10-05T11:42:47-04:00
+deleted the checkpoint of index 17 (a_free_L7 s000001_p000000.json) and a_free_L7/merged.json
+status exit 1 (incomplete, expected)
+job     17 a_free_L7 shard    1: 0/1 blocks
+group a_free_L7: 3/4 blocks, not merged, 1 fingerprint(s): d4ea3511eba6 x3 (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz, glibc 2.35, hosts <NODE>)
+1 incomplete job indices: 17
+resubmit: C8_MAX_ARRAY=1000 C8_RUN=<SCRATCH>/c8-d2/drills-2b3a9233353d/drR C8_PACKAGE=<SCRATCH>/c8d2/pkg/2b3a9233353d <SCRATCH>/c8d2/pkg/2b3a9233353d/slurm/submit.sh --window 0:17
+then submit slurm/merge.sh once complete; or run slurm/resubmit.sh (arrays) or slurm/submit.sh --lanes N (lane mode), which also submit a merge that waits for the work
+570170 c8d2-fxio RUNNING amddebugq 2:51 1:00:00 <NODE> (null)
+570172 c8d2-lanes RUNNING amdq 2:43 2:00:00 <NODE> (null)
+570165 c8d2-fxval1 RUNNING amdq 4:41 2:00:00 <NODE> (null)
+570166 c8d2-fxval4 RUNNING sharedq 4:41 2:00:00 <NODE> (null)
+<SCRATCH>/c8d2/pkg/2b3a9233353d/slurm/submit.sh: line 23: C8_RUN: Set C8_RUN
+2026-10-05T11:42:52-04:00
+C8: done markers removed for incomplete indices 17 (lanes/done_invalidated.jsonl)
+C8: queue <SCRATCH>/c8-d2/drills-2b3a9233353d/drR/lanes/queue.txt: 1 incomplete indices, 0.0 estimated core-hours
+C8: admission {"amd_cap": 4, "amd_live": 3, "amd_live_jobs": ["570170", "570172", "570165"], "k": 2, "limits": {}, "new_jobs": {"lane": {"count": 1, "partitions": ["sharedq"]}, "merge": {"count": 1, "partitions": ["sharedq"]}}, "partitions": ["sharedq"], "room": null, "site": "symmetry"}
+C8: partition sharedq: 0 idle node(s)
+C8: sbatch --test-only: sbatch: Job 570177 to start at 2026-10-05T13:38:06 using 2 processors on nodes <NODE> in partition sharedq
+lane worker 570178 (drill mode); log <SCRATCH>/c8-d2/drills-2b3a9233353d/drR/slurm_logs/lane-570178.log
+merge 570179 (afterany:570178); log <SCRATCH>/c8-d2/drills-2b3a9233353d/drR/slurm_logs/merge-570179.log
+status: <HOME>/c8d2/venv/bin/python3 <SCRATCH>/c8d2/pkg/2b3a9233353d/tools/production.py status <SCRATCH>/c8-d2/drills-2b3a9233353d/drR   (more workers: slurm/submit.sh --lanes N)
+submit exit 0

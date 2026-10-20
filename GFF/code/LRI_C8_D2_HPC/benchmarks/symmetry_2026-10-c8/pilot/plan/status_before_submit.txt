@@ -1,0 +1,71 @@
+numerics exact, rates identity default
+job      0 a_free_L3 shard    0: 0/1 blocks
+group a_free_L3: 0/1 blocks, not merged
+job      1 a_free_L4 shard    0: 0/1 blocks
+group a_free_L4: 0/1 blocks, not merged
+job      2 a_free_L5 shard    0: 0/3 blocks
+group a_free_L5: 0/3 blocks, not merged
+job      3 a_free_L6 shard    0: 0/13 blocks
+group a_free_L6: 0/13 blocks, not merged
+job      4 a_free_L7 shard    0: 0/77 blocks
+group a_free_L7: 0/77 blocks, not merged
+job      5 a_free_L8 shard    0: 0/72 blocks
+job      6 a_free_L8 shard    1: 0/72 blocks
+job      7 a_free_L8 shard    2: 0/72 blocks
+job      8 a_free_L8 shard    3: 0/72 blocks
+job      9 a_free_L8 shard    4: 0/72 blocks
+job     10 a_free_L8 shard    5: 0/72 blocks
+job     11 a_free_L8 shard    6: 0/72 blocks
+group a_free_L8: 0/504 blocks, not merged
+job     12 a_power_L3 shard    0: 0/1 blocks
+group a_power_L3: 0/1 blocks, not merged
+job     13 a_power_L4 shard    0: 0/1 blocks
+group a_power_L4: 0/1 blocks, not merged
+job     14 a_power_L5 shard    0: 0/1 blocks
+group a_power_L5: 0/1 blocks, not merged
+job     15 a_power_L6 shard    0: 0/4 blocks
+group a_power_L6: 0/4 blocks, not merged
+job     16 a_power_L7 shard    0: 0/23 blocks
+group a_power_L7: 0/23 blocks, not merged
+job     17 a_power_L8 shard    0: 0/46 blocks
+job     18 a_power_L8 shard    1: 0/46 blocks
+job     19 a_power_L8 shard    2: 0/46 blocks
+group a_power_L8: 0/138 blocks, not merged
+job     20 b_free_L3 shard    0: 0/1 blocks
+group b_free_L3: 0/1 blocks, not merged
+job     21 b_free_L4 shard    0: 0/1 blocks
+group b_free_L4: 0/1 blocks, not merged
+job     22 b_free_L5 shard    0: 0/3 blocks
+group b_free_L5: 0/3 blocks, not merged
+job     23 b_free_L6 shard    0: 0/13 blocks
+group b_free_L6: 0/13 blocks, not merged
+job     24 b_free_L7 shard    0: 0/77 blocks
+group b_free_L7: 0/77 blocks, not merged
+job     25 b_free_L8 shard    0: 0/84 blocks
+job     26 b_free_L8 shard    1: 0/84 blocks
+job     27 b_free_L8 shard    2: 0/84 blocks
+job     28 b_free_L8 shard    3: 0/84 blocks
+job     29 b_free_L8 shard    4: 0/84 blocks
+job     30 b_free_L8 shard    5: 0/84 blocks
+group b_free_L8: 0/504 blocks, not merged
+job     31 b_power_L3 shard    0: 0/1 blocks
+group b_power_L3: 0/1 blocks, not merged
+job     32 b_power_L4 shard    0: 0/1 blocks
+group b_power_L4: 0/1 blocks, not merged
+job     33 b_power_L5 shard    0: 0/1 blocks
+group b_power_L5: 0/1 blocks, not merged
+job     34 b_power_L6 shard    0: 0/4 blocks
+group b_power_L6: 0/4 blocks, not merged
+job     35 b_power_L7 shard    0: 0/23 blocks
+group b_power_L7: 0/23 blocks, not merged
+job     36 b_power_L8 shard    0: 0/46 blocks
+job     37 b_power_L8 shard    1: 0/46 blocks
+job     38 b_power_L8 shard    2: 0/46 blocks
+group b_power_L8: 0/138 blocks, not merged
+cpu vendor: not pinned yet (the first claim pins it; F5)
+runtime identity: not pinned yet (the first claim pins it; X8)
+result: no C8_result.json
+39 incomplete job indices: 0-38
+resubmit: C8_MAX_ARRAY=1000 C8_RUN=<SCRATCH>/c8-d2/pilot1-20261006-ba68f401e46e C8_PACKAGE=<SCRATCH>/c8d2/pkg/ba68f401e46e <SCRATCH>/c8d2/pkg/ba68f401e46e/slurm/submit.sh --window 0:0-38
+then submit slurm/merge.sh once complete; or run slurm/resubmit.sh (arrays) or slurm/submit.sh --lanes N (lane mode), which also submit a merge that waits for the work
+exit 1

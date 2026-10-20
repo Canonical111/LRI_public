@@ -1,0 +1,22 @@
+{"d": "1.5", "tau": "0.2", "blocks": "27.81396608836531793876411771", "blocks_lo": "27.81396608836531793182933874", "spectral": "27.8139660883653179387648", "diff": "7.08e-22", "conv": "6.93e-18", "J": "96.8198649425947233094748", "sec": [3.6, 9.8]}
+{"d": "2.5", "tau": "0.1", "blocks": "16.39022581197094000185176431", "blocks_lo": "16.39022581197093868446117383", "spectral": "16.3902258119709400021607", "diff": "3.09e-19", "conv": "1.32e-15", "J": "151.476757004569628135725", "sec": [3.7, 10.7]}
+{"d": "2.5", "tau": "0.4", "blocks": "15.36355664773063255008367087", "blocks_lo": "15.36355664773063398020625577", "spectral": "15.3635566477306325497574", "diff": "3.26e-19", "conv": "1.43e-15", "J": "27.7659130284510591810872", "sec": [3.8, 9.8]}
+{"d": "2.75", "tau": "0.6", "blocks": "17.07900886763424434520367228", "blocks_lo": "17.07900886763425193753447375", "spectral": "17.0790088676342443433807", "diff": "1.82e-18", "conv": "7.59e-15", "J": "18.9426022697386911181317", "sec": [4.1, 10.2]}
+{"d": "2.75", "tau": "0.2", "blocks": "11.60684593785158679732501548", "blocks_lo": "11.6068459378515842127732405", "spectral": "11.606845937851586797963", "diff": "6.38e-19", "conv": "2.58e-15", "J": "51.195507152965794319879", "sec": [4.1, 10.6]}
+{"d": "3", "tau": "0.3", "blocks": "9.829382739132225477858354794", "blocks_lo": "9.829382739132221377054910918", "spectral": "9.82938273913222547891087", "diff": "1.05e-18", "conv": "4.1e-15", "J": "28.3823077869664755303321", "sec": [3.6, 10.5]}
+{"d": "1.25", "tau": "0.15", "blocks": "32.38962275858747527196904367", "blocks_lo": "32.38962275858747526865483615", "spectral": "32.3896227585874747097583", "diff": "5.62e-16", "conv": "3.31e-18", "J": "155.002471627344122278663", "sec": [4.0, 17.1]}
+{"d": "0.8", "tau": "0.15", "blocks": "73.63661815343523063415065075", "blocks_lo": "73.63661815343523063351446972", "spectral": "73.6151940395033637654254", "diff": "0.0214", "conv": "6.36e-19", "J": "280.230225846552742772722", "sec": [4.2, 17.8]}
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/compare_strip.py", line 20, in <module>
+    vs = tR_spec(d, tau, 24, 30)
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/spec_R.py", line 14, in tR_spec
+    return hp.spectral(pref, Rx, Rxb, L, K, d, br)
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/hp_general_d_copy.py", line 97, in spectral
+    tot += multiplicity(d, l) * sc / mp.pi * mp.quad(g, breaks)
+  File "<PROJECT>/LRI_C5_general_d/K_general/R_part/hp_general_d_copy.py", line 60, in multiplicity
+    return (2 * l + d - 2) * mp.gamma(l + d - 2) * mp.rgamma(d - 1) * mp.rgamma(l + 1)
+  File "<HOME>/mambaforge/envs/sage/lib/python3.10/site-packages/mpmath/ctx_mp_python.py", line 1000, in f
+    return ctx.make_mpf(mpf_f(x._mpf_, prec, rounding))
+  File "<HOME>/mambaforge/envs/sage/lib/python3.10/site-packages/mpmath/libmp/gammazeta.py", line 1712, in mpf_gamma
+    raise ValueError("gamma function pole")
+ValueError: gamma function pole

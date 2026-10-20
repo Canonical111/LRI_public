@@ -1,0 +1,131 @@
+{
+  "schema": "c8-d2-build-record-1",
+  "executable": "c8d2_gmp_dd",
+  "backend": "gmp",
+  "executable_sha256": "37cf09b7d29a9cc82b2280ba92e73ac7fd10ade618d87fb1a886e43a6233763c",
+  "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-mavx2",
+    "-mfma",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_dd"
+  ],
+  "compiler_options": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-mavx2",
+    "-mfma",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD"
+  ],
+  "compiler": "g++ (Spack GCC) 13.3.0",
+  "compiler_macro_version": "13.3.0",
+  "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+  "CPPFLAGS": "",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "NUMERICS": "dd",
+  "numerics_sources": {
+    "defines": [
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_DD"
+    ],
+    "files": {
+      "src/numerics/dd.hpp": "388c539a3560982500ab0a468017b194c5ffcb7911a1d8870c2fa7903d028e7b",
+      "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+      "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+      "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+  },
+  "GMP_PREFIX": "",
+  "diagnostic": null,
+  "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd",
+    "diagnostic": false,
+    "numerics_params": {
+      "dd": {
+        "dd_ratio": "1e-20",
+        "routing": "cascade",
+        "cascade_low": "1e-23",
+        "range": 300,
+        "guard": "products",
+        "product_range": [
+          "2^-900",
+          "2^900"
+        ],
+        "exp": "dd-k-ln2-r64-taylor11-x6",
+        "sum": "compensated-b8",
+        "err": "double",
+        "development": false
+      }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": "6.2.1",
+  "gmp_header": {
+    "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+    "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+  },
+  "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10",
+    "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+    "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+    "fat": false,
+    "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64",
+    "runpath": null,
+    "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+  },
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": true
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-05T05:33:51Z"
+}

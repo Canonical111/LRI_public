@@ -1,0 +1,179 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-1 test_keys",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "read and print back 2^64 and 2^70+1",
+   "passed": true,
+   "detail": "9 2\n18446744073709551616 1 1\n1180591620717411303425 2 3\n"
+  },
+  {
+   "check": "driver: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\""
+  },
+  {
+   "check": "driver: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\""
+  },
+  {
+   "check": "driver: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/truncated_file.txt: row 3 of 3: missing (file truncated)\\n'"
+  },
+  {
+   "check": "driver: surplus row (exactly NG rows)",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/surplus_row_exactly_NG_rows.txt: trailing token '2' after the 1 declared rows\\n\""
+  },
+  {
+   "check": "driver: row with two tokens",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/row_with_two_tokens.txt: row 1 of 1: expected 'key aut orbit', got 2 tokens in '1 1'\\n\""
+  },
+  {
+   "check": "driver: row with four tokens",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/row_with_four_tokens.txt: row 1 of 1: expected 'key aut orbit', got 4 tokens in '1 1 1 1'\\n\""
+  },
+  {
+   "check": "driver: key wider than an n=4 class",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/key_wider_than_an_n=4_class.txt: row 1 of 1: key token '4096' does not fit 12 bits (n=4)\\n\""
+  },
+  {
+   "check": "driver: header n out of range",
+   "passed": true,
+   "detail": "rc=2 stderr='/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/header_n_out_of_range.txt: header n=10 outside [1, 9]\\n'"
+  },
+  {
+   "check": "driver: non-decimal aut",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/non-decimal_aut.txt: row 1 of 1: aut token 'x1' is not a decimal number\\n\""
+  },
+  {
+   "check": "driver: empty file",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/empty_file.txt: empty file, expected the header 'n NG'\\n\""
+  },
+  {
+   "check": "build_free: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "build_free: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "build_free: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "build_power: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "build_power: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "build_power: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/scratch/<USER>/job_54631551/c8d2_test_keys_1bpnz2fq/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "classes1.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes2.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes3.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes4.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes5.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes6.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes7.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes8.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes8.txt holds 5,068 keys above 2^64",
+   "passed": true,
+   "detail": "5068"
+  },
+  {
+   "check": "c8gen.hpp alone: no warning under -Wall -Wextra",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "build_free.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "build_power.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "check_edge_forests.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "test_keys.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "cxx": "g++ (Spack GCC) 13.3.0"
+}

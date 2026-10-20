@@ -1,0 +1,132 @@
+{
+ "package": "<SCRATCH>/temp_project/c8d2/pkg/b4ad81beea16",
+ "reference_package": "<SCRATCH>/temp_project/c8d2/pkg/b47b0082c0f7",
+ "A-RPL-8": {
+  "bin/c8d2_decimal": {
+   "this": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "final_default": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "this": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "final_default": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  }
+ },
+ "reference_sources": {
+  "src/kernel.hpp": {
+   "sha256": "375f06f1873b66256e660e435bf731cecd8740b6cb24012b1cdc34d494155e9c",
+   "expected": "375f06f1873b66256e660e435bf731cecd8740b6cb24012b1cdc34d494155e9c",
+   "equal": true
+  },
+  "src/c8d2_integrate.cpp": {
+   "sha256": "f59ba6a6e06203dd321d496b1b1a3eb6ccbfff8830cea8a842e09a93d0fb48ff",
+   "expected": "f59ba6a6e06203dd321d496b1b1a3eb6ccbfff8830cea8a842e09a93d0fb48ff",
+   "equal": true
+  },
+  "src/quadfast.hpp": {
+   "sha256": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4",
+   "expected": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4",
+   "equal": true
+  },
+  "src/diagnostics.hpp": {
+   "sha256": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+   "expected": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+   "equal": true
+  }
+ },
+ "preprocessed": {
+  "bin/c8d2_decimal": {
+   "bytes_this": 7103333,
+   "bytes_reference": 7103316,
+   "byte_identical": false,
+   "tokens_identical": true,
+   "sha256_this": "088e31c8e62bb1ab7e50235973044c1813147557a4bb57d59929a7c0daa9ce28",
+   "sha256_reference": "0b74ff0e92d282094bbe3e5f222edb800114146f837871a2895223fa76ad433e"
+  },
+  "bin/c8d2_gmp": {
+   "bytes_this": 7333801,
+   "bytes_reference": 7333784,
+   "byte_identical": false,
+   "tokens_identical": true,
+   "sha256_this": "9d8a829284eea2d6abdbaab9e38de693bcb3266afbb9d7c347a2d6e9698713d9",
+   "sha256_reference": "c4323957fe405fa60051b6e10b791ce1171a650cf91a984de48bd4bafeb2b39e"
+  }
+ },
+ "profiles": {
+  "dd": {
+   "sha256": "56ae3ecc3729550067903b619bd13b68ba5bd02284ed299518dd16619545e92b",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd",
+    "diagnostic": false,
+    "numerics_params": {
+     "dd": {
+      "dd_ratio": "1e-20",
+      "routing": "cascade",
+      "cascade_low": "1e-23",
+      "range": 300,
+      "guard": "products",
+      "product_range": [
+       "2^-900",
+       "2^900"
+      ],
+      "exp": "dd-k-ln2-r64-taylor11-x6",
+      "sum": "compensated-b8",
+      "err": "double",
+      "development": false
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   },
+   "numerics_sources": {
+    "defines": [
+     "-DC8_NUMERICS",
+     "-DC8_NUMERICS_DD"
+    ],
+    "files": {
+     "src/numerics/dd.hpp": "de326ef3582057d18bfa48a9b76674e5ad2c9d6b858a298dadc1386a8d232af2",
+     "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+     "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+     "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+   },
+   "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-mavx2",
+    "-mfma",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_dd"
+   ],
+   "all_stubs": false
+  }
+ },
+ "failures": [],
+ "passed": true
+}

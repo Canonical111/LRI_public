@@ -1,0 +1,72 @@
+job 570100 on <NODE> at 2026-10-05T07:28:06-04:00; pilot <SCRATCH>/c8-d2/smoke1-20261005; spent 24; out <SCRATCH>/c8d2/evidence/5d7586e9f1ab/design_smoke1b
+accounting exit 0
+ "eta_node_unavailable": null,
+ "checkpoints_with_slurm_id": 156,
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}
+freeze exit 0 after 3 s
+  "power_L6": 32,
+  "power_L7": 32,
+  "free_L3": 128,
+  "power_L5": 64,
+  "free_L7": 32,
+  "power_L3": 64,
+  "power_L4": 128,
+  "free_L5": 128,
+  "free_L4": 128,
+  "power_L8": 32
+ },
+ "s": {
+  "free_L3": 4,
+  "free_L4": 4,
+  "free_L5": 4,
+  "free_L6": 2,
+  "free_L7": 2,
+  "free_L8": 1,
+  "free_L8_primitive": 1,
+  "power_L3": 1,
+  "power_L4": 2,
+  "power_L5": 1,
+  "power_L6": 2,
+  "power_L7": 1,
+  "power_L8": 1
+ },
+ "imputed_variance_share": 0.5473623911965804,
+ "eta_node": 0.667745213699563,
+ "imputed_graphs": 39522
+}
+report exit 0
+   0.00025       11.5      10.43      24886.7       1
+  0.000135       6.21      5.214      99546.8       1
+note: no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum
+  free_L3            graphs     10 piloted     10 sd/rep 12.72 kurt -1.227110851579538 skew 0.08904306491724617 max|z| 1.4839909372338485 share 0.4396852272799621 P8 None alpha None
+  free_L4            graphs     32 piloted     32 sd/rep 24.91 kurt -1.2771381903791403 skew 0.0488506961654935 max|z| 1.496793673107972 share 0.41737733440610847 P8 None alpha None
+  free_L5            graphs    152 piloted    152 sd/rep 58.03 kurt -1.1309127195672117 skew 0.015211812764832631 max|z| 1.498255558282817 share 0.11843346659644481 P8 None alpha None
+  free_L6            graphs    790 piloted    790 sd/rep 102.7 kurt -1.2037928339327597 skew 0.004962285670906956 max|z| 1.4972585905359517 share 0.07181632397474608 P8 None alpha None
+  free_L7            graphs   4882 piloted   2048 sd/rep 229.6 kurt -1.1864442253910268 skew 0.023545335312828264 max|z| 1.4999510100427238 share 0.025124691073377392 P8 None alpha None
+  free_L8            graphs  31632 piloted   1830 sd/rep 115.7 kurt -1.1810212381417489 skew 0.03123839671136678 max|z| 1.4999689769306668 share 0.009326529990952933 P8 None alpha None
+  free_L8_primitive  graphs    496 piloted    234 sd/rep 24.58 kurt -1.1866732230860526 skew -0.03172390198992854 max|z| 1.4966717327932393 share 0.03731303260351624 P8 None alpha None
+  power_L3           graphs      2 piloted      2 sd/rep 0.9905 kurt -1.2036872319563554 skew -0.04490725223036771 max|z| 1.3633196080372516 share 0.5007845749444868 P8 None alpha None
+  power_L4           graphs      6 piloted      6 sd/rep 5.19 kurt -0.796593517224645 skew 0.03202488210842623 max|z| 1.485425023976289 share 0.4706988443699713 P8 None alpha None
+  power_L5           graphs     40 piloted     40 sd/rep 10.62 kurt -1.2412330099908275 skew -0.03572202720409968 max|z| 1.4869602348923514 share 0.19182265039696383 P8 None alpha None
+  power_L6           graphs    214 piloted    214 sd/rep 29.58 kurt -1.1323408176924508 skew -0.013761434378506916 max|z| 1.4994704846275144 share 0.10356456910570011 P8 None alpha None
+  power_L7           graphs   1418 piloted   1418 sd/rep 44.2 kurt -1.1588669802713625 skew 0.003658792050250015 max|z| 1.499985490971247 share 0.03745260038456909 P8 None alpha None
+  power_L8           graphs   8672 piloted   2048 sd/rep 27.99 kurt -1.1480613598220901 skew 0.01984537579913816 max|z| 1.4999654392364967 share 0.08021817312454464 P8 None alpha None
+  sector free: P8 None over 0 blocks of 2064 L8 graph-campaigns at 4096 points
+  sector power: P8 None over 0 blocks of 2048 L8 graph-campaigns at 4096 points
+tails: thresholds on L8 only; 1663 L8 graphs screened (xi > 0.38 or share > 0.05), 0 confirmed "possible infinite variance", 0 undefined
+  diagnostic free_L3: 10 graph-campaigns (0 undefined), xi median 0.0418010525880473 max 0.0628175953226962, largest share max 0.001202952571944286
+  diagnostic free_L4: 32 graph-campaigns (0 undefined), xi median 0.08959413845366593 max 0.1281174588125561, largest share max 0.0037754901243621146
+  diagnostic free_L5: 152 graph-campaigns (0 undefined), xi median 0.13859700837270156 max 0.2460293084400812, largest share max 0.010004780579042
+  diagnostic free_L6: 790 graph-campaigns (0 undefined), xi median 0.1824698165328855 max 0.3885828313278711, largest share max 0.03230773078936045
+  diagnostic free_L7: 2048 graph-campaigns (0 undefined), xi median 0.44536230748534134 max 1.4719371651220912, largest share max 0.6444447113612102
+  diagnostic power_L3: 2 graph-campaigns (0 undefined), xi median 0.0952545013326613 max 0.09784911852748741, largest share max 0.004792277714794236
+  diagnostic power_L4: 6 graph-campaigns (0 undefined), xi median 0.23486965732499873 max 0.28608261313808114, largest share max 0.024608350475458115
+  diagnostic power_L5: 40 graph-campaigns (0 undefined), xi median 0.48721399857778236 max 1.2687730914356778, largest share max 0.29288813662673924
+  diagnostic power_L6: 214 graph-campaigns (0 undefined), xi median 0.9201547680411994 max 1.8887000864358372, largest share max 0.7168728333054369
+  diagnostic power_L7: 1418 graph-campaigns (0 undefined), xi median 1.3573226137763457 max 2.657635126851741, largest share max 0.9898754623416145
+bundle <SCRATCH>/c8d2/pkg/5d7586e9f1ab/designs/test_smoke1b: predicted SE 39.8424 (raw 26.5616) over 2 batches
+029f8cd4722f8c20df4900b1c25d5b57858b30589b3e2fecdba387a46d7a8155  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/designs/test_smoke1b/design_meta.json
+76d7b3bb90c171f9b640b4a9fbd9bd15a88905f066e6c61b679da3696f5520c5  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/designs/test_smoke1b/design.json
+finished 2026-10-05T07:28:14-04:00, status 0

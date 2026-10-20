@@ -1,0 +1,212 @@
+{
+ "package_root": "<PROJECT>/LRI_C8_D2_HPC",
+ "snapshot": "benchmarks/symmetry_2026-10-c8/production/plan/squeue_snapshot_admission.txt",
+ "snapshot_lines": [
+  "570736|RUNNING|amdq|normal|1|<USER>|c8d3-val1-601172f52a90-941e5f0d6025",
+  "570722|RUNNING|sharedq|normal|1|<USER>|c8d2-plan-prod"
+ ],
+ "snapshot_live_c8d2_lines": [
+  "570722|RUNNING|sharedq|normal|1|<USER>|c8d2-plan-prod"
+ ],
+ "C8_SBATCH_ARGS": "-p amdq --exclude=<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,<NODE>,cn112",
+ "allowlist_refusal": null,
+ "scenarios": [
+  {
+   "admitted": true,
+   "record": {
+    "k": 9,
+    "partitions": [
+     "amdq"
+    ],
+    "site": "symmetry",
+    "new_jobs": {
+     "lane": {
+      "count": 8,
+      "partitions": [
+       "amdq"
+      ]
+     },
+     "merge": {
+      "count": 1,
+      "partitions": [
+       "amdq"
+      ]
+     }
+    },
+    "amd_cap": 9,
+    "amd_live": 0,
+    "amd_live_jobs": [],
+    "room": 9,
+    "limits": {
+     "c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {
+      "room": 9,
+      "new": 9
+     }
+    }
+   },
+   "scenario": "a: window cap 9, nothing of this session live, --lanes 8",
+   "cap": 9,
+   "lanes": 8,
+   "extra_lines": []
+  },
+  {
+   "admitted": false,
+   "exit": 65,
+   "message": "admission refused: 9 new job(s) on amdq exceed the budget (c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq): room 8). Largest admissible N for lanes N: 7; nothing submitted",
+   "scenario": "b: window, probe still live",
+   "cap": 9,
+   "lanes": 8,
+   "extra_lines": [
+    "999001|RUNNING|amdq|normal|1|<USER>|c8d2-prod-probe"
+   ]
+  },
+  {
+   "admitted": false,
+   "exit": 65,
+   "message": "admission refused: 9 new job(s) on amdq exceed the budget (c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq): room 4). Largest admissible N for lanes N: 3; nothing submitted",
+   "scenario": "c: no window (env.sh default cap 4)",
+   "cap": 4,
+   "lanes": 8,
+   "extra_lines": []
+  },
+  {
+   "admitted": true,
+   "record": {
+    "k": 9,
+    "partitions": [
+     "amdq"
+    ],
+    "site": "symmetry",
+    "new_jobs": {
+     "lane": {
+      "count": 8,
+      "partitions": [
+       "amdq"
+      ]
+     },
+     "merge": {
+      "count": 1,
+      "partitions": [
+       "amdq"
+      ]
+     }
+    },
+    "amd_cap": 9,
+    "amd_live": 0,
+    "amd_live_jobs": [],
+    "room": 9,
+    "limits": {
+     "c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {
+      "room": 9,
+      "new": 9
+     }
+    }
+   },
+   "scenario": "d: window, three C63d c8d3-* jobs live",
+   "cap": 9,
+   "lanes": 8,
+   "extra_lines": [
+    "999002|RUNNING|amdq|normal|1|<USER>|c8d3-prod2",
+    "999003|RUNNING|amdq|normal|1|<USER>|c8d3-prod3",
+    "999004|RUNNING|amdq|normal|1|<USER>|c8d3-prod4"
+   ]
+  },
+  {
+   "admitted": true,
+   "record": {
+    "k": 3,
+    "partitions": [
+     "amdq"
+    ],
+    "site": "symmetry",
+    "new_jobs": {
+     "lane": {
+      "count": 2,
+      "partitions": [
+       "amdq"
+      ]
+     },
+     "merge": {
+      "count": 1,
+      "partitions": [
+       "amdq"
+      ]
+     }
+    },
+    "amd_cap": 9,
+    "amd_live": 0,
+    "amd_live_jobs": [],
+    "room": 9,
+    "limits": {
+     "c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {
+      "room": 9,
+      "new": 3
+     }
+    }
+   },
+   "scenario": "e: round 2 after round 1 ended, --lanes 2",
+   "cap": 9,
+   "lanes": 2,
+   "extra_lines": []
+  },
+  {
+   "admitted": false,
+   "exit": 65,
+   "message": "admission refused: 7 new job(s) on amdq exceed the budget (c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq): room 6). Largest admissible N for lanes N: 5; nothing submitted",
+   "scenario": "f1: round 2 with 2 round-1 workers live + pending merge, --lanes 6",
+   "cap": 9,
+   "lanes": 6,
+   "extra_lines": [
+    "999011|RUNNING|amdq|normal|1|<USER>|c8d2-lanes",
+    "999012|RUNNING|amdq|normal|1|<USER>|c8d2-lanes",
+    "999013|PENDING|amdq|normal|1|<USER>|c8d2-merge"
+   ]
+  },
+  {
+   "admitted": true,
+   "record": {
+    "k": 6,
+    "partitions": [
+     "amdq"
+    ],
+    "site": "symmetry",
+    "new_jobs": {
+     "lane": {
+      "count": 5,
+      "partitions": [
+       "amdq"
+      ]
+     },
+     "merge": {
+      "count": 1,
+      "partitions": [
+       "amdq"
+      ]
+     }
+    },
+    "amd_cap": 9,
+    "amd_live": 3,
+    "amd_live_jobs": [
+     "999011",
+     "999012",
+     "999013"
+    ],
+    "room": 6,
+    "limits": {
+     "c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {
+      "room": 6,
+      "new": 6
+     }
+    }
+   },
+   "scenario": "f2: the same, --lanes 5",
+   "cap": 9,
+   "lanes": 5,
+   "extra_lines": [
+    "999011|RUNNING|amdq|normal|1|<USER>|c8d2-lanes",
+    "999012|RUNNING|amdq|normal|1|<USER>|c8d2-lanes",
+    "999013|PENDING|amdq|normal|1|<USER>|c8d2-merge"
+   ]
+  }
+ ]
+}

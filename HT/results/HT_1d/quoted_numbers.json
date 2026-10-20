@@ -1,0 +1,947 @@
+{
+ "about": "Every finite-coupling d = 1 HT number quoted in the paper (main.tex at f496d39a, 2026-10-19: Sec. Results, 'Nonperturbative results' and 'Comparison'; Sec. Discussion; Appendix 'The truncation artifact and its correction', its macros and Table tab:win; Appendix 'Numerical results', the HT column and caption of Table tab:num1; macro names of numbers.tex) or in the HT note, with the estimator ('rule') that recomputes it and the comparison ('compare') applied by code/lri_dressed_phi4_hpc_analysis/public/replay_ht1d.py. The blind-solver agreement (HTnpDoneIndep, not printed in the paper) is replayed by code/lri_dressed_phi4_independent_check/public/replay_indep.py. Values are strings exactly as quoted.",
+ "numbers": [
+  {
+   "id": "S1",
+   "macro": "HTnpNmin",
+   "what": "smallest cutoff of the fitted series",
+   "quoted": 12,
+   "rule": "Nmin",
+   "compare": "exact"
+  },
+  {
+   "id": "S2",
+   "macro": "HTnpNmax",
+   "what": "largest cutoff, all 13 Ds",
+   "quoted": 40,
+   "rule": "Nmax",
+   "compare": "exact"
+  },
+  {
+   "id": "S3",
+   "macro": "HTnpNminRange",
+   "what": "N_min of the fits (smallest, largest)",
+   "quoted": [
+    12,
+    24
+   ],
+   "rule": "NminRange",
+   "compare": "exact"
+  },
+  {
+   "id": "S4",
+   "macro": "HTnpNfits",
+   "what": "fits per Ds (F1, F2, F3 x 7 N_min)",
+   "quoted": 21,
+   "rule": "Nfits",
+   "compare": "exact"
+  },
+  {
+   "id": "S5",
+   "macro": "HTnpDensK",
+   "what": "density-basis states per parity in production",
+   "quoted": 16,
+   "rule": "densK",
+   "compare": "exact"
+  },
+  {
+   "id": "S6",
+   "macro": "HTnpDensTrain",
+   "what": "training cutoff of the density basis",
+   "quoted": 24,
+   "rule": "densTrain",
+   "compare": "exact"
+  },
+  {
+   "id": "S7",
+   "macro": "HTnpDensTeacher",
+   "what": "zero-mode states per parity of the teacher",
+   "quoted": 48,
+   "rule": "densTeacher",
+   "compare": "exact"
+  },
+  {
+   "id": "S8",
+   "macro": "-",
+   "what": "states kept in each stored trained basis (dens16 = its first 16)",
+   "quoted": 24,
+   "rule": "densKeep",
+   "compare": "exact"
+  },
+  {
+   "id": "S9",
+   "macro": "HTnpBasisErr",
+   "what": "dens16 vs the largest-nz reference (nz 48/56) at N = 32: max |difference| <= bound",
+   "quoted": "1e-6",
+   "rule": "basisErrN32",
+   "compare": "le",
+   "paper_before_fix": "3e-6 (from an exploratory basis test, not shipped); changed to 1e-6 on 2026-10-13. The N <= 20 part (blind solver vs dens16, 5.6e-7) is check B7 of the independent-check replay"
+  },
+  {
+   "id": "S10",
+   "macro": "HTnpOmegaMin, HTnpSpreadMax",
+   "what": "stability rule: >= 5 fits, median omega >= 0.45, half-spread <= 2e-3 (dens_v1.py stable())",
+   "quoted": "0.45, 2e-3",
+   "compare": "info",
+   "note": "protocol constants; A2 checks that the shipped dens_v1.py reproduces the stable flags"
+  },
+  {
+   "id": "S11",
+   "macro": "HTnpOmegaRange",
+   "what": "median omega of the stable fits (min, max over Ds)",
+   "quoted": [
+    "0.6",
+    "0.9"
+   ],
+   "rule": "omegaRange",
+   "compare": "range"
+  },
+  {
+   "id": "V1",
+   "macro": "HTnpRawViol",
+   "what": "raw level-1 violations, Ds <= 0.1, N = 16..28, unambiguous (min, max)",
+   "quoted": [
+    "0.06",
+    "0.25"
+   ],
+   "rule": "rawViol",
+   "compare": "range"
+  },
+  {
+   "id": "V2",
+   "macro": "HTnpWinReduce",
+   "what": "sigma: |raw / window| level-1 violation at N = 28, Ds <= 0.15 (min, max)",
+   "quoted": [
+    "10",
+    "40"
+   ],
+   "rule": "winReduce",
+   "compare": "range",
+   "sig": 1
+  },
+  {
+   "id": "V3",
+   "macro": "HTnpResSig",
+   "what": "window residual of sigma and shadow, Ds <= 0.1, N = 28: median |v1| ('about 0.01')",
+   "quoted": "0.01",
+   "rule": "resSig",
+   "compare": "about"
+  },
+  {
+   "id": "V4",
+   "macro": "HTnpResE",
+   "what": "window residual of epsilon, Ds <= 0.05, N = 28: largest |v1| ('up to')",
+   "quoted": "0.05",
+   "rule": "resE",
+   "compare": "sig",
+   "sig": 1
+  },
+  {
+   "id": "V5",
+   "macro": "HTnpViolN",
+   "what": "cutoffs of the raw identity records behind V1 (Ds <= 0.1; min, max N)",
+   "quoted": [
+    "16",
+    "28"
+   ],
+   "rule": "violN",
+   "compare": "range"
+  },
+  {
+   "id": "V6",
+   "macro": "HTnpIdentN",
+   "what": "cutoff of the identity table (note Table tab:d1-ident, paper Table tab:win) and of V2-V4: largest N of the identity records",
+   "quoted": "28",
+   "rule": "identN",
+   "compare": "round"
+  },
+  {
+   "id": "V7",
+   "macro": "- (paper: the six rows of Table tab:win, copied from note Table tab:d1-ident)",
+   "what": "rows of the identity table at N = 28, Ds = 0.2, 0.15, 0.1, 0.075, 0.05, 0.025: raw and window level-1 violations of sigma, phi^3 and E, as printed",
+   "deltas": [
+    0.2,
+    0.15,
+    0.1,
+    0.075,
+    0.05,
+    0.025
+   ],
+   "quoted": [
+    "0.2 & $+0.0030$ & $+0.0067$ & $+0.0048$ & $+0.0007$ & $+0.0044$ & $+0.0024$\\\\",
+    "0.15 & $+0.0207$ & $+0.0297$ & $+0.0238$ & $+0.0007$ & $+0.0096$ & $+0.0040$\\\\",
+    "0.1 & $+0.0644$ & $+0.0743$ & $+0.0580$ & $-0.0044$ & $+0.0046$ & $-0.0100$\\\\",
+    "0.075 & $+0.0990$ & $+0.1056$ & $+0.0797$ & $-0.0088$ & $-0.0024$ & $-0.0248$\\\\",
+    "0.05 & $+0.1481$ & $+0.1439$ & $+0.1040$ & $-0.0123$ & $-0.0110$ & $-0.0423$\\\\",
+    "0.025 & $+0.2321^a$ & $+0.1869$ & $+0.1273$ & $-0.0063^a$ & $-0.0186$ & $-0.0548$\\\\"
+   ],
+   "display": "6 table rows (Ds = 0.2 to 0.025)",
+   "rule": "identRows",
+   "compare": "exact"
+  },
+  {
+   "id": "E1",
+   "macro": "HTnpOmegaEffOneTwentyFive",
+   "what": "omega_eff at N ~ 35, Ds = 0.125 (levels off)",
+   "delta": 0.125,
+   "quoted": "0.64",
+   "rule": "omegaEffLevel",
+   "compare": "round"
+  },
+  {
+   "id": "E2",
+   "macro": "HTnpOmegaEffOneHundred",
+   "what": "omega_eff at N ~ 35, Ds = 0.1 (levels off)",
+   "delta": 0.1,
+   "quoted": "0.68",
+   "rule": "omegaEffLevel",
+   "compare": "round"
+  },
+  {
+   "id": "E3",
+   "macro": "HTnpOmegaEffSeventyFive",
+   "what": "omega_eff at N ~ 15 and ~ 35, Ds = 0.075 (rising)",
+   "delta": 0.075,
+   "quoted": [
+    "0.70",
+    "0.80"
+   ],
+   "rule": "omegaEffRange",
+   "compare": "range"
+  },
+  {
+   "id": "E4",
+   "macro": "HTnpOmegaEffFifty",
+   "what": "omega_eff at N ~ 15 and ~ 35, Ds = 0.05 (rising)",
+   "delta": 0.05,
+   "quoted": [
+    "0.92",
+    "1.16"
+   ],
+   "rule": "omegaEffRange",
+   "compare": "range"
+  },
+  {
+   "id": "E5",
+   "macro": "HTnpHoldoutCut, HTnpHoldout",
+   "what": "fits on N <= 32 predict N = 34..40: max |actual - median prediction|, Ds >= 0.05",
+   "cut": 32,
+   "quoted": "2.3e-6",
+   "rule": "holdout",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "E6",
+   "macro": "HTnpOneSided",
+   "what": "Ds = 0.075: slope at N = 40 x (1/w - 1/(w + 0.2)), w = omega_eff(35)",
+   "delta": 0.075,
+   "quoted": "5e-4",
+   "rule": "oneSided",
+   "compare": "sig",
+   "sig": 1
+  },
+  {
+   "id": "E7",
+   "macro": "HTnpExtrapShift",
+   "what": "D_inf - Delta(N = 40) at Ds = 0.075..0.125 (min, max)",
+   "quoted": [
+    "1.6e-3",
+    "2.5e-3"
+   ],
+   "rule": "extrapShift",
+   "compare": "range",
+   "sig": 2
+  },
+  {
+   "id": "E8",
+   "macro": "HTnpTwentyFivePeak",
+   "what": "Ds = 0.025: cutoff of the largest Delta(N)",
+   "delta": 0.025,
+   "quoted": 22,
+   "rule": "peak",
+   "compare": "exact"
+  },
+  {
+   "id": "E9",
+   "macro": "HTnpSlopeTwentyFive",
+   "what": "Ds = 0.025: d Delta / d ln N between N = 38 and 40",
+   "delta": 0.025,
+   "quoted": "-1.3e-3",
+   "rule": "slopeN40",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "E10",
+   "macro": "HTnpSlopeTen",
+   "what": "Ds = 0.01: d Delta / d ln N between N = 38 and 40 (constant)",
+   "delta": 0.01,
+   "quoted": "-6.2e-3",
+   "rule": "slopeN40",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "P1",
+   "macro": "HTnpEpsDiff",
+   "what": "Ds = 0.249: D_inf - eps series through eps^7",
+   "delta": 0.249,
+   "quoted": "-4e-8",
+   "rule": "epsDiff",
+   "compare": "sig",
+   "sig": 1,
+   "paper_before_fix": "-3.6e-8 (2 significant figures; the second digit depends on the numpy/scipy version of the refit); changed to -4e-8 on 2026-10-13"
+  },
+  {
+   "id": "P2",
+   "macro": "HTnpEpsBand",
+   "what": "Ds = 0.24: band of the partial sums through eps^4..eps^7",
+   "delta": 0.24,
+   "quoted": [
+    "0.49419",
+    "0.49426"
+   ],
+   "rule": "epsBand",
+   "compare": "range"
+  },
+  {
+   "id": "P3",
+   "macro": "-",
+   "what": "Ds = 0.24: D_inf lies inside that band",
+   "delta": 0.24,
+   "quoted": true,
+   "rule": "epsBandContains",
+   "compare": "true"
+  },
+  {
+   "id": "P4",
+   "macro": "HTnpEpsLevel",
+   "what": "level at which the eps-series check is trusted",
+   "quoted": "1e-6",
+   "compare": "info"
+  },
+  {
+   "id": "T01",
+   "macro": "HTnpNfortyTwoFortyNine",
+   "what": "Delta(N = 40), Ds = 0.249",
+   "delta": 0.249,
+   "quoted": "0.4993430",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T02",
+   "macro": "HTnpNfortyTwoForty",
+   "what": "Delta(N = 40), Ds = 0.24",
+   "delta": 0.24,
+   "quoted": "0.494186",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T03",
+   "macro": "HTnpNfortyTwoTwentyFive",
+   "what": "Delta(N = 40), Ds = 0.225",
+   "delta": 0.225,
+   "quoted": "0.487982",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T04",
+   "macro": "HTnpNfortyTwoHundred",
+   "what": "Delta(N = 40), Ds = 0.2",
+   "delta": 0.2,
+   "quoted": "0.482839",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T05",
+   "macro": "HTnpNfortyOneSeventyFive",
+   "what": "Delta(N = 40), Ds = 0.175",
+   "delta": 0.175,
+   "quoted": "0.483541",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T06",
+   "macro": "HTnpNfortyOneFifty",
+   "what": "Delta(N = 40), Ds = 0.15",
+   "delta": 0.15,
+   "quoted": "0.490388",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T07",
+   "macro": "HTnpNfortyOneTwentyFive",
+   "what": "Delta(N = 40), Ds = 0.125",
+   "delta": 0.125,
+   "quoted": "0.504561",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T08",
+   "macro": "HTnpNfortyOneHundred",
+   "what": "Delta(N = 40), Ds = 0.1",
+   "delta": 0.1,
+   "quoted": "0.528210",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T09",
+   "macro": "HTnpNfortySeventyFive",
+   "what": "Delta(N = 40), Ds = 0.075",
+   "delta": 0.075,
+   "quoted": "0.564851",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T10",
+   "macro": "HTnpNfortyFifty",
+   "what": "Delta(N = 40), Ds = 0.05",
+   "delta": 0.05,
+   "quoted": "0.620671",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T11",
+   "macro": "HTnpNfortyTwentyFive",
+   "what": "Delta(N = 40), Ds = 0.025",
+   "delta": 0.025,
+   "quoted": "0.710577",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T12",
+   "macro": "HTnpNfortyTen",
+   "what": "Delta(N = 40), Ds = 0.01",
+   "delta": 0.01,
+   "quoted": "0.809111",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "T13",
+   "macro": "HTnpNfortyOne",
+   "what": "Delta(N = 40), Ds = 0.001",
+   "delta": 0.001,
+   "quoted": "0.969338",
+   "rule": "N40",
+   "compare": "round"
+  },
+  {
+   "id": "D01",
+   "macro": "HTnpDEtwoFortyNine",
+   "what": "D_inf (median of accepted fits, half-spread), Ds = 0.249",
+   "delta": 0.249,
+   "quoted": "0.49934358(9)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D02",
+   "macro": "HTnpDEtwoForty",
+   "what": "D_inf, Ds = 0.24",
+   "delta": 0.24,
+   "quoted": "0.4942198(26)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D03",
+   "macro": "HTnpDEtwoTwentyFive",
+   "what": "D_inf, Ds = 0.225",
+   "delta": 0.225,
+   "quoted": "0.488080(5)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D04",
+   "macro": "HTnpDEtwoHundred",
+   "what": "D_inf, Ds = 0.2",
+   "delta": 0.2,
+   "quoted": "0.483024(5)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D05",
+   "macro": "HTnpDEoneSeventyFive",
+   "what": "D_inf, Ds = 0.175",
+   "delta": 0.175,
+   "quoted": "0.483909(15)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D06",
+   "macro": "HTnpDEoneFifty",
+   "what": "D_inf, Ds = 0.15",
+   "delta": 0.15,
+   "quoted": "0.491209(33)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D07",
+   "macro": "HTnpDEoneTwentyFive",
+   "what": "D_inf, Ds = 0.125",
+   "delta": 0.125,
+   "quoted": "0.50612(4)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D08",
+   "macro": "HTnpDEoneHundred",
+   "what": "D_inf, Ds = 0.1",
+   "delta": 0.1,
+   "quoted": "0.53048(12)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D09",
+   "macro": "HTnpDEseventyFive",
+   "what": "D_inf, Ds = 0.075: half-spread, then the extra one-sided shift -5e-4 (E6) as a second bracket",
+   "delta": 0.075,
+   "quoted": "0.56733(20)(-50)",
+   "rule": "Dinf",
+   "compare": "paren"
+  },
+  {
+   "id": "D10",
+   "macro": "HTnpDEfiftyFOneTwo",
+   "what": "Ds = 0.05: accepted F1 and F2 fits (min, max)",
+   "delta": 0.05,
+   "forms": [
+    "F1",
+    "F2"
+   ],
+   "quoted": [
+    "0.6220",
+    "0.6224"
+   ],
+   "rule": "fitsRange",
+   "compare": "range",
+   "paper_before_fix": "0.6220--0.6225 (included two F1 fits rejected by the rms cut, 0.62240 and 0.62247); correction requested 2026-10-13"
+  },
+  {
+   "id": "D11",
+   "macro": "HTnpDEfiftyFthree",
+   "what": "Ds = 0.05: lowest accepted F3 fit",
+   "delta": 0.05,
+   "forms": [
+    "F3"
+   ],
+   "quoted": "0.618",
+   "rule": "fitsMin",
+   "compare": "round"
+  },
+  {
+   "id": "D12",
+   "macro": "HTnpTrust",
+   "what": "total-error estimate at Ds >= 0.15 (the fit spreads are optimistic)",
+   "quoted": "1e-4",
+   "compare": "info"
+  },
+  {
+   "id": "D13",
+   "macro": "-",
+   "what": "largest fit half-spread at Ds >= 0.15 ('at most' in the caption of the note's Table 1)",
+   "quoted": "3.3e-5",
+   "rule": "spreadMaxWeak",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "U00",
+   "macro": "-",
+   "what": "final vs one-sided (Ds = 0.075): judgement from the local exponent, still rising at 0.075 (E3: +0.10 over N ~ 15..35) but levelling off at 0.125 and 0.1 (E1, E2); the computed rows U01-U13 check stable / unstable / no limit",
+   "quoted": "one-sided at 0.075 only",
+   "compare": "info",
+   "note": "judgement; omega_eff trends in results/HT_1d/holdout_and_local_exponent.md"
+  },
+  {
+   "id": "U01",
+   "macro": "-",
+   "what": "status, Ds = 0.249",
+   "delta": 0.249,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U02",
+   "macro": "-",
+   "what": "status, Ds = 0.24",
+   "delta": 0.24,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U03",
+   "macro": "-",
+   "what": "status, Ds = 0.225",
+   "delta": 0.225,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U04",
+   "macro": "-",
+   "what": "status, Ds = 0.2",
+   "delta": 0.2,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U05",
+   "macro": "-",
+   "what": "status, Ds = 0.175",
+   "delta": 0.175,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U06",
+   "macro": "-",
+   "what": "status, Ds = 0.15",
+   "delta": 0.15,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U07",
+   "macro": "-",
+   "what": "status, Ds = 0.125",
+   "delta": 0.125,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U08",
+   "macro": "-",
+   "what": "status, Ds = 0.1",
+   "delta": 0.1,
+   "quoted": "final",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U09",
+   "macro": "-",
+   "what": "status, Ds = 0.075",
+   "delta": 0.075,
+   "quoted": "one-sided",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U10",
+   "macro": "-",
+   "what": "status, Ds = 0.05",
+   "delta": 0.05,
+   "quoted": "unstable",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U11",
+   "macro": "-",
+   "what": "status, Ds = 0.025",
+   "delta": 0.025,
+   "quoted": "no limit",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U12",
+   "macro": "-",
+   "what": "status, Ds = 0.01",
+   "delta": 0.01,
+   "quoted": "no limit",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "U13",
+   "macro": "-",
+   "what": "status, Ds = 0.001",
+   "delta": 0.001,
+   "quoted": "no limit",
+   "rule": "status",
+   "compare": "status"
+  },
+  {
+   "id": "C1",
+   "macro": "HTnpNRGmax",
+   "what": "max |D_inf - NRG| at 0.075 <= Ds <= 0.2 (NRG: re-analysed final table, results/HT_1d/nrg_reference.json); at Ds = 0.075",
+   "quoted": "1.1e-3",
+   "rule": "nrgMax",
+   "compare": "sig",
+   "sig": 2,
+   "paper_before_fix": "8e-4 against the earlier NRG table (midpoint estimator)"
+  },
+  {
+   "id": "E11",
+   "macro": "- (note)",
+   "what": "omega_eff at N ~ 15 and ~ 35, Ds = 0.249 (slow rise at weak coupling)",
+   "delta": 0.249,
+   "quoted": [
+    "0.39",
+    "0.46"
+   ],
+   "rule": "omegaEffRange",
+   "compare": "range"
+  },
+  {
+   "id": "E12",
+   "macro": "- (note)",
+   "what": "Ds = 0.249: bias of a further rise of omega_eff by 0.2 (as E6) is below",
+   "delta": 0.249,
+   "quoted": "1e-5",
+   "rule": "oneSided",
+   "compare": "le"
+  },
+  {
+   "id": "C2",
+   "macro": "- (note)",
+   "what": "D_inf - NRG at Ds = 0.125, 0.1, 0.075 (2 significant figures)",
+   "deltas": [
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": [
+    "4.5e-4",
+    "8.7e-4",
+    "1.1e-3"
+   ],
+   "rule": "nrgDiffs",
+   "compare": "list_sig",
+   "sig": 2
+  },
+  {
+   "id": "C3",
+   "macro": "- (note)",
+   "what": "Ds = 0.001: Delta(N = 40) - NRG",
+   "delta": 0.001,
+   "quoted": "0.032",
+   "rule": "nrgDiffN40",
+   "compare": "round"
+  },
+  {
+   "id": "S12",
+   "macro": "- (note)",
+   "what": "A = Ds/4 + r - g/2 at the tuned couplings (dens16): largest Ds at which its sign changes with the cutoff (A < 0 at every N for Ds = 0.2, 0.175; > 0 at Ds >= 0.225)",
+   "quoted": "0.15",
+   "rule": "Asign",
+   "compare": "round"
+  },
+  {
+   "id": "B1",
+   "macro": "- (note)",
+   "what": "energy zero-mode basis at Ds = 0.025, N = 28, consistent window: Delta_eps for nz = 32, 40, 48 (prod records)",
+   "delta": 0.025,
+   "quoted": [
+    "0.710632",
+    "0.710934",
+    "0.710959"
+   ],
+   "rule": "nzSeries",
+   "compare": "list_round"
+  },
+  {
+   "id": "D14",
+   "macro": "- (note)",
+   "what": "largest fit half-spread among the final results (Ds >= 0.1)",
+   "quoted": "1.2e-4",
+   "rule": "spreadMaxFinal",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "M3",
+   "macro": "- (note)",
+   "what": "largest tail-model shift (F4 with two free exponents; drifting local exponent) of the window limit at 0.075 <= Ds <= 0.125",
+   "deltas": [
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": "1.6e-4",
+   "rule": "tailShiftMax",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "M4",
+   "macro": "- (note)",
+   "what": "NRG lies in the bracket [Delta(40), Delta(40) + slope(40)/omega_eff(35)] of the window series at every 0.075 <= Ds <= 0.2",
+   "deltas": [
+    0.2,
+    0.175,
+    0.15,
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": true,
+   "rule": "nrgBracket",
+   "compare": "true"
+  },
+  {
+   "id": "M5",
+   "macro": "- (note)",
+   "what": "the raw limit lies below NRG and the window limit above it at 0.075 <= Ds <= 0.125",
+   "deltas": [
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": true,
+   "rule": "rawBelowWinAbove",
+   "compare": "true"
+  },
+  {
+   "id": "M6",
+   "macro": "- (note)",
+   "what": "window minus raw limit at Ds = 0.125, 0.1, 0.075 (2 significant figures)",
+   "deltas": [
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": [
+    "6.6e-4",
+    "2.3e-3",
+    "1.7e-3"
+   ],
+   "rule": "winMinusRaw",
+   "compare": "list_sig",
+   "sig": 2
+  },
+  {
+   "id": "M7",
+   "macro": "- (note)",
+   "what": "largest |window - raw| limit difference at Ds = 0.2, 0.175, 0.15",
+   "deltas": [
+    0.2,
+    0.175,
+    0.15
+   ],
+   "quoted": "1.3e-4",
+   "rule": "winMinusRawMax",
+   "compare": "sig",
+   "sig": 2
+  },
+  {
+   "id": "C5",
+   "macro": "HTnpNRGmin",
+   "what": "smallest D_inf - NRG at 0.075 <= Ds <= 0.15 (at 0.15)",
+   "deltas": [
+    0.15,
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": "1e-4",
+   "rule": "nrgDiffMin",
+   "compare": "sig",
+   "sig": 1
+  },
+  {
+   "id": "C6",
+   "macro": "- (note)",
+   "what": "D_inf - NRG at Ds = 0.175, 0.2 is below 1e-4",
+   "deltas": [
+    0.175,
+    0.2
+   ],
+   "quoted": "1e-4",
+   "rule": "nrgDiffMaxAbs",
+   "compare": "le"
+  },
+  {
+   "id": "C7",
+   "macro": "- (note)",
+   "what": "D_inf > NRG at every 0.075 <= Ds <= 0.2",
+   "deltas": [
+    0.2,
+    0.175,
+    0.15,
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": true,
+   "rule": "nrgAllAbove",
+   "compare": "true"
+  },
+  {
+   "id": "C8",
+   "macro": "- (note)",
+   "what": "D_inf - NRG exceeds the fit half-spread at Ds = 0.1 and 0.125",
+   "deltas": [
+    0.125,
+    0.1
+   ],
+   "quoted": true,
+   "rule": "gapExceedsSpread",
+   "compare": "true"
+  },
+  {
+   "id": "C9",
+   "macro": "- (paper: 'agree to within two parts in a thousand ... 0.075 <= Ds <= 0.2'; repeated in the Discussion)",
+   "what": "max |D_inf - NRG| / NRG at 0.075 <= Ds <= 0.2 is at most 2e-3",
+   "deltas": [
+    0.2,
+    0.175,
+    0.15,
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": "2e-3",
+   "rule": "nrgRelMax",
+   "compare": "le"
+  },
+  {
+   "id": "M10",
+   "macro": "HTnpRawShift",
+   "what": "window minus raw limit at 0.075 <= Ds <= 0.125 (min with 1, max with 2 significant figures)",
+   "deltas": [
+    0.125,
+    0.1,
+    0.075
+   ],
+   "quoted": [
+    "7e-4",
+    "2.3e-3"
+   ],
+   "rule": "winMinusRawRange",
+   "compare": "range_sigs",
+   "sigs": [
+    1,
+    2
+   ]
+  }
+ ]
+}

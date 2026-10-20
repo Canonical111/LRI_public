@@ -1,0 +1,43 @@
+PASS identical files
+PASS free L3: legacy rate values are rate-only
+PASS free L3: rate-only counts the differing entries
+PASS free L3: a rate line differing only in its trailing space is rate-only
+PASS free L3: ... and counted as whitespace-only
+PASS CK-K02: only wa changed (identity permutation) is refused
+PASS CK-K02: only wb changed is refused
+PASS CK-K02: wa changed below binary64 resolution is refused (exact header text)
+PASS CK-K02: wa and a rate value changed is refused
+PASS CK-K02: a rate table one entry short is refused
+PASS CK-K02: a rate table one entry long is refused
+PASS a changed 2^E line is refused
+PASS a changed id is refused
+PASS a mask reordering under the recorded identity permutation is refused
+PASS a mask reordering under a recorded automorphism (free L3 G0) is refused
+PASS a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS the relabelled control really differs in masks and terms
+PASS the relabelling with the rate values kept is accepted too
+PASS CK-K02: relabelled with wa changed is refused
+PASS CK-K02: relabelled with wb changed is refused
+PASS CK-K02: relabelled with the id changed is refused
+PASS CK-K02: relabelled with a rate table one entry short is refused
+PASS relabelled with a changed 2^E line is refused
+PASS a relabelling by a permutation that is not the recorded one is refused
+PASS a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling
+PASS a mask value no permutation explains is refused
+PASS power L3: a rate change is refused
+PASS free L7: a rate change is refused (parity rule)
+PASS a malformed file is classified, not raised
+PASS a file without its final newline is refused
+PASS the frozen trees: every G-file header agrees with its inventory row
+PASS a clean copy agrees
+PASS CK-K02: G1 header wa changed, its inventory row kept: reported
+PASS CK-K02: G1 header wb changed, its inventory row kept: reported
+PASS CK-K02: G1 header masks changed, its inventory row kept: reported
+PASS CK-K02: G1 header id changed, its inventory row kept: reported
+PASS a G-file without an inventory row is reported
+PASS an inventory row naming a missing G-file is reported
+PASS end to end: regress.py --loops 3 passes on copies of the frozen trees
+PASS end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)
+PASS end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2
+test_regress: 42/42 checks passed

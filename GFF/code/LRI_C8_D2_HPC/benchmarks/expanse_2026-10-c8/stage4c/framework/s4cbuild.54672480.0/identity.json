@@ -1,0 +1,603 @@
+{
+ "package": "<SCRATCH>/temp_project/c8d2/pkg/9870a68535a7",
+ "reference_package": "<SCRATCH>/temp_project/c8d2/pkg/b47b0082c0f7",
+ "A-RPL-8": {
+  "bin/c8d2_decimal": {
+   "this": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "final_default": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "this": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "final_default": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  }
+ },
+ "reference_sources": {
+  "src/kernel.hpp": {
+   "sha256": "375f06f1873b66256e660e435bf731cecd8740b6cb24012b1cdc34d494155e9c",
+   "expected": "375f06f1873b66256e660e435bf731cecd8740b6cb24012b1cdc34d494155e9c",
+   "equal": true
+  },
+  "src/c8d2_integrate.cpp": {
+   "sha256": "f59ba6a6e06203dd321d496b1b1a3eb6ccbfff8830cea8a842e09a93d0fb48ff",
+   "expected": "f59ba6a6e06203dd321d496b1b1a3eb6ccbfff8830cea8a842e09a93d0fb48ff",
+   "equal": true
+  },
+  "src/quadfast.hpp": {
+   "sha256": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4",
+   "expected": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4",
+   "equal": true
+  },
+  "src/diagnostics.hpp": {
+   "sha256": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+   "expected": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+   "equal": true
+  }
+ },
+ "preprocessed": {
+  "bin/c8d2_decimal": {
+   "bytes_this": 7103333,
+   "bytes_reference": 7103316,
+   "byte_identical": false,
+   "tokens_identical": true,
+   "sha256_this": "088e31c8e62bb1ab7e50235973044c1813147557a4bb57d59929a7c0daa9ce28",
+   "sha256_reference": "0b74ff0e92d282094bbe3e5f222edb800114146f837871a2895223fa76ad433e"
+  },
+  "bin/c8d2_gmp": {
+   "bytes_this": 7333801,
+   "bytes_reference": 7333784,
+   "byte_identical": false,
+   "tokens_identical": true,
+   "sha256_this": "9d8a829284eea2d6abdbaab9e38de693bcb3266afbb9d7c347a2d6e9698713d9",
+   "sha256_reference": "c4323957fe405fa60051b6e10b791ce1171a650cf91a984de48bd4bafeb2b39e"
+  }
+ },
+ "profiles": {
+  "dd": {
+   "sha256": "e2eb509f0f1fd335328f89c0cf4fefa9328de7c34a8469680d2161f915225a87",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd",
+    "diagnostic": false,
+    "numerics_params": {
+     "dd": {
+      "stub": true
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   },
+   "numerics_sources": {
+    "defines": [
+     "-DC8_NUMERICS",
+     "-DC8_NUMERICS_DD"
+    ],
+    "files": {
+     "src/numerics/dd.hpp": "ea403f8f3565a050ce542ebdc3752a0052e76f6cf3c15ec272900f6f2d25ed7e",
+     "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+     "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+     "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+   },
+   "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_dd"
+   ],
+   "all_stubs": true
+  },
+  "mp256": {
+   "sha256": "70109ccc0c798fa5eb2c9d120c72570602e14fc5e4e8925bceae08b83bf48c94",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "mp256",
+    "diagnostic": false,
+    "numerics_params": {
+     "mp256": {
+      "stub": true
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   },
+   "numerics_sources": {
+    "defines": [
+     "-DC8_NUMERICS",
+     "-DC8_NUMERICS_MP256"
+    ],
+    "files": {
+     "src/numerics/dd.hpp": "ea403f8f3565a050ce542ebdc3752a0052e76f6cf3c15ec272900f6f2d25ed7e",
+     "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+     "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+     "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+   },
+   "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_MP256",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_mp256"
+   ],
+   "all_stubs": true
+  },
+  "exp1": {
+   "sha256": "388bd0d0fc39e4309a13e717461c0070af75d4a1b68f96c7ec1ce4eff8c936b5",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "exp1",
+    "diagnostic": false,
+    "numerics_params": {
+     "exp1": {
+      "stub": true
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   },
+   "numerics_sources": {
+    "defines": [
+     "-DC8_NUMERICS",
+     "-DC8_NUMERICS_EXP1"
+    ],
+    "files": {
+     "src/numerics/dd.hpp": "ea403f8f3565a050ce542ebdc3752a0052e76f6cf3c15ec272900f6f2d25ed7e",
+     "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+     "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+     "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+   },
+   "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_EXP1",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_exp1"
+   ],
+   "all_stubs": true
+  },
+  "dd+mp256+exp1": {
+   "sha256": "864ece605c5baa2af99d91b61d69504fb220ee0fd32a8ce282c01d21da7372e1",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd+mp256+exp1",
+    "diagnostic": false,
+    "numerics_params": {
+     "dd": {
+      "stub": true
+     },
+     "mp256": {
+      "stub": true
+     },
+     "exp1": {
+      "stub": true
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   },
+   "numerics_sources": {
+    "defines": [
+     "-DC8_NUMERICS",
+     "-DC8_NUMERICS_DD",
+     "-DC8_NUMERICS_MP256",
+     "-DC8_NUMERICS_EXP1"
+    ],
+    "files": {
+     "src/numerics/dd.hpp": "ea403f8f3565a050ce542ebdc3752a0052e76f6cf3c15ec272900f6f2d25ed7e",
+     "src/numerics/exp1.hpp": "6364f803ce3fbf3f7f08678e7d1a1272d08dae8eb46465a42f1eae6b79cc71fe",
+     "src/numerics/mp256.hpp": "ae220540f21c0d121c70eaf99287c1bd7d96264cb44df59811b592f1d3d719a5",
+     "src/numerics/numerics.hpp": "0589146aa28f8b75b28d85e9164d004b136a68276b9e04e74e56224df03340af"
+    }
+   },
+   "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "-DC8_NUMERICS_MP256",
+    "-DC8_NUMERICS_EXP1",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_dd+mp256+exp1"
+   ],
+   "all_stubs": true
+  }
+ },
+ "stub_identity": {
+  "rule": "every scientific field equal to bin/c8d2_gmp; the native header says numerics <p>",
+  "blocks": {
+   "dd": [
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1088,
+     "mp": 82,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 951,
+     "mp": 56,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1237,
+     "mp": 154,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1125,
+     "mp": 110,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1662,
+     "mp": 263,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1556,
+     "mp": 177,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1750,
+     "mp": 370,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1665,
+     "mp": 249,
+     "identical": true
+    }
+   ],
+   "mp256": [
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1088,
+     "mp": 82,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 951,
+     "mp": 56,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1237,
+     "mp": 154,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1125,
+     "mp": 110,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1662,
+     "mp": 263,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1556,
+     "mp": 177,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1750,
+     "mp": 370,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1665,
+     "mp": 249,
+     "identical": true
+    }
+   ],
+   "exp1": [
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1088,
+     "mp": 82,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 951,
+     "mp": 56,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1237,
+     "mp": 154,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1125,
+     "mp": 110,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1662,
+     "mp": 263,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1556,
+     "mp": 177,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1750,
+     "mp": 370,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1665,
+     "mp": 249,
+     "identical": true
+    }
+   ],
+   "dd+mp256+exp1": [
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1088,
+     "mp": 82,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 951,
+     "mp": 56,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1237,
+     "mp": 154,
+     "identical": true
+    },
+    {
+     "sector": "free",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1125,
+     "mp": 110,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1662,
+     "mp": 263,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 7,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1556,
+     "mp": 177,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".8",
+     "rows": 32,
+     "quad": 1750,
+     "mp": 370,
+     "identical": true
+    },
+    {
+     "sector": "power",
+     "L": 8,
+     "rate": ".9",
+     "rows": 32,
+     "quad": 1665,
+     "mp": 249,
+     "identical": true
+    }
+   ]
+  }
+ },
+ "failures": [],
+ "passed": true
+}

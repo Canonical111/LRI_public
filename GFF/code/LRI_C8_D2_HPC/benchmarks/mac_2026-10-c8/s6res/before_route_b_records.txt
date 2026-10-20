@@ -1,0 +1,11 @@
+FAIL route_b_records: AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True}]
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC/tests/unit_orchestration.py", line 2933, in run
+    try:fn(ctx)
+  File "<PROJECT>/LRI_C8_D2_HPC/tests/unit_orchestration.py", line 2892, in <lambda>
+    ('inputs',lambda c:test_inputs_refusals(c.E)),('exe',lambda c:test_executable_identity(c.E)),('route_b_records',lambda c:test_route_b_records(c.E)),
+  File "<PROJECT>/LRI_C8_D2_HPC/tests/unit_orchestration.py", line 488, in test_route_b_records
+    try:p.route_b(meta(gates=gs),**kw);raise AssertionError(f'route_b accepted the gate entry {gs}')
+AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True}]
+
+{"status": "failed", "requested": ["route_b_records"], "executed": 1, "tests": 0, "failed": ["route_b_records"]}

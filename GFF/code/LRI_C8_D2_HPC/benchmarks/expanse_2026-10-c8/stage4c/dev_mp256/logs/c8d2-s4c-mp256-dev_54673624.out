@@ -1,0 +1,49 @@
+job 54673624 on <NODE> at 2026-10-04T22:24:20-07:00; package <SCRATCH>/temp_project/c8d2/pkg/10b19d9a0ae3; evidence <SCRATCH>/temp_project/c8d2/evidence/10b19d9a0ae3/s4cflags.54673624.0
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+scratch /scratch/<USER>/job_54673624
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+0caf1ec8f51124bcfc3942792ee87028110fc3b007a470f20fd2183a44432db6  bin/c8d2_gmp_dd+mp256+exp1
+9e884b1bb61795a6a84013c9328d754e23c3dc005928cc6ff3e0d4138644674b  bin/c8d2_gmp_mp256
+== numerics_flags.py --profile mp256 --f1-scale 1 --f2-graphs 16 --f4-sample 25 --f4-repeats 2 --f5-threads 1 8 16 --f5-lanes 4 --f5-lane-threads 4
+[22:24:20] F1: the exact baseline (450-digit references)
+[22:24:28] compiled numerics_f1_exact from c8d2_gmp's build command in 8 s
+[22:25:03] F1 baseline free L7 [0,256) in 33 s
+[22:26:01] F1 baseline free L8 [0,64) in 58 s
+[22:26:27] F1 baseline power L7 [0,256) in 26 s
+[22:27:10] F1 baseline power L8 [0,64) in 42 s
+[22:27:19] compiled numerics_f1_profile from c8d2_gmp_mp256's build command in 9 s
+[22:27:20] F1 free L7 [0,256) in 2 s
+[22:27:30] F1 free L8 [0,64) in 10 s
+[22:27:32] F1 power L7 [0,256) in 2 s
+[22:27:41] F1 power L8 [0,64) in 10 s
+[22:27:42] F2: paired mini-campaign
+[22:27:49] F2: replicates [0,4) done (40 blocks, 5 s)
+[22:27:50] F4: speed
+[22:27:51] F4 exact r0: lane-thread s 41.9 (free 19.7, power 22.3), digest ab1b34fd6744
+[22:27:52] F4 profile r0: lane-thread s 29.5 (free 15.2, power 14.3), digest ab1b34fd6744
+[22:27:53] F4 profile r1: lane-thread s 29.2 (free 15.3, power 13.9), digest ab1b34fd6744
+[22:27:54] F4 exact r1: lane-thread s 42.3 (free 19.6, power 22.7), digest ab1b34fd6744
+[22:27:55] F5: thread identity
+[22:28:04] F5 free: identical
+[22:28:16] F5 power: identical
+{
+ "mode": "profile",
+ "profile_name": "mp256",
+ "status": "development run (would pass)",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [
+  "--f2-graphs 16",
+  "--f4-sample 25",
+  "--f4-repeats 2",
+  "F5 thread counts other than 1, 8, 16, 64 and 8 x 8 lanes"
+ ],
+ "note": null,
+ "error": null
+}
+finished 2026-10-04T22:28:16-07:00, status 0

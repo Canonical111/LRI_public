@@ -1,0 +1,229 @@
+{
+  "site": "expanse",
+  "description": "SDSC Expanse, account <ACCOUNT>, Slurm 23.02 (facts verified 2026-10-12). Billing per core/GB on shared and large-shared, per node on compute. Rows run as throttled one-row arrays (rows_per_job 1, no pinning: shared allocations need not cover a whole package).",
+  "ssh_host": "expanse",
+  "scheduler": {
+    "account": "<ACCOUNT>",
+    "slurm_path": null,
+    "job_prefix": "lri_c2_",
+    "max_array_index": 999,
+    "normal_qos_running_cap": 32,
+    "normal_qos_keep_free": 10
+  },
+  "paths": {
+    "persistent_root": "/expanse/lustre/scratch/{user}/temp_project/lri_c2",
+    "node_scratch_base": "/scratch/{user}",
+    "clean_node_scratch": false,
+    "env": "{home}/envs/lri_c2/py3.13.5",
+    "code_root": "{home}/lri_c2/pkgs",
+    "stripe_count": 8
+  },
+  "modules": [],
+  "max_threads_per_process": 64,
+  "partitions": {
+    "shared": {
+      "max_mem_gb": 243,
+      "max_cpus": 128,
+      "max_hours": 48,
+      "tmp_gb": 937,
+      "whole_node": false,
+      "qos": "shared-normal",
+      "billing": {
+        "unit": "SU",
+        "per_cpu": 1,
+        "per_gb": 0.5
+      }
+    },
+    "large-shared": {
+      "max_mem_gb": 2007,
+      "max_cpus": 128,
+      "max_hours": 48,
+      "tmp_gb": 1500,
+      "whole_node": false,
+      "qos": "large-shared-normal",
+      "running_per_user": 2,
+      "billing": {
+        "unit": "SU",
+        "per_cpu": 4,
+        "per_gb": 0.25
+      }
+    },
+    "compute": {
+      "max_mem_gb": 240,
+      "max_cpus": 128,
+      "max_hours": 48,
+      "tmp_gb": 937,
+      "whole_node": true,
+      "qos": "normal",
+      "packages": 2,
+      "cores_per_package": 64,
+      "mem_per_package_gb": 120,
+      "vendor": "AMD",
+      "billing": {
+        "unit": "SU",
+        "per_node": 128
+      }
+    },
+    "debug": {
+      "max_mem_gb": 243,
+      "max_cpus": 128,
+      "max_hours": 0.5,
+      "tmp_gb": 937,
+      "whole_node": false,
+      "qos": "debug-normal",
+      "billing": {
+        "unit": "SU",
+        "per_cpu": 1,
+        "per_gb": 0.5
+      }
+    }
+  },
+  "forbidden_partitions": [],
+  "profiles": {
+    "512": {
+      "grid": {
+        "partition": "large-shared",
+        "cpus": 16,
+        "workers": 16,
+        "mem_gb": 64,
+        "time": "01:00:00",
+        "projected_hours": 0.1
+      },
+      "task": {
+        "partition": "large-shared",
+        "cpus": 16,
+        "mem_gb": 64,
+        "time": "02:00:00",
+        "projected_hours": 0.15,
+        "rows_per_job": 1,
+        "pin": "none"
+      }
+    },
+    "768": {
+      "grid": {
+        "partition": "large-shared",
+        "cpus": 24,
+        "workers": 24,
+        "mem_gb": 128,
+        "time": "02:00:00",
+        "projected_hours": 0.3
+      },
+      "task": {
+        "partition": "shared",
+        "cpus": 16,
+        "mem_gb": 64,
+        "time": "06:00:00",
+        "max_concurrent": 3,
+        "projected_hours": 1.4,
+        "rows_per_job": 1,
+        "pin": "none"
+      }
+    },
+    "1024": {
+      "grid": {
+        "partition": "large-shared",
+        "cpus": 32,
+        "workers": 32,
+        "mem_gb": 256,
+        "time": "03:00:00",
+        "projected_hours": 0.6
+      },
+      "task": {
+        "partition": "large-shared",
+        "cpus": 8,
+        "mem_gb": 160,
+        "time": "06:00:00",
+        "max_concurrent": 2,
+        "projected_hours": 1.6,
+        "rows_per_job": 1,
+        "pin": "none"
+      }
+    },
+    "probe": {
+      "probe": {
+        "partition": "large-shared",
+        "cpus": 2,
+        "mem_gb": 80,
+        "time": "01:30:00"
+      }
+    },
+    "smoke": {
+      "grid": {
+        "partition": "debug",
+        "cpus": 2,
+        "mem_gb": 4,
+        "time": "00:15:00",
+        "workers": 2
+      },
+      "task": {
+        "partition": "debug",
+        "cpus": 2,
+        "mem_gb": 4,
+        "time": "00:20:00",
+        "rows_per_job": 1,
+        "pin": "none"
+      }
+    }
+  },
+  "profile_basis": "Scaled from the PILOT (calibration below): grid slice phase ~ (M/2+1) M^2 log M / workers, raw cube stage ~ K^3, mixed 16384 and tail 8192 independent of N. Wall limits are 3.5-7x the projection; memory requests are >= 1.6x the (conservative) models of submit.py. Large-shared is used where memory dominates (grids, N=1024 tasks): it bills max(4 x cores, GB/4) per hour, has 2.9 TB node-local NVMe and allows 2 running jobs per user. N=768 tasks use shared (max(cores, GB/2) per hour). Tasks are mostly single-threaded (pilot: 1.5 busy cores of 16), so extra cores buy little.",
+  "calibration": {
+    "source": "Expanse PILOT 2026-10-12, package lri_c2_cef281f592ba, large-shared node <NODE> (2 x AMD EPYC 7742); grid job 54886938, task job 54886939_0; probe job 54886830 (lambda 0.05, order 1).",
+    "grid_N512_16_workers": {
+      "compute_seconds": 305,
+      "phase_slice_seconds": 272,
+      "fft_u_seconds": 29,
+      "mean_busy_cores": 14.3,
+      "anon_peak_GB": 22.2,
+      "cgroup_peak_including_page_cache_GB": 51.4,
+      "node_local_scratch_peak_GB": 29.8,
+      "hash_seconds": 4.7,
+      "publish_to_lustre_seconds": 32.4
+    },
+    "task_N512_one_lambda": {
+      "run_seconds": 486,
+      "mixed_16384_seconds": 150,
+      "raw_cube_seconds": 320,
+      "tail_8192_seconds": 10,
+      "mean_busy_cores": 1.5,
+      "largest_process_peak_GB": 10.9,
+      "anon_peak_sampled_GB": 8.7,
+      "fetch_grid_seconds": 8.0
+    },
+    "auxiliary_cutoffs_lambda0.05_order1": {
+      "mixed_seconds": {
+        "4096": 6.5,
+        "8192": 36.8,
+        "16384": 147.5,
+        "32768": 602.2
+      },
+      "mixed_peak_GB": {
+        "4096": 0.8,
+        "8192": 2.8,
+        "16384": 10.9,
+        "32768": 43.1
+      },
+      "tail_seconds": {
+        "2048": 0.7,
+        "4096": 2.5,
+        "8192": 9.4,
+        "16384": 37.4
+      },
+      "tail_peak_GB": {
+        "2048": 0.3,
+        "4096": 0.9,
+        "8192": 3.4,
+        "16384": 13.0
+      }
+    },
+    "projections": {
+      "grid_N768_24_workers_minutes": 15,
+      "grid_N1024_32_workers_minutes": 30,
+      "task_N768_minutes_per_lambda": 21,
+      "task_N1024_minutes_per_lambda": 45,
+      "task_N768_anon_GB": 29,
+      "task_N1024_anon_GB": 69,
+      "grid_N768_anon_GB": 77,
+      "grid_N1024_anon_GB": 183
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Production run: data/1d/scan_data/ds0.1727335/fits_v3_20260920_102523 (Expanse node <NODE>, AMD EPYC 7742; Anaconda Python 3.8.5, NumPy 1.19.2, SciPy 1.5.2 as recorded in its MANIFEST.txt; BLAS build not recorded).

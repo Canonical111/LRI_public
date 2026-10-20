@@ -1,0 +1,9 @@
+# Example C6_ENV_SETUP for SDSC Expanse (modules verified 2026-09-28). Copy, adapt the venv path, and export
+# C6_ENV_SETUP=/path/to/your/copy. Sourced by slurm/*.sh with errexit on and before nounset.
+# Build once on Expanse with the same modules:  source <this file>; make clean && make && make test
+module purge
+module load cpu/0.21.2a gcc/13.3.0 boost/1.86.0
+module load slurm/expanse/23.02.7 2>/dev/null || true
+# A venv holding requirements.txt (python3 -m venv ...; pip install -r requirements.txt), Python >= 3.10.
+source "<SCRATCH>/temp_project/c6-d3/venv/bin/activate"
+export C6_PYTHON="$(command -v python3)"

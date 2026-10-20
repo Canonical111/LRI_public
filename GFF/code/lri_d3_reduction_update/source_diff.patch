@@ -1,0 +1,724 @@
+--- previous/long_range_ising_complete.tex
++++ updated/long_range_ising_complete.tex
+@@ -22,7 +22,7 @@
+ \title{The thermal dimension of the\\one-dimensional long-range Ising model\\through fifth order\\[2mm]
+ \large One-dimensional closed forms and finite multivariable hypergeometric forms in general dimension}
+ \author{Research calculation record}
+-\date{Original consolidation: 7 September 2026\\General-dimensional closure revision: 10 September 2026}
++\date{Original consolidation: 7 September 2026\\General-dimensional periodization revision: 11 September 2026}
+ 
+ \setcounter{tocdepth}{2}\newcommand{\ii}{\mathrm i}\newcommand{\GG}{\mathcal G}\newcommand{\rep}[1]{(#1)^{\times7}}\newcommand{\repeatparams}[2]{(#1)^{\times #2}}\newcommand{\Aut}{\operatorname{Aut}}
+ \hypersetup{pdftitle={Long-range Ising thermal dimension through fifth order},pdfauthor={Research calculation record},pdfsubject={Consolidated derivation and evidence boundaries}}
+@@ -52,7 +52,13 @@
+ representation for generic $d$. The complete combination has a stated
+ dimensional continuation prescription; individual endpoint series need
+ not converge outside the common strip. The preferred finite
+-one-dimensional representations are retained unchanged.
++one-dimensional representations are retained unchanged. Appendix~\ref{app:generalPeriodization}
++adds a finite-Fourier reduction of the primitive sector to at most
++two-variable unweighted functions, and exact quadratic evaluations of
++$P_4(2),P_5(2)$ in the same ordinary hypergeometric values used at $d=1$.
++It does not yet remove the general-dimensional nonprimitive functions.
++The compact ordinary-${}_pF_q$ problem for the complete $C_5(d)$ remains
++explicitly distinguished from multivariate function-class closure.
+ \end{abstract}
+ \tableofcontents
+ \clearpage
+@@ -75,6 +81,10 @@
+ Horn presentation, with explicit parameter lists, convergence domains,
+ and continuation conventions. The preferred five-positive-rational-parameter
+ hypergeometric expression for $P_5(1)$ is unchanged.
++For the latest genuine reduction of the primitive summations, see
++Appendix~\ref{app:generalPeriodization}; its two-dimensional quadratic
++factorization uses no new ordinary hypergeometric values. The
++nonprimitive target is isolated in \eqref{fp:remainingCombination}.
+ 
+ \paragraph{What is self-contained here.}
+ All constants in the final expression are defined in this file, with their normalizations, branches, integration contours and differentiation rules. The graph summation set and forest recursion are explicit, and Appendix~\ref{app:certificate} prints the retained residue certificate. No earlier conversation message or separate note is needed to interpret the formulas or the finite sums. General mathematical identities are cited to primary references. The source archive supplies the implementations and historical evidence; it is not a substitute for unspecified constants in the formulas.
+@@ -6645,8 +6655,676 @@
+ five-loop graph calculation, all-digit physical certification, or theorem
+ excluding simpler ordinary hypergeometric formulas is claimed.
+ 
++\clearpage
++\section{Finite periodization of the primitive sector and two-dimensional factorization}
++\label{app:generalPeriodization}
++
++\subsection{New result and its precise scope}
++The purpose of this revision is to reduce, rather than merely rename, the
++infinite sums. The primitive periods admit a new finite-sampling formula
++with no regulator derivative, polygamma-weighted summand, or residual
++Barnes integral. Every sample is a finite combination of unweighted Horn
++functions of at most two variables. In two dimensions there is a stronger
++factorization: the primitive periods use only the ordinary hypergeometric
++values already retained for the one-dimensional problem.
++
++This does \emph{not} establish a finite ordinary-${}_pF_q$ representation
++of the full $C_5(d)$ for generic $d$. In particular the three nonprimitive
++functions $\mathcal K_d,\mathcal L_d,Z_d$ retain their previous definitions.
++No claim that they have disappeared is intended. The function-count
++comparison is
++\begin{center}\small
++\begin{tabular}{@{}lrrrr@{}}\toprule
++ & Previous values & Previous variables & New values, at most & New variables\\\midrule
++$Q_d$ &20&4&15&2\\
++$P_4(d)$&56&5&20&2\\
++$P_5(d)$&15060&8&56&2\\\bottomrule
++\end{tabular}
++\end{center}
++Counts include the one-variable subblocks. Taking the real part of a
++complex value is counted as one evaluation; explicit conjugate pairs
++would change the written term count. The bounds assert neither minimality
++nor independence. The improvement is the elimination of the auxiliary
++indices formerly introduced to encode residue polygammas, not a proof
++that all multivariate functions reduce to ordinary ones.
++
++The coefficient formulas \eqref{gs:C0C4}--\eqref{gs:C5} are unchanged.
++A useful way to isolate the remaining nonprimitive target is
++\begin{equation}
++ \mathcal N_d=\mathcal K_d+\frac38\mathcal L_d-\frac{149}{32}Z_d.
++ \label{fp:remainingCombination}
++\end{equation}
++In the notation of Appendix~\ref{app:generalSpecial},
++\begin{equation}\boxed{\begin{aligned}
++46656C_5(d)={}&-1536\bigl(P_5(d)+\mathcal N_d\bigr)+384AP_4(d)
++ -1728Q_d^2+720A^2Q_d+1008Q_dR\\
++ &-15A^4-90A^2R+414AU-108AV-117R^2-75X.
++\end{aligned}}\label{fp:C5target}\end{equation}
++Thus a further identity for $\mathcal N_d$ alone would suffice; separate
++minimal formulas for its three constituents are not logically necessary.
++Equation \eqref{fp:remainingCombination} is only a collected target, not
++a newly evaluated constant.
++
++\subsection{The three Barnes kernels}
++Put $q=d/4$, $p=2q-1$ and
++\begin{equation}\begin{aligned}
++ a_\ell&=(\ell+q)/2,& b_\ell&=a_\ell+q,\\
++ g_\ell(s)&=\frac{\Gamma(a_\ell+s)\Gamma(a_\ell-s)}
++ {\Gamma(b_\ell+s)\Gamma(b_\ell-s)},&
++ D_q(t)&=\sin(\pi t)\sin\bigl(\pi(t+q)\bigr).
++\end{aligned}\label{fp:kernel}\end{equation}
++Use $d_\ell=d_\ell(4q)$ from \eqref{gs:spectrum}. A version with no
++spurious $0/0$ at $d=1,2$ is
++\begin{equation}
++ d_0=1,\qquad d_{k+1}=4q\,
++ \frac{(2q+1)_k(4q-1)_k}{(2q)_k(2)_k},\qquad k\geq0.
++ \label{fp:degeneracy}
++\end{equation}
++The normalized wheel periods are
++\begin{equation}
++ W_r=\Gamma(2q)^r\sum_{\ell\geq0}d_\ell
++ \int_{-\ii\infty}^{\ii\infty}\frac{ds}{2\pi\ii}\,g_\ell(s)^r,
++ \qquad W_3=3Q_d,\quad W_4=P_4(d).
++ \label{fp:wheelStart}
++\end{equation}
++For the five-loop primitive define
++\begin{equation}\begin{aligned}
++ K_\ell(s)&=\bigl[(\ell+p)^2-4s^2\bigr]
++ \frac{\Gamma(p+2s)\Gamma(p-2s)}{\Gamma(2s)\Gamma(-2s)}
++ g_\ell(s)^7,\\
++ P_5(d)&=\frac{\Gamma(2q)^5}{2}\sum_{\ell\geq0}(-1)^\ell d_\ell
++ \int_{-\ii\infty}^{\ii\infty}\frac{ds}{2\pi\ii}\,K_\ell(s).
++\end{aligned}\label{fp:primitiveStart}\end{equation}
++Initially take $1/2<q<1$ so that the contours separate the pole families
++without crossed-pole terms. The result below is then continued with the
++same prescription as the original primitive master. The kernels and
++normalization are the wheel and conformal-triangle kernels already
++specified in this note, based on the operator framework of \cite{DIS}.
++No new renormalization convention is introduced.
++
++For the proof only, periodize the kernels:
++\begin{equation}\begin{aligned}
++ S_r(t)&=\sum_{\ell\geq0}d_\ell\sum_{n\in\mathbb Z}
++             g_\ell(a_\ell+n+t)^r,&&r=3,4,\\
++ S_7(t)&=\sum_{\ell\geq0}(-1)^\ell d_\ell\sum_{n\in\mathbb Z}
++             K_\ell(a_\ell+n+t),\\
++ \Xi_r(t)&=D_q(t)^rS_r(t),&&r=3,4,7.
++\end{aligned}\label{fp:periodization}\end{equation}
++The infinite sums in \eqref{fp:periodization} are proof devices, not
++additional operations in the finite evaluation rule below.
++
++\subsection{Why finitely many Fourier modes suffice}
++\subsubsection{Wheel poles, reflection and growth}
++For $r=3,4$ the only pole classes of $S_r$ modulo one are $t=0$ and
++$t=-q$, each of order at most $r$. Gamma reflection gives, for $n\geq0$,
++\begin{equation}
++ g_\ell(a_\ell+n+t)=
++ -\frac{\sin\pi(q-t)}{\sin\pi t}
++ \frac{\Gamma(\ell+n+q+t)\Gamma(n+1-q+t)}
++ {\Gamma(\ell+n+2q+t)\Gamma(n+1+t)}.
++ \label{fp:reflectedRight}
++\end{equation}
++Reflection, recurrence and the Gamma-ratio asymptotics used here are
++standard identities \cite{DLMF5,DLMFStirling}; the periodization argument
++is given explicitly rather than inferred from those identities alone.
++
++On compact sets avoiding the pole classes, split the lattice into
++$n\geq0$, $n\leq-\ell-1$, and $-\ell\leq n\leq-1$. In the middle part
++put $n=-j-1$, $\ell=j+k+1$; then
++\begin{equation}
++ g_\ell(a_\ell+n+t)=
++ \frac{\Gamma(k+q+t)\Gamma(j+1-t)}
++ {\Gamma(k+2q+t)\Gamma(j+q+1-t)}.
++ \label{fp:middleFactor}
++\end{equation}
++These bounds give locally uniform convergence, including after the
++possible pole factors are cleared. Consequently $\Xi_r$ is entire.
++Evenness of $g_\ell(s)$ and the integer reindexing $n\mapsto-\ell-n$
++give
++\begin{equation}
++ \Xi_r(t+1)=\Xi_r(t),\qquad \Xi_r(-q-t)=\Xi_r(t).
++ \label{fp:symmetry}
++\end{equation}
++
++For $t=x+\ii y$, $0\leq x\leq1$, $|y|\geq1$, the right-hand sum is
++bounded by a constant times
++\[
++ \sum_{\ell,n\geq0}(1+\ell)^{4q-2}
++ (1+|\ell+n+\ii y|)^{-rq}(1+|n+\ii y|)^{-rq}.
++\]
++The middle expression \eqref{fp:middleFactor} has the analogous bound
++with weight $(1+j+k)^{4q-2}$. Integral comparison, initially for
++$1/2<q<1$, gives
++\begin{equation}
++ |S_r(x+\ii y)|=O\bigl(|y|^{-2q(r-2)}\bigr),\qquad
++ |\Xi_r(x+\ii y)|=O\bigl(e^{2\pi r|y|}|y|^{-2q(r-2)}\bigr).
++ \label{fp:wheelGrowth}
++\end{equation}
++For example the endpoint $\ell\gg n,|y|$ has power
++$\ell^{q(4-r)-2}$, which is summable in this strip. This also controls
++the endpoints of the scaled integral, not just simultaneous large
++indices.
++
++\subsubsection{Five-loop measure poles cancel class by class}
++The extra measure poles of $K_\ell$ occur at $2s=\pm(p+k)$,
++$k\geq0$. Their \emph{weighted} right residues have the form
++\begin{equation}\begin{aligned}
++ \mathcal A_{\ell k}&=(-1)^\ell d_\ell d_k
++ \bigl[(\ell+p)^2-(k+p)^2\bigr]G_{\ell k}^{\,7},\\
++ G_{\ell k}&=
++ \frac{\Gamma((\ell+k+3q-1)/2)}{\Gamma((\ell+k+5q-1)/2)}
++ \frac{\Gamma((\ell-k+1-q)/2)}{\Gamma((\ell-k+1+q)/2)}.
++\end{aligned}\label{fp:measureAntisymmetry}\end{equation}
++The identities proved in Appendix~\ref{app:generalClosed} give
++$G_{k\ell}=(-1)^{\ell-k}G_{\ell k}$ and hence
++$\mathcal A_{k\ell}=-\mathcal A_{\ell k}$; the diagonal residue is zero.
++For the present purpose cancellation of the \emph{total} measure-residue
++sum is not by itself sufficient. One must check the congruence classes.
++A right measure pole is at
++\[
++ t=\frac{q-1+k-\ell}{2}\pmod1.
++\]
++Exchanging $k,\ell$ changes this by an integer, so the cancelling
++residues are in the same class. A left measure pole is at
++$t=(1-3q-k-\ell)/2\pmod1$, also unchanged by the exchange. Thus the
++extra poles cancel locally in the spin-summed periodization, not only
++after the final contour integration. Absolute convergence in the initial
++strip permits the pairing. Coincident pole parameters are handled by
++continuation of the complete expression, not by keeping a separate
++singular residue.
++
++After this cancellation only the two order-seven Gamma-pole classes
++remain; $\Xi_7$ is entire and satisfies \eqref{fp:symmetry}. The measure
++contributes at most a factor of order $(1+\ell+n+|y|)^{4q}$ to the
++previous bound, so
++\begin{equation}
++ |S_7(x+\ii y)|=O(|y|^{-6q}),\qquad
++ |\Xi_7(x+\ii y)|=O(e^{14\pi|y|}|y|^{-6q}).
++ \label{fp:primitiveGrowth}
++\end{equation}
++The endpoint $\ell\gg n,|y|$ now has power $\ell^{q-2}$, again
++summable for $q<1$.
++
++\subsubsection{Finite-dimensionality theorem}
++For an entire one-periodic function the Fourier coefficient is unchanged
++when its integration contour is translated vertically. Apply this to
++\eqref{fp:wheelGrowth} or \eqref{fp:primitiveGrowth}. For mode $k\geq r$,
++translation down by $\ii Y$ bounds its absolute value by
++$C e^{2\pi(r-k)Y}Y^{-\eta}$ with $\eta>0$; it therefore vanishes,
++including the boundary mode $k=r$. Upward translation deals with
++$k\leq-r$. Reflection \eqref{fp:symmetry} pairs the remaining modes.
++Thus, exactly,
++\begin{equation}\boxed{
++ \Xi_r(t)=\sum_{k=0}^{r-1}c_{r,k}(q)
++                 \cos\bigl(2\pi k(t+q/2)\bigr),\qquad r=3,4,7.
++}\label{fp:finiteFourier}\end{equation}
++For real $q$ the coefficients are real, since the meromorphic kernel is
++real on nonsingular real arguments. This is a proved finite Fourier
++space, not a fitted trigonometric ansatz.
++
++\subsection{A finite evaluation rule, with no derivatives}
++A stable fixed sampling grid is
++\begin{equation}\begin{aligned}
++ N_r&=2r-1,& \eta_r&=\frac1{8\pi r},&
++ t_j&=-\frac q2+\frac{j}{N_r}+\ii\eta_r,
++ &&j=0,\ldots,r-1,\\
++ Y_j&=\Re\Xi_r(t_j).
++\end{aligned}\label{fp:nodes}\end{equation}
++The nonzero imaginary part avoids every real pole class. It is a fixed
++number, not a regulator to be sent to zero. Cosine orthogonality gives
++\begin{equation}\boxed{\begin{aligned}
++ c_{r,0}&=\frac1{N_r}\left(Y_0+2\sum_{j=1}^{r-1}Y_j\right),\\
++ c_{r,k}&=\frac{2}{N_r\cosh(k/(4r))}
++ \left[Y_0+2\sum_{j=1}^{r-1}Y_j
++             \cos\frac{2\pi kj}{N_r}\right],\quad 1\leq k<r.
++\end{aligned}}\label{fp:cosineTransform}\end{equation}
++Only finite sums appear here. For complex $q$, use all $2r-1$ complex
++samples and the ordinary discrete Fourier transform, rather than using
++complex conjugation to reconstruct half of them.
++
++The residue functional can also be printed without differentiating
++anything. For $1\leq h<r$ set
++\begin{equation}\begin{aligned}
++ L_h(q)&=(-1)^{h+1}\psi_{h-1}(1-q)-\psi_{h-1}(q),\\
++ u_h(q)&=r\left[(1+(-1)^h)\psi_{h-1}(1)-L_h(q)\right].
++\end{aligned}\label{fp:logCoefficients}\end{equation}
++These particular polygamma combinations are elementary reflection
++values. If $c=\cot(\pi q)$, an implementation requiring no higher
++polygamma calls may use
++\begin{equation}\begin{aligned}
++ \frac{u_1}{r\pi}&=-c,&
++ \frac{u_2}{r\pi^2}&=c^2+\frac43,&
++ \frac{u_3}{r\pi^3}&=-2c(1+c^2),\\
++ \frac{u_4}{r\pi^4}&=\frac{32}{15}+8c^2+6c^4,&
++ \frac{u_5}{r\pi^5}&=-8c(1+c^2)(2+3c^2),\\
++ \frac{u_6}{r\pi^6}&=\frac{1024}{63}+136c^2+240c^4+120c^6.
++\end{aligned}\label{fp:elementaryWeights}\end{equation}
++Only $u_1,\ldots,u_{r-1}$ are used. These follow from reflection and the
++integer polygamma values, and introduce no additional period constants.
++
++Define finite polynomials $E_m$, only for $0\leq m\leq6$, by
++\begin{equation}
++ E_0=1,\qquad E_m(x_1,\ldots,x_m)
++ =\frac1m\sum_{h=1}^m\frac{x_h}{(h-1)!}
++                         E_{m-h}(x_1,\ldots,x_{m-h}).
++ \label{fp:BellFinite}
++\end{equation}
++This is a finite polynomial definition, not a parameter derivative.
++For orientation,
++\begin{equation}\begin{aligned}
++ E_2&=(x_1^2+x_2)/2,& E_3&=(x_1^3+3x_1x_2+x_3)/6,\\
++720E_6={}&x_1^6+15x_1^4x_2+20x_1^3x_3+45x_1^2x_2^2+15x_1^2x_4\\
++ &+60x_1x_2x_3+6x_1x_5+15x_2^3+15x_2x_4+10x_3^2+x_6.
++\end{aligned}\label{fp:BellExamples}\end{equation}
++Write
++\begin{equation}\begin{aligned}
++ B_{r,k}(q)=\frac12\bigl[&e^{\ii\pi kq}
++       E_{r-1}(u_1+2\pi\ii k,u_2,\ldots,u_{r-1})\\
++ &+e^{-\ii\pi kq}
++       E_{r-1}(u_1-2\pi\ii k,u_2,\ldots,u_{r-1})\bigr],\\
++ \mathcal E_r(q;\boldsymbol Y)&=
++ -\frac{\sum_{k=0}^{r-1}B_{r,k}(q)c_{r,k}}
++             {(\pi\sin\pi q)^r}.
++\end{aligned}\label{fp:finiteFunctional}\end{equation}
++Then the finite primitive formulas are
++\begin{equation}\boxed{
++ Q_d=\frac{\Gamma(2q)^3}{3}\mathcal E_3,
++ \qquad P_4(d)=\Gamma(2q)^4\mathcal E_4,
++ \qquad P_5(d)=\frac{\Gamma(2q)^5}{2}\mathcal E_7.
++}\label{fp:periodsFinite}\end{equation}
++To check the sign and factors, close each Barnes contour to the right.
++Its orientation is clockwise, so its value is minus the sum of right
++residues. That sum is $\Res_{t=0}S_r(t)$. In
++$D_q(t)^{-r}$ the leading coefficient is $(\pi\sin\pi q)^{-r}t^{-r}$;
++the logarithmic coefficients of the analytic factor are exactly
++\eqref{fp:logCoefficients}. Expanding a cosine then gives
++\eqref{fp:finiteFunctional}. Residues are used in this proof only; the
++final formula \eqref{fp:periodsFinite} contains finite arithmetic and
++fixed special-function values.
++
++\subsection{Explicit one- and two-variable functions for every sample}
++\label{fp:arraysSection}
++For finite upper/lower lists of parameter--integer-vector pairs use
++\begin{equation}
++ \mathfrak H[\mathsf U;\mathsf V;\boldsymbol z]
++ =\sum_{\boldsymbol n\geq0}
++ \frac{\prod_{(a,v)\in\mathsf U}(a)_{v\cdot\boldsymbol n}}
++      {\prod_{(b,w)\in\mathsf V}(b)_{w\cdot\boldsymbol n}}
++ \prod_i\frac{z_i^{n_i}}{n_i!}.
++ \label{fp:HornDefinition}
++\end{equation}
++This is the unweighted Horn convention already used in the note.
++Signed integer-vector entries are permitted; $(a)_{-m}$ means
++$\Gamma(a-m)/\Gamma(a)$, not a truncated product. Consecutive coefficient
++ratios are rational in the indices. There are no index-dependent
++polygammas in the following arrays. The function definition contains its
++usual series, just as the definition of ${}_pF_q$ does; the master formula
++has no additional outer infinite sum. This distinction is not a claim
++that a two-variable function has become a one-variable function.
++
++For two variables put $\boldsymbol e=(1,0)$,
++$\boldsymbol f=(0,1)$, $\boldsymbol c=\boldsymbol e+\boldsymbol f$.
++Repeated rows are denoted by a superscript $\times r$. Define
++\begin{equation}\begin{aligned}
++ A_r^0(t)&=a_r^0(t)\,
++ {}_{2r+1}F_{2r}\!\left(
++ \begin{matrix}1,(q+t)^{\times r},(1-q+t)^{\times r}\\
++ (2q+t)^{\times r},(1+t)^{\times r}\end{matrix};1\right),\\
++ a_r^0(t)&=\left[
++ \frac{\Gamma(q+t)\Gamma(-t)}{\Gamma(2q+t)\Gamma(q-t)}\right]^r,\\
++ A_r^+(t)&=a_r^+(t)\mathfrak H[\mathsf U_+;\mathsf V_+;(1,1)],\\
++ a_r^+(t)&=4q\left[
++ \frac{\Gamma(q+1+t)\Gamma(-t)}{\Gamma(2q+1+t)\Gamma(q-t)}\right]^r,\\
++ C_r(t)&=a_r^c(t)\mathfrak H[\mathsf U_c;\mathsf V_c;(1,1)],\\
++ a_r^c(t)&=4q\left[
++ \frac{\Gamma(q+t)\Gamma(1-t)}{\Gamma(2q+t)\Gamma(1+q-t)}\right]^r.
++\end{aligned}\label{fp:wheelBlocks}\end{equation}
++The complete two-variable arrays are
++\begin{equation}\begin{aligned}
++\mathsf U_+={}&\{(q+1+t,\boldsymbol c)^{\times r},
++ (1,\boldsymbol e),(2q+1,\boldsymbol e),(4q-1,\boldsymbol e),
++ (1,\boldsymbol f),(1-q+t,\boldsymbol f)^{\times r}\},\\
++\mathsf V_+={}&\{(2q+1+t,\boldsymbol c)^{\times r},
++ (2q,\boldsymbol e),(2,\boldsymbol e),(1+t,\boldsymbol f)^{\times r}\},\\
++\mathsf U_c={}&\{(2q+1,\boldsymbol c),(4q-1,\boldsymbol c),
++ (1,\boldsymbol e),(1-t,\boldsymbol e)^{\times r},
++ (1,\boldsymbol f),(q+t,\boldsymbol f)^{\times r}\},\\
++\mathsf V_c={}&\{(2q,\boldsymbol c),(2,\boldsymbol c),
++ (1+q-t,\boldsymbol e)^{\times r},(2q+t,\boldsymbol f)^{\times r}\}.
++\end{aligned}\label{fp:wheelArrays}\end{equation}
++For $r=3,4$ every sample is therefore
++\begin{equation}\boxed{
++ \Xi_r(t)=D_q(t)^r\bigl[
++ A_r^0(t)+A_r^+(t)+A_r^0(1-q-t)+A_r^+(1-q-t)+C_r(t)\bigr].
++}\label{fp:wheelSample}\end{equation}
++The right tail gives the first two functions, evenness maps the left
++tail to $1-q-t$, and \eqref{fp:middleFactor} gives the last function.
++Equation \eqref{fp:degeneracy} then proves every Pochhammer row in
++\eqref{fp:wheelArrays}. This is also a direct coefficient-by-coefficient
++proof of the sample formula.
++
++\subsubsection{The eight primitive sample blocks}
++The $r=7$ arrays are obtained from the same printed blocks by finite row
++insertions, as follows. Put
++\begin{equation}
++ v=q+2t,\quad \theta_0=2q,\quad\theta_1=2q-1,\qquad
++ M_\theta(v)=\frac{\Gamma(\theta+v)\Gamma(\theta-v)}
++                  {\Gamma(v)\Gamma(-v)}.
++ \label{fp:measureBlock}
++\end{equation}
++The identity underlying the two channels is
++\begin{equation}
++ \bigl[(\ell+p)^2-V^2\bigr]
++ \frac{\Gamma(p+V)\Gamma(p-V)}{\Gamma(V)\Gamma(-V)}
++ =M_{2q}(V)+\ell(\ell+4q-2)M_{2q-1}(V).
++ \label{fp:twoChannels}
++\end{equation}
++For clarity, a ``block'' below includes its scalar prefactor, both lists
++and its argument vector.
++
++Define a right insertion $\mathcal R_{\theta,w,h}$ on any block by
++multiplying its prefactor by $M_\theta(w)$ and adjoining the rows
++\begin{equation}
++ \text{upper: }(\theta+w,h),(1+w,h),\qquad
++ \text{lower: }(w,h),(1+w-\theta,h).
++ \label{fp:rightInsertion}
++\end{equation}
++It multiplies its coefficient by $M_\theta(w+h\cdot\boldsymbol n)$.
++This follows by reflecting the negative Gamma argument and using that
++$h\cdot\boldsymbol n$ is an integer. A middle insertion
++$\mathcal C_{\theta,w,h}$ multiplies the prefactor by $M_\theta(w)$
++and adjoins instead
++\begin{equation}
++ \text{upper: }(\theta+w,h),(\theta-w,-h),\qquad
++ \text{lower: }(w,h),(-w,-h).
++ \label{fp:middleInsertion}
++\end{equation}
++This is the same identity before reflecting the index difference.
++
++Start with $A_7^0,A_7^+,C_7$. Let $A^-$ be $A_7^+$ with a minus sign
++in its prefactor and arguments $(-1,1)$; let $C^-$ be $C_7$ with a minus
++sign and arguments $(-1,-1)$. Let $\widehat A^-$ be obtained from $A^-$
++by multiplying the prefactor by $4q-1$, replacing its upper row
++$(4q-1,\boldsymbol e)$ by $(4q,\boldsymbol e)$ and its lower row
++$(2,\boldsymbol e)$ by $(1,\boldsymbol e)$. Define $\widehat C^-$
++with the same replacements along $\boldsymbol c$. These replacements
++supply the factor $\ell(\ell+4q-2)$ in the second channel of
++\eqref{fp:twoChannels}.
++
++There are three right blocks and two middle blocks:
++\begin{equation}\begin{aligned}
++ Z(t)&=\mathcal R_{\theta_0,v,2} A_7^0(t),\\
++ P_0(t)&=\mathcal R_{\theta_0,v+1,\boldsymbol e+2\boldsymbol f}A^-(t),&
++ P_1(t)&=\mathcal R_{\theta_1,v+1,\boldsymbol e+2\boldsymbol f}\widehat A^-(t),\\
++ C_0(t)&=\mathcal C_{\theta_0,v-1,\boldsymbol f-\boldsymbol e}C^-(t),&
++ C_1(t)&=\mathcal C_{\theta_1,v-1,\boldsymbol f-\boldsymbol e}\widehat C^-(t).
++\end{aligned}\label{fp:primitiveBlocks}\end{equation}
++The single-variable vector in the first line is the integer $2$.
++Duplication of those step-two Pochhammers turns $Z(t)$ into an ordinary
++${}_{19}F_{18}(1)$. All other blocks have only two indices.
++The complete fixed sample is
++\begin{equation}\boxed{\begin{aligned}
++ \Xi_7(t)=D_q(t)^7\bigl[&Z(t)+P_0(t)+P_1(t)\\
++ &+Z(1-q-t)+P_0(1-q-t)+P_1(1-q-t)+C_0(t)+C_1(t)\bigr].
++\end{aligned}}\label{fp:primitiveSample}\end{equation}
++Equations \eqref{fp:nodes}--\eqref{fp:primitiveSample} specify every
++parameter, argument and prefactor using finite lists; the JSON templates
++in the archive are machine-readable copies, not missing definitions.
++
++\paragraph{Convergence and continuation.}
++The proofs above start at $1/2<q<1$. The right and middle Gamma-ratio
++estimates give direct absolute convergence of the displayed blocks for
++$q>1/(2r)$ in a wheel and $q>1/10$ in the primitive, always with $q<1$.
++The endpoint in a positive-spin right block imposes the additional
++condition $q(4-r)<1$ for a wheel and $q<1$ for the primitive; these are
++automatic in the stated ranges. Thus the new $Q,P_4,P_5$ formulas are
++direct endpoint-series formulas for $d>2/3,1/2,2/5$, respectively.
++For smaller positive dimensions use their continued complete
++combinations. Exceptional real parameter coincidences are dealt with
++by the same continuation; the off-real sampling points themselves are
++nonsingular. In particular $d=1,2,3$ are valid specializations, though the
++retained five ordinary values remain a better presentation for $P_5(1)$.
++
++\subsection{A stronger result at two dimensions: reuse the one-dimensional values}
++\label{fp:twoDimensional}
++In this subsection $B_-,B_+$ and $X_0,X_+,X_-$ refer to the
++\emph{retained one-dimensional} values, not to new functions of $d$:
++\begin{equation}\begin{aligned}
++ B_-&=\Gamma(\tfrac14)^4 F_-,&
++ B_+&=\frac{64\pi^4}{\Gamma(\tfrac14)^4}F_+,\\
++ X_0&=\mathcal Y_2,&
++ X_+&=c_8^7\mathcal Y_3-s_8^7\mathcal Y_5,&
++ X_-&=c_8^7\mathcal Y_1+s_8^7\mathcal Y_7.
++\end{aligned}\label{fp:inheritedValues}\end{equation}
++For a self-contained dimension-two parameter dictionary, these are
++\begin{equation}\begin{aligned}
++ F_-&={}_4F_3\!\left(\begin{matrix}\frac14,\frac14,\frac12,\frac12\\
++          \frac34,\frac34,1\end{matrix};1\right),&
++ F_+&={}_4F_3\!\left(\begin{matrix}\frac34,\frac34,\frac12,\frac12\\
++          \frac54,\frac54,1\end{matrix};1\right),\\
++ c_8&=\cos(\pi/8),&s_8&=\sin(\pi/8),
++\end{aligned}\label{fp:FpmDictionary}\end{equation}
++\begin{equation}\begin{aligned}
++\mathcal Y_r={}&\frac r8
++ \left[\frac{\Gamma((r+2)/8)}{\Gamma((r+6)/8)}\right]^7
++ {}_9F_8\!\left(
++ \begin{matrix}1,1+\frac r8,((r+2)/8)^{\times7}\\
++ \frac r8,((r+6)/8)^{\times7}\end{matrix};-1\right),\\
++&r\in\{1,2,3,5,7\}.
++\end{aligned}\label{fp:YDictionary}\end{equation}
++At $r=2$ one upper and lower parameter $1$ cancel, giving an ordinary
++${}_8F_7$; all parameter lists are fixed and positive rational.
++The new identities are
++\begin{equation}\boxed{
++ P_4(2)=\frac{B_-^2-B_+^2}{4\pi^3}.
++}\label{fp:P4two}\end{equation}
++\begin{equation}\boxed{\begin{aligned}
++P_5(2)=\frac8\pi\bigl[&25X_0^2-28\sqrt2\,X_0(X_++X_-)\\
++ &+18(X_+^2+X_-^2)+28X_+X_-\bigr].
++\end{aligned}}\label{fp:P5two}\end{equation}
++Thus no new hypergeometric value is needed for either two-dimensional
++primitive. The four-loop result uses the same two ${}_4F_3(1)$ values;
++the five-loop result uses exactly the preferred four ${}_9F_8(-1)$ and
++one ${}_8F_7(-1)$ with positive rational parameters. The formulas are
++quadratic rather than linear. They are not an assertion that the
++full two-dimensional nonprimitive sector has been evaluated in this
++basis.
++
++\subsubsection{Factorization of the wheel lattice}
++At $q=1/2$ the multiplicities are $d_0=1$, $d_{\ell>0}=2$.
++In a right half-lattice put $k=\ell+n$, $j=n$. Gamma reflection gives
++\[
++ g_\ell(a_\ell+n+t)=
++ -\cot(\pi t)\,
++ \frac{\Gamma(k+\frac12+t)}{\Gamma(k+1+t)}
++ \frac{\Gamma(j+\frac12+t)}{\Gamma(j+1+t)}.
++\]
++The diagonal has multiplicity one and the two off-diagonal half-lattices
++have multiplicity two. They therefore form a full square lattice.
++Define the meromorphic bilateral series and its regularization
++\begin{equation}\begin{aligned}
++ B_r(t)&=\sum_{n\in\mathbb Z}
++      \left[\frac{\Gamma(n+\frac12+t)}{\Gamma(n+1+t)}\right]^r,\\
++ \Omega_r(t)&=\cos^r(\pi t)B_r(t).
++\end{aligned}\label{fp:OmegaWheel}\end{equation}
++The index sums are absolute for $r>2$. Direct reflection or the square
++lattice just described gives
++\begin{equation}
++ \Xi_r(t)=(-1)^r\Omega_r(t)^2\qquad(d=2).
++ \label{fp:wheelSquare}\end{equation}
++For $r=4$, the same growth and reflection argument as before now yields
++only two modes:
++\begin{equation}
++ \Omega_4(t)=a+b\cos\bigl(2\pi(t+\tfrac14)\bigr).
++ \label{fp:Omega4Modes}\end{equation}
++There is no fitting in this statement: $\Omega_4$ is entire, one-periodic,
++even about $-1/4$, and has growth $O(e^{4\pi|\Im t|}|\Im t|^{-1})$,
++which excludes the boundary second mode.
++
++Let $M_{\rm e}=\int_0^1\mathbf K(k)^2\,dk$ and
++$N_{\rm e}=\int_0^1\mathbf K(k)\mathbf K(k')\,dk$, with the modulus
++convention of Appendix~\ref{app:LreductionProof}. The established elliptic
++identities give
++\begin{equation}
++ M_{\rm e}=\frac{B_-+B_+}{64},\qquad
++ N_{\rm e}=\frac{B_--B_+}{32}.
++ \label{fp:MN}\end{equation}
++Here is a short analytic determination of both coefficients in
++\eqref{fp:Omega4Modes}. At $t=0$ the reflected half of $\Omega_4$ vanishes
++to fourth order. Hence
++\[
++ a=\pi^2\,{}_4F_3\left(\begin{matrix}\frac12,\frac12,\frac12,\frac12\\1,1,1\end{matrix};1\right)
++   =\frac{8N_{\rm e}}\pi.
++\]
++For $N(\nu)=\int_0^1 k^\nu\mathbf K(k)\mathbf K(k')\,dk$, the mixed
++moment beta integral of \cite{Wan} gives
++\begin{equation}
++ N(\nu)=\frac{\pi^2}{8}\sum_{n\geq0}
++ \frac{(\frac12)_n^2}{(n!)^2}
++ \frac{\Gamma(n+(\nu+1)/2)^2}{\Gamma(n+(\nu+2)/2)^2}.
++ \label{fp:mixedMomentProof}
++\end{equation}
++Differentiation in this convergent \emph{proof} representation gives
++$\Omega_4'(0)=32N'(0)/\pi$. The already proved Stieltjes--Landen
++identity \eqref{lp:eq:mixedlog} says $N'(0)=-\pi M_{\rm e}/2$.
++As $\Omega_4'(0)=-2\pi b$, it follows that
++\begin{equation}
++ a=\frac{8N_{\rm e}}\pi,\qquad b=\frac{8M_{\rm e}}\pi.
++ \label{fp:abWheel}\end{equation}
++No derivative remains in these coefficients.
++Substitute $\Xi_4=(a+b\cos(2\pi(t+1/4)))^2$ into
++\eqref{fp:finiteFunctional}. At $q=1/2$ the only contributing coefficient
++is $c_{4,1}=2ab$, and $P_4(2)=8ab/\pi=512M_{\rm e}N_{\rm e}/\pi^3$.
++Equation \eqref{fp:P4two} follows immediately.
++
++\subsubsection{The five-loop square and the retained five values}
++Put
++\begin{equation}\begin{aligned}
++ G(s)&=(2s+\tfrac12)
++           \left[\frac{\Gamma(s+\frac12)}{\Gamma(s+1)}\right]^7,\\
++ \Omega_{\rm a}(t)&=\cos^7(\pi t)
++                      \sum_{n\in\mathbb Z}(-1)^nG(n+t).
++\end{aligned}\label{fp:OmegaAlternating}\end{equation}
++At $q=1/2$ the measure in \eqref{fp:primitiveStart} is
++$\ell^2-4s^2$. On the square lattice it becomes
++$-(2k+\frac12+2t)(2j+\frac12+2t)$ and
++$(-1)^\ell=(-1)^{k-j}$. Consequently
++\begin{equation}
++ \Xi_7(t)=\Omega_{\rm a}(t)^2\qquad(d=2).
++ \label{fp:primitiveSquare}\end{equation}
++The sign is plus: the negative quadratic measure and the odd seventh
++power of the Gamma-reflection sign cancel.
++
++Most usefully, $G(s)=2f(s)$ for the \emph{one-dimensional} function in
++\eqref{fx:eq:fA}. Thus
++\begin{equation}
++ \Omega_{\rm a}(t)=2\Xi^{(1)}(t)
++ =2\bigl[\alpha\cos2\pi t+\beta\sin4\pi t+\gamma\cos6\pi t\bigr],
++ \label{fp:oneDimensionalSquare}
++\end{equation}
++where $\alpha,\beta,\gamma$ are exactly those in
++\eqref{fx:eq:abc}. Applying the finite residue polynomial gives
++\begin{equation}
++ P_5(2)=\frac8\pi
++ \left(\alpha^2-14\alpha\gamma+8\beta^2+113\gamma^2\right).
++ \label{fp:P5abc}
++\end{equation}
++One convenient exact algebra check is that at $q=1/2$
++\[
++ \bigl(B_{7,0},B_{7,1},\ldots,B_{7,6}\bigr)
++       =\pi^6(20,0,28,0,84,0,924).
++\]
++Expanding the square in \eqref{fp:oneDimensionalSquare} and using the
++normalization $P_5=\mathcal E_7/2$ gives \eqref{fp:P5abc}; inserting
++\eqref{fx:eq:abc} gives \eqref{fp:P5two}. This proves the quadratic
++factorization without a numerical integer-relation search.
++
++\subsection{Checks, files, and the remaining work}
++\paragraph{Fixed-spin analytic controls.}
++At 35 decimal working digits, fixed-spin wheel samples were evaluated
++as ordinary hypergeometric functions and compared with fresh real-axis
++Barnes integrals. Cases $(q,r,\ell)=(0.6,3,0),(0.7,3,2),(0.6,4,1),
++(0.25,4,0)$ had absolute differences below $3\times10^{-30}$.
++Additional off-grid samples checked the inferred finite Fourier
++polynomial. These are checks of the theorem's building blocks, not of
++an independently rederived RG graph sum.
++
++\paragraph{Parameter arrays and finite transforms.}
++At 65 working digits, 44 coefficients of the explicit Horn blocks,
++including signed-index middle blocks, were compared directly with the
++Gamma kernels at $q=1/4,1/2,0.63,3/4$. The maximum normalized residual
++was $3.81\times10^{-65}$. The fixed cosine transforms were checked on
++every basis mode for $r=3,4,7$, with residual below $4.75\times10^{-66}$.
++These are numerical coefficient checks; the exact derivation of the
++arrays is \eqref{fp:reflectedRight}--\eqref{fp:middleFactor} and the
++finite row rules, not a claim of interval arithmetic.
++
++\paragraph{Noninteger-dimensional primitive controls.}
++The spin-summed finite-sampling expression was compared with fresh
++conformal-triangle spectral quadrature, with 640 quadrature nodes and
++160 spin terms in the latter. The sampling computation used 128 spin
++terms, Euler acceleration, and doubled radial cutoffs. At $d=2.4$ its
++difference from the fresh spectral value was $-1.39\times10^{-9}$; at
++$d=3$ it was $+7.38\times10^{-8}$. Off-grid periodization residuals were
++below $2.3\times10^{-11}$. Those computations use double-precision Gamma
++kernels inside wider accumulations. Their residuals are not promoted to
++high-precision agreement merely because the final finite weights were
++computed at 50 digits. The five-loop residue functional is cancellation
++sensitive; imaginary-axis Chebyshev nodes far from the real axis are
++particularly ill conditioned. The grid \eqref{fp:nodes} controls this
++amplification much better, but is not an error certificate.
++
++\paragraph{Independent two-dimensional checks.}
++The exact square factorization was first evaluated at 55 digits using
++Gamma-ratio series with a Hurwitz-zeta asymptotic tail and a finite Euler
++transform for the alternating kernel. A 70-digit run changed the direct
++cutoff from 96 to 144, tail order from 44 to 58, the Euler settings from
++$(20,260)$ to $(32,340)$, and changed the sampling grid to
++\eqref{fp:nodes}. The $Q_2$ check against
++$\Gamma(1/4)^8/(24\pi^4)$ agreed to about 67 decimal places. The two
++primitive outputs were
++\begin{equation}\begin{aligned}
++ P_4(2)&=250.48731558186728553185175688791140716835571092358\ldots,\\
++ P_5(2)&=1548.08264023312061513243907394578934038811023232285\ldots.
++\end{aligned}\label{fp:d2Numbers}\end{equation}
++Finally the retained $F_\pm$ and five $\mathcal Y_r$ were recomputed
++using literal ordinary \texttt{mpmath.hyper} calls at 60 working digits.
++The differences of \eqref{fp:P4two} and \eqref{fp:P5two} from the fresh
++70-digit square-factorization values were respectively
++$-5.97\times10^{-59}$ and $+1.59\times10^{-58}$. The quadratic change of
++basis from \eqref{fp:P5abc} to \eqref{fp:P5two} was also checked by exact
++symbolic algebra. No saved period was used as an input to either route.
++These are numerical consistency checks, not rigorous interval bounds.
++
++\paragraph{What has not been done.}
++The finite Fourier theorem concerns the Barnes-shift variable $t$.
++It does not imply finite dependence on an independent rim-exponent
++variable $b$. Therefore it cannot be used to replace the first and
++second $b$ derivatives defining $\mathcal L_d$ and $Z_d$ by a finite
++sampling grid in $b$. That would be an unjustified interpolation.
++Likewise this revision has not found a generic-dimensional summation
++identity for $\mathcal K_d$ or for the combined target
++$\mathcal N_d$. Their previous weighted-series and finite-Horn forms
++remain available, with the earlier continuation prescriptions. A
++complete finite ordinary-${}_pF_q$ presentation of $C_5(d)$ is still
++not established; no impossibility claim is made.
++
++The archive includes the full parameter arrays, verifiers and recorded
++outputs under \path{code/general_periodization/} and
++\path{verification/general_periodization/}. The full original
++one-dimensional formulas, the two-dimensional Gamma normalization, and
++all prior general-dimensional coefficient formulas are retained.
++This revision changes representations and adds the exact
++factorizations \eqref{fp:P4two}--\eqref{fp:P5two}; it does not rerun the
++four- or five-loop graph calculation.
++
+ \section{Provenance and limits of the consolidation}\label{app:provenance}
+-The current endpoint is Appendix~\ref{app:generalClosed}: explicit finite
++The latest reduction is Appendix~\ref{app:generalPeriodization}: finite
++Fourier sampling reduces the primitive sector to at most two-variable
++functions and proves exact quadratic two-dimensional factorizations in
++the retained one-dimensional ordinary hypergeometric values. This does
++not remove the general-dimensional nonprimitive master functions.
++The previous endpoint was Appendix~\ref{app:generalClosed}: explicit finite
+ multivariable Horn parameter arrays for every master through $C_5(d)$,
+ including the new primitive residue cancellation and the regularized
+ Gauss form of $\mathcal K_d$. It preserves the preferred one-dimensional
+@@ -6657,7 +7335,7 @@
+ 
+ The dimension-dependent extension begins in Appendix~\ref{app:generalDimension} and is continued by Appendix~\ref{app:generalSpecial}. The latter recalculates the general-dimensional four/five-loop master reduction, gives explicit derivative-free polygamma-weighted series for its nonprimitive functions, proves a common-kernel representation and the exact dimension-two Hessian value, and records master-level numerical checks. No finite one-variable hypergeometric reduction for generic $d$, rigorous numerical enclosure, or independent generic-$d$ full-graph numerical computation is claimed. New code and records are under \texttt{code/general\_special/} and \texttt{verification/general\_special/}. Historical source formulas and evidence are retained.
+ 
+-The latest period-level addition is Section~\ref{sec:P5CompactUnity}: two low-order values at $-1$, four moderate-order values at $1$, and two higher-order values at $1$, all fixed and derivative-free. It builds on the proved three-harmonic identity, and is verified by fresh literal hypergeometric evaluations and gamma quadrature. The preceding five-positive-rational-value note is preserved as \texttt{history/five\_positive\_rational\_values.tex}. The new record is \texttt{verification/compact\_unity\_checks.json}; no full graph computation has been rerun in this period-level revision. Earlier source snapshots and their numerical evidence remain in the archive.
++An earlier one-dimensional period-level addition is Section~\ref{sec:P5CompactUnity}: two low-order values at $-1$, four moderate-order values at $1$, and two higher-order values at $1$, all fixed and derivative-free. It builds on the proved three-harmonic identity, and is verified by fresh literal hypergeometric evaluations and gamma quadrature. The preceding five-positive-rational-value note is preserved as \texttt{history/five\_positive\_rational\_values.tex}. The new record is \texttt{verification/compact\_unity\_checks.json}; no full graph computation has been rerun in this period-level revision. Earlier source snapshots and their numerical evidence remain in the archive.
+ 
+ The main mathematical source is the prior completed-reduction note and its updated code note, merged here with the primitive, wheel, elliptic, gamma and Meijer-period derivations. The primary sources cited in the bibliography establish general identities and lower-order benchmarks; they are not being cited as prior publications of the present complete $C_5$ formula. Historical per-run precisions and differences are identified as recorded comparisons. Current records identify exactly which commands were rerun.
+ 

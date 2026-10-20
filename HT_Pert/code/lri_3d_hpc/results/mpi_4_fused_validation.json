@@ -1,0 +1,618 @@
+{
+  "passed": true,
+  "ranks": 4,
+  "kernel_checks": [
+    {
+      "dtype": "float64",
+      "prefix": 0,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float64",
+      "prefix": 1,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float64",
+      "prefix": 2,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float64",
+      "prefix": 5,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float64",
+      "prefix": 13,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float64",
+      "source_prefix_shard": 2,
+      "native_bitwise_equal": true,
+      "empty_ranks": 2
+    },
+    {
+      "dtype": "float128",
+      "prefix": 0,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float128",
+      "prefix": 1,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float128",
+      "prefix": 2,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float128",
+      "prefix": 5,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float128",
+      "prefix": 13,
+      "native_bitwise_equal": true,
+      "max_scaled_error_vs_scipy": 0.0
+    },
+    {
+      "dtype": "float128",
+      "source_prefix_shard": 2,
+      "native_bitwise_equal": true,
+      "empty_ranks": 2
+    },
+    {
+      "dtype": "float128",
+      "sub_float64_spmm_signal_preserved": true,
+      "sub_float64_broadcast_signal_preserved": true,
+      "sentinel": "1.0000000000000000009"
+    }
+  ],
+  "physical_checks": [
+    {
+      "cutoff": 4,
+      "scheme": "raw",
+      "strategy": "recurrence",
+      "operator_path": "spmm",
+      "collectives": 456,
+      "all_rank_results_identical": true,
+      "max_scaled_error_vs_reference": 0.0,
+      "optimization": {
+        "strategy": "recurrence",
+        "wavefunction_order": 7,
+        "recursion_residual_through_order": 7,
+        "stationary_energy_order_guarantee": null,
+        "backend": {
+          "backend": "mpi-row-distributed",
+          "ranks": 4,
+          "row_bounds": [
+            0,
+            3,
+            5,
+            8,
+            10
+          ],
+          "precision_significand_bits": 64,
+          "local_backend": {
+            "requested_backend": "native",
+            "threads": 1,
+            "numpy_precision": {
+              "byteorder": "little",
+              "float64": {
+                "dtype": "float64",
+                "itemsize": 8,
+                "mantissa_bits": 53,
+                "max_exp": 1024
+              },
+              "longdouble": {
+                "dtype": "float128",
+                "itemsize": 16,
+                "mantissa_bits": 64,
+                "max_exp": 16384
+              }
+            },
+            "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+            "compiler_command": [
+              "c++"
+            ],
+            "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+            "compiler_flags": [
+              "-O3",
+              "-std=c++17",
+              "-fPIC",
+              "-shared",
+              "-fno-fast-math",
+              "-ffp-contract=off",
+              "-fopenmp"
+            ],
+            "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+            "machine": "x86_64",
+            "sparse_abi_version": 2,
+            "sizeof_long_double": 16,
+            "long_double_mantissa_bits": 64,
+            "long_double_max_exp": 16384,
+            "sizeof_double": 8,
+            "double_mantissa_bits": 53,
+            "floating_radix": 2,
+            "little_endian": 1,
+            "openmp_enabled": 1,
+            "openmp_max_threads": 1,
+            "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+            "load_or_build_seconds": 0.0008419180012424476,
+            "backend": "native-openmp"
+          },
+          "vectors_replicated": true,
+          "seed_row_replicated": true,
+          "floating_point_reductions": false,
+          "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/"
+        },
+        "distributed": true,
+        "coefficients_synchronized": true,
+        "fused_hamiltonian_application": false,
+        "counters": {
+          "full_applications": 84,
+          "seed_row_applications": 112,
+          "seed_column_applications": 28,
+          "sparse_products": 456,
+          "full_combination_builds": 6,
+          "seed_only_builds": 1
+        },
+        "hermitian_seed_columns": true,
+        "all_window_orders_retained": true
+      }
+    },
+    {
+      "cutoff": 4,
+      "scheme": "raw",
+      "strategy": "recurrence",
+      "operator_path": "hamiltonian",
+      "collectives": 84,
+      "all_rank_results_identical": true,
+      "max_scaled_error_vs_reference": 0.0,
+      "optimization": {
+        "strategy": "recurrence",
+        "wavefunction_order": 7,
+        "recursion_residual_through_order": 7,
+        "stationary_energy_order_guarantee": null,
+        "backend": {
+          "backend": "mpi-row-distributed",
+          "ranks": 4,
+          "row_bounds": [
+            0,
+            3,
+            5,
+            8,
+            10
+          ],
+          "precision_significand_bits": 64,
+          "local_backend": {
+            "requested_backend": "native",
+            "threads": 1,
+            "numpy_precision": {
+              "byteorder": "little",
+              "float64": {
+                "dtype": "float64",
+                "itemsize": 8,
+                "mantissa_bits": 53,
+                "max_exp": 1024
+              },
+              "longdouble": {
+                "dtype": "float128",
+                "itemsize": 16,
+                "mantissa_bits": 64,
+                "max_exp": 16384
+              }
+            },
+            "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+            "compiler_command": [
+              "c++"
+            ],
+            "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+            "compiler_flags": [
+              "-O3",
+              "-std=c++17",
+              "-fPIC",
+              "-shared",
+              "-fno-fast-math",
+              "-ffp-contract=off",
+              "-fopenmp"
+            ],
+            "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+            "machine": "x86_64",
+            "sparse_abi_version": 2,
+            "sizeof_long_double": 16,
+            "long_double_mantissa_bits": 64,
+            "long_double_max_exp": 16384,
+            "sizeof_double": 8,
+            "double_mantissa_bits": 53,
+            "floating_radix": 2,
+            "little_endian": 1,
+            "openmp_enabled": 1,
+            "openmp_max_threads": 1,
+            "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+            "load_or_build_seconds": 0.0008419180012424476,
+            "backend": "native-openmp"
+          },
+          "vectors_replicated": true,
+          "seed_row_replicated": true,
+          "floating_point_reductions": false,
+          "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/"
+        },
+        "distributed": true,
+        "coefficients_synchronized": true,
+        "fused_hamiltonian_application": true,
+        "counters": {
+          "full_applications": 84,
+          "seed_row_applications": 112,
+          "seed_column_applications": 28,
+          "sparse_products": 456,
+          "full_combination_builds": 6,
+          "seed_only_builds": 1
+        },
+        "hermitian_seed_columns": true,
+        "all_window_orders_retained": true
+      }
+    },
+    {
+      "cutoff": 4,
+      "scheme": "raw",
+      "strategy": "stationary",
+      "operator_path": "hamiltonian",
+      "collectives": 72,
+      "all_rank_results_identical": true,
+      "max_scaled_error_vs_reference": 1.4779911864874077e-17,
+      "optimization": {
+        "strategy": "stationary",
+        "wavefunction_order": 4,
+        "recursion_residual_through_order": 4,
+        "stationary_energy_order_guarantee": 9,
+        "backend": {
+          "backend": "mpi-row-distributed",
+          "ranks": 4,
+          "row_bounds": [
+            0,
+            3,
+            5,
+            8,
+            10
+          ],
+          "precision_significand_bits": 64,
+          "local_backend": {
+            "requested_backend": "native",
+            "threads": 1,
+            "numpy_precision": {
+              "byteorder": "little",
+              "float64": {
+                "dtype": "float64",
+                "itemsize": 8,
+                "mantissa_bits": 53,
+                "max_exp": 1024
+              },
+              "longdouble": {
+                "dtype": "float128",
+                "itemsize": 16,
+                "mantissa_bits": 64,
+                "max_exp": 16384
+              }
+            },
+            "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+            "compiler_command": [
+              "c++"
+            ],
+            "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+            "compiler_flags": [
+              "-O3",
+              "-std=c++17",
+              "-fPIC",
+              "-shared",
+              "-fno-fast-math",
+              "-ffp-contract=off",
+              "-fopenmp"
+            ],
+            "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+            "machine": "x86_64",
+            "sparse_abi_version": 2,
+            "sizeof_long_double": 16,
+            "long_double_mantissa_bits": 64,
+            "long_double_max_exp": 16384,
+            "sizeof_double": 8,
+            "double_mantissa_bits": 53,
+            "floating_radix": 2,
+            "little_endian": 1,
+            "openmp_enabled": 1,
+            "openmp_max_threads": 1,
+            "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+            "load_or_build_seconds": 0.0008419180012424476,
+            "backend": "native-openmp"
+          },
+          "vectors_replicated": true,
+          "seed_row_replicated": true,
+          "floating_point_reductions": false,
+          "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/"
+        },
+        "distributed": true,
+        "coefficients_synchronized": true,
+        "fused_hamiltonian_application": true,
+        "counters": {
+          "full_applications": 72,
+          "seed_row_applications": 88,
+          "seed_column_applications": 16,
+          "sparse_products": 384,
+          "full_combination_builds": 6,
+          "seed_only_builds": 1
+        },
+        "hermitian_seed_columns": true,
+        "all_window_orders_retained": true
+      }
+    },
+    {
+      "cutoff": 4,
+      "scheme": "consistent",
+      "strategy": "recurrence",
+      "operator_path": "hamiltonian",
+      "collectives": 126,
+      "all_rank_results_identical": true,
+      "max_scaled_error_vs_reference": 0.0,
+      "optimization": {
+        "strategy": "recurrence",
+        "wavefunction_order": 7,
+        "recursion_residual_through_order": 7,
+        "stationary_energy_order_guarantee": null,
+        "backend": {
+          "backend": "mpi-row-distributed",
+          "ranks": 4,
+          "row_bounds": [
+            0,
+            3,
+            5,
+            8,
+            10
+          ],
+          "precision_significand_bits": 64,
+          "local_backend": {
+            "requested_backend": "native",
+            "threads": 1,
+            "numpy_precision": {
+              "byteorder": "little",
+              "float64": {
+                "dtype": "float64",
+                "itemsize": 8,
+                "mantissa_bits": 53,
+                "max_exp": 1024
+              },
+              "longdouble": {
+                "dtype": "float128",
+                "itemsize": 16,
+                "mantissa_bits": 64,
+                "max_exp": 16384
+              }
+            },
+            "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+            "compiler_command": [
+              "c++"
+            ],
+            "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+            "compiler_flags": [
+              "-O3",
+              "-std=c++17",
+              "-fPIC",
+              "-shared",
+              "-fno-fast-math",
+              "-ffp-contract=off",
+              "-fopenmp"
+            ],
+            "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+            "machine": "x86_64",
+            "sparse_abi_version": 2,
+            "sizeof_long_double": 16,
+            "long_double_mantissa_bits": 64,
+            "long_double_max_exp": 16384,
+            "sizeof_double": 8,
+            "double_mantissa_bits": 53,
+            "floating_radix": 2,
+            "little_endian": 1,
+            "openmp_enabled": 1,
+            "openmp_max_threads": 1,
+            "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+            "load_or_build_seconds": 0.0008419180012424476,
+            "backend": "native-openmp"
+          },
+          "vectors_replicated": true,
+          "seed_row_replicated": true,
+          "floating_point_reductions": false,
+          "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/"
+        },
+        "distributed": true,
+        "coefficients_synchronized": true,
+        "fused_hamiltonian_application": true,
+        "counters": {
+          "full_applications": 126,
+          "seed_row_applications": 168,
+          "seed_column_applications": 42,
+          "sparse_products": 684,
+          "full_combination_builds": 6,
+          "seed_only_builds": 1
+        },
+        "hermitian_seed_columns": true,
+        "all_window_orders_retained": true
+      }
+    },
+    {
+      "cutoff": 4,
+      "scheme": "consistent",
+      "strategy": "stationary",
+      "operator_path": "hamiltonian",
+      "collectives": 108,
+      "all_rank_results_identical": true,
+      "max_scaled_error_vs_reference": 7.20511692254408e-18,
+      "optimization": {
+        "strategy": "stationary",
+        "wavefunction_order": 4,
+        "recursion_residual_through_order": 4,
+        "stationary_energy_order_guarantee": 9,
+        "backend": {
+          "backend": "mpi-row-distributed",
+          "ranks": 4,
+          "row_bounds": [
+            0,
+            3,
+            5,
+            8,
+            10
+          ],
+          "precision_significand_bits": 64,
+          "local_backend": {
+            "requested_backend": "native",
+            "threads": 1,
+            "numpy_precision": {
+              "byteorder": "little",
+              "float64": {
+                "dtype": "float64",
+                "itemsize": 8,
+                "mantissa_bits": 53,
+                "max_exp": 1024
+              },
+              "longdouble": {
+                "dtype": "float128",
+                "itemsize": 16,
+                "mantissa_bits": 64,
+                "max_exp": 16384
+              }
+            },
+            "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+            "compiler_command": [
+              "c++"
+            ],
+            "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+            "compiler_flags": [
+              "-O3",
+              "-std=c++17",
+              "-fPIC",
+              "-shared",
+              "-fno-fast-math",
+              "-ffp-contract=off",
+              "-fopenmp"
+            ],
+            "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+            "machine": "x86_64",
+            "sparse_abi_version": 2,
+            "sizeof_long_double": 16,
+            "long_double_mantissa_bits": 64,
+            "long_double_max_exp": 16384,
+            "sizeof_double": 8,
+            "double_mantissa_bits": 53,
+            "floating_radix": 2,
+            "little_endian": 1,
+            "openmp_enabled": 1,
+            "openmp_max_threads": 1,
+            "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+            "load_or_build_seconds": 0.0008419180012424476,
+            "backend": "native-openmp"
+          },
+          "vectors_replicated": true,
+          "seed_row_replicated": true,
+          "floating_point_reductions": false,
+          "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/"
+        },
+        "distributed": true,
+        "coefficients_synchronized": true,
+        "fused_hamiltonian_application": true,
+        "counters": {
+          "full_applications": 108,
+          "seed_row_applications": 132,
+          "seed_column_applications": 24,
+          "sparse_products": 576,
+          "full_combination_builds": 6,
+          "seed_only_builds": 1
+        },
+        "hermitian_seed_columns": true,
+        "all_window_orders_retained": true
+      }
+    }
+  ],
+  "mpi_diagnostics": {
+    "backend": "mpi-row-distributed",
+    "ranks": 4,
+    "row_bounds": [
+      0,
+      3,
+      5,
+      8,
+      10
+    ],
+    "precision_significand_bits": 64,
+    "local_backend": {
+      "requested_backend": "native",
+      "threads": 1,
+      "numpy_precision": {
+        "byteorder": "little",
+        "float64": {
+          "dtype": "float64",
+          "itemsize": 8,
+          "mantissa_bits": 53,
+          "max_exp": 1024
+        },
+        "longdouble": {
+          "dtype": "float128",
+          "itemsize": 16,
+          "mantissa_bits": 64,
+          "max_exp": 16384
+        }
+      },
+      "source_sha256": "eb349b958d18e18e22b9b5c8e69a58bebecaa6a0b2bd9eacff4be9e1d566853d",
+      "compiler_command": [
+        "c++"
+      ],
+      "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+      "compiler_flags": [
+        "-O3",
+        "-std=c++17",
+        "-fPIC",
+        "-shared",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-fopenmp"
+      ],
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "sparse_abi_version": 2,
+      "sizeof_long_double": 16,
+      "long_double_mantissa_bits": 64,
+      "long_double_max_exp": 16384,
+      "sizeof_double": 8,
+      "double_mantissa_bits": 53,
+      "floating_radix": 2,
+      "little_endian": 1,
+      "openmp_enabled": 1,
+      "openmp_max_threads": 1,
+      "shared_library": "/workspace/scratch/812c07028e21/work_hpc/native_audit/cache/ht_sparse_d634c5a91bf690a201ac6a88.so",
+      "load_or_build_seconds": 0.0008419180012424476,
+      "backend": "native-openmp"
+    },
+    "vectors_replicated": true,
+    "seed_row_replicated": true,
+    "floating_point_reductions": false,
+    "mpi_library": "MPICH Version:      5.0.2\nMPICH Release date: Fri Sep 25 20:45:26 UTC 2026\nMPICH ABI:          18:2:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --with-device=ch4:ucx,ofi --with-pm=hydra:gforker\nMPICH CC:           cc\nMPICH CXX:          c++\nMPICH F77:          gfortran\nMPICH FC:           gfortran\nMPICH features:     threadcomm\nMPICH Custom Information:\thttps://pypi.org/p/mpich/5.0.2/",
+    "sparse_calls": 456,
+    "collectives": 846,
+    "full_hamiltonian_calls": 390,
+    "local_sparse_kernels": 2556,
+    "kernel_seconds": 0.4729982590433792,
+    "gather_seconds": 13.418058666968136,
+    "gathered_elements_per_rank": 78360
+  },
+  "scope": "Local real-MPI correctness and chunking; not multi-node performance"
+}

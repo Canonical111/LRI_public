@@ -1,0 +1,3056 @@
+ Percent |	Source code & Disassembly of c8d2_gmp_mp256 for cycles (216924 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         :            Disassembly of section .text:
+         :
+         :            000000000041e420 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)>:
+         :            _Z16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKee():
+    0.00 :   41e420: push   %r15
+    0.00 :   41e422: push   %r14
+    0.00 :   41e424: push   %r13
+    0.00 :   41e426: push   %r12
+    0.00 :   41e428: mov    %rdx,%r12
+    0.00 :   41e42b: push   %rbp
+    0.00 :   41e42c: push   %rbx
+    0.00 :   41e42d: sub    $0xf8,%rsp
+    0.00 :   41e434: mov    %rdi,0xc8(%rsp)
+    0.00 :   41e43c: mov    %rsi,0x90(%rsp)
+    0.00 :   41e444: cmpb   $0x0,%fs:0xfffffffffffff6b0
+    0.00 :   41e44d: je     4213d7 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2fb7>
+    0.00 :   41e453: mov    0x90(%rsp),%rax
+    0.00 :   41e45b: mov    %fs:0xfffffffffffff8c8,%rcx
+    0.00 :   41e464: mov    %fs:0xfffffffffffff8c0,%rdx
+    0.00 :   41e46d: mov    0xa8(%rax),%rsi
+    0.00 :   41e474: sub    0xa0(%rax),%rsi
+    0.00 :   41e47b: mov    %rcx,%rax
+    0.00 :   41e47e: sar    $0x3,%rsi
+    0.00 :   41e482: sub    %rdx,%rax
+    0.00 :   41e485: add    $0x1,%rsi
+    0.00 :   41e489: sar    $0x4,%rax
+    0.00 :   41e48d: cmp    %rsi,%rax
+    0.00 :   41e490: jb     42147b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x305b>
+    0.00 :   41e496: cmp    %rax,%rsi
+    0.00 :   41e499: jb     41ef47 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xb27>
+    0.00 :   41e49f: mov    0x90(%rsp),%rax
+    0.00 :   41e4a7: mov    %fs:0xfffffffffffff8e0,%rcx
+    0.00 :   41e4b0: mov    %fs:0xfffffffffffff8d8,%rdx
+    0.00 :   41e4b9: mov    0xd8(%rax),%rsi
+    0.00 :   41e4c0: sub    0xd0(%rax),%rsi
+    0.00 :   41e4c7: movabs $0xaaaaaaaaaaaaaaab,%rax
+    0.00 :   41e4d1: sar    $0x2,%rsi
+    0.00 :   41e4d5: imul   %rax,%rsi
+    0.00 :   41e4d9: mov    %rcx,%rax
+    0.00 :   41e4dc: sub    %rdx,%rax
+    0.00 :   41e4df: sar    $0x4,%rax
+    0.00 :   41e4e3: add    $0x1,%rsi
+    0.00 :   41e4e7: cmp    %rsi,%rax
+    0.00 :   41e4ea: jb     42145e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x303e>
+    0.00 :   41e4f0: cmp    %rax,%rsi
+    0.00 :   41e4f3: jb     41efa4 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xb84>
+    0.00 :   41e4f9: mov    0x90(%rsp),%rdi
+    0.00 :   41e501: mov    %fs:0xfffffffffffff8f8,%rsi
+    0.00 :   41e50a: movabs $0xaaaaaaaaaaaaaaab,%rbx
+    0.00 :   41e514: mov    %fs:0xfffffffffffff8f0,%rcx
+    0.00 :   41e51d: mov    0x108(%rdi),%rax
+    0.00 :   41e524: sub    0x100(%rdi),%rax
+    0.00 :   41e52b: mov    %rsi,%rdx
+    0.00 :   41e52e: sar    $0x3,%rax
+    0.00 :   41e532: sub    %rcx,%rdx
+    0.00 :   41e535: imul   %rbx,%rax
+    0.00 :   41e539: sar    $0x4,%rdx
+    0.00 :   41e53d: cmp    %rax,%rdx
+    0.00 :   41e540: jb     4214b8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3098>
+    0.00 :   41e546: cmp    %rdx,%rax
+    0.00 :   41e549: jb     41ef83 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xb63>
+    0.00 :   41e54f: mov    %fs:0xfffffffffffff910,%rsi
+    0.00 :   41e558: mov    %fs:0xfffffffffffff908,%rcx
+    0.00 :   41e561: mov    %rsi,%rdx
+    0.00 :   41e564: sub    %rcx,%rdx
+    0.00 :   41e567: sar    $0x4,%rdx
+    0.00 :   41e56b: cmp    %rax,%rdx
+    0.00 :   41e56e: jb     421498 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3078>
+    0.00 :   41e574: cmp    %rdx,%rax
+    0.00 :   41e577: jb     41ef65 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xb45>
+    0.00 :   41e57d: mov    %fs:0xfffffffffffff8c0,%rax
+    0.00 :   41e586: movdqa 0xfca2(%rip),%xmm6        # 42e230 <nx::profile_name+0x250>
+    0.00 :   41e58e: pxor   %xmm0,%xmm0
+    0.00 :   41e592: movaps %xmm6,(%rax)
+    0.00 :   41e595: mov    %fs:0xfffffffffffff8d8,%rax
+    0.00 :   41e59e: movaps %xmm0,(%rax)
+    0.00 :   41e5a1: mov    0x90(%rsp),%rax
+    0.00 :   41e5a9: mov    0x4(%rax),%ebx
+    0.00 :   41e5ac: test   %ebx,%ebx
+    0.00 :   41e5ae: jle    41efc2 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xba2>
+    0.00 :   41e5b4: fldz
+    0.00 :   41e5b6: fldt   0x130(%rsp)
+    0.00 :   41e5bd: fucomip %st(1),%st
+    0.00 :   41e5bf: fstp   %st(0)
+    0.00 :   41e5c1: jp     41e9cd <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x5ad>
+    0.00 :   41e5c7: jne    41e9cd <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x5ad>
+    0.00 :   41e5cd: mov    %r12,0x10(%rsp)
+    0.00 :   41e5d2: xor    %r14d,%r14d
+    0.00 :   41e5d5: xor    %r15d,%r15d
+    0.00 :   41e5d8: mov    %fs:0x0,%rbx
+    0.00 :   41e5e1: movq   $0x0,0x80(%rsp)
+    0.00 :   41e5ed: movq   $0x0,0x88(%rsp)
+    0.00 :   41e5f9: jmpq   41e762 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x342>
+    0.00 :   41e5fe: xchg   %ax,%ax
+    0.00 :   41e600: movabs $0x7fffffffffffffff,%rsi
+    0.00 :   41e60a: mov    %rcx,%rdx
+    0.00 :   41e60d: mov    (%rsp),%rax
+    0.00 :   41e611: mov    %r12,%rdi
+    0.00 :   41e614: and    %rsi,%rdx
+    0.00 :   41e617: and    %r8,%rsi
+    0.00 :   41e61a: cmp    %rsi,%rdx
+    0.00 :   41e61d: jb     4211f0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2dd0>
+    0.00 :   41e623: mov    %rdx,%rbp
+    0.00 :   41e626: mov    %rsi,%r10
+    0.00 :   41e629: shr    $0x30,%rbp
+    0.00 :   41e62d: shr    $0x30,%r10
+    0.00 :   41e631: cmp    $0x7fff,%rbp
+    0.00 :   41e638: je     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e63e: test   %r10,%r10
+    0.00 :   41e641: je     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e647: mov    %ebp,%r8d
+    0.00 :   41e64a: sub    %r10d,%r8d
+    0.00 :   41e64d: cmp    $0x71,%r8d
+    0.00 :   41e651: ja     42150d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x30ed>
+    0.00 :   41e657: movabs $0xffffffffffff,%rcx
+    0.00 :   41e661: lea    (%rax,%rax,1),%r10
+    0.00 :   41e665: and    %rcx,%rsi
+    0.00 :   41e668: bts    $0x30,%rsi
+    0.00 :   41e66d: lea    (%rsi,%rsi,1),%r11
+    0.00 :   41e671: cmp    $0x3f,%r8d
+    0.00 :   41e675: ja     420f70 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2b50>
+    0.00 :   41e67b: mov    $0x3f,%r13d
+    0.00 :   41e681: sub    %r8d,%r13d
+    0.00 :   41e684: mov    %r13d,%ecx
+    0.00 :   41e687: shl    %cl,%r10
+    0.00 :   41e68a: mov    %r8d,%ecx
+    0.00 :   41e68d: shr    %cl,%rax
+    0.00 :   41e690: mov    %r13d,%ecx
+    0.00 :   41e693: shl    %cl,%r11
+    0.00 :   41e696: mov    %r8d,%ecx
+    0.00 :   41e699: or     %r11,%rax
+    0.00 :   41e69c: shr    %cl,%rsi
+    0.00 :   41e69f: xor    %ecx,%ecx
+    0.00 :   41e6a1: add    %rdi,%rax
+    0.00 :   41e6a4: movabs $0xffffffffffff,%rdi
+    0.00 :   41e6ae: setb   %cl
+    0.00 :   41e6b1: and    %rdi,%rdx
+    0.00 :   41e6b4: bts    $0x30,%rdx
+    0.00 :   41e6b9: add    %rsi,%rdx
+    0.00 :   41e6bc: add    %rcx,%rdx
+    0.00 :   41e6bf: lea    -0x1(%rbp),%ecx
+    0.00 :   41e6c2: mov    %rdx,%rdi
+    0.00 :   41e6c5: shr    $0x31,%rdi
+    0.00 :   41e6c9: jne    421563 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3143>
+    0.00 :   41e6cf: movabs $0x8000000000000000,%rsi
+    0.00 :   41e6d9: mov    %rax,%rdi
+    0.00 :   41e6dc: and    $0x1,%edi
+    0.00 :   41e6df: sub    %rdi,%rsi
+    0.00 :   41e6e2: cmp    %r10,%rsi
+    0.00 :   41e6e5: setb   %sil
+    0.00 :   41e6e9: movzbl %sil,%esi
+    0.00 :   41e6ed: add    %rsi,%rax
+    0.00 :   41e6f0: adc    $0x0,%rdx
+    0.00 :   41e6f4: shl    $0x30,%rcx
+    0.00 :   41e6f8: add    %rcx,%rdx
+    0.00 :   41e6fb: mov    %rdx,%rcx
+    0.00 :   41e6fe: shr    $0x30,%rcx
+    0.00 :   41e702: cmp    $0x7ffe,%rcx
+    0.00 :   41e709: ja     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e70f: movabs $0x8000000000000000,%rcx
+    0.00 :   41e719: mov    %rax,(%rsp)
+    0.00 :   41e71d: and    %rcx,%r9
+    0.00 :   41e720: or     %rdx,%r9
+    0.00 :   41e723: mov    %r9,0x8(%rsp)
+    0.00 :   41e728: movdqa -0x940(%rbx,%r14,1),%xmm5
+    0.00 :   41e732: movdqa (%rsp),%xmm6
+    0.03 :   41e737: add    $0x1,%r15d
+    0.00 :   41e73b: mov    0x90(%rsp),%rax
+    0.00 :   41e743: movaps %xmm5,-0x840(%rbx,%r14,1)
+    0.00 :   41e74c: add    $0x10,%r14
+    0.00 :   41e750: movaps %xmm6,0x80(%rsp)
+    0.00 :   41e758: cmp    %r15d,0x4(%rax)
+    0.00 :   41e75c: jle    41efe0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xbc0>
+    0.00 :   41e762: mov    0x10(%rsp),%rax
+    0.00 :   41e767: pushq  0x8(%rax,%r14,1)
+    0.00 :   41e76c: pushq  (%rax,%r14,1)
+    0.00 :   41e770: callq  404ef0 <__extendxftf2@plt>
+    0.00 :   41e775: pop    %rax
+    0.00 :   41e776: pop    %rdx
+    0.00 :   41e777: callq  405030 <expq@plt>
+    0.00 :   41e77c: mov    0x88(%rsp),%rax
+    0.00 :   41e784: mov    0x80(%rsp),%r12
+    0.00 :   41e78c: movaps %xmm0,(%rsp)
+    0.00 :   41e790: mov    0x8(%rsp),%r8
+    0.00 :   41e795: mov    %rax,0x20(%rsp)
+    0.00 :   41e79a: mov    %rax,%rcx
+    0.00 :   41e79d: mov    %rax,%r9
+    0.00 :   41e7a0: movaps %xmm0,-0x940(%r14,%rbx,1)
+    0.00 :   41e7a9: xor    %r8,%rax
+    0.00 :   41e7ac: jns    41e600 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1e0>
+    0.00 :   41e7b2: mov    $0xffffffffffffffff,%rax
+    0.00 :   41e7b9: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41e7c3: and    0x80(%rsp),%rax
+    0.00 :   41e7cb: and    0x88(%rsp),%rdx
+    0.00 :   41e7d3: mov    $0xffffffffffffffff,%rsi
+    0.00 :   41e7da: and    (%rsp),%rsi
+    0.00 :   41e7de: mov    %rdx,%rcx
+    0.00 :   41e7e1: movabs $0x7fffffffffffffff,%rdi
+    0.00 :   41e7eb: and    0x8(%rsp),%rdi
+    0.00 :   41e7f0: cmp    %rsi,%rax
+    0.00 :   41e7f3: sbb    %rdi,%rcx
+    0.00 :   41e7f6: jb     421261 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e41>
+    0.00 :   41e7fc: movdqa 0x80(%rsp),%xmm7
+    0.00 :   41e805: movaps %xmm7,0x30(%rsp)
+    0.00 :   41e80a: mov    %rdx,%r10
+    0.00 :   41e80d: mov    %rdi,%r8
+    0.00 :   41e810: shr    $0x30,%r10
+    0.00 :   41e814: shr    $0x30,%r8
+    0.00 :   41e818: mov    %r8,%r11
+    0.00 :   41e81b: je     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e821: cmp    $0x7fff,%r10
+    0.00 :   41e828: je     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e82e: shld   $0xd,%rax,%rdx
+    0.00 :   41e833: mov    $0xffffffffffffe000,%r8
+    0.00 :   41e83a: shl    $0xd,%rax
+    0.00 :   41e83e: mov    %r10d,%ecx
+    0.00 :   41e841: and    %r8,%rax
+    0.00 :   41e844: xor    %r8d,%r8d
+    0.00 :   41e847: shld   $0xd,%rsi,%rdi
+    0.00 :   41e84c: sub    %r11d,%ecx
+    0.00 :   41e84f: movabs $0x1fffffffffffffff,%r9
+    0.00 :   41e859: or     %r8,%rax
+    0.00 :   41e85c: shl    $0xd,%rsi
+    0.00 :   41e860: mov    $0xffffffffffffe000,%r8
+    0.00 :   41e867: and    %r9,%rdx
+    0.00 :   41e86a: and    %r8,%rsi
+    0.00 :   41e86d: xor    %r8d,%r8d
+    0.00 :   41e870: movabs $0x2000000000000000,%r9
+    0.00 :   41e87a: or     %r9,%rdx
+    0.00 :   41e87d: or     %r8,%rsi
+    0.00 :   41e880: mov    $0x7f,%r8d
+    0.00 :   41e886: movabs $0x1fffffffffffffff,%r9
+    0.00 :   41e890: and    %r9,%rdi
+    0.00 :   41e893: movabs $0x2000000000000000,%r9
+    0.00 :   41e89d: or     %r9,%rdi
+    0.00 :   41e8a0: cmp    %r8d,%ecx
+    0.00 :   41e8a3: cmovg  %r8d,%ecx
+    0.00 :   41e8a7: mov    %rdi,%r9
+    0.00 :   41e8aa: mov    %rsi,%r8
+    0.00 :   41e8ad: xor    %r13d,%r13d
+    0.00 :   41e8b0: shr    %cl,%r9
+    0.00 :   41e8b3: shrd   %cl,%rdi,%r8
+    0.00 :   41e8b7: test   $0x40,%cl
+    0.00 :   41e8ba: cmovne %r9,%r8
+    0.00 :   41e8be: cmovne %r13,%r9
+    0.00 :   41e8c2: test   %rsi,%rsi
+    0.00 :   41e8c5: je     421230 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e10>
+    0.00 :   41e8cb: xor    %r11d,%r11d
+    0.00 :   41e8ce: tzcnt  %rsi,%r11
+    0.00 :   41e8d3: xor    %esi,%esi
+    0.00 :   41e8d5: cmp    %ecx,%r11d
+    0.00 :   41e8d8: setl   %sil
+    0.00 :   41e8dc: xor    %edi,%edi
+    0.00 :   41e8de: or     %r8,%rsi
+    0.00 :   41e8e1: or     %r9,%rdi
+    0.00 :   41e8e4: sub    %rsi,%rax
+    0.00 :   41e8e7: sbb    %rdi,%rdx
+    0.00 :   41e8ea: mov    %rax,%rcx
+    0.00 :   41e8ed: or     %rdx,%rcx
+    0.00 :   41e8f0: je     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e8f6: test   %rdx,%rdx
+    0.00 :   41e8f9: je     421241 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e21>
+    0.00 :   41e8ff: bsr    %rdx,%rcx
+    0.00 :   41e903: xor    $0x3f,%ecx
+    0.00 :   41e906: sub    $0x2,%ecx
+    0.00 :   41e909: sub    $0x1,%r10d
+    0.00 :   41e90d: xor    %esi,%esi
+    0.00 :   41e90f: xor    %r8d,%r8d
+    0.00 :   41e912: shld   %cl,%rax,%rdx
+    0.00 :   41e916: sub    %ecx,%r10d
+    0.00 :   41e919: shl    %cl,%rax
+    0.00 :   41e91c: and    0x30(%rsp),%rsi
+    0.00 :   41e921: movabs $0x8000000000000000,%rdi
+    0.00 :   41e92b: and    0x38(%rsp),%rdi
+    0.00 :   41e930: test   $0x40,%cl
+    0.00 :   41e933: cmovne %rax,%rdx
+    0.00 :   41e937: cmovne %r8,%rax
+    0.00 :   41e93b: mov    %rdx,%rcx
+    0.00 :   41e93e: shr    $0x3e,%rcx
+    0.00 :   41e942: je     41e95d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x53d>
+    0.00 :   41e944: mov    %rax,%r8
+    0.00 :   41e947: mov    %rdx,%r9
+    0.00 :   41e94a: and    $0x1,%eax
+    0.00 :   41e94d: shrd   $0x1,%rdx,%r8
+    0.00 :   41e952: shr    %r9
+    0.00 :   41e955: xor    %edx,%edx
+    0.00 :   41e957: or     %r8,%rax
+    0.00 :   41e95a: or     %r9,%rdx
+    0.00 :   41e95d: add    %r10d,%ecx
+    0.00 :   41e960: cmp    $0x7ffe,%ecx
+    0.00 :   41e966: ja     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e96c: mov    %rax,%r8
+    0.00 :   41e96f: xor    %r9d,%r9d
+    0.00 :   41e972: shrd   $0xd,%rdx,%r8
+    0.00 :   41e977: and    $0x1,%r8d
+    0.00 :   41e97b: add    $0xfff,%rax
+    0.00 :   41e981: adc    $0x0,%rdx
+    0.00 :   41e985: add    %rax,%r8
+    0.00 :   41e988: movslq %ecx,%rax
+    0.00 :   41e98b: adc    %rdx,%r9
+    0.00 :   41e98e: mov    %rax,%rdx
+    0.00 :   41e991: xor    %eax,%eax
+    0.00 :   41e993: shrd   $0xd,%r9,%r8
+    0.00 :   41e998: shl    $0x30,%rdx
+    0.00 :   41e99c: shr    $0xd,%r9
+    0.00 :   41e9a0: add    %rax,%r8
+    0.00 :   41e9a3: adc    %rdx,%r9
+    0.00 :   41e9a6: mov    %r9,%rax
+    0.00 :   41e9a9: shr    $0x30,%rax
+    0.00 :   41e9ad: cmp    $0x7ffe,%rax
+    0.00 :   41e9b3: ja     421695 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3275>
+    0.00 :   41e9b9: or     %r8,%rsi
+    0.00 :   41e9bc: or     %r9,%rdi
+    0.00 :   41e9bf: mov    %rsi,(%rsp)
+    0.00 :   41e9c3: mov    %rdi,0x8(%rsp)
+    0.00 :   41e9c8: jmpq   41e728 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x308>
+    0.00 :   41e9cd: mov    %fs:0x0,%rax
+    0.00 :   41e9d6: xor    %r15d,%r15d
+    0.00 :   41e9d9: xor    %r14d,%r14d
+    0.00 :   41e9dc: movq   $0x0,0x80(%rsp)
+    0.00 :   41e9e8: movq   $0x0,0x88(%rsp)
+    0.00 :   41e9f4: mov    0x90(%rsp),%rbp
+    0.00 :   41e9fc: lea    -0x940(%rax),%rdi
+    0.00 :   41ea03: add    $0xfffffffffffff7c0,%rax
+    0.00 :   41ea09: mov    %rdi,0x20(%rsp)
+    0.00 :   41ea0e: mov    %rax,0x30(%rsp)
+    0.00 :   41ea13: jmpq   41ecf5 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x8d5>
+    0.00 :   41ea18: nopl   0x0(%rax,%rax,1)
+    0.00 :   41ea20: movabs $0x7fffffffffffffff,%rax
+    0.00 :   41ea2a: mov    %rcx,%r11
+    0.00 :   41ea2d: mov    (%rsp),%r8
+    0.00 :   41ea31: mov    %r13,%rdx
+    0.00 :   41ea34: and    %rax,%r11
+    0.00 :   41ea37: and    %rsi,%rax
+    0.00 :   41ea3a: cmp    %rax,%r11
+    0.00 :   41ea3d: jb     421210 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2df0>
+    0.00 :   41ea43: mov    %r11,%rbx
+    0.00 :   41ea46: mov    %rax,%rsi
+    0.00 :   41ea49: shr    $0x30,%rbx
+    0.00 :   41ea4d: shr    $0x30,%rsi
+    0.00 :   41ea51: cmp    $0x7fff,%rbx
+    0.00 :   41ea58: je     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41ea5e: test   %rsi,%rsi
+    0.00 :   41ea61: je     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41ea67: mov    %ebx,%edi
+    0.00 :   41ea69: sub    %esi,%edi
+    0.00 :   41ea6b: cmp    $0x71,%edi
+    0.00 :   41ea6e: ja     421538 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3118>
+    0.00 :   41ea74: movabs $0xffffffffffff,%rcx
+    0.00 :   41ea7e: lea    (%r8,%r8,1),%r10
+    0.00 :   41ea82: and    %rcx,%rax
+    0.00 :   41ea85: bts    $0x30,%rax
+    0.00 :   41ea8a: lea    (%rax,%rax,1),%rsi
+    0.00 :   41ea8e: cmp    $0x3f,%edi
+    0.00 :   41ea91: ja     420f30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2b10>
+    0.00 :   41ea97: mov    $0x3f,%ecx
+    0.00 :   41ea9c: sub    %edi,%ecx
+    0.00 :   41ea9e: shl    %cl,%rsi
+    0.00 :   41eaa1: shl    %cl,%r10
+    0.00 :   41eaa4: mov    %edi,%ecx
+    0.00 :   41eaa6: shr    %cl,%r8
+    0.00 :   41eaa9: shr    %cl,%rax
+    0.00 :   41eaac: or     %r8,%rsi
+    0.00 :   41eaaf: xor    %ecx,%ecx
+    0.00 :   41eab1: add    %rdx,%rsi
+    0.00 :   41eab4: movabs $0xffffffffffff,%rdx
+    0.00 :   41eabe: setb   %cl
+    0.00 :   41eac1: and    %r11,%rdx
+    0.00 :   41eac4: bts    $0x30,%rdx
+    0.00 :   41eac9: add    %rdx,%rax
+    0.00 :   41eacc: add    %rcx,%rax
+    0.00 :   41eacf: lea    -0x1(%rbx),%ecx
+    0.00 :   41ead2: mov    %rax,%rdi
+    0.00 :   41ead5: shr    $0x31,%rdi
+    0.00 :   41ead9: jne    42158c <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x316c>
+    0.00 :   41eadf: movabs $0x8000000000000000,%rdx
+    0.00 :   41eae9: mov    %rsi,%rdi
+    0.00 :   41eaec: and    $0x1,%edi
+    0.00 :   41eaef: sub    %rdi,%rdx
+    0.00 :   41eaf2: cmp    %r10,%rdx
+    0.00 :   41eaf5: setb   %dl
+    0.00 :   41eaf8: movzbl %dl,%edx
+    0.00 :   41eafb: add    %rsi,%rdx
+    0.00 :   41eafe: adc    $0x0,%rax
+    0.00 :   41eb02: shl    $0x30,%rcx
+    0.00 :   41eb06: add    %rax,%rcx
+    0.00 :   41eb09: mov    %rcx,%rax
+    0.00 :   41eb0c: shr    $0x30,%rax
+    0.00 :   41eb10: cmp    $0x7ffe,%rax
+    0.00 :   41eb16: ja     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41eb1c: movabs $0x8000000000000000,%rax
+    0.00 :   41eb26: mov    %rdx,(%rsp)
+    0.00 :   41eb2a: and    %rax,%r9
+    0.00 :   41eb2d: or     %rcx,%r9
+    0.00 :   41eb30: mov    %r9,0x8(%rsp)
+    0.00 :   41eb35: movdqa (%rsp),%xmm5
+    0.00 :   41eb3a: movaps %xmm5,0x80(%rsp)
+    0.00 :   41eb42: pushq  0x8(%r12,%r15,1)
+    0.00 :   41eb47: pushq  (%r12,%r15,1)
+    0.00 :   41eb4b: callq  404ef0 <__extendxftf2@plt>
+    0.00 :   41eb50: pop    %r13
+    0.00 :   41eb52: pop    %rax
+    0.00 :   41eb53: movaps %xmm0,(%rsp)
+    0.00 :   41eb57: pushq  0x138(%rsp)
+    0.00 :   41eb5e: pushq  0x138(%rsp)
+    0.00 :   41eb65: callq  404ef0 <__extendxftf2@plt>
+    0.00 :   41eb6a: mov    0x8(%rbp),%edi
+    0.00 :   41eb6d: pop    %rax
+    0.00 :   41eb6e: pop    %rdx
+    0.00 :   41eb6f: movaps %xmm0,0x10(%rsp)
+    0.00 :   41eb74: callq  405660 <__floatsitf@plt>
+    0.00 :   41eb79: movdqa %xmm0,%xmm1
+    0.00 :   41eb7d: movdqa 0x10(%rsp),%xmm0
+    0.00 :   41eb83: callq  404e90 <__divtf3@plt>
+    0.00 :   41eb88: mov    0x8(%rsp),%rsi
+    0.00 :   41eb8d: movabs $0x8000000000000000,%rcx
+    0.00 :   41eb97: movaps %xmm0,0x10(%rsp)
+    0.00 :   41eb9c: mov    0x18(%rsp),%rax
+    0.00 :   41eba1: xor    %rax,%rcx
+    0.00 :   41eba4: mov    %rcx,%rax
+    0.00 :   41eba7: xor    %rsi,%rax
+    0.00 :   41ebaa: js     420fc0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ba0>
+    0.00 :   41ebb0: mov    %rsi,%r11
+    0.00 :   41ebb3: mov    (%rsp),%rax
+    0.00 :   41ebb7: mov    0x10(%rsp),%r9
+    0.00 :   41ebbc: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41ebc6: and    %rdx,%r11
+    0.00 :   41ebc9: and    %rcx,%rdx
+    0.00 :   41ebcc: cmp    %rdx,%r11
+    0.00 :   41ebcf: jb     42134f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2f2f>
+    0.00 :   41ebd5: mov    %r11,%rbx
+    0.00 :   41ebd8: mov    %rdx,%rcx
+    0.00 :   41ebdb: shr    $0x30,%rbx
+    0.00 :   41ebdf: shr    $0x30,%rcx
+    0.00 :   41ebe3: cmp    $0x7fff,%rbx
+    0.00 :   41ebea: je     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   41ebf0: test   %rcx,%rcx
+    0.00 :   41ebf3: je     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   41ebf9: mov    %ebx,%r8d
+    0.00 :   41ebfc: sub    %ecx,%r8d
+    0.00 :   41ebff: cmp    $0x71,%r8d
+    0.00 :   41ec03: ja     4215b4 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3194>
+    0.00 :   41ec09: movabs $0xffffffffffff,%rcx
+    0.00 :   41ec13: lea    (%r9,%r9,1),%r10
+    0.00 :   41ec17: and    %rcx,%rdx
+    0.00 :   41ec1a: bts    $0x30,%rdx
+    0.00 :   41ec1f: lea    (%rdx,%rdx,1),%rdi
+    0.00 :   41ec23: cmp    $0x3f,%r8d
+    0.00 :   41ec27: ja     4212a3 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e83>
+    0.00 :   41ec2d: mov    $0x3f,%ecx
+    0.00 :   41ec32: sub    %r8d,%ecx
+    0.00 :   41ec35: shl    %cl,%rdi
+    0.00 :   41ec38: shl    %cl,%r10
+    0.00 :   41ec3b: mov    %r8d,%ecx
+    0.00 :   41ec3e: shr    %cl,%r9
+    0.00 :   41ec41: shr    %cl,%rdx
+    0.00 :   41ec44: or     %r9,%rdi
+    0.00 :   41ec47: xor    %ecx,%ecx
+    0.00 :   41ec49: add    %rax,%rdi
+    0.00 :   41ec4c: movabs $0xffffffffffff,%rax
+    0.00 :   41ec56: setb   %cl
+    0.00 :   41ec59: and    %r11,%rax
+    0.00 :   41ec5c: bts    $0x30,%rax
+    0.00 :   41ec61: add    %rdx,%rax
+    0.00 :   41ec64: add    %rcx,%rax
+    0.00 :   41ec67: lea    -0x1(%rbx),%ecx
+    0.00 :   41ec6a: mov    %rax,%rdx
+    0.00 :   41ec6d: shr    $0x31,%rdx
+    0.00 :   41ec71: jne    4215c2 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x31a2>
+    0.00 :   41ec77: movabs $0x8000000000000000,%rdx
+    0.00 :   41ec81: mov    %rdi,%r8
+    0.00 :   41ec84: and    $0x1,%r8d
+    0.00 :   41ec88: sub    %r8,%rdx
+    0.00 :   41ec8b: cmp    %r10,%rdx
+    0.00 :   41ec8e: setb   %dl
+    0.00 :   41ec91: movzbl %dl,%edx
+    0.00 :   41ec94: add    %rdi,%rdx
+    0.00 :   41ec97: adc    $0x0,%rax
+    0.00 :   41ec9b: shl    $0x30,%rcx
+    0.00 :   41ec9f: add    %rcx,%rax
+    0.00 :   41eca2: mov    %rax,%rcx
+    0.00 :   41eca5: shr    $0x30,%rcx
+    0.00 :   41eca9: cmp    $0x7ffe,%rcx
+    0.00 :   41ecb0: ja     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   41ecb6: movabs $0x8000000000000000,%rdi
+    0.00 :   41ecc0: mov    %rdx,(%rsp)
+    0.00 :   41ecc4: and    %rdi,%rsi
+    0.00 :   41ecc7: or     %rax,%rsi
+    0.00 :   41ecca: mov    %rsi,0x8(%rsp)
+    0.00 :   41eccf: movdqa (%rsp),%xmm0
+    0.00 :   41ecd4: add    $0x1,%r14d
+    0.00 :   41ecd8: callq  405030 <expq@plt>
+    0.00 :   41ecdd: mov    0x30(%rsp),%rax
+    0.00 :   41ece2: movaps %xmm0,(%rax,%r15,1)
+    0.00 :   41ece7: add    $0x10,%r15
+    0.00 :   41eceb: cmp    %r14d,0x4(%rbp)
+    0.00 :   41ecef: jle    41efe0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xbc0>
+    0.00 :   41ecf5: pushq  0x8(%r12,%r15,1)
+    0.00 :   41ecfa: pushq  (%r12,%r15,1)
+    0.00 :   41ecfe: callq  404ef0 <__extendxftf2@plt>
+    0.00 :   41ed03: pop    %r10
+    0.00 :   41ed05: pop    %r11
+    0.00 :   41ed07: callq  405030 <expq@plt>
+    0.00 :   41ed0c: mov    0x20(%rsp),%rax
+    0.00 :   41ed11: mov    0x80(%rsp),%r13
+    0.00 :   41ed19: movaps %xmm0,(%rsp)
+    0.00 :   41ed1d: mov    0x8(%rsp),%rsi
+    0.00 :   41ed22: movaps %xmm0,(%rax,%r15,1)
+    0.00 :   41ed27: mov    0x88(%rsp),%rax
+    0.00 :   41ed2f: mov    %rax,%rcx
+    0.00 :   41ed32: mov    %rax,0x10(%rsp)
+    0.00 :   41ed37: mov    %rax,%r9
+    0.00 :   41ed3a: mov    %rsi,%rax
+    0.00 :   41ed3d: xor    %rcx,%rax
+    0.00 :   41ed40: jns    41ea20 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x600>
+    0.00 :   41ed46: mov    $0xffffffffffffffff,%rax
+    0.00 :   41ed4d: mov    $0xffffffffffffffff,%rcx
+    0.00 :   41ed54: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41ed5e: and    0x80(%rsp),%rax
+    0.00 :   41ed66: and    0x88(%rsp),%rdx
+    0.00 :   41ed6e: and    (%rsp),%rcx
+    0.00 :   41ed72: movabs $0x7fffffffffffffff,%rbx
+    0.00 :   41ed7c: movdqa 0x80(%rsp),%xmm7
+    0.00 :   41ed85: and    0x8(%rsp),%rbx
+    0.00 :   41ed8a: mov    %rdx,%rdi
+    0.00 :   41ed8d: cmp    %rcx,%rax
+    0.00 :   41ed90: sbb    %rbx,%rdi
+    0.00 :   41ed93: movaps %xmm7,0x40(%rsp)
+    0.00 :   41ed98: jb     421282 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e62>
+    0.00 :   41ed9e: mov    %rdx,%r8
+    0.00 :   41eda1: mov    %rbx,%r9
+    0.00 :   41eda4: shr    $0x30,%r8
+    0.00 :   41eda8: shr    $0x30,%r9
+    0.00 :   41edac: cmp    $0x7fff,%r8
+    0.00 :   41edb3: je     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41edb9: test   %r9,%r9
+    0.00 :   41edbc: je     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41edc2: shld   $0xd,%rax,%rdx
+    0.00 :   41edc7: mov    $0xffffffffffffe000,%r10
+    0.00 :   41edce: shld   $0xd,%rcx,%rbx
+    0.00 :   41edd3: xor    %esi,%esi
+    0.00 :   41edd5: shl    $0xd,%rax
+    0.00 :   41edd9: shl    $0xd,%rcx
+    0.00 :   41eddd: movabs $0x1fffffffffffffff,%r11
+    0.00 :   41ede7: movabs $0x2000000000000000,%rdi
+    0.00 :   41edf1: and    %r10,%rcx
+    0.00 :   41edf4: and    %r10,%rax
+    0.00 :   41edf7: and    %r11,%rdx
+    0.00 :   41edfa: and    %r11,%rbx
+    0.00 :   41edfd: or     %rsi,%rax
+    0.00 :   41ee00: or     %rcx,%rsi
+    0.00 :   41ee03: mov    %r8d,%ecx
+    0.00 :   41ee06: or     %rdi,%rdx
+    0.00 :   41ee09: sub    %r9d,%ecx
+    0.00 :   41ee0c: mov    $0x7f,%r9d
+    0.00 :   41ee12: or     %rbx,%rdi
+    0.00 :   41ee15: mov    %rsi,%r10
+    0.00 :   41ee18: cmp    %r9d,%ecx
+    0.00 :   41ee1b: mov    %rdi,%r11
+    0.00 :   41ee1e: cmovg  %r9d,%ecx
+    0.00 :   41ee22: xor    %r9d,%r9d
+    0.00 :   41ee25: shr    %cl,%r11
+    0.00 :   41ee28: shrd   %cl,%rdi,%r10
+    0.00 :   41ee2c: test   $0x40,%cl
+    0.00 :   41ee2f: cmovne %r11,%r10
+    0.00 :   41ee33: cmovne %r9,%r11
+    0.00 :   41ee37: xor    %r9d,%r9d
+    0.00 :   41ee3a: tzcnt  %rsi,%r9
+    0.00 :   41ee3f: test   %rsi,%rsi
+    0.00 :   41ee42: jne    41ee50 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xa30>
+    0.00 :   41ee44: xor    %r9d,%r9d
+    0.00 :   41ee47: tzcnt  %rdi,%r9
+    0.00 :   41ee4c: add    $0x40,%r9d
+    0.00 :   41ee50: cmp    %ecx,%r9d
+    0.00 :   41ee53: setl   %cl
+    0.00 :   41ee56: xor    %ebx,%ebx
+    0.00 :   41ee58: movzbl %cl,%ecx
+    0.00 :   41ee5b: or     %r11,%rbx
+    0.00 :   41ee5e: or     %r10,%rcx
+    0.00 :   41ee61: sub    %rcx,%rax
+    0.00 :   41ee64: sbb    %rbx,%rdx
+    0.00 :   41ee67: mov    %rax,%rcx
+    0.00 :   41ee6a: or     %rdx,%rcx
+    0.00 :   41ee6d: je     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41ee73: test   %rdx,%rdx
+    0.00 :   41ee76: je     421251 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2e31>
+    0.00 :   41ee7c: bsr    %rdx,%rcx
+    0.00 :   41ee80: xor    $0x3f,%ecx
+    0.00 :   41ee83: sub    $0x2,%ecx
+    0.00 :   41ee86: sub    $0x1,%r8d
+    0.00 :   41ee8a: xor    %r9d,%r9d
+    0.00 :   41ee8d: xor    %esi,%esi
+    0.00 :   41ee8f: shld   %cl,%rax,%rdx
+    0.00 :   41ee93: and    0x40(%rsp),%rsi
+    0.00 :   41ee98: shl    %cl,%rax
+    0.00 :   41ee9b: sub    %ecx,%r8d
+    0.00 :   41ee9e: movabs $0x8000000000000000,%rdi
+    0.00 :   41eea8: and    0x48(%rsp),%rdi
+    0.00 :   41eead: test   $0x40,%cl
+    0.00 :   41eeb0: cmovne %rax,%rdx
+    0.00 :   41eeb4: cmovne %r9,%rax
+    0.00 :   41eeb8: mov    %rdx,%r9
+    0.00 :   41eebb: shr    $0x3e,%r9
+    0.00 :   41eebf: je     41eed7 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xab7>
+    0.00 :   41eec1: mov    %rax,%rcx
+    0.00 :   41eec4: xor    %ebx,%ebx
+    0.00 :   41eec6: shrd   $0x1,%rdx,%rax
+    0.00 :   41eecb: and    $0x1,%ecx
+    0.00 :   41eece: shr    %rdx
+    0.00 :   41eed1: or     %rcx,%rax
+    0.00 :   41eed4: or     %rbx,%rdx
+    0.00 :   41eed7: add    %r9d,%r8d
+    0.00 :   41eeda: cmp    $0x7ffe,%r8d
+    0.00 :   41eee1: ja     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41eee7: mov    %rax,%rcx
+    0.00 :   41eeea: xor    %ebx,%ebx
+    0.00 :   41eeec: movslq %r8d,%r8
+    0.00 :   41eeef: shrd   $0xd,%rdx,%rcx
+    0.00 :   41eef4: mov    %r8,%r9
+    0.00 :   41eef7: and    $0x1,%ecx
+    0.00 :   41eefa: add    $0xfff,%rax
+    0.00 :   41ef00: adc    $0x0,%rdx
+    0.00 :   41ef04: add    %rax,%rcx
+    0.00 :   41ef07: adc    %rdx,%rbx
+    0.00 :   41ef0a: xor    %r8d,%r8d
+    0.00 :   41ef0d: shl    $0x30,%r9
+    0.00 :   41ef11: shrd   $0xd,%rbx,%rcx
+    0.00 :   41ef16: shr    $0xd,%rbx
+    0.00 :   41ef1a: add    %rcx,%r8
+    0.00 :   41ef1d: adc    %rbx,%r9
+    0.00 :   41ef20: mov    %r9,%rax
+    0.00 :   41ef23: shr    $0x30,%rax
+    0.00 :   41ef27: cmp    $0x7ffe,%rax
+    0.00 :   41ef2d: ja     421671 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3251>
+    0.00 :   41ef33: or     %rsi,%r8
+    0.00 :   41ef36: or     %rdi,%r9
+    0.00 :   41ef39: mov    %r8,(%rsp)
+    0.00 :   41ef3d: mov    %r9,0x8(%rsp)
+    0.00 :   41ef42: jmpq   41eb35 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x715>
+    0.00 :   41ef47: shl    $0x4,%rsi
+    0.00 :   41ef4b: add    %rsi,%rdx
+    0.00 :   41ef4e: cmp    %rdx,%rcx
+    0.00 :   41ef51: je     41e49f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x7f>
+    0.00 :   41ef57: mov    %rdx,%fs:0xfffffffffffff8c8
+    0.00 :   41ef60: jmpq   41e49f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x7f>
+    0.00 :   41ef65: shl    $0x4,%rax
+    0.00 :   41ef69: add    %rax,%rcx
+    0.00 :   41ef6c: cmp    %rcx,%rsi
+    0.00 :   41ef6f: je     41e57d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x15d>
+    0.00 :   41ef75: mov    %rcx,%fs:0xfffffffffffff910
+    0.00 :   41ef7e: jmpq   41e57d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x15d>
+    0.00 :   41ef83: mov    %rax,%rdx
+    0.00 :   41ef86: shl    $0x4,%rdx
+    0.00 :   41ef8a: add    %rdx,%rcx
+    0.00 :   41ef8d: cmp    %rcx,%rsi
+    0.00 :   41ef90: je     41e54f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x12f>
+    0.00 :   41ef96: mov    %rcx,%fs:0xfffffffffffff8f8
+    0.00 :   41ef9f: jmpq   41e54f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x12f>
+    0.00 :   41efa4: shl    $0x4,%rsi
+    0.00 :   41efa8: add    %rsi,%rdx
+    0.00 :   41efab: cmp    %rdx,%rcx
+    0.00 :   41efae: je     41e4f9 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xd9>
+    0.00 :   41efb4: mov    %rdx,%fs:0xfffffffffffff8e0
+    0.00 :   41efbd: jmpq   41e4f9 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xd9>
+    0.00 :   41efc2: movq   $0x0,0x80(%rsp)
+    0.00 :   41efce: movq   $0x0,0x88(%rsp)
+    0.00 :   41efda: nopw   0x0(%rax,%rax,1)
+    0.00 :   41efe0: mov    0x90(%rsp),%rax
+    0.00 :   41efe8: mov    0xa0(%rax),%rdi
+    0.00 :   41efef: mov    %rdi,0x40(%rsp)
+    0.00 :   41eff4: cmp    %rdi,0xa8(%rax)
+    0.00 :   41effb: je     41f323 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xf03>
+    0.00 :   41f001: mov    %fs:0xfffffffffffff8c0,%rax
+    0.00 :   41f00a: xor    %r12d,%r12d
+    0.00 :   41f00d: mov    %r12,0x20(%rsp)
+    0.00 :   41f012: mov    %rax,0x50(%rsp)
+    0.00 :   41f017: mov    %fs:0x0,%rax
+    0.00 :   41f020: mov    %rax,0x98(%rsp)
+    0.00 :   41f028: nopl   0x0(%rax,%rax,1)
+    0.00 :   41f030: mov    0x40(%rsp),%rax
+    0.00 :   41f035: mov    0x20(%rsp),%rdi
+    0.03 :   41f03a: lea    (%rax,%rdi,8),%rdx
+    0.00 :   41f03e: mov    0x50(%rsp),%rdi
+    0.00 :   41f043: movslq (%rdx),%rax
+    0.01 :   41f046: shl    $0x4,%rax
+    0.03 :   41f04a: mov    0x8(%rdi,%rax,1),%r15
+    0.82 :   41f04f: mov    (%rdi,%rax,1),%r14
+    0.01 :   41f053: movslq 0x4(%rdx),%rax
+    0.00 :   41f057: mov    0x98(%rsp),%rdi
+    0.00 :   41f05f: add    $0x10,%rax
+    0.00 :   41f063: shl    $0x4,%rax
+    0.00 :   41f067: mov    -0x938(%rax,%rdi,1),%r13
+    0.23 :   41f06f: mov    -0x940(%rax,%rdi,1),%r12
+    0.03 :   41f077: mov    %r15,%rax
+    0.01 :   41f07a: shr    $0x30,%rax
+    0.00 :   41f07e: mov    %eax,%ebp
+    0.00 :   41f080: mov    %r13,%rax
+    0.00 :   41f083: shr    $0x30,%rax
+    0.01 :   41f087: and    $0x7fff,%ebp
+    0.09 :   41f08d: and    $0x7fff,%eax
+    0.08 :   41f092: mov    %eax,%edi
+    0.03 :   41f094: lea    -0x1(%rbp),%eax
+    0.09 :   41f097: cmp    $0x7ffd,%eax
+    0.08 :   41f09c: ja     4215ea <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x31ca>
+    0.00 :   41f0a2: mov    %edi,%eax
+    0.00 :   41f0a4: mov    %edi,0x68(%rsp)
+    0.06 :   41f0a8: sub    $0x1,%eax
+    0.09 :   41f0ab: cmp    $0x7ffd,%eax
+    0.19 :   41f0b0: ja     4215ea <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x31ca>
+    0.00 :   41f0b6: xor    %edi,%edi
+    0.00 :   41f0b8: xor    %edx,%edx
+    0.00 :   41f0ba: xor    %r10d,%r10d
+    0.00 :   41f0bd: xor    %ebx,%ebx
+    0.01 :   41f0bf: and    %rdi,%rdx
+    0.00 :   41f0c2: mov    %r15,%rax
+    0.00 :   41f0c5: and    %rdi,%rbx
+    0.00 :   41f0c8: mov    %r13,%rcx
+    0.13 :   41f0cb: movabs $0xffffffffffff,%rsi
+    0.00 :   41f0d5: or     %rdx,%r10
+    0.00 :   41f0d8: xor    %edx,%edx
+    0.00 :   41f0da: mov    %r14,(%rsp)
+    0.01 :   41f0de: and    %rsi,%rax
+    0.00 :   41f0e1: or     %rdx,%rbx
+    0.00 :   41f0e4: and    %rsi,%rcx
+    0.00 :   41f0e7: xor    %edx,%edx
+    0.12 :   41f0e9: movabs $0x1000000000000,%r9
+    0.00 :   41f0f3: mov    %rdx,0x18(%rsp)
+    0.00 :   41f0f8: xor    %edi,%edi
+    0.00 :   41f0fa: mov    %r12,%rdx
+    0.01 :   41f0fd: or     %rax,%r9
+    0.00 :   41f100: mov    0x18(%rsp),%rsi
+    0.00 :   41f105: imul   %rdi,%rdx
+    0.00 :   41f109: movabs $0x1000000000000,%rax
+    0.14 :   41f113: or     %rax,%rcx
+    0.00 :   41f116: mov    (%rsp),%rax
+    0.00 :   41f11a: mov    %r12,0x10(%rsp)
+    0.01 :   41f11f: mov    %r9,%r11
+    0.01 :   41f122: mov    %rdi,0x8(%rsp)
+    0.00 :   41f127: mov    0x8(%rsp),%rdi
+    0.00 :   41f12c: imul   %rax,%rsi
+    0.00 :   41f130: mov    (%rsp),%rax
+    0.13 :   41f134: lea    (%rdx,%rsi,1),%rsi
+    0.01 :   41f138: mulq   0x10(%rsp)
+    0.00 :   41f13d: mov    %rax,0x30(%rsp)
+    0.02 :   41f142: mov    0x10(%rsp),%rax
+    0.00 :   41f147: mov    %rdx,0x38(%rsp)
+    0.01 :   41f14c: mov    %r10,%rdx
+    0.00 :   41f14f: imul   %rax,%rdx
+    0.11 :   41f153: mov    0x18(%rsp),%rax
+    0.00 :   41f158: add    %rsi,0x38(%rsp)
+    0.01 :   41f15d: mov    %r9,%rsi
+    0.00 :   41f160: mov    %r10,0x18(%rsp)
+    0.01 :   41f165: imul   %rax,%r11
+    0.00 :   41f169: mov    0x10(%rsp),%rax
+    0.01 :   41f16e: mov    %rsi,0x10(%rsp)
+    0.00 :   41f173: mov    (%rsp),%rsi
+    0.13 :   41f177: lea    (%rdx,%r11,1),%r9
+    0.01 :   41f17b: mov    0x38(%rsp),%r11
+    0.04 :   41f180: mulq   0x10(%rsp)
+    0.04 :   41f185: mov    %r11,%r10
+    0.00 :   41f188: xor    %r11d,%r11d
+    0.00 :   41f18b: mov    %r10,%r8
+    0.00 :   41f18e: add    %r9,%rdx
+    0.13 :   41f191: add    %rax,%r8
+    0.03 :   41f194: mov    %r11,%r9
+    0.03 :   41f197: mov    %rdi,%r11
+    0.02 :   41f19a: adc    %rdx,%r9
+    0.08 :   41f19d: imul   %rcx,%r11
+    0.00 :   41f1a1: mov    %rbx,%rdx
+    0.01 :   41f1a4: mov    (%rsp),%rax
+    0.00 :   41f1a8: imul   %rsi,%rdx
+    0.02 :   41f1ac: lea    (%rdx,%r11,1),%rdi
+    0.00 :   41f1b0: mul    %rcx
+    0.05 :   41f1b3: add    %rdi,%rdx
+    0.21 :   41f1b6: add    %rax,%r8
+    0.00 :   41f1b9: adc    %rdx,%r9
+    0.12 :   41f1bc: mov    %r8,%r11
+    0.00 :   41f1bf: mov    0x18(%rsp),%r8
+    0.01 :   41f1c4: mov    %r9,%rdi
+    0.00 :   41f1c7: mov    0x10(%rsp),%r9
+    0.01 :   41f1cc: imul   %rcx,%r8
+    0.00 :   41f1d0: mov    %rdi,%rsi
+    0.00 :   41f1d3: xor    %edi,%edi
+    0.00 :   41f1d5: mov    %r9,%rdx
+    0.13 :   41f1d8: mov    %r9,%rax
+    0.00 :   41f1db: imul   %rbx,%rdx
+    0.01 :   41f1df: add    %rdx,%r8
+    0.00 :   41f1e2: mul    %rcx
+    0.01 :   41f1e5: mov    %rax,%rcx
+    0.00 :   41f1e8: mov    %rdx,%rbx
+    0.00 :   41f1eb: add    %r8,%rbx
+    0.14 :   41f1ee: add    %rsi,%rcx
+    0.00 :   41f1f1: mov    %r11,%r8
+    0.01 :   41f1f4: movabs $0x8000000000000000,%rsi
+    0.00 :   41f1fe: adc    %rdi,%rbx
+    0.02 :   41f201: xor    %r9d,%r9d
+    0.00 :   41f204: shr    $0x23,%r8
+    0.01 :   41f208: xor    %eax,%eax
+    0.00 :   41f20a: shld   $0x1d,%rcx,%rbx
+    0.43 :   41f20f: shl    $0x1d,%rcx
+    0.00 :   41f213: mov    0x68(%rsp),%edi
+    0.00 :   41f217: or     %rbx,%r9
+    0.00 :   41f21a: or     %rcx,%r8
+    0.09 :   41f21d: movabs $0x7ffffffff,%rbx
+    0.01 :   41f227: and    %rbx,%r11
+    0.00 :   41f22a: or     0x30(%rsp),%r11
+    0.01 :   41f22f: lea    -0x4000(%rbp,%rdi,1),%ecx
+    0.16 :   41f236: setne  %al
+    0.10 :   41f239: xor    %edx,%edx
+    0.00 :   41f23b: xor    %ebx,%ebx
+    0.00 :   41f23d: or     %rdx,%r9
+    0.03 :   41f240: or     %rax,%r8
+    0.07 :   41f243: mov    %r15,%rdx
+    0.00 :   41f246: mov    %r14,%rax
+    0.00 :   41f249: xor    %r12,%rax
+    0.06 :   41f24c: xor    %r13,%rdx
+    0.01 :   41f24f: mov    %r9,%r10
+    0.00 :   41f252: and    %rbx,%rax
+    0.00 :   41f255: and    %rsi,%rdx
+    0.02 :   41f258: shr    $0x3e,%r10
+    0.05 :   41f25c: je     41f279 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xe59>
+    0.02 :   41f25e: mov    %r8,%rsi
+    0.25 :   41f261: mov    %r9,%rdi
+    0.00 :   41f264: and    $0x1,%r8d
+    0.05 :   41f268: shrd   $0x1,%r9,%rsi
+    0.33 :   41f26d: shr    %rdi
+    0.00 :   41f270: xor    %r9d,%r9d
+    0.00 :   41f273: or     %rsi,%r8
+    0.00 :   41f276: or     %rdi,%r9
+    0.05 :   41f279: add    %r10d,%ecx
+    0.25 :   41f27c: cmp    $0x7ffe,%ecx
+    0.13 :   41f282: ja     4215ea <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x31ca>
+    0.00 :   41f288: mov    %r8,%rsi
+    0.00 :   41f28b: xor    %edi,%edi
+    0.01 :   41f28d: movslq %ecx,%rcx
+    0.02 :   41f290: shrd   $0xd,%r9,%rsi
+    0.53 :   41f295: mov    %rcx,%rbx
+    0.00 :   41f298: and    $0x1,%esi
+    0.00 :   41f29b: add    $0xfff,%r8
+    0.00 :   41f2a2: adc    $0x0,%r9
+    0.03 :   41f2a6: add    %rsi,%r8
+    0.04 :   41f2a9: adc    %rdi,%r9
+    0.10 :   41f2ac: xor    %ecx,%ecx
+    0.00 :   41f2ae: shl    $0x30,%rbx
+    0.01 :   41f2b2: shrd   $0xd,%r9,%r8
+    0.69 :   41f2b7: shr    $0xd,%r9
+    0.00 :   41f2bb: add    %rcx,%r8
+    0.00 :   41f2be: adc    %rbx,%r9
+    0.17 :   41f2c1: mov    %r9,%rcx
+    0.00 :   41f2c4: shr    $0x30,%rcx
+    0.05 :   41f2c8: cmp    $0x7ffe,%rcx
+    0.25 :   41f2cf: ja     4215ea <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x31ca>
+    0.00 :   41f2d5: or     %r8,%rax
+    0.00 :   41f2d8: or     %r9,%rdx
+    0.00 :   41f2db: addq   $0x1,0x20(%rsp)
+    0.00 :   41f2e1: mov    0x20(%rsp),%rdi
+    0.12 :   41f2e6: mov    0x50(%rsp),%rbx
+    0.00 :   41f2eb: mov    %rdi,%rcx
+    0.00 :   41f2ee: shl    $0x4,%rcx
+    0.00 :   41f2f2: mov    %rax,(%rbx,%rcx,1)
+    0.16 :   41f2f6: mov    0x90(%rsp),%rax
+    0.00 :   41f2fe: mov    %rdx,0x8(%rbx,%rcx,1)
+    0.11 :   41f303: mov    0x40(%rsp),%rbx
+    0.00 :   41f308: mov    0xa8(%rax),%rax
+    0.02 :   41f30f: mov    %rax,(%rsp)
+    0.00 :   41f313: sub    %rbx,%rax
+    0.02 :   41f316: sar    $0x3,%rax
+    0.00 :   41f31a: cmp    %rax,%rdi
+    0.13 :   41f31d: jb     41f030 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xc10>
+    0.00 :   41f323: mov    0x90(%rsp),%rax
+    0.00 :   41f32b: mov    0xd8(%rax),%r8
+    0.00 :   41f332: mov    0xd0(%rax),%rsi
+    0.00 :   41f339: cmp    %r8,%rsi
+    0.00 :   41f33c: je     41f767 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1347>
+    0.00 :   41f342: mov    %fs:0xfffffffffffff8d8,%rdi
+    0.00 :   41f34b: mov    %rax,%r15
+    0.00 :   41f34e: xor    %ebx,%ebx
+    0.00 :   41f350: lea    (%rbx,%rbx,2),%rax
+    0.00 :   41f354: lea    (%rsi,%rax,4),%rdx
+    0.00 :   41f358: mov    0x4(%rdx),%ecx
+    0.02 :   41f35b: mov    0x8(%rdx),%eax
+    0.00 :   41f35e: movslq (%rdx),%rdx
+    0.00 :   41f361: shl    $0x4,%rdx
+    0.00 :   41f365: movdqa (%rdi,%rdx,1),%xmm7
+    0.09 :   41f36a: movaps %xmm7,(%rsp)
+    0.03 :   41f36e: cmp    %eax,%ecx
+    0.00 :   41f370: jge    41f732 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1312>
+    0.00 :   41f376: movslq %ecx,%rdx
+    0.00 :   41f379: sub    %ecx,%eax
+    0.00 :   41f37b: mov    %rbx,0x50(%rsp)
+    0.00 :   41f380: add    %rdx,%rax
+    0.00 :   41f383: lea    0x0(,%rdx,4),%r14
+    0.00 :   41f38b: movq   $0xfffffffffffff6c0,0x30(%rsp)
+    0.00 :   41f394: shl    $0x2,%rax
+    0.01 :   41f398: mov    %rax,0x20(%rsp)
+    0.00 :   41f39d: jmpq   41f4da <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x10ba>
+    0.00 :   41f3a2: nopw   0x0(%rax,%rax,1)
+    1.52 :   41f3a8: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41f3b2: mov    %rcx,%rsi
+    0.00 :   41f3b5: mov    (%rsp),%rdi
+    1.56 :   41f3b9: mov    %r12,%rax
+    0.00 :   41f3bc: and    %rdx,%rsi
+    0.28 :   41f3bf: and    %r13,%rdx
+    0.00 :   41f3c2: cmp    %rdx,%rsi
+    0.89 :   41f3c5: jb     41ffd0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bb0>
+    0.00 :   41f3cb: mov    %rsi,%rbx
+    0.68 :   41f3ce: mov    %rdx,%r10
+    0.00 :   41f3d1: shr    $0x30,%rbx
+    0.02 :   41f3d5: shr    $0x30,%r10
+    1.61 :   41f3d9: je     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.35 :   41f3df: cmp    $0x7fff,%rbx
+    0.88 :   41f3e6: je     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.02 :   41f3ec: mov    %ebx,%r8d
+    0.00 :   41f3ef: sub    %r10d,%r8d
+    0.09 :   41f3f2: cmp    $0x71,%r8d
+    2.45 :   41f3f6: ja     420a58 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2638>
+    0.00 :   41f3fc: movabs $0xffffffffffff,%rcx
+    0.08 :   41f406: lea    (%rax,%rax,1),%r10
+    0.00 :   41f40a: and    %rcx,%rdx
+    0.42 :   41f40d: bts    $0x30,%rdx
+    0.98 :   41f412: lea    (%rdx,%rdx,1),%r11
+    0.33 :   41f416: cmp    $0x3f,%r8d
+    0.16 :   41f41a: ja     41ff90 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1b70>
+    0.00 :   41f420: mov    $0x3f,%ebp
+    2.23 :   41f425: sub    %r8d,%ebp
+    0.10 :   41f428: mov    %ebp,%ecx
+    0.00 :   41f42a: shl    %cl,%r10
+    0.73 :   41f42d: mov    %r8d,%ecx
+    0.27 :   41f430: shr    %cl,%rax
+    0.09 :   41f433: mov    %ebp,%ecx
+    0.11 :   41f435: shl    %cl,%r11
+    1.71 :   41f438: mov    %r8d,%ecx
+    0.16 :   41f43b: or     %r11,%rax
+    0.18 :   41f43e: shr    %cl,%rdx
+    0.19 :   41f441: xor    %ecx,%ecx
+    0.32 :   41f443: add    %rdi,%rax
+    3.97 :   41f446: movabs $0xffffffffffff,%rdi
+    0.00 :   41f450: setb   %cl
+    0.36 :   41f453: and    %rdi,%rsi
+    0.09 :   41f456: bts    $0x30,%rsi
+    1.38 :   41f45b: add    %rdx,%rsi
+    0.51 :   41f45e: lea    -0x1(%rbx),%edx
+    0.06 :   41f461: add    %rcx,%rsi
+    4.89 :   41f464: mov    %rsi,%rdi
+    0.00 :   41f467: shr    $0x31,%rdi
+    2.13 :   41f46b: jne    420cd0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x28b0>
+    3.72 :   41f471: movabs $0x8000000000000000,%rcx
+    0.13 :   41f47b: mov    %rax,%rdi
+    0.00 :   41f47e: and    $0x1,%edi
+    0.00 :   41f481: sub    %rdi,%rcx
+    0.01 :   41f484: cmp    %r10,%rcx
+    0.17 :   41f487: setb   %cl
+    0.62 :   41f48a: movzbl %cl,%ecx
+    4.35 :   41f48d: add    %rcx,%rax
+    2.51 :   41f490: adc    $0x0,%rsi
+    1.22 :   41f494: shl    $0x30,%rdx
+    0.00 :   41f498: add    %rsi,%rdx
+    5.50 :   41f49b: mov    %rdx,%rcx
+    0.00 :   41f49e: shr    $0x30,%rcx
+    3.15 :   41f4a2: cmp    $0x7ffe,%rcx
+    3.36 :   41f4a9: ja     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f4af: movabs $0x8000000000000000,%rcx
+    0.00 :   41f4b9: mov    %rax,(%rsp)
+    0.00 :   41f4bd: and    %rcx,%r9
+    0.00 :   41f4c0: or     %rdx,%r9
+    0.04 :   41f4c3: mov    %r9,0x8(%rsp)
+    0.27 :   41f4c8: mov    0x20(%rsp),%rax
+    0.00 :   41f4cd: add    $0x4,%r14
+    0.00 :   41f4d1: cmp    %rax,%r14
+    2.78 :   41f4d4: je     41f716 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x12f6>
+    0.00 :   41f4da: mov    (%rsp),%rax
+    0.66 :   41f4de: mov    0x30(%rsp),%rdi
+    0.00 :   41f4e3: mov    0x8(%rsp),%rcx
+   14.34 :   41f4e8: mov    %rax,0x10(%rsp)
+    0.02 :   41f4ed: mov    0x8(%rsp),%rax
+    1.62 :   41f4f2: mov    %rcx,%r9
+    0.00 :   41f4f5: mov    %rax,0x40(%rsp)
+    0.00 :   41f4fa: mov    0xe8(%r15),%rax
+    0.47 :   41f501: movslq (%rax,%r14,1),%rax
+    0.02 :   41f505: shl    $0x4,%rax
+    0.00 :   41f509: add    %fs:0x200(%rdi),%rax
+    2.38 :   41f511: mov    0x8(%rax),%r13
+    1.01 :   41f515: mov    (%rax),%r12
+    0.27 :   41f518: mov    %rcx,%rax
+    0.00 :   41f51b: xor    %r13,%rax
+    0.00 :   41f51e: jns    41f3a8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xf88>
+    0.00 :   41f524: mov    $0xffffffffffffffff,%rax
+    0.00 :   41f52b: mov    $0xffffffffffffffff,%rsi
+    0.00 :   41f532: and    (%rsp),%rsi
+    0.00 :   41f536: movabs $0x7fffffffffffffff,%rdi
+    0.00 :   41f540: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41f54a: and    0x8(%rsp),%rdi
+    0.00 :   41f54f: and    %r12,%rax
+    0.00 :   41f552: and    %r13,%rdx
+    0.00 :   41f555: mov    %rdi,%rbx
+    0.00 :   41f558: cmp    %rax,%rsi
+    0.00 :   41f55b: sbb    %rdx,%rbx
+    0.00 :   41f55e: jb     420050 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1c30>
+    0.00 :   41f564: mov    %rdi,%r8
+    0.00 :   41f567: mov    %rdx,%r9
+    0.00 :   41f56a: shr    $0x30,%r8
+    0.00 :   41f56e: shr    $0x30,%r9
+    0.00 :   41f572: je     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f578: cmp    $0x7fff,%r8
+    0.00 :   41f57f: je     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f585: shld   $0xd,%rsi,%rdi
+    0.00 :   41f58a: shld   $0xd,%rax,%rdx
+    0.00 :   41f58f: xor    %r10d,%r10d
+    0.00 :   41f592: mov    $0xffffffffffffe000,%rcx
+    0.00 :   41f599: shl    $0xd,%rsi
+    0.00 :   41f59d: shl    $0xd,%rax
+    0.00 :   41f5a1: movabs $0x1fffffffffffffff,%rbx
+    0.00 :   41f5ab: movabs $0x2000000000000000,%r11
+    0.00 :   41f5b5: and    %rcx,%rsi
+    0.00 :   41f5b8: and    %rcx,%rax
+    0.00 :   41f5bb: mov    %r8d,%ecx
+    0.00 :   41f5be: and    %rbx,%rdi
+    0.00 :   41f5c1: sub    %r9d,%ecx
+    0.00 :   41f5c4: and    %rbx,%rdx
+    0.00 :   41f5c7: mov    $0x7f,%r9d
+    0.00 :   41f5cd: or     %r10,%rsi
+    0.00 :   41f5d0: or     %r11,%rdx
+    0.00 :   41f5d3: or     %r11,%rdi
+    0.00 :   41f5d6: or     %r10,%rax
+    0.00 :   41f5d9: cmp    %r9d,%ecx
+    0.00 :   41f5dc: cmovg  %r9d,%ecx
+    0.00 :   41f5e0: mov    %rax,%r10
+    0.00 :   41f5e3: mov    %rdx,%r11
+    0.00 :   41f5e6: xor    %r9d,%r9d
+    0.00 :   41f5e9: shr    %cl,%r11
+    0.00 :   41f5ec: shrd   %cl,%rdx,%r10
+    0.00 :   41f5f0: test   $0x40,%cl
+    0.00 :   41f5f3: cmovne %r11,%r10
+    0.00 :   41f5f7: cmovne %r9,%r11
+    0.00 :   41f5fb: test   %rax,%rax
+    0.00 :   41f5fe: je     420020 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1c00>
+    0.00 :   41f604: xor    %r9d,%r9d
+    0.00 :   41f607: tzcnt  %rax,%r9
+    0.00 :   41f60c: cmp    %ecx,%r9d
+    0.00 :   41f60f: mov    %rsi,%rax
+    0.00 :   41f612: mov    %rdi,%rdx
+    0.00 :   41f615: setl   %cl
+    0.00 :   41f618: xor    %ebx,%ebx
+    0.00 :   41f61a: movzbl %cl,%ecx
+    0.00 :   41f61d: or     %r11,%rbx
+    0.00 :   41f620: or     %r10,%rcx
+    0.00 :   41f623: sub    %rcx,%rax
+    0.00 :   41f626: sbb    %rbx,%rdx
+    0.00 :   41f629: mov    %rax,%rcx
+    0.00 :   41f62c: or     %rdx,%rcx
+    0.00 :   41f62f: je     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f635: test   %rdx,%rdx
+    0.00 :   41f638: je     420038 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1c18>
+    0.00 :   41f63e: bsr    %rdx,%rcx
+    0.00 :   41f642: xor    $0x3f,%ecx
+    0.00 :   41f645: sub    $0x2,%ecx
+    0.00 :   41f648: sub    $0x1,%r8d
+    0.00 :   41f64c: xor    %esi,%esi
+    0.00 :   41f64e: xor    %r10d,%r10d
+    0.00 :   41f651: shld   %cl,%rax,%rdx
+    0.00 :   41f655: and    (%rsp),%r10
+    0.00 :   41f659: shl    %cl,%rax
+    0.00 :   41f65c: sub    %ecx,%r8d
+    0.00 :   41f65f: movabs $0x8000000000000000,%r11
+    0.00 :   41f669: and    0x8(%rsp),%r11
+    0.00 :   41f66e: test   $0x40,%cl
+    0.00 :   41f671: cmovne %rax,%rdx
+    0.00 :   41f675: cmovne %rsi,%rax
+    0.00 :   41f679: mov    %rdx,%rsi
+    0.00 :   41f67c: shr    $0x3e,%rsi
+    0.00 :   41f680: je     41f69b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x127b>
+    0.00 :   41f682: mov    %rax,%rcx
+    0.00 :   41f685: mov    %rdx,%rbx
+    0.00 :   41f688: and    $0x1,%eax
+    0.00 :   41f68b: shrd   $0x1,%rdx,%rcx
+    0.00 :   41f690: shr    %rbx
+    0.00 :   41f693: xor    %edx,%edx
+    0.00 :   41f695: or     %rcx,%rax
+    0.00 :   41f698: or     %rbx,%rdx
+    0.00 :   41f69b: add    %r8d,%esi
+    0.00 :   41f69e: cmp    $0x7ffe,%esi
+    0.00 :   41f6a4: ja     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f6aa: mov    %rax,%rcx
+    0.00 :   41f6ad: xor    %ebx,%ebx
+    0.00 :   41f6af: movslq %esi,%rsi
+    0.00 :   41f6b2: shrd   $0xd,%rdx,%rcx
+    0.00 :   41f6b7: mov    %rsi,%rdi
+    0.00 :   41f6ba: and    $0x1,%ecx
+    0.00 :   41f6bd: add    $0xfff,%rax
+    0.00 :   41f6c3: adc    $0x0,%rdx
+    0.00 :   41f6c7: add    %rax,%rcx
+    0.00 :   41f6ca: adc    %rdx,%rbx
+    0.00 :   41f6cd: xor    %esi,%esi
+    0.00 :   41f6cf: shl    $0x30,%rdi
+    0.00 :   41f6d3: shrd   $0xd,%rbx,%rcx
+    0.00 :   41f6d8: shr    $0xd,%rbx
+    0.00 :   41f6dc: add    %rsi,%rcx
+    0.00 :   41f6df: adc    %rdi,%rbx
+    0.00 :   41f6e2: mov    %rbx,%rax
+    0.00 :   41f6e5: shr    $0x30,%rax
+    0.00 :   41f6e9: cmp    $0x7ffe,%rax
+    0.00 :   41f6ef: ja     41fffb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1bdb>
+    0.00 :   41f6f5: mov    0x20(%rsp),%rax
+    0.00 :   41f6fa: or     %rcx,%r10
+    0.00 :   41f6fd: or     %rbx,%r11
+    0.00 :   41f700: add    $0x4,%r14
+    0.00 :   41f704: mov    %r10,(%rsp)
+    0.00 :   41f708: mov    %r11,0x8(%rsp)
+    0.00 :   41f70d: cmp    %rax,%r14
+    0.00 :   41f710: jne    41f4da <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x10ba>
+    0.00 :   41f716: mov    0x50(%rsp),%rbx
+    0.07 :   41f71b: mov    0xd8(%r15),%r8
+    0.00 :   41f722: mov    %fs:0xfffffffffffff8d8,%rdi
+    0.02 :   41f72b: mov    0xd0(%r15),%rsi
+    0.00 :   41f732: add    $0x1,%rbx
+    0.00 :   41f736: movdqa (%rsp),%xmm7
+    0.21 :   41f73b: movabs $0xaaaaaaaaaaaaaaab,%rdx
+    0.00 :   41f745: mov    %rbx,%rax
+    0.00 :   41f748: shl    $0x4,%rax
+    0.00 :   41f74c: movaps %xmm7,(%rdi,%rax,1)
+    0.05 :   41f750: mov    %r8,%rax
+    0.00 :   41f753: sub    %rsi,%rax
+    0.00 :   41f756: sar    $0x2,%rax
+    0.00 :   41f75a: imul   %rdx,%rax
+    0.00 :   41f75e: cmp    %rax,%rbx
+    0.00 :   41f761: jb     41f350 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xf30>
+    0.00 :   41f767: mov    0x90(%rsp),%rax
+    0.00 :   41f76f: xor    %ebx,%ebx
+    0.00 :   41f771: mov    %rbx,%r15
+    0.00 :   41f774: mov    0x108(%rax),%rcx
+    0.00 :   41f77b: mov    0x100(%rax),%rdx
+    0.00 :   41f782: mov    $0xfffffffffffff6c0,%rax
+    0.00 :   41f789: mov    %rax,%rbp
+    0.00 :   41f78c: cmp    %rdx,%rcx
+    0.00 :   41f78f: je     42049c <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x207c>
+    0.00 :   41f795: nopl   (%rax)
+    0.00 :   41f798: movq   $0x0,0x10(%rsp)
+    0.00 :   41f7a1: lea    (%r15,%r15,2),%rax
+    0.00 :   41f7a5: movq   $0x0,0x18(%rsp)
+    0.00 :   41f7ae: lea    (%rdx,%rax,8),%rax
+    0.00 :   41f7b2: movq   $0x0,0x20(%rsp)
+    0.00 :   41f7bb: mov    (%rax),%rsi
+    0.00 :   41f7be: movq   $0x0,0x28(%rsp)
+    0.00 :   41f7c7: mov    0x8(%rax),%rax
+    0.00 :   41f7cb: mov    %rax,0x68(%rsp)
+    0.00 :   41f7d0: cmp    %rsi,%rax
+    0.00 :   41f7d3: je     420fb0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2b90>
+    0.00 :   41f7d9: mov    %fs:0x0,%rax
+    0.00 :   41f7e2: mov    %r15,0x98(%rsp)
+    0.00 :   41f7ea: mov    %rsi,%r15
+    0.00 :   41f7ed: mov    %rbp,0xc0(%rsp)
+    0.00 :   41f7f5: mov    %rax,0x70(%rsp)
+    0.00 :   41f7fa: jmpq   41f937 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1517>
+    0.00 :   41f7ff: nop
+    0.00 :   41f800: movabs $0x7fffffffffffffff,%rax
+    0.00 :   41f80a: mov    %r14,%rdx
+    0.00 :   41f80d: mov    %rdi,%rsi
+    0.00 :   41f810: and    %rax,%rdx
+    0.00 :   41f813: and    %rbp,%rax
+    0.02 :   41f816: cmp    %rax,%rdx
+    0.02 :   41f819: jb     4202e0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ec0>
+    0.00 :   41f81f: mov    %rdx,%rbp
+    0.00 :   41f822: mov    %rax,%r10
+    0.00 :   41f825: shr    $0x30,%rbp
+    0.00 :   41f829: shr    $0x30,%r10
+    0.00 :   41f82d: je     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41f833: cmp    $0x7fff,%rbp
+    0.00 :   41f83a: je     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41f840: mov    %ebp,%r8d
+    0.02 :   41f843: sub    %r10d,%r8d
+    0.02 :   41f846: cmp    $0x71,%r8d
+    0.00 :   41f84a: ja     420a20 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2600>
+    0.00 :   41f850: movabs $0xffffffffffff,%rcx
+    0.00 :   41f85a: lea    (%rbx,%rbx,1),%r10
+    0.00 :   41f85e: and    %rcx,%rax
+    0.00 :   41f861: bts    $0x30,%rax
+    0.00 :   41f866: lea    (%rax,%rax,1),%r11
+    0.01 :   41f86a: cmp    $0x3f,%r8d
+    0.01 :   41f86e: ja     4202a0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1e80>
+    0.00 :   41f874: mov    $0x3f,%r12d
+    0.00 :   41f87a: sub    %r8d,%r12d
+    0.00 :   41f87d: mov    %r12d,%ecx
+    0.00 :   41f880: shl    %cl,%r10
+    0.00 :   41f883: mov    %r8d,%ecx
+    0.00 :   41f886: shr    %cl,%rbx
+    0.00 :   41f889: mov    %r12d,%ecx
+    0.02 :   41f88c: shl    %cl,%r11
+    0.01 :   41f88f: mov    %r8d,%ecx
+    0.00 :   41f892: or     %r11,%rbx
+    0.00 :   41f895: shr    %cl,%rax
+    0.00 :   41f898: xor    %ecx,%ecx
+    0.00 :   41f89a: add    %rsi,%rbx
+    0.00 :   41f89d: movabs $0xffffffffffff,%rsi
+    0.00 :   41f8a7: setb   %cl
+    0.02 :   41f8aa: and    %rsi,%rdx
+    0.02 :   41f8ad: bts    $0x30,%rdx
+    0.00 :   41f8b2: add    %rax,%rdx
+    0.00 :   41f8b5: lea    -0x1(%rbp),%eax
+    0.00 :   41f8b8: add    %rcx,%rdx
+    0.00 :   41f8bb: mov    %rdx,%rsi
+    0.00 :   41f8be: shr    $0x31,%rsi
+    0.02 :   41f8c2: jne    420d30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2910>
+    0.01 :   41f8c8: movabs $0x8000000000000000,%rcx
+    0.00 :   41f8d2: mov    %rbx,%rsi
+    0.00 :   41f8d5: and    $0x1,%esi
+    0.00 :   41f8d8: sub    %rsi,%rcx
+    0.00 :   41f8db: cmp    %r10,%rcx
+    0.00 :   41f8de: setb   %cl
+    0.00 :   41f8e1: movzbl %cl,%ecx
+    0.02 :   41f8e4: add    %rcx,%rbx
+    0.02 :   41f8e7: adc    $0x0,%rdx
+    0.00 :   41f8eb: shl    $0x30,%rax
+    0.00 :   41f8ef: add    %rax,%rdx
+    0.01 :   41f8f2: mov    %rdx,%rax
+    0.00 :   41f8f5: shr    $0x30,%rax
+    0.00 :   41f8f9: cmp    $0x7ffe,%rax
+    0.01 :   41f8ff: ja     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41f905: movabs $0x8000000000000000,%rax
+    0.02 :   41f90f: mov    %rbx,(%rsp)
+    0.01 :   41f913: and    %rax,%r9
+    0.00 :   41f916: or     %rdx,%r9
+    0.00 :   41f919: mov    %r9,0x8(%rsp)
+    0.00 :   41f91e: movdqa (%rsp),%xmm4
+    0.83 :   41f923: add    $0x8,%r15
+    0.00 :   41f927: movaps %xmm4,0x10(%rsp)
+    0.12 :   41f92c: cmp    %r15,0x68(%rsp)
+    0.00 :   41f931: je     420428 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2008>
+    0.00 :   41f937: mov    0x4(%r15),%edi
+    0.07 :   41f93b: callq  405660 <__floatsitf@plt>
+    0.00 :   41f940: movslq (%r15),%rax
+    0.00 :   41f943: mov    0x70(%rsp),%rdi
+    0.00 :   41f948: movaps %xmm0,(%rsp)
+    0.12 :   41f94c: mov    0x8(%rsp),%rsi
+    0.20 :   41f951: mov    (%rsp),%rbx
+    0.00 :   41f955: shl    $0x4,%rax
+    0.00 :   41f959: mov    -0x938(%rax,%rdi,1),%r13
+    0.00 :   41f961: mov    -0x940(%rax,%rdi,1),%r12
+    0.00 :   41f969: mov    %rsi,%rax
+    0.00 :   41f96c: mov    %rbx,0x30(%rsp)
+    0.00 :   41f971: shr    $0x30,%rax
+    0.00 :   41f975: mov    %rsi,0x38(%rsp)
+    0.04 :   41f97a: mov    %eax,%ebp
+    0.00 :   41f97c: mov    %r13,%rax
+    0.00 :   41f97f: shr    $0x30,%rax
+    0.00 :   41f983: and    $0x7fff,%ebp
+    0.01 :   41f989: mov    %eax,%r14d
+    0.00 :   41f98c: lea    -0x1(%rbp),%eax
+    0.01 :   41f98f: and    $0x7fff,%r14d
+    0.00 :   41f996: cmp    $0x7ffd,%eax
+    0.11 :   41f99b: ja     421622 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3202>
+    0.00 :   41f9a1: lea    -0x1(%r14),%eax
+    0.00 :   41f9a5: cmp    $0x7ffd,%eax
+    0.00 :   41f9aa: ja     421622 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3202>
+    0.00 :   41f9b0: xor    %edi,%edi
+    0.00 :   41f9b2: xor    %ebx,%ebx
+    0.00 :   41f9b4: xor    %edx,%edx
+    0.00 :   41f9b6: mov    %rsi,%rcx
+    0.00 :   41f9b9: and    %rdi,%rbx
+    0.00 :   41f9bc: mov    %r12,(%rsp)
+    0.04 :   41f9c0: movabs $0xffffffffffff,%rsi
+    0.00 :   41f9ca: movabs $0x1000000000000,%rax
+    0.00 :   41f9d4: or     %rdx,%rbx
+    0.00 :   41f9d7: and    %rsi,%rcx
+    0.00 :   41f9da: or     %rax,%rcx
+    0.00 :   41f9dd: mov    %rbx,%r10
+    0.00 :   41f9e0: xor    %ebx,%ebx
+    0.00 :   41f9e2: mov    %rcx,%r9
+    0.03 :   41f9e5: and    %rdi,%rbx
+    0.00 :   41f9e8: mov    %r13,%rcx
+    0.00 :   41f9eb: xor    %edi,%edi
+    0.00 :   41f9ed: or     %rdx,%rbx
+    0.00 :   41f9f0: and    %rsi,%rcx
+    0.00 :   41f9f3: xor    %edx,%edx
+    0.00 :   41f9f5: mov    0x30(%rsp),%rsi
+    0.00 :   41f9fa: or     %rax,%rcx
+    0.04 :   41f9fd: mov    %rdx,0x8(%rsp)
+    0.00 :   41fa02: mov    0x8(%rsp),%rax
+    0.00 :   41fa07: mov    %r12,%rdx
+    0.00 :   41fa0a: imul   %rdi,%rdx
+    0.00 :   41fa0e: mov    %rsi,0x50(%rsp)
+    0.00 :   41fa13: imul   %rsi,%rax
+    0.00 :   41fa17: mov    %rdi,0x58(%rsp)
+    0.00 :   41fa1c: mov    %r9,%rsi
+    0.04 :   41fa1f: lea    (%rdx,%rax,1),%rdi
+    0.00 :   41fa23: mov    0x50(%rsp),%rax
+    0.00 :   41fa28: mulq   (%rsp)
+    0.00 :   41fa2c: mov    %rax,0x40(%rsp)
+    0.01 :   41fa31: mov    (%rsp),%rax
+    0.00 :   41fa35: mov    %rdx,0x48(%rsp)
+    0.01 :   41fa3a: mov    %r10,%rdx
+    0.04 :   41fa3d: imul   %rax,%rdx
+    0.00 :   41fa41: mov    %r9,%rax
+    0.00 :   41fa44: mov    0x8(%rsp),%r9
+    0.00 :   41fa49: add    %rdi,0x48(%rsp)
+    0.01 :   41fa4e: mov    %r10,%rdi
+    0.00 :   41fa51: mov    (%rsp),%r10
+    0.00 :   41fa55: mov    0x48(%rsp),%r11
+    0.00 :   41fa5a: mov    %rsi,(%rsp)
+    0.04 :   41fa5e: imul   %r9,%rax
+    0.00 :   41fa62: mov    %rdi,0x8(%rsp)
+    0.00 :   41fa67: lea    (%rdx,%rax,1),%r9
+    0.00 :   41fa6b: mov    %r10,%rax
+    0.00 :   41fa6e: mov    %r11,%r10
+    0.00 :   41fa71: xor    %r11d,%r11d
+    0.00 :   41fa74: mulq   (%rsp)
+    0.03 :   41fa78: mov    %r10,%r8
+    0.00 :   41fa7b: mov    0x50(%rsp),%r10
+    0.00 :   41fa80: add    %r9,%rdx
+    0.00 :   41fa83: mov    %r11,%r9
+    0.01 :   41fa86: mov    0x58(%rsp),%r11
+    0.00 :   41fa8b: add    %rax,%r8
+    0.00 :   41fa8e: adc    %rdx,%r9
+    0.04 :   41fa91: mov    %rbx,%rdx
+    0.00 :   41fa94: mov    %r11,%rax
+    0.00 :   41fa97: imul   %r10,%rdx
+    0.00 :   41fa9b: imul   %rcx,%rax
+    0.00 :   41fa9f: lea    (%rdx,%rax,1),%rdi
+    0.01 :   41faa3: mov    %r10,%rax
+    0.00 :   41faa6: mul    %rcx
+    0.04 :   41faa9: add    %rdi,%rdx
+    0.03 :   41faac: add    %rax,%r8
+    0.00 :   41faaf: adc    %rdx,%r9
+    0.04 :   41fab2: mov    %r8,%r11
+    0.00 :   41fab5: mov    0x8(%rsp),%r8
+    0.00 :   41faba: mov    %r9,%rdi
+    0.00 :   41fabd: mov    (%rsp),%r9
+    0.00 :   41fac1: imul   %rcx,%r8
+    0.00 :   41fac5: mov    %rdi,%rsi
+    0.00 :   41fac8: xor    %edi,%edi
+    0.00 :   41faca: mov    %r9,%rax
+    0.03 :   41facd: imul   %rbx,%rax
+    0.00 :   41fad1: add    %rax,%r8
+    0.00 :   41fad4: mov    %r9,%rax
+    0.00 :   41fad7: mul    %rcx
+    0.00 :   41fada: mov    %rax,%rcx
+    0.00 :   41fadd: mov    %rdx,%rbx
+    0.00 :   41fae0: movabs $0x7ffffffff,%rax
+    0.04 :   41faea: add    %r8,%rbx
+    0.00 :   41faed: add    %rsi,%rcx
+    0.00 :   41faf0: mov    %r11,%r8
+    0.00 :   41faf3: movabs $0x8000000000000000,%rsi
+    0.00 :   41fafd: adc    %rdi,%rbx
+    0.00 :   41fb00: shr    $0x23,%r8
+    0.00 :   41fb04: xor    %r9d,%r9d
+    0.00 :   41fb07: and    %rax,%r11
+    0.03 :   41fb0a: shld   $0x1d,%rcx,%rbx
+    0.13 :   41fb0f: shl    $0x1d,%rcx
+    0.00 :   41fb13: xor    %eax,%eax
+    0.00 :   41fb15: or     %rbx,%r9
+    0.01 :   41fb18: or     %rcx,%r8
+    0.00 :   41fb1b: or     0x40(%rsp),%r11
+    0.00 :   41fb20: setne  %al
+    0.00 :   41fb23: xor    %edx,%edx
+    0.00 :   41fb25: xor    %ebx,%ebx
+    0.03 :   41fb27: or     %rdx,%r9
+    0.00 :   41fb2a: or     %rax,%r8
+    0.01 :   41fb2d: mov    0x38(%rsp),%rdx
+    0.00 :   41fb32: mov    0x30(%rsp),%rax
+    0.00 :   41fb37: mov    %r9,%rdi
+    0.00 :   41fb3a: xor    %r12,%rax
+    0.00 :   41fb3d: xor    %r13,%rdx
+    0.00 :   41fb40: and    %rsi,%rdx
+    0.03 :   41fb43: and    %rbx,%rax
+    0.00 :   41fb46: shr    $0x3e,%rdi
+    0.00 :   41fb4a: lea    -0x4000(%rbp,%r14,1),%esi
+    0.00 :   41fb52: je     41fb6f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x174f>
+    0.00 :   41fb54: mov    %r8,%rcx
+    0.00 :   41fb57: mov    %r9,%rbx
+    0.00 :   41fb5a: and    $0x1,%r8d
+    0.00 :   41fb5e: shrd   $0x1,%r9,%rcx
+    0.00 :   41fb63: shr    %rbx
+    0.00 :   41fb66: xor    %r9d,%r9d
+    0.00 :   41fb69: or     %rcx,%r8
+    0.00 :   41fb6c: or     %rbx,%r9
+    0.04 :   41fb6f: add    %edi,%esi
+    0.00 :   41fb71: cmp    $0x7ffe,%esi
+    0.03 :   41fb77: ja     421622 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3202>
+    0.00 :   41fb7d: mov    %r8,%rcx
+    0.00 :   41fb80: xor    %ebx,%ebx
+    0.00 :   41fb82: movslq %esi,%rsi
+    0.02 :   41fb85: shrd   $0xd,%r9,%rcx
+    0.05 :   41fb8a: mov    %rsi,%rdi
+    0.00 :   41fb8d: and    $0x1,%ecx
+    0.00 :   41fb90: add    $0xfff,%r8
+    0.00 :   41fb97: adc    $0x0,%r9
+    0.00 :   41fb9b: add    %r8,%rcx
+    0.00 :   41fb9e: adc    %r9,%rbx
+    0.02 :   41fba1: xor    %esi,%esi
+    0.00 :   41fba3: shl    $0x30,%rdi
+    0.01 :   41fba7: shrd   $0xd,%rbx,%rcx
+    0.21 :   41fbac: shr    $0xd,%rbx
+    0.00 :   41fbb0: add    %rsi,%rcx
+    0.00 :   41fbb3: adc    %rdi,%rbx
+    0.03 :   41fbb6: mov    %rbx,%rsi
+    0.00 :   41fbb9: shr    $0x30,%rsi
+    0.02 :   41fbbd: cmp    $0x7ffe,%rsi
+    0.08 :   41fbc4: ja     421622 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3202>
+    0.00 :   41fbca: or     %rcx,%rax
+    0.00 :   41fbcd: or     %rbx,%rdx
+    0.00 :   41fbd0: mov    %rax,(%rsp)
+    0.00 :   41fbd4: mov    %rdx,0x8(%rsp)
+    0.01 :   41fbd9: mov    0x20(%rsp),%rax
+    0.00 :   41fbde: mov    0x8(%rsp),%rbp
+    0.00 :   41fbe3: movdqa (%rsp),%xmm0
+    0.81 :   41fbe8: mov    (%rsp),%rbx
+    0.00 :   41fbec: mov    %rax,0x30(%rsp)
+    0.00 :   41fbf1: mov    0x28(%rsp),%rax
+    0.00 :   41fbf6: mov    %rax,0x40(%rsp)
+    0.00 :   41fbfb: mov    %rax,%rcx
+    0.00 :   41fbfe: mov    %rax,%r9
+    0.00 :   41fc01: xor    %rbp,%rax
+    0.00 :   41fc04: js     420070 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1c50>
+    0.03 :   41fc0a: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41fc14: mov    %rcx,%rsi
+    0.00 :   41fc17: mov    0x20(%rsp),%rdi
+    0.00 :   41fc1c: mov    %rbx,%rax
+    0.00 :   41fc1f: and    %rdx,%rsi
+    0.00 :   41fc22: and    %rbp,%rdx
+    0.00 :   41fc25: cmp    %rdx,%rsi
+    0.00 :   41fc28: jb     420330 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f10>
+    0.00 :   41fc2e: mov    %rsi,%r13
+    0.03 :   41fc31: mov    %rdx,%r10
+    0.00 :   41fc34: shr    $0x30,%r13
+    0.00 :   41fc38: shr    $0x30,%r10
+    0.00 :   41fc3c: je     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   41fc42: cmp    $0x7fff,%r13
+    0.00 :   41fc49: je     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   41fc4f: mov    %r13d,%r8d
+    0.00 :   41fc52: sub    %r10d,%r8d
+    0.00 :   41fc55: cmp    $0x71,%r8d
+    0.04 :   41fc59: ja     4209e8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x25c8>
+    0.00 :   41fc5f: movabs $0xffffffffffff,%rcx
+    0.01 :   41fc69: lea    (%rax,%rax,1),%r10
+    0.00 :   41fc6d: and    %rcx,%rdx
+    0.00 :   41fc70: bts    $0x30,%rdx
+    0.00 :   41fc75: lea    (%rdx,%rdx,1),%r11
+    0.00 :   41fc79: cmp    $0x3f,%r8d
+    0.00 :   41fc7d: ja     420260 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1e40>
+    0.00 :   41fc83: mov    $0x3f,%r14d
+    0.03 :   41fc89: sub    %r8d,%r14d
+    0.01 :   41fc8c: mov    %r14d,%ecx
+    0.00 :   41fc8f: shl    %cl,%r10
+    0.00 :   41fc92: mov    %r8d,%ecx
+    0.00 :   41fc95: shr    %cl,%rax
+    0.00 :   41fc98: mov    %r14d,%ecx
+    0.00 :   41fc9b: shl    %cl,%r11
+    0.00 :   41fc9e: mov    %r8d,%ecx
+    0.03 :   41fca1: or     %r11,%rax
+    0.00 :   41fca4: shr    %cl,%rdx
+    0.00 :   41fca7: xor    %ecx,%ecx
+    0.00 :   41fca9: add    %rdi,%rax
+    0.00 :   41fcac: movabs $0xffffffffffff,%rdi
+    0.00 :   41fcb6: setb   %cl
+    0.00 :   41fcb9: and    %rdi,%rsi
+    0.00 :   41fcbc: bts    $0x30,%rsi
+    0.04 :   41fcc1: add    %rdx,%rsi
+    0.00 :   41fcc4: lea    -0x1(%r13),%edx
+    0.00 :   41fcc8: add    %rcx,%rsi
+    0.00 :   41fccb: mov    %rsi,%rdi
+    0.00 :   41fcce: shr    $0x31,%rdi
+    0.00 :   41fcd2: jne    420d00 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x28e0>
+    0.00 :   41fcd8: movabs $0x8000000000000000,%rcx
+    0.04 :   41fce2: mov    %rax,%rdi
+    0.00 :   41fce5: and    $0x1,%edi
+    0.00 :   41fce8: sub    %rdi,%rcx
+    0.00 :   41fceb: cmp    %r10,%rcx
+    0.00 :   41fcee: setb   %cl
+    0.00 :   41fcf1: movzbl %cl,%ecx
+    0.00 :   41fcf4: add    %rcx,%rax
+    0.01 :   41fcf7: adc    $0x0,%rsi
+    0.03 :   41fcfb: shl    $0x30,%rdx
+    0.00 :   41fcff: add    %rsi,%rdx
+    0.00 :   41fd02: mov    %rdx,%rcx
+    0.00 :   41fd05: shr    $0x30,%rcx
+    0.01 :   41fd09: cmp    $0x7ffe,%rcx
+    0.01 :   41fd10: ja     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   41fd16: movabs $0x8000000000000000,%rcx
+    0.00 :   41fd20: mov    %rax,0x20(%rsp)
+    0.00 :   41fd25: and    %rcx,%r9
+    0.03 :   41fd28: or     %rdx,%r9
+    0.00 :   41fd2b: mov    %r9,0x28(%rsp)
+    0.00 :   41fd30: pxor   %xmm1,%xmm1
+    0.00 :   41fd34: movaps %xmm0,0x30(%rsp)
+    0.00 :   41fd39: callq  4057d0 <__lttf2@plt>
+    0.00 :   41fd3e: test   %rax,%rax
+    0.00 :   41fd41: jns    41fd6a <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x194a>
+    0.00 :   41fd43: movdqa 0x30(%rsp),%xmm0
+    0.00 :   41fd49: pxor   0xe4ef(%rip),%xmm0        # 42e240 <nx::profile_name+0x260>
+    0.00 :   41fd51: movaps %xmm0,0x30(%rsp)
+    0.00 :   41fd56: movdqa 0x30(%rsp),%xmm5
+    0.03 :   41fd5c: mov    0x30(%rsp),%rbx
+    0.00 :   41fd61: mov    0x38(%rsp),%rbp
+    0.00 :   41fd66: movaps %xmm5,(%rsp)
+    0.00 :   41fd6a: mov    0x18(%rsp),%r14
+    0.00 :   41fd6f: mov    0x10(%rsp),%rdi
+    0.00 :   41fd74: mov    %r14,%rax
+    0.00 :   41fd77: mov    %r14,%rcx
+    0.02 :   41fd7a: mov    %r14,%r9
+    0.02 :   41fd7d: xor    %rbp,%rax
+    0.00 :   41fd80: jns    41f800 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x13e0>
+    0.00 :   41fd86: mov    $0xffffffffffffffff,%rax
+    0.00 :   41fd8d: and    0x10(%rsp),%rax
+    0.00 :   41fd92: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   41fd9c: mov    $0xffffffffffffffff,%rcx
+    0.00 :   41fda3: and    0x18(%rsp),%rdx
+    0.00 :   41fda8: and    (%rsp),%rcx
+    0.00 :   41fdac: movabs $0x7fffffffffffffff,%rbx
+    0.00 :   41fdb6: mov    %rdx,%rsi
+    0.00 :   41fdb9: and    0x8(%rsp),%rbx
+    0.00 :   41fdbe: cmp    %rcx,%rax
+    0.00 :   41fdc1: sbb    %rbx,%rsi
+    0.00 :   41fdc4: jb     4203e0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1fc0>
+    0.00 :   41fdca: mov    0x10(%rsp),%r12
+    0.00 :   41fdcf: mov    0x18(%rsp),%r13
+    0.00 :   41fdd4: mov    %rdx,%rsi
+    0.00 :   41fdd7: mov    %rbx,%r10
+    0.00 :   41fdda: shr    $0x30,%rsi
+    0.00 :   41fdde: shr    $0x30,%r10
+    0.00 :   41fde2: je     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41fde8: cmp    $0x7fff,%rsi
+    0.00 :   41fdef: je     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41fdf5: shld   $0xd,%rax,%rdx
+    0.00 :   41fdfa: shl    $0xd,%rax
+    0.00 :   41fdfe: mov    $0xffffffffffffe000,%r8
+    0.00 :   41fe05: movabs $0x1fffffffffffffff,%r9
+    0.00 :   41fe0f: shld   $0xd,%rcx,%rbx
+    0.00 :   41fe14: and    %r8,%rax
+    0.00 :   41fe17: shl    $0xd,%rcx
+    0.00 :   41fe1b: xor    %r8d,%r8d
+    0.00 :   41fe1e: or     %r8,%rax
+    0.00 :   41fe21: mov    %rcx,%r8
+    0.00 :   41fe24: mov    $0xffffffffffffe000,%rcx
+    0.00 :   41fe2b: and    %r9,%rdx
+    0.00 :   41fe2e: movabs $0x2000000000000000,%r9
+    0.00 :   41fe38: and    %rcx,%r8
+    0.00 :   41fe3b: xor    %ecx,%ecx
+    0.00 :   41fe3d: or     %rcx,%r8
+    0.00 :   41fe40: or     %r9,%rdx
+    0.00 :   41fe43: mov    %esi,%ecx
+    0.00 :   41fe45: mov    %rbx,%r9
+    0.00 :   41fe48: movabs $0x1fffffffffffffff,%rbx
+    0.00 :   41fe52: sub    %r10d,%ecx
+    0.00 :   41fe55: mov    $0x7f,%r10d
+    0.00 :   41fe5b: and    %rbx,%r9
+    0.00 :   41fe5e: movabs $0x2000000000000000,%rbx
+    0.00 :   41fe68: or     %rbx,%r9
+    0.00 :   41fe6b: cmp    %r10d,%ecx
+    0.00 :   41fe6e: cmovg  %r10d,%ecx
+    0.00 :   41fe72: mov    %r9,%r11
+    0.00 :   41fe75: mov    %r8,%r10
+    0.00 :   41fe78: xor    %ebx,%ebx
+    0.00 :   41fe7a: shr    %cl,%r11
+    0.00 :   41fe7d: shrd   %cl,%r9,%r10
+    0.00 :   41fe81: test   $0x40,%cl
+    0.00 :   41fe84: cmovne %r11,%r10
+    0.00 :   41fe88: cmovne %rbx,%r11
+    0.00 :   41fe8c: test   %r8,%r8
+    0.00 :   41fe8f: je     4203a8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f88>
+    0.00 :   41fe95: xor    %ebx,%ebx
+    0.00 :   41fe97: tzcnt  %r8,%rbx
+    0.00 :   41fe9c: cmp    %ecx,%ebx
+    0.00 :   41fe9e: setl   %cl
+    0.00 :   41fea1: xor    %ebx,%ebx
+    0.00 :   41fea3: movzbl %cl,%ecx
+    0.00 :   41fea6: or     %r11,%rbx
+    0.00 :   41fea9: or     %r10,%rcx
+    0.00 :   41feac: sub    %rcx,%rax
+    0.00 :   41feaf: sbb    %rbx,%rdx
+    0.00 :   41feb2: mov    %rax,%rcx
+    0.00 :   41feb5: or     %rdx,%rcx
+    0.00 :   41feb8: je     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41febe: test   %rdx,%rdx
+    0.00 :   41fec1: je     4203c0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1fa0>
+    0.00 :   41fec7: bsr    %rdx,%rcx
+    0.00 :   41fecb: xor    $0x3f,%ecx
+    0.00 :   41fece: sub    $0x2,%ecx
+    0.00 :   41fed1: xor    %r9d,%r9d
+    0.00 :   41fed4: sub    $0x1,%esi
+    0.00 :   41fed7: xor    %ebx,%ebx
+    0.00 :   41fed9: movabs $0x8000000000000000,%r10
+    0.00 :   41fee3: shld   %cl,%rax,%rdx
+    0.00 :   41fee7: and    %r9,%r12
+    0.00 :   41feea: sub    %ecx,%esi
+    0.00 :   41feec: shl    %cl,%rax
+    0.00 :   41feef: and    %r10,%r13
+    0.00 :   41fef2: test   $0x40,%cl
+    0.00 :   41fef5: cmovne %rax,%rdx
+    0.00 :   41fef9: cmovne %rbx,%rax
+    0.00 :   41fefd: mov    %rdx,%r10
+    0.00 :   41ff00: shr    $0x3e,%r10
+    0.00 :   41ff04: je     41ff1f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1aff>
+    0.00 :   41ff06: mov    %rax,%rcx
+    0.00 :   41ff09: mov    %rdx,%rbx
+    0.00 :   41ff0c: and    $0x1,%eax
+    0.00 :   41ff0f: shrd   $0x1,%rdx,%rcx
+    0.00 :   41ff14: shr    %rbx
+    0.00 :   41ff17: xor    %edx,%edx
+    0.00 :   41ff19: or     %rcx,%rax
+    0.00 :   41ff1c: or     %rbx,%rdx
+    0.00 :   41ff1f: add    %r10d,%esi
+    0.00 :   41ff22: cmp    $0x7ffe,%esi
+    0.00 :   41ff28: ja     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41ff2e: mov    %rax,%rcx
+    0.00 :   41ff31: xor    %ebx,%ebx
+    0.00 :   41ff33: shrd   $0xd,%rdx,%rcx
+    0.00 :   41ff38: and    $0x1,%ecx
+    0.00 :   41ff3b: add    $0xfff,%rax
+    0.00 :   41ff41: adc    $0x0,%rdx
+    0.00 :   41ff45: add    %rax,%rcx
+    0.00 :   41ff48: movslq %esi,%rax
+    0.00 :   41ff4b: adc    %rdx,%rbx
+    0.00 :   41ff4e: mov    %rax,%rdx
+    0.00 :   41ff51: xor    %eax,%eax
+    0.00 :   41ff53: shrd   $0xd,%rbx,%rcx
+    0.00 :   41ff58: shl    $0x30,%rdx
+    0.00 :   41ff5c: shr    $0xd,%rbx
+    0.00 :   41ff60: add    %rax,%rcx
+    0.00 :   41ff63: adc    %rdx,%rbx
+    0.00 :   41ff66: mov    %rbx,%rax
+    0.00 :   41ff69: shr    $0x30,%rax
+    0.00 :   41ff6d: cmp    $0x7ffe,%rax
+    0.00 :   41ff73: ja     420309 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1ee9>
+    0.00 :   41ff79: or     %rcx,%r12
+    0.00 :   41ff7c: or     %rbx,%r13
+    0.00 :   41ff7f: mov    %r12,(%rsp)
+    0.00 :   41ff83: mov    %r13,0x8(%rsp)
+    0.00 :   41ff88: jmpq   41f91e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x14fe>
+    0.00 :   41ff8d: nopl   (%rax)
+    0.00 :   41ff90: sub    $0x40,%r8d
+    1.33 :   41ff94: mov    $0x3f,%ebp
+    0.00 :   41ff99: sub    %r8d,%ebp
+    0.26 :   41ff9c: mov    %r8d,%ecx
+    0.05 :   41ff9f: shr    %cl,%rax
+    0.07 :   41ffa2: mov    %ebp,%ecx
+    0.00 :   41ffa4: shl    %cl,%r11
+    0.12 :   41ffa7: mov    %r8d,%ecx
+    0.00 :   41ffaa: or     %rax,%r11
+    0.38 :   41ffad: mov    %rdx,%rax
+    0.00 :   41ffb0: shr    %cl,%rax
+    0.07 :   41ffb3: mov    %ebp,%ecx
+    0.03 :   41ffb5: shl    %cl,%r10
+    0.07 :   41ffb8: test   %r10,%r10
+    0.30 :   41ffbb: setne  %r10b
+    0.53 :   41ffbf: xor    %edx,%edx
+    0.00 :   41ffc1: movzbl %r10b,%r10d
+    0.75 :   41ffc5: or     %r11,%r10
+    0.18 :   41ffc8: jmpq   41f441 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1021>
+    0.00 :   41ffcd: nopl   (%rax)
+    0.00 :   41ffd0: mov    %rsi,%r8
+    0.14 :   41ffd3: mov    %rdx,%rsi
+    0.00 :   41ffd6: mov    0x10(%rsp),%rax
+    0.08 :   41ffdb: mov    %r13,%rcx
+    0.00 :   41ffde: mov    %r8,%rdx
+    0.00 :   41ffe1: mov    %rsi,%rbx
+    0.00 :   41ffe4: mov    %r13,%r9
+    0.00 :   41ffe7: mov    %r12,%rdi
+    0.00 :   41ffea: mov    %rdx,%r10
+    0.00 :   41ffed: shr    $0x30,%rbx
+    0.00 :   41fff1: shr    $0x30,%r10
+    0.01 :   41fff5: jne    41f3df <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xfbf>
+    0.00 :   41fffb: mov    0x10(%rsp),%rdi
+    0.00 :   420000: mov    0x40(%rsp),%rsi
+    0.00 :   420005: mov    %r12,%rdx
+    0.00 :   420008: mov    %r13,%rcx
+    0.00 :   42000b: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   420010: mov    %rax,(%rsp)
+    0.00 :   420014: mov    %rdx,0x8(%rsp)
+    0.00 :   420019: jmpq   41f4c8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x10a8>
+    0.00 :   42001e: xchg   %ax,%ax
+    0.00 :   420020: xor    %r9d,%r9d
+    0.00 :   420023: tzcnt  %rdx,%r9
+    0.00 :   420028: add    $0x40,%r9d
+    0.00 :   42002c: jmpq   41f60c <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x11ec>
+    0.00 :   420031: nopl   0x0(%rax)
+    0.00 :   420038: bsr    %rax,%rcx
+    0.00 :   42003c: xor    $0x3f,%rcx
+    0.00 :   420040: add    $0x40,%ecx
+    0.00 :   420043: jmpq   41f645 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1225>
+    0.00 :   420048: nopl   0x0(%rax,%rax,1)
+    0.00 :   420050: mov    %rsi,%rcx
+    0.00 :   420053: mov    %rdi,%rbx
+    0.00 :   420056: mov    %rax,%rsi
+    0.00 :   420059: mov    %rdx,%rdi
+    0.00 :   42005c: mov    %r12,(%rsp)
+    0.00 :   420060: mov    %rcx,%rax
+    0.00 :   420063: mov    %rbx,%rdx
+    0.00 :   420066: mov    %r13,0x8(%rsp)
+    0.00 :   42006b: jmpq   41f564 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1144>
+    0.00 :   420070: mov    $0xffffffffffffffff,%rax
+    0.00 :   420077: and    0x20(%rsp),%rax
+    0.00 :   42007c: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420086: mov    $0xffffffffffffffff,%rsi
+    0.00 :   42008d: and    0x28(%rsp),%rdx
+    0.00 :   420092: and    (%rsp),%rsi
+    0.00 :   420096: movabs $0x7fffffffffffffff,%rdi
+    0.00 :   4200a0: mov    %rdx,%rcx
+    0.00 :   4200a3: and    0x8(%rsp),%rdi
+    0.00 :   4200a8: cmp    %rsi,%rax
+    0.00 :   4200ab: sbb    %rdi,%rcx
+    0.00 :   4200ae: jb     420400 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1fe0>
+    0.00 :   4200b4: mov    %rdx,%r10
+    0.00 :   4200b7: mov    %rdi,%r8
+    0.00 :   4200ba: shr    $0x30,%r10
+    0.00 :   4200be: shr    $0x30,%r8
+    0.00 :   4200c2: je     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   4200c8: cmp    $0x7fff,%r10
+    0.00 :   4200cf: je     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   4200d5: shld   $0xd,%rax,%rdx
+    0.00 :   4200da: shld   $0xd,%rsi,%rdi
+    0.00 :   4200df: mov    %r10d,%ecx
+    0.00 :   4200e2: xor    %r13d,%r13d
+    0.00 :   4200e5: mov    $0xffffffffffffe000,%r11
+    0.00 :   4200ec: shl    $0xd,%rax
+    0.00 :   4200f0: sub    %r8d,%ecx
+    0.00 :   4200f3: mov    $0x7f,%r8d
+    0.00 :   4200f9: movabs $0x1fffffffffffffff,%r12
+    0.00 :   420103: shl    $0xd,%rsi
+    0.00 :   420107: and    %r11,%rax
+    0.00 :   42010a: movabs $0x2000000000000000,%r14
+    0.00 :   420114: and    %r11,%rsi
+    0.00 :   420117: and    %r12,%rdx
+    0.00 :   42011a: and    %r12,%rdi
+    0.00 :   42011d: or     %r13,%rax
+    0.00 :   420120: or     %r14,%rdi
+    0.00 :   420123: or     %r13,%rsi
+    0.00 :   420126: or     %r14,%rdx
+    0.00 :   420129: cmp    %r8d,%ecx
+    0.00 :   42012c: cmovg  %r8d,%ecx
+    0.00 :   420130: mov    %rdi,%r9
+    0.00 :   420133: mov    %rsi,%r8
+    0.00 :   420136: xor    %r11d,%r11d
+    0.00 :   420139: shr    %cl,%r9
+    0.00 :   42013c: shrd   %cl,%rdi,%r8
+    0.00 :   420140: test   $0x40,%cl
+    0.00 :   420143: cmovne %r9,%r8
+    0.00 :   420147: cmovne %r11,%r9
+    0.00 :   42014b: test   %rsi,%rsi
+    0.00 :   42014e: je     420390 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f70>
+    0.00 :   420154: xor    %r11d,%r11d
+    0.00 :   420157: tzcnt  %rsi,%r11
+    0.00 :   42015c: xor    %esi,%esi
+    0.00 :   42015e: cmp    %ecx,%r11d
+    0.00 :   420161: setl   %sil
+    0.00 :   420165: xor    %edi,%edi
+    0.00 :   420167: or     %r8,%rsi
+    0.00 :   42016a: or     %r9,%rdi
+    0.00 :   42016d: sub    %rsi,%rax
+    0.00 :   420170: sbb    %rdi,%rdx
+    0.00 :   420173: mov    %rax,%rcx
+    0.00 :   420176: or     %rdx,%rcx
+    0.00 :   420179: je     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   42017f: test   %rdx,%rdx
+    0.00 :   420182: je     4203d0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1fb0>
+    0.00 :   420188: bsr    %rdx,%rcx
+    0.00 :   42018c: xor    $0x3f,%ecx
+    0.00 :   42018f: sub    $0x2,%ecx
+    0.00 :   420192: sub    $0x1,%r10d
+    0.00 :   420196: xor    %esi,%esi
+    0.00 :   420198: xor    %r8d,%r8d
+    0.00 :   42019b: shld   %cl,%rax,%rdx
+    0.00 :   42019f: sub    %ecx,%r10d
+    0.00 :   4201a2: shl    %cl,%rax
+    0.00 :   4201a5: and    0x20(%rsp),%rsi
+    0.00 :   4201aa: movabs $0x8000000000000000,%rdi
+    0.00 :   4201b4: and    0x28(%rsp),%rdi
+    0.00 :   4201b9: test   $0x40,%cl
+    0.00 :   4201bc: cmovne %rax,%rdx
+    0.00 :   4201c0: cmovne %r8,%rax
+    0.00 :   4201c4: mov    %rdx,%rcx
+    0.00 :   4201c7: shr    $0x3e,%rcx
+    0.00 :   4201cb: je     4201e6 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1dc6>
+    0.00 :   4201cd: mov    %rax,%r8
+    0.00 :   4201d0: mov    %rdx,%r9
+    0.00 :   4201d3: and    $0x1,%eax
+    0.00 :   4201d6: shrd   $0x1,%rdx,%r8
+    0.00 :   4201db: shr    %r9
+    0.00 :   4201de: xor    %edx,%edx
+    0.00 :   4201e0: or     %r8,%rax
+    0.00 :   4201e3: or     %r9,%rdx
+    0.00 :   4201e6: add    %ecx,%r10d
+    0.00 :   4201e9: cmp    $0x7ffe,%r10d
+    0.00 :   4201f0: ja     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   4201f6: mov    %rax,%r8
+    0.00 :   4201f9: xor    %r9d,%r9d
+    0.00 :   4201fc: movslq %r10d,%r10
+    0.00 :   4201ff: shrd   $0xd,%rdx,%r8
+    0.00 :   420204: mov    %r10,%r11
+    0.00 :   420207: and    $0x1,%r8d
+    0.00 :   42020b: add    $0xfff,%rax
+    0.00 :   420211: adc    $0x0,%rdx
+    0.00 :   420215: add    %rax,%r8
+    0.00 :   420218: adc    %rdx,%r9
+    0.00 :   42021b: xor    %r10d,%r10d
+    0.00 :   42021e: shl    $0x30,%r11
+    0.00 :   420222: shrd   $0xd,%r9,%r8
+    0.00 :   420227: shr    $0xd,%r9
+    0.00 :   42022b: add    %r10,%r8
+    0.00 :   42022e: adc    %r11,%r9
+    0.00 :   420231: mov    %r9,%rax
+    0.00 :   420234: shr    $0x30,%rax
+    0.00 :   420238: cmp    $0x7ffe,%rax
+    0.00 :   42023e: ja     42035b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1f3b>
+    0.00 :   420244: or     %r8,%rsi
+    0.00 :   420247: or     %r9,%rdi
+    0.00 :   42024a: mov    %rsi,0x20(%rsp)
+    0.00 :   42024f: mov    %rdi,0x28(%rsp)
+    0.00 :   420254: jmpq   41fd30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1910>
+    0.00 :   420259: nopl   0x0(%rax)
+    0.00 :   420260: sub    $0x40,%r8d
+    0.00 :   420264: mov    $0x3f,%r14d
+    0.00 :   42026a: sub    %r8d,%r14d
+    0.00 :   42026d: mov    %r8d,%ecx
+    0.00 :   420270: shr    %cl,%rax
+    0.00 :   420273: mov    %r14d,%ecx
+    0.00 :   420276: shl    %cl,%r11
+    0.00 :   420279: mov    %r8d,%ecx
+    0.00 :   42027c: or     %rax,%r11
+    0.00 :   42027f: mov    %rdx,%rax
+    0.00 :   420282: shr    %cl,%rax
+    0.00 :   420285: mov    %r14d,%ecx
+    0.00 :   420288: shl    %cl,%r10
+    0.00 :   42028b: test   %r10,%r10
+    0.00 :   42028e: setne  %r10b
+    0.00 :   420292: xor    %edx,%edx
+    0.00 :   420294: movzbl %r10b,%r10d
+    0.00 :   420298: or     %r11,%r10
+    0.00 :   42029b: jmpq   41fca7 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1887>
+    0.00 :   4202a0: sub    $0x40,%r8d
+    0.00 :   4202a4: mov    $0x3f,%r12d
+    0.00 :   4202aa: sub    %r8d,%r12d
+    0.00 :   4202ad: mov    %r8d,%ecx
+    0.00 :   4202b0: shr    %cl,%rbx
+    0.00 :   4202b3: mov    %r12d,%ecx
+    0.00 :   4202b6: shl    %cl,%r11
+    0.00 :   4202b9: mov    %r8d,%ecx
+    0.00 :   4202bc: shr    %cl,%rax
+    0.00 :   4202bf: mov    %r12d,%ecx
+    0.00 :   4202c2: or     %rbx,%r11
+    0.00 :   4202c5: shl    %cl,%r10
+    0.00 :   4202c8: mov    %rax,%rbx
+    0.00 :   4202cb: test   %r10,%r10
+    0.00 :   4202ce: setne  %r10b
+    0.00 :   4202d2: xor    %eax,%eax
+    0.00 :   4202d4: movzbl %r10b,%r10d
+    0.00 :   4202d8: or     %r11,%r10
+    0.00 :   4202db: jmpq   41f898 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1478>
+    0.00 :   4202e0: mov    %rdx,%r8
+    0.00 :   4202e3: mov    %rax,%rdx
+    0.00 :   4202e6: mov    %rbp,%rcx
+    0.00 :   4202e9: mov    %rbp,%r9
+    0.00 :   4202ec: mov    %r8,%rax
+    0.00 :   4202ef: mov    %rdx,%rbp
+    0.00 :   4202f2: mov    %rbx,%rsi
+    0.00 :   4202f5: mov    %rdi,%rbx
+    0.01 :   4202f8: mov    %rax,%r10
+    0.00 :   4202fb: shr    $0x30,%rbp
+    0.00 :   4202ff: shr    $0x30,%r10
+    0.00 :   420303: jne    41f833 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1413>
+    0.00 :   420309: mov    (%rsp),%rdx
+    0.00 :   42030d: mov    0x8(%rsp),%rcx
+    0.00 :   420312: mov    %r14,%rsi
+    0.00 :   420315: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   42031a: mov    %rax,(%rsp)
+    0.00 :   42031e: mov    %rdx,0x8(%rsp)
+    0.00 :   420323: jmpq   41f91e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x14fe>
+    0.00 :   420328: nopl   0x0(%rax,%rax,1)
+    0.00 :   420330: mov    %rsi,%r8
+    0.01 :   420333: mov    %rdx,%rsi
+    0.00 :   420336: mov    0x30(%rsp),%rax
+    0.00 :   42033b: mov    %rbx,%rdi
+    0.00 :   42033e: mov    %r8,%rdx
+    0.00 :   420341: mov    %rsi,%r13
+    0.00 :   420344: mov    %rbp,%rcx
+    0.00 :   420347: mov    %rbp,%r9
+    0.00 :   42034a: mov    %rdx,%r10
+    0.00 :   42034d: shr    $0x30,%r13
+    0.00 :   420351: shr    $0x30,%r10
+    0.00 :   420355: jne    41fc42 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1822>
+    0.00 :   42035b: mov    0x30(%rsp),%rdi
+    0.00 :   420360: mov    0x40(%rsp),%rsi
+    0.00 :   420365: movaps %xmm0,0x50(%rsp)
+    0.00 :   42036a: mov    (%rsp),%rdx
+    0.00 :   42036e: mov    0x8(%rsp),%rcx
+    0.00 :   420373: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   420378: movdqa 0x50(%rsp),%xmm0
+    0.00 :   42037e: mov    %rax,0x20(%rsp)
+    0.00 :   420383: mov    %rdx,0x28(%rsp)
+    0.00 :   420388: jmpq   41fd30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1910>
+    0.00 :   42038d: nopl   (%rax)
+    0.00 :   420390: xor    %r11d,%r11d
+    0.00 :   420393: tzcnt  %rdi,%r11
+    0.00 :   420398: add    $0x40,%r11d
+    0.00 :   42039c: jmpq   42015c <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1d3c>
+    0.00 :   4203a1: nopl   0x0(%rax)
+    0.00 :   4203a8: xor    %ebx,%ebx
+    0.00 :   4203aa: tzcnt  %r9,%rbx
+    0.00 :   4203af: add    $0x40,%ebx
+    0.00 :   4203b2: jmpq   41fe9c <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1a7c>
+    0.00 :   4203b7: nopw   0x0(%rax,%rax,1)
+    0.00 :   4203c0: bsr    %rax,%rcx
+    0.00 :   4203c4: xor    $0x3f,%rcx
+    0.00 :   4203c8: add    $0x40,%ecx
+    0.00 :   4203cb: jmpq   41fece <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1aae>
+    0.00 :   4203d0: bsr    %rax,%rcx
+    0.00 :   4203d4: xor    $0x3f,%rcx
+    0.00 :   4203d8: add    $0x40,%ecx
+    0.00 :   4203db: jmpq   42018f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1d6f>
+    0.00 :   4203e0: mov    %rax,%r8
+    0.00 :   4203e3: mov    %rdx,%r9
+    0.00 :   4203e6: mov    %rcx,%rax
+    0.00 :   4203e9: mov    %rbx,%rdx
+    0.00 :   4203ec: mov    (%rsp),%r12
+    0.00 :   4203f0: mov    0x8(%rsp),%r13
+    0.00 :   4203f5: mov    %r8,%rcx
+    0.00 :   4203f8: mov    %r9,%rbx
+    0.00 :   4203fb: jmpq   41fdd4 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x19b4>
+    0.00 :   420400: movdqa (%rsp),%xmm5
+    0.00 :   420405: mov    %rax,%r8
+    0.00 :   420408: mov    %rdx,%r9
+    0.00 :   42040b: mov    %rsi,%rax
+    0.00 :   42040e: mov    %rdi,%rdx
+    0.00 :   420411: mov    %r8,%rsi
+    0.00 :   420414: mov    %r9,%rdi
+    0.00 :   420417: movaps %xmm5,0x20(%rsp)
+    0.00 :   42041c: jmpq   4200b4 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1c94>
+    0.00 :   420421: nopl   0x0(%rax)
+    0.00 :   420428: mov    0x90(%rsp),%rax
+    0.00 :   420430: mov    0x98(%rsp),%r15
+    0.00 :   420438: movdqa %xmm4,%xmm6
+    0.00 :   42043c: mov    0xc0(%rsp),%rbp
+    0.00 :   420444: mov    0x108(%rax),%rcx
+    0.00 :   42044b: mov    0x100(%rax),%rdx
+    0.00 :   420452: mov    %fs:0x230(%rbp),%rsi
+    0.00 :   42045a: mov    %r15,%rax
+    0.00 :   42045d: movdqa 0x20(%rsp),%xmm7
+    0.00 :   420463: add    $0x1,%r15
+    0.00 :   420467: shl    $0x4,%rax
+    0.00 :   42046b: movaps %xmm7,(%rsi,%rax,1)
+    0.00 :   42046f: mov    %fs:0x248(%rbp),%rsi
+    0.00 :   420477: movaps %xmm6,(%rsi,%rax,1)
+    0.00 :   42047b: mov    %rcx,%rax
+    0.00 :   42047e: movabs $0xaaaaaaaaaaaaaaab,%rsi
+    0.00 :   420488: sub    %rdx,%rax
+    0.00 :   42048b: sar    $0x3,%rax
+    0.00 :   42048f: imul   %rsi,%rax
+    0.00 :   420493: cmp    %rax,%r15
+    0.00 :   420496: jb     41f798 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1378>
+    0.00 :   42049c: mov    0x90(%rsp),%rax
+    0.00 :   4204a4: movq   $0x0,(%rsp)
+    0.00 :   4204ac: mov    $0xfffffffffffff6c0,%rbx
+    0.00 :   4204b3: movq   $0x0,0x10(%rsp)
+    0.00 :   4204bc: movq   $0x0,0x18(%rsp)
+    0.00 :   4204c5: mov    0x58(%rax),%rbp
+    0.00 :   4204c9: movq   $0x0,0x8(%rsp)
+    0.00 :   4204d2: mov    0x60(%rax),%rax
+    0.00 :   4204d6: mov    %rax,0x50(%rsp)
+    0.00 :   4204db: cmp    %rbp,%rax
+    0.00 :   4204de: jne    420796 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2376>
+    0.00 :   4204e4: jmpq   420c81 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2861>
+    0.00 :   4204e9: nopl   0x0(%rax)
+    0.00 :   4204f0: mov    %rcx,%rsi
+    0.03 :   4204f3: mov    (%rsp),%rdi
+    0.02 :   4204f7: mov    0x20(%rsp),%rax
+    0.00 :   4204fc: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420506: and    %rdx,%rsi
+    0.00 :   420509: and    %r8,%rdx
+    0.00 :   42050c: cmp    %rdx,%rsi
+    0.00 :   42050f: jb     420e30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a10>
+    0.00 :   420515: mov    %rsi,%r14
+    0.00 :   420518: mov    %rdx,%r10
+    0.00 :   42051b: shr    $0x30,%r14
+    0.00 :   42051f: shr    $0x30,%r10
+    0.00 :   420523: je     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   420529: cmp    $0x7fff,%r14
+    0.00 :   420530: je     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   420536: mov    %r14d,%r8d
+    0.00 :   420539: sub    %r10d,%r8d
+    0.00 :   42053c: cmp    $0x71,%r8d
+    0.00 :   420540: ja     4212e0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ec0>
+    0.00 :   420546: movabs $0xffffffffffff,%rcx
+    0.00 :   420550: lea    (%rax,%rax,1),%r10
+    0.00 :   420554: and    %rcx,%rdx
+    0.00 :   420557: bts    $0x30,%rdx
+    0.01 :   42055c: lea    (%rdx,%rdx,1),%r11
+    0.00 :   420560: cmp    $0x3f,%r8d
+    0.00 :   420564: ja     420da0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2980>
+    0.00 :   42056a: mov    $0x3f,%r15d
+    0.00 :   420570: sub    %r8d,%r15d
+    0.00 :   420573: mov    %r15d,%ecx
+    0.00 :   420576: shl    %cl,%r10
+    0.00 :   420579: mov    %r8d,%ecx
+    0.00 :   42057c: shr    %cl,%rax
+    0.00 :   42057f: mov    %r15d,%ecx
+    0.00 :   420582: shl    %cl,%r11
+    0.00 :   420585: mov    %r8d,%ecx
+    0.00 :   420588: or     %r11,%rax
+    0.00 :   42058b: shr    %cl,%rdx
+    0.00 :   42058e: xor    %ecx,%ecx
+    0.00 :   420590: add    %rdi,%rax
+    0.00 :   420593: movabs $0xffffffffffff,%rdi
+    0.00 :   42059d: setb   %cl
+    0.00 :   4205a0: and    %rdi,%rsi
+    0.00 :   4205a3: bts    $0x30,%rsi
+    0.00 :   4205a8: add    %rsi,%rdx
+    0.00 :   4205ab: lea    (%rdx,%rcx,1),%rsi
+    0.00 :   4205af: lea    -0x1(%r14),%ecx
+    0.00 :   4205b3: mov    %rsi,%rdi
+    0.00 :   4205b6: shr    $0x31,%rdi
+    0.01 :   4205ba: jne    421367 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2f47>
+    0.01 :   4205c0: movabs $0x8000000000000000,%rdx
+    0.00 :   4205ca: mov    %rax,%rdi
+    0.00 :   4205cd: and    $0x1,%edi
+    0.00 :   4205d0: sub    %rdi,%rdx
+    0.00 :   4205d3: cmp    %r10,%rdx
+    0.00 :   4205d6: setb   %dl
+    0.00 :   4205d9: movzbl %dl,%edx
+    0.00 :   4205dc: add    %rdx,%rax
+    0.00 :   4205df: mov    %rsi,%rdx
+    0.00 :   4205e2: adc    $0x0,%rdx
+    0.00 :   4205e6: shl    $0x30,%rcx
+    0.00 :   4205ea: add    %rcx,%rdx
+    0.00 :   4205ed: mov    %rdx,%rcx
+    0.00 :   4205f0: shr    $0x30,%rcx
+    0.00 :   4205f4: cmp    $0x7ffe,%rcx
+    0.01 :   4205fb: ja     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   420601: movabs $0x8000000000000000,%rcx
+    0.00 :   42060b: mov    %rax,(%rsp)
+    0.00 :   42060f: and    %rcx,%r9
+    0.00 :   420612: or     %rdx,%r9
+    0.00 :   420615: mov    %r9,0x8(%rsp)
+    0.00 :   42061a: mov    0x18(%rsp),%rax
+    0.00 :   42061f: mov    0x10(%rsp),%r13
+    0.00 :   420624: mov    %rax,0x30(%rsp)
+    0.01 :   420629: mov    %fs:0x248(%rbx),%rax
+    0.00 :   420631: movdqa (%rax,%r12,1),%xmm0
+    0.00 :   420637: callq  404e90 <__divtf3@plt>
+    0.00 :   42063c: mov    0x18(%rsp),%r10
+    0.00 :   420641: movaps %xmm0,0x20(%rsp)
+    0.01 :   420646: mov    0x28(%rsp),%rcx
+    0.05 :   42064b: mov    %r10,%rax
+    0.00 :   42064e: mov    %r10,%r9
+    0.00 :   420651: xor    %rcx,%rax
+    0.00 :   420654: js     420a88 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2668>
+    0.01 :   42065a: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420664: mov    %r10,%rsi
+    0.00 :   420667: mov    0x20(%rsp),%rax
+    0.00 :   42066c: mov    %r13,%rdi
+    0.00 :   42066f: and    %rdx,%rsi
+    0.00 :   420672: and    %rcx,%rdx
+    0.00 :   420675: cmp    %rdx,%rsi
+    0.01 :   420678: jb     420de0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29c0>
+    0.00 :   42067e: mov    %rsi,%r12
+    0.00 :   420681: mov    %rdx,%rcx
+    0.00 :   420684: shr    $0x30,%r12
+    0.00 :   420688: shr    $0x30,%rcx
+    0.00 :   42068c: je     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420692: cmp    $0x7fff,%r12
+    0.00 :   420699: je     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   42069f: mov    %r12d,%r8d
+    0.00 :   4206a2: sub    %ecx,%r8d
+    0.01 :   4206a5: cmp    $0x71,%r8d
+    0.01 :   4206a9: ja     421317 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ef7>
+    0.00 :   4206af: movabs $0xffffffffffff,%rcx
+    0.00 :   4206b9: lea    (%rax,%rax,1),%r10
+    0.00 :   4206bd: and    %rcx,%rdx
+    0.00 :   4206c0: bts    $0x30,%rdx
+    0.01 :   4206c5: lea    (%rdx,%rdx,1),%r11
+    0.00 :   4206c9: cmp    $0x3f,%r8d
+    0.00 :   4206cd: ja     420d60 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2940>
+    0.00 :   4206d3: mov    $0x3f,%r14d
+    0.00 :   4206d9: sub    %r8d,%r14d
+    0.00 :   4206dc: mov    %r14d,%ecx
+    0.00 :   4206df: shl    %cl,%r10
+    0.00 :   4206e2: mov    %r8d,%ecx
+    0.00 :   4206e5: shr    %cl,%rax
+    0.00 :   4206e8: mov    %r14d,%ecx
+    0.00 :   4206eb: shl    %cl,%r11
+    0.01 :   4206ee: mov    %r8d,%ecx
+    0.00 :   4206f1: or     %r11,%rax
+    0.01 :   4206f4: shr    %cl,%rdx
+    0.00 :   4206f7: xor    %ecx,%ecx
+    0.00 :   4206f9: add    %rdi,%rax
+    0.01 :   4206fc: movabs $0xffffffffffff,%rdi
+    0.00 :   420706: setb   %cl
+    0.00 :   420709: and    %rdi,%rsi
+    0.00 :   42070c: bts    $0x30,%rsi
+    0.00 :   420711: add    %rsi,%rdx
+    0.00 :   420714: add    %rcx,%rdx
+    0.01 :   420717: lea    -0x1(%r12),%ecx
+    0.00 :   42071c: mov    %rdx,%rdi
+    0.00 :   42071f: shr    $0x31,%rdi
+    0.01 :   420723: jne    421397 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2f77>
+    0.01 :   420729: movabs $0x8000000000000000,%rsi
+    0.00 :   420733: mov    %rax,%rdi
+    0.00 :   420736: and    $0x1,%edi
+    0.00 :   420739: sub    %rdi,%rsi
+    0.00 :   42073c: cmp    %r10,%rsi
+    0.00 :   42073f: setb   %sil
+    0.00 :   420743: movzbl %sil,%esi
+    0.02 :   420747: add    %rsi,%rax
+    0.01 :   42074a: adc    $0x0,%rdx
+    0.00 :   42074e: mov    %rdx,%rsi
+    0.00 :   420751: shl    $0x30,%rcx
+    0.00 :   420755: lea    (%rcx,%rsi,1),%rdx
+    0.01 :   420759: mov    %rdx,%rcx
+    0.00 :   42075c: shr    $0x30,%rcx
+    0.00 :   420760: cmp    $0x7ffe,%rcx
+    0.02 :   420767: ja     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   42076d: movabs $0x8000000000000000,%rcx
+    0.00 :   420777: mov    %rax,0x10(%rsp)
+    0.00 :   42077c: and    %rcx,%r9
+    0.00 :   42077f: or     %rdx,%r9
+    0.00 :   420782: mov    %r9,0x18(%rsp)
+    0.00 :   420787: add    $0x38,%rbp
+    0.00 :   42078b: cmp    %rbp,0x50(%rsp)
+    0.00 :   420790: je     420c81 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2861>
+    0.00 :   420796: movslq 0x30(%rbp),%rax
+    0.01 :   42079a: movslq 0x34(%rbp),%r12
+    0.00 :   42079e: shl    $0x4,%rax
+    0.00 :   4207a2: add    %fs:0x218(%rbx),%rax
+    0.00 :   4207aa: shl    $0x4,%r12
+    0.00 :   4207ae: movdqa (%rax),%xmm1
+    0.01 :   4207b2: mov    %rax,%r13
+    0.00 :   4207b5: mov    (%rsp),%rax
+    0.00 :   4207b9: mov    %rax,0x40(%rsp)
+    0.01 :   4207be: mov    0x8(%rsp),%rax
+    0.00 :   4207c3: mov    %rax,0x68(%rsp)
+    0.00 :   4207c8: mov    %fs:0x230(%rbx),%rax
+    0.00 :   4207d0: movaps %xmm1,0x30(%rsp)
+    0.00 :   4207d5: movdqa (%rax,%r12,1),%xmm0
+    0.00 :   4207db: callq  404e90 <__divtf3@plt>
+    0.00 :   4207e0: mov    0x8(%rsp),%rcx
+    0.00 :   4207e5: movdqa 0x30(%rsp),%xmm1
+    0.00 :   4207eb: movaps %xmm0,0x20(%rsp)
+    0.02 :   4207f0: mov    0x28(%rsp),%r8
+    0.06 :   4207f5: mov    %rcx,%rax
+    0.00 :   4207f8: mov    %rcx,%r9
+    0.00 :   4207fb: xor    %r8,%rax
+    0.00 :   4207fe: jns    4204f0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x20d0>
+    0.01 :   420804: mov    $0xffffffffffffffff,%rax
+    0.00 :   42080b: and    (%rsp),%rax
+    0.00 :   42080f: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420819: mov    $0xffffffffffffffff,%r8
+    0.00 :   420820: and    0x8(%rsp),%rdx
+    0.00 :   420825: and    0x20(%rsp),%r8
+    0.00 :   42082a: movabs $0x7fffffffffffffff,%r9
+    0.00 :   420834: mov    %rdx,%rdi
+    0.01 :   420837: and    0x28(%rsp),%r9
+    0.00 :   42083c: cmp    %r8,%rax
+    0.00 :   42083f: sbb    %r9,%rdi
+    0.00 :   420842: jb     420ee0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ac0>
+    0.00 :   420848: mov    %rdx,%rsi
+    0.02 :   42084b: mov    %r9,%rdi
+    0.00 :   42084e: shr    $0x30,%rsi
+    0.00 :   420852: shr    $0x30,%rdi
+    0.00 :   420856: je     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   42085c: cmp    $0x7fff,%rsi
+    0.00 :   420863: je     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   420869: shld   $0xd,%rax,%rdx
+    0.01 :   42086e: shld   $0xd,%r8,%r9
+    0.01 :   420873: mov    %esi,%ecx
+    0.00 :   420875: xor    %r14d,%r14d
+    0.00 :   420878: mov    $0xffffffffffffe000,%r10
+    0.00 :   42087f: shl    $0xd,%rax
+    0.00 :   420883: sub    %edi,%ecx
+    0.00 :   420885: mov    $0x7f,%edi
+    0.00 :   42088a: movabs $0x1fffffffffffffff,%r11
+    0.00 :   420894: shl    $0xd,%r8
+    0.00 :   420898: and    %r10,%rax
+    0.00 :   42089b: movabs $0x2000000000000000,%r15
+    0.00 :   4208a5: and    %r11,%rdx
+    0.00 :   4208a8: and    %r10,%r8
+    0.00 :   4208ab: and    %r11,%r9
+    0.00 :   4208ae: or     %r14,%rax
+    0.00 :   4208b1: or     %r15,%r9
+    0.00 :   4208b4: or     %r14,%r8
+    0.00 :   4208b7: or     %r15,%rdx
+    0.00 :   4208ba: cmp    %edi,%ecx
+    0.00 :   4208bc: cmovg  %edi,%ecx
+    0.01 :   4208bf: mov    %r8,%r10
+    0.00 :   4208c2: mov    %r9,%r11
+    0.00 :   4208c5: xor    %edi,%edi
+    0.00 :   4208c7: shr    %cl,%r11
+    0.00 :   4208ca: shrd   %cl,%r9,%r10
+    0.02 :   4208ce: test   $0x40,%cl
+    0.00 :   4208d1: cmovne %r11,%r10
+    0.00 :   4208d5: cmovne %rdi,%r11
+    0.00 :   4208d9: test   %r8,%r8
+    0.00 :   4208dc: je     420e90 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a70>
+    0.00 :   4208e2: xor    %edi,%edi
+    0.00 :   4208e4: tzcnt  %r8,%rdi
+    0.00 :   4208e9: xor    %r8d,%r8d
+    0.00 :   4208ec: cmp    %edi,%ecx
+    0.00 :   4208ee: setg   %r8b
+    0.00 :   4208f2: xor    %r9d,%r9d
+    0.00 :   4208f5: or     %r10,%r8
+    0.00 :   4208f8: or     %r11,%r9
+    0.00 :   4208fb: sub    %r8,%rax
+    0.00 :   4208fe: sbb    %r9,%rdx
+    0.01 :   420901: mov    %rax,%rcx
+    0.00 :   420904: or     %rdx,%rcx
+    0.01 :   420907: je     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.01 :   42090d: test   %rdx,%rdx
+    0.00 :   420910: je     420ed0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ab0>
+    0.00 :   420916: bsr    %rdx,%rcx
+    0.02 :   42091a: xor    $0x3f,%ecx
+    0.01 :   42091d: sub    $0x2,%ecx
+    0.00 :   420920: sub    $0x1,%esi
+    0.00 :   420923: xor    %r14d,%r14d
+    0.00 :   420926: xor    %r11d,%r11d
+    0.00 :   420929: shld   %cl,%rax,%rdx
+    0.03 :   42092d: sub    %ecx,%esi
+    0.00 :   42092f: shl    %cl,%rax
+    0.00 :   420932: and    (%rsp),%r14
+    0.00 :   420936: movabs $0x8000000000000000,%r15
+    0.00 :   420940: and    0x8(%rsp),%r15
+    0.00 :   420945: test   $0x40,%cl
+    0.00 :   420948: cmovne %rax,%rdx
+    0.00 :   42094c: cmovne %r11,%rax
+    0.01 :   420950: mov    %rdx,%rcx
+    0.00 :   420953: shr    $0x3e,%rcx
+    0.00 :   420957: je     420972 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2552>
+    0.00 :   420959: mov    %rax,%r8
+    0.00 :   42095c: mov    %rdx,%r9
+    0.00 :   42095f: and    $0x1,%eax
+    0.00 :   420962: shrd   $0x1,%rdx,%r8
+    0.00 :   420967: shr    %r9
+    0.00 :   42096a: xor    %edx,%edx
+    0.00 :   42096c: or     %r8,%rax
+    0.00 :   42096f: or     %r9,%rdx
+    0.01 :   420972: add    %ecx,%esi
+    0.00 :   420974: cmp    $0x7ffe,%esi
+    0.01 :   42097a: ja     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   420980: mov    %rax,%r8
+    0.00 :   420983: xor    %r9d,%r9d
+    0.00 :   420986: movslq %esi,%rsi
+    0.00 :   420989: shrd   $0xd,%rdx,%r8
+    0.01 :   42098e: mov    %rsi,%rdi
+    0.00 :   420991: and    $0x1,%r8d
+    0.00 :   420995: add    $0xfff,%rax
+    0.00 :   42099b: adc    $0x0,%rdx
+    0.00 :   42099f: add    %r8,%rax
+    0.00 :   4209a2: adc    %r9,%rdx
+    0.00 :   4209a5: xor    %esi,%esi
+    0.00 :   4209a7: shl    $0x30,%rdi
+    0.00 :   4209ab: shrd   $0xd,%rdx,%rax
+    0.03 :   4209b0: shr    $0xd,%rdx
+    0.00 :   4209b4: add    %rsi,%rax
+    0.00 :   4209b7: adc    %rdi,%rdx
+    0.01 :   4209ba: mov    %rdx,%rcx
+    0.00 :   4209bd: shr    $0x30,%rcx
+    0.00 :   4209c1: cmp    $0x7ffe,%rcx
+    0.01 :   4209c8: ja     420e5b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a3b>
+    0.00 :   4209ce: or     %rax,%r14
+    0.00 :   4209d1: or     %rdx,%r15
+    0.00 :   4209d4: mov    %r14,(%rsp)
+    0.00 :   4209d8: mov    %r15,0x8(%rsp)
+    0.01 :   4209dd: jmpq   42061a <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x21fa>
+    0.00 :   4209e2: nopw   0x0(%rax,%rax,1)
+    0.00 :   4209e8: mov    %rcx,0xa8(%rsp)
+    0.00 :   4209f0: mov    %rdi,%rax
+    0.00 :   4209f3: xor    %edx,%edx
+    0.00 :   4209f5: or     0xa8(%rsp),%rdx
+    0.00 :   4209fd: movq   $0x0,0xa0(%rsp)
+    0.00 :   420a09: or     0xa0(%rsp),%rax
+    0.00 :   420a11: mov    %rax,0x20(%rsp)
+    0.00 :   420a16: mov    %rdx,0x28(%rsp)
+    0.00 :   420a1b: jmpq   41fd30 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1910>
+    0.00 :   420a20: mov    %rcx,0xb8(%rsp)
+    0.00 :   420a28: xor    %edi,%edi
+    0.00 :   420a2a: or     0xb8(%rsp),%rdi
+    0.00 :   420a32: movq   $0x0,0xb0(%rsp)
+    0.00 :   420a3e: or     0xb0(%rsp),%rsi
+    0.00 :   420a46: mov    %rsi,(%rsp)
+    0.00 :   420a4a: mov    %rdi,0x8(%rsp)
+    0.00 :   420a4f: jmpq   41f91e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x14fe>
+    0.00 :   420a54: nopl   0x0(%rax)
+    0.00 :   420a58: mov    %rcx,0x78(%rsp)
+    0.12 :   420a5d: mov    %rdi,%rax
+    0.00 :   420a60: xor    %edx,%edx
+    0.00 :   420a62: or     0x78(%rsp),%rdx
+    0.03 :   420a67: movq   $0x0,0x70(%rsp)
+    0.00 :   420a70: or     0x70(%rsp),%rax
+    0.01 :   420a75: mov    %rax,(%rsp)
+    0.00 :   420a79: mov    %rdx,0x8(%rsp)
+    0.02 :   420a7e: jmpq   41f4c8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x10a8>
+    0.00 :   420a83: nopl   0x0(%rax,%rax,1)
+    0.00 :   420a88: mov    $0xffffffffffffffff,%rax
+    0.00 :   420a8f: and    0x10(%rsp),%rax
+    0.00 :   420a94: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420a9e: mov    $0xffffffffffffffff,%rsi
+    0.00 :   420aa5: and    0x18(%rsp),%rdx
+    0.00 :   420aaa: and    0x20(%rsp),%rsi
+    0.00 :   420aaf: movabs $0x7fffffffffffffff,%rdi
+    0.00 :   420ab9: mov    %rdx,%rcx
+    0.00 :   420abc: and    0x28(%rsp),%rdi
+    0.00 :   420ac1: cmp    %rsi,%rax
+    0.00 :   420ac4: sbb    %rdi,%rcx
+    0.00 :   420ac7: jb     420f08 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2ae8>
+    0.00 :   420acd: mov    %rdx,%r10
+    0.00 :   420ad0: mov    %rdi,%r8
+    0.00 :   420ad3: shr    $0x30,%r10
+    0.00 :   420ad7: shr    $0x30,%r8
+    0.00 :   420adb: je     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420ae1: cmp    $0x7fff,%r10
+    0.00 :   420ae8: je     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420aee: shld   $0xd,%rax,%rdx
+    0.00 :   420af3: shld   $0xd,%rsi,%rdi
+    0.00 :   420af8: mov    %r10d,%ecx
+    0.00 :   420afb: xor    %r14d,%r14d
+    0.00 :   420afe: mov    $0xffffffffffffe000,%r11
+    0.00 :   420b05: shl    $0xd,%rax
+    0.00 :   420b09: sub    %r8d,%ecx
+    0.00 :   420b0c: mov    $0x7f,%r8d
+    0.00 :   420b12: movabs $0x1fffffffffffffff,%r12
+    0.00 :   420b1c: shl    $0xd,%rsi
+    0.00 :   420b20: and    %r11,%rax
+    0.00 :   420b23: movabs $0x2000000000000000,%r15
+    0.00 :   420b2d: and    %r11,%rsi
+    0.00 :   420b30: and    %r12,%rdx
+    0.00 :   420b33: and    %r12,%rdi
+    0.00 :   420b36: or     %r14,%rax
+    0.00 :   420b39: or     %r15,%rdi
+    0.00 :   420b3c: or     %r14,%rsi
+    0.00 :   420b3f: or     %r15,%rdx
+    0.00 :   420b42: cmp    %r8d,%ecx
+    0.00 :   420b45: cmovg  %r8d,%ecx
+    0.00 :   420b49: mov    %rdi,%r9
+    0.00 :   420b4c: mov    %rsi,%r8
+    0.00 :   420b4f: xor    %r11d,%r11d
+    0.00 :   420b52: shr    %cl,%r9
+    0.00 :   420b55: shrd   %cl,%rdi,%r8
+    0.00 :   420b59: test   $0x40,%cl
+    0.00 :   420b5c: cmovne %r9,%r8
+    0.00 :   420b60: cmovne %r11,%r9
+    0.00 :   420b64: test   %rsi,%rsi
+    0.00 :   420b67: je     420ea0 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a80>
+    0.00 :   420b6d: xor    %r11d,%r11d
+    0.00 :   420b70: tzcnt  %rsi,%r11
+    0.00 :   420b75: xor    %esi,%esi
+    0.00 :   420b77: cmp    %ecx,%r11d
+    0.00 :   420b7a: setl   %sil
+    0.00 :   420b7e: xor    %edi,%edi
+    0.00 :   420b80: or     %r8,%rsi
+    0.00 :   420b83: or     %r9,%rdi
+    0.00 :   420b86: sub    %rsi,%rax
+    0.00 :   420b89: sbb    %rdi,%rdx
+    0.00 :   420b8c: mov    %rax,%rcx
+    0.00 :   420b8f: or     %rdx,%rcx
+    0.00 :   420b92: je     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420b98: test   %rdx,%rdx
+    0.00 :   420b9b: je     420eb8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2a98>
+    0.00 :   420ba1: bsr    %rdx,%rcx
+    0.00 :   420ba5: xor    $0x3f,%ecx
+    0.00 :   420ba8: mov    0x10(%rsp),%r14
+    0.00 :   420bad: mov    0x18(%rsp),%r15
+    0.00 :   420bb2: sub    $0x2,%ecx
+    0.00 :   420bb5: xor    %esi,%esi
+    0.00 :   420bb7: sub    $0x1,%r10d
+    0.00 :   420bbb: shld   %cl,%rax,%rdx
+    0.00 :   420bbf: xor    %r12d,%r12d
+    0.00 :   420bc2: movabs $0x8000000000000000,%rdi
+    0.00 :   420bcc: shl    %cl,%rax
+    0.00 :   420bcf: sub    %ecx,%r10d
+    0.00 :   420bd2: and    %rsi,%r14
+    0.00 :   420bd5: and    %rdi,%r15
+    0.00 :   420bd8: test   $0x40,%cl
+    0.00 :   420bdb: cmovne %rax,%rdx
+    0.00 :   420bdf: cmovne %r12,%rax
+    0.00 :   420be3: mov    %rdx,%rcx
+    0.00 :   420be6: shr    $0x3e,%rcx
+    0.00 :   420bea: je     420c05 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x27e5>
+    0.00 :   420bec: mov    %rax,%r8
+    0.00 :   420bef: mov    %rdx,%r9
+    0.00 :   420bf2: and    $0x1,%eax
+    0.00 :   420bf5: shrd   $0x1,%rdx,%r8
+    0.00 :   420bfa: shr    %r9
+    0.00 :   420bfd: xor    %edx,%edx
+    0.00 :   420bff: or     %r8,%rax
+    0.00 :   420c02: or     %r9,%rdx
+    0.00 :   420c05: add    %r10d,%ecx
+    0.00 :   420c08: cmp    $0x7ffe,%ecx
+    0.00 :   420c0e: ja     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420c14: mov    %rax,%r8
+    0.00 :   420c17: xor    %r9d,%r9d
+    0.00 :   420c1a: shrd   $0xd,%rdx,%r8
+    0.00 :   420c1f: and    $0x1,%r8d
+    0.00 :   420c23: add    $0xfff,%rax
+    0.00 :   420c29: adc    $0x0,%rdx
+    0.00 :   420c2d: add    %rax,%r8
+    0.00 :   420c30: movslq %ecx,%rax
+    0.00 :   420c33: adc    %rdx,%r9
+    0.00 :   420c36: mov    %rax,%rdx
+    0.00 :   420c39: xor    %eax,%eax
+    0.00 :   420c3b: shrd   $0xd,%r9,%r8
+    0.00 :   420c40: shl    $0x30,%rdx
+    0.00 :   420c44: shr    $0xd,%r9
+    0.00 :   420c48: add    %r8,%rax
+    0.00 :   420c4b: adc    %r9,%rdx
+    0.00 :   420c4e: mov    %rdx,%rcx
+    0.00 :   420c51: shr    $0x30,%rcx
+    0.00 :   420c55: cmp    $0x7ffe,%rcx
+    0.00 :   420c5c: ja     420e09 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x29e9>
+    0.00 :   420c62: or     %rax,%r14
+    0.00 :   420c65: or     %rdx,%r15
+    0.00 :   420c68: add    $0x38,%rbp
+    0.00 :   420c6c: mov    %r14,0x10(%rsp)
+    0.00 :   420c71: mov    %r15,0x18(%rsp)
+    0.00 :   420c76: cmp    %rbp,0x50(%rsp)
+    0.00 :   420c7b: jne    420796 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2376>
+    0.00 :   420c81: movdqa 0x80(%rsp),%xmm1
+    0.00 :   420c8a: movdqa (%rsp),%xmm0
+    0.00 :   420c8f: callq  404e90 <__divtf3@plt>
+    0.00 :   420c94: mov    0xc8(%rsp),%rbx
+    0.00 :   420c9c: movdqa 0x80(%rsp),%xmm1
+    0.00 :   420ca5: movaps %xmm0,(%rbx)
+    0.00 :   420ca8: movdqa 0x10(%rsp),%xmm0
+    0.00 :   420cae: callq  404e90 <__divtf3@plt>
+    0.00 :   420cb3: mov    %rbx,%rax
+    0.00 :   420cb6: movaps %xmm0,0x10(%rbx)
+    0.00 :   420cba: add    $0xf8,%rsp
+    0.00 :   420cc1: pop    %rbx
+    0.00 :   420cc2: pop    %rbp
+    0.00 :   420cc3: pop    %r12
+    0.00 :   420cc5: pop    %r13
+    0.00 :   420cc7: pop    %r14
+    0.00 :   420cc9: pop    %r15
+    0.00 :   420ccb: retq
+    0.00 :   420ccc: nopl   0x0(%rax)
+    0.01 :   420cd0: mov    %rsi,%rdx
+    0.15 :   420cd3: shr    %rsi
+    0.03 :   420cd6: shld   $0x3f,%rax,%rdx
+    0.16 :   420cdb: test   %r10,%r10
+    0.00 :   420cde: setne  %cl
+    0.00 :   420ce1: or     %rdx,%rcx
+    0.02 :   420ce4: and    $0x1,%ecx
+    0.02 :   420ce7: and    %rcx,%rax
+    0.01 :   420cea: add    %rax,%rdx
+    0.03 :   420ced: mov    %rdx,%rax
+    0.00 :   420cf0: adc    $0x0,%rsi
+    0.04 :   420cf4: mov    %ebx,%edx
+    0.00 :   420cf6: jmpq   41f494 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x1074>
+    0.00 :   420cfb: nopl   0x0(%rax,%rax,1)
+    0.00 :   420d00: mov    %rsi,%rdx
+    0.01 :   420d03: shr    %rsi
+    0.00 :   420d06: shld   $0x3f,%rax,%rdx
+    0.00 :   420d0b: test   %r10,%r10
+    0.00 :   420d0e: setne  %cl
+    0.00 :   420d11: or     %rdx,%rcx
+    0.00 :   420d14: and    $0x1,%ecx
+    0.00 :   420d17: and    %rax,%rcx
+    0.00 :   420d1a: add    %rcx,%rdx
+    0.00 :   420d1d: mov    %rdx,%rax
+    0.00 :   420d20: adc    $0x0,%rsi
+    0.00 :   420d24: mov    %r13d,%edx
+    0.00 :   420d27: jmpq   41fcfb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x18db>
+    0.00 :   420d2c: nopl   0x0(%rax)
+    0.00 :   420d30: mov    %rdx,%rax
+    0.00 :   420d33: shr    %rdx
+    0.00 :   420d36: shld   $0x3f,%rbx,%rax
+    0.00 :   420d3b: test   %r10,%r10
+    0.00 :   420d3e: setne  %cl
+    0.00 :   420d41: or     %rax,%rcx
+    0.00 :   420d44: and    $0x1,%ecx
+    0.00 :   420d47: and    %rbx,%rcx
+    0.00 :   420d4a: add    %rcx,%rax
+    0.00 :   420d4d: mov    %rax,%rbx
+    0.00 :   420d50: adc    $0x0,%rdx
+    0.00 :   420d54: mov    %ebp,%eax
+    0.00 :   420d56: jmpq   41f8eb <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x14cb>
+    0.00 :   420d5b: nopl   0x0(%rax,%rax,1)
+    0.00 :   420d60: sub    $0x40,%r8d
+    0.00 :   420d64: mov    $0x3f,%r14d
+    0.00 :   420d6a: sub    %r8d,%r14d
+    0.00 :   420d6d: mov    %r8d,%ecx
+    0.00 :   420d70: shr    %cl,%rax
+    0.00 :   420d73: mov    %r14d,%ecx
+    0.00 :   420d76: shl    %cl,%r11
+    0.00 :   420d79: mov    %r8d,%ecx
+    0.00 :   420d7c: or     %rax,%r11
+    0.00 :   420d7f: mov    %rdx,%rax
+    0.00 :   420d82: shr    %cl,%rax
+    0.00 :   420d85: mov    %r14d,%ecx
+    0.00 :   420d88: shl    %cl,%r10
+    0.00 :   420d8b: test   %r10,%r10
+    0.00 :   420d8e: setne  %r10b
+    0.00 :   420d92: xor    %edx,%edx
+    0.00 :   420d94: movzbl %r10b,%r10d
+    0.00 :   420d98: or     %r11,%r10
+    0.00 :   420d9b: jmpq   4206f7 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x22d7>
+    0.00 :   420da0: sub    $0x40,%r8d
+    0.00 :   420da4: mov    $0x3f,%r15d
+    0.00 :   420daa: sub    %r8d,%r15d
+    0.00 :   420dad: mov    %r8d,%ecx
+    0.00 :   420db0: shr    %cl,%rax
+    0.00 :   420db3: mov    %r15d,%ecx
+    0.00 :   420db6: shl    %cl,%r11
+    0.00 :   420db9: mov    %r8d,%ecx
+    0.00 :   420dbc: or     %rax,%r11
+    0.00 :   420dbf: mov    %rdx,%rax
+    0.00 :   420dc2: shr    %cl,%rax
+    0.00 :   420dc5: mov    %r15d,%ecx
+    0.00 :   420dc8: shl    %cl,%r10
+    0.00 :   420dcb: test   %r10,%r10
+    0.00 :   420dce: setne  %r10b
+    0.00 :   420dd2: xor    %edx,%edx
+    0.00 :   420dd4: movzbl %r10b,%r10d
+    0.00 :   420dd8: or     %r11,%r10
+    0.00 :   420ddb: jmpq   42058e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x216e>
+    0.00 :   420de0: mov    %rcx,%r10
+    0.00 :   420de3: mov    %rcx,%r9
+    0.00 :   420de6: mov    %rsi,%rcx
+    0.00 :   420de9: mov    %rdx,%rsi
+    0.00 :   420dec: mov    %rcx,%rdx
+    0.00 :   420def: mov    %rsi,%r12
+    0.00 :   420df2: mov    %rax,%rdi
+    0.00 :   420df5: mov    %r13,%rax
+    0.00 :   420df8: mov    %rdx,%rcx
+    0.00 :   420dfb: shr    $0x30,%r12
+    0.00 :   420dff: shr    $0x30,%rcx
+    0.00 :   420e03: jne    420692 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2272>
+    0.00 :   420e09: mov    0x30(%rsp),%rsi
+    0.00 :   420e0e: mov    0x20(%rsp),%rdx
+    0.00 :   420e13: mov    %r13,%rdi
+    0.00 :   420e16: mov    0x28(%rsp),%rcx
+    0.00 :   420e1b: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   420e20: mov    %rax,0x10(%rsp)
+    0.00 :   420e25: mov    %rdx,0x18(%rsp)
+    0.00 :   420e2a: jmpq   420787 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2367>
+    0.00 :   420e2f: nop
+    0.00 :   420e30: mov    %r8,%rcx
+    0.00 :   420e33: mov    %r8,%r9
+    0.00 :   420e36: mov    %rsi,%r8
+    0.00 :   420e39: mov    %rdx,%rsi
+    0.00 :   420e3c: mov    %r8,%rdx
+    0.00 :   420e3f: mov    %rsi,%r14
+    0.00 :   420e42: mov    %rax,%rdi
+    0.00 :   420e45: mov    0x40(%rsp),%rax
+    0.01 :   420e4a: mov    %rdx,%r10
+    0.00 :   420e4d: shr    $0x30,%r14
+    0.00 :   420e51: shr    $0x30,%r10
+    0.00 :   420e55: jne    420529 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2109>
+    0.00 :   420e5b: mov    0x40(%rsp),%rdi
+    0.00 :   420e60: mov    0x68(%rsp),%rsi
+    0.00 :   420e65: mov    0x20(%rsp),%rdx
+    0.00 :   420e6a: mov    0x28(%rsp),%rcx
+    0.00 :   420e6f: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   420e74: movslq 0x34(%rbp),%r12
+    0.00 :   420e78: movdqa 0x0(%r13),%xmm1
+    0.00 :   420e7e: mov    %rax,(%rsp)
+    0.00 :   420e82: mov    %rdx,0x8(%rsp)
+    0.00 :   420e87: shl    $0x4,%r12
+    0.00 :   420e8b: jmpq   42061a <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x21fa>
+    0.00 :   420e90: xor    %edi,%edi
+    0.00 :   420e92: tzcnt  %r9,%rdi
+    0.00 :   420e97: add    $0x40,%edi
+    0.00 :   420e9a: jmpq   4208e9 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x24c9>
+    0.00 :   420e9f: nop
+    0.00 :   420ea0: xor    %r11d,%r11d
+    0.00 :   420ea3: tzcnt  %rdi,%r11
+    0.00 :   420ea8: add    $0x40,%r11d
+    0.00 :   420eac: jmpq   420b75 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2755>
+    0.00 :   420eb1: nopl   0x0(%rax)
+    0.00 :   420eb8: bsr    %rax,%rcx
+    0.00 :   420ebc: xor    $0x3f,%rcx
+    0.00 :   420ec0: add    $0x40,%ecx
+    0.00 :   420ec3: jmpq   420ba8 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2788>
+    0.00 :   420ec8: nopl   0x0(%rax,%rax,1)
+    0.00 :   420ed0: bsr    %rax,%rcx
+    0.00 :   420ed4: xor    $0x3f,%rcx
+    0.00 :   420ed8: add    $0x40,%ecx
+    0.00 :   420edb: jmpq   42091d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x24fd>
+    0.01 :   420ee0: movdqa 0x20(%rsp),%xmm6
+    0.02 :   420ee6: mov    %rax,%rsi
+    0.00 :   420ee9: mov    %rdx,%rdi
+    0.00 :   420eec: mov    %r8,%rax
+    0.00 :   420eef: mov    %r9,%rdx
+    0.00 :   420ef2: mov    %rsi,%r8
+    0.00 :   420ef5: mov    %rdi,%r9
+    0.00 :   420ef8: movaps %xmm6,(%rsp)
+    0.01 :   420efc: jmpq   420848 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2428>
+    0.00 :   420f01: nopl   0x0(%rax)
+    0.00 :   420f08: movdqa 0x20(%rsp),%xmm6
+    0.00 :   420f0e: mov    %rax,%r8
+    0.00 :   420f11: mov    %rdx,%r9
+    0.00 :   420f14: mov    %rsi,%rax
+    0.00 :   420f17: mov    %rdi,%rdx
+    0.00 :   420f1a: mov    %r8,%rsi
+    0.00 :   420f1d: mov    %r9,%rdi
+    0.00 :   420f20: movaps %xmm6,0x10(%rsp)
+    0.00 :   420f25: jmpq   420acd <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x26ad>
+    0.00 :   420f2a: nopw   0x0(%rax,%rax,1)
+    0.00 :   420f30: sub    $0x40,%edi
+    0.00 :   420f33: mov    $0x3f,%ecx
+    0.00 :   420f38: sub    %edi,%ecx
+    0.00 :   420f3a: shl    %cl,%rsi
+    0.00 :   420f3d: mov    %ecx,0x40(%rsp)
+    0.00 :   420f41: mov    %edi,%ecx
+    0.00 :   420f43: shr    %cl,%rax
+    0.00 :   420f46: shr    %cl,%r8
+    0.00 :   420f49: movzbl 0x40(%rsp),%ecx
+    0.00 :   420f4e: or     %rsi,%r8
+    0.00 :   420f51: mov    %rax,%rsi
+    0.00 :   420f54: shl    %cl,%r10
+    0.00 :   420f57: test   %r10,%r10
+    0.00 :   420f5a: setne  %r10b
+    0.00 :   420f5e: xor    %eax,%eax
+    0.00 :   420f60: movzbl %r10b,%r10d
+    0.00 :   420f64: or     %r8,%r10
+    0.00 :   420f67: jmpq   41eaaf <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x68f>
+    0.00 :   420f6c: nopl   0x0(%rax)
+    0.00 :   420f70: sub    $0x40,%r8d
+    0.00 :   420f74: mov    $0x3f,%r13d
+    0.00 :   420f7a: sub    %r8d,%r13d
+    0.00 :   420f7d: mov    %r8d,%ecx
+    0.00 :   420f80: shr    %cl,%rax
+    0.00 :   420f83: mov    %r13d,%ecx
+    0.00 :   420f86: shl    %cl,%r11
+    0.00 :   420f89: mov    %r8d,%ecx
+    0.00 :   420f8c: or     %rax,%r11
+    0.00 :   420f8f: mov    %rsi,%rax
+    0.00 :   420f92: shr    %cl,%rax
+    0.00 :   420f95: mov    %r13d,%ecx
+    0.00 :   420f98: shl    %cl,%r10
+    0.00 :   420f9b: test   %r10,%r10
+    0.00 :   420f9e: setne  %r10b
+    0.00 :   420fa2: xor    %esi,%esi
+    0.00 :   420fa4: movzbl %r10b,%r10d
+    0.00 :   420fa8: or     %r11,%r10
+    0.00 :   420fab: jmpq   41e69f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x27f>
+    0.00 :   420fb0: movdqa 0x10(%rsp),%xmm6
+    0.00 :   420fb6: jmpq   420452 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2032>
+    0.00 :   420fbb: nopl   0x0(%rax,%rax,1)
+    0.00 :   420fc0: mov    0x10(%rsp),%r10
+    0.00 :   420fc5: xor    %eax,%eax
+    0.00 :   420fc7: xor    %r11d,%r11d
+    0.00 :   420fca: movabs $0x7fffffffffffffff,%rdx
+    0.00 :   420fd4: or     %rcx,%r11
+    0.00 :   420fd7: mov    $0xffffffffffffffff,%rcx
+    0.00 :   420fde: and    0x8(%rsp),%rdx
+    0.00 :   420fe3: movabs $0x7fffffffffffffff,%rbx
+    0.00 :   420fed: or     %rax,%r10
+    0.00 :   420ff0: mov    $0xffffffffffffffff,%rax
+    0.00 :   420ff7: and    %r11,%rbx
+    0.00 :   420ffa: mov    %rdx,%rdi
+    0.00 :   420ffd: and    (%rsp),%rax
+    0.00 :   421001: and    %r10,%rcx
+    0.00 :   421004: cmp    %rcx,%rax
+    0.00 :   421007: sbb    %rbx,%rdi
+    0.00 :   42100a: jb     4214f6 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x30d6>
+    0.00 :   421010: mov    (%rsp),%r10
+    0.00 :   421014: mov    0x8(%rsp),%r11
+    0.00 :   421019: mov    %rdx,%r8
+    0.00 :   42101c: mov    %rbx,%r9
+    0.00 :   42101f: shr    $0x30,%r8
+    0.00 :   421023: shr    $0x30,%r9
+    0.00 :   421027: cmp    $0x7fff,%r8
+    0.00 :   42102e: je     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   421034: test   %r9,%r9
+    0.00 :   421037: je     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   42103d: shld   $0xd,%rax,%rdx
+    0.00 :   421042: mov    $0xffffffffffffe000,%rsi
+    0.00 :   421049: shl    $0xd,%rax
+    0.00 :   42104d: movabs $0x1fffffffffffffff,%rdi
+    0.00 :   421057: and    %rsi,%rax
+    0.00 :   42105a: xor    %esi,%esi
+    0.00 :   42105c: and    %rdi,%rdx
+    0.00 :   42105f: shld   $0xd,%rcx,%rbx
+    0.00 :   421064: or     %rax,%rsi
+    0.00 :   421067: shl    $0xd,%rcx
+    0.00 :   42106b: movabs $0x2000000000000000,%rdi
+    0.00 :   421075: mov    %rsi,0x40(%rsp)
+    0.00 :   42107a: mov    $0xffffffffffffe000,%rsi
+    0.00 :   421081: or     %rdx,%rdi
+    0.00 :   421084: and    %rsi,%rcx
+    0.00 :   421087: xor    %esi,%esi
+    0.00 :   421089: mov    %rdi,0x48(%rsp)
+    0.00 :   42108e: movabs $0x1fffffffffffffff,%rdi
+    0.00 :   421098: or     %rcx,%rsi
+    0.00 :   42109b: mov    %r8d,%ecx
+    0.00 :   42109e: and    %rdi,%rbx
+    0.00 :   4210a1: movabs $0x2000000000000000,%rdi
+    0.00 :   4210ab: sub    %r9d,%ecx
+    0.00 :   4210ae: mov    $0x7f,%r9d
+    0.00 :   4210b4: or     %rbx,%rdi
+    0.00 :   4210b7: mov    %rsi,%rax
+    0.00 :   4210ba: cmp    %r9d,%ecx
+    0.00 :   4210bd: mov    %rdi,%rdx
+    0.00 :   4210c0: cmovg  %r9d,%ecx
+    0.00 :   4210c4: xor    %r9d,%r9d
+    0.00 :   4210c7: shr    %cl,%rdx
+    0.00 :   4210ca: shrd   %cl,%rdi,%rax
+    0.00 :   4210ce: test   $0x40,%cl
+    0.00 :   4210d1: cmovne %rdx,%rax
+    0.00 :   4210d5: cmovne %r9,%rdx
+    0.00 :   4210d9: xor    %r9d,%r9d
+    0.00 :   4210dc: tzcnt  %rsi,%r9
+    0.00 :   4210e1: test   %rsi,%rsi
+    0.00 :   4210e4: jne    4210f2 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2cd2>
+    0.00 :   4210e6: xor    %r9d,%r9d
+    0.00 :   4210e9: tzcnt  %rdi,%r9
+    0.00 :   4210ee: add    $0x40,%r9d
+    0.00 :   4210f2: cmp    %ecx,%r9d
+    0.00 :   4210f5: setl   %cl
+    0.00 :   4210f8: xor    %ebx,%ebx
+    0.00 :   4210fa: movzbl %cl,%ecx
+    0.00 :   4210fd: or     %rdx,%rbx
+    0.00 :   421100: mov    0x48(%rsp),%rdx
+    0.00 :   421105: or     %rax,%rcx
+    0.00 :   421108: mov    0x40(%rsp),%rax
+    0.00 :   42110d: sub    %rcx,%rax
+    0.00 :   421110: sbb    %rbx,%rdx
+    0.00 :   421113: mov    %rax,%rcx
+    0.00 :   421116: or     %rdx,%rcx
+    0.00 :   421119: je     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   42111f: test   %rdx,%rdx
+    0.00 :   421122: je     4213c7 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2fa7>
+    0.00 :   421128: bsr    %rdx,%rcx
+    0.00 :   42112c: xor    $0x3f,%ecx
+    0.00 :   42112f: sub    $0x2,%ecx
+    0.00 :   421132: xor    %esi,%esi
+    0.00 :   421134: sub    $0x1,%r8d
+    0.00 :   421138: movabs $0x8000000000000000,%rdi
+    0.00 :   421142: shld   %cl,%rax,%rdx
+    0.00 :   421146: and    %rsi,%r10
+    0.00 :   421149: shl    %cl,%rax
+    0.00 :   42114c: and    %rdi,%r11
+    0.00 :   42114f: sub    %ecx,%r8d
+    0.00 :   421152: xor    %edi,%edi
+    0.00 :   421154: test   $0x40,%cl
+    0.00 :   421157: cmovne %rax,%rdx
+    0.00 :   42115b: cmovne %rdi,%rax
+    0.00 :   42115f: mov    %rdx,%rdi
+    0.00 :   421162: shr    $0x3e,%rdx
+    0.00 :   421166: mov    %rax,%rsi
+    0.00 :   421169: je     421181 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2d61>
+    0.00 :   42116b: mov    %rax,%rcx
+    0.00 :   42116e: shrd   $0x1,%rdi,%rsi
+    0.00 :   421173: xor    %ebx,%ebx
+    0.00 :   421175: and    $0x1,%ecx
+    0.00 :   421178: shr    %rdi
+    0.00 :   42117b: or     %rcx,%rsi
+    0.00 :   42117e: or     %rbx,%rdi
+    0.00 :   421181: add    %r8d,%edx
+    0.00 :   421184: cmp    $0x7ffe,%edx
+    0.00 :   42118a: ja     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   421190: mov    %rsi,%rcx
+    0.00 :   421193: xor    %ebx,%ebx
+    0.00 :   421195: movslq %edx,%rax
+    0.00 :   421198: shrd   $0xd,%rdi,%rcx
+    0.00 :   42119d: mov    %rax,%rdx
+    0.00 :   4211a0: and    $0x1,%ecx
+    0.00 :   4211a3: add    $0xfff,%rsi
+    0.00 :   4211aa: adc    $0x0,%rdi
+    0.00 :   4211ae: add    %rsi,%rcx
+    0.00 :   4211b1: adc    %rdi,%rbx
+    0.00 :   4211b4: xor    %eax,%eax
+    0.00 :   4211b6: shl    $0x30,%rdx
+    0.00 :   4211ba: shrd   $0xd,%rbx,%rcx
+    0.00 :   4211bf: shr    $0xd,%rbx
+    0.00 :   4211c3: add    %rax,%rcx
+    0.00 :   4211c6: adc    %rdx,%rbx
+    0.00 :   4211c9: mov    %rbx,%rax
+    0.00 :   4211cc: shr    $0x30,%rax
+    0.00 :   4211d0: cmp    $0x7ffe,%rax
+    0.00 :   4211d6: ja     42164b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x322b>
+    0.00 :   4211dc: or     %r10,%rcx
+    0.00 :   4211df: or     %r11,%rbx
+    0.00 :   4211e2: mov    %rcx,(%rsp)
+    0.00 :   4211e6: mov    %rbx,0x8(%rsp)
+    0.00 :   4211eb: jmpq   41eccf <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x8af>
+    0.00 :   4211f0: mov    %r8,%rcx
+    0.00 :   4211f3: mov    %r8,%r9
+    0.00 :   4211f6: mov    %rdx,%r8
+    0.00 :   4211f9: mov    %rax,%rdi
+    0.00 :   4211fc: mov    %rsi,%rdx
+    0.00 :   4211ff: mov    %r12,%rax
+    0.00 :   421202: mov    %r8,%rsi
+    0.00 :   421205: jmpq   41e623 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x203>
+    0.00 :   42120a: nopw   0x0(%rax,%rax,1)
+    0.00 :   421210: mov    %rsi,%rcx
+    0.00 :   421213: mov    %rsi,%r9
+    0.00 :   421216: mov    %r11,%rsi
+    0.00 :   421219: mov    %r8,%rdx
+    0.00 :   42121c: mov    %rax,%r11
+    0.00 :   42121f: mov    %r13,%r8
+    0.00 :   421222: mov    %rsi,%rax
+    0.00 :   421225: jmpq   41ea43 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x623>
+    0.00 :   42122a: nopw   0x0(%rax,%rax,1)
+    0.00 :   421230: xor    %r11d,%r11d
+    0.00 :   421233: tzcnt  %rdi,%r11
+    0.00 :   421238: add    $0x40,%r11d
+    0.00 :   42123c: jmpq   41e8d3 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x4b3>
+    0.00 :   421241: bsr    %rax,%rcx
+    0.00 :   421245: xor    $0x3f,%rcx
+    0.00 :   421249: add    $0x40,%ecx
+    0.00 :   42124c: jmpq   41e906 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x4e6>
+    0.00 :   421251: bsr    %rax,%rcx
+    0.00 :   421255: xor    $0x3f,%rcx
+    0.00 :   421259: add    $0x40,%ecx
+    0.00 :   42125c: jmpq   41ee83 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xa63>
+    0.00 :   421261: movdqa (%rsp),%xmm6
+    0.00 :   421266: mov    %rax,%r8
+    0.00 :   421269: mov    %rdx,%r9
+    0.00 :   42126c: mov    %rsi,%rax
+    0.00 :   42126f: mov    %rdi,%rdx
+    0.00 :   421272: mov    %r8,%rsi
+    0.00 :   421275: mov    %r9,%rdi
+    0.00 :   421278: movaps %xmm6,0x30(%rsp)
+    0.00 :   42127d: jmpq   41e80a <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x3ea>
+    0.00 :   421282: movdqa (%rsp),%xmm5
+    0.00 :   421287: mov    %rax,%rsi
+    0.00 :   42128a: mov    %rdx,%rdi
+    0.00 :   42128d: mov    %rcx,%rax
+    0.00 :   421290: mov    %rbx,%rdx
+    0.00 :   421293: mov    %rsi,%rcx
+    0.00 :   421296: mov    %rdi,%rbx
+    0.00 :   421299: movaps %xmm5,0x40(%rsp)
+    0.00 :   42129e: jmpq   41ed9e <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x97e>
+    0.00 :   4212a3: sub    $0x40,%r8d
+    0.00 :   4212a7: mov    $0x3f,%r13d
+    0.00 :   4212ad: sub    %r8d,%r13d
+    0.00 :   4212b0: mov    %r13d,%ecx
+    0.00 :   4212b3: shl    %cl,%rdi
+    0.00 :   4212b6: mov    %r8d,%ecx
+    0.00 :   4212b9: shr    %cl,%r9
+    0.00 :   4212bc: or     %rdi,%r9
+    0.00 :   4212bf: mov    %rdx,%rdi
+    0.00 :   4212c2: shr    %cl,%rdi
+    0.00 :   4212c5: mov    %r13d,%ecx
+    0.00 :   4212c8: shl    %cl,%r10
+    0.00 :   4212cb: test   %r10,%r10
+    0.00 :   4212ce: setne  %r10b
+    0.00 :   4212d2: xor    %edx,%edx
+    0.00 :   4212d4: movzbl %r10b,%r10d
+    0.00 :   4212d8: or     %r9,%r10
+    0.00 :   4212db: jmpq   41ec47 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x827>
+    0.00 :   4212e0: mov    %rcx,0xd8(%rsp)
+    0.00 :   4212e8: mov    %rdi,%rax
+    0.00 :   4212eb: xor    %edx,%edx
+    0.00 :   4212ed: or     0xd8(%rsp),%rdx
+    0.00 :   4212f5: movq   $0x0,0xd0(%rsp)
+    0.00 :   421301: or     0xd0(%rsp),%rax
+    0.00 :   421309: mov    %rax,(%rsp)
+    0.00 :   42130d: mov    %rdx,0x8(%rsp)
+    0.00 :   421312: jmpq   42061a <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x21fa>
+    0.00 :   421317: mov    %r10,0xe8(%rsp)
+    0.00 :   42131f: mov    %rdi,%rax
+    0.00 :   421322: xor    %edx,%edx
+    0.00 :   421324: or     0xe8(%rsp),%rdx
+    0.00 :   42132c: movq   $0x0,0xe0(%rsp)
+    0.00 :   421338: or     0xe0(%rsp),%rax
+    0.00 :   421340: mov    %rax,0x10(%rsp)
+    0.00 :   421345: mov    %rdx,0x18(%rsp)
+    0.00 :   42134a: jmpq   420787 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2367>
+    0.00 :   42134f: mov    %rcx,%rsi
+    0.00 :   421352: mov    %r11,%rcx
+    0.00 :   421355: mov    %r9,%rax
+    0.00 :   421358: mov    %rdx,%r11
+    0.00 :   42135b: mov    (%rsp),%r9
+    0.00 :   42135f: mov    %rcx,%rdx
+    0.00 :   421362: jmpq   41ebd5 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x7b5>
+    0.00 :   421367: mov    %rsi,%rcx
+    0.00 :   42136a: mov    %rsi,%rdx
+    0.00 :   42136d: shld   $0x3f,%rax,%rcx
+    0.00 :   421372: shr    %rdx
+    0.00 :   421375: test   %r10,%r10
+    0.00 :   421378: setne  %sil
+    0.00 :   42137c: or     %rcx,%rsi
+    0.00 :   42137f: and    $0x1,%esi
+    0.00 :   421382: and    %rsi,%rax
+    0.00 :   421385: add    %rax,%rcx
+    0.00 :   421388: mov    %rcx,%rax
+    0.00 :   42138b: adc    $0x0,%rdx
+    0.00 :   42138f: mov    %r14d,%ecx
+    0.00 :   421392: jmpq   4205e6 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x21c6>
+    0.00 :   421397: mov    %rdx,%rcx
+    0.01 :   42139a: shr    %rdx
+    0.00 :   42139d: shld   $0x3f,%rax,%rcx
+    0.00 :   4213a2: test   %r10,%r10
+    0.00 :   4213a5: setne  %sil
+    0.00 :   4213a9: or     %rcx,%rsi
+    0.00 :   4213ac: and    $0x1,%esi
+    0.00 :   4213af: and    %rsi,%rax
+    0.00 :   4213b2: add    %rax,%rcx
+    0.00 :   4213b5: adc    $0x0,%rdx
+    0.00 :   4213b9: mov    %rcx,%rax
+    0.00 :   4213bc: mov    %r12d,%ecx
+    0.00 :   4213bf: mov    %rdx,%rsi
+    0.00 :   4213c2: jmpq   420751 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2331>
+    0.00 :   4213c7: bsr    %rax,%rcx
+    0.00 :   4213cb: xor    $0x3f,%rcx
+    0.00 :   4213cf: add    $0x40,%ecx
+    0.00 :   4213d2: jmpq   42112f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2d0f>
+    0.00 :   4213d7: xor    %eax,%eax
+    0.00 :   4213d9: mov    $0x20,%ecx
+    0.00 :   4213de: pxor   %xmm0,%xmm0
+    0.00 :   4213e2: mov    $0x633578,%edx
+    0.00 :   4213e7: mov    %fs:0x0,%rbx
+    0.00 :   4213f0: lea    -0x940(%rbx),%rdi
+    0.00 :   4213f7: lea    -0x940(%rbx),%rsi
+    0.00 :   4213fe: rep stos %rax,%es:(%rdi)
+    0.00 :   421401: lea    -0x840(%rbx),%rdi
+    0.00 :   421408: mov    $0x20,%ecx
+    0.00 :   42140d: rep stos %rax,%es:(%rdi)
+    0.00 :   421410: mov    $0x415980,%edi
+    0.00 :   421415: movb   $0x1,%fs:0xfffffffffffff6b0
+    0.00 :   42141e: movaps %xmm0,%fs:0xfffffffffffff8c0
+    0.00 :   421427: movaps %xmm0,%fs:0xfffffffffffff8d0
+    0.00 :   421430: movaps %xmm0,%fs:0xfffffffffffff8e0
+    0.00 :   421439: movaps %xmm0,%fs:0xfffffffffffff8f0
+    0.00 :   421442: movaps %xmm0,%fs:0xfffffffffffff900
+    0.00 :   42144b: movaps %xmm0,%fs:0xfffffffffffff910
+    0.00 :   421454: callq  405760 <__cxa_thread_atexit@plt>
+    0.00 :   421459: jmpq   41e453 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x33>
+    0.00 :   42145e: sub    %rax,%rsi
+    0.00 :   421461: mov    %fs:0x0,%rax
+    0.00 :   42146a: lea    -0x728(%rax),%rdi
+    0.00 :   421471: callq  41e210 <std::vector<__float128, std::allocator<__float128> >::_M_default_append(unsigned long)>
+    0.00 :   421476: jmpq   41e4f9 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xd9>
+    0.00 :   42147b: sub    %rax,%rsi
+    0.00 :   42147e: mov    %fs:0x0,%rax
+    0.00 :   421487: lea    -0x740(%rax),%rdi
+    0.00 :   42148e: callq  41e210 <std::vector<__float128, std::allocator<__float128> >::_M_default_append(unsigned long)>
+    0.00 :   421493: jmpq   41e49f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x7f>
+    0.00 :   421498: sub    %rdx,%rax
+    0.00 :   42149b: mov    %rax,%rsi
+    0.00 :   42149e: mov    %fs:0x0,%rax
+    0.00 :   4214a7: lea    -0x6f8(%rax),%rdi
+    0.00 :   4214ae: callq  41e210 <std::vector<__float128, std::allocator<__float128> >::_M_default_append(unsigned long)>
+    0.00 :   4214b3: jmpq   41e57d <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x15d>
+    0.00 :   4214b8: sub    %rdx,%rax
+    0.00 :   4214bb: mov    %rax,%rsi
+    0.00 :   4214be: mov    %fs:0x0,%rax
+    0.00 :   4214c7: lea    -0x710(%rax),%rdi
+    0.00 :   4214ce: callq  41e210 <std::vector<__float128, std::allocator<__float128> >::_M_default_append(unsigned long)>
+    0.00 :   4214d3: mov    0x90(%rsp),%rdi
+    0.00 :   4214db: mov    0x108(%rdi),%rax
+    0.00 :   4214e2: sub    0x100(%rdi),%rax
+    0.00 :   4214e9: sar    $0x3,%rax
+    0.00 :   4214ed: imul   %rbx,%rax
+    0.00 :   4214f1: jmpq   41e54f <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x12f>
+    0.00 :   4214f6: mov    %rax,%rsi
+    0.00 :   4214f9: mov    %rdx,%rdi
+    0.00 :   4214fc: mov    %rcx,%rax
+    0.00 :   4214ff: mov    %rbx,%rdx
+    0.00 :   421502: mov    %rsi,%rcx
+    0.00 :   421505: mov    %rdi,%rbx
+    0.00 :   421508: jmpq   421019 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2bf9>
+    0.00 :   42150d: mov    %rcx,0x48(%rsp)
+    0.00 :   421512: mov    %rdi,%rax
+    0.00 :   421515: xor    %edx,%edx
+    0.00 :   421517: or     0x48(%rsp),%rdx
+    0.00 :   42151c: movq   $0x0,0x40(%rsp)
+    0.00 :   421525: or     0x40(%rsp),%rax
+    0.00 :   42152a: mov    %rax,(%rsp)
+    0.00 :   42152e: mov    %rdx,0x8(%rsp)
+    0.00 :   421533: jmpq   41e728 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x308>
+    0.00 :   421538: mov    %rdx,%rax
+    0.00 :   42153b: mov    %rcx,0x58(%rsp)
+    0.00 :   421540: xor    %edx,%edx
+    0.00 :   421542: or     0x58(%rsp),%rdx
+    0.00 :   421547: movq   $0x0,0x50(%rsp)
+    0.00 :   421550: or     0x50(%rsp),%rax
+    0.00 :   421555: mov    %rax,(%rsp)
+    0.00 :   421559: mov    %rdx,0x8(%rsp)
+    0.00 :   42155e: jmpq   41eb35 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x715>
+    0.00 :   421563: mov    %rdx,%rcx
+    0.00 :   421566: shr    %rdx
+    0.00 :   421569: shld   $0x3f,%rax,%rcx
+    0.00 :   42156e: test   %r10,%r10
+    0.00 :   421571: setne  %sil
+    0.00 :   421575: or     %rcx,%rsi
+    0.00 :   421578: and    $0x1,%esi
+    0.00 :   42157b: and    %rsi,%rax
+    0.00 :   42157e: add    %rcx,%rax
+    0.00 :   421581: mov    %ebp,%ecx
+    0.00 :   421583: adc    $0x0,%rdx
+    0.00 :   421587: jmpq   41e6f4 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x2d4>
+    0.00 :   42158c: mov    %rax,%rcx
+    0.00 :   42158f: shr    %rax
+    0.00 :   421592: shld   $0x3f,%rsi,%rcx
+    0.00 :   421597: test   %r10,%r10
+    0.00 :   42159a: setne  %dl
+    0.00 :   42159d: or     %rcx,%rdx
+    0.00 :   4215a0: and    $0x1,%edx
+    0.00 :   4215a3: and    %rsi,%rdx
+    0.00 :   4215a6: add    %rcx,%rdx
+    0.00 :   4215a9: mov    %ebx,%ecx
+    0.00 :   4215ab: adc    $0x0,%rax
+    0.00 :   4215af: jmpq   41eb02 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x6e2>
+    0.00 :   4215b4: mov    %rax,(%rsp)
+    0.00 :   4215b8: mov    %rsi,0x8(%rsp)
+    0.00 :   4215bd: jmpq   41eccf <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x8af>
+    0.00 :   4215c2: mov    %rax,%rcx
+    0.00 :   4215c5: shr    %rax
+    0.00 :   4215c8: shld   $0x3f,%rdi,%rcx
+    0.00 :   4215cd: test   %r10,%r10
+    0.00 :   4215d0: setne  %dl
+    0.00 :   4215d3: or     %rcx,%rdx
+    0.00 :   4215d6: and    $0x1,%edx
+    0.00 :   4215d9: and    %rdi,%rdx
+    0.00 :   4215dc: add    %rcx,%rdx
+    0.00 :   4215df: mov    %ebx,%ecx
+    0.00 :   4215e1: adc    $0x0,%rax
+    0.00 :   4215e5: jmpq   41ec9b <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x87b>
+    0.00 :   4215ea: mov    %r14,%rdi
+    0.00 :   4215ed: mov    %r15,%rsi
+    0.00 :   4215f0: mov    %r12,%rdx
+    0.00 :   4215f3: mov    %r13,%rcx
+    0.00 :   4215f6: callq  408832 <quadfast::slow_mul(unsigned __int128, unsigned __int128)>
+    0.00 :   4215fb: mov    %fs:0xfffffffffffff8c0,%rdi
+    0.00 :   421604: mov    %rdi,0x50(%rsp)
+    0.00 :   421609: mov    0x90(%rsp),%rdi
+    0.00 :   421611: mov    0xa0(%rdi),%rdi
+    0.00 :   421618: mov    %rdi,0x40(%rsp)
+    0.00 :   42161d: jmpq   41f2db <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0xebb>
+    0.00 :   421622: mov    0x38(%rsp),%rdx
+    0.00 :   421627: mov    0x30(%rsp),%rax
+    0.00 :   42162c: mov    %r13,%rcx
+    0.00 :   42162f: mov    %rdx,%rsi
+    0.00 :   421632: mov    %rax,%rdi
+    0.00 :   421635: mov    %r12,%rdx
+    0.00 :   421638: callq  408832 <quadfast::slow_mul(unsigned __int128, unsigned __int128)>
+    0.00 :   42163d: mov    %rax,(%rsp)
+    0.00 :   421641: mov    %rdx,0x8(%rsp)
+    0.00 :   421646: jmpq   41fbd9 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x17b9>
+    0.00 :   42164b: mov    (%rsp),%rdi
+    0.00 :   42164f: mov    0x8(%rsp),%rsi
+    0.00 :   421654: mov    0x10(%rsp),%rdx
+    0.00 :   421659: mov    0x18(%rsp),%rcx
+    0.00 :   42165e: callq  4087fb <quadfast::slow_sub(unsigned __int128, unsigned __int128)>
+    0.00 :   421663: mov    %rax,(%rsp)
+    0.00 :   421667: mov    %rdx,0x8(%rsp)
+    0.00 :   42166c: jmpq   41eccf <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x8af>
+    0.00 :   421671: mov    0x10(%rsp),%rsi
+    0.00 :   421676: mov    (%rsp),%rdx
+    0.00 :   42167a: mov    %r13,%rdi
+    0.00 :   42167d: mov    0x8(%rsp),%rcx
+    0.00 :   421682: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   421687: mov    %rax,(%rsp)
+    0.00 :   42168b: mov    %rdx,0x8(%rsp)
+    0.00 :   421690: jmpq   41eb35 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x715>
+    0.00 :   421695: mov    0x20(%rsp),%rsi
+    0.00 :   42169a: mov    (%rsp),%rdx
+    0.00 :   42169e: mov    %r12,%rdi
+    0.00 :   4216a1: mov    0x8(%rsp),%rcx
+    0.00 :   4216a6: callq  4087c4 <quadfast::slow_add(unsigned __int128, unsigned __int128)>
+    0.00 :   4216ab: mov    %rax,(%rsp)
+    0.00 :   4216af: mov    %rdx,0x8(%rsp)
+    0.00 :   4216b4: jmpq   41e728 <std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)+0x308>

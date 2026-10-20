@@ -1,0 +1,96 @@
+{
+ "title": "R_part: finite-sample (periodization) representation of J_{2tau} = C(tau) <t_l^2 R_tau>_d at generic d (session C63d workflow, tag R_part, 2026-10-02)",
+ "conventions": {
+  "q": "d/4",
+  "a_l": "(l+q)/2",
+  "b_l": "a_l+q",
+  "d_l": "d_0=1, d_{k+1} = 4q (2q+1)_k (4q-1)_k / ((2q)_k (2)_k)  [= (4q-2)_l (2q)_l / ((2q-1)_l l!) for generic q; generating function sum_l d_l z^l = (1+z)(1-z)^{1-4q}]",
+  "f_l(s)": "Gamma(2q)^2 g_l(s)^2 R_tau(s) = Gamma(2q)^2 G(a+s)^3 G(a-s)^2 G(b-tau-s) / [G(b+s)^2 G(b-s)^3 G(a+tau+s)]   (gs:spectrum, gs:RS)",
+  "trace": "<t_l^2 R_tau>_d = sum_l d_l int_{-i inf}^{i inf} ds/(2 pi i) f_l(s)  (= (1/pi) sum_l d_l int_0^inf Re f_l(i nu) d nu for real tau)",
+  "J": "J_{2tau} = C(tau) <t_l^2 R_tau>_d,  C(tau) = Gamma(2q) Gamma(tau)/Gamma(2q-tau)"
+ },
+ "lattice_form": {
+  "identity": "f_l(a_l+n+t) = Gamma(2q)^2 Phi_t(l+n) Psi_t(n)   for all l>=0, n in Z  (exact)",
+  "Phi_t(m)": "G(m+q+t)^3 / [G(m+2q+t)^2 G(m+q+tau+t)]",
+  "Psi_t(n)": "G(-n-t)^2 G(q-tau-n-t) / G(q-n-t)^3  = T_R(t) Phi_{t+1-2q}(n),  T_R(t) = sin^3(pi(q-t)) / [sin^2(pi t) sin(pi(q-tau-t))]",
+  "two_lattices": "summand = T_R(t) Phi~(m+t) Phi~(n+t+1-2q), Phi~(w) = G(w+q)^3/[G(w+2q)^2 G(w+q+tau)], weight d_{m-n}: ONE function on two lattices offset by 1-2q = 1-d/2 (d=2: same lattice -> square; d=1,3: half-offset; generic d: generic offset)"
+ },
+ "finite_modes": {
+  "S_R(t)": "sum_{l>=0} d_l sum_{n in Z} f_l(a_l+n+t)",
+  "D_R(t)": "sin^2(pi t) sin^3(pi(t+q)) sin(pi(t-q+tau))   [pole classes t=0 (order 2), t=-q (3), t=q-tau (1)]",
+  "Xi_R(t)": "D_R(t) S_R(t): entire, 1-periodic, = sum_{|k|<=2} c_k e^{2 pi i k t}  (growth bound; proved in the strip Sigma_q)",
+  "strip Sigma_q": "max(0, 2q-1, 1/2-2q) < Re tau < 3q/2  (absolute convergence of the lattice sum; everything continues meromorphically in tau)",
+  "observed": "c_{+-2} = 0: Xi_R(t) = c_0 + c_1 e^{2 pi i t} + c_{-1} e^{-2 pi i t}  (numerical identity, |c_{+-2}| < 1e-27 relative, d = 0.8,1,1.25,1.5,2,2.5,2.75,3; proved at d=1 (c_0=0 too), d=2 (Xi=-Omega^2), d=3 (half-shift); fails if d_l is taken at a different dimension than q)",
+  "residue_functional": "<t^2 R_tau>_d = -Res_{t=0}[Xi_R/D_R] - Res_{t=q-tau}[Xi_R/D_R] = sum_k rho_k c_k",
+  "rho_k": "-[2 pi i k - pi(3 cot(pi q) + cot(pi(tau-q)))] / [pi^2 sin^3(pi q) sin(pi(tau-q))] - e^{2 pi i k (q-tau)} / [pi sin^2(pi(q-tau)) sin^3(pi(2q-tau))]",
+  "five_node_rule": "t_j = t0 + j/5 (j=0..4, generic real t0, e.g. 0.0917):  <t^2 R_tau> = sum_j w_j Xi_R(t_j),  w_j = (1/5) sum_{k=-2..2} rho_k e^{-2 pi i k t_j}",
+  "three_node_rule": "t_j = t0 + j/3:  w_j = (1/3) sum_{k=-1..1} rho_k e^{-2 pi i k t_j}   (uses c_{+-2}=0)"
+ },
+ "sample_blocks": {
+  "Xi_R(t)": "D_R(t) Gamma(2q)^2 [ P_R(t) H_R(t) + P_M(t) H_M(t) + P_L(t) H_L(t) ]",
+  "P_R": "Phi_t(0) Psi_t(0) = G(q+t)^3 G(-t)^2 G(q-tau-t) / [G(2q+t)^2 G(q+tau+t) G(q-t)^3]",
+  "P_M": "Phi_t(0) Psi_t(-1) = G(q+t)^3 G(1-t)^2 G(1+q-tau-t) / [G(2q+t)^2 G(q+tau+t) G(1+q-t)^3]",
+  "P_L": "Phi_t(-1) Psi_t(-1) = G(q-1+t)^3 G(1-t)^2 G(1+q-tau-t) / [G(2q-1+t)^2 G(q+tau-1+t) G(1+q-t)^3]",
+  "sequences": {
+   "Phih(m)": "(q+t)_m^3 / [(2q+t)_m^2 (q+tau+t)_m]",
+   "Psih(n)": "(1-q+t)_n^3 / [(1+t)_n^2 (1-q+tau+t)_n]",
+   "PsiMh(m)": "(1-t)_m^2 (1+q-tau-t)_m / (1+q-t)_m^3",
+   "PhiLh(p)": "(2-2q-t)_p^2 (2-q-tau-t)_p / (2-q-t)_p^3",
+   "asymptotics": "each ~ kappa m^{a-1}, a = 1-2q-tau"
+  },
+  "H_R": "sum_{l,n>=0} d_l Phih(l+n) Psih(n)    (right tail n>=0)",
+  "H_M": "sum_{j,k>=0} d_{j+k+1} PsiMh(j) Phih(k)   (middle -l<=n<=-1: n=-j-1, l=j+k+1)",
+  "H_L": "sum_{l,p>=0} d_l PsiMh(l+p) PhiLh(p)   (left tail n=-l-1-p)",
+  "Horn_arrays (fp:HornDefinition, e=(1,0), f=(0,1), c=e+f, argument (1,1))": {
+   "H_R": {
+    "U": "(4q-2,e),(2q,e),(q+t,c)x3,(1,f),(1-q+t,f)x3",
+    "V": "(2q-1,e),(2q+t,c)x2,(q+tau+t,c),(1+t,f)x2,(1-q+tau+t,f)"
+   },
+   "H_M": {
+    "prefactor": "4q",
+    "U": "(4q-1,c),(2q+1,c),(1,e),(1-t,e)x2,(1+q-tau-t,e),(1,f),(q+t,f)x3",
+    "V": "(2q,c),(2,c),(1+q-t,e)x3,(2q+t,f)x2,(q+tau+t,f)"
+   },
+   "H_L": {
+    "U": "(4q-2,e),(2q,e),(1-t,c)x2,(1+q-tau-t,c),(1,f),(2-2q-t,f)x2,(2-q-tau-t,f)",
+    "V": "(2q-1,e),(1+q-t,c)x3,(2-q-t,f)x3"
+   },
+   "d=1,2 form": "split l=0 (one-variable 7F6(1)) and l>=1 with rows (4q-1,e),(2q+1,e)/(2q,e),(2,e), prefactor 4q and c-rows shifted by +1 (as fp:wheelBlocks); at d=3 H_R is the tau-deformed td:Harrays row set"
+  },
+  "convergence_of_raw_Horn_series": "H_R, H_L: Re tau > 2q-1 (spin endpoint) and 4q+2 Re tau > 1 (n endpoint) and Re tau > 0 (joint); H_M: Re tau > 2q-1 and Re tau > 0"
+ },
+ "continuation_in_tau": {
+  "basis": "B_i(m) = Gamma(m+a-i)/Gamma(m+1), a = 1-2q-tau",
+  "model": "X(m) = sum_{i<K} x_i B_i(m) + dX(m), dX = O(m^{a-1-K}); x_i from Bernoulli polynomials: log X(m) - log kappa = (a-1) log m + sum_k g_k m^-k, g_k = (-1)^{k+1} [sum_up B_{k+1}(u) - sum_down B_{k+1}(v)]/(k(k+1)); same for B_i; triangular solve",
+  "kernels": {
+   "G_al(n) = sum_l d_l B_al(l+n)": "Gamma(n+al) Gamma(2-4q-al) (2n+2-4q+al) / [Gamma(n+3-4q) Gamma(1-al)]",
+   "S(al,be) = sum_n G_al(n) B_be(n)": "Gamma(al) Gamma(be) Gamma(2-4q-al-be) (2-4q+al-be) / [Gamma(1-al) Gamma(3-4q-be)]",
+   "T_al(j) = sum_k d_{j+k+1} B_al(k)": "d_{j+1} Gamma(al) Gamma(j+2) Gamma(2-4q-al) / [Gamma(3-4q) Gamma(j+2-al)] * [2-4q-al + (4q-1+j) al/(2q+j)]",
+   "V(al,be) = sum_{j,k} d_{j+k+1} B_be(j) B_al(k)": "2(1-2q) Gamma(al) Gamma(be) Gamma(2-4q-al-be) (4q-al-be) / [Gamma(3-4q) Gamma(2-al-be)]",
+   "proofs": "Gauss 2F1(1) after (2q)_l/(2q-1)_l = 1 + l/(2q-1); Chu-Vandermonde for V; valid as meromorphic continuation in tau"
+  },
+  "Toeplitz block H[X,Y] = sum_{l,n} d_l X(l+n) Y(n)": "sum_{l,n} d_l dX(l+n) Y(n)  +  sum_n [sum_i x_i G_{a-i}(n)] dY(n)  +  sum_{i,i'} x_i y_i' S(a-i, a-i')",
+  "middle block H_M[X,Y] = sum_{j,k} d_{j+k+1} Y(j) X(k)": "sum d_{j+k+1} dY(j) dX(k) + sum_j dY(j) sum_i x_i T_{a-i}(j) + sum_k dX(k) sum_i y_i T_{a-i}(k) + sum_{i,i'} x_i y_i' V(a-i, a-i')",
+  "analyticity": "2-variable remainders converge absolutely for |tau| small for all 0<q<1 (K>=1); 1-variable remainders like n^{-1-2tau-K}; the only singularity at tau=0 is Gamma(2tau) in S(a,a), V(a,a) (i=i'=0); d=2 is a removable degenerate point (Gamma(a)=Gamma(-tau))"
+ },
+ "K_d": {
+  "formula": "K_d = -A U/4 + (1/4) [tau^2] { C(tau) sum_j w_j(tau) Xi_R(t_j; tau) - C(tau)^2 Gamma(q-tau/2)^4/Gamma(q+tau/2)^4 }   (= (1/4)[tau^2](J_{2tau} - J^Gamma_{2tau}))",
+  "jet_content": "Laurent data to order tau^3 of the samples = tau-Taylor coefficients of three convergent 2-variable remainder sums per node, of 1-variable remainder sums, and of Gamma closed forms; plus elementary prefactors",
+  "by_product": "[tau^1] F = <t_l^2 E_2>_d = (3/2) psi_2(d/4)  (exact from gs:Bjet's O(t) cancellation; d=2: -21 zeta(3))"
+ },
+ "code": {
+  "rblocks.py": "samples, blocks, kernels, residue functional, 5- and 3-node rules",
+  "kjet.py / kjet_prod.py": "tau-jet by Cauchy circle",
+  "checks": "check_perspin.py, compare_strip.py, check_d12.py, check_d3_halfshift.py, check_modes_summed.py, check_wheel_modes*.py, check_mult_mismatch.py, exact_tE2_d1.py"
+ },
+ "special_dimensions": {
+  "d=2 (q=1/2)": "offset 1-2q=0, d_l=(1,2,2,..): Psi_t(n) = cos^3(pi t)/[sin^2(pi t) cos(pi(t+tau))] Phi_t(n), lattice sum = B(t)^2, B = sum_{m in Z} Phi_t(m); Xi_R = -Omega(t)^2, Omega = cos^3(pi t) B(t) = alpha cos(pi t) + beta sin(pi t) (two modes)  =>  J_{2tau} = pi^2[F(tau)^2 + F(1-tau)^2]  (gc:K2master; generic code reproduces it to 1.5e-20)",
+  "d=1 (q=1/4)": "d_l = (1,1,0,...): the lattice sum is sum over consecutive pairs (w, w+1/2) of a half-integer lattice -> period 1/2 in t, D_R T_R = -cos^3(2 pi t)/8 antiperiodic => Xi_R(t+1/2) = -Xi_R(t): only c_{+-1}; J reproduces eq:KproofTwoFunctions (t=2tau) to 4e-22",
+  "d=3 (q=3/4)": "offset 1/2, d_l = 2(x-y): Xi_R(t) + Xi_R(t+1/2) = -(Gamma(3/2)^2/4) cos^3(2 pi t) [S_o^1 S_e^0 - S_o^0 S_e^1] = -(pi/2)(alpha_0 beta_1 - alpha_1 beta_0) (constant): c_{+-2}=0, c_0 = ordinary 2x2 determinant of the two-mode amplitudes of sin^3(pi(u+1/8)) sum_{n in Z} (n+u)^k Phi1(n+u), Phi1(w) = G(w+1/8)^3/[G(w+7/8)^2 G(w+1/8+tau)] (k=0,1); c_{+-1} = two-variable residual sector (H_R at d=3 = tau-deformed td:Harrays rows). Valid in 1/2 < tau < 9/8, continued otherwise.",
+  "generic d": "offset 1-2q generic: no half-shift; c_0 and c_{+-1} all need the three two-variable blocks"
+ },
+ "observations": {
+  "top_mode_killed": "Spin-summed periodized samples have one Fourier mode fewer than the growth bound: R-family |k|<=1 (bound 2); balanced wheels r=2: constant (bound 1), r=3: |k|<=1 (bound 2, fp keeps cos 4pi(t+q/2)), r=4: |k|<=2 (bound 3). Numerical (|c_top| < 1e-27 relative) at d=0.8..3; false if d_l is taken at another dimension than q. Per spin the top mode is present; the spin sum cancels it. Unproved for generic d.",
+  "r2_wheel_consequence": "sum_{l>=0} d_l(4q) sum_{n in Z} [G(l+n+t+beta)/G(l+n+t+2q)]^2 [G(n+t+1-2q+beta)/G(n+t+1)]^2 = C(q,beta) / [sin^2(pi(t+beta)) sin^2(pi(2q-beta-t))]  (conjectural O(d) analogue of Dougall's 2H2 sum; exact at q=1/2 by Dougall; C fixed by W_2(d;2beta) = B_d(d-2beta, 4beta))"
+ }
+}

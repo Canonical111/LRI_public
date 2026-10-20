@@ -1,0 +1,114 @@
+{
+  "profile": "core",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+  },
+  "tasks": [
+    {
+      "id": "real_checks_45",
+      "source_stage": "code/stages/C6_real_basis",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "check.py",
+        "45"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/real_checks_45/generated/results/checks_45.json"
+      ],
+      "elapsed_seconds": 2.009877865999897
+    },
+    {
+      "id": "real_checks_90",
+      "source_stage": "code/stages/C6_real_basis",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "check.py",
+        "90"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/real_checks_90/generated/results/checks_90.json"
+      ],
+      "elapsed_seconds": 4.293716142999983
+    },
+    {
+      "id": "real_build",
+      "source_stage": "code/stages/C6_real_basis",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "build.py"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/real_build/generated/results/all_real_representations.json"
+      ],
+      "elapsed_seconds": 0.9888863899999478
+    },
+    {
+      "id": "complete_smoke",
+      "source_stage": "code/stages/C6_complete_interval",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "certify_complete.py",
+        "smoke"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/complete_smoke/generated/results/complete_smoke.json"
+      ],
+      "elapsed_seconds": 3.508047667000028
+    },
+    {
+      "id": "complete_release",
+      "source_stage": "code/stages/C6_complete_interval",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "certify_complete.py",
+        "release"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/complete_release/generated/results/complete_release.json"
+      ],
+      "elapsed_seconds": 8.268761199000096
+    },
+    {
+      "id": "complete_refined",
+      "source_stage": "code/stages/C6_complete_interval",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "certify_complete.py",
+        "refined"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/complete_refined/generated/results/complete_refined.json"
+      ],
+      "elapsed_seconds": 12.048639938000065
+    },
+    {
+      "id": "residual_intervals",
+      "source_stage": "code/stages/C6_three_residual_sums_evaluation",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "evaluate.py"
+      ],
+      "status": "passed",
+      "returncode": 0,
+      "generated_files": [
+        "outputs/rerun/residual_intervals/generated/results.json"
+      ],
+      "elapsed_seconds": 4.9443715080000175
+    }
+  ],
+  "all_passed": true,
+  "scope": "Re-execution of supplied analytic/numerical code; not a new independent physical graph calculation."
+}

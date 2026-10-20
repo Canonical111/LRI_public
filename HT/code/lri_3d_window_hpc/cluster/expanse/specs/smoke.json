@@ -1,0 +1,14 @@
+{
+  "campaign": "smoke",
+  "comment": "Expanse smoke/drill campaign: x=0.6, L6 teacher (nz24/osc192 keep20) -> window L8 -> L10 (nz16), plus the baseline side checks at L10. Compare with reference/baseline/results/curve/window_L{8,10}_x0.6.json.",
+  "x": [0.6],
+  "teacher": {"L": 6, "nz": 24, "osc": 192, "keep": 20, "diagnostics": "first"},
+  "ladder": [8, 10],
+  "window": {"nz": 16, "diagnostics": "all"},
+  "side": [
+    {"name": "window_L10_k12", "after_L": 10, "argv": ["--nz", "12", "--diagnostics", "none"]},
+    {"name": "raw_L10", "after_L": 10, "raw": true, "argv": ["--nz", "20", "--osc", "160", "--diagnostics", "first"]}
+  ],
+  "groups": [{"name": "t4", "cpus": 4, "threads": 4, "mem_gib": 8, "wall": "01:00:00", "lead_s": 300, "partition": "shared"}],
+  "throttle": 4
+}

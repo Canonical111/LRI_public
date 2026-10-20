@@ -1,0 +1,11 @@
+$MaxExtraPrecision = 500;
+Get[FileNameJoin[{DirectoryName[$InputFileName], "emsum.wl"}]];
+Ecl[a_, b_] := Pi/2 Beta[a, b] HypergeometricPFQ[{1/2, 1/2, a}, {1, a + b}, 1];
+KA[x_] := Pi/(2 ArithmeticGeometricMean[1, Sqrt[1 - x]]);
+g[x_?NumericQ] := x^(1/2 - 1) (1 - x)^(3/10 - 1) KA[x];
+Do[{t, v} = AbsoluteTiming[NIntegrate[g[x], {x, 0, 1/2, 1}, WorkingPrecision -> w + 10, PrecisionGoal -> w, MaxRecursion -> 40, Method -> "DoubleExponential"]];
+ Print[w, " digits AGM: time ", t, "  diff ", InputForm[N[v - N[Ecl[1/2, 3/10], w + 10], 5]]], {w, {30, 56}}];
+h[z_, ta_] := Exp[3 LogGamma[z + 1/2] - 2 LogGamma[z + 1] - LogGamma[z + 1/2 + ta]];
+{t, v} = AbsoluteTiming[emSum[h[#, 1/7] &, 0, 60, 25, 70]];
+Print["H0(1/7) EM time ", t, " diff vs 2E(1/2,tau)/Gamma: ", InputForm[N[v - N[2 Ecl[1/2, 1/7]/Gamma[1/7], 70], 5]]];
+Quit[];

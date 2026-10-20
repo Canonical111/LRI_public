@@ -1,0 +1,15 @@
+# Captured outputs of the two longer local runs (2026-10-03), copied verbatim from the terminal.
+
+## d1_independent.py 25   (my own spectral quadrature of W3(1;b), two spins, vs 6 pi^2 R/s^2 with R = Dixon)
+b = 0.5    W3 spectral = 165.00445963248892805   6pi^2 R/s^2 = 165.00445963248894786   rel dev 1.2e-16   [quadrature-limited: integrand ~ nu^-1.5]
+b = 0.37   W3 spectral = 216.13421085114576401   6pi^2 R/s^2 = 216.13421085114576401   rel dev 2.58e-26
+b = 0.2    W3 spectral = 627.34334445786427181   6pi^2 R/s^2 = 627.34334445786427181   rel dev 1.29e-25
+b = 0.6    W3 spectral = 231.32110983012526577   6pi^2 R/s^2 = 231.32120652096293814   rel dev 4.18e-7    [quadrature-limited: integrand ~ nu^-1.2]
+b = 0.3+0.1j  W3 spectral = 223.84120958890026217 - 136.40097597845135542j = prediction   rel dev 4.33e-26
+(log R)'(1/2) - pi = 0.0 ; (log R)''(1/2) - pi^2 - 24G = -4.1e-25 ; Z1 = (4pi^2/3)R'' = 764.9310301995885770402 = Q1(2pi^2/3+8G) ; W3'(1;1/2) = -1.5e-33
+(the nsum lines "Dixon closed vs sum_m" in that run are mpmath.nsum failures on a slowly convergent series, not identity failures;
+ the termwise duplication identities are checked exactly in d1_terms.log)
+
+## d3_spectral.py 1.2 25 8 5   (my own spectral W3(3;1.2): quadrature per spin, spin sum to l=256 + Richardson)
+b=1.2  W3 spectral = 18.18974179246914866458   (order diff 4.64e-14, 35s)
+two-node value with my independent R, Mh (d3_independent_b1.2.log): 18.18974179246915051436   -> rel dev 1.0e-16 (within the 4.6e-14 proxy)

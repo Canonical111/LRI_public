@@ -1,0 +1,28 @@
+{
+  "description": "C8 native extension of the supplied C7 finite-MOM integrator. Original source remains unchanged in the uploaded archive.",
+  "source_package": "LRI_C7_D3_HPC.zip",
+  "source_sha256": {
+    "src/kernel.hpp": "cbbeccbeb8683bc570b8a53441b81cf2c107e7617ef1a850a142a2dbbb08df56",
+    "src/c7d3_integrate.cpp": "3f21f1eeb7e7fced19ee215bb842448c7367803e6be1ccf0e86d4ca95404b95b",
+    "tests/point_checks.cpp": "9ab43ca1b3ccca13b8112843f1dc885d4907f7950d8f0587a837e6329019a55a"
+  },
+  "changes": [
+    "Target order 8; graph loops 2..8 and Taylor jets through order 8-L.",
+    "Fixed storage enlarged to 16 edges,31 Sobol coordinates,7 scalar slots and14 channel slots.",
+    "C8 graph/task/result schema; C7 graph payloads accepted for common-loop numerical regression.",
+    "Graph and gamma header input validation; no changes to forest denominators, summation order, promotion thresholds, rates or net construction.",
+    "MP backend remains GMP350 by default; decimal300 available as an explicitly selected alternative."
+  ],
+  "compiler_flags": [
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math"
+  ],
+  "test_source": "tests/test_native.py",
+  "limitations": [
+    "Actual C8 graph coverage and rates must be validated independently of common-slot native regression.",
+    "Native binary128/GMP350 cancellation thresholds are inherited from C7; new C8 endpoint checks are required before precision production."
+  ]
+}

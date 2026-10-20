@@ -1,0 +1,68 @@
+\section{Reproduction}\label{sec:repro}
+
+\subsection{Layout}
+All paths are relative to the folder \code{HT/} of the public repository.
+
+\paragraph{Folders.}
+\begin{itemize}
+\item \code{code/<package>/}: one package per solver or analysis, shipped at the commit its production ran. Each has
+ a \code{public.mk} with the targets \code{test} and \code{replay} (optionally \code{smoke}), and a \code{public/}
+ folder with the replay scripts and a README.
+\item \code{data/HT\_<d>d/}: the production records.
+\item \code{results/HT\_<d>d/}: the published tables and the expected values of every quoted number.
+\end{itemize}
+
+\paragraph{Commands.}
+\begin{itemize}
+\item \code{make test} and \code{make replay} in \code{HT/} run the targets of every package.
+\item In a package folder: \code{make -f public.mk test|replay|smoke}.
+\end{itemize}
+A replay recomputes every quoted number of its package from the shipped records, without a production rerun. It
+prints a PASS/FAIL table and exits non-zero on any failure.
+
+\subsection{Packages and records}
+\begin{center}\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{4.3cm}p{2.5cm}p{8.4cm}@{}}
+\toprule
+package (\code{code/}) & $d$, role & content, records, cost\\
+\midrule
+\code{lri\_dressed\_phi4\_hpc} & 1: solver & commit 33998bb. Zero mode plus bath, window, density basis, launcher for the symmetry cluster. Records \code{data/HT\_1d/dens\_v1} (201) and \code{prod\_window} (680). \code{test} about 3 min; \code{smoke} one item\\
+\code{lri\_dressed\_phi4\_hpc\_analysis} & 1: analysis & fits, held-out test, identity records, tables. \code{replay} about 1 min\\
+\code{lri\_dressed\_phi4\_independent\_check} & 1: blind check & DVR solver, its per-task outputs and comparison. \code{replay} seconds\\
+\code{lri\_2d\_window\_hpc}, \code{lri\_2d\_window\_indep} & 2 & Section~\ref{d2:sec}; records \code{data/HT\_2d}\\
+\code{lri\_3d\_window\_hpc}, \code{lri\_3d\_window\_indep} & 3 & Section~\ref{d3:sec}; records \code{data/HT\_3d}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Rules that are part of the results}
+\begin{itemize}
+\item \emph{Estimators.} The fit families, acceptance and stability rules, and estimators of
+ Section~\ref{sec:d1-extrap} define the quoted numbers. So do the status words of Table~\ref{tab:d1}.
+\item \emph{Expected values.} \code{results/HT\_1d/quoted\_numbers.json} gives the estimator and comparison rule of
+ every $d=1$ number. The $d=1$ numbers in this note are typeset from it.
+\item \emph{Fit tolerance.} The cutoff fits of $d=1$ are nonlinear least squares from several starting exponents, and
+ other numpy/scipy versions may land in slightly different minima. The replay therefore checks each number twice:
+ \begin{itemize}
+ \item against the shipped analysis outputs, exactly;
+ \item against a refit in the reader's environment, within a quarter of the quoted half-spread.
+ \end{itemize}
+ The largest shift measured on symmetry was 0.11 of the half-spread ($\Ds=0.175$).
+\end{itemize}
+
+\subsection{Result $\to$ code, record, command, tolerance}
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.1}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{longtable}{@{}L{4.2cm}L{2.4cm}L{0.9cm}L{2.3cm}L{2.6cm}L{2.0cm}@{}}
+\toprule
+result & value & pkg & records & command & tolerance\\
+\midrule\endhead
+\bottomrule\endfoot
+\inputrows{sections/repro_d1.tex}
+\midrule
+\inputrows{sections/d2/repro_d2.tex}
+\midrule
+\multicolumn{6}{@{}p{\linewidth}@{}}{\emph{$d=3$, finite coupling} (P = \texttt{lri\_3d\_window\_hpc}, I = \texttt{lri\_3d\_window\_indep}, C = \texttt{data/HT\_3d/campaigns})}\\*
+\inputrows{sections/d3/repro_d3.tex}
+\end{longtable}
+\endgroup

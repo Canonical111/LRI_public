@@ -1,0 +1,160 @@
+{
+ "schema": "c8-d2-dd-accuracy-1",
+ "N": 400000,
+ "seed": 20261005,
+ "u2": "2^-106",
+ "tests": {
+  "exp_uniform_300": {
+   "n": 400000,
+   "max_u2": 2.214,
+   "q999_u2": 1.436,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "exp_wide_m650_700": {
+   "n": 400000,
+   "max_u2": 2.328,
+   "q999_u2": 1.446,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "exp_small": {
+   "n": 400000,
+   "max_u2": 0.5005,
+   "q999_u2": 0.4963,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "exp_edges": {
+   "n": 800000,
+   "max_u2": 2.723,
+   "q999_u2": 1.636,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "exp_special": {
+   "n": 13,
+   "max_u2": 1.166,
+   "q999_u2": 0.238,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "arg_direct": {
+   "n": 400000,
+   "max_u2": 2.318,
+   "q999_u2": 1.449,
+   "bound_u2_max": 40,
+   "over_bound": 0,
+   "passed": true
+  },
+  "arg_shifted": {
+   "n": 259563,
+   "max_u2": 819.2,
+   "q999_u2": 439,
+   "bound_u2_max": 5377,
+   "over_bound": 0,
+   "passed": true
+  },
+  "add": {
+   "n": 400000,
+   "max_u2": 1.791,
+   "q999_u2": 1.196,
+   "bound_u2_max": 3,
+   "over_bound": 0,
+   "passed": true
+  },
+  "add_d": {
+   "n": 400000,
+   "max_u2": 0.9988,
+   "q999_u2": 0.7153,
+   "bound_u2_max": 2,
+   "over_bound": 0,
+   "passed": true
+  },
+  "mul": {
+   "n": 400000,
+   "max_u2": 3.736,
+   "q999_u2": 2.309,
+   "bound_u2_max": 6,
+   "over_bound": 0,
+   "passed": true
+  },
+  "mul_d": {
+   "n": 400000,
+   "max_u2": 1.652,
+   "q999_u2": 1.032,
+   "bound_u2_max": 2,
+   "over_bound": 0,
+   "passed": true
+  },
+  "div": {
+   "n": 400000,
+   "max_u2": 5.477,
+   "q999_u2": 3.241,
+   "bound_u2_max": 11,
+   "over_bound": 0,
+   "passed": true
+  },
+  "div_d": {
+   "n": 400000,
+   "max_u2": 2.64,
+   "q999_u2": 1.698,
+   "bound_u2_max": 4,
+   "over_bound": 0,
+   "passed": true
+  },
+  "exact_ops": {
+   "n": 400000,
+   "max_u2": 6.58e-97,
+   "q999_u2": 7.861e-98,
+   "bound_u2_max": 1e-60,
+   "over_bound": 0,
+   "passed": true
+  },
+  "sum_positive": {
+   "n": 6250,
+   "max_u2": 64,
+   "q999_u2": 46.85,
+   "bound_u2_max": 30720.0,
+   "over_bound": 0,
+   "passed": true
+  }
+ },
+ "params": {
+  "dd_ratio": "1e-20",
+  "routing": "cascade",
+  "cascade_low": "1e-23",
+  "range": 300,
+  "guard": "products",
+  "product_range": [
+   "2^-900",
+   "2^900"
+  ],
+  "exp": "dd-k-ln2-r64-taylor11-x6",
+  "sum": "compensated-b8",
+  "err": "double",
+  "development": false
+ },
+ "passed": true,
+ "compile_command": [
+  "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+  "-O3",
+  "-mavx2",
+  "-mfma",
+  "-std=c++17",
+  "-fopenmp",
+  "-ffp-contract=off",
+  "-fno-fast-math",
+  "<SCRATCH>/temp_project/c8d2/pkg/dd171982f690/tests/dd_accuracy.cpp",
+  "-o",
+  "/scratch/<USER>/job_54673764/tmp/dd_accuracy"
+ ],
+ "compile_seconds": 5.2,
+ "run_seconds": 2.0,
+ "threads": 128
+}

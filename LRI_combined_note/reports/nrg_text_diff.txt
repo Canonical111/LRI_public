@@ -1,0 +1,411 @@
+--- standalone/nrg
++++ combined/nrg
+@@ -58,27 +58,27 @@
+ ∆σ=0.1.Thesumaddsastandarddeviation,afitmodelhalfrangeandanerrorscaleandisonlyascale,notatestofstati
+ sticalconsistency.Thedifferencesareupto14MonteCarlostatisticalerrorsandhavethesamesignatneighboringp
+ oints,soonlytheMonteCarlohalfrangeσsysreconcilesthetwo,andthecomparisonteststheMonteCarlosystematics
+-morethanNRG(Sec.8.3).At∆σ=0.2theresummedserieshasaspreadof9×10−3anddoesnottestNRG.•Nears=1/2thechain
+-istooshort.Theflowapproachesitsfixedpointatarateω≈ε→0intheRGtimel.At∆σ=0.249theinversedistancetothes
+-eriesvaluegrowsnearlylinearlyinl,withslopes2.55to3.03,ofthesizeoftheoneloopprediction(3.14–3.17to3.4
+-4–3.47;Fig.3c,Sec.7.1).ConvergencescansinK,nborΛatfixeddepthcannotrevealthis,becauseonceKandnb≥12are
+-convergedtheeffectdependsonlyonl.Table1:Thermaldimension∆εofthed=1longrangeIsingmodelfrombosonicNRG:
+-∆E=1−ytatΛ=3,K=128keptstatesperparitysectorandnb=16oscillatorlevels,withthetotalerrorδtotinparenthes
+-es(Sec.4:chaindepthplusK/nbspreadplusdiscretizationerror,thelastmostlyanallowancefortheconvergencein
+-KatΛ=2.5;PDGrounding).“Final”istheplateauvalueofSec.3.7;“final,extrapolated”istheextrapolationofthel
+-ocalexponent.Gray:notconvergedinchaindepth;thesettledvalue,noerror,notusedinanycomparison,anditsexce
+-ssovertheεseriesinthelastcolumn.Externaltest:theεseries(Sec.8.2),whosespreadat∆σ=0.2isfarlargerthant
+-heNRGerror;thelabelthattheMonteCarlostudygivesitsownvalue(Sec.8.3)and,wherethatvalueisaccepted,NRGmi
+-nusMonteCarlowithitsratiotoσstat+σsys+δtot;at∆σ≤0.01onlytheexpansionabouts=1ofSec.7.5.∆σsε∆Estatusex
+-ternaltest(Sec.8)0.2490.5020.004[0.5080]notconvergedseries0.499344(excess+8.7×10−3)0.240.520.04[0.49
+-89]notconvergedseries0.49422(excess+4.7×10−3)0.2250.550.1[0.4897]notconvergedseries0.48808(excess+1.
+-6×10−3);MClabel:conditional0.20.60.20.4830(7)final,extrapolatedseries0.48292(spread9×10−3:notest)0.1
+-750.650.30.48390(35)final,extrapolatedMClabel:crosscheckfailed(notused)0.150.70.40.49111(11)finalMCl
+-abel:crosscheckfailed(notused)0.1250.750.50.50567(5)finalMClabel:accepted;NRG−MC−1.4×10−3(ratio0.61)
+-0.10.80.60.529608(33)finalMClabel:accepted;NRG−MC−2.9×10−3(ratio1.08)0.0750.850.70.566260(30)finalMC
+-label:accepted;NRG−MC−6.8×10−4(ratio0.38)0.050.90.80.622115(27)finalMClabel:accepted;NRG−MC+2.2×10−3
+-(ratio0.81)0.0250.950.90.713422(29)finalMClabel:accepted;NRG−MC+2.3×10−3(ratio0.22)0.010.980.960.809
+-75(5)finals→1expansiononly0.0010.9980.9960.93742(11)finals→1expansiononlyTheerrorsareerrorscalesbuil
++morethanNRG(Sec.8.3).At∆σ=0.2theresummedserieshasaspreadof9×10−3anddoesnottestNRG.Table1:Thermaldime
++nsion∆εofthed=1longrangeIsingmodelfrombosonicNRG:∆E=1−ytatΛ=3,K=128keptstatesperparitysectorandnb=16
++oscillatorlevels,withthetotalerrorδtotinparentheses(Sec.4:chaindepthplusK/nbspreadplusdiscretization
++error,thelastmostlyanallowancefortheconvergenceinKatΛ=2.5;PDGrounding).“Final”istheplateauvalueofSec
++.3.7;“final,extrapolated”istheextrapolationofthelocalexponent.Gray:notconvergedinchaindepth;thesettl
++edvalue,noerror,notusedinanycomparison,anditsexcessovertheεseriesinthelastcolumn.Externaltest:theεse
++ries(Sec.8.2),whosespreadat∆σ=0.2isfarlargerthantheNRGerror;thelabelthattheMonteCarlostudygivesitsow
++nvalue(Sec.8.3)and,wherethatvalueisaccepted,NRGminusMonteCarlowithitsratiotoσstat+σsys+δtot;at∆σ≤0.0
++1onlytheexpansionabouts=1ofSec.7.5.∆σsε∆Estatusexternaltest(Sec.8)0.2490.5020.004[0.5080]notconverge
++dseries0.499344(excess+8.7×10−3)0.240.520.04[0.4989]notconvergedseries0.49422(excess+4.7×10−3)0.2250
++.550.1[0.4897]notconvergedseries0.48808(excess+1.6×10−3);MClabel:conditional0.20.60.20.4830(7)final,
++extrapolatedseries0.48292(spread9×10−3:notest)0.1750.650.30.48390(35)final,extrapolatedMClabel:cross
++checkfailed(notused)0.150.70.40.49111(11)finalMClabel:crosscheckfailed(notused)0.1250.750.50.50567(5
++)finalMClabel:accepted;NRG−MC−1.4×10−3(ratio0.61)0.10.80.60.529608(33)finalMClabel:accepted;NRG−MC−2
++.9×10−3(ratio1.08)0.0750.850.70.566260(30)finalMClabel:accepted;NRG−MC−6.8×10−4(ratio0.38)0.050.90.8
++0.622115(27)finalMClabel:accepted;NRG−MC+2.2×10−3(ratio0.81)0.0250.950.90.713422(29)finalMClabel:acc
++epted;NRG−MC+2.3×10−3(ratio0.22)0.010.980.960.80975(5)finals→1expansiononly0.0010.9980.9960.93742(11
++)finals→1expansiononly•Nears=1/2thechainistooshort.Theflowapproachesitsfixedpointatarateω≈ε→0intheRG
++timel.At∆σ=0.249theinversedistancetotheseriesvaluegrowsnearlylinearlyinl,withslopes2.55to3.03,ofthes
++izeoftheoneloopprediction(3.14–3.17to3.44–3.47;Fig.3c,Sec.7.1).ConvergencescansinK,nborΛatfixeddepth
++cannotrevealthis,becauseonceKandnb≥12areconvergedtheeffectdependsonlyonl.Theerrorsareerrorscalesbuil
+ tfrommeasuredspreadsandafewstatedjudgements(Sec.4);theyarenotstandarddeviations.Inthetexttheyarequot
+ edwithtwosignificantdigits;inthetablesvalue(error)followsthePDGrounding(twodigitsiftheleadingdigitsa
+ re10–35,elseone).Boundsinthetext(“atmost”,“agreeto”,“below”)areroundedup,sotheycanexceedthecorrespon
+@@ -89,20 +89,20 @@
+ 1/2<s<1itscriticalpointisneithermeanfieldnorshortrange[4,5].Therethespinfieldhastheexactlyknowndimen
+ sion∆σ=d−s2=1−s2,s=1−2∆σ,ε≡2s−d=2s−1=1−4∆σ,(1)becauselongrangeinteractionsarenotrenormalized[5].Theq
+ uantityofinterestisthedimensionoftheenergyoperator,theleadingZ2evenscalar,∆ε=d−1ν=1−yt,(2)whereνisth
+-ecorrelationlengthexponentandyt=1/νtherenormalizationgroup(RG)eigenvalueofthetemperature.Twolimitsar
+-eknownanalytically:•s→1/2+(∆σ→1/4,ε→0).ThefixedpointbecomesGaussian,∆ε→1/2,and∆εhasanexpansion∆ε=PnC
+-nεnwithC0=1/2,C1=−1/6andhighercoefficientsknownthroughC8(Sec.8.2,Ref.[1]).Theseriesisasymptotic,butc
+-losetos=1/2itisfarmoreprecisethananynumericalmethod.Theleadingirrelevantcoupling(φ4)hasthecorrection
+-exponentω=ε+O(ε2),socorrectionstoscalingdecayevermoreslowlyass→1/2.0.000.050.100.150.200.25Δσ0.50.60
+-.70.80.91.0Δε=ΔE(a)thermaldimensionNRG,notconvergedinchaindepth(notused)1−2√Δσ(s→1)NRG(Λ=3,K=128,nb=
+-16)1DclusterMonteCarlo,ACCEPTEDMonteCarlo,CROSSCHECKFAILEDorCONDITIONALεseries(C0...C8,resummed)0.05
+-0.100.150.200.25Δσ−0.010−0.0050.0000.0050.010NRG−reference(b)differencesNRG−εseriesNRG−MonteCarlo(AC
+-CEPTED)open:NRGnotconverged,orMCnotACCEPTED(notused)Figure1:(a)∆Eagainst∆σ:NRG(filledcircleswithδtot
+-;open:notconvergedinchaindepth,notused),theproject’s1DclusterMonteCarlostudy(filledsquares:labelACCE
+-PTED;open:CROSSCHECKFAILEDorCONDITIONAL,whichthatstudydoesnotcertifyasinfinitesizevalues;barsσstat+σ
+-sys,addedlinearly),theresummedεseries(diamonds;bars:spreadoverPadéapproximants,at∆σ=0.249thepartials
+-umerror)and1−2√∆σnears=1.(b)NRGminusreference;barsareδtotplusthereference’serror,addedlinearly.Opens
+-ymbolsarenotusedinanycomparison.•s→1−(δ≡1−s=2∆σ→0).ThetwolowestZ2evendimensionsare∆±=1±√2δ+δ/4+O(δ3/
++ecorrelationlengthexponentandyt=1/νtherenormalizationgroup(RG)eigenvalueofthetemperature.0.000.050.1
++00.150.200.25Δσ0.50.60.70.80.91.0Δε=ΔE(a)thermaldimensionNRG,notconvergedinchaindepth(notused)1−2√Δσ
++(s→1)NRG(Λ=3,K=128,nb=16)1DclusterMonteCarlo,ACCEPTEDMonteCarlo,CROSSCHECKFAILEDorCONDITIONALεseries
++(C0...C8,resummed)0.050.100.150.200.25Δσ−0.010−0.0050.0000.0050.010NRG−reference(b)differencesNRG−εs
++eriesNRG−MonteCarlo(ACCEPTED)open:NRGnotconverged,orMCnotACCEPTED(notused)Figure1:(a)∆Eagainst∆σ:NRG
++(filledcircleswithδtot;open:notconvergedinchaindepth,notused),theproject’s1DclusterMonteCarlostudy(f
++illedsquares:labelACCEPTED;open:CROSSCHECKFAILEDorCONDITIONAL,whichthatstudydoesnotcertifyasinfinite
++sizevalues;barsσstat+σsys,addedlinearly),theresummedεseries(diamonds;bars:spreadoverPadéapproximants
++,at∆σ=0.249thepartialsumerror)and1−2√∆σnears=1.(b)NRGminusreference;barsareδtotplusthereference’serr
++or,addedlinearly.Opensymbolsarenotusedinanycomparison.Twolimitsareknownanalytically:•s→1/2+(∆σ→1/4,ε
++→0).ThefixedpointbecomesGaussian,∆ε→1/2,and∆εhasanexpansion∆ε=PnCnεnwithC0=1/2,C1=−1/6andhighercoeff
++icientsknownthroughC8(Sec.8.2,Ref.[1]).Theseriesisasymptotic,butclosetos=1/2itisfarmoreprecisethanan
++ynumericalmethod.Theleadingirrelevantcoupling(φ4)hasthecorrectionexponentω=ε+O(ε2),socorrectionstosc
++alingdecayevermoreslowlyass→1/2.•s→1−(δ≡1−s=2∆σ→0).ThetwolowestZ2evendimensionsare∆±=1±√2δ+δ/4+O(δ3/
+ 2)[8,9];theleadingtermisKosterlitz’s[6].With∆−∼φ2theenergyoperator[8],yt=√2δ−δ4+O(δ3/2),ω=∆+−1=√2δ+δ
+ 4+O(δ3/2).(3)Soω≈ytnears=1:botharesmall,buttheyarecomparable(Sec.3.9).Beyondthisorderthedualdescript
+ iongives∆εasaseriesin√∆σ,∆ε=1+Xn≥1CSRn(1)∆n/2σ,CSR1(1)=−2,CSR2(1)=12,(4)equivalenttoEq.(3)throughits
+@@ -281,28 +281,28 @@
+ sentertheplateautest,andwithittheclassof∆σ=0.15,butnotitsvaluebeyond2×10−5(Sec.3.7).Whenthechoiceswe
+ remade.Theruleanditsconstantswerefixedon13October2026,aftertheNRGdata,theearliercomparisonswiththeεs
+ eriesandtheMonteCarlostudy,andthereviews’exploratorycomparisonshadbeenseen;noprotocolwasregisteredin
+-advance.App.Cgivesthetimeline.5Softwareandvalidation5.1CodeThesolveristhePythonpackagelri_spin(code/
+-lri_spin_boson_hpc/src/lri_spin;NumPy,SciPyandthreadpoolctl;float64throughout).•Backend.Theorderedba
+-ckendbuildsoneparityblockatatimeinthebasisorderofthereferencesolver(code/lri_spin_boson_hpc/referenc
+-e/)andreproducesitsflowsbitwiseanditsderivativetorounding(tested).Thereordereddenseandbandedbackends
+-areexperimentalandwerenotused.•Workflows.Thecriticalsearchwritescheckpointsevery8sitesandpersiststhe
+-bisectionstate,soaninterrupteditemresumeswhereitstopped.•Records.Eachitemendsinoneresultrecord(App.A
+-)carryingaSHA256checksumandanidentity:theconfiguration,thekindofrun,bracketandtolerances,theSHA256of
+-thesolversourceandtheTable2:Errorbudget.Columns:estimator(plateau,extrapolated,orsettledforthepoints
+-notconvergedinchaindepth);∆Etosixdecimals;thechaindeptherrorδdepth,theK/nbspreadδK,thediscretization
+-errorδΛandtheirlinearsumδtot,inunitsof10−4;thenumbernqofqualitywindowsofthecentralitem;thelatefitofS
+-ec.3.8minus∆E(crosscheck,notadopted;shownforthefinalpoints).n.c.:notconvergedinchaindepth.∆σestimato
+-r∆E104δdepth104δK104δΛ104δtotnq104(latefit−∆E)status0.249settled0.508030n.c.1.701.21–2−−notconverged
+-0.24settled0.498922n.c.5.122.54–4−−notconverged0.225settled0.489668n.c.2.986.05–9−−notconverged0.2ex
+-trapolated0.4829804.122.470.497.0815+0.69final0.175extrapolated0.4839000.860.801.803.4619+0.14final0
+-.15plateau0.4911060.190.280.681.1521−0.17final0.125plateau0.5056720.010.150.380.5423−0.00final0.1pla
+-teau0.5296080.020.050.270.3323−0.01final0.075plateau0.5662600.010.050.240.3028−0.00final0.05plateau0
+-.6221150.000.030.230.2734−0.00final0.025plateau0.7134220.010.020.260.2938+0.00final0.01plateau0.8097
+-470.090.020.350.4741+0.01final0.001plateau0.9374240.020.041.051.11106+0.03final0.2490.240.2250.20.17
+-50.150.1250.10.0750.050.0250.010.001Δσ10−610−510−410−3errorcomponentofΔEn.c.n.c.n.c.total(linearsum)
+-chaindepthδdepthK,nb:δKdiscretizationδΛFigure2:Componentsoftheerrorateach∆σandtheirlinearsumδtot.Hat
+-ched:thethreepointsnotconvergedinchaindepth,whichhavenoδdepthandnototal.AttheplateaupointsδΛdominate
+-s,mostlythroughtheKdoublingallowanceatΛ=2.5;at∆σ=0.2theextrapolationlengthδdepthdominates.runtime(Py
++advance.App.Cgivesthetimeline.Table2:Errorbudget.Columns:estimator(plateau,extrapolated,orsettledfor
++thepointsnotconvergedinchaindepth);∆Etosixdecimals;thechaindeptherrorδdepth,theK/nbspreadδK,thediscr
++etizationerrorδΛandtheirlinearsumδtot,inunitsof10−4;thenumbernqofqualitywindowsofthecentralitem;thel
++atefitofSec.3.8minus∆E(crosscheck,notadopted;shownforthefinalpoints).n.c.:notconvergedinchaindepth.∆
++σestimator∆E104δdepth104δK104δΛ104δtotnq104(latefit−∆E)status0.249settled0.508030n.c.1.701.21–2−−not
++converged0.24settled0.498922n.c.5.122.54–4−−notconverged0.225settled0.489668n.c.2.986.05–9−−notconve
++rged0.2extrapolated0.4829804.122.470.497.0815+0.69final0.175extrapolated0.4839000.860.801.803.4619+0
++.14final0.15plateau0.4911060.190.280.681.1521−0.17final0.125plateau0.5056720.010.150.380.5423−0.00fi
++nal0.1plateau0.5296080.020.050.270.3323−0.01final0.075plateau0.5662600.010.050.240.3028−0.00final0.0
++5plateau0.6221150.000.030.230.2734−0.00final0.025plateau0.7134220.010.020.260.2938+0.00final0.01plat
++eau0.8097470.090.020.350.4741+0.01final0.001plateau0.9374240.020.041.051.11106+0.03final5Softwareand
++validation5.1CodeThesolveristhePythonpackagelri_spin(code/lri_spin_boson_hpc/src/lri_spin;NumPy,SciP
++yandthreadpoolctl;float64throughout).•Backend.Theorderedbackendbuildsoneparityblockatatimeinthebasis
++orderofthereferencesolver(code/lri_spin_boson_hpc/reference/)andreproducesitsflowsbitwiseanditsderiv
++ativetorounding(tested).Thereordereddenseandbandedbackendsareexperimentalandwerenotused.•Workflows.T
++hecriticalsearchwritescheckpointsevery8sitesandpersiststhebisectionstate,soaninterrupteditemresumesw
++hereitstopped.0.2490.240.2250.20.1750.150.1250.10.0750.050.0250.010.001Δσ10−610−510−410−3errorcompon
++entofΔEn.c.n.c.n.c.total(linearsum)chaindepthδdepthK,nb:δKdiscretizationδΛFigure2:Componentsoftheerr
++orateach∆σandtheirlinearsumδtot.Hatched:thethreepointsnotconvergedinchaindepth,whichhavenoδdepthandn
++ototal.AttheplateaupointsδΛdominates,mostlythroughtheKdoublingallowanceatΛ=2.5;at∆σ=0.2theextrapolat
++ionlengthδdepthdominates.•Records.Eachitemendsinoneresultrecord(App.A)carryingaSHA256checksumandanid
++entity:theconfiguration,thekindofrun,bracketandtolerances,theSHA256ofthesolversourceandtheruntime(Py
+ thon,NumPy,SciPyandOpenBLASversions,BLASkernelandthreadinglayer).Arecordfromanothersourceorruntimeis
+ refusedbytheanalysis.BeforeproductionClaudeCodereadthepackagelinebylineagainstthereferencesolver(App
+ .C);nonumericaldefectwasfoundandnonumericalcodewaschanged.5.2AcceptancegatesandtestsEveryresultrecor
+@@ -383,20 +383,20 @@
+ 25thespreadoverKisatmost4.9×10−6.•Oscillatorlevels.nbmattersmainlynears=1/2,wherenb=8isoffbyupto9.5×
+ 10−3andnb=10byupto8.9×10−4,whileatthefinalpointsallitemswithnb≥12(andK≥64)agreewiththecentralvalueto
+ 1.9×10−4.•Toplevelprobability.pedgeistheweightofthehighestlevel,nb−1,ofthenewestoscillatorinthegroun
+-dstate,evaluatedateverysiteofthecriticalflow;App.Dlistsitsmaximumoverthechain.That010203040506070RGt
+-imel=nlnΛ−2024681012104[Δloc−ΔE](a)Δσ=0.1:plateauΛ=2,K=256,nb=10Λ=2.5,K=128,nb=10Λ=3,K=128,nb=10Λ=4,
+-K=64,nb=10settledwindow(centralitem)010203040506070RGtimel=nlnΛ−50510152025303540104[Δloc−ΔE](b)Δσ=0
+-.2:noplateau,extrapolatedΛ=2.5,K=128,nb=16Λ=3,K=128,nb=16(central)Λ=3,K=64,nb=24settledwindow(centra
+-litem)1020304050RGtimel=nlnΛ204060801001201401601/(Δloc−ΔseriesE)(c)Δσ=0.249(ε=0.004):slowapproachΛ=
+-3,K=128,nb=16Λ=3,K=64,nb=16Λ=3,K=64,nb=24Λ=2.5,K=128,nb=16oneloop:slope(N+8)/(N+2)=3050100150200250R
+-Gtimel=nlnΛ−2.50.02.55.07.510.012.515.0104[Δloc−ΔE](d)Δσ=0.001:ΛandKat10−4Λ=2.5,K=64,nb=10Λ=2.5,K=12
+-8,nb=10Λ=3,K=128,nb=16(central)Λ=4,K=64,nb=10settledwindow(centralitem)Figure3:Localexponent∆loc,Eq.
+-(14),againsttheRGtimel=nlnΛ.(a),(b),(d):104(∆loc−∆E)relativetothefinalvalue;grayband:thesettledwindo
+-wofthecentralitem.(a)∆σ=0.1,itemsatfourvaluesofΛ,eachatthelargestKrun(atΛ=4onlyK=64):acommonplateau.
+-(b)∆σ=0.2:noplateau;thezerolineistheextrapolatedvalue.(d)∆σ=0.001:ΛandKatthe10−4level.(c)∆σ=0.249:in
+-versedistancetotheε-seriesvalueagainstl,forfourtruncations;dashed:slope3,theoneloopvalueforε(l−l0)→0
+-(Eq.(17)).maximumisreachedatthelastsites,wheretheflowleavesthefixedpoint,anddependsonthesideitleaves
+-to:fortheitemswithnb≥12itsmedianis2×10−8whentheflowendstowardthelocalizedphase(negativeterminalresid
++dstate,evaluatedateverysiteofthecriticalflow;App.Dlistsitsmaximumoverthechain.Thatmaximumisreachedat
++thelastsites,wheretheflowleavesthefixedpoint,anddependsonthesideitleavesto:fortheitemswithnb≥12itsme
++dianis2×10−8whentheflowendstowardthelocalized010203040506070RGtimel=nlnΛ−2024681012104[Δloc−ΔE](a)Δσ
++=0.1:plateauΛ=2,K=256,nb=10Λ=2.5,K=128,nb=10Λ=3,K=128,nb=10Λ=4,K=64,nb=10settledwindow(centralitem)0
++10203040506070RGtimel=nlnΛ−50510152025303540104[Δloc−ΔE](b)Δσ=0.2:noplateau,extrapolatedΛ=2.5,K=128,
++nb=16Λ=3,K=128,nb=16(central)Λ=3,K=64,nb=24settledwindow(centralitem)1020304050RGtimel=nlnΛ204060801
++001201401601/(Δloc−ΔseriesE)(c)Δσ=0.249(ε=0.004):slowapproachΛ=3,K=128,nb=16Λ=3,K=64,nb=16Λ=3,K=64,n
++b=24Λ=2.5,K=128,nb=16oneloop:slope(N+8)/(N+2)=3050100150200250RGtimel=nlnΛ−2.50.02.55.07.510.012.515
++.0104[Δloc−ΔE](d)Δσ=0.001:ΛandKat10−4Λ=2.5,K=64,nb=10Λ=2.5,K=128,nb=10Λ=3,K=128,nb=16(central)Λ=4,K=
++64,nb=10settledwindow(centralitem)Figure3:Localexponent∆loc,Eq.(14),againsttheRGtimel=nlnΛ.(a),(b),(
++d):104(∆loc−∆E)relativetothefinalvalue;grayband:thesettledwindowofthecentralitem.(a)∆σ=0.1,itemsatfo
++urvaluesofΛ,eachatthelargestKrun(atΛ=4onlyK=64):acommonplateau.(b)∆σ=0.2:noplateau;thezerolineisthee
++xtrapolatedvalue.(d)∆σ=0.001:ΛandKatthe10−4level.(c)∆σ=0.249:inversedistancetotheε-seriesvalueagains
++tl,forfourtruncations;dashed:slope3,theoneloopvalueforε(l−l0)→0(Eq.(17)).phase(negativeterminalresid
+ ual;thebosonsaredisplacedthere)and3×10−19whenitendstowardthedelocalizedphase.Thisiswhyitchangesbyman
+ ydecadesbetweenitemsthatdifferonlyinK.Fornb≥12itisatmost4.9×10−4,atmost2.1×10−4forthecentralitems,an
+ dbelow5.4×10−6at∆σ≤0.15.Itislargestnears=1/2,wherethecriticalfixedpointholdsthemostbosons.7.3Depende
+@@ -409,22 +409,22 @@
+ 3at∆σ≤0.05.•AsmallΛdependence,farinsidetheerror.AtthelargestKrunateachΛ(atΛ=4onlyK=64,whoseconvergen
+ ceisassumed),theplateauvaluesatΛ=2,2.5,3and4agreeto1.9×10−5at∆σ=0.1and0.05,andrisemonotonicallywithΛ
+ :relativetoΛ=3,Λ=2,2.5and4lieat−3×10−6,−2×10−6and+2×10−5at∆σ=0.1,andat−1×10−6,−1×10−6and+5×10−6at0.0
+-5.ExtendedtoΛ→1thiswouldputtheΛ=3valueafew10−6abovethelimit,farbelowδtot.OverΛ=2.5–4thelargestspread
+-ataplateaupointis6.8×10−5(at∆σ=0.15,setbyΛ=4).HowmanykeptstatestheTable5:Deviation104[∆E(K,nb)−∆cent
+-ralE]atΛ=3(central:K=128,nb=16),eachitemevaluatedwithitspoint’sestimator.InthescanoverK,theoffsetsat
+-∆σ≥0.2comefromnb=10,notfromK.Emptycellswerenotrun.Kscan(nb=10)nbscan(K=64)∆σK=48K=64K=96K=128K=160K=
+-192nb=8nb=10nb=12nb=16nb=20nb=240.249+10.66+8.88+10.28+10.92+94.49+8.88+1.08−0.30+1.24−0.450.24+7.03
+-+6.80+10.23+7.21+89.86+6.80+3.00+5.12+0.70+3.320.225+2.43+2.12+4.70+4.34+65.41+2.12+0.20+0.28+1.88−1
+-.100.2+2.07+2.68+3.46+3.15+33.99+2.68+1.84+1.48−0.63−0.150.175+0.81+0.42+0.80+0.65+16.97+0.42+0.20+0
+-.220.15+0.21+0.21+0.15+0.17+9.45+0.21−0.07−0.070.125+0.15+0.15+0.13+0.10+5.86+0.15+0.03+0.030.1+0.08
+-+0.05+0.05+0.04+3.90+0.05+0.01+0.030.075+0.06+0.05+0.03+0.03+2.86+0.05+0.02+0.020.05+0.05+0.03+0.02+
+-0.02+0.01+0.01+2.33+0.03+0.01+0.020.025+0.04+0.02+0.02+0.01+0.01+0.01+2.26+0.02+0.01+0.010.01+0.03+0
+-.02+0.02+0.02+0.01+0.01+2.83+0.02+0.01+0.010.001+0.04+0.04+0.04+0.04+0.03+0.01+7.08+0.04+0.00+0.0050
+-100150keptstatesK(nb=10,Λ=3)10−710−610−510−410−310−2|ΔE−ΔcentralE|(flooredat10−7)Δσ(dashed:n.c.)0.24
+-90.240.2250.20.1750.150.1250.10.0750.050.0250.010.001101520oscillatorlevelsnb(K=64,Λ=3)Figure4:|∆E−∆
+-centralE|againstK(left,nb=10)andnb(right,K=64)atΛ=3;zerodeviationsaredrawnat10−7.Flatcurvesmeanconve
+-rged.Dashed:thethreepointsnotconvergedinchaindepth.Intheleftpanelthelevelofthe∆σ≥0.2curvesissetbynb=
+-10.limitΛ→1needswasnotdetermined,andthelimitisnottested.•At∆σ=0.2onlyΛ=2.5and3wererunwiththeconverge
++5.ExtendedtoΛ→1thiswouldputtheΛ=3valueafew10−6abovethelimit,farbelowδtot.OverΛ=2.5–4Table5:Deviation
++104[∆E(K,nb)−∆centralE]atΛ=3(central:K=128,nb=16),eachitemevaluatedwithitspoint’sestimator.Inthescan
++overK,theoffsetsat∆σ≥0.2comefromnb=10,notfromK.Emptycellswerenotrun.Kscan(nb=10)nbscan(K=64)∆σK=48K=
++64K=96K=128K=160K=192nb=8nb=10nb=12nb=16nb=20nb=240.249+10.66+8.88+10.28+10.92+94.49+8.88+1.08−0.30+
++1.24−0.450.24+7.03+6.80+10.23+7.21+89.86+6.80+3.00+5.12+0.70+3.320.225+2.43+2.12+4.70+4.34+65.41+2.1
++2+0.20+0.28+1.88−1.100.2+2.07+2.68+3.46+3.15+33.99+2.68+1.84+1.48−0.63−0.150.175+0.81+0.42+0.80+0.65
+++16.97+0.42+0.20+0.220.15+0.21+0.21+0.15+0.17+9.45+0.21−0.07−0.070.125+0.15+0.15+0.13+0.10+5.86+0.15
+++0.03+0.030.1+0.08+0.05+0.05+0.04+3.90+0.05+0.01+0.030.075+0.06+0.05+0.03+0.03+2.86+0.05+0.02+0.020.
++05+0.05+0.03+0.02+0.02+0.01+0.01+2.33+0.03+0.01+0.020.025+0.04+0.02+0.02+0.01+0.01+0.01+2.26+0.02+0.
++01+0.010.01+0.03+0.02+0.02+0.02+0.01+0.01+2.83+0.02+0.01+0.010.001+0.04+0.04+0.04+0.04+0.03+0.01+7.0
++8+0.04+0.00+0.0050100150keptstatesK(nb=10,Λ=3)10−710−610−510−410−310−2|ΔE−ΔcentralE|(flooredat10−7)Δ
++σ(dashed:n.c.)0.2490.240.2250.20.1750.150.1250.10.0750.050.0250.010.001101520oscillatorlevelsnb(K=64
++,Λ=3)Figure4:|∆E−∆centralE|againstK(left,nb=10)andnb(right,K=64)atΛ=3;zerodeviationsaredrawnat10−7.F
++latcurvesmeanconverged.Dashed:thethreepointsnotconvergedinchaindepth.Intheleftpanelthelevelofthe∆σ≥0
++.2curvesissetbynb=10.thelargestspreadataplateaupointis6.8×10−5(at∆σ=0.15,setbyΛ=4).Howmanykeptstates
++thelimitΛ→1needswasnotdetermined,andthelimitisnottested.•At∆σ=0.2onlyΛ=2.5and3wererunwiththeconverge
+ dnb=16;theirextrapolationsagreeto2×10−5.Atnb=10theextrapolatedvaluesspreadby4×10−4overΛ=2–4(Fig.5).W
+ eattributethistoaninterplayofΛwiththenb=10truncation(theΛ=2.5minusΛ=3differencechangessignbetweennb=
+ 10and16),butthatisinferred,notmeasured;itiswithinδtotonlythroughthelargeδdepth.Anearlierversionofthi
+@@ -433,30 +433,30 @@
+ rshareoftransientwindows(App.E).7.4ThefinaltableTable1givesthefinalvaluesandTable2theirerrors.Starti
+ ngfromtheGaussianvalue1/2ats=1/2,∆εfirstdecreases(theεseriesat∆σ≥0.2),passesthroughashallowminimumof
+ about0.4830near∆σ=0.2,andrisestoward1ass→1.ThewindowauditsofthreecentralitemsareshowninFig.7.Thenumb
+-erofqualitywindowsfallsfrom106at∆σ=0.001to2at∆σ=0.249(Table2).7.5Thelimits→1Table8comparesyt=1−∆Ewit
+-htheleadingform√2δ=2√∆σandthenexttoleadingformofEq.(3).Theratiototheleadingformapproaches1ass→1:yt=0
+-.06258against0.06325at∆σ=0.001(1.1%)andTable6:TheΛstudyatthreepoints(nb=10unlessstated):∆Ewiththisno
+-te’sestimator(plateauvalueat∆σ=0.1,0.05;extrapolatedat0.2),thesupersededmidpointwithitshalfwidth,and
+-αc.NisscaledwithΛsothattheinfraredscaleΛ−Nisfixed.AtΛ=1.5noitemisconvergedinK.∆σΛKnbN∆E(thisnote)old
+-midpoint(halfwidth)αc0.21.564101760.5362990.53659(0.00036)0.16262257900.21.564161760.5363000.53660(0
+-.00036)0.16262102990.21.5128101760.5070380.50754(0.00102)0.16037057350.2264101030.4840780.48534(0.00
+-177)0.16762818220.22128101030.4830210.48471(0.00165)0.16760986370.22192101030.4830610.48448(0.00193)
+-0.16760827070.22256101030.4830140.48449(0.00188)0.16760813460.22.56410780.4832210.48426(0.00131)0.17
+-616924890.22.512810780.4831730.48440(0.00101)0.17616709180.236410650.4832480.48404(0.00063)0.1847222
+-0310.2312810650.4832950.48406(0.00061)0.18472177110.246410520.4833810.48401(0.00034)0.20081154240.11
+-.564101760.5670590.56714(0.00019)0.37867923190.11.564161760.5670590.56714(0.00019)0.37868396070.11.5
+-128101760.5391960.53968(0.00049)0.37330643680.1264101030.5297960.53042(0.00063)0.39367040200.1212810
+-1030.5296310.53025(0.00063)0.39364380350.12192101030.5296130.53024(0.00063)0.39364290890.12256101030
+-.5296090.53023(0.00064)0.39364268860.12.56410780.5296370.53010(0.00046)0.41679027450.12.512810780.52
+-96100.53007(0.00046)0.41678744860.136410650.5296130.52984(0.00022)0.43976978930.1312810650.5296120.5
+-2984(0.00023)0.43976944490.146410520.5296280.52981(0.00018)0.48258123100.051.564102170.6706920.67093
+-(0.00026)0.59095903310.051.564162170.6706930.67092(0.00026)0.59096031120.051.5128102170.6303530.6306
+-1(0.00026)0.57805433510.05264101270.6223000.62262(0.00032)0.61202678770.052128101270.6221250.62241(0
+-.00036)0.61199249700.052192101270.6221190.62244(0.00033)0.61199164850.052256101270.6221160.62242(0.0
+-0034)0.61199112890.052.56410960.6221390.62240(0.00026)0.65075991390.052.512810960.6221160.62235(0.00
+-029)0.65075425090.0536410800.6221190.62236(0.00024)0.68913573160.05312810800.6221170.62236(0.00024)0
+-.68913545440.05319210800.6221170.62236(0.00024)0.68913531490.0546410630.6221220.62223(0.00013)0.7603
+-3422690.19025against0.20000at0.01(4.9%).Againstthenexttoleadingform0.06275thedifferenceat∆σ=0.001is−
++erofqualitywindowsfallsfrom106at∆σ=0.001to2at∆σ=0.249(Table2).Table6:TheΛstudyatthreepoints(nb=10unl
++essstated):∆Ewiththisnote’sestimator(plateauvalueat∆σ=0.1,0.05;extrapolatedat0.2),thesupersededmidpo
++intwithitshalfwidth,andαc.NisscaledwithΛsothattheinfraredscaleΛ−Nisfixed.AtΛ=1.5noitemisconvergedinK
++.∆σΛKnbN∆E(thisnote)oldmidpoint(halfwidth)αc0.21.564101760.5362990.53659(0.00036)0.16262257900.21.56
++4161760.5363000.53660(0.00036)0.16262102990.21.5128101760.5070380.50754(0.00102)0.16037057350.226410
++1030.4840780.48534(0.00177)0.16762818220.22128101030.4830210.48471(0.00165)0.16760986370.22192101030
++.4830610.48448(0.00193)0.16760827070.22256101030.4830140.48449(0.00188)0.16760813460.22.56410780.483
++2210.48426(0.00131)0.17616924890.22.512810780.4831730.48440(0.00101)0.17616709180.236410650.4832480.
++48404(0.00063)0.18472220310.2312810650.4832950.48406(0.00061)0.18472177110.246410520.4833810.48401(0
++.00034)0.20081154240.11.564101760.5670590.56714(0.00019)0.37867923190.11.564161760.5670590.56714(0.0
++0019)0.37868396070.11.5128101760.5391960.53968(0.00049)0.37330643680.1264101030.5297960.53042(0.0006
++3)0.39367040200.12128101030.5296310.53025(0.00063)0.39364380350.12192101030.5296130.53024(0.00063)0.
++39364290890.12256101030.5296090.53023(0.00064)0.39364268860.12.56410780.5296370.53010(0.00046)0.4167
++9027450.12.512810780.5296100.53007(0.00046)0.41678744860.136410650.5296130.52984(0.00022)0.439769789
++30.1312810650.5296120.52984(0.00023)0.43976944490.146410520.5296280.52981(0.00018)0.48258123100.051.
++564102170.6706920.67093(0.00026)0.59095903310.051.564162170.6706930.67092(0.00026)0.59096031120.051.
++5128102170.6303530.63061(0.00026)0.57805433510.05264101270.6223000.62262(0.00032)0.61202678770.05212
++8101270.6221250.62241(0.00036)0.61199249700.052192101270.6221190.62244(0.00033)0.61199164850.0522561
++01270.6221160.62242(0.00034)0.61199112890.052.56410960.6221390.62240(0.00026)0.65075991390.052.51281
++0960.6221160.62235(0.00029)0.65075425090.0536410800.6221190.62236(0.00024)0.68913573160.05312810800.
++6221170.62236(0.00024)0.68913545440.05319210800.6221170.62236(0.00024)0.68913531490.0546410630.62212
++20.62223(0.00013)0.76033422697.5Thelimits→1Table8comparesyt=1−∆Ewiththeleadingform√2δ=2√∆σandthenext
++toleadingformofEq.(3).Theratiototheleadingformapproaches1ass→1:yt=0.06258against0.06325at∆σ=0.001(1.
++1%)and0.19025against0.20000at0.01(4.9%).Againstthenexttoleadingform0.06275thedifferenceat∆σ=0.001is−
+ 1.7×10−4.Theremainderdividedbyδ3/2changessmoothlyover0.001≤∆σ≤0.075(−1.90to−1.32):itis−1.68at∆σ=0.01
+ ,whereδtot/δ3/2=0.02,and−1.90at0.001,whereδtot/δ3/2=1.2isaslargeastheentry.Thedualexpansion(4)fixest
+ hecoefficientofδ3/2inyt,−CSR3(1)/23/2=−2.025,whichtheremainderapproachesass→1.Theaccompanyingpaper[1
+@@ -468,22 +468,22 @@
+ twomethodsthatdonotuseNRGtestthemethod(Secs.8.2and8.3);Sec.8.4listspublishedvalues.Figure1summarizes
+ thecomparisons.8.1AsecondimplementationDesign.ClaudeCode,whichknewtheproductioncode,wroteaspecificat
+ ionofthephysicsandconventionsonly(independent_check/SPEC.md).Itfixedthediscretization,thechain,thetr
+-uncationperparitysector,thecriticalsearchruleandthewindowrule,andforbadeaccesstotheproductioncode,da
+-taandthisnote.FromitaseparateClaudeagentwroteasecondsolver(independent_check/indep_nrg.py);thatitdid
+-notopentheforbiddenfilesrestsontheinstructionandontheagent’sownstatementinNOTES.md,notonanaccesslog.
+-Everyalgorithmicchoicediffersfromproduction:Table7:ΛandKshiftsatallthirteenpoints,inunitsof10−4,rela
+-tivetoΛ=3atthesameKandnb(Λ=2.5usesnb=16for∆σ≥0.2,else10).TheΛ=2,K=64columnisnotconvergedinK.Lastcolu
+-mns:theKdoublingatΛ=2.5(nb=10)andthenumberofqualitywindowsoftheΛ=2.5,K=128,nb=10item.104×shiftrelati
+-vetoΛ=3atΛ=2.5∆σΛ=2,K=64Λ=2.5,K=128Λ=4,K=64104×(K=64minusK=128)nq0.249+41.37+1.21+17.22+0.88130.24+3
+-4.03+0.71+16.43+2.54130.225+19.17+2.29+10.71+6.05170.2+8.30+0.18+1.33+0.49220.175+3.71−0.53+1.50+1.5
+-5250.15+2.38−0.10+0.54+0.67280.125+1.90−0.07+0.23+0.38310.1+1.84−0.02+0.15+0.27320.075+1.75−0.02+0.0
+-6+0.24360.05+1.81−0.01+0.03+0.23430.025+1.62−0.01+0.03+0.26470.01+2.02−0.00+0.06+0.35490.001+5.63−0.
+-11+0.12+1.051261.52.02.53.03.54.0Λ0.4750.5000.5250.5500.5750.6000.6250.6500.675ΔE(nb=10)Δσ=0.2Δσ=0.1
+-Δσ=0.05K=64K=128K=192K=2562.02.53.03.54.0Λ−3−2−101234104[ΔE(Λ)−ΔE(Λ=3)]largestKrun:256,128,128,64atΛ
+-=2,2.5,3,4(Λ=4:Kconvergencenottested)supersededmidpointΔσ=0.2(extrapolated)Δσ=0.1Δσ=0.05Figure5:Left
+-:∆EagainstΛforallKatnb=10(opensymbolsbyK,colorby∆σ);atΛ=1.5noitemisconvergedinK.Right:Kconvergeditem
+-srelativetoΛ=3withthisnote’sestimator(bars:plateaudrift)and,dotted,thesupersededmidpoints,whoseappar
+-entΛdependenceisanartifactofthewindowrule.production(lri_spin)secondimplementation(indep_nrg.py)chai
++uncationperparitysector,Table7:ΛandKshiftsatallthirteenpoints,inunitsof10−4,relativetoΛ=3atthesameKa
++ndnb(Λ=2.5usesnb=16for∆σ≥0.2,else10).TheΛ=2,K=64columnisnotconvergedinK.Lastcolumns:theKdoublingatΛ=
++2.5(nb=10)andthenumberofqualitywindowsoftheΛ=2.5,K=128,nb=10item.104×shiftrelativetoΛ=3atΛ=2.5∆σΛ=2,
++K=64Λ=2.5,K=128Λ=4,K=64104×(K=64minusK=128)nq0.249+41.37+1.21+17.22+0.88130.24+34.03+0.71+16.43+2.54
++130.225+19.17+2.29+10.71+6.05170.2+8.30+0.18+1.33+0.49220.175+3.71−0.53+1.50+1.55250.15+2.38−0.10+0.
++54+0.67280.125+1.90−0.07+0.23+0.38310.1+1.84−0.02+0.15+0.27320.075+1.75−0.02+0.06+0.24360.05+1.81−0.
++01+0.03+0.23430.025+1.62−0.01+0.03+0.26470.01+2.02−0.00+0.06+0.35490.001+5.63−0.11+0.12+1.051261.52.
++02.53.03.54.0Λ0.4750.5000.5250.5500.5750.6000.6250.6500.675ΔE(nb=10)Δσ=0.2Δσ=0.1Δσ=0.05K=64K=128K=19
++2K=2562.02.53.03.54.0Λ−3−2−101234104[ΔE(Λ)−ΔE(Λ=3)]largestKrun:256,128,128,64atΛ=2,2.5,3,4(Λ=4:Kconv
++ergencenottested)supersededmidpointΔσ=0.2(extrapolated)Δσ=0.1Δσ=0.05Figure5:Left:∆EagainstΛforallKat
++nb=10(opensymbolsbyK,colorby∆σ);atΛ=1.5noitemisconvergedinK.Right:KconvergeditemsrelativetoΛ=3withth
++isnote’sestimator(bars:plateaudrift)and,dotted,thesupersededmidpoints,whoseapparentΛdependenceisanar
++tifactofthewindowrule.thecriticalsearchruleandthewindowrule,andforbadeaccesstotheproductioncode,data
++andthisnote.FromitaseparateClaudeagentwroteasecondsolver(independent_check/indep_nrg.py);thatitdidno
++topentheforbiddenfilesrestsontheinstructionandontheagent’sownstatementinNOTES.md,notonanaccesslog.Ev
++eryalgorithmicchoicediffersfromproduction:production(lri_spin)secondimplementation(indep_nrg.py)chai
+ ncoefficientsclosedform(8)Lanczoswithfullreorthogonalizationonthestar,inmpmathparityblocksbasisorder
+ ofthereferencesolverNumPyKroneckerorder,genericoperatorseigensolverpartialspectrum(flows),full(deriv
+ ative)fullspectrumeverywhereytexactderivative(13)centralfinitedifferencesinα,relativestepsη=10−9,10−
+@@ -492,46 +492,46 @@
+ asitsown38selftests(forexample,thechainreproducesthestarto3×10−50,andtheNRGreproducesexactdiagonaliz
+ ationofuntruncatedsystemsto5×10−15).Eightconfigurationsc1–c8with0.502≤s≤0.998,Λ=2,2.5and3,K=48or64an
+ dnb=10–16ranononeclusternode,onesinglecoreprocesseach,thelongestin28min;eachiscomparedwiththeproduct
+-ionrecordofthesameitem.Result.Table9liststhecomparison.•Thechaincoefficientsagreetobetterthan10−15(r
+-elative):torounding,whoselastbitsdependontheplatform.Theclosedformisconfirmed.•Thecriticalcouplingsa
+-rebitwiseidenticalin5configurationsandagreeto7.2×10−14intheothers.Thecriticalflowsagreeto5.1×10−13ov
+-erthefirstelevensites.•Awindow’sfinitedifference∆Eistrustedwhentwoneighboringstepsηagreeto10−6.Inall
+-316trustedwindows(17to126perconfiguration)thetwoimplementationsagreeto3.1×10−7,withmedian0.000.050.1
+-00.150.200.25Δσ0.20.40.60.81.01.21.4αc(nonuniversal)Λ=2,K=64,nb=10Λ=2.5,K=128,nb=10Λ=3,K=128,nb=16Λ=
+-4,K=64,nb=10Figure6:Thecriticalcouplingisnotuniversal:itdependsonΛandweaklyonKandnb.Itentersnoresult
+-.102030firstsiteofthewindow0.4800.4820.4840.486ΔEofthewindowΔσ=0.2(N=65,w=12)old:qualityrangeold:mid
+-pointallwindowsqualitywindowssettledwindow±hextrapolated10203040firstsiteofthewindow0.6200.6220.6240
+-.626Δσ=0.05(N=80,w=12)50100150firstsiteofthewindow0.9340.9360.9380.940Δσ=0.001(N=250,w=32)Figure7:Wi
+-ndowauditofthreecentralitems:∆Eofeverywindow(graydots)andofthequalitywindows(opencircles)againstthef
+-irstsiteofthewindow;starandorangeband:thesettledwindowanditsneighborhood±h;graybandanddottedline:the
+-qualityrangeanditsmidpoint,thesupersededestimate;dashed(at∆σ=0.2):theextrapolatedvalue.Theverticalsc
+-alesdifferbetweenpanels.At∆σ=0.05and0.001thequalitywindowsendonaflatplateau,at0.2theydriftdownwardto
+-theend.4×10−9,farbelowthequotederrors.Inthe3configurationswhosesettledwindowistrusted,theyagreethere
++ionrecordofthesameitem.Result.Table9liststhecomparison.0.000.050.100.150.200.25Δσ0.20.40.60.81.01.21
++.4αc(nonuniversal)Λ=2,K=64,nb=10Λ=2.5,K=128,nb=10Λ=3,K=128,nb=16Λ=4,K=64,nb=10Figure6:Thecriticalcou
++plingisnotuniversal:itdependsonΛandweaklyonKandnb.Itentersnoresult.102030firstsiteofthewindow0.4800.
++4820.4840.486ΔEofthewindowΔσ=0.2(N=65,w=12)old:qualityrangeold:midpointallwindowsqualitywindowssettl
++edwindow±hextrapolated10203040firstsiteofthewindow0.6200.6220.6240.626Δσ=0.05(N=80,w=12)50100150firs
++tsiteofthewindow0.9340.9360.9380.940Δσ=0.001(N=250,w=32)Figure7:Windowauditofthreecentralitems:∆Eofe
++verywindow(graydots)andofthequalitywindows(opencircles)againstthefirstsiteofthewindow;starandorangeb
++and:thesettledwindowanditsneighborhood±h;graybandanddottedline:thequalityrangeanditsmidpoint,thesupe
++rsededestimate;dashed(at∆σ=0.2):theextrapolatedvalue.Theverticalscalesdifferbetweenpanels.At∆σ=0.05a
++nd0.001thequalitywindowsendonaflatplateau,at0.2theydriftdownwardtotheend.•Thechaincoefficientsagreet
++obetterthan10−15(relative):torounding,whoselastbitsdependontheplatform.Theclosedformisconfirmed.•The
++criticalcouplingsarebitwiseidenticalin5configurationsandagreeto7.2×10−14intheothers.Thecriticalflows
++agreeto5.1×10−13overthefirstelevensites.•Awindow’sfinitedifference∆Eistrustedwhentwoneighboringsteps
++ηagreeto10−6.Inall316trustedwindows(17to126perconfiguration)thetwoimplementationsagreeto3.1×10−7,wit
++hmedian4×10−9,farbelowthequotederrors.Inthe3configurationswhosesettledwindowistrusted,theyagreethere
+ to8.2×10−8.•Thelatestwindowsofachainliebeyondthereachoffinitedifferences,becauseηαΛytnisnolongersmal
+ lthere.Only228ofthe296productionqualitywindowsarewithinreach.Allqualitywindowsofaconfigurationarewit
+ hinreachonlyinc3andc6;ats=0.502(c5)noneis.Thisisalimitofthecheck,notadisagreement.Thecheckverifiesth
+ enumericalmapatK≤64.ItdoesnottestthecentralitemsatK=128,nb=16directly(theydifferonlyinKandnb),theest
+ imator(itsharesthewindowrulebyconstruction),orthelimitΛ→1.Bothimplementationscomefromthesamemodelfam
+-ily,andthespecificationwaswrittenbytheagentthatknewtheproductioncode:thecheckteststhecode,notsharedc
+-onceptualchoices.8.2Theεexpansionnears=1/2Reference.Theaccompanyingpapergives∆ε=P8n=0Cnεnford=1[1],w
+-ithC0=1/2,C1=−1/6,C2=0.657131263981,C3=−3.719856322902,C4=45.42488010356,C5=−731.13947662454andC6=14
+-331.6870328(exacttothedigitsshown),C7=−322550±40andC8=(8.060±0.017)×106.TheuncertaintiesofC7andC8are
+-thepaper’sallowances,mostlyfoursamplingstandarderrors.TheyarenotpartoftheBorel–Padéspreadbelow;shift
+-ingC7orC8byaboutitsallowancemovesthe[4/4]approximantbyatmost1.1×10−5Table8:yt=1−∆Enears=1againstthel
+-eadingform√2δ(δ=1−s=2∆σ)andthenexttoleadingform√2δ−δ/4ofRefs.[8,9];theremainderinunitsofδ3/2,andδtot
+-inthesameunits(theuncertaintyoftheremainder).∆σδ=1−syt=1−∆E√2δ=2√∆σratio√2δ−δ/4(yt−√2δ+δ/4)/δ3/2δtot
+-/δ3/20.0750.150.433740.547720.7920.51022-1.320.000510.050.10.377880.447210.8450.42221-1.400.000850.0
+-250.050.286580.316230.9060.30373-1.530.00260.010.020.190250.200000.9510.19500-1.680.0170.0010.0020.0
+-62580.063250.9890.06275-1.901.2Table9:Secondimplementationagainstproduction.Columns:configuration(s,
+-Λ,K,nb,N);largestrelativedifferenceoftherescaledchaincoefficients(aroundinglevelbound);relativediffe
+-renceofαc;numberoftrustedwindows;largestwindowbywindowdifference|δ∆E|overthem;productionqualitywindo
+-wswithinfinitedifferencereach(covered/all);productionqualityrange.id(s,Λ,K,nb,N)chainαctrustedmax|δ∆
+-E|coveredqualityrange(production)c1(0.8,3,64,10,65)<10−15bitwise192×10−713/23[0.529612,0.530062]c2(0
+-.9,3,64,10,80)<10−154×10−14279×10−823/34[0.622119,0.622597]c3(0.98,3,64,10,105)<10−15bitwise533×10−7
+-41/41[0.809460,0.810127]c4(0.6,3,64,12,65)<10−15bitwise172×10−73/15[0.483316,0.484567]c5(0.502,3,64,
+-16,65)<10−15bitwise182×10−70/2[0.508000,0.508268]c6(0.998,3,48,10,250)<10−154×10−141262×10−7106/106[
+-0.937223,0.937429]c7(0.8,2,64,10,103)<10−157×10−14342×10−728/46[0.529796,0.531050]c8(0.7,2.5,64,10,7
+-8)<10−15bitwise222×10−714/29[0.491178,0.492328]at∆σ=0.225and4.6×10−4at0.2,lessthanthespreadatbothpoi
++ily,andthespecificationwaswrittenbytheTable8:yt=1−∆Enears=1againsttheleadingform√2δ(δ=1−s=2∆σ)andthe
++nexttoleadingform√2δ−δ/4ofRefs.[8,9];theremainderinunitsofδ3/2,andδtotinthesameunits(theuncertaintyo
++ftheremainder).∆σδ=1−syt=1−∆E√2δ=2√∆σratio√2δ−δ/4(yt−√2δ+δ/4)/δ3/2δtot/δ3/20.0750.150.433740.547720.
++7920.51022-1.320.000510.050.10.377880.447210.8450.42221-1.400.000850.0250.050.286580.316230.9060.303
++73-1.530.00260.010.020.190250.200000.9510.19500-1.680.0170.0010.0020.062580.063250.9890.06275-1.901.
++2agentthatknewtheproductioncode:thecheckteststhecode,notsharedconceptualchoices.Table9:Secondimpleme
++ntationagainstproduction.Columns:configuration(s,Λ,K,nb,N);largestrelativedifferenceoftherescaledcha
++incoefficients(aroundinglevelbound);relativedifferenceofαc;numberoftrustedwindows;largestwindowbywin
++dowdifference|δ∆E|overthem;productionqualitywindowswithinfinitedifferencereach(covered/all);producti
++onqualityrange.id(s,Λ,K,nb,N)chainαctrustedmax|δ∆E|coveredqualityrange(production)c1(0.8,3,64,10,65)
++<10−15bitwise192×10−713/23[0.529612,0.530062]c2(0.9,3,64,10,80)<10−154×10−14279×10−823/34[0.622119,0
++.622597]c3(0.98,3,64,10,105)<10−15bitwise533×10−741/41[0.809460,0.810127]c4(0.6,3,64,12,65)<10−15bit
++wise172×10−73/15[0.483316,0.484567]c5(0.502,3,64,16,65)<10−15bitwise182×10−70/2[0.508000,0.508268]c6
++(0.998,3,48,10,250)<10−154×10−141262×10−7106/106[0.937223,0.937429]c7(0.8,2,64,10,103)<10−157×10−143
++42×10−728/46[0.529796,0.531050]c8(0.7,2.5,64,10,78)<10−15bitwise222×10−714/29[0.491178,0.492328]8.2T
++heεexpansionnears=1/2Reference.Theaccompanyingpapergives∆ε=P8n=0Cnεnford=1[1],withC0=1/2,C1=−1/6,C2=
++0.657131263981,C3=−3.719856322902,C4=45.42488010356,C5=−731.13947662454andC6=14331.6870328(exacttoth
++edigitsshown),C7=−322550±40andC8=(8.060±0.017)×106.TheuncertaintiesofC7andC8arethepaper’sallowances,
++mostlyfoursamplingstandarderrors.TheyarenotpartoftheBorel–Padéspreadbelow;shiftingC7orC8byaboutitsal
++lowancemovesthe[4/4]approximantbyatmost1.1×10−5at∆σ=0.225and4.6×10−4at0.2,lessthanthespreadatbothpoi
+ nts.Thecoefficientsgrowfactorially,sotheseriesisasymptotic.Weevaluateitintwoways(method_comparison/c
+ ompare_methods.py):•optimaltruncation:thepartialsumupto,butexcluding,thesmallestterm,withthattermasi
+ tserror;•Borel–Padé:Padéapproximants[L/M]oftheBoreltransformPnCnun/n!withL+M=6,7,8,keepingthosewitho
+@@ -874,9 +874,9 @@
+ 5[0.48292,0.48457]0.4833162e047e05Dds0.2_L3_K64_B24_N650.184722511015[0.48302,0.48457]0.4833262e043e
+ 08Dds0.2_L4_K64_B10_N520.20081154248[0.48366,0.48435]0.4836642e043e03Dds0.175_L2_K64_B10_N1030.20844
+ 6969940[0.48393,0.48650]0.4843624e053e06Fds0.175_L2.5_K64_B10_N780.219463528827[0.48411,0.48571]0.48
+-41164e052e13Fds0.175_L2.5_K128_B10_N780.219461448225[0.48362,0.48532]0.4839906e059e05campaignitemαcn
+-q∆EqualityrangesettledplateaudriftmaxpedgeDds0.175_L3_K64_B8_N650.230480753319[0.48562,0.48647]0.485
+-6233e056e05Dds0.175_L3_K48_B10_N650.230475537719[0.48403,0.48505]0.4840426e055e12Dds0.175_L3_K64_B10
++41164e052e13Fds0.175_L2.5_K128_B10_N780.219461448225[0.48362,0.48532]0.4839906e059e05Dds0.175_L3_K64
++_B8_N650.230480753319[0.48562,0.48647]0.4856233e056e05campaignitemαcnq∆Equalityrangesettledplateaudr
++iftmaxpedgeDds0.175_L3_K48_B10_N650.230475537719[0.48403,0.48505]0.4840426e055e12Dds0.175_L3_K64_B10
+ _N650.230474916919[0.48395,0.48505]0.4839874e055e04Dds0.175_L3_K96_B10_N650.230474498119[0.48403,0.4
+ 8506]0.4840447e055e12Dds0.175_L3_K128_B10_N650.230474473519[0.48400,0.48505]0.4840074e055e12Dds0.175
+ _L3_K64_B12_N650.230474997419[0.48395,0.48501]0.4839513e051e14Dds0.175_L3_K64_B16_N650.230475134519[
+@@ -937,8 +937,8 @@
+ 355,0.71403]0.7135866e071e09Fds0.025_L2.5_K64_B10_N1080.840145649847[0.71340,0.71387]0.7134487e072e0
+ 9Fds0.025_L2.5_K128_B10_N1080.840134608347[0.71338,0.71384]0.7134227e072e09Dds0.025_L3_K64_B8_N900.8
+ 92106831738[0.71361,0.71402]0.7136487e079e07Dds0.025_L3_K48_B10_N900.891850454738[0.71339,0.71380]0.
+-7134257e073e09campaignitemαcnq∆EqualityrangesettledplateaudriftmaxpedgeDds0.025_L3_K64_B10_N900.8918
+-49806138[0.71339,0.71380]0.7134247e073e09Dds0.025_L3_K96_B10_N900.891849602438[0.71339,0.71380]0.713
++7134257e073e09Dds0.025_L3_K64_B10_N900.891849806138[0.71339,0.71380]0.7134247e073e09campaignitemαcnq
++∆EqualityrangesettledplateaudriftmaxpedgeDds0.025_L3_K96_B10_N900.891849602438[0.71339,0.71380]0.713
+ 4237e073e09Dds0.025_L3_K128_B10_N900.891849541638[0.71339,0.71380]0.7134237e073e09Dds0.025_L3_K160_B
+ 10_N900.891849428338[0.71339,0.71380]0.7134237e073e09Dds0.025_L3_K192_B10_N900.891849251738[0.71338,
+ 0.71380]0.7134237e073e09Dds0.025_L3_K64_B12_N900.891847256338[0.71339,0.71380]0.7134227e079e12Dds0.0

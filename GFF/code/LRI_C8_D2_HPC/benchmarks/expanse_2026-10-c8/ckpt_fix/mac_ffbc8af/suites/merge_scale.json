@@ -1,0 +1,125 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ORC-6 merge_scale",
+ "rows_requested": 20000,
+ "python": "3.10.11",
+ "host": "personal desktop",
+ "platform": "darwin",
+ "scale": {
+  "points": 8,
+  "rows": 39056,
+  "shards": 16,
+  "plan_seconds": 2.1949260234832764,
+  "run_seconds": 4.894526958465576,
+  "blocks": 16,
+  "parallel": {
+   "jobs": 4,
+   "wall_seconds": 0.5695900917053223,
+   "peak_rss_bytes": 56344576,
+   "phase1_rows_per_s": 168330,
+   "phase1_rows_per_s_per_process": 42082.5,
+   "phase1_seconds": 0.23,
+   "phase2_rows_per_s": 166965,
+   "phase2_seconds": 0.23
+  },
+  "serial": {
+   "wall_seconds": 0.8180570602416992,
+   "peak_rss_bytes": 66338816
+  },
+  "byte_identical": true,
+  "passed": true
+ },
+ "many_shards": {
+  "shards": 500,
+  "rows": 4882,
+  "passed": true,
+  "rlimit48": {
+   "code": 0,
+   "identical": true,
+   "passes": 3,
+   "fan_in": 16,
+   "expected_passes": 3,
+   "expected_fan_in": 16,
+   "stderr": ""
+  },
+  "fanin2": {
+   "code": 0,
+   "identical": true,
+   "passes": 9,
+   "fan_in": 2,
+   "expected_passes": 9,
+   "expected_fan_in": 2,
+   "stderr": ""
+  },
+  "rlimit33": {
+   "code": 1,
+   "refused": true
+  }
+ },
+ "memory_scaling": {
+  "checkpoint_tasks": 256,
+  "fan_in": 16,
+  "max_traced_growth_bytes": 2097152,
+  "max_rss_growth_bytes": 16777216,
+  "cases": {
+   "shards_1": {
+    "points": {
+     "4": {
+      "rows": 19528,
+      "rows_per_shard": 19528.0,
+      "blocks": 77,
+      "peak_rss_bytes": 36012032,
+      "traced_peak_bytes": 10144449,
+      "identical": true,
+      "wall_seconds": 0.6106669902801514
+     },
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 156224.0,
+      "blocks": 611,
+      "peak_rss_bytes": 48381952,
+      "traced_peak_bytes": 10144449,
+      "identical": true,
+      "wall_seconds": 4.808543920516968
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 0,
+    "rss_growth_bytes": 12369920,
+    "rss_growth_bytes_per_extra_row": 90.49218704278105,
+    "passed": true
+   },
+   "shards_4": {
+    "points": {
+     "4": {
+      "rows": 19528,
+      "rows_per_shard": 4882.0,
+      "blocks": 80,
+      "peak_rss_bytes": 39927808,
+      "traced_peak_bytes": 10144449,
+      "identical": true,
+      "wall_seconds": 0.6349303722381592
+     },
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 39056.0,
+      "blocks": 612,
+      "peak_rss_bytes": 46268416,
+      "traced_peak_bytes": 10144449,
+      "identical": true,
+      "wall_seconds": 4.613180875778198
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 0,
+    "rss_growth_bytes": 6340608,
+    "rss_growth_bytes_per_extra_row": 46.384736934511615,
+    "passed": true
+   }
+  },
+  "passed": true
+ },
+ "passed": true
+}

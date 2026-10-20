@@ -1,0 +1,82 @@
+{
+  "schema": "c8-d3-buildinfo-1",
+  "binary": "c7d3_gmp",
+  "path": "bin/ref/c7d3_gmp",
+  "command": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC7_USE_GMP",
+    "reference/src/c7d3_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/ref/c7d3_gmp"
+  ],
+  "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "boost_version": 107700,
+  "boost_accept": null,
+  "describe": {
+    "schema": "c7-d3-build-1",
+    "dimension": 3,
+    "order": 7,
+    "compiler": "11.4.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "sha256": "635428f9f9f462b74d261185120b5ea1553fb7989196feef644dd85dd687ae5f",
+  "backend": "gmp",
+  "libprobe": {
+    "needed": [
+      "libquadmath.so.0",
+      "libgmp.so.10",
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgomp.so.1",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ],
+    "rpath": [],
+    "runpath": [
+      "/cm/local/apps/boost/1.77.0//lib64"
+    ],
+    "ldd": {
+      "libquadmath.so.0": "/lib/x86_64-linux-gnu/libquadmath.so.0",
+      "libgmp.so.10": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "libstdc++.so.6": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+      "libm.so.6": "/lib/x86_64-linux-gnu/libm.so.6",
+      "libgomp.so.1": "/lib/x86_64-linux-gnu/libgomp.so.1",
+      "libgcc_s.so.1": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "libc.so.6": "/lib/x86_64-linux-gnu/libc.so.6"
+    },
+    "loader_inits": [
+      "/lib64/ld-linux-x86-64.so.2",
+      "/lib/x86_64-linux-gnu/libc.so.6",
+      "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "/lib/x86_64-linux-gnu/libgomp.so.1",
+      "/lib/x86_64-linux-gnu/libm.so.6",
+      "/lib/x86_64-linux-gnu/libstdc++.so.6",
+      "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "/lib/x86_64-linux-gnu/libquadmath.so.0"
+    ],
+    "libgmp": {
+      "needed": true,
+      "ldd_path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "loader_path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "ldd_realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "loader_realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "version": "6.2.1"
+    },
+    "describe_rc": 0
+  },
+  "host": {
+    "node": "<NODE>",
+    "cpu_model": "AMD EPYC 7543 32-Core Processor"
+  }
+}

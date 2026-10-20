@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 516, in test_coverage
+    try:Dz.check_gate(G/'numerics_flags.json','dd+mp256',inv);raise AssertionError('check_gate accepted the 570210 record')
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tools/design.py", line 1203, in check_gate
+    if why:raise ValueError(f'--numerics-gate {path}: not a passed full-scale J-FLAG gate of the production build of {profile}: '+'; '.join(why))
+ValueError: --numerics-gate <PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/benchmarks/symmetry_2026-10-c8/stage5/close/clflag.570210.0/jflag_dd+mp256/numerics_flags.json: not a passed full-scale J-FLAG gate of the production build of dd+mp256: no F1 coverage record (F1.coverage: sectors, loops, graphs, points and promotion counts, X1); no build binding (build_binding c8-d2-build-binding-1: the executables reproduced from the source snapshot the F1 tools were compiled from, X2); the profile's F1 tool is not shown to run with the profile executable's recorded libgmp (F1.tool_gmp_library, Y1); the F1 baseline's exact tool is not shown to run with the exact executable's recorded libgmp (f1_baseline.tool_gmp_library, Z19); f1_baseline does not say whether the baseline was reused (f1_baseline.reused, Z19); F5 records no verified OpenMP team sizes (every run and lane observed at its requested team, X3)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 963, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 521, in test_coverage
+    assert len(why)==7 and why[0].startswith('no F1 coverage record')and why[1].startswith('no build binding')and why[2].startswith("the profile's F1 tool is not shown")\
+AssertionError: ['no F1 coverage record (F1.coverage: sectors, loops, graphs, points and promotion counts, X1)', 'no build binding (build_binding c8-d2-build-binding-1: the executables reproduced from the source snapshot the F1 tools were compiled from, X2)', "the profile's F1 tool is not shown to run with the profile executable's recorded libgmp (F1.tool_gmp_library, Y1)", "the F1 baseline's exact tool is not shown to run with the exact executable's recorded libgmp (f1_baseline.tool_gmp_library, Z19)", 'f1_baseline does not say whether the baseline was reused (f1_baseline.reused, Z19)', 'F5 records no verified OpenMP team sizes (every run and lane observed at its requested team, X3)']
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 963, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 870, in test_w18_inputs
+    x=NF.input_identity();man=json.loads((ROOT/'inputs/manifest.json').read_text())
+AttributeError: module 'numerics_flags' has no attribute 'input_identity'
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 963, in main
+    try:fn()
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/test_numerics_flags.py", line 931, in test_w20_seeds
+    assert 'f2'in st and st['f2']['added']==49 and 'plan_refused'in st and 'plan'not in st,{k:v for k,v in st.items()if k!='thread'}
+AssertionError: {'plan': {'log': '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_nfs_urxsjhlf/seeds.json', 'seed': 777000123, 'source': '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_nfs_urxsjhlf/campaign_X', 'state': 'added', 'entries': 1, 'added_utc': '2026-10-06T12:52:22Z'}, 'f2': {'log': '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_nfs_urxsjhlf/seeds.json', 'base_seed': 777000123, 'entries': 49, 'added': 49, 'present': 0, 'log_sha256_after': '775d3c649bbb64367ebf8e9a2a2e11397cbda231cb3027cde82e53c3b9e49dd6'}}
+{"passed": false, "tests": 3, "failed": ["coverage", "w18_inputs", "w20_seeds"]}

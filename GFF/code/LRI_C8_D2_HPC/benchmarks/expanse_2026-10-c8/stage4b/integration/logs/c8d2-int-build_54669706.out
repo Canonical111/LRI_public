@@ -1,0 +1,103 @@
+job 54669706 on <NODE> at 2026-10-04T18:49:15-07:00; package <SCRATCH>/temp_project/c8d2/pkg/d0f0e05a4c21; baseline <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin; evidence <SCRATCH>/temp_project/c8d2/evidence/d0f0e05a4c21/intbuild.54669706.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+TMPDIR /scratch/<USER>/job_54669706/tmp
+builds in 43 s (quaddiff: quaddiff)
+99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf  bin/c8d2_decimal
+8b296ddba0d1b1a2883e26cb3248a294848e118bc5a9d894c454d6d2537652c1  bin/c8d2_gmp
+31fa75b79ab6021cf3a848ceeda16cd7d0e74cf1ead9695cffea40929aeaf630  bin/c8d2_gmp_prof
+c831badd629cb8b7b39b576fc795df8e9d3ff3fe287ea8440e3282feaeb11ee8  bin/c8d2_gmp_ratiohist
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/baseline/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  bin/baseline/c8d2_gmp
+3db26f744b912ba900134a1d39f42f2ae5d0c1c99f16db3eb4a5c544fe3e058f  bin/c8d2_quad_differential
+289fd03991b65810551a48210024a1447fabe536558f5d0204adced24717903c  bin/c8d2_quad_ranges
+== validate 2026-10-04T18:49:58-07:00
+== validate exit 0 after 81 s
+   "gates": {
+    "G-C7/decimal": {
+    
+{
+ "S3_export": "<SCRATCH>/temp_project/c8d2/pkg/bc0bedc3d72b",
+ "binaries": {
+  "c8d2_decimal": {
+   "this": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "S3": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf"
+  },
+  "c8d2_gmp": {
+   "this": "8b296ddba0d1b1a2883e26cb3248a294848e118bc5a9d894c454d6d2537652c1",
+   "S3": "8b296ddba0d1b1a2883e26cb3248a294848e118bc5a9d894c454d6d2537652c1"
+  },
+  "c8d2_gmp_prof": {
+   "this": "31fa75b79ab6021cf3a848ceeda16cd7d0e74cf1ead9695cffea40929aeaf630",
+   "S3": "31fa75b79ab6021cf3a848ceeda16cd7d0e74cf1ead9695cffea40929aeaf630"
+  },
+  "c8d2_gmp_ratiohist": {
+   "this": "c831badd629cb8b7b39b576fc795df8e9d3ff3fe287ea8440e3282feaeb11ee8",
+   "S3": "c831badd629cb8b7b39b576fc795df8e9d3ff3fe287ea8440e3282feaeb11ee8"
+  }
+ },
+ "identical": true,
+ "rule": "the R4f merge (GMP_PREFIX knob, build-record fields) leaves the default build byte-identical"
+}
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  <SCRATCH>/temp_project/c8d2/work/d0f0e05a4c21/int-default-S2src/bin/c8d2_gmp
+aa84cd45413046fbb3f9eada8cae855f87d9c540ce914559861d72c1313a4064  <SCRATCH>/temp_project/c8d2/work/d0f0e05a4c21/int-zen2-S2src/bin/c8d2_gmp
+3a574112cd09c1b2b11d9f9cc17a4e648e3cacbd16859020c61b6e21caac6ad6  <SCRATCH>/temp_project/c8d2/work/d0f0e05a4c21/int-zen2-S2src/bin/c8d2_gmp_prof
+accb36ca8e91dce5e46e8f05540bc43a6b939c57e07464f37b6ab6950f2a2e9e  <SCRATCH>/temp_project/c8d2/work/d0f0e05a4c21/int-zen2-S3src/bin/c8d2_gmp
+5ae5726a4422a63222437c62491254e80f1b933285212c7d4192a2e08e61399d  <SCRATCH>/temp_project/c8d2/work/d0f0e05a4c21/int-zen2-S3src/bin/c8d2_gmp_prof
+{
+ "zen2_prefix": "<HOME>/c8d2/opt/gmp-6.2.1-zen2",
+ "zen2_libgmp": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+ "zen2_libgmp_sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+ "variants": {
+  "int-zen2-S3src": {
+   "gmp_sha256": "accb36ca8e91dce5e46e8f05540bc43a6b939c57e07464f37b6ab6950f2a2e9e",
+   "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-zen2",
+   "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10",
+    "realpath": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+    "sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+    "fat": false,
+    "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+    "runpath": null,
+    "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+   },
+   "resolves_to_prefix": true,
+   "rpath_has_prefix": true,
+   "runpath": null
+  },
+  "int-zen2-S2src": {
+   "gmp_sha256": "aa84cd45413046fbb3f9eada8cae855f87d9c540ce914559861d72c1313a4064",
+   "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-zen2",
+   "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10",
+    "realpath": "<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+    "sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+    "fat": false,
+    "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib",
+    "runpath": null,
+    "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+   },
+   "resolves_to_prefix": true,
+   "rpath_has_prefix": true,
+   "runpath": null
+  }
+ },
+ "default_S2src_gmp": {
+  "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+  "S2_export_gmp": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+  "identical": true
+ },
+ "ok": true
+}
+== speed_smoke 2026-10-04T18:51:44-07:00
+== speed_smoke exit 0 after 5 s
+ "rows_identical": true,
+ "ipc": {}
+}
+finished 2026-10-04T18:51:49-07:00, status 0

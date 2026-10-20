@@ -1,0 +1,23 @@
+Kill drill on d7aeaae (coordinator transcript, symmetry login node, 2026-10-02).
+Setup: campaign kill3 (gmp, --multiplier 4 --replicates 4 --shards 1 --threads 2 --checkpoint-tasks 64), sharedq,
+C7_STAGE=1, C7_ENV_SETUP=env_tmpdir.sh (TMPDIR=<SCRATCH>/c7d2_fix/scratch_drill/<job>_<task>, so the
+node's scratch is visible from the login node).
+
+A) scancel while running: element 567745_4 (index 4, a_free_L7), <NODE>.
+   Scratch 47 s after start, before scancel:
+     scratch_drill/567745_4/c7d2_runtime_5shiskr5   (job-private runtime)
+     scratch_drill/567745_4/c7d2_stage_jx95xh       (staging copy)
+     checkpoints of a_free_L7: 1 (s000000_p000000 committed)
+   scancel 567745_4 at 02:55:29. sacct: 567745_4 CANCELLED+, .batch FAILED 15:0, elapsed 00:00:47.
+   Log tail: "run: stopped by signal 15; native work stopped, job-private runtime removed, committed checkpoints kept"
+   After: scratch_drill/567745_4 empty; no *.tmp* file under groups/.
+
+B) time limit: element 567750_9 (index 9, a_power_L7), C7_SBATCH_ARGS "--time=1", <NODE>.
+   sacct: 567750_9 TIMEOUT, .batch FAILED 15:0, elapsed 00:01:15, limit 00:01:00.
+   Log: "CANCELLED AT 02:55:57 DUE TO TIME LIMIT", then the same "stopped by signal 15 ..." line.
+   After: scratch_drill/567750_9 empty; no *.tmp* file under groups/.
+
+Recovery: status exit 1 named job 4 (1/144 blocks) and job 9 (1/37 blocks) among the 20 unrun indices;
+resubmit.sh submitted array 567764 (indices 0-19) and merge 567765 (afterok); all completed; status exit 0;
+C7_result.json written; index 4 resumed at block p000001 (the committed p000000 kept).
+No leftover directory anywhere under scratch_drill afterwards.

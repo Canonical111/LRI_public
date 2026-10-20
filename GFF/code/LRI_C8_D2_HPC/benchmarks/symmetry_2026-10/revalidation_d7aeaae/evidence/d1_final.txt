@@ -1,0 +1,197 @@
+python3 -B tools/prepare_inputs.py
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+{
+  "schema": "c7-d2-hpc-inputs-1",
+  "dimension": 2,
+  "order": 7,
+  "epsilon": "2s-2",
+  "sha256": {
+    "two_loop.json": "0e130549945ea3a52420b6508a15521649ec14f212e4eba6ab2713bd973278d0",
+    "gamma_d2_7.txt": "e6286dedf4a27b45c2b6669ace4a94a167e892dd4b83fee020777b674ed35f96",
+    "primitive_reference.json": "7bbdb06ea9f6777e0b78bd9b82e181e93378297bb0d4b50aaa898ec652a46a2e",
+    "packs/free_L3.pack": "996bacb7b8d8585ca87dba7e33fac5b139722aecb920a75ea31e30fe7cd1aa1f",
+    "packs/free_L4.pack": "f7b44ee8616a6af9d21e9d523451934ac39dbf6714effc5ae68c1b5061d05a64",
+    "packs/free_L5.pack": "1b3d40f9a0cec3533c860f1fb0d919bbd45e7fda0cb0c1075ebf30658941255e",
+    "packs/free_L6.pack": "9321c372d83d18b6d4922e1b4dbb81f99bb0f07b3b2d280557634c0f55377200",
+    "packs/free_L7.pack": "9787e894cc2cb5ebcea559c47362abf7d69b8907632dd33ec92a2c11ae13b1b7",
+    "packs/power_L3.pack": "7b6d20ca86906b8c59225bd43dcec29caedbc081cac858ec6aa67ea35b0c2de5",
+    "packs/power_L4.pack": "22ec47cf5a66b0414f9074da9a6d091bf82dd9b2de50fd2b73c579222c3860fd",
+    "packs/power_L5.pack": "69822e78e96841e58477d8cebd6f7c035e63f3534574116add134827e5fa6e02",
+    "packs/power_L6.pack": "d711979240cd044a670eb6ecd004db25a4412ed1d0c32a63a1aad52ae8773259",
+    "packs/power_L7.pack": "1b1c377fb56f4d976916c1fe89ff443a3b443f8bfed113a4838e1245918ef16f",
+    "inventory.json": "6cf9a75e154657879eef5c761e9c91366fb5c87b12edbc40d16fec42d41d9627"
+  },
+  "counts": {
+    "free": {
+      "3": 5,
+      "4": 16,
+      "5": 76,
+      "6": 395,
+      "7": 2298
+    },
+    "power": {
+      "3": 1,
+      "4": 3,
+      "5": 20,
+      "6": 107,
+      "7": 590
+    }
+  },
+  "reference_manifest_sha256": "3f3d13b8423778622f5d510e8db2dd4142fc276cfa7a3cdd69d723e9133a6446"
+}
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+bin/c7d2_decimal.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP None, optimized=True
+python3 -B tools/prepare_inputs.py
+g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+{
+  "schema": "c7-d2-hpc-inputs-1",
+  "dimension": 2,
+  "order": 7,
+  "epsilon": "2s-2",
+  "sha256": {
+    "two_loop.json": "0e130549945ea3a52420b6508a15521649ec14f212e4eba6ab2713bd973278d0",
+    "gamma_d2_7.txt": "e6286dedf4a27b45c2b6669ace4a94a167e892dd4b83fee020777b674ed35f96",
+    "primitive_reference.json": "7bbdb06ea9f6777e0b78bd9b82e181e93378297bb0d4b50aaa898ec652a46a2e",
+    "packs/free_L3.pack": "996bacb7b8d8585ca87dba7e33fac5b139722aecb920a75ea31e30fe7cd1aa1f",
+    "packs/free_L4.pack": "f7b44ee8616a6af9d21e9d523451934ac39dbf6714effc5ae68c1b5061d05a64",
+    "packs/free_L5.pack": "1b3d40f9a0cec3533c860f1fb0d919bbd45e7fda0cb0c1075ebf30658941255e",
+    "packs/free_L6.pack": "9321c372d83d18b6d4922e1b4dbb81f99bb0f07b3b2d280557634c0f55377200",
+    "packs/free_L7.pack": "9787e894cc2cb5ebcea559c47362abf7d69b8907632dd33ec92a2c11ae13b1b7",
+    "packs/power_L3.pack": "7b6d20ca86906b8c59225bd43dcec29caedbc081cac858ec6aa67ea35b0c2de5",
+    "packs/power_L4.pack": "22ec47cf5a66b0414f9074da9a6d091bf82dd9b2de50fd2b73c579222c3860fd",
+    "packs/power_L5.pack": "69822e78e96841e58477d8cebd6f7c035e63f3534574116add134827e5fa6e02",
+    "packs/power_L6.pack": "d711979240cd044a670eb6ecd004db25a4412ed1d0c32a63a1aad52ae8773259",
+    "packs/power_L7.pack": "1b1c377fb56f4d976916c1fe89ff443a3b443f8bfed113a4838e1245918ef16f",
+    "inventory.json": "6cf9a75e154657879eef5c761e9c91366fb5c87b12edbc40d16fec42d41d9627"
+  },
+  "counts": {
+    "free": {
+      "3": 5,
+      "4": 16,
+      "5": 76,
+      "6": 395,
+      "7": 2298
+    },
+    "power": {
+      "3": 1,
+      "4": 3,
+      "5": 20,
+      "6": 107,
+      "7": 590
+    }
+  },
+  "reference_manifest_sha256": "3f3d13b8423778622f5d510e8db2dd4142fc276cfa7a3cdd69d723e9133a6446"
+}
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+bin/c7d2_gmp.build.json: g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, Boost 1_77, GMP 6.2.1, optimized=True
+e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5  bin/c7d2_decimal
+7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3  bin/c7d2_gmp
+{
+  "schema": "c7-d2-build-record-1",
+  "executable": "c7d2_decimal",
+  "backend": "decimal",
+  "executable_sha256": "e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5",
+  "command": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "src/c7d2_integrate.cpp",
+    "-lquadmath",
+    "-o",
+    "bin/c7d2_decimal"
+  ],
+  "compiler_options": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math"
+  ],
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "compiler_macro_version": "11.4.0",
+  "CXX": "g++",
+  "CPPFLAGS": "",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": null,
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": null
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-02T06:54:04Z"
+}
+{
+  "schema": "c7-d2-build-record-1",
+  "executable": "c7d2_gmp",
+  "backend": "gmp",
+  "executable_sha256": "7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3",
+  "command": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC7_USE_GMP",
+    "src/c7d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c7d2_gmp"
+  ],
+  "compiler_options": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC7_USE_GMP"
+  ],
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "compiler_macro_version": "11.4.0",
+  "CXX": "g++",
+  "CPPFLAGS": "",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": "6.2.1",
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": true
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-02T06:54:08Z"
+}

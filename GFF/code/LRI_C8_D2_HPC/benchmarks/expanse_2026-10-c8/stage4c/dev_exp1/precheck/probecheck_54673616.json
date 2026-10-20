@@ -1,0 +1,306 @@
+{
+  "schema": "c8-d2-exp1-probe-1",
+  "utc_start": "2026-10-05T05:22:20Z",
+  "probe_source_sha256": "8c2c7b465f14fa6d882f2ce208298d07ce02011d676a9d397a04b789d2d474f3",
+  "parts": [
+    "compile only"
+  ],
+  "args": {
+    "output": "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/probecheck_54673616",
+    "profile": "exp1",
+    "exact": "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/bin/c8d2_gmp",
+    "threads": 4,
+    "parts": "census,lxcensus,forced,timing",
+    "scratch": null,
+    "census_points": 1024,
+    "lxcensus_points": 262144,
+    "census_loops": "7,8",
+    "census_graphs": null,
+    "forced_graphs": 64,
+    "forced_points": 8,
+    "timing_graphs": 32,
+    "timing_points": 4,
+    "timing_reps": 3,
+    "timing_rounds": 2,
+    "timing_loops": "7,8",
+    "compile_only": true
+  },
+  "threads": 4,
+  "tools": {
+    "exact": {
+      "executable": "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/bin/c8d2_gmp",
+      "executable_sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+      "command": [
+        "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/benchmarks/expanse_2026-10-c8/stage4c/dev_exp1/scripts/exp1_probe.cpp",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "/scratch/<USER>/job_54673616/c8d2_exp1probe_j4938k9h/probe_exact"
+      ]
+    },
+    "exp1": {
+      "executable": "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/bin/c8d2_gmp_exp1",
+      "executable_sha256": "22d71322f11cfc1ec8574647cdb28687b1385fef04f5e78712a69c344b1b1c29",
+      "command": [
+        "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "-DC8_NUMERICS",
+        "-DC8_NUMERICS_EXP1",
+        "<SCRATCH>/temp_project/c8d2/work/s4c-exp1-precheck-20261005T012035/benchmarks/expanse_2026-10-c8/stage4c/dev_exp1/scripts/exp1_probe.cpp",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "/scratch/<USER>/job_54673616/c8d2_exp1probe_j4938k9h/probe_exp1"
+      ]
+    }
+  },
+  "passed": true,
+  "wall_seconds": 17.6,
+  "environment": {
+    "host": "<NODE>",
+    "platform": "Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "cpu_model": "AMD EPYC 7742 64-Core Processor",
+    "glibc": "glibc 2.28",
+    "python": "3.11.9",
+    "cpu_count": 128,
+    "executables": {
+      "c8d2_decimal": {
+        "sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_decimal",
+          "backend": "decimal",
+          "executable_sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-o",
+            "bin/c8d2_decimal"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "decimal300",
+            "mp_digits10": 300,
+            "mp_max_digits10": 328,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "gmp_header": null,
+          "gmp_library": null,
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": null
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-05T05:21:29Z"
+        }
+      },
+      "c8d2_gmp": {
+        "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_gmp",
+          "backend": "gmp",
+          "executable_sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-lgmp",
+            "-o",
+            "bin/c8d2_gmp"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "gmp350",
+            "mp_digits10": 350,
+            "mp_max_digits10": 372,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "gmp_header": {
+            "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+            "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+          },
+          "gmp_library": {
+            "soname": "libgmp.so.10",
+            "path": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10",
+            "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+            "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+            "fat": false,
+            "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64",
+            "runpath": null,
+            "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+          },
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": true
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-05T05:21:28Z"
+        }
+      }
+    },
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  }
+}

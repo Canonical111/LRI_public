@@ -1,0 +1,256 @@
+{
+  "status": "passed",
+  "tests": [
+    {
+      "test": "valid_package_from_another_directory",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "changed_payload_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Size mismatch: payload.txt",
+        "SHA-256 mismatch: payload.txt"
+      ]
+    },
+    {
+      "test": "missing_payload_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Missing regular file: payload.txt"
+      ]
+    },
+    {
+      "test": "changed_checksum_index_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "SHA256SUMS does not match the payload plus delivery manifest"
+      ]
+    },
+    {
+      "test": "unexpected_file_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "local_build_allowed_in_default_mode",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "local_build_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "unsafe_path_rejected_strict:../escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '../escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:../escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '../escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:<tmp>/escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '<tmp>/escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:<tmp>/escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '<tmp>/escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:tools/../payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools/../payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:tools/../payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools/../payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:payload\\alias.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'payload\\\\alias.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:payload\\alias.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'payload\\\\alias.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:./payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: './payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:./payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: './payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:tools//verify_delivery.py",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools//verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:tools//verify_delivery.py",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools//verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "unsafe_paths_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "write_then_strict_passes_with_build_outputs_present",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "write_then_changed_file_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Size mismatch: new.txt",
+        "SHA-256 mismatch: new.txt"
+      ]
+    },
+    {
+      "test": "write_restored_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "link_internal_present_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "link_internal_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_internal'"
+      ]
+    },
+    {
+      "test": "link_internal_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_internal'"
+      ]
+    },
+    {
+      "test": "link_escape_present_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "link_escape_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_escape'"
+      ]
+    },
+    {
+      "test": "link_escape_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_escape'"
+      ]
+    },
+    {
+      "test": "symlinks_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "dir_symlink_component_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'sub/verify_delivery.py'",
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "dir_symlink_component_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'sub/verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "dir_symlink_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-IN-3/4/5 check_inputs",
+ "passed": true,
+ "failed": [],
+ "skipped": [
+  "C7(2)'s L7 members (no .git here; checked in the checkout)",
+  "regeneration from inventory8_d2 (give --inventory TREE or C8_INVENTORY)"
+ ],
+ "checks": [
+  {
+   "check": "make_lowloop regenerates inputs/gamma_d2_8.txt byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/two_loop.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "make_lowloop regenerates inputs/verification/two_loop_extension8.json byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "prepare_inputs.verify(): every listed file and every vendored pin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "manifest: schema, dimension 2, order 8, the twelve packs and the counts of the plan",
+   "passed": true,
+   "detail": "{\"counts\": {\"free\": {\"3\": 5, \"4\": 16, \"5\": 76, \"6\": 395, \"7\": 2441, \"8\": 16064}, \"power\": {\"3\": 1, \"4\": 3, \"5\": 20, \"6\": 107, \"7\": 709, \"8\": 4336}}}"
+  },
+  {
+   "check": "the L3..L6 packs are at C7(2)'s manifest sha256s",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the manifest pins the vendored assembly from tools/VENDORED.json (A-IN-4, A-ASM-1(b))",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "inventory.json rows carry the inspector fields, products, addends and kernel_bytes positive (A-IN-3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "tests/fixtures/inputs_mini verifies (its own L8 packs, the package's L3..L7 packs)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a one-byte change to a pack makes verify() fail",
+   "passed": true,
+   "detail": "Checksum mismatch in the inputs: packs/free_L5.pack; restore the shipped files (git checkout, or make inputs-l8 INVENTORY=... for the L8 packs) before planning"
+  }
+ ],
+ "inventory": null,
+ "inspector": "<SCRATCH>/temp_project/c8d2/pkg/d98e3a10c6e9/bin/c8d2_inspect",
+ "l8_packs_present": true,
+ "host": "<NODE>",
+ "python": "3.11.9"
+}

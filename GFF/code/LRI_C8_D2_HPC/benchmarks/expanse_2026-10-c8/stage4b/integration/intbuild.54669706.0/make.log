@@ -1,0 +1,73 @@
+python3 -B tools/prepare_inputs.py
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+python3 -B tools/prepare_inputs.py
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_inspect.cpp -lquadmath -o bin/c8d2_inspect
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1), optimized=True
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_RATIO_HISTOGRAM src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_ratiohist
+python3 -B tools/build_record.py bin/c8d2_gmp_prof gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+python3 -B tools/build_record.py bin/c8d2_gmp_ratiohist gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_RATIO_HISTOGRAM src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_ratiohist
+bin/c8d2_gmp_prof.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1), optimized=True
+bin/c8d2_gmp_ratiohist.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1), optimized=True
+rm -rf build/c7ref
+cp -R reference/c7d2_hpc_a55958f build/c7ref
+make -C build/c7ref bin/c7d2_decimal bin/c7d2_gmp
+make[1]: Entering directory '<SCRATCH>/temp_project/c8d2/pkg/d0f0e05a4c21/build/c7ref'
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+python3 -B tools/build_record.py bin/c7d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c7d2_integrate.cpp -lquadmath -o bin/c7d2_decimal
+bin/c7d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+python3 -B tools/build_record.py bin/c7d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c7d2_integrate.cpp -lquadmath -lgmp -o bin/c7d2_gmp
+bin/c7d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+make[1]: Leaving directory '<SCRATCH>/temp_project/c8d2/pkg/d0f0e05a4c21/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math tests/quad_differential.cpp -o bin/c8d2_quad_differential
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP tests/quad_ranges.cpp -lquadmath -lgmp -o bin/c8d2_quad_ranges

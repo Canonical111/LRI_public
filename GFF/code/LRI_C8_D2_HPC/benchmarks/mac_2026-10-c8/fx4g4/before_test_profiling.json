@@ -1,0 +1,52 @@
+{
+ "schema": "c8-d2-test-profiling-1",
+ "requested": [
+  "e2e_perf",
+  "perf_binding",
+  "perf_expect",
+  "p3_binding",
+  "tool_cleanup"
+ ],
+ "executed": [
+  "e2e_perf",
+  "perf_binding",
+  "perf_expect",
+  "p3_binding",
+  "tool_cleanup"
+ ],
+ "results": [
+  {
+   "test": "e2e_perf",
+   "status": "failed",
+   "error": "AssertionError: "
+  },
+  {
+   "test": "perf_binding",
+   "status": "failed",
+   "error": "AssertionError: (0, \"[09:02:15] P1 blocks ['heavy_free_L8']; perf UNAVAILABLE: perf stat probe exit 255: Error:\\nNo permission to enable cycles event.\\nConsider tweaking /proc/sys/kernel/perf_event_paranoid; perf stream on 4 cores 0..3; tier timers on 0..3 (sequential)\\n[09:02:15] tier timers heavy_free_L8\\n[09:02:16] wrote /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp8sot_sxw/skewfb/p1.json (stage runs)\\n[09:02:16] wrote /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp8sot_sxw/skewfb/p1.json (stage final)\\n\")"
+  },
+  {
+   "test": "perf_expect",
+   "status": "failed",
+   "error": "AssertionError: ('p3', '0000000000000000', 2, 'usage: perf_profile.py [-h] {p1,p2,p3,p1-reparse} ...\\nperf_profile.py: error: unrecognized arguments: --worker-exe /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp1740bb3_/c8d2_gmp_release\\n')"
+  },
+  {
+   "test": "p3_binding",
+   "status": "failed",
+   "error": "AssertionError: (2, 'usage: perf_profile.py [-h] {p1,p2,p3,p1-reparse} ...\\nperf_profile.py: error: unrecognized arguments: --worker-exe /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmpf1izacjk/c8d2_gmp_release\\n')"
+  },
+  {
+   "test": "tool_cleanup",
+   "status": "failed",
+   "error": "AssertionError: ('the worker of the timed-out tool survives', 35856)"
+  }
+ ],
+ "passed": false,
+ "failed": [
+  "e2e_perf",
+  "perf_binding",
+  "perf_expect",
+  "p3_binding",
+  "tool_cleanup"
+ ]
+}

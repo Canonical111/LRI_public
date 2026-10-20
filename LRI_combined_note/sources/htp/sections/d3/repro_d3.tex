@@ -1,0 +1,19 @@
+% repro_d3.tex (HT3dPert, 2026-10-14, second version): d = 3 rows of the reproduction table (6 columns: result & value &
+% pkg & records & command & tolerance). "replay X" = make -f public.mk replay in the package's folder, check X;
+% "test X" = make -f public.mk test, stage X.
+\multicolumn{6}{@{}p{\linewidth}@{}}{\emph{$d=3$, perturbative} (E = \code{code/lri\_3d\_c4\_exact}, results E\code{/results}; P = \code{code/lri\_3d\_hpc}, records R = \code{data/HT\_3d/pert3d}, table T = \code{results/HT\_3d/SUMMARY.md}; ref = P\code{/results/reference\_coefficients\_L14.json})}\\
+$C_2^{(3)}$ & \HTpCtwoThree{} (\HTpCtwoThreeDigits{} digits) & E & E\code{/results/} \code{windows\_L8000.npz} & replay \texttt{C2-3D} & 15 digits\\
+$C_3^{(3)}$ & \HTpCthreeThree, $\delta=\HTpCthreeThreeDev$ & E & E\code{/results/} \code{c4\_L600.npz} & replay \texttt{C3-3D} & PDG; central to 1/10 of the uncertainty\\
+$C_4^{(3)}$, complete window & \HTpCfourThree, $\delta=\HTpCfourThreeDev$ & E & E\code{/results/} (c4, offdiag, dchi, windows) & replay \texttt{C4-3D} & PDG\\
+blind fit, no $\sqrt L$ term & $\NThreeCfourBlind$; $|b|<\NThreeNoDiv$ & E & same & replay \texttt{C4-BLIND}, \texttt{C4-NODIV} & $10^{-7}$\\
+$C_5^{(3)}$ (provisional) & $\HTpCfiveThree$ & E & E\code{/results/} \code{c5raw\_all\_L40.npz}, \code{dC5\_L600.npz} & replay \texttt{C5-3D}, \texttt{C5-LHALF} & 1 decimal\\
+cutoffs & \HTpThreeLfour, \HTpThreeLfive, \HTpThreeLwin & E & E\code{/results/} & replay \texttt{CUTOFFS} & exact\\
+fit summaries & regenerated & E & E\code{/results/} & replay \texttt{FITS-REGEN}, \texttt{FITS-QUOTED} & quoted lines\\
+exact sums vs production, $L\le20$ & $\NThreeValPkg$ & E, P & ref, R\code{/results/} & replay \texttt{VAL-PKG-C4}, \texttt{VAL-PKG-C5} & $10^{-12}$\\
+window schemes vs brute force, $L\le14$ & $\NThreeValBrute$ & E, P & E\code{/results/brute/} & replay \texttt{VAL-PKG-C5} & $10^{-12}$\\
+sums recomputed at small $L$ & 11 stages & E, P & E\code{/results/} & test (all stages) & $10^{-12}$ to $10^{-9}$\\
+production $C_n(L)$, $L=16$, 18, 20 (Table~\ref{d3:tab:coeffs}, T) & 6 rows & P & R\code{/results/L*/} & replay \texttt{TABLE} & stored strings\\
+$C_4(20)/C_4^{(3)}$, read by \code{HT/} & \NThreeCfourPct\% & P & T & replay \texttt{C4-RATIO} & 2 decimals\\
+original implementation, $L=\HTpThreeGateL$ & $\NThreeGateMax$ & P & R\code{/gates/}, ref & replay \texttt{GATE-L14} & $5\times10^{-13}$\\
+stored Hamiltonians, recursion & $\NThreeCrossStore$, $\NThreeResid$ & P & R\code{/results/} & replay \texttt{CROSS-STORE}, \texttt{RESIDUAL} & $5\times10^{-13}$, $10^{-16}$\\
+records and code identity & 194 files & P & \code{data/HT\_3d/} \code{MANIFEST.sha256} & replay \texttt{REC-MANIFEST}, \texttt{REC-SRC}, \texttt{REC-CHAIN} & sha256\\

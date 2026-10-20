@@ -1,0 +1,35 @@
+=== 1. default vs strict numerical tolerances (same lattice, same shifts)
+  52 coefficients; |delta|/l1: max 0.00e+00, median 0.00e+00; |delta|/sigma_stat: max 0.00e+00
+    Z4_base[0,3] delta 0.00e+00 l1 2.00e+00 -> 0.00e+00 (sigma_stat 0.0e+00)
+    Z4_base[0,2] delta 0.00e+00 l1 1.01e+01 -> 0.00e+00 (sigma_stat 3.4e-16)
+    Z4_base[0,1] delta 0.00e+00 l1 4.27e+01 -> 0.00e+00 (sigma_stat 6.7e-16)
+    Z4_base[0,0] delta 0.00e+00 l1 7.03e+01 -> 0.00e+00 (sigma_stat 5.8e-16)
+    Q4_vd[0,6] delta 0.00e+00 l1 2.13e+00 -> 0.00e+00 (sigma_stat 0.0e+00)
+    Q4_vd[0,5] delta 0.00e+00 l1 1.01e+01 -> 0.00e+00 (sigma_stat 0.0e+00)
+=== 2. replay5 (seed 1234567) vs new (hashed seeds), same N: pulls vs relative precision
+  f=0       precise (sigma/l1 < 1e-12): n=213 rms 1.15 |z|>2 24 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=1e-18   precise (sigma/l1 < 1e-12): n=213 rms 1.15 |z|>2 23 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=2e-18   precise (sigma/l1 < 1e-12): n=213 rms 1.14 |z|>2 23 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=5e-18   precise (sigma/l1 < 1e-12): n=213 rms 1.08 |z|>2 18 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=1e-17   precise (sigma/l1 < 1e-12): n=213 rms 1.00 |z|>2 13 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=2e-17   precise (sigma/l1 < 1e-12): n=213 rms 0.88 |z|>2 10 |z|>3 3 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0   <- consistent
+  f=5e-17   precise (sigma/l1 < 1e-12): n=213 rms 0.71 |z|>2 7 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=1e-16   precise (sigma/l1 < 1e-12): n=213 rms 0.63 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=2e-16   precise (sigma/l1 < 1e-12): n=213 rms 0.59 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=5e-16   precise (sigma/l1 < 1e-12): n=213 rms 0.57 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=1e-15   precise (sigma/l1 < 1e-12): n=213 rms 0.56 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=2e-15   precise (sigma/l1 < 1e-12): n=213 rms 0.56 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=5e-15   precise (sigma/l1 < 1e-12): n=213 rms 0.54 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=1e-14   precise (sigma/l1 < 1e-12): n=213 rms 0.52 |z|>2 5 |z|>3 2 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=2e-14   precise (sigma/l1 < 1e-12): n=213 rms 0.47 |z|>2 5 |z|>3 1 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  f=5e-14   precise (sigma/l1 < 1e-12): n=213 rms 0.39 |z|>2 2 |z|>3 1 | coarse  (sigma/l1 >= 1e-12): n=33 rms 0.91 |z|>2 1 |z|>3 0
+  largest stat-only pulls:
+    Q4_dd[0,6] delta 8.88e-16 sigma_stat 2.2e-16 (pull 4.0) l1 4.1e+00 -> delta/l1 2.2e-16
+    Q4_E[0,1] delta 4.25e-10 sigma_stat 1.4e-10 (pull 3.1) l1 2.0e+02 -> delta/l1 2.2e-12
+    Q4_E[0,2] delta 1.03e-11 sigma_stat 3.3e-12 (pull 3.1) l1 3.2e+01 -> delta/l1 3.3e-13
+    Q4_base[0,2] delta -8.88e-16 sigma_stat 3.1e-16 (pull -2.8) l1 7.7e+00 -> delta/l1 1.2e-16
+    Z4_base[-1,0] delta -4.44e-16 sigma_stat 1.6e-16 (pull -2.8) l1 2.1e+01 -> delta/l1 2.1e-17
+    Z6_base[0,3] delta 4.26e-14 sigma_stat 1.5e-14 (pull 2.8) l1 3.0e+02 -> delta/l1 1.4e-16
+    Z4_E[0,2] delta -1.00e-11 sigma_stat 3.7e-12 (pull -2.7) l1 1.0e+02 -> delta/l1 9.7e-14
+    Z4_vE[0,3] delta 2.00e-11 sigma_stat 7.5e-12 (pull 2.7) l1 1.9e+02 -> delta/l1 1.0e-13
+=== 3. FLOOR_REL = max(10 x f_data = 2.0e-16, a-priori rounding floor 1e-15, 3 x f_num = 0.0e+00) = 1e-15

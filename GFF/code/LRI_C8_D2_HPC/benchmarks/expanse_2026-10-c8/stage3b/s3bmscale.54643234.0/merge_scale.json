@@ -1,0 +1,60 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ORC-6 merge_scale",
+ "rows_requested": 1000000,
+ "python": "3.11.9",
+ "host": "<NODE>",
+ "platform": "linux",
+ "scale": {
+  "points": 256,
+  "rows": 1249792,
+  "shards": 16,
+  "plan_seconds": 26.348158359527588,
+  "run_seconds": 8.02862286567688,
+  "blocks": 320,
+  "parallel": {
+   "jobs": 16,
+   "wall_seconds": 18.458495616912842,
+   "peak_rss_bytes": 85753856,
+   "phase1_rows_per_s": 698097,
+   "phase1_rows_per_s_per_process": 43631.0625,
+   "phase1_seconds": 1.79,
+   "phase2_rows_per_s": 76078,
+   "phase2_seconds": 16.43
+  },
+  "serial": {
+   "wall_seconds": 40.81900191307068,
+   "peak_rss_bytes": 72282112
+  },
+  "byte_identical": false,
+  "passed": false
+ },
+ "many_shards": {
+  "shards": 500,
+  "rows": 4882,
+  "passed": false,
+  "rlimit48": {
+   "code": 1,
+   "identical": false,
+   "passes": null,
+   "fan_in": null,
+   "expected_passes": 3,
+   "expected_fan_in": 16,
+   "stderr": "e failed for '+'; '.join(sorted(errors)))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: merge failed for a_free_L7: [Errno 24] Too many open files: '/scratch/<USER>/job_54643234/tmp/c8d2_merge_scale_v6cgrrnd/c8d2_merge_0nb4ub3m/a_free_L7.s000011.run'\n"
+  },
+  "fanin2": {
+   "code": 0,
+   "identical": false,
+   "passes": 9,
+   "fan_in": 2,
+   "expected_passes": 9,
+   "expected_fan_in": 2,
+   "stderr": ""
+  },
+  "rlimit33": {
+   "code": 1,
+   "refused": true
+  }
+ },
+ "passed": false
+}

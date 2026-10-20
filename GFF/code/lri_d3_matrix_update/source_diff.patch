@@ -1,0 +1,336 @@
+--- d3_half_shift.tex
++++ d3_rank_two.tex
+@@ -22,7 +22,7 @@
+ \title{The thermal dimension of the\\one-dimensional long-range Ising model\\through fifth order\\[2mm]
+ \large One-dimensional closed forms and finite multivariable hypergeometric forms in general dimension}
+ \author{Research calculation record}
+-\date{Original consolidation: 7 September 2026\\Three-dimensional half-shift revision: 11 September 2026}
++\date{Original consolidation: 7 September 2026\\Three-dimensional rank-two identification: 11 September 2026}
+ 
+ \setcounter{tocdepth}{2}\newcommand{\ii}{\mathrm i}\newcommand{\GG}{\mathcal G}\newcommand{\rep}[1]{(#1)^{\times7}}\newcommand{\repeatparams}[2]{(#1)^{\times #2}}\newcommand{\Aut}{\operatorname{Aut}}
+ \hypersetup{pdftitle={Long-range Ising thermal dimension through fifth order},pdfauthor={Research calculation record},pdfsubject={Consolidated derivation and evidence boundaries}}
+@@ -71,6 +71,15 @@
+ This is not a completed ordinary-${}_pF_q$ reduction of the primitive
+ sector or of the full $C_5(3)$; the complementary ordered-lattice sector
+ and the nonprimitive combination are identified explicitly.
++\par\smallskip
++Appendix~\ref{app:d3RankTwo} identifies these residual primitive functions
++with standard real matrix-argument hypergeometric functions at Jack
++parameter $\alpha=2$.  It gives a rank-two ${}_3F_2$ presentation of
++$Q_3$, low-order matrix arrays for the four-loop complement, and an
++exact three-term matrix-parameter dictionary for the five-loop weight.
++This is an intermediate structural identification, not an ordinary
++scalar-hypergeometric factorization; the remaining limitation is stated
++explicitly and no physical coefficient is changed.
+ \end{abstract}
+ \tableofcontents
+ \clearpage
+@@ -100,6 +109,8 @@
+ Appendix~\ref{app:generalPeriodization}; its two-dimensional quadratic
+ factorization uses no new ordinary hypergeometric values. The
+ nonprimitive target is isolated in \eqref{fp:remainingCombination}.
++For the standard rank-two function identification, and the status of the
++further scalar reduction, see Appendix~\ref{app:d3RankTwo}.
+ 
+ \paragraph{What is self-contained here.}
+ All constants in the final expression are defined in this file, with their normalizations, branches, integration contours and differentiation rules. The graph summation set and forest recursion are explicit, and Appendix~\ref{app:certificate} prints the retained residue certificate. No earlier conversation message or separate note is needed to interpret the formulas or the finite sums. General mathematical identities are cited to primary references. The source archive supplies the implementations and historical evidence; it is not a substitute for unspecified constants in the formulas.
+@@ -7901,8 +7912,277 @@
+ \texttt{verification/general\_d3/horn\_arrays.json}.
+ 
+ \clearpage
++\section{Three dimensions: standard rank-two hypergeometric structure and the remaining scalar problem}
++\label{app:d3RankTwo}
++
++\paragraph{Status of this revision.}
++This appendix identifies the residual functions in
++Appendix~\ref{app:threeDimensionalReduction} with \emph{standard real
++matrix-argument hypergeometric functions}.  The identification is exact
++and coefficientwise, not a numerical fit.  It does \emph{not} reduce them
++to ordinary one-variable ${}_pF_q$ values, and no new evaluation of the
++nonprimitive combination $\mathcal N_3$ is asserted.  Thus the
++ordinary-hypergeometric endpoint achieved for the two-dimensional
++primitive periods has not yet been achieved in three dimensions.
++The notation below makes a useful distinction: the residual objects are
++low-order functions on a rank-two symmetric cone, rather than arbitrary
++unclassified Horn arrays.  The earlier rational-node formulas remain the
++preferred explicit specification of the periods.
++
++\subsection{Normalization: the Jack parameter is not the spatial dimension}
++For a partition $\kappa=(m,n)$ with $m\geq n\geq0$, write
++\begin{equation}
++ [a]_\kappa=(a)_m(a-\tfrac12)_n,
++ \qquad |\kappa|=m+n.
++ \label{rt:partitionPochhammer}
++\end{equation}
++Throughout this appendix the Jack parameter is $\alpha=2$, the matrix
++size is two, and the physical dimension is $d=3$.  These three numbers
++refer to different notions.  Let $C_\kappa^{(2)}$ denote the
++$C$-normalized real zonal polynomial, so that
++$\sum_{|\kappa|=k}C_\kappa^{(2)}(X)=(\operatorname{tr}X)^k$.
++We use the standard definition \cite{MacdonaldHyperI,DLMFMatrixHyper}
++\begin{equation}
++ {}_pF_q^{(\alpha=2)}\!\left(
++ \begin{matrix}\boldsymbol a\\\boldsymbol b\end{matrix};zI_2\right)
++ =\sum_{m\geq n\geq0}
++ \frac{\prod_i[a_i]_{(m,n)}}{\prod_j[b_j]_{(m,n)}}
++ \frac{C_{(m,n)}^{(2)}(I_2)}{(m+n)!}\,z^{m+n}.
++ \label{rt:matrixDefinition}
++\end{equation}
++This definition fixes the conventional special function; it is not a
++claim that writing a summation as a function symbol has removed its
++rank-two structure.
++
++The identity that matches the angular multiplicity is
++\begin{equation}\boxed{
++ \frac{C_{(m,n)}^{(2)}(I_2)}{(m+n)!}
++ =\frac{2(m-n)+1}{(\tfrac32)_m n!}
++ =\frac{2(m-n)+1}{[\tfrac32]_{(m,n)}}.
++}\label{rt:hookWeight}\end{equation}
++Here is an explicit hook-product verification, including normalization.
++If $a(s)$ and $l(s)$ are the arm and leg lengths of a box of $\kappa$, the
++Jack hook product is
++\begin{equation}\begin{aligned}
++ j_{(m,n)}(2)
++ &=\prod_{s\in(m,n)}(2a(s)+l(s)+1)(2a(s)+l(s)+2)\\
++ &=2^{2(m+n)}
++ \frac{(\tfrac32)_m\,m!\,n!\,(\tfrac12)_n}{2(m-n)+1}.
++\end{aligned}\label{rt:hooks}\end{equation}
++The specialization formula
++$C_\kappa^{(2)}(I_2)/|\kappa|!
++=2^{2|\kappa|}[1]_\kappa/j_\kappa(2)$ then gives
++\eqref{rt:hookWeight}.  In particular the factor $2\ell+1$ with
++$\ell=m-n$ is exactly the rank-two real-zonal weight after cancelling
++one $[3/2]_\kappa$.  This is why a real matrix-argument function appears.
++
++\subsection{A standard \texorpdfstring{${}_3F_2$}{3F2} of matrix argument for the tetrahedron}
++Retain the residual functions $\mathfrak H_r(t)$ of the preceding
++appendix and put
++\begin{equation}
++ a=t+\frac34,\qquad b=t+\frac32.
++ \label{rt:ab}
++\end{equation}
++For $r=3,4$ their exact identification is
++\begin{equation}\boxed{
++ \mathfrak H_r(t)=
++ {}_{r+1}F_r^{(\alpha=2)}\!\left(
++ \begin{matrix}a^{\times r},\ \frac32\\ b^{\times r}\end{matrix};I_2\right).
++}\label{rt:wheelMatrix}\end{equation}
++To verify it, use $m=\ell+n$ in the explicit Horn arrays.  The summand
++of either side is
++\begin{equation}
++ (2\ell+1)
++ \left[\frac{(a)_{\ell+n}(a-\frac12)_n}
++ {(b)_{\ell+n}(b-\frac12)_n}\right]^r.
++ \label{rt:wheelCoefficient}
++\end{equation}
++On the matrix side this follows from cancelling
++$[3/2]_{(m,n)}$ against \eqref{rt:hookWeight}.  Thus no summation theorem
++or exchange of a conditionally convergent sum is being assumed.
++The endpoint sums here are absolutely convergent: along $m\to\infty$
++with $n$ fixed the majorant is $m^{1-3r/4}$, and the remaining $n$
++factors are summable for $r=3,4$.
++
++At $t=0$ one upper parameter $3/2$ cancels a lower parameter.  The
++previous tetrahedron formula therefore becomes
++\begin{equation}\boxed{
++ Q_3=4\pi^2
++ {}_3F_2^{(\alpha=2)}\!\left(
++ \begin{matrix}\frac34,\frac34,\frac34\\\frac32,\frac32\end{matrix};I_2\right)
++ -\frac{\Gamma(\frac14)^{10}}{48\pi^{7/2}}.
++}\label{rt:Q3}\end{equation}
++Both remaining four-loop values likewise have short conventional arrays:
++\begin{equation}\boxed{\begin{aligned}
++ \mathfrak H_4(0)
++ &={}_4F_3^{(\alpha=2)}\!\left(
++ \begin{matrix}(\frac34)^{\times4}\\(\frac32)^{\times3}\end{matrix};I_2\right),\\
++ \mathfrak H_4(\tfrac18)
++ &={}_5F_4^{(\alpha=2)}\!\left(
++ \begin{matrix}(\frac78)^{\times4},\frac32\\(\frac{13}{8})^{\times4}\end{matrix};I_2\right).
++\end{aligned}}\label{rt:P4blocks}\end{equation}
++Substitution in the retained four-loop formula gives an equivalent
++matrix-argument presentation of $P_4(3)$ without changing its ordinary
++moment factors.  Neither of these matrix functions is to be evaluated
++by an ordinary scalar \texttt{hyper} call.
++
++A local coefficient check makes the distinction unambiguous.  With the
++same upper and lower parameters as in \eqref{rt:Q3},
++\begin{equation}\begin{aligned}
++ {}_3F_2^{(\alpha=2)}(\tfrac34,\tfrac34,\tfrac34;
++                         \tfrac32,\tfrac32;zI_2)
++ &=1+\frac38z+\frac{2769}{12800}z^2
++        +\frac{15113}{102400}z^3+O(z^4),\\
++ {}_3F_2(\tfrac34,\tfrac34,\tfrac34;
++                         \tfrac32,\tfrac32;z)
++ &=1+\frac{3}{16}z+\frac{1029}{12800}z^2
++        +\frac{9317}{204800}z^3+O(z^4).
++\end{aligned}\label{rt:scalarDistinction}\end{equation}
++The first coefficients already differ.  This checks the normalization;
++it does not preclude an identity with some \emph{other} scalar
++hypergeometric functions or parameters.
++
++\subsection{Five loops: an exact three-term standard-function dictionary}
++The polynomial insertion in $\mathfrak H_7$ can also be expressed using
++ordinary parameter shifts of standard rank-two functions, rather than
++a bespoke extra Horn row.  Set
++\begin{equation}
++ v=t+\frac58,\qquad \delta_v=v(v-\tfrac12).
++ \label{rt:vdelta}
++\end{equation}
++Define three standard matrix-argument functions, all at $-I_2$:
++\begin{equation}\begin{aligned}
++ \mathcal J_A(t)&={}_9F_8^{(\alpha=2)}\!\left(
++ \begin{matrix}a^{\times7},\frac32,v+2\\b^{\times7},v\end{matrix};-I_2\right),\\
++ \mathcal J_B(t)&={}_{10}F_9^{(\alpha=2)}\!\left(
++ \begin{matrix}a^{\times7},\frac32,v+1,v+1\\b^{\times7},v,v\end{matrix};-I_2\right),\\
++ \mathcal J_C(t)&={}_9F_8^{(\alpha=2)}\!\left(
++ \begin{matrix}a^{\times7},\frac32,v+1\\b^{\times7},v\end{matrix};-I_2\right).
++\end{aligned}\label{rt:JABC}\end{equation}
++Then the exact dictionary is
++\begin{equation}\boxed{
++ \mathfrak H_7(t)=
++ \frac{\delta_{v+1}\mathcal J_A(t)
++       -\delta_v\mathcal J_B(t)-\mathcal J_C(t)}{2v-\frac12}.
++}\label{rt:H7matrix}\end{equation}
++The five arguments required by the retained real-node formula are
++$t=0,\pm1/16,3/16,5/16$.  They all have $v>1/2$, and all generalized
++Pochhammer factors in these arrays have positive real starting
++arguments.  At $t=0$, cancelling one common $3/2$ changes the three
++orders to ${}_8F_7$, ${}_9F_8$ and ${}_8F_7$, still \emph{of matrix
++argument}.  No coalescence limit or parameter differentiation is used.
++
++Here is the coefficientwise proof, which also fixes the sign of the
++matrix argument.  For $\kappa=(m,n)$ put
++$x=m+v$, $y=n+v-1/2$.  Direct Pochhammer cancellation gives
++\begin{equation}\begin{aligned}
++ \frac{[v+1]_\kappa}{[v]_\kappa}&=\frac{xy}{\delta_v},\\
++ \frac{[v+2]_\kappa}{[v]_\kappa}
++ &=\frac{xy(x+1)(y+1)}{\delta_v\delta_{v+1}}.
++\end{aligned}\label{rt:insertionRatios}\end{equation}
++The only polynomial identity needed is
++\begin{equation}
++ xy(x+y)=xy(x+1)(y+1)-(xy)^2-xy.
++ \label{rt:insertionPolynomial}
++\end{equation}
++Consequently the right-hand side of \eqref{rt:H7matrix} multiplies the
++common coefficient \eqref{rt:wheelCoefficient}, with $r=7$, by
++$xy(x+y)/(\delta_v(2v-1/2))$, exactly the three polynomial ratios in the
++original $\mathfrak H_7$ array.  Finally
++$(-1)^\ell=(-1)^{m-n}=(-1)^{m+n}$, so the matrix argument is $-I_2$,
++\emph{not} $\operatorname{diag}(-1,1)$.
++Each of the three endpoint series separately converges absolutely.
++For example, the largest polynomial insertion has degree two in each
++of $m,n$; its absolute summand is bounded by a constant times
++$(m+1)^{-9/4}(n+1)^{-13/4}$ on $m\geq n$, which is summable.
++
++This dictionary standardizes the function class, but increases the
++number of displayed functions per Horn block from one to three.
++It is not advertised as a more economical numerical formula.  In
++particular, it does not eliminate the complementary ordered-lattice
++information isolated by the half-shift determinant.
++
++\subsection{A checked transformation that does not finish the tetrahedron}
++The standard matrix Kummer transformation is a useful diagnostic
++\cite[Eq.~(35.8.5)]{DLMFMatrixHyper}.  For
++$c_*=b_1+b_2-a_1-a_2-a_3$, it takes the parameter array to
++\begin{equation}
++ (a_1,a_2,a_3;b_1,b_2)
++ \longmapsto
++ (b_1-a_1,b_1-a_2,a_3;b_1,c_*+a_3)
++ \label{rt:kummerMap}
++\end{equation}
++with prefactor
++$\Gamma_2(b_2)\Gamma_2(c_*)/
++ [\Gamma_2(b_2-a_3)\Gamma_2(c_*+a_3)]$.
++For the array in \eqref{rt:Q3}, $c_*=3/4$; the transformed array is
++identical and the prefactor equals one.  Parameter permutations add
++nothing because the three upper parameters and two lower parameters
++are separately equal.  Therefore transformations generated by this
++map and these permutations do not expose a cancelling parameter or a
++terminating series.  This is a statement about this explicit route,
++not a proof that a different ordinary-${}_pF_q$ reduction cannot exist.
++
++The ordinary determinantal formulas for \emph{Hermitian}
++matrix-argument functions use Jack parameter $\alpha=1$, whereas
++\eqref{rt:hookWeight} fixes $\alpha=2$ here.  Transplanting the Hermitian
++formula would change the coefficients.  The distinction between real
++and Hermitian matrix-argument transformations is made explicitly in
++\cite{RichardsZhengMatrix}; it explains why the familiar determinant
++machinery is not itself the missing scalar identity.
++
++\subsection{Checks and the precise outstanding target}
++The companion script independently constructs the hook products and
++compares them with \eqref{rt:hookWeight}.  It then checks the wheel and
++five-loop parameter dictionaries on complete finite sets of partitions,
++including every rational sampling point required above.  It performs
++1107 exact checks, all passing.  Separate direct expansions of the
++matrix functions and of the Horn coefficients agree through total
++degree 90 at $z=1/4$ or $z=-1/4$ at 90 working decimal digits.  These
++are coefficient and interior-series checks, not interval bounds on
++endpoint master values.
++
++The retained primitive formulas were also freshly evaluated at 100
++working decimal digits, with radial cutoff 220 and asymptotic order
++80.  Their outputs begin
++\begin{equation}\begin{aligned}
++ Q_3&=5.01710256455385536959085484569018369956\ldots,\\
++ P_4(3)&=62.05832794340667246646338858409673691827\ldots,\\
++ P_5(3)&=240.34031775908354981636654638800359825615\ldots.
++\end{aligned}\label{rt:numerical}\end{equation}
++This revision does not rerun the independent real-axis master integrals
++or the full graph calculation.  The preceding appendix retains those
++master-level comparisons and their evidence boundaries.
++
++A finite numerical reconnaissance examined 6479 convergent,
++noncancelling ordinary ${}_3F_2(1)$ and ${}_4F_3(1)$ arrays with upper
++parameters in $\{1/8,\ldots,1\}$ and lower parameters in
++$\{1/2,3/4,1,5/4,3/2\}$.  No integer relation involving the residual
++tetrahedron value, $1$, $\Gamma(1/4)^{10}/\pi^{11/2}$ and one of these
++values was returned at the recorded coefficient budget.  The exact
++settings and script are supplied; this bounded search is not an
++independence result and does not rule out other parameter arrays,
++arguments, prefactors or nonlinear identities.
++
++The smallest remaining primitive question can now be posed without a
++large array: evaluate the single rank-two ${}_3F_2$ in
++\eqref{rt:Q3} by a finite set of \emph{ordinary} scalar hypergeometric
++values.  The four- and five-loop complements require the related
++rank-two functions \eqref{rt:P4blocks} and \eqref{rt:H7matrix}.
++No such scalarization is proved here.  Moreover, reducing these
++primitive functions would still leave $\mathcal N_3$ for the complete
++thermal coefficient $C_5(3)$.  All original coefficient formulas,
++including their one- and two-dimensional specializations, are retained.
++
++\clearpage
+ \section{Provenance and limits of the consolidation}\label{app:provenance}
+-The latest addition is Appendix~\ref{app:threeDimensionalReduction}:
++The latest addition, Appendix~\ref{app:d3RankTwo}, supplies a standard
++rank-two matrix-hypergeometric identification and exact parameter
++insertion checks.  It is explicitly not a completed scalar reduction,
++and it does not claim a new independent endpoint-integral or graph
++calculation.  The previously established period values are unchanged.
++
++The preceding addition is Appendix~\ref{app:threeDimensionalReduction}:
+ dimension-three half-shift determinant identities, Gamma amplitude
+ summations, and finite positive-rational Horn/ordinary formulas, with
+ fixed-complex-node alternatives.  The new checks compare these formulas
+@@ -8011,5 +8291,20 @@
+ \bibitem{DLMFNumerical} NIST Digital Library of Mathematical Functions,
+ \emph{Numerical Methods}, Chapter~3, especially floating-point arithmetic,
+ interpolation and quadrature, \href{https://dlmf.nist.gov/3}{DLMF Chapter~3}.
++
++\bibitem{MacdonaldHyperI} I.~G.~Macdonald,
++\emph{Hypergeometric Functions I},
++\href{https://arxiv.org/abs/1309.4568}{arXiv:1309.4568} (2013),
++originally circulated in 1987--1988; partitional Pochhammer symbols,
++Jack normalizations, and matrix-argument hypergeometric series.
++\bibitem{DLMFMatrixHyper} NIST Digital Library of Mathematical Functions,
++\S35.8, generalized hypergeometric functions of real matrix argument,
++especially equations (35.8.1) and (35.8.5).
++\url{https://dlmf.nist.gov/35.8}.
++\bibitem{RichardsZhengMatrix} D.~Richards and Q.~Zheng,
++\emph{A Reflection Formula for the Gaussian Hypergeometric Function of
++Matrix Argument},
++\href{https://arxiv.org/abs/2002.05248}{arXiv:2002.05248}, version 3 (2023),
++especially Sections~3 and~4 distinguishing real and Hermitian matrix arguments.
+ \end{thebibliography}
+ \end{document}

@@ -1,0 +1,380 @@
+{
+  "schema": "c8-d2-dev-r5a-first-error-1",
+  "graphs": [
+    0,
+    1,
+    10,
+    12,
+    13,
+    16,
+    20,
+    23
+  ],
+  "L": 4,
+  "sector": "free",
+  "points": 64,
+  "replicates": 2,
+  "threads": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "repeats": 5,
+  "baseline": {
+    "decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+    "gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3"
+  },
+  "candidate": {
+    "decimal": "b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5",
+    "gmp": "f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e"
+  },
+  "cases": [
+    {
+      "case": "valid",
+      "backend": "decimal",
+      "bad": {},
+      "baseline_exit": 0,
+      "baseline_stderr": "completed 16 tasks, 8 graphs; integration 0.00180778 s",
+      "runs": 25,
+      "mismatches": [],
+      "rows": 16,
+      "graphs_loaded": 8,
+      "passed": true
+    },
+    {
+      "case": "valid",
+      "backend": "gmp",
+      "bad": {},
+      "baseline_exit": 0,
+      "baseline_stderr": "completed 16 tasks, 8 graphs; integration 0.00178944 s",
+      "runs": 25,
+      "mismatches": [],
+      "rows": 16,
+      "graphs_loaded": 8,
+      "passed": true
+    },
+    {
+      "case": "truncated_then_identity",
+      "backend": "decimal",
+      "bad": {
+        "10": "truncated",
+        "16": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "truncated graph: /scratch/<USER>/job_54666182/tmp/r5a_err_8foqvb6d/truncated_then_identity/L4/G10.txt",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "truncated_then_identity",
+      "backend": "gmp",
+      "bad": {
+        "10": "truncated",
+        "16": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "truncated graph: /scratch/<USER>/job_54666182/tmp/r5a_err_8foqvb6d/truncated_then_identity/L4/G10.txt",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "missing_then_truncated",
+      "backend": "decimal",
+      "bad": {
+        "1": "missing",
+        "12": "truncated",
+        "20": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "invalid graph header: /scratch/<USER>/job_54666182/tmp/r5a_err_8foqvb6d/missing_then_truncated/L4/G1.txt",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "missing_then_truncated",
+      "backend": "gmp",
+      "bad": {
+        "1": "missing",
+        "12": "truncated",
+        "20": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "invalid graph header: /scratch/<USER>/job_54666182/tmp/r5a_err_8foqvb6d/missing_then_truncated/L4/G1.txt",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "identity_then_missing",
+      "backend": "decimal",
+      "bad": {
+        "0": "identity",
+        "23": "missing"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "graph identity mismatch",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "identity_then_missing",
+      "backend": "gmp",
+      "bad": {
+        "0": "identity",
+        "23": "missing"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "graph identity mismatch",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "last_only",
+      "backend": "decimal",
+      "bad": {
+        "23": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "graph identity mismatch",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "case": "last_only",
+      "backend": "gmp",
+      "bad": {
+        "23": "identity"
+      },
+      "baseline_exit": 2,
+      "baseline_stderr": "graph identity mismatch",
+      "runs": 25,
+      "mismatches": [],
+      "passed": true
+    }
+  ],
+  "environment": {
+    "host": "<NODE>",
+    "platform": "Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "cpu_model": "AMD EPYC 7742 64-Core Processor",
+    "glibc": "glibc 2.28",
+    "python": "3.11.9",
+    "cpu_count": 128,
+    "executables": {
+      "c8d2_decimal": {
+        "sha256": "b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_decimal",
+          "backend": "decimal",
+          "executable_sha256": "b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-o",
+            "bin/c8d2_decimal"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "decimal300",
+            "mp_digits10": 300,
+            "mp_max_digits10": 328,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": null
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-04T23:27:19Z"
+        }
+      },
+      "c8d2_gmp": {
+        "sha256": "f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_gmp",
+          "backend": "gmp",
+          "executable_sha256": "f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-lgmp",
+            "-o",
+            "bin/c8d2_gmp"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "gmp350",
+            "mp_digits10": 350,
+            "mp_max_digits10": 372,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": true
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-04T23:27:31Z"
+        }
+      }
+    },
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  },
+  "status": "passed",
+  "wall_seconds": 2.3
+}

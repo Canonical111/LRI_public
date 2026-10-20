@@ -1,0 +1,42 @@
+[
+ {
+  "id": "a1.eh.code",
+  "macro": null,
+  "what": "integrity of lri_eh 0.2.0: manifest, source fingerprint, sealed supplier receipt",
+  "quoted": "source 2e2e8ca8..., receipt 648fa9fb...",
+  "rule": "MANIFEST_SHA256.json 102/102 (public/SCRUBBED.txt honoured); sha256 over lri_eh/**/*.py (as lri_eh.runtime.fingerprint) = BUILD_INFO source_sha256 = the receipt's; receipt payload_sha256 = sha256 of its canonical JSON = BUILD_INFO validation_receipt_sha256",
+  "compare": "exact"
+ },
+ {
+  "id": "a1.eh.receipt",
+  "macro": null,
+  "what": "supplier's release validation (32 tests and a gated degree-7 smoke at cutoff 20)",
+  "quoted": "passed (32 tests)",
+  "rule": "read as recorded from benchmarks/validation_local.json and its tests log; recomputed by make test (scripts/validate_release.py on a copy)",
+  "compare": "recorded"
+ },
+ {
+  "id": "a1.eh.K",
+  "macro": null,
+  "what": "finite part K of the isolated g^2 D shift of C4 (HT_Pert note; enters \\HTpWinCfourInf = K + 0.0186910)",
+  "quoted": "0.0616119308426799",
+  "rule": "float of exact.renormalized_constant() (mpmath, 60 digits) within 1e-16 of the quoted value; its 60-digit string equal in >= 55 digits to the K stored in code/lri_hpc_Hamitonian/analysis/eh_review/physics-impact/dc4_exact.json",
+  "compare": "1e-16"
+ },
+ {
+  "id": "a1.eh.exact",
+  "macro": null,
+  "what": "exact isolated g^2 D shift Delta C4(Lambda) = 485/8748 + sum over even n of [v_n A(n) + B(n)] and the shipped g^2 D tables",
+  "quoted": "Delta C4 ~ log(Lambda)/17496 + K",
+  "rule": "exact rationals at every even Lambda 2..118: float vs exact.fast <= 1e-16, vs dc4_exact.json <= 1e-16, vs delta_C[4] of d5_all.json (4..118) and d7_all.json (4..90) <= 1e-15; remainder after log/17496 + K - 16/(2187 sqrt(pi L)) - 1/(243 L) shrinks over L = 8, 32, 118, 1024, 65536",
+  "compare": "bound"
+ },
+ {
+  "id": "a1.eh.bench",
+  "macro": null,
+  "what": "supplier's degree-5 benchmark runs at Lambda = 118 vs the shipped d5_all.json",
+  "quoted": "-",
+  "rule": "benchmarks/results/new_L118_d5_t4_{0,1,2}.json delta_C equal d5_all.json['118'] within 1e-13 relative",
+  "compare": "1e-13"
+ }
+]

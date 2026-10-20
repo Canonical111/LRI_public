@@ -1,0 +1,302 @@
+PASS point rows identical 
+FAIL point: identical sequence of non-lifetime, non-copy mpf calls {'lengths': (74201, 73045)}
+PASS point: R4a adds no call of any kind 
+FAIL digest heavy_power_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 107}
+FAIL digest heavy_free_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 51}
+FAIL digest heavy_power_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 39}
+FAIL digest heavy_free_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 24}
+FAIL digest heavy_power_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 107}
+FAIL digest heavy_free_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 51}
+FAIL digest heavy_power_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 39}
+FAIL digest heavy_free_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 24}
+{
+ "schema": "c8-d2-r4a-trace-1",
+ "executables": {
+  "base": {
+   "path": "bin/baseline/c8d2_gmp",
+   "sha256": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3"
+  },
+  "new": {
+   "path": "bin/c8d2_gmp",
+   "sha256": "2fab13288efb3ad9a0ee781ccd43cd014de0b16b702e26345d8a34479f08600c"
+  },
+  "base_err": {
+   "path": "bin/baseline/c8d2_gmp_ratiohist",
+   "sha256": "c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf"
+  },
+  "new_err": {
+   "path": "bin/c8d2_gmp_ratiohist",
+   "sha256": "6edf48d580f846fc71e9e7e21e5aec2564cf5a3bf236dcfb27ef924b98f724ef"
+  }
+ },
+ "shim": {
+  "path": "bin/dev/mpf_trace.so",
+  "sha256": "648c5794909ec863d4062cd8d008c714052a14c787eee4f00b628f21ce7ab84f"
+ },
+ "rules": [
+  {
+   "rule": "point rows identical",
+   "ok": true,
+   "mp": 1
+  },
+  {
+   "rule": "point: identical sequence of non-lifetime, non-copy mpf calls",
+   "ok": false,
+   "lengths": [
+    74201,
+    73045
+   ]
+  },
+  {
+   "rule": "point: R4a adds no call of any kind",
+   "ok": true
+  },
+  {
+   "rule": "digest heavy_power_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 107
+  },
+  {
+   "rule": "digest heavy_free_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 51
+  },
+  {
+   "rule": "digest heavy_power_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 39
+  },
+  {
+   "rule": "digest heavy_free_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 24
+  },
+  {
+   "rule": "digest heavy_power_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 107
+  },
+  {
+   "rule": "digest heavy_free_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 51
+  },
+  {
+   "rule": "digest heavy_power_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 39
+  },
+  {
+   "rule": "digest heavy_free_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0",
+   "ok": false,
+   "mp_points": 24
+  }
+ ],
+ "ok": false,
+ "point": {
+  "block": "heavy_power_L8",
+  "graph": 24401,
+  "point_index": 0,
+  "net_rep": 0,
+  "mp_points_in_first_64": [
+   0,
+   1,
+   2,
+   8,
+   10,
+   11,
+   13,
+   15,
+   23,
+   24,
+   26,
+   27,
+   29,
+   34,
+   36,
+   37,
+   39,
+   41,
+   44,
+   49,
+   53,
+   54,
+   58,
+   61,
+   63
+  ],
+  "quad_points_in_first_64": 60
+ },
+ "point_trace": {
+  "records": {
+   "base": 84563,
+   "new": 78987
+  },
+  "strict_records": {
+   "base": 74201,
+   "new": 73045
+  },
+  "first_difference": {
+   "index": 253,
+   "base": "get_prec Q a=20:20:0:48710b16463a7326 r=1216",
+   "new": "set_ui V d=20:0:0:cbf29ce484222325 i=0"
+  },
+  "counts": {
+   "base": {
+    "init2": 4764,
+    "set_si": 709,
+    "set_ui": 44,
+    "mul_2exp": 58,
+    "sub_ui": 15,
+    "add_ui": 43,
+    "div_2exp": 30,
+    "get_prec": 1202,
+    "set": 801,
+    "neg": 29,
+    "cmp_si": 29,
+    "trunc": 14,
+    "fits_slong_p": 28,
+    "get_si": 28,
+    "cmp": 1051,
+    "set_str": 1,
+    "div": 207,
+    "mul_ui": 14,
+    "sub": 88,
+    "div_ui": 1051,
+    "mul": 4114,
+    "add": 65431,
+    "clear": 4764,
+    "ui_div": 14,
+    "swap": 33,
+    "get_str": 1
+   },
+   "new": {
+    "init2": 2940,
+    "set_si": 709,
+    "set_ui": 44,
+    "mul_2exp": 58,
+    "sub_ui": 15,
+    "add_ui": 43,
+    "div_2exp": 30,
+    "get_prec": 46,
+    "set": 45,
+    "neg": 29,
+    "cmp_si": 29,
+    "trunc": 14,
+    "fits_slong_p": 28,
+    "get_si": 28,
+    "cmp": 1051,
+    "set_str": 1,
+    "div": 207,
+    "mul_ui": 14,
+    "sub": 88,
+    "div_ui": 1051,
+    "mul": 4114,
+    "add": 65431,
+    "clear": 2940,
+    "ui_div": 14,
+    "swap": 17,
+    "get_str": 1
+   }
+  },
+  "removed": {
+   "add": 0,
+   "add_ui": 0,
+   "clear": 1824,
+   "cmp": 0,
+   "cmp_si": 0,
+   "div": 0,
+   "div_2exp": 0,
+   "div_ui": 0,
+   "fits_slong_p": 0,
+   "get_prec": 1156,
+   "get_si": 0,
+   "get_str": 0,
+   "init2": 1824,
+   "mul": 0,
+   "mul_2exp": 0,
+   "mul_ui": 0,
+   "neg": 0,
+   "set": 756,
+   "set_si": 0,
+   "set_str": 0,
+   "set_ui": 0,
+   "sub": 0,
+   "sub_ui": 0,
+   "swap": 16,
+   "trunc": 0,
+   "ui_div": 0
+  },
+  "strict_sha256": {
+   "base": "a79b611615dc3c9cb37aab7d610ecf4cd72cb305efa4881428bdae5b54d6759e",
+   "new": "f7001091af3a53dc21f20dfad653f1f736d4a2de20f5224b8ead80df3b7038c9"
+  },
+  "shim_digests": {
+   "base": {
+    "L": {
+     "records": 9528,
+     "digest": "b231f13c9b6f9d1ce14117c3027c2fe9"
+    },
+    "C": {
+     "records": 834,
+     "digest": "c15778ddf155b02a7326bb0900ade5f7"
+    },
+    "Q": {
+     "records": 2339,
+     "digest": "b11f83c47cb02baa7caf733b8dd2a773"
+    },
+    "V": {
+     "records": 71862,
+     "digest": "88495655588893874f143149c883f286"
+    },
+    "VQ": {
+     "records": 74201,
+     "digest": "aeb5cbc279969152e9130e003ab359b5"
+    }
+   },
+   "new": {
+    "L": {
+     "records": 5880,
+     "digest": "882e783666172770e65a9befb3aa8df5"
+    },
+    "C": {
+     "records": 62,
+     "digest": "3b199d2e8eba298bbbc29f94d67f33e8"
+    },
+    "Q": {
+     "records": 1183,
+     "digest": "9da8c15497daae0901e6310c39bca1ce"
+    },
+    "V": {
+     "records": 71862,
+     "digest": "88495655588893874f143149c883f286"
+    },
+    "VQ": {
+     "records": 73045,
+     "digest": "c52464bb9b32442f46c3462d14a73f86"
+    }
+   }
+  },
+  "seconds_under_shim": {
+   "base": 0.22081048227846622,
+   "new": 0.215355072170496
+  }
+ },
+ "digest_sample": {
+  "graphs": [
+   {
+    "block": "heavy_power_L8",
+    "graph": 24401
+   },
+   {
+    "block": "heavy_power_L8",
+    "graph": 25867
+   },
+   {
+    "block": "heavy_power_L8",
+    "graph": 20259
+   },
+   {
+    "block": "heavy_power_L8",
+    "graph": 24461
+   },

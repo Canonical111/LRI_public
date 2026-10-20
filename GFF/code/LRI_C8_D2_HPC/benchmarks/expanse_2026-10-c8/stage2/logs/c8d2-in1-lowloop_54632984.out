@@ -1,0 +1,22 @@
+job 54632984 on <NODE> at 2026-10-03T15:08:30-07:00; package <SCRATCH>/temp_project/c8d2/pkg/ec2b0583b6da; evidence <SCRATCH>/temp_project/c8d2/evidence/ec2b0583b6da/in1.54632984.0
+Model name:          AMD EPYC 7742 64-Core Processor
+b3f044da1169ef169916ce4cfc4ca91d6f6ab1ae00967f86843c2b10b233cc6d  <HOME>/c8d2/env_expanse.sh
+python 3.11.9 mpmath 1.3.0
+PASS inputs/gamma_d2_8.txt regenerates byte for byte
+PASS inputs/two_loop.json regenerates byte for byte
+PASS inputs/verification/two_loop_extension8.json regenerates byte for byte
+PASS --order 7 reproduces C7(2)'s gamma_d2_7.txt byte for byte (sha256 e6286ded)
+PASS --order 7 reproduces C7(2)'s two_loop.json byte for byte (sha256 0e130549)
+PASS gamma_d2_8.txt: 7 rows, labels 6..0, 9 tokens per row
+PASS rows L=2..7 repeat the norm and l_0..l_5 tokens of gamma_d2_7.txt
+PASS the L=8 norm equals -2/pi^8 to 60 digits
+PASS the L=8 row has l_1 = 8 log 2
+PASS two_loop.json has 7 strings, the first 6 identical to C7(2)'s
+PASS the two contours agree to <= 1e-50 for k = 1..7
+PASS the stored values agree with the reference contour (r = 0.2, 192 nodes, dps 95) to <= 1e-60
+PASS b_2,6 matches -266.5209679613593817322521926190898009490 to the printed digits
+PASS Cauchy check of every l_(L,j), L = 2..8, j = 1..6 (64 nodes): agreement <= 1e-45
+PASS cross-check: gamma_d2_8.txt byte-identical to vendor/c8_assembly/inputs_d2_check/gamma_d2_8.txt (sha256 2ace6971)
+PASS cross-check: the 7 B2 strings equal vendor/c8_assembly/inputs_d2_check/two_loop.json's
+make_lowloop --verify: 16/16 checks passed
+J-IN-1 passed at 2026-10-03T15:08:31-07:00

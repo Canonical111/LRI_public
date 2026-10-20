@@ -1,0 +1,92 @@
+job 570027 on <NODE> at 2026-10-05T05:03:59-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5val1.570027.0
+Model name:                              AMD EPYC 7543 32-Core Processor
+NUMA node(s):                            8
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+Python 3.11.3
+TMPDIR /tmp/c8d2_570027
+619ddf7d1cf94d6229c841cd3fbe22574045ec65a1b69f8b827f1e26f180895f  bin/c8d2_decimal
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+69e990c03cfc0256024763fda615cb1a9cffca41ec9f0518defaf5945b2fe62f  bin/c8d2_gmp_prof
+4f4638a210fe9ec5f383b1201885890562f6e40986952162aff4ee40a1d977e8  bin/c8d2_gmp_ratiohist
+10fe813393ac4ce1fa82140d6262407481659833cf10097359035c1c623a29d9  bin/c8d2_inspect
+e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5  bin/ref/c7d2_decimal
+7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3  bin/ref/c7d2_gmp
+== make_prerequisites 2026-10-05T05:03:59-04:00
+== make_prerequisites exit 0 after 11 s
+}
+make: Nothing to be done for 'gmp'.
+== validate 2026-10-05T05:04:10-04:00
+== validate exit 0 after 64 s
+     "rows": 2,
+     "mp_rows":
+== unit_orchestration 2026-10-05T05:05:14-04:00
+== unit_orchestration exit 1 after 216 s
+PASS drivers_only_refuses_unknown_and_empty_selections_vendored_isolated_records_early_stops
+{"status": "failed", "requested": "all", "executed": 36, "tests": 47, "failed": ["lanes"]}
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/tmp/c8d2_570027/c8d2_orch_mgzvfhe2/lanes')) failed (64):
+Traceback (most recent call last):
+    if check and cp.returncode:raise AssertionError(f'{script} {args} failed ({cp.returncode}):\n{cp.stderr[-3000:]}\n{cp.stdout[-1000:]}')
+AssertionError: lanes.py ('worker', PosixPath('/tmp/c8d2_570027/c8d2_orch_mgzvfhe2/lanes')) failed (64):
+== test_pipeline 2026-10-05T05:08:50-04:00
+== test_pipeline exit 0 after 173 s
+PASS A-FLAG-6_G4c_non_test_plan_accepts_fresh_R7_bundle_with_approval_and_map_cost_model_refuses_without
+{"status": "passed", "executed": ["part1", "part2", "part3"], "tests": 16}
+== ast_scan 2026-10-05T05:11:43-04:00
+== ast_scan exit 0 after 1 s
+ast_scan: 26 files, 0 findings, self-test passed
+== test_regress 2026-10-05T05:11:44-04:00
+== test_regress exit 0 after 4 s
+PASS end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2
+test_regress: 42/42 checks passed
+== merge_scale 2026-10-05T05:11:48-04:00
+== merge_scale exit 0 after 205 s
+}
+merge_scale: passed
+== check_vendored 2026-10-05T05:15:13-04:00
+== check_vendored exit 0 after 42 s
+NOTE production.py run opened 0 vendored files
+check_vendored: 16/16 checks passed
+== vendored_isolated 2026-10-05T05:15:55-04:00
+== vendored_isolated exit 1 after 16 s
+PASS the export is unchanged by the runs (no __pycache__, .pytest_cache or other new or changed file)
+vendored_isolated: 6/10 checks passed
+FAIL vendored tests, LRI_ROOT=fixtures: counts equal the HANDOFF ({'passed': 30, 'skipped': 0, 'failed': 0, 'errors': 0}): {"lri_root": "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/vendor/c8_assembly_fixtures", "returncode": 1, "counts": {"passed": 0, "skipped": 0, "failed": -1, "errors": -1}, "second
+FAIL vendored tests, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation: ["no audit record of an open under <SCRATCH>/c8d2/pkg/5d7586e9f1ab/vendor/c8_assembly: the open-audit hook did not run"]
+FAIL vendored tests, no LRI_ROOT: counts equal the HANDOFF ({'passed': 21, 'skipped': 9, 'failed': 0, 'errors': 0}): {"lri_root": null, "returncode": 1, "counts": {"passed": 0, "skipped": 0, "failed": -1, "errors": -1}, "seconds": 0.0, "tail": "<HOME>/c8d2/venv/bin/python3: No module named py
+FAIL vendored tests, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation: ["no audit record of an open under <SCRATCH>/c8d2/pkg/5d7586e9f1ab/vendor/c8_assembly: the open-audit hook did not run"]
+== delivery_verifier 2026-10-05T05:16:11-04:00
+== delivery_verifier exit 0 after 1 s
+  ]
+}
+== check_inputs 2026-10-05T05:16:12-04:00
+== check_inputs exit 0 after 13 s
+PASS a one-byte change to a pack makes verify() fail
+check_inputs: 10/10 checks passed, 2 skipped
+== test_profiling 2026-10-05T05:16:25-04:00
+== test_profiling exit 0 after 11 s
+PASS e2e_perf_profile_p1_fallback_p2_p3_fake_perf
+{"passed": true, "tests": 15, "failed": []}
+== test_gmp_prefix 2026-10-05T05:16:36-04:00
+== test_gmp_prefix exit 0 after 5 s
+PASS r4f_profile_dry_run
+{"passed": true, "tests": 7, "failed": []}
+== test_numerics_flags 2026-10-05T05:16:41-04:00
+== test_numerics_flags exit 1 after 20 s
+PASS f2_seeds_registered_rerun_present_collision_refused
+{"passed": false, "tests": 8, "failed": ["f2_profile"]}
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not subscriptable
+== test_dd_profile 2026-10-05T05:17:01-04:00
+== test_dd_profile exit 0 after 6 s
+PASS scripts 
+{"passed": true, "tests": 8, "failed": []}
+== workflow 2026-10-05T05:17:07-04:00
+== workflow exit 0 after 17 s
+  }
+}
+== staging 2026-10-05T05:17:24-04:00
+== staging exit 0 after 20 s
+  }
+}
+executables unchanged
+finished 2026-10-05T05:17:44-04:00, status 1

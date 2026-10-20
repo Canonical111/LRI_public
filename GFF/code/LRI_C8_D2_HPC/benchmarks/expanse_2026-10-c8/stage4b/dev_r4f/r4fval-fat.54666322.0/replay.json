@@ -1,0 +1,1301 @@
+{
+  "status": "passed",
+  "parts": [
+    "replay"
+  ],
+  "executed": [
+    "replay"
+  ],
+  "full": false,
+  "bk8": false,
+  "l2_control": false,
+  "l8self": null,
+  "tests": [
+    {
+      "test": "replay_summary",
+      "status": "passed",
+      "kernels": 117,
+      "full": false,
+      "reference_worker_command": [
+        "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "/scratch/<USER>/job_54666322/pkg/reference/LRI_C7_d2_progress/code/c7d2_integrate.cpp",
+        "-lquadmath",
+        "-o",
+        "/scratch/<USER>/job_54666322/tmp/c8d2_validate_7lpycbfx/reference_worker"
+      ],
+      "reference_binaries": {
+        "decimal": "4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf",
+        "gmp": "6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52"
+      },
+      "c8_binaries": {
+        "decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+        "gmp": "c0b03496dc28aaf9010bd9879d507a675ae0ea16e6273d2d079a801311957462"
+      },
+      "rules": {
+        "G-REF": "decimal exact strings; gmp exact if mp=0, <=1e-30 normalized if mp>0; counters identical",
+        "G-C7": "exact strings in every row field the C7(2) worker writes (identity, values, quad, mp, max_abs), mp>0 rows included",
+        "G-JET": "b and c slots 0..7-L exact (c offset 8-L -> 9-L); quad, mp, max_abs and tail fields identical; new slot finite"
+      },
+      "wall_seconds": 5.2
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 2,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 1,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 3,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 5,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 10,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 4,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 12,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 24,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 5,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 3,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 3,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 6,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 16,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 16,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 1037,
+          "mp_points": 108,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 1037,
+          "mp_points": 108,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 25,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1049,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1049,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 23,
+          "quad_points": 1028,
+          "mp_points": 104,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 23,
+          "quad_points": 1028,
+          "mp_points": 104,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 21,
+          "quad_points": 932,
+          "mp_points": 70,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 21,
+          "quad_points": 932,
+          "mp_points": 70,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 26,
+          "quad_points": 921,
+          "mp_points": 84,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 26,
+          "quad_points": 921,
+          "mp_points": 84,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "free",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 17,
+          "quad_points": 910,
+          "mp_points": 66,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 17,
+          "quad_points": 910,
+          "mp_points": 66,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 3,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 1,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 1,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 1,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 2,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 4,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 3,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 58,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 58,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 6,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 5,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 15,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 782,
+          "mp_points": 17,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 782,
+          "mp_points": 17,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 30,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 30,
+          "mp_rows": 12,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 6,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1268,
+          "mp_points": 69,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 1268,
+          "mp_points": 69,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 27,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1669,
+          "mp_points": 226,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1669,
+          "mp_points": 226,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-REF/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1695,
+          "mp_points": 228,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1695,
+          "mp_points": 228,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.8,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1687,
+          "mp_points": 224,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 32,
+          "quad_points": 1687,
+          "mp_points": 224,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 0,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 30,
+          "quad_points": 1563,
+          "mp_points": 142,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 30,
+          "quad_points": 1563,
+          "mp_points": 142,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 1,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1609,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1609,
+          "mp_points": 118,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    },
+    {
+      "test": "replay_subset",
+      "sector": "power",
+      "L": 7,
+      "rate": 0.9,
+      "layout": 2,
+      "graphs": 16,
+      "points_per_task": 64,
+      "replicates": 2,
+      "seed": 7738251,
+      "gates": {
+        "G-C7/decimal": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1587,
+          "mp_points": 138,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-C7/gmp": {
+          "rows": 32,
+          "mp_rows": 31,
+          "quad_points": 1587,
+          "mp_points": 138,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/decimal": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        },
+        "G-JET/gmp": {
+          "rows": 32,
+          "mp_rows": 0,
+          "quad_points": 0,
+          "mp_points": 0,
+          "max_normalized_difference_mp_rows": "0"
+        }
+      }
+    }
+  ],
+  "wall_seconds": 14.0,
+  "environment": {
+    "host": "<NODE>",
+    "platform": "Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "cpu_model": "AMD EPYC 7742 64-Core Processor",
+    "glibc": "glibc 2.28",
+    "python": "3.11.9",
+    "cpu_count": 128,
+    "executables": {
+      "c8d2_decimal": {
+        "sha256": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_decimal",
+          "backend": "decimal",
+          "executable_sha256": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-o",
+            "bin/c8d2_decimal"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-fat",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "decimal300",
+            "mp_digits10": 300,
+            "mp_max_digits10": 328,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "gmp_header": null,
+          "gmp_library": null,
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": null
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-05T00:09:00Z"
+        }
+      },
+      "c8d2_gmp": {
+        "sha256": "c0b03496dc28aaf9010bd9879d507a675ae0ea16e6273d2d079a801311957462",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "13.3.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_gmp",
+          "backend": "gmp",
+          "executable_sha256": "c0b03496dc28aaf9010bd9879d507a675ae0ea16e6273d2d079a801311957462",
+          "command": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-I<HOME>/c8d2/opt/gmp-6.2.1-fat/include",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP",
+            "src/c8d2_integrate.cpp",
+            "-L<HOME>/c8d2/opt/gmp-6.2.1-fat/lib",
+            "-Wl,-rpath,<HOME>/c8d2/opt/gmp-6.2.1-fat/lib",
+            "-Wl,--disable-new-dtags",
+            "-lquadmath",
+            "-lgmp",
+            "-o",
+            "bin/c8d2_gmp"
+          ],
+          "compiler_options": [
+            "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+            "-I<HOME>/c8d2/opt/gmp-6.2.1-fat/include",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP"
+          ],
+          "compiler": "g++ (Spack GCC) 13.3.0",
+          "compiler_macro_version": "13.3.0",
+          "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "GMP_PREFIX": "<HOME>/c8d2/opt/gmp-6.2.1-fat",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "13.3.0",
+            "long_double_bits": 64,
+            "mp_backend": "gmp350",
+            "mp_digits10": 350,
+            "mp_max_digits10": 372,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "gmp_header": {
+            "cc": "gcc",
+            "cflags": "-O2 -pedantic -fomit-frame-pointer -m64"
+          },
+          "gmp_library": {
+            "soname": "libgmp.so.10",
+            "path": "<HOME>/c8d2/opt/gmp-6.2.1-fat/lib/libgmp.so.10",
+            "realpath": "<HOME>/c8d2/opt/gmp-6.2.1-fat/lib/libgmp.so.10.4.1",
+            "sha256": "3e4c7c4124b1e48a93959acc1476328e75d1495a1ebe309496caf679a22dc560",
+            "fat": true,
+            "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-fat/lib",
+            "runpath": null,
+            "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+          },
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": true
+          },
+          "host": "<NODE>",
+          "created_utc": "2026-10-05T00:08:59Z"
+        }
+      }
+    },
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  }
+}

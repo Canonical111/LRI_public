@@ -1,0 +1,288 @@
+python3 -B tools/prepare_inputs.py
+{"3": 5, "4": 16, "5": 76, "6": 395}
+python3 -B tests/archived_assembly.py
+{
+  "status": "passed",
+  "test": "archived_assembly_d3",
+  "results": {
+    "fresh_only": [
+      33.560840352429125,
+      0.02811931498555694
+    ],
+    "previous": [
+      33.575557958591915,
+      0.03935445566456952
+    ],
+    "four_campaign": [
+      33.568196798570554,
+      0.024184038468140632
+    ]
+  },
+  "archived_primary": [
+    33.56819679857058,
+    0.02418403846814063
+  ],
+  "max_relative_difference": 8.466856173702567e-16,
+  "relative_tolerance": 1e-12
+}
+python3 -B tests/check_inputs.py
+{
+  "status": "passed",
+  "test": "inputs_regeneration",
+  "files": 501,
+  "sources_recorded": 15,
+  "graph_counts": {
+    "3": 5,
+    "4": 16,
+    "5": 76,
+    "6": 395
+  }
+}
+python3 -B tests/archived_replay.py
+{
+  "status": "passed",
+  "test": "archived_replay",
+  "net": {
+    "B": 32,
+    "dim": 23,
+    "bits": 52,
+    "sha256": "06d602e54f7078e009eade4c9394085591c922619411928ae198d5bf9ff05145"
+  },
+  "legacy_native_seed": 882048032,
+  "hashed_native_seed": 6822071065473172316
+}
+python3 -B tests/dimension_checks.py
+{
+  "status": "passed",
+  "gamma_normalization": [
+    {
+      "L": 2,
+      "max_absolute_error": "3.66792286660514581e-55",
+      "working_digits": 80
+    },
+    {
+      "L": 3,
+      "max_absolute_error": "4.49811570009228128e-55",
+      "working_digits": 80
+    },
+    {
+      "L": 4,
+      "max_absolute_error": "2.66415426678970838e-55",
+      "working_digits": 80
+    },
+    {
+      "L": 5,
+      "max_absolute_error": "3.34367741083631254e-54",
+      "working_digits": 80
+    },
+    {
+      "L": 6,
+      "max_absolute_error": "3.43359025927101602e-54",
+      "working_digits": 80
+    }
+  ],
+  "two_loop_constant_matches_minus_6A": true,
+  "B2_vs_independent_85_digit_A2_max_error": "1.3159e-54",
+  "C0_C1_closed_form_and_C2_archived": true,
+  "lower_order_constants_match_archived_literals": true,
+  "independent_regulator_dependent_lagrange_cases": 96,
+  "max_normalized_lagrange_difference": 1.1657341758564144e-14,
+  "six_loop_sensitivity_matches": [
+    -0.0004572473708276177,
+    0.0013717421124828531
+  ],
+  "source_checksums_verified": 15,
+  "scope": "Exact conventions and floating-point independent assembly checks; not a new physics estimate."
+}
+python3 -B tests/unit_orchestration.py
+PASS archived_seeds
+PASS sbatch_allowlist
+PASS plan_guards
+PASS plan_frozen_allocation_shards_positions
+PASS points_override_all_strata_primitives_included
+PASS run_private_runtime_failure_threads_offset
+PASS status_recovery_max_blocks_recompute
+PASS concurrent_duplicate_runs
+PASS merge_resume_idempotent_assembly_permissions
+PASS tamper_and_foreign_checkpoint_rejected
+PASS uri_reserved_campaign_path_and_concurrent_merge
+PASS recovery_plan
+PASS slurm_helpers_fake
+{
+  "status": "passed",
+  "tests": [
+    {
+      "test": "archived_seeds",
+      "count": 31
+    },
+    {
+      "test": "sbatch_allowlist",
+      "refused": 24
+    },
+    {
+      "test": "plan_guards",
+      "checks": [
+        "archived legacy seeds refused (fresh and previous production)",
+        "removed primitive options refused",
+        "failing self-test refused"
+      ]
+    },
+    {
+      "test": "plan_frozen_allocation_shards_positions",
+      "shards": {
+        "a_L3": 1,
+        "a_L4": 1,
+        "a_L5": 1,
+        "a_L6": 3,
+        "b_L3": 1,
+        "b_L4": 1,
+        "b_L5": 1,
+        "b_L6": 3
+      }
+    },
+    {
+      "test": "points_override_all_strata_primitives_included"
+    },
+    {
+      "test": "run_private_runtime_failure_threads_offset",
+      "native_calls_logged": 1
+    },
+    {
+      "test": "status_recovery_max_blocks_recompute"
+    },
+    {
+      "test": "concurrent_duplicate_runs"
+    },
+    {
+      "test": "merge_resume_idempotent_assembly_permissions"
+    },
+    {
+      "test": "tamper_and_foreign_checkpoint_rejected"
+    },
+    {
+      "test": "uri_reserved_campaign_path_and_concurrent_merge",
+      "path": "we#ird?dir %41 x"
+    },
+    {
+      "test": "recovery_plan",
+      "tag": "c6:fe979066737e",
+      "twin_tag": "c6:9f60021c2e4d"
+    },
+    {
+      "test": "slurm_helpers_fake",
+      "resubmitted": [
+        2,
+        3
+      ],
+      "live": [
+        0,
+        1
+      ],
+      "submission_lock": [
+        "concurrent calls refused (75)",
+        "later call sees the live merge (65)",
+        "removed after 69 and sbatch failure",
+        "existing lock refuses before any Slurm call"
+      ]
+    }
+  ]
+}
+python3 -B tests/validate.py
+{
+  "status": "passed",
+  "tests": [
+    {
+      "test": "all_graph_reference_replay",
+      "L": 3,
+      "graphs": 5,
+      "samples": 640,
+      "max_normalized_jet_difference": 5.556819118275005e-20,
+      "quad_fallbacks": 0,
+      "mp_fallbacks": 0
+    },
+    {
+      "test": "random_access_and_threads",
+      "L": 3,
+      "chunk_size": 23,
+      "max_normalized_split_difference": 2.500568603223752e-19,
+      "identical_thread_outputs": true,
+      "threads": [
+        1,
+        4
+      ]
+    },
+    {
+      "test": "all_graph_reference_replay",
+      "L": 4,
+      "graphs": 16,
+      "samples": 2048,
+      "max_normalized_jet_difference": 8.517481477971713e-20,
+      "quad_fallbacks": 0,
+      "mp_fallbacks": 0
+    },
+    {
+      "test": "random_access_and_threads",
+      "L": 4,
+      "chunk_size": 23,
+      "max_normalized_split_difference": 3.1034218424647094e-19,
+      "identical_thread_outputs": true,
+      "threads": [
+        1,
+        4
+      ]
+    },
+    {
+      "test": "all_graph_reference_replay",
+      "L": 5,
+      "graphs": 76,
+      "samples": 9728,
+      "max_normalized_jet_difference": 7.922168591544212e-20,
+      "quad_fallbacks": 2,
+      "mp_fallbacks": 0
+    },
+    {
+      "test": "random_access_and_threads",
+      "L": 5,
+      "chunk_size": 23,
+      "max_normalized_split_difference": 2.383145817743743e-18,
+      "identical_thread_outputs": true,
+      "threads": [
+        1,
+        4
+      ]
+    },
+    {
+      "test": "all_graph_reference_replay",
+      "L": 6,
+      "graphs": 395,
+      "samples": 50560,
+      "max_normalized_jet_difference": 8.333754747456032e-20,
+      "quad_fallbacks": 21,
+      "mp_fallbacks": 0
+    },
+    {
+      "test": "random_access_and_threads",
+      "L": 6,
+      "chunk_size": 23,
+      "max_normalized_split_difference": 4.072418913558046e-17,
+      "identical_thread_outputs": true,
+      "threads": [
+        1,
+        4
+      ]
+    },
+    {
+      "test": "frozen_grid_replay",
+      "max_normalized_difference": 0
+    },
+    {
+      "test": "invalid_native_inputs_rejected",
+      "cases": 3
+    },
+    {
+      "test": "fixed_point_reference_agreement",
+      "cases": 64,
+      "identical": true
+    }
+  ]
+}

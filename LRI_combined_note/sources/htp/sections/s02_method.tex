@@ -1,0 +1,229 @@
+% s02_method.tex (HT1dPert): model, cutoffs, perturbation theory, tails and windows, common to d = 1, 2, 3.
+\section{Model, cutoffs and perturbation theory}\label{sec:method}
+
+\subsection{Model and observable}
+The long-range Ising critical point in $d$ dimensions is described by the generalized free field (GFF) $\phi$ with
+nonlocal kinetic term $\phi(-\partial^2)^{s/2}\phi$, deformed by a $\phi^4$ interaction
+\cite{Fisher:1972zz,Sak:1973oqx,Paulos:2015jfa}. With $\eps=2s-d$ the field dimension is
+\begin{equation}
+ \Ds=\frac{d-s}{2}=\frac{d-\eps}{4},
+\end{equation}
+exactly, since no local counterterm renormalizes the nonlocal kinetic term \cite{Paulos:2015jfa}. The nonlocal
+equation of motion gives the shadow relation $\Delta_{\phi^3}=d-\Ds$ \cite{Paulos:2015jfa}. These two exact statements
+are the only physics inputs of the truncation: they fix the two couplings of the Hamiltonian order by order. The
+observable is the thermal operator $\varepsilon=[\phi^2]$,
+\begin{equation}
+ \DE(\eps)=\sum_{n\ge0}C_n\eps^n,\qquad C_0=\frac d2,\qquad C_1=-\frac16 .
+ \label{eq:Cn}
+\end{equation}
+We write $C_n(\Lambda)$ or $C_n(L)$ for a coefficient computed at finite cutoff, and $C_n$, or $C_n^{(d)}$ where the
+dimension must be named, for the continuum value.
+
+\subsection{Reference values and conventions}\label{sec:refvals}
+Table~\ref{tab:refvals} lists the continuum coefficients that the HT results are compared with. They come from the
+$\eps$ expansion of the GFF with Feynman graphs. The note \emph{Thermal dimensions in the long-range Ising model}, in
+the folder \code{GFF/} of the public repository, documents them, and the paper \emph{The long-range Ising
+CFT: perturbative and nonperturbative approaches} summarizes them. In this note they are used only for
+comparison, except where a fit is explicitly labeled as calibrated on them.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}clll@{}}
+\toprule
+ & $d=1$ & $d=2$ & $d=3$ \\
+\midrule
+$C_2$ & $\tfrac19(\pi+4\log2)=0.657131263981$ & $\tfrac49\log2=0.308065413582$ & $\tfrac19(2+4\log2-\pi)=0.181221785405554$ \\
+$C_3$ & $-3.719856322902$ & $-0.874850012653$ & $-0.353581520433$ \\
+$C_4$ & $45.42488010356$ & $5.048868431$ & $1.228063545$ \\
+$C_5$ & $-731.13947662454$ & $-38.833645896$ & $-5.850351421$ \\
+$C_6$ & $14331.68703275805$ & $362.366\pm0.004$ & $33.5754\pm0.0005$ \\
+$C_7$ & $-322550\pm41$ & $-3876.1\pm2.1$ & $-220.35\pm0.13$ \\
+$C_8$ & $(8.060\pm0.017)\times10^6$ & $45990\pm33$ & $1602.6\pm3.9$ \\
+\bottomrule
+\end{tabular}
+\caption{Continuum coefficients $C_n^{(d)}$ used as references, from the GFF note (folder \code{GFF/}). $C_2$ to
+$C_5$ are closed forms, and $C_6^{(1)}$ is a finite representation in special-function values (an independent sum over
+all six-loop graphs gives $14331.6870328(5)$). The other entries are Monte Carlo estimates; their $\pm$ is the empirical
+allowance of the GFF note, about four to five sampling standard errors, not a standard deviation.}
+\label{tab:refvals}
+\end{table}
+
+\paragraph{Conventions.} The deviation of an HT value from the reference is $\delta=|C_n^{\rm HT}/C_n-1|$; for a range,
+$\delta$ is the largest deviation of its ends. Quoted HT uncertainties are spreads over fit models, fit windows or
+prescriptions, not standard errors; values are rounded with the PDG rule. Each result carries the status word of the
+analysis that produced it. The words are \emph{final} (the analysis is complete; it may still contain post hoc
+choices), \emph{blind} (fit rules fixed before the data they predict existed), \emph{post hoc} (a choice
+made after the data, or the continuum value, were seen), \emph{calibrated} (tail models selected by their reproduction of
+known continuum coefficients), \emph{provisional}, or \emph{not reproduced}.
+
+\subsection{Radial quantization and the Hamiltonian}
+In radial quantization the GFF is a set of free oscillators. In $d=1$ the ``sphere'' is the pair of points
+$\sigma=\pm1$ and
+\begin{equation}
+ \phi_\sigma=\sum_{n\ge0}u_n\,\sigma^n\big(a_n+a_n^\dagger\big),\qquad
+ u_n^2=\frac{(2\Ds)_n}{n!}=\frac{\big(\tfrac{1-\eps}2\big)_n}{n!},\qquad E(a_n^\dagger)=\Ds+n .
+ \label{eq:modes}
+\end{equation}
+With the level $\ell=\sum_n nN_n$ and the particle number $P=\sum_nN_n$,
+\begin{equation}
+ H=H_0+\eps F_1+r(\eps)\,M+g(\eps)\,V,\qquad H_0=\ell+\tfrac P4,\qquad F_1=-\tfrac P4,
+ \label{eq:H}
+\end{equation}
+where $M=\langle{:}\phi^2{:}\rangle$ and $V=\tfrac1{12}\langle{:}\phi^4{:}\rangle$ are averages over the sphere, normal
+ordered. Their matrix elements are used as they stand in the truncated space: operators are never commuted past each
+other, because in a truncated space a commutator identity no longer holds. The sphere average keeps only transitions
+that change $\ell$ by an even amount, so the parity of $\ell$ is conserved; the reference states below have $\ell=0$, and
+odd-$\ell$ states such as $\partial\phi$ enter only the descendant tests. The field parity $(-1)^P$ is conserved as
+well. $\eps$ enters only through $u_n(\eps)$ and $F_1$; the Taylor coefficients of $u_n$ are kept exactly to the working
+order. The $d=2$ and $d=3$ mode functions and weights are given in Sections~\ref{d2:sec} and~\ref{d3:sec}.
+
+\subsection{Cutoffs}
+\paragraph{$d=1$: frozen energy cutoff.} The Fock space keeps the states whose energy at $\eps=0$ satisfies
+\begin{equation}
+ E^0=\ell+\tfrac P4\le\Lambda\qquad\Longleftrightarrow\qquad 4\ell+P\le4\Lambda ,
+ \label{eq:Lambda}
+\end{equation}
+and the thresholds are not moved with $\eps$. Energies at $\eps=0$ are multiples of $\tfrac14$.
+
+\paragraph{$d=2,3$: level cutoff.} The zero mode (the mode with the lowest energy, $\Ds$) is kept untruncated; the
+other modes form the bath, whose total level is cut at $L$: $\ell\le L$ in $d=2$, $N_b\le L$ in $d=3$
+(Sections~\ref{d2:sec}, \ref{d3:sec}).
+
+\subsection{Tuning and the coefficients}\label{sec:tuning}
+The reference states are the zero-mode states $|p\rangle=(a_0^\dagger)^p|0\rangle/\sqrt{p!}$ with $\ell=0$: $p=0$ is
+the vacuum, $p=1$ and $p=3$ are $\phi$ and $\phi^3$, $p=2$ is $\phi^2$, and $p=6$ ($\phi^6$) gives the gap channel used
+for the tail exponents. The couplings $r=\sum_{k\ge1}r_k\eps^k$ and $g=\sum_{k\ge1}g_k\eps^k$ are fixed order by order by
+\begin{equation}
+ E_1-E_0=\Ds,\qquad E_3-E_0=d-\Ds,\qquad \DE=E_2-E_0=\sum_nC_n(\Lambda)\eps^n .
+ \label{eq:tune}
+\end{equation}
+At $\eps=0$, $\langle p|M|p\rangle-\langle0|M|0\rangle=2p$ and $\langle p|V|p\rangle-\langle0|V|0\rangle=p(p-1)/2$, so
+the solve is triangular. At first order $r_1=0$ and $g_1=\tfrac13$, so $C_0=\tfrac d2$ and $C_1=-\tfrac16$ at every
+cutoff. With $\mathcal E_p$ the order-$\eps^n$ energy of $|p\rangle$ without the $r_n$, $g_n$ terms,
+\begin{equation}
+ C_n=\mathcal E_2-\mathcal E_1-\tfrac13\big(\mathcal E_3-\mathcal E_0\big)=-\tfrac13\,\Delta_p^3\mathcal E_p\qquad(n\ge2):
+ \label{eq:Pi}
+\end{equation}
+shifts linear or quadratic in $p$ are absorbed by $r$ and $g$.
+
+\paragraph{Evaluation.} The $\eps$ series are computed by formal power-series algebra at fixed cutoff, never by
+sampling $\eps$. At low orders a Rayleigh--Schr\"odinger recursion on truncated power series in $\eps$ gives the wave
+functions. At high orders a trial state correct through $\eps^k$ (order $k$) gives the energy through $\eps^{2k+1}$ by
+its Rayleigh quotient, and the eighth order adds one scalar term (Section~\ref{d1:sec:data}). At order $k$ no
+intermediate state of $|p\rangle$ has more than $p+4k$ particles, or more than $4k$ particles in modes $n\ge1$, so these
+particle caps are exact at the order computed. Independently, the order-$n$ Rayleigh--Schr\"odinger expressions can be
+summed exactly over the intermediate states of the truncated Hamiltonian, grouped by the levels of the intermediate
+states between consecutive vertices, without building a basis. This gives $C_2$ to $C_4$ to $\Lambda=2000$ and $C_5$ to
+$\Lambda=500$ in $d=1$, $C_4$, $C_5$ to large $L$ in $d=2$, and $C_2$ to $C_4$ to $L=600$ and $C_5$ to $L=40$ in $d=3$.
+
+\subsection{Large-cutoff tails}\label{sec:tails}
+At second order the $d=1$ truncation has a closed form: at every cutoff
+\begin{equation}
+ C_2(\Lambda)=\!\!\sum_{\substack{n\ {\rm even}\\0\le n\le\Lambda-2}}\!\!\bar u_n^2\Big[\frac{2}{81(n-\frac12)}+\frac{2}{9(n+\frac12)}
+ +\frac{2}{81(n+1)}+[n>0]\frac{2}{9n}\Big],\qquad \bar u_n^2=u_n^2\big|_{\eps=0}=\frac{(1/2)_n}{n!},
+ \label{eq:C2shell}
+\end{equation}
+which every solver run checks, and its tail is
+\begin{equation}
+ C_2(\Lambda)-C_2\simeq-\frac{40}{81\sqrt\pi}\,\Lambda^{-1/2}=-0.2786121\,\Lambda^{-1/2} .
+ \label{eq:T2}
+\end{equation}
+Cutoff effects scale as $\Lambda^{-(\Delta_{\rm irr}-1)}$ with $\Delta_{\rm irr}$ the dimension of the leading
+irrelevant operator, $\phi^6$. Its gap $\Delta_6=E_6-E_0$, computed in the same truncation, defines
+\begin{equation}
+ \omega(\eps)=\Delta_6(\eps)-1=\tfrac12+\tfrac72\eps+\sum_{k\ge2}\omega_k\eps^k,
+ \label{eq:omega}
+\end{equation}
+with $\omega_1=-\tfrac64+15g_1=\tfrac72$ from the one-loop rule $[\eps]\Delta_{\phi^n}=-\tfrac n4+\binom n2g_1$, the same
+rule that gives $C_1=-\tfrac16$ for $n=2$. The tail model of the extrapolations is
+\begin{equation}
+ \sum_n\big[C_n(\Lambda)-C_n\big]\eps^n=\Lambda^{-1/2}\Big(\sum_{n\ge2}a_n\eps^n\Big)\,e^{-[\omega(\eps)-\frac12]\log\Lambda}
+ +\rho(\eps,\Lambda),
+ \label{eq:tail}
+\end{equation}
+with the remainder $\rho$ built from the terms $\Lambda^{-p}\log^j\Lambda$ of one of six bases fixed in advance:
+\begin{center}\footnotesize
+\begin{tabular}{@{}cl@{}}
+\toprule
+basis & terms $(p,j)$ of $\rho$ \\
+\midrule
+A & $(1,0)$, $(\tfrac32,0)$, $(\tfrac32,1)$, $(2,0)$ \\
+B & A and $(2,1)$ \\
+C & $(1,0)$, $(1,1)$, $(\tfrac32,0)$, $(\tfrac32,1)$ \\
+D & C and $(2,0)$ \\
+E & D and $(2,1)$ \\
+F & $(1,0)$, $(\tfrac32,0)$, $(\tfrac32,1)$, $(\tfrac32,2)$, $(2,0)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The model is fitted order by order, with $C_2$ and $C_3$ fixed to their continuum values and $C_4$ to $C_8$ fitted in
+sequence. Identifying the gap with the leading irrelevant operator is an assumption for this regulator.
+
+\paragraph{Top logarithm.} If the $\Lambda^{-1/2}$ tail comes from a single channel whose amplitude starts at $\eps^2$,
+Eq.~\eqref{eq:tail} fixes the coefficient of the highest power of $\log\Lambda$ at each order:
+\begin{equation}
+ C_n(\Lambda)-C_n\ni c_n\,\Lambda^{-1/2}\log^{n-2}\Lambda,\qquad
+ c_n=a_2\frac{(-\omega_1)^{n-2}}{(n-2)!},\qquad a_2=-\frac{40}{81\sqrt\pi},
+ \label{eq:toplog}
+\end{equation}
+independently of $\omega_{k\ge2}$, of $a_{k\ge3}$ and of channels that start at $\eps^3$ or later. The exact sums test it:
+$c_3$ agrees to $\NOneTopLogThree$ and $c_4$ to $\NOneTopLogFour$ (Section~\ref{d1:sec:exact}).
+
+\subsection{The vacuum window}\label{sec:window}
+Truncating the total energy of a state makes the cutoff effectively nonlocal and state dependent~\cite{Rychkov:2014eea}.
+In $\phi^4$ theory in $2+1$ dimensions this spoils the cancellation of disconnected vacuum bubbles in Hamiltonian
+perturbation theory and gives new UV divergences, which Ref.~\cite{Elias-Miro:2020qwz} addressed with perturbative
+state-dependent counterterms that add back the missing states.
+A basis state of energy $E^0_i$ is dressed only by vacuum bubbles with $E_b\le\Lambda-E^0_i$, while the vacuum keeps all
+bubbles with $E_b\le\Lambda$, so the state misses
+\begin{equation}
+ E_b\in\big(\Lambda-E^0_i,\Lambda\big],\qquad N_{{\rm w},i}=\#\big\{\text{odd }k\in(\Lambda-E^0_i,\Lambda]\big\}.
+ \label{eq:window}
+\end{equation}
+At $\eps=0$ every four-particle shell of odd energy $k$ carries $-g^2/6$, so the deficit is proportional to the number
+$N_{\rm w}$ of missing shells, which is of order one at every cutoff and does not decay as $\Lambda\to\infty$. The
+descendant spacings $v_n(\mathcal O)=E(\partial^n\mathcal O)-E(\mathcal O)-n$, which vanish in a conformal theory,
+measure it: raw HT gives $v_n=\tfrac{N_{\rm w}}{54}\eps^2+O(\eps^3)$.
+
+\paragraph{Complete window, $d=1$.} We add to every basis state $m$ the diagonal shift
+\begin{equation}
+ D^{\rm conn}_m=E_c(\Lambda)-E_c\big(\lfloor\Lambda-E^0_m\rfloor_{1/2}\big),
+ \label{eq:Dconn}
+\end{equation}
+with $\lfloor\cdot\rfloor_{1/2}$ the half-integer floor and $E_c(x)$ the vacuum energy at cutoff $x$ of the truncated
+Hamiltonian plus the same correction, and retune $r$ and $g$. Since $D^{\rm conn}_{s+b}=D^{\rm conn}_s+D^{[\Lambda-E_s]}_b$
+for a disconnected bubble $b$, each window is restored exactly once; the literal vacuum-energy difference
+$E_{\rm vac}(\Lambda)-E_{\rm vac}(\Lambda-E^0_m)$ would count the bubble-bubble class twice. There is no free parameter.
+At second order in $g$, $D^{\rm conn}$ reduces to the isolated window $g^2D$ of the second-order vacuum bubbles, the
+counterpart of Patch~I of Ref.~\cite{Elias-Miro:2020qwz}: a state-dependent counterterm that adds back the same missing
+four-particle states, with the unperturbed energy of the level being computed in its energy denominator, where $g^2D$
+has the bubble energy alone. Its Patch~II, called a temporary fix there, restores towers of iterated bubbles up to five bubbles with every bubble cut at the full cutoff; $D^{\rm conn}$
+contains such towers through $E_c$, cut as in the truncated vacuum.
+
+\paragraph{Level cutoff, $d=2,3$.} With bath level $\ell\le L$ the vacuum window is $D_L(\ell)=E_v(L)-E_v(L-\ell)$
+(called the consistent window in the $d=2$ production code). In $d=2$ divergent sub-bubbles inside a state also see only
+the level left by the other quanta; the complete window $W$ that cures this is defined in Section~\ref{d2:sec} and derived in Appendix~\ref{d2:app:eps4}. The
+same complete window applies unchanged in $d=3$ (Section~\ref{d3:sec}).
+
+\subsection{Notation across dimensions}\label{sec:notation}
+Table~\ref{tab:notation} collects the symbols that differ between the three dimensions.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{3.3cm}p{3.6cm}p{4.1cm}p{3.6cm}@{}}
+\toprule
+ & $d=1$ & $d=2$ & $d=3$ \\
+\midrule
+cutoff & energy $\Lambda$, Eq.~\eqref{eq:Lambda} & bath level $L$, $\ell\le L$ & bath level $L$, $N_b\le L$ \\
+level of a state & $\ell$ & $\ell$ (operator $\hat\ell$) & $N_b$ (operator $\hat N_b$); $\ell$ is the angular momentum \\
+vacuum window & second-order part $g^2D$ (isolated window) & consistent window $D_L(\ell)$ & vacuum window $D_L(N_b)$ \\
+complete window & $D^{\rm conn}$, Eq.~\eqref{eq:Dconn} & $W=D^{\rm zm}+D^M$; at $\eps^5$ the rules $W_c$, $W_{cs}$ & $W$ of $d=2$; $W_c$, $W_{cs}$ at $\eps^5$ \\
+descendant spacing & $v_n(\mathcal O)$ & $R_n$ (coefficient of $\eps^n$) & as in $d=2$ \\
+leading tail & $\Lambda^{-1/2}\log^k\Lambda$ & $L^{-1}\ln^kL$ & $L^{-1}\ln^kL$ \\
+\bottomrule
+\end{tabular}
+\caption{Notation that differs between dimensions. The ``raw'' truncation has no window in every dimension. $D^{\rm conn}$
+has the self-consistent form of the $d=2$ consistent window; ``complete'' names, in each dimension, the window that
+restores the tested descendant spacings and continuum coefficients there.}
+\label{tab:notation}
+\end{table}

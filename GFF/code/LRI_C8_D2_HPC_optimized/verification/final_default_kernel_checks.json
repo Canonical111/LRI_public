@@ -1,0 +1,129 @@
+{
+  "schema": "c8-final-default-kernel-checks-1",
+  "status": "passed",
+  "created_utc": "2026-10-09T01:28:32.146953+00:00",
+  "final_default_kernel_sha256": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+  "source_and_evidence_sha256": {
+    "src/kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+    "src/positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a",
+    "src/c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+    "tests/kernel_points.cpp": "34f569ed9dd13b45e23de82e18382324a2b8520b546e971b79779ff12227e654",
+    "tests/kernel_checks.py": "b96915e7c6e8ed4b484da54a99b08a489284609d0050aa037c43dc6c4eb370e9",
+    "tests/performance_harness.cpp": "8ebd71a87c0435321fb5139ee5f57e1577430784d346e33a58e637cdfd086737",
+    "tools/benchmark_native.py": "519f2188d43fd2c4974138039284693659697b5017adb0e79b31b84c1cadd4db",
+    "verification/final_default_kernel_points.json": "df3782ff56eaa6824074de593f92b5e11371ae5f7ab422fbc8757aeabda855d6",
+    "verification/kernel_optimization_checks.json": "f448ab7298b39ea04b62b78b51c5d5423e960fbe0b357123ebc4d87f9bff032f",
+    "bin/c8d2_gmp.build.json": "3d88061c99c65cedb799fcbd3085f60bdc898c72c9bc794408ba824d5be3ed16",
+    "optimization_work/final_default_direct_gmp/direct_comparison.json": "6e6395421b982cd6029aee3eb7eae88e27cae107963513fdcc9115cbbf146ff5",
+    "bin/c8d2_decimal.build.json": "488912fb2c663b34833f30180dde38e6acdcbd93e92b5484a60c75528eba8028",
+    "optimization_work/final_default_direct_decimal/direct_comparison.json": "6764510347a7c3b914a3fd1939358e7a3499d1cbfbf19328d0fa407e8c2977c3"
+  },
+  "defaults": {
+    "exact_rate_palette": true,
+    "persistent_promoted_scalars": true,
+    "positive_Q_denominator_addition": true,
+    "grow_only_promoted_buffers": false,
+    "grow_only_opt_in_macro": "C8_ENABLE_PROMOTED_GROW_ONLY",
+    "force_off_macro_overrides_enable": "C8_DISABLE_PROMOTED_GROW_ONLY"
+  },
+  "rerun_checks": {
+    "independent_reference": {
+      "decimal": {
+        "backend": "decimal300",
+        "cancellation_promotion": 2,
+        "max_scaled_error": "4.54996760150887278402e-304",
+        "physical_graphs": 8,
+        "point_checks": 37,
+        "reference_digits": 450,
+        "status": "passed",
+        "synthetic_sampling_checks": 6
+      },
+      "gmp": {
+        "backend": "gmp350",
+        "cancellation_promotion": 2,
+        "max_scaled_error": "2.22257070968520577591e-354",
+        "physical_graphs": 8,
+        "point_checks": 37,
+        "reference_digits": 450,
+        "status": "passed",
+        "synthetic_sampling_checks": 6
+      }
+    },
+    "direct_exact_replay": {
+      "gmp": {
+        "report": "optimization_work/final_default_direct_gmp/direct_comparison.json",
+        "rounding_modes": [
+          "nearest",
+          "downward",
+          "upward",
+          "towardzero"
+        ],
+        "rows_per_mode": 47,
+        "candidate_header_sha256": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "candidate_harness_binary_sha256": "cd50e90addd597e4a9f01ff187c68dad00da7563967cb7f4a3e5265d55a827fd",
+        "result": "exact full output documents, including Q values/error and380-digit MP strings"
+      },
+      "decimal": {
+        "report": "optimization_work/final_default_direct_decimal/direct_comparison.json",
+        "rounding_modes": [
+          "nearest",
+          "downward",
+          "upward",
+          "towardzero"
+        ],
+        "rows_per_mode": 47,
+        "candidate_header_sha256": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "candidate_harness_binary_sha256": "aece17eebaf36814b0f4174774f1ba6a914d1f1efeb4fdbd14f560633a052787",
+        "result": "exact full output documents, including Q values/error and380-digit MP strings"
+      }
+    }
+  },
+  "final_native_builds": {
+    "gmp": {
+      "executable_sha256": "2bdb822367431a3212bba6495fb74a09163a0687a9dd0f2b0ddf908bc6858548",
+      "source_sha256": {
+        "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+        "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+      },
+      "variables": {
+        "CPPFLAGS": "-I../dependencies/boost/usr/include -I../dependencies/gmp/usr/include -I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "CXX": "g++",
+        "CXXFLAGS": "",
+        "LDFLAGS": "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "LDLIBS": "",
+        "OPTFLAGS": "-O3",
+        "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+      }
+    },
+    "decimal": {
+      "executable_sha256": "22915c466d251432e0f075f421c6159f89f423e4b6dff5ab3375ad3f17f4deef",
+      "source_sha256": {
+        "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+        "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+      },
+      "variables": {
+        "CPPFLAGS": "-I../dependencies/boost/usr/include -I../dependencies/gmp/usr/include -I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "CXX": "g++",
+        "CXXFLAGS": "",
+        "LDFLAGS": "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "LDLIBS": "",
+        "OPTFLAGS": "-O3",
+        "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+      }
+    }
+  },
+  "prior_evidence": {
+    "report": "verification/kernel_optimization_checks.json",
+    "status": "preserved unchanged",
+    "scope": "Earlier combined candidate included grow-only buffers; its exact replay and performance claims must remain attributed to that earlier source/executable identity."
+  },
+  "scope_and_limits": [
+    "This certificate records only the independent reference and direct replay checks actually rerun after changing the final default.",
+    "Final native52-case replay, workflow and throughput/scaling results are separate reports owned by root/code_audit.",
+    "No new scientific integration campaign, central-value update, error estimate or sampling precision claim is made.",
+    "Q-add preserves numerical values under the documented operand/rounding gate; it does not reproduce floating exception flags.",
+    "Finite regression coverage is not exhaustive verification of every graph and every stream point."
+  ]
+}

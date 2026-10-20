@@ -1,0 +1,57 @@
+job 570097 on <NODE> at 2026-10-05T07:27:24-04:00; batches <SCRATCH>/c8-d2/desb1-20261005 <SCRATCH>/c8-d2/desb2-20261005; out <SCRATCH>/c8d2/evidence/5d7586e9f1ab/design_chain
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+== combine_partial
+== combine_partial exit 2
+combine failed: --partial is for fewer batches than the bundle's 1
+== verify_partial
+== verify_partial exit 1
+    sys.exit(main())
+             ^^^^^^
+  File "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/verify_result.py", line 292, in main
+    problems = verify(json.loads(a.result.read_bytes()))
+                                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/cm/shared/apps/python/python311/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/cm/shared/apps/python/python311/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '<SCRATCH>/c8d2/evidence/5d7586e9f1ab/design_chain/C8_partial.json'
+== combine_final
+== combine_final exit 2
+combine failed: the frozen design has 1 batches; 2 given (use --partial for an interim combination)
+== verify_final
+== verify_final exit 1
+    sys.exit(main())
+             ^^^^^^
+  File "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/verify_result.py", line 292, in main
+    problems = verify(json.loads(a.result.read_bytes()))
+                                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/cm/shared/apps/python/python311/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/cm/shared/apps/python/python311/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '<SCRATCH>/c8d2/evidence/5d7586e9f1ab/design_chain/C8_final.json'
+== verify_desb1-20261005
+== verify_desb1-20261005 exit 1
+{
+ "verified": false,
+ "problem_count": 2,
+ "first": [
+  "/test_partial/gates/affinity/linear_response_residual[8]: 2.8194335754960775e-11 differs from the recomputed 4.4565240386873484e-11",
+  "/test_partial/power_null_checks/null_rows[0]/delta: -2.220446049250313e-16 differs from the recomputed 2.220446049250313e-16"
+ ]
+}
+== verify_desb2-20261005
+== verify_desb2-20261005 exit 1
+{
+ "verified": false,
+ "problem_count": 2,
+ "first": [
+  "/test_partial/gates/affinity/linear_response_residual[7]: 5.002220859751105e-12 differs from the recomputed 1.3784529073745944e-12",
+  "/test_partial/gates/affinity/linear_response_residual[8]: 1.1368683772161603e-11 differs from the recomputed 4.001776687800884e-11"
+ ]
+}
+finished 2026-10-05T07:27:28-04:00, status 1

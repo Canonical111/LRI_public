@@ -1,0 +1,26 @@
+{"test": "A-KER-7 deep-cancellation fixture (worker)", "results": {"gmp_order7_on": {"mp_checked": 128, "mp_alarm": 128, "min_log10": "-inf"}, "gmp_order7_stride16": {"mp_checked": 8, "mp_alarm": 8, "min_log10": "-inf"}, "gmp_order8_on": {"mp_checked": 128, "mp_alarm": 128, "min_log10": "-inf"}, "gmp_order8_stride16": {"mp_checked": 8, "mp_alarm": 8, "min_log10": "-inf"}, "decimal_order7_on": {"mp_checked": 128, "mp_alarm": 128, "min_log10": "-inf"}, "decimal_order7_stride16": {"mp_checked": 8, "mp_alarm": 8, "min_log10": "-inf"}, "decimal_order8_on": {"mp_checked": 128, "mp_alarm": 128, "min_log10": "-inf"}, "decimal_order8_stride16": {"mp_checked": 8, "mp_alarm": 8, "min_log10": "-inf"}}}
+{"test": "A-KER-6 (a) and A-KER-7 real rows", "gate": "values, quad, mp, max_abs exact across off/on/stride16/no-tail (gmp) and off/on (decimal); sum(mp_hist) = mp_checked; on: mp_checked = mp; stride16: mp_checked = MP points with index = 0 mod 16", "rows": 164, "mp_rows": 70, "mp_points": 508, "stride_points_checked": 33, "alarms": 0}
+{"test": "A-KER-6 (b)(c)(d)", "rows_checked": 24, "gate": "chunked tail_top/argmax bitwise, tail_sum <= 1e-15 rel; --point |t| = tail_top[0]; graph_tails.csv = hand merge; promotion counters sum to the whole task"}
+{"test": "A-KER-6 (e) zero channel", "kernels": [{"sector": "power", "L": 3, "graph": 7, "tail_top0": "110.390340395159436186"}, {"sector": "free", "L": 7, "graph": 37, "tail_top0": "10030941.687234367836"}], "new_l7": [], "d3_payload": null, "note": "no --d3-payload: the new L7 kernels are not checked here"}
+{"test": "A-KER-6 (f) tail_top[0] x |norm (3 w_B - w_A)| = max_abs at L8", "gate": "<= 1e-18 relative in every row", "rows": 64, "max_relative": "6.176e-20", "kappa_max": "3", "norm": "-0.0294339666459244136780932879797953140826225771447904744031925", "kernels": {"free": [211, 212, 213, 214, 11224, 17195, 23930, 24111], "power": [1, 2, 3, 4, 20718, 24114, 24400, 24402]}, "runs": {"free_rate.8_layout0": 16, "free_rate.7_layout2": 16, "power_rate.8_layout0": 16, "power_rate.7_layout2": 16}}
+{
+  "status": "passed",
+  "parts": [
+    "deep",
+    "a",
+    "bcd",
+    "e",
+    "f"
+  ],
+  "host": {
+    "node": "<NODE>",
+    "cpu_model": "AMD EPYC 7543 32-Core Processor"
+  },
+  "sha256": {
+    "<SCRATCH>/c8d3/work/val2_570904/bin/c8d3_gmp": "e9b6f6c38fa0f6f5b1b33b66ee25b5a5a603cb9aee15e40465654ed64e8e22f1",
+    "<SCRATCH>/c8d3/work/val2_570904/bin/c8d3_decimal": "1a78a1ba03c790ede1700111c9062c8b032b87a16d63893c210e64e545cc1164",
+    "<SCRATCH>/c8d3/work/val2_570904/bin/c8d3_inspect": "3a9c59c372767e534abaa0e1c5225ae4f40e3c6dffa8016bb277e0db7df5d2a4",
+    "<SCRATCH>/c8d3/work/val2_570904/bin/diag/c8d3_gmp_notail": "82a23c0c1ac2f9be07cf174b3283fa57c5275268e67fff7e4afe7fb74f06c88d"
+  },
+  "wall_seconds": 10.5
+}

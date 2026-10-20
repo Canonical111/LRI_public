@@ -1,0 +1,121 @@
+## hostname
+<NODE>
+## date
+2026-10-04T15:55:22-04:00
+## uname -a
+Linux <NODE> 5.15.0-1094-nvidia #95-Ubuntu SMP Tue Jan 20 22:40:29 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+## /etc/os-release
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+## lscpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  80
+On-line CPU(s) list:                     0-79
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+CPU family:                              6
+Model:                                   85
+Thread(s) per core:                      2
+Core(s) per socket:                      20
+Socket(s):                               2
+Stepping:                                4
+BogoMIPS:                                4800.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single pti intel_ppin ssbd mba ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts pku ospke md_clear flush_l1d arch_capabilities ibpb_exit_to_user
+Virtualization:                          VT-x
+L1d cache:                               1.3 MiB (40 instances)
+L1i cache:                               1.3 MiB (40 instances)
+L2 cache:                                40 MiB (40 instances)
+L3 cache:                                55 MiB (2 instances)
+NUMA node(s):                            2
+NUMA node0 CPU(s):                       0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78
+NUMA node1 CPU(s):                       1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79
+Vulnerability Gather data sampling:      Mitigation; Microcode
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             KVM: Mitigation: VMX disabled
+Vulnerability L1tf:                      Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable
+Vulnerability Mds:                       Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Meltdown:                  Mitigation; PTI
+Vulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; IBRS; IBPB conditional; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Vmscape:                   Mitigation; IBPB before exit to userspace
+## numactl -H
+available: 2 nodes (0-1)
+node 0 cpus: 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78
+node 0 size: 95307 MB
+node 0 free: 87980 MB
+node 1 cpus: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79
+node 1 size: 96704 MB
+node 1 free: 94378 MB
+node distances:
+node   0   1 
+  0:  10  21 
+  1:  21  10 
+## Cpus_allowed_list
+Cpus_allowed_list:	0-79
+## MemTotal
+MemTotal:       196620400 kB
+## g++
+/usr/bin/g++
+/usr/bin/x86_64-linux-gnu-g++-11
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+## g++ -v
+Using built-in specs.
+COLLECT_GCC=g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
+## glibc (ldd --version)
+ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35
+## dpkg-query
+g++-11 11.4.0-1ubuntu1~22.04.3 amd64
+gcc-11 11.4.0-1ubuntu1~22.04.3 amd64
+libc6 2.35-0ubuntu3.15 amd64
+libgcc-s1 12.3.0-1ubuntu1~22.04.3 amd64
+libgmp-dev 2:6.2.1+dfsg-3ubuntu1 amd64
+libgmp10 2:6.2.1+dfsg-3ubuntu1 amd64
+libgomp1 12.3.0-1ubuntu1~22.04.3 amd64
+libquadmath0 12.3.0-1ubuntu1~22.04.3 amd64
+libstdc++6 12.3.0-1ubuntu1~22.04.3 amd64
+## python
+<HOME>/c8d2/venv/bin/python3
+3.11.3 (main, May 15 2023, 15:45:52) [GCC 11.2.0]
+## modules
+Currently Loaded Modulefiles:
+ 1) boost/1.77.0   2) python/3.11  
+## environment
+C8_AMDQ_CAP=4
+C8_GEN_REFERENCE=<SCRATCH>/c8d2/ref/inventory8_d2_46341a3c0f11
+C8_MANIFEST_PIN=46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099
+C8_PACKAGE=<SCRATCH>/c8d2/pkg/ec5bae006d93
+C8_PYTHON=<HOME>/c8d2/venv/bin/python3
+SLURM_CPUS_ON_NODE=80
+SLURM_JOB_ID=569770
+SLURM_JOB_NODELIST=<NODE>
+SLURM_JOB_PARTITION=debugq
+SLURM_MEM_PER_NODE=184320

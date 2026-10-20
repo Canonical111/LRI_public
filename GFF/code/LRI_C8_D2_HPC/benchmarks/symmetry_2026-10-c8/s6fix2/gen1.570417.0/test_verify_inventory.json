@@ -1,0 +1,133 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-5 test_verify_inventory",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "SHA256SUMS lists every file except MANIFEST.json and itself",
+   "passed": true,
+   "detail": "['MEMBERS.sha256', 'gates/summary.json', 'inventory_L7.json', 'inventory_L8.json', 'payload/L7_free.tar', 'payload/L7_power.tar', 'payload/L8_free.tar', 'payload/L8_power.tar', 'selection.json', 'src/gen/x.py']"
+  },
+  {
+   "check": "MEMBERS.sha256 is listed in SHA256SUMS",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "MANIFEST.json pins sha256(SHA256SUMS)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "no file records the hash of MANIFEST.json",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "MEMBERS.sha256 lists all 12 G-file members",
+   "passed": true,
+   "detail": "12"
+  },
+  {
+   "check": "untouched tree verifies (all four steps)",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "detects a one-byte change to a G-file member (step 3_members)",
+   "passed": true,
+   "detail": "['1_sha256sums', '3_members']"
+  },
+  {
+   "check": "detects a one-byte change to a listed file (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums']"
+  },
+  {
+   "check": "detects a one-byte change to MEMBERS.sha256 (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '3_members']"
+  },
+  {
+   "check": "detects a one-byte change to SHA256SUMS (step 2_manifest_pins_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects the last LF of SHA256SUMS turned into CR (one byte) (step 2_manifest_pins_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects the last LF of SHA256SUMS turned into CR, parsed (one byte) (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects SHA256SUMS rewritten with CRLF line ends (step 2_manifest_pins_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects SHA256SUMS rewritten with CRLF line ends, parsed (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects MEMBERS.sha256 rewritten with CRLF line ends (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '3_members']"
+  },
+  {
+   "check": "detects MEMBERS.sha256 rewritten with CRLF line ends, parsed (step 3_members)",
+   "passed": true,
+   "detail": "['1_sha256sums', '3_members']"
+  },
+  {
+   "check": "detects a one-byte change to MANIFEST.json (step 4_external_pin)",
+   "passed": true,
+   "detail": "['4_external_pin']"
+  },
+  {
+   "check": "detects an unlisted extra file (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums']"
+  },
+  {
+   "check": "detects a SHA256SUMS that lists MANIFEST.json (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "detects a SHA256SUMS that lists itself (step 1_sha256sums)",
+   "passed": true,
+   "detail": "['1_sha256sums', '2_manifest_pins_sha256sums']"
+  },
+  {
+   "check": "a wrong pin fails step 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a second publish to the same target refuses",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a failure while writing leaves no published target",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "copy refuses a source that does not verify",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "copy of a verified tree publishes a verified, byte-identical copy",
+   "passed": true,
+   "detail": ""
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+  "fresh_zip_extraction": true,
+  "all_commands_passed": true,
+  "forward_audit_matches_delivered_record_exactly": true,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "verify_manifest.py"
+      ],
+      "returncode": 0,
+      "stdout": "Verified 75 delivered files.\n"
+    },
+    {
+      "command": [
+        "python",
+        "verification/symbolic_audit.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"certificate_rows_4\": 26,\n  \"certificate_rows_5\": 92,\n  \"checks\": {\n    \"b4_certificate\": \"0\",\n    \"c4_certificate\": \"0\",\n    \"D5_remainder_certificate\": \"0\",\n    \"RG_assembly_equals_original_C5\": \"0\"\n  },\n  \"all_exact\": true\n}\n"
+    },
+    {
+      "command": [
+        "python",
+        "verification/exact_decimal_audit.py"
+      ],
+      "returncode": 0,
+      "stdout": "span -731.1394766152769841620556092579317672266829607517457126245968032964080678758319361886\nmaxgap -731.1394766152511255410201277640621121813581224553080720210302738039526494944876289184\n"
+    },
+    {
+      "command": [
+        "python",
+        "verification/audit.py"
+      ],
+      "returncode": 0,
+      "stdout": "historical 10 span -731.13939834110558498510087674764 error 7.82834342409e-5\nhistorical 10 maxgap -731.13943952777595407325606740741 error 3.70967638718e-5\nhistorical 18 span -731.13947661564035864765231707686 error 8.89946720622e-9\nhistorical 18 maxgap -731.13947661231743555473754888889 error 1.22223902991e-8\nhistorical 22 span -731.13947661527698416205560925793 error 9.26284169181e-9\nhistorical 22 maxgap -731.13947661525112554102012776406 error 9.28870031285e-9\nscalar_extended 18 span -731.1394766235962235362840674496 error 9.43602317585e-10\ncombined_simd 18 span -731.13947662359455566148434179802 error 9.45270192385e-10\ncombined_simd 22 span -731.13947662453759246391918404768 error 2.23338994994e-12\ncombined_simd 24 span -731.13947662453918918697816895852 error 6.36666890958e-13\nscalar_extended 18 maxgap -731.13947662027866860507093635466 error 4.2611572488e-9\ncombined_simd 18 maxgap -731.13947662027698037161620384438 error 4.26284548225e-9\ncombined_simd 22 maxgap -731.13947662451061924014843978402 error 2.92066137207e-11\ncombined_simd 24 maxgap -731.13947662453680571273417366605 error 3.02014113495e-12\n"
+    }
+  ]
+}

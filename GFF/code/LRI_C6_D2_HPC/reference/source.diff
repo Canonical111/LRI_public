@@ -1,0 +1,516 @@
+--- previous_note.tex
++++ long_range_ising_complete.tex
+@@ -22,7 +22,7 @@
+ \title{The thermal dimension of the\\long-range Ising model\\through fifth order, with\\numerical sixth order at $d=1,2,3$\\[2mm]
+ \large One-dimensional closed forms and finite multivariable hypergeometric forms in general dimension}
+ \author{Research calculation record}
+-\date{Precision refinement: 14 September 2026\\Three-dimensional numerical sixth order: 14 September 2026\\Original consolidation: 7 September 2026\\One-dimensional numerical sixth order: 11 September 2026\\Two-dimensional numerical sixth order: 14 September 2026}
++\date{Numerical-method refinement: 14 September 2026\\Three-dimensional numerical sixth order: 14 September 2026\\Original consolidation: 7 September 2026\\One-dimensional numerical sixth order: 11 September 2026\\Two-dimensional numerical sixth order: 14 September 2026}
+ 
+ \setcounter{tocdepth}{2}\newcommand{\ii}{\mathrm i}\newcommand{\GG}{\mathcal G}\newcommand{\rep}[1]{(#1)^{\times7}}\newcommand{\repeatparams}[2]{(#1)^{\times #2}}\newcommand{\Aut}{\operatorname{Aut}}
+ \hypersetup{pdftitle={Long-range Ising thermal dimension: sixth order in one, two and three dimensions},pdfauthor={Research calculation record},pdfsubject={Consolidated derivation and evidence boundaries}}
+@@ -134,6 +134,16 @@
+ 
+ \par\smallskip
+ The current precision update in Appendix~\ref{app:C6Precision} supersedes the earlier numerical error bars with $C_6(2)=362.3\pm1.0$ and $C_6(3)=33.58\pm0.20$. These are empirical numerical allowances, not rigorous bounds. Graph-stratified randomized integration, independent campaigns, full regulator-jet covariance and the common two-dimensional finite-kernel uncertainty are documented; previous analytic formulas are unchanged.
++\par\smallskip
++Appendix~\ref{app:C6Methods} adds an equal-budget numerical-method study
++and further independent integrations. The updated estimates are
++$C_6(2)=362.3\pm0.7$ and $C_6(3)=33.57\pm0.10$, with sampling
++standard errors 0.152644 and 0.024184. Shared-product arithmetic accelerates
++the unchanged forest kernels. The reported estimator retains full
++covariance and shared-input uncertainty. Alternative maps and a paired
++dimension control are benchmarked, including methods which did not
++improve the complete coefficient. No independent field-theoretic
++validation or rigorous numerical enclosure is claimed.
+ \end{abstract}
+ \tableofcontents
+ \clearpage
+@@ -11597,6 +11607,469 @@
+ remain visible as historical results; the present numerical precision
+ supersedes them, without changing any analytic coefficient formula.
+ 
++\clearpage
++\section{Method benchmarks and a further precision refinement of $C_6(2),C_6(3)$}
++\label{app:C6Methods}
++
++This appendix changes the numerical evaluation, not the field-theoretic
++integrals, graph weights, forest subtraction, or definition
++$\epsilon=2s-d$. It benchmarks several sampling maps, accelerates the
++same finite kernels, and adds two independently seeded production
++campaigns. The analytic power-subgraph compensation of the preceding
++appendices is retained and is not recomputed here. The present numbers
++supersede the precision, not the normalization, of Appendix~W.
++
++\subsection{Result and interpretation of the errors}
++The current estimates are
++\begin{equation}\boxed{\begin{aligned}
++ C_6(2)&=362.3\pm0.7,\\
++ C_6(3)&=33.57\pm0.10.
++\end{aligned}}\label{meth:reported}\end{equation}
++The allowances are four estimated sampling standard errors rounded
++upward, using the same convention as Appendix~W. They are empirical
++numerical allowances, not rigorous enclosures, guaranteed confidence
++intervals, or truncation errors for the physical $\epsilon$ expansion.
++The underlying estimator digits are recorded for reproducibility, not
++as independently certified physical digits.
++\begin{center}\begin{tabular}{@{}crrrr@{}}\toprule
++$d$ & Estimator & Previous sampling SE & Current sampling SE & SE gain\\\midrule
++2 & 362.34891380 & 0.226352 & 0.152644 & 1.48 \\
++3 & 33.56819680 & 0.039354 & 0.024184 & 1.63 \\
++\bottomrule\end{tabular}\end{center}
++The previous production data are retained with weights fixed before the
++new production. Fresh pilot and method-validation samples are excluded.
++The lower-loop previous production is also used to plan new allocations;
++with frozen combination weights and independently randomized fresh
++samples this does not change its expectation. No known $C_3,C_4,C_5$
++is used as a fitted control or imposed as a constraint.
++
++\subsection{The quantity being integrated}
++For each loop order $L$, the sampled vector contains the coupling and
++mass Taylor coefficients through regulator order $6-L$:
++\begin{equation}
++ \boldsymbol\mu_L=(b_{L,0},\ldots,b_{L,6-L},
++ c_{L,0},\ldots,c_{L,6-L}),\qquad L=3,4,5,6.
++ \label{meth:jets}
++\end{equation}
++The one- and two-loop inputs remain exact or independently evaluated
++special-function inputs from the earlier calculation. The physical
++coefficient is evaluated as a finite polynomial
++\begin{equation}
++ C_6=\mathcal F_6(\boldsymbol\mu_3,\boldsymbol\mu_4,
++ \boldsymbol\mu_5,\boldsymbol\mu_6)+\eta.
++ \label{meth:functional}
++\end{equation}
++Here $\mathcal F_6$ solves the regulator-dependent finite-MOM fixed-point
++problem before setting $z=\epsilon$; $\eta$ accounts only for separately
++retained numerical kernels. In particular,
++\begin{equation}
++ \frac{\partial C_6}{\partial(b_{6,0},c_{6,0})}
++ =\frac{(-1,3)}{2187}.
++ \label{meth:lastgradient}
++\end{equation}
++One must not replace the Taylor vectors by their values at $z=0$ and
++then apply the old MS assembly. The field-theoretic derivation of these
++finite vectors and their power-sector compensation is unchanged.
++
++The finite kernel retains the pointwise forest sum
++\begin{equation}
++ K_G^{(d)}(x)=\sum_F(-1)^{|F|}
++ \frac{\sum_{e\in E_R(F)}x_e}{S(x)U_F(x)^{d/2}},
++ \qquad S(x)=\sum_e x_e.
++ \label{meth:forest}
++\end{equation}
++Every numerator and denominator is evaluated on the same integration
++point before accumulating the graph estimate. Tropical importance
++sampling uses the known endpoint geometry of these parametric
++integrals~\cite{BorinskyD2Focus}. More samples cannot in general repair
++a representation which postpones subtraction of divergent terms until
++after separate numerical integrations.
++
++\subsection{A faster evaluator with the same integral}
++Each monomial in a loop-$L$ forest polynomial has exactly $L$ distinct
++edge factors. Associate a bit mask $m$ to a monomial and let $j$ be one
++of its set bits. Precompute a directed acyclic product graph obeying
++\begin{equation}
++ p_0=1,\qquad p_m=x_jp_{m\setminus\{j\}}.
++ \label{meth:dag}
++\end{equation}
++All forest terms share these products. This replaces repeated
++$\exp(\sum_{e\in m}\log x_e)$ evaluations by one exponential per edge
++and a shared set of multiplications. For very small coordinates the
++same common-monomial scaling as the original implementation is used:
++\begin{equation}
++ p_m=\prod_{e\in m}\exp\left(\log x_e-\frac{h}{L}\right)
++ =\exp\left(\sum_{e\in m}\log x_e-h\right).
++ \label{meth:scaled}
++\end{equation}
++The common factor is restored outside the forest sum. The direct
++unscaled path is used only in a range checked against the exponent
++range of extended precision. The original binary128 and 300-decimal
++fallbacks for severe cancellation are retained. The numerical kernels
++are not evaluated at lower precision to obtain the speedup.
++
++An identical-point comparison used 1,095,680 six-loop evaluations for
++each dimension, with identical seeds, digital matrices, allocations,
++and importance distributions:
++\begin{center}\begin{tabular}{@{}crrr@{}}\toprule
++$d$ & Original evaluator (s) & Shared products (s) & Speedup\\\midrule
++2 & 7.88237 & 2.77982 & 2.836\\
++3 & 7.74461 & 2.69407 & 2.875\\\bottomrule
++\end{tabular}\end{center}
++These are elapsed times on the current four-CPU-quota environment, not
++hardware-independent throughput claims. The maximum normalized
++per-graph replicate difference was below $9.0\times10^{-13}$.
++The improvement is in cost per evaluation, not in the variance of an
++individual sample. Independently constructed Kirchhoff cofactor
++integrands supplied 1,038 additional checks, including endpoint
++coordinates down to $10^{-130}$; the largest normalized discrepancy
++was $6.88\times10^{-18}$. Neither comparison is an interval certificate
++for the full integral.
++
++\subsection{Sampling methods tested at matched budgets}
++The baseline is independently randomized Sobol sampling inside each
++fixed graph stratum. Sample counts are powers of two separately in
++each stratum; the uncertainty is estimated between independent
++randomized nets, never from the individual dependent points within a
++net~\cite{PrecisionSobol,PrecisionQMC}. The benchmark target is the
++six-loop influence in \eqref{meth:lastgradient}. Its variance is
++estimated as the sum of the graph-stratum replicate variances, divided
++by the number of replicates. The production analysis instead retains
++the full covariance of the loop vectors.
++
++Each pilot comparison used 16 randomizations and 1,095,680 kernel
++evaluations. Antithetic sampling used half as many points with two
++function evaluations each. The table is normalized to the baseline
++variance at the same evaluation budget; smaller is better.
++\begin{center}\begin{tabular}{@{}p{0.59\textwidth}rr@{}}\toprule
++Method & $d=2$ & $d=3$\\\midrule
++Original randomized Sobol & 1.000 & 1.000 \\
++Independent pseudo-random Monte Carlo & 1.899 & 1.499 \\
++Radial coordinates placed first & 1.105 & 1.126 \\
++One-coordinate edge-order encoding & 1.083 & 1.055 \\
++Nominal endpoint rate $0.6p$ & 1.667 & 2.301 \\
++Nominal endpoint rate $0.5p$ & 4.194 & 6.194 \\
++Nominal endpoint rate $1.0p$ & 4.452 & 1.797 \\
++Radial antithetic pairs & 1.584 & 1.629 \\
++\bottomrule\end{tabular}\end{center}
++The pilot differences are empirical and subject to finite-replicate
++uncertainty; they are not theorems about the methods. Coordinate
++reordering and compression of all order choices into one uniform
++coordinate gave no convincing improvement. Independent pseudo-random
++sampling was worse than the retained randomized Sobol baseline.
++
++\paragraph{Why a smoother endpoint map was not the winner.}
++An illustrative endpoint integral is
++\begin{equation}
++ \int_0^1t^{p-1}f(t)\,dt
++ =\frac1\alpha\int_0^1
++ u^{p/\alpha-1}f(u^{1/\alpha})\,du.
++ \label{meth:power}
++\end{equation}
++Reducing $\alpha$ can smooth the endpoint power, but it simultaneously
++changes the normalized sampling distribution in every radial
++coordinate. It can move variance into a narrow central region.
++The actual pilot changed all original tropical rates by factors
++$0.75$ and $0.625$, corresponding to nominal endpoint rates $0.6p$
++and $0.5p$ instead of $0.8p$. Those variants lost to the baseline in
++both dimensions. Smoothness alone is not a sufficient optimization
++criterion for the present finite, signed, high-dimensional kernels.
++
++\paragraph{A pilot-frozen separable importance map.}
++A separate training stream estimates the conditional second moment
++in 32 bins for each radial coordinate. Its square root is smoothed,
++clipped, and blended equally with a uniform density. Inverting this
++positive piecewise-linear cumulative distribution defines $u=T(v)$.
++The exact change of measure is
++\begin{equation}
++ \int_{[0,1]^s}f(u)\,du
++ =\int_{[0,1]^s}f(T(v))
++ \prod_{j=1}^sT_j'(v_j)\,dv.
++ \label{meth:transport}
++\end{equation}
++All Jacobian factors are included in the kernel. This is a small
++VEGAS-inspired separable transport, not an implementation or benchmark
++of the full VEGAS+ algorithm. VEGAS+ additionally uses adaptive
++stratification and has documented advantages for some multi-peak and
++diagonal structures~\cite{MethodVegas}.
++
++Fresh validation used 32 randomizations and 4,382,720 evaluations per
++map. Relative variance per evaluation was
++\begin{center}\begin{tabular}{@{}lrr@{}}\toprule
++Frozen transport & $d=2$ & $d=3$\\\midrule
++None & 1.0000 & 1.0000\\
++Three trained axes & 0.9533 & 0.9871\\
++All eleven trained axes & 0.8985 & 0.9905\\\bottomrule
++\end{tabular}\end{center}
++Thus the all-axis map supplied a modest approximately 10\% variance
++reduction at $d=2$, but no material improvement at $d=3$. Only fresh
++campaign A at $d=2,L=6$ uses this map; its independent campaign B retains
++the original map. Both three-dimensional campaigns use the baseline
++map. No map is adapted using its production samples.
++The mathematical map has endpoints $0,1$. Delivered decimal maps have
++endpoint roundoff below $7.8\times10^{-16}$; a same-point replay with
++endpoints snapped exactly to $0,1$ changed the six-loop mean by
++$-2.95\times10^{-13}$. This is a floating-point consistency check,
++not a bound on all digital-discretization effects.
++
++\paragraph{Conditional stratification and linear controls.}
++Exact stratification of the first edge-order choice was also tested;
++its variance per evaluation relative to matched unstratified controls
++was 1.043 at $d=2$ and 1.062 at $d=3$. It was not adopted.
++Separately, the previous coefficient covariance predicts SE ratios
++0.985 and 0.962 for covariance-optimal linear controls using known
++$C_3,C_4,C_5$. This is a diagnostic within that particular linear span,
++not a universal bound, and those controls were not fitted or applied.
++They cannot directly eliminate six-loop sampling variation, since
++$C_3,C_4,C_5$ contain no six-loop input.
++
++\subsection{Cost-aware graph allocation and production plan}
++Let $a_g/n_g$ model the variance of the target contribution from graph
++$g$, and let $c_g$ denote the measured cost of one sample. Minimizing
++this model at fixed cost gives
++\begin{equation}
++ \min_{n_g>0}\sum_g\frac{a_g}{n_g},\qquad
++ \sum_gc_gn_g=T
++ \quad\Longrightarrow\quad
++ n_g=\lambda\sqrt{\frac{a_g}{c_g}}.
++ \label{meth:allocation}
++\end{equation}
++The derivative of $C_6$, rather than raw beta-function variance,
++defines the pilot target. New six-loop allocations use the independent
++method-validation streams. Lower-loop allocations use the previous
++production. Each count is rounded to a power of two and frozen before
++new integration. This is an MC-variance-model allocation used for
++RQMC, not a claim that the RQMC variance is exactly proportional to
++$1/n_g$ or that the allocation is globally optimal.
++
++Each fresh campaign has 32 independently randomized replicates at
++each loop order. The per-replicate point counts are
++\begin{center}\begin{tabular}{@{}crrrr@{}}\toprule
++$d$ & $L=3$ & $L=4$ & $L=5$ & $L=6$\\\midrule
++2 & 135,168 & 264,192 & 1,158,144 & 4,647,936\\
++3 & 151,552 & 305,152 & 1,189,376 & 4,381,184\\\bottomrule
++\end{tabular}\end{center}
++The primary fresh production comprises 782,893,056 kernel evaluations.
++The additional control experiment below is counted separately.
++Pilot, method-validation, speed-test, and endpoint-replay samples are
++not included. Campaigns A and B use different seeds and 52-bit and
++60-bit digital coordinates, respectively. The source and input hashes
++were frozen before production and rechecked afterward.
++
++The complete fresh determinations, before mixing with old production,
++are
++\begin{center}\begin{tabular}{@{}lrrrr@{}}\toprule
++& $C_6(2)$ & Sampling SE & $C_6(3)$ & Sampling SE\\\midrule
++Fresh A & 362.41502790 & 0.275726 & 33.59417512 & 0.040029 \\
++Fresh B & 362.46528830 & 0.273306 & 33.52750475 & 0.039502 \\
++Fresh only combined & 362.44015668 & 0.196310 & 33.56084035 & 0.028119 \\
++\bottomrule\end{tabular}\end{center}
++The primitive two-dimensional input is common to these displayed
++campaigns. Its covariance is removed from campaign-difference tests,
++not from the uncertainty on each complete answer.
++
++\subsection{An additional test: dimension-coupled primitive controls}
++The same Sobol matrices and graph-specific shifts can evaluate an
++auxiliary integral at $d=2$ along with the target at $d=3$. This uses
++common random numbers, not an interpolation or conjectured relation
++between the two physical coefficients. For a primitive block $P$,
++\begin{equation}
++ \widehat C_6^{\rm cv}(3)=\widehat C_6(3)
++ -\beta\left(\widehat P^{\rm paired}(2)-\widehat P^{\rm ref}(2)\right).
++ \label{meth:crosscontrol}
++\end{equation}
++The term in parentheses has expectation zero. The two estimates of
++$P(2)$ are independent, but the paired one is correlated with the
++sampled three-dimensional block. The reference estimate is not exact.
++Its variance must enter once:
++\begin{equation}\begin{aligned}
++ V_{\rm cv}&=V_3+\beta^2(V_P+\sigma_{\rm ref}^2)
++ -2\beta\operatorname{Cov}(\widehat C_6(3),\widehat P^{\rm paired}(2)),\\
++ \beta_{\rm optimum}&=
++ \frac{\operatorname{Cov}(\widehat C_6(3),\widehat P^{\rm paired}(2))}
++ {V_P+\sigma_{\rm ref}^2}.
++\end{aligned}\label{meth:noisycontrol}\end{equation}
++The optimum formula assumes the indicated population covariance is
++known; it is not a justification for fitting production coefficients
++without error control.
++
++An independent paired pilot fitted three block coefficients; independent
++validation then found residual-variance ratios 0.234, 0.743 and 0.597
++for the primitive, one-subgraph and two-subgraph blocks. Two dimensions
++require twice as many kernel evaluations, so only the primitive block
++passed the chosen equal-evaluation-cost criterion. Its frozen
++coefficient is
++\begin{equation}
++ \beta=0.09955611941934894,
++ \qquad P^{\rm ref}(2)=P_{10}\text{ of \eqref{meth:retained}}.
++ \label{meth:crossbeta}
++\end{equation}
++The existing three-dimensional sample locations were replayed for
++this auxiliary block in all four campaigns, adding 34,144,256
++two-dimensional evaluations, but no new three-dimensional target
++samples. Identical seeds and digital matrices were verified. An
++independent three-dimensional replay of 894,464 primitive evaluations
++reproduced the selected stored graph-replicate values exactly.
++
++The complete controlled result is
++\begin{equation}
++ \widehat C_6^{\rm cv}(3)=33.5681256836,
++ \qquad\widehat\sigma_{\rm cv}=0.0243339897.
++ \label{meth:cvresult}
++\end{equation}
++Although the primitive block's validation variance fell by a factor
++of about 4.3, the full coefficient did not gain meaningful precision.
++The primitive contribution represents only about 5.8\% of the
++uncontrolled coefficient variance. The reference alone contributes
++$\beta\sigma_{P_{10}}=0.00412205$ to the standard error. The block's
++sampling error decreases from 0.00584436 to 0.00325730, but after
++including that reference uncertainty it is 0.00525370. Finite-replicate
++covariance fluctuations make the full controlled error slightly
++larger than the plain 0.02418404. This tiny difference is not evidence
++of a general disadvantage of controls. The original fixed-weight
++plain estimator remains the reported result; the controlled value is
++retained as an additional consistency check and method benchmark.
++
++This example distinguishes optimization of a visually attractive
++subintegral from optimization of the uncertainty on the complete
++physical coefficient. It also shows why an uncertain auxiliary value
++cannot be treated as an exact control mean. No production samples
++were used to fit $\beta$ or to choose the primitive control block.
++
++\subsection{Retained two-dimensional inputs and covariance}
++The preceding calculation replaced 76 six-loop finite kernels by three
++independent numerical groups. In the finite-MOM normalization these
++were
++\begin{equation}\begin{aligned}
++ P_{10}&=718.7129769223133, &\widehat\sigma_P&=0.0414043282783,\\
++ S_{26}&=-188.2890632768604, &\widehat\sigma_{26}&=0.1002179257784,\\
++ S_{40}&=-2.129275292198507, &\widehat\sigma_{40}&=0.0843482336693.
++\end{aligned}\label{meth:retained}\end{equation}
++These are not the separately MS-converted partial sectors printed in
++older appendices. Both fresh campaigns now integrate the 66
++nonprimitive kernels $S_{26}+S_{40}$, while retaining only the ten
++primitive kernels $P_{10}$. The previous production omits all 76,
++and its four-point diagnostics for them are never included.
++
++The four campaign jet means have fixed weights $1/4$. Let
++$S_{66}=S_{26}+S_{40}$. The combined value is
++\begin{equation}\boxed{
++ \widehat C_6(2)=
++ \mathcal F_6\left(\frac{\boldsymbol\mu^{\rm old,A}
++ +\boldsymbol\mu^{\rm old,B}+\boldsymbol\mu^{\rm new,A}
++ +\boldsymbol\mu^{\rm new,B}}4\right)
++ +P_{10}+\frac12 S_{66}.
++}\label{meth:combined}
++\end{equation}
++Here the first two sixth-loop vectors omit all 76 kernels, while the
++last two omit only ten. Lower-loop vectors are complete. Thus every
++required contribution has total expectation weight one. In particular,
++\begin{equation}
++ \widehat\sigma_{\rm common}^2
++ =\widehat\sigma_P^2+
++ \frac14(\widehat\sigma_{26}^2+\widehat\sigma_{40}^2).
++ \label{meth:common}
++\end{equation}
++No common input is averaged away as though independent. The fresh-only
++estimate instead adds $P_{10}$ once, with variance $\widehat\sigma_P^2$.
++At $d=3$ there is no separately retained numerical kernel offset.
++
++For each campaign and loop, let $\widehat\Sigma_{L,t}$ be the covariance
++of its mean estimated from independent randomized replicates. With
++$J_L=\partial\mathcal F_6/\partial\boldsymbol\mu_L$, the propagated
++sampling variance is
++\begin{equation}
++ \widehat{\operatorname{Var}}(\widehat C_6)
++ =\sum_{L,t}w_t^2J_L\widehat\Sigma_{L,t}J_L^{\mathsf T}
++ +\widehat\sigma_{\rm common}^2.
++ \label{meth:covariance}
++\end{equation}
++All coupling/mass and Taylor-order covariance is retained. The error
++budget, in units of $C_6$, is
++\begin{center}\begin{tabular}{@{}crrrrrr@{}}\toprule
++$d$ & $L=3$ & $L=4$ & $L=5$ & $L=6$ & Common & Total\\\midrule
++2 & 0.005635 & 0.037539 & 0.080576 & 0.096763 & 0.077485 & 0.152644 \\
++3 & 0.001145 & 0.005894 & 0.012458 & 0.019839 & 0.000000 & 0.024184 \\
++\bottomrule\end{tabular}\end{center}
++The common term is zero in three dimensions. Contributions in this
++table combine in quadrature, not by addition of standard errors.
++
++\subsection{Checks, method selection, and what has not been established}
++The same uncalibrated samples give the lower-order discrepancy checks
++\begin{center}\begin{tabular}{@{}crrr@{}}\toprule
++$d$ & $C_3$ pull & $C_4$ pull & $C_5$ pull\\\midrule
++2 & +0.09 & +0.50 & +0.60 \\
++3 & +0.44 & +0.80 & -0.21 \\
++\bottomrule\end{tabular}\end{center}
++The reference special-function values are checks only; their numerical
++values are not refitted or replaced by the Monte Carlo estimates.
++A separate finite two-variable Lagrange expansion agrees with the
++fixed-point iteration to $7\times10^{-13}$. Bootstrap resampling of the
++independent replicate vectors, including the common inputs once with
++\eqref{meth:common}, gives sampling errors 0.14987068 and 0.02376720.
++The bootstrap is a diagnostic, not an interval certification.
++The nonlinear delete-one-replicate bias estimates have magnitude
++below $3.4\times10^{-7}$ in $C_6$ units.
++
++\paragraph{Best supported choice for these integrands.}
++The strongest tested practical combination is local finite forest
++subtraction, tropical importance sampling, graph-stratified randomized
++Sobol nets, pilot-frozen cost-aware allocation, and shared polynomial
++products with monitored high-precision fallback. A separately trained
++transport is only modestly useful at $d=2$ and is unnecessary at $d=3$
++in the present tests. The runtime and variance gains are different
++quantities and have not been conflated. The total precision gain also
++uses more production samples; it is not all attributed to a change of
++sampling algorithm.
++
++Rank-one shifted lattice rules with smooth inverse-CDF importance
++fits are an established alternative for multi-loop integrals, including
++CPU and CUDA implementations interfaced to pySecDec~\cite{MethodLattice}.
++That implementation was researched but not benchmarked here, so it is
++not declared better or worse than the present Sobol method.
++Likewise, global tropical integration across primitive graphs has
++recently achieved much higher primitive loop orders~\cite{MethodGlobal};
++those positive primitive examples do not automatically establish
++performance for the signed, regulator-dependent renormalized forest
++combinations in this calculation.
++
++Conditional preintegration is a promising next structural improvement:
++for an unbiased integrand $Y$, exact integration of a subset of variables
++satisfies
++\begin{equation}
++ \operatorname{Var}(\mathbb E[Y\mid X])\leq\operatorname{Var}(Y).
++ \label{meth:rao}
++\end{equation}
++It is useful computationally only when its cost and any deterministic
++quadrature error are controlled. We have not replaced an integral by
++an unchecked low-order quadrature or assumed a favorable variance
++reduction. The unsuccessful first-edge test above illustrates why
++conditionalization must be benchmarked at equal cost.
++
++This appendix does not bound a shared error in graph generation,
++renormalization, or analytic continuation. It does not rerun the
++previous analytic power-sector compensation. Faster arithmetic and
++smaller sampling errors are not independent field-theoretic validation
++or rigorous error enclosures.
++
++\subsection{Reproduction and preservation}
++The delivered archive contains all fresh randomized replicate vectors,
++per-graph counts, the frozen transport tables, digital direction
++matrices, source hashes, method pilots, and the minimal previous
++production inputs needed for the fixed-weight combination. Reassembling
++requires no new integrations:
++\begin{lstlisting}
++python code/analyze.py
++python code/summarize_methods.py
++python code/extra_checks.py
++\end{lstlisting}
++The original displays remain unchanged and in their original order.
++Historical values are retained as history. The updated abstract and
++\eqref{meth:reported} identify the current precision. Raw means,
++standard errors, and the empirical reporting convention are stored
++separately so that a future precision change cannot silently reinterpret
++an old uncertainty.
++
+ \begin{thebibliography}{99}
+ \bibitem{BrownKreimerLocal} F.~Brown and D.~Kreimer,
+ \emph{Angles, scales and parametric renormalization},
+@@ -11718,5 +12191,17 @@
+ 
+ \bibitem{PrecisionSobol} SciPy developers, \emph{scipy.stats.qmc.Sobol}: LMS scrambling, digital shifts, powers-of-two balance and bit resolution. Documentation accessed 14 September 2026. \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html}.
+ \bibitem{PrecisionQMC} SciPy developers, \emph{Quasi-Monte Carlo submodule}: independent randomizations, approximate error estimation and limits of convergence claims. Documentation accessed 14 September 2026. \url{https://docs.scipy.org/doc/scipy/reference/stats.qmc.html}.
++\bibitem{MethodVegas}G. P. Lepage,
++\emph{Adaptive Multidimensional Integration: VEGAS Enhanced},
++J. Comput. Phys. \textbf{439} (2021) 110386,
++\href{https://arxiv.org/abs/2009.05112}{arXiv:2009.05112}.
++\bibitem{MethodLattice}S. Borowka, G. Heinrich, S. Jahn, S. P. Jones,
++M. Kerner and J. Schlenk,
++\emph{A GPU compatible quasi-Monte Carlo integrator interfaced to pySecDec},
++Comput. Phys. Commun. \textbf{240} (2019) 120,
++\href{https://arxiv.org/abs/1811.11720}{arXiv:1811.11720}.
++\bibitem{MethodGlobal}M. Borinsky,
++\emph{Tropicalized quantum field theory and global tropical sampling},
++\href{https://arxiv.org/abs/2508.14263v2}{arXiv:2508.14263v2} (2026).
+ \end{thebibliography}
+ \end{document}

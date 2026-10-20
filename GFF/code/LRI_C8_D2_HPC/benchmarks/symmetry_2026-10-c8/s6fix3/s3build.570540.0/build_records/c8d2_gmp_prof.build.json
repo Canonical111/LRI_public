@@ -1,0 +1,101 @@
+{
+  "schema": "c8-d2-build-record-1",
+  "executable": "c8d2_gmp_prof",
+  "backend": "gmp",
+  "executable_sha256": "3fb9e777ab09d8ca832e57281677ebdc50fcc8c442feb9b630135e5128977675",
+  "command": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_TIER_TIMERS",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_prof"
+  ],
+  "compiler_options": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_TIER_TIMERS"
+  ],
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "compiler_macro_version": "11.4.0",
+  "CXX": "g++",
+  "CPPFLAGS": "",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "NUMERICS": "exact",
+  "numerics_sources": null,
+  "parameter_overrides": [],
+  "macro_overrides": [],
+  "development": false,
+  "GMP_PREFIX": "",
+  "diagnostic": "tier_timers",
+  "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "exact",
+    "diagnostic": true,
+    "diagnostic_kind": "tier_timers",
+    "tail_top": 16,
+    "compiler": "11.4.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": "6.2.1",
+  "gmp_header": {
+    "cc": "x86_64-linux-gnu-gcc",
+    "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+  },
+  "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+    "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+    "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+    "fat": false,
+    "rpath": null,
+    "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+    "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+  },
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": true
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-06T10:56:51Z"
+}

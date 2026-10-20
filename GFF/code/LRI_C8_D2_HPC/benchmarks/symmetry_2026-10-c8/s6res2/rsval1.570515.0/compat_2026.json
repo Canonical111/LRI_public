@@ -1,0 +1,228 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ASM-3 compat_2026",
+ "passed": true,
+ "run": "reference/c7d2_production_2026",
+ "manifest_sha256": "968799a4355c19ce8d81e45b7869d24909e0c0d061506ef213de690082a67e57",
+ "relative_tolerance": 1e-12,
+ "max_relative_difference": 0.0,
+ "relative_differences": {
+  "C7_full": 0.0,
+  "sampling_standard_error": 0.0,
+  "power_correction": 0.0,
+  "power_correction_se": 0.0,
+  "power_free_C7": 0.0,
+  "power_free_se": 0.0,
+  "coefficients[0]": 0.0,
+  "coefficients[1]": 0.0,
+  "coefficients[2]": 0.0,
+  "coefficients[3]": 0.0,
+  "coefficients[4]": 0.0,
+  "coefficients[5]": 0.0,
+  "coefficients[6]": 0.0,
+  "coefficients[7]": 0.0
+ },
+ "C7_full": -3876.1260927949925,
+ "published_C7_full": -3876.1260927949925,
+ "bitwise_identical_C7": true,
+ "ulp_offset_C7": 0.0,
+ "sampling_standard_error": 0.5244496690956952,
+ "gates": {
+  "top_slot": {
+   "order": 7,
+   "rows": [
+    {
+     "L": 3,
+     "dC_db": -0.012345679012345678,
+     "dC_dc": 0.037037037037037035,
+     "expected": [
+      "-1/81",
+      "3/81"
+     ],
+     "rel_deviation": 0.0,
+     "max_lower_order_entry": 0.0
+    },
+    {
+     "L": 4,
+     "dC_db": -0.004115226337448559,
+     "dC_dc": 0.012345679012345678,
+     "expected": [
+      "-1/243",
+      "3/243"
+     ],
+     "rel_deviation": 2.1076890233118204e-16,
+     "max_lower_order_entry": 0.0
+    },
+    {
+     "L": 5,
+     "dC_db": -0.001371742112482853,
+     "dC_dc": 0.004115226337448559,
+     "expected": [
+      "-1/729",
+      "3/729"
+     ],
+     "rel_deviation": 2.1076890233118204e-16,
+     "max_lower_order_entry": 0.0
+    },
+    {
+     "L": 6,
+     "dC_db": -0.00045724737082761767,
+     "dC_dc": 0.001371742112482853,
+     "expected": [
+      "-1/2187",
+      "3/2187"
+     ],
+     "rel_deviation": 1.5807667674838655e-16,
+     "max_lower_order_entry": 0.0
+    },
+    {
+     "L": 7,
+     "dC_db": -0.00015241579027587253,
+     "dC_dc": 0.0004572473708276176,
+     "expected": [
+      "-1/6561",
+      "3/6561"
+     ],
+     "rel_deviation": 3.5567252268386973e-16,
+     "max_lower_order_entry": 0.0
+    }
+   ],
+   "rule": "dC_order/d(b,c)_{L,order-L} = (-1,+3)/3^(L+1); no lower-order dependence"
+  },
+  "affinity": {
+   "mode": "float",
+   "order": 7,
+   "loops": [
+    5,
+    6,
+    7
+   ],
+   "rows": [
+    {
+     "L": 5,
+     "max_abs_J": 0.06525724917380823,
+     "rel_deviation": 0.0
+    },
+    {
+     "L": 6,
+     "max_abs_J": 0.01521310684356532,
+     "rel_deviation": 0.0
+    },
+    {
+     "L": 7,
+     "max_abs_J": 0.0004572473708276176,
+     "rel_deviation": 0.0
+    }
+   ],
+   "rtol": 1e-10,
+   "linear_response_residual": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    3.3029134982598407e-15,
+    2.8332891588433995e-13,
+    9.237055564881302e-13
+   ],
+   "rule": "J_L, L in loops, independent of the loop>=5 jets (C affine in them)"
+  }
+ },
+ "lower_order_checks": [
+  {
+   "order": 3,
+   "estimate": -0.8748513621244413,
+   "sampling_se": 1.249538488878119e-06,
+   "reference": -0.8748500126526,
+   "reference_se": 0.0,
+   "reference_source": "archived 13-digit closed form (reference/power_mass/code/assemble_full.py); not exact",
+   "pull": -1.0799762098434464,
+   "flag": false
+  },
+  {
+   "order": 4,
+   "estimate": 5.0488792961242135,
+   "sampling_se": 3.0103470851767528e-05,
+   "reference": 5.048868431355,
+   "reference_se": 0.0,
+   "reference_source": "archived 13-digit closed form (reference/power_mass/code/assemble_full.py); not exact",
+   "pull": 0.36091417055168357,
+   "flag": false
+  },
+  {
+   "order": 5,
+   "estimate": -38.83449133437752,
+   "sampling_se": 0.0005067332242828037,
+   "reference": -38.83364589623,
+   "reference_se": 0.0,
+   "reference_source": "archived 13-digit closed form (reference/power_mass/code/assemble_full.py); not exact",
+   "pull": -1.6684087543525006,
+   "flag": false
+  },
+  {
+   "order": 6,
+   "estimate": 362.3727456136912,
+   "sampling_se": 0.008577760263817187,
+   "reference": 362.36647176375726,
+   "reference_se": 0.0007997306822612242,
+   "reference_source": "C6(2) production M=8192, 2026-09-28 (LRI_C6_D2_HPC)",
+   "pull": 0.7282505947218798,
+   "flag": false,
+   "secondary": {
+    "reference": 362.3489137997967,
+    "reference_se": 0.15264446036381157,
+    "reference_source": "archived Monte Carlo estimate in the same scheme (reference/LRI_C7_d2_progress/code/finalize.py)",
+    "pull": 0.15588036785080203,
+    "flag": false
+   }
+  }
+ ],
+ "power_null_checks": {
+  "null_rows": [
+   {
+    "order": 3,
+    "delta": -1.1102230246251565e-16,
+    "se": 6.647278422047815e-17,
+    "pull": null,
+    "flag": null,
+    "note": "rounding level (exact zero by the weights c_3^p = b_3^p/3)",
+    "investigate": null
+   },
+   {
+    "order": 4,
+    "delta": 5.406244962813389e-08,
+    "se": 1.5103107734328375e-07,
+    "pull": 0.35795579677455047,
+    "flag": null,
+    "investigate": null
+   },
+   {
+    "order": 5,
+    "delta": 1.1033349011313476e-05,
+    "se": 1.8454205449096666e-05,
+    "pull": 0.5978772178378213,
+    "flag": null,
+    "investigate": null
+   },
+   {
+    "order": 6,
+    "delta": 0.0003301996524101014,
+    "se": 0.0011771240124567668,
+    "pull": 0.2805139041560661,
+    "flag": null,
+    "investigate": null
+   }
+  ],
+  "top": {
+   "order": 7,
+   "delta": -0.056033760016816814,
+   "se": 0.04586367543142513,
+   "pull": -1.2217459566797668,
+   "role": "reported power correction; its vanishing is not proved (the d=2/3 C7 sections only report the lower rows as consistent with zero, N:10659-10661, N:10817-10818); pull is a diagnostic only: not a null test, no flag, not used as a gate"
+  },
+  "flags": [],
+  "rule": "POWER_PROTOCOL.md (vendored, sha256 in power_protocol_sha256): rows 3..order-1 are null rows, |pull| > 3 flagged \"not proved zero\"; the top order is the reported correction with a diagnostic pull and no flag; flags never change an estimate"
+ },
+ "numpy": "2.3.5",
+ "failures": {}
+}

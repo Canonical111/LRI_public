@@ -1,0 +1,21 @@
+job 570033 on <NODE> at 2026-10-05T05:19:50-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5val1b.570033.0
+CPU(s):                                  64
+Model name:                              AMD EPYC 7532 32-Core Processor
+Thread(s) per core:                      1
+NUMA node(s):                            8
+full affinity (64 CPUs): exit 1
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/tmp/c8d2_570033/c8d2_orch_qq5w9xap/lanes')) failed (64):
+C8: C8_LANES=2 gives lanes of up to 32 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 8 or re-plan with a larger --checkpoint-tasks
+C8: C8_LANES=2 gives lanes of up to 32 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 8 or re-plan with a larger --checkpoint-tasks
+taskset -c 0-15: exit 0
+PASS lanes_worker_claims_requeue_stale_timeguard_unlimited_class_factor_failures_race_width_slurm_memory_limit
+pytest 9.1.1 numpy 2.3.5
+vendored_isolated --in-place: exit 0
+PASS the export is unchanged by the runs (no __pycache__, .pytest_cache or other new or changed file)
+vendored_isolated: 10/10 checks passed
+test_numerics_flags: exit 1
+{"passed": false, "tests": 8, "failed": ["f2_profile"]}
+nf_dse_repro: exit 0
+dse rc 1
+ValueError: could not convert string to float: 'np.float64(0.026970860377487114)'
+finished 2026-10-05T05:22:18-04:00, lanes full 1, lanes taskset 0, vendored_isolated 0, test_numerics_flags 1

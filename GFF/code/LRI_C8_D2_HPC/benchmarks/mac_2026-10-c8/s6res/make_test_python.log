@@ -1,0 +1,747 @@
+<HOME>/anaconda3/bin/python3 -B tools/prepare_inputs.py
+SKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+<HOME>/anaconda3/bin/python3 -B tests/check_venv.py --output benchmarks/mac_2026-10-c8/s6res/test_python/check_venv.json
+check_venv (warning): numpy 1.23.5 < 1.24; mpmath 1.2.1 < 1.3; sympy 1.11.1 < 1.12
+numpy    1.23.5       (requirement >=1.24) BELOW MINIMUM
+scipy    1.10.0       (requirement >=1.10)
+mpmath   1.2.1        (requirement >=1.3) BELOW MINIMUM
+sympy    1.11.1       (requirement >=1.12) BELOW MINIMUM
+pytest   7.1.2        (requirement >=7)
+check_venv: passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/unit_orchestration.py --output benchmarks/mac_2026-10-c8/s6res/test_python/unit_orchestration.json
+PASS literal_sizes_and_constants
+PASS static_allowlist_templates_names_removed_options
+PASS seeds_hashed_registry_forbidden_concurrent_log_merge
+C8: cannot read the plan in /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_bnytwr28/c7run_c7-d2-production-1: /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_bnytwr28/c7run_c7-d2-production-1 was planned by the C7(2) tools (manifest schema c7-d2-production-1). LRI_C8_D2_HPC does not run, merge or assemble it: use a checkout of LRI_C7_D2_HPC@a55958f, whose tool hashes the plan pins.
+C8: cannot read the plan in /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_bnytwr28/c7run_c7-d2-production-2: /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_bnytwr28/c7run_c7-d2-production-2 was planned by the C7(2) tools (manifest schema c7-d2-production-2). LRI_C8_D2_HPC does not run, merge or assemble it: use a checkout of LRI_C7_D2_HPC@a55958f, whose tool hashes the plan pins.
+PASS c7_manifest_refused_everywhere
+PASS inputs_refusals_one_byte_pack_foreign_inputs
+PASS plan_refuses_diagnostic_sanitizer_and_unapproved_numerics
+PASS G4c_D2_development_overrides_refused_describe_and_build_record
+PASS A-FLAG-1_2_profile_name_manifest_status_checkpoint_assemble
+PASS Stage6_route_b_record_check_gate_gated_route_refusal_branches
+PASS allocation_sources_pilot_points_stratified
+PASS chunking_sizing_estimates_per_campaign_caps
+PASS atomic_plan_sigkill_then_rerun
+PASS first_sweep_bootstrap_R13
+PASS bootstrap_regenerated_from_export_after_update_R18
+PASS run_private_runtime_failure_threads_offset_fingerprints
+PASS status_recovery_lines_max_blocks_recompute
+PASS duplicate_runs_verified_duplicate
+PASS merge_jobs_equals_serial_resume_idempotent_assembly_permissions
+PASS runtime_digest_rates_tail_tamper_and_foreign_checkpoint_rejected
+PASS merge_assemble_without_bin_and_tool_change_provenance
+PASS sigterm_cleanup_run_and_run_array
+PASS uri_reserved_path_concurrent_merge_collision_and_refusal
+PASS zero_task_groups_without_l8_packs
+PASS bounded_fan_in_passes_identical_and_refusal
+PASS merge_phase2_resumes_from_complete_runs_after_interrupt
+PASS merge_cached_runs_verified_rebuilt_on_tamper_O01_multiblock_phase1_spills_O02
+PASS recovery_plan_and_cli
+PASS slurm_arrays_recovery_refusals_windows_status_lines_memory
+PASS sequential_repeats_submit_once
+PASS time_policy_unlimited_and_finite
+PASS submission_lock_and_percent_escape
+PASS lane_shapes_timeleft_memory_guard_class_factor
+PASS p4_defaults_plan_sizing_and_lane_shapes
+PASS lanes_worker_claims_requeue_stale_timeguard_unlimited_class_factor_failures_race_width_slurm_memory_limit
+PASS lane_scan_cost_bounded_and_generations
+lane 0: index 0 done in 0 s (estimate 2 s, class factor 1.5); log idx0.6200.0.0.1791257916221113000.log
+lane 0: finished, 1 indices run, 0 failed
+PASS done_markers_hints_rebuild_stale_view_claim_holder_not_evidence
+PASS recovery_of_a_completed_index_merges_and_assembles_F8
+PASS lane_worker_sigterm_forwarded_runtime_removed_claims_stale_F7
+PASS cpu_vendor_pinned_by_first_claim_refused_elsewhere_F5
+PASS lane_submission_merge_replacement_running_merge_lanes0_memory_mixed_mode_uid_snapshot
+PASS lane_drill_mode_shapes_and_refusals_effective_options_no_exclusive_directive
+PASS admission_h7er_superseded_merges_site_lock_amd_pool_cap
+PASS admission_squeue_job_names_with_pipes_counted_unparsable_line_refused
+C8: admission {"amd_cap": 4, "amd_live": 4, "amd_live_jobs": ["7000", "7001", "7002", "7003"], "k": 2, "limits": {"c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {"new": 1, "room": 0}}, "new_jobs": {"lane": {"count": 1, "partitions": ["defq"]}, "merge": {"count": 1, "partitions": ["amdq"]}}, "partitions": ["amdq", "defq"], "room": 0, "site": "symmetry"}
+C8: admission {"amd_cap": 4, "amd_live": 4, "amd_live_jobs": ["7000", "7001", "7002", "7003"], "k": 3, "limits": {}, "new_jobs": {"array": {"count": 3, "partitions": ["defq"]}}, "partitions": ["defq"], "room": null, "site": "symmetry"}
+PASS submission_roles_merge_keeps_overrides_admission_and_ledger_per_role_O04
+PASS unverified_job_stops_the_submission_recovery_waits_on_every_live_worker_O07
+PASS superseded_merge_cancelled_only_while_pending_by_the_scheduler_O08
+PASS ledger_register_once_accounting_attempts_physical_cores_unknown_allocation_incomplete_fails_closed
+PASS frozen_rate_maps_validation_identity_staging_checkpoints_native_D15
+PASS staging_members_only_runs_equal_whole_pack_refused
+PASS sobol_export_checks_all_order8_shapes
+PASS pack_reads_exact_members_only_short_reads_truncation_F12
+PASS per_claim_reads_bounded_platform_contract_fingerprint_bytes
+PASS claim_io_record_arithmetic_and_tool
+PASS runtime_identity_pinned_by_first_claim_enforced_by_run_skip_and_both_merges_X8
+PASS design_bundle_pinned_in_campaign_relocated_batches_combine_override_verified_X9
+PASS cost_model_numerics_refused_for_non_test_plans_recorded_exception_for_test_only_X10
+PASS amd_cap_template_default_only_explicit_window_kept_higher_and_lower_X11
+PASS account_and_partition_passed_to_every_sbatch_as_admitted_and_ledgered_X12
+PASS lane_failure_limit_rechecked_under_the_claim_stale_snapshot_X13
+PASS seedsync_union_of_three_logs_concurrent_additions_nonzero_unless_equal_X21
+PASS drivers_only_refuses_unknown_and_empty_selections_vendored_isolated_records_early_stops
+{"status": "passed", "requested": "all", "executed": 49, "tests": 61, "failed": []}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_pipeline.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_pipeline.json
+PASS A-DES-1_full_size_freeze_counts_replicates_budget_infeasible_K_atomic_seeds_caps
+PASS A-DES-2_report_table_and_independent_bundle_SE
+PASS F11_A-DES-1_2_r_from_smallest_multiplier_primitives_take_s_cost_near_continuous_optimum_old_rule_reproduced
+PASS F13_F11_optimizer_randomized_never_costlier_than_either_old_rule_feasible_budget_dual
+PASS F13_J-DES-5_records_exact_and_route_b_recomputed_not_costlier_keep_cheaper
+PASS A-DES-6_d3_vendored_B2_subsample_imputation_nested_alpha
+PASS A-DES_tails_L8_thresholds_L7_diagnostics_undefined_sector_P8_L8_4096
+PASS A-FLAG-6_G4c_one_step_rule_branches_W_r_bootstrap_hand_values_refusals
+PASS route_b_synthetic_freeze_recosted_sigma_kept_keep_cheaper_both_branches_recomputed_record_report_refusals
+PASS O09_sweep_finalization_resumes_reuses_its_model_refuses_another
+PASS A-ORC-9_bootstrap_sweep_ledger_accounting_eta_node_design_allocation_unknown
+PASS X15_live_allocations_incomplete_terminal_complete_requeue_in_sum
+PASS X10_class_factors_same_numerics_only
+PASS A-ORC-9_local_checkpoints_accepted_only_by_test_only_freeze
+PASS X14_own_prefix_overrides_authenticated_pinned_accepted_others_refused
+PASS A-DES-2_on_the_fake_pilot_bundle_recomputed_independently
+PASS O11_C8-3_command_line_freeze_report_rates_on_a_c8-d3_pilot_its_c8-d3_ledger_eta_node_schemas_follow_prefix_refusals
+PASS A-ASM-6_combine_final_partial_chi2_hand_verify_result_and_rejections
+PASS route_b_cli_test_only_sweep_numerics_freeze_recosted_plan_run_assemble_combine_refuses_mixing
+PASS A-FLAG-6_rates_per_graph_spec_equal_refused_source_unchanged_tool_change_recorded
+PASS A-FLAG-6_sweep_under_the_map_feeds_a_fresh_freeze_recomputed_another_map_refused
+PASS A-FLAG-6_G4c_rates_rule_one_step_cli_map_record_recomputed_refusals
+PASS R14_R19_provisional_bundle_map_measurement_fresh_freeze_recomputed_source_allocation_misses
+PASS A-FLAG-6_G4c_non_test_plan_accepts_fresh_R7_bundle_with_approval_and_map_cost_model_refuses_without
+PASS route_b_non_test_plan_accepts_recosted_bundle_with_all_pieces_records_route_refuses_without
+PASS allow_list_non_test_plans_refuse_numerics_outside_APPROVED_PROFILES_pilot_and_route_a_design_test_only_accepted
+PASS Stage6_non_test_pilot_exact_profile_pilot_needs_go_and_gate_route_a_gated_test_only_unchanged
+{"status": "passed", "executed": ["part1", "part2", "part3"], "tests": 27}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/ast_scan.py --output benchmarks/mac_2026-10-c8/s6res/test_python/ast_scan.json
+ast_scan: 27 files, 0 findings, self-test passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/ast_scan.py gen/*.py tests/*.py --output benchmarks/mac_2026-10-c8/s6res/test_python/ast_scan_gen_tests.json
+ast_scan: 44 files, 0 findings, self-test passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B gen/test_regress.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_regress.json
+PASS identical files
+PASS free L3: legacy rate values are rate-only
+PASS free L3: rate-only counts the differing entries
+PASS free L3: a rate line differing only in its trailing space is rate-only
+PASS free L3: ... and counted as whitespace-only
+PASS CK-K02: only wa changed (identity permutation) is refused
+PASS CK-K02: only wb changed is refused
+PASS CK-K02: wa changed below binary64 resolution is refused (exact header text)
+PASS CK-K02: wa and a rate value changed is refused
+PASS CK-K02: a rate table one entry short is refused
+PASS CK-K02: a rate table one entry long is refused
+PASS a changed 2^E line is refused
+PASS a changed id is refused
+PASS a mask reordering under the recorded identity permutation is refused
+PASS a mask reordering under a recorded automorphism (free L3 G0) is refused
+PASS a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS the relabelled control really differs in masks and terms
+PASS the relabelling with the rate values kept is accepted too
+PASS CK-K02: relabelled with wa changed is refused
+PASS CK-K02: relabelled with wb changed is refused
+PASS CK-K02: relabelled with the id changed is refused
+PASS CK-K02: relabelled with a rate table one entry short is refused
+PASS relabelled with a changed 2^E line is refused
+PASS a relabelling by a permutation that is not the recorded one is refused
+PASS a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling
+PASS a mask value no permutation explains is refused
+PASS power L3: a rate change is refused
+PASS free L7: a rate change is refused (parity rule)
+PASS a malformed file is classified, not raised
+PASS a file without its final newline is refused
+PASS the frozen trees: every G-file header agrees with its inventory row
+PASS a clean copy agrees
+PASS CK-K02: G1 header wa changed, its inventory row kept: reported
+PASS CK-K02: G1 header wb changed, its inventory row kept: reported
+PASS CK-K02: G1 header masks changed, its inventory row kept: reported
+PASS CK-K02: G1 header id changed, its inventory row kept: reported
+PASS a G-file without an inventory row is reported
+PASS an inventory row naming a missing G-file is reported
+PASS end to end: regress.py --loops 3 passes on copies of the frozen trees
+PASS end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)
+PASS end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2
+PASS end to end: the --loops 3 run records partial coverage (no H1 evidence)
+PASS regress.py refuses '--loops 7-3' before building
+PASS regress.py refuses '--loops 3,3' before building
+PASS regress.py refuses '--loops 8' before building
+PASS regress.py refuses '--loops ' before building
+PASS regress.py refuses '--threads ' before building
+PASS regress.py refuses '--threads 0,8' before building
+PASS regress.py refuses '--threads 8,8' before building
+PASS loops_arg('3-7') = [3, 4, 5, 6, 7]
+PASS loops_arg('3') = [3]
+PASS loops_arg('5,3') = [5, 3]
+PASS loops_arg('7-7') = [7]
+PASS loops_arg('7-3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('8') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2-4') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3-') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('x') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,,4') is refused (empty, reversed, repeated or out of 3..7)
+PASS threads_arg('1,8') -> [1, 8]
+PASS threads_arg('1') -> [1]
+PASS threads_arg('') -> refused
+PASS threads_arg('0') -> refused
+PASS threads_arg('1,1') -> refused
+PASS threads_arg('-2') -> refused
+PASS threads_arg('a') -> refused
+PASS h1_problems: a complete synthetic record is H1 evidence
+PASS h1_problems refuses partial evidence: loops [3] (gen/regress.py --loops 3)
+PASS h1_problems refuses partial evidence: no loop at all
+PASS h1_problems refuses partial evidence: one thread count (--threads 1)
+PASS h1_problems refuses partial evidence: no serial run (threads 2 and 8)
+PASS h1_problems refuses partial evidence: a sector missing
+PASS h1_problems refuses partial evidence: thread identity false
+PASS h1_problems refuses partial evidence: a build that failed
+PASS h1_problems refuses partial evidence: free L7 not byte-identical
+PASS h1_problems refuses partial evidence: no header-row check (before CK-K02)
+PASS h1_problems refuses partial evidence: the L7 control false
+PASS h1_problems refuses partial evidence: failures listed
+PASS h1_problems refuses partial evidence: passed false
+PASS h1_problems refuses partial evidence: another gate name
+PASS h1_problems accepts the real J-GEN-1 record of the CK-K02 fix (Expanse 54658874)
+PASS h1_problems refuses the Stage-1 record (Expanse 54631551): it predates the CK-K02 header-row check
+test_regress: 86/86 checks passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B gen/test_handoff_inventory.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_handoff_inventory.json
+PASS writes the HANDOFF when everything is green and complete
+PASS refuses to overwrite an existing HANDOFF
+PASS refuses when an A-INV record is red
+PASS S6-B-02: refuses the A-INV-2 record of regress.py --loops 3 --threads 1
+PASS S6-B-02: refuses an A-INV-2 record that selected no loop
+PASS S6-B-02: refuses an A-INV-2 record with a single thread count
+PASS S6-B-02: refuses a bare {"passed": true} test record
+PASS S6-B-02: refuses a tree whose summary records only a_zero_dim
+PASS S6-B-02: refuses a complete summary with the h_kirchhoff record missing
+PASS S6-B-02: refuses a complete summary with the j_rates record red
+PASS control: the complete tree alone (no second copy) is accepted
+PASS refuses without the C1 acknowledgment
+PASS refuses when a copy does not verify
+PASS refuses when a remote copy record is not a pass
+PASS S6-B-02: publication refuses a stage with only a_zero_dim in the summary
+PASS S6-B-02: publication refuses a stage with the j_rates record red
+PASS publication: the stage with the complete A-INV-3 gates is published and verifies
+test_handoff_inventory: 17/17 checks passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/merge_scale.py --rows 20000 --output benchmarks/mac_2026-10-c8/s6res/test_python/merge_scale.json
+{
+ "points": 8,
+ "rows": 39056,
+ "shards": 16,
+ "plan_seconds": 2.2502119541168213,
+ "run_seconds": 5.132074356079102,
+ "blocks": 16,
+ "parallel": {
+  "jobs": 4,
+  "wall_seconds": 0.5946559906005859,
+  "peak_rss_bytes": 57081856,
+  "phase1_rows_per_s": 161875,
+  "phase1_rows_per_s_per_process": 40468.75,
+  "phase1_seconds": 0.24,
+  "phase2_rows_per_s": 163198,
+  "phase2_seconds": 0.24
+ },
+ "serial": {
+  "wall_seconds": 0.8378360271453857,
+  "peak_rss_bytes": 88686592
+ },
+ "byte_identical": true,
+ "passed": true
+}
+{
+ "shards": 500,
+ "rows": 4882,
+ "passed": true,
+ "rlimit48": {
+  "code": 0,
+  "identical": true,
+  "passes": 3,
+  "fan_in": 16,
+  "expected_passes": 3,
+  "expected_fan_in": 16,
+  "stderr": ""
+ },
+ "fanin2": {
+  "code": 0,
+  "identical": true,
+  "passes": 9,
+  "fan_in": 2,
+  "expected_passes": 9,
+  "expected_fan_in": 2,
+  "stderr": ""
+ },
+ "rlimit33": {
+  "code": 1,
+  "refused": true
+ }
+}
+{
+ "memory_scaling shards=1": {
+  "points": {
+   "4": {
+    "rows": 19528,
+    "rows_per_shard": 19528.0,
+    "blocks": 77,
+    "peak_rss_bytes": 45694976,
+    "traced_peak_bytes": 12026263,
+    "identical": true,
+    "wall_seconds": 0.658010721206665
+   },
+   "32": {
+    "rows": 156224,
+    "rows_per_shard": 156224.0,
+    "blocks": 611,
+    "peak_rss_bytes": 50397184,
+    "traced_peak_bytes": 12026263,
+    "identical": true,
+    "wall_seconds": 4.817742824554443
+   }
+  },
+  "rows_ratio": 8.0,
+  "rows_per_shard_ratio": 8.0,
+  "traced_growth_bytes": 0,
+  "rss_growth_bytes": 4702208,
+  "rss_growth_bytes_per_extra_row": 34.39901679639492,
+  "passed": true
+ }
+}
+{
+ "memory_scaling shards=4": {
+  "points": {
+   "4": {
+    "rows": 19528,
+    "rows_per_shard": 4882.0,
+    "blocks": 80,
+    "peak_rss_bytes": 46120960,
+    "traced_peak_bytes": 12026263,
+    "identical": true,
+    "wall_seconds": 0.6656577587127686
+   },
+   "32": {
+    "rows": 156224,
+    "rows_per_shard": 39056.0,
+    "blocks": 612,
+    "peak_rss_bytes": 51625984,
+    "traced_peak_bytes": 12026263,
+    "identical": true,
+    "wall_seconds": 4.908176898956299
+   }
+  },
+  "rows_ratio": 8.0,
+  "rows_per_shard_ratio": 8.0,
+  "traced_growth_bytes": 0,
+  "rss_growth_bytes": 5505024,
+  "rss_growth_bytes_per_extra_row": 40.272019664072104,
+  "passed": true
+ }
+}
+merge_scale: passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/check_vendored.py  --output benchmarks/mac_2026-10-c8/s6res/test_python/check_vendored.json
+PASS the HANDOFF copy is at the sha256 VENDORED.json records
+PASS VENDORED.json records an accepting review of this HANDOFF with a step-0 verdict-gate decision
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS every vendored file is a regular file at the sha256, md5 and size the HANDOFF records
+PASS VENDORED.json lists the HANDOFF deliverables with the HANDOFF pins
+PASS vendor/c8_assembly_fixtures holds exactly the VENDORED.json fixtures
+PASS every fixture is a regular file at its pin (reference copies at their checksum-list entries)
+PASS no symlink is tracked anywhere in the package
+PASS the review record exists, accepts this HANDOFF with the same verdict gate and has steps 0-10
+PASS the vendored order8_assembly exports every used name with the signature VENDORED.json records
+PASS vendor/ rule: prepare_inputs build opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: prepare_inputs verify opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: production.py plan (test-only, scratch copy) opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: production.py run --index 0 (test-only, scratch copy) opens nothing under vendor/ and imports nothing from vendor/
+PASS A-ASM-1(b): inputs/manifest.json records the HANDOFF sha256 and every vendored pin, equal to VENDORED.json and the HANDOFF
+SKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack
+PASS A-ASM-1(b): prepare_inputs.verify() passes with the vendored pins
+PASS A-ASM-1(b): a one-byte change to a vendored file makes prepare_inputs.verify() fail (the untouched scratch export verifies)
+PASS S6-B-04: vendor_assembly.py vendors a clean sandbox with both reviewed digests
+PASS S6-B-04: vendor_assembly.py refuses a read-set path ../../tools/common.py with a valid reference copy (the reviewer's example) before any write
+PASS S6-B-04: vendor_assembly.py refuses a HANDOFF file path ../../tools/common.py before any write
+PASS S6-B-04: vendor_assembly.py refuses an absolute read-set path before any write
+PASS S6-B-04: vendor_assembly.py refuses a '.' component before any write
+PASS S6-B-04: vendor_assembly.py refuses a repeated fixture path before any write
+PASS S6-B-04: vendor_assembly.py refuses two fixture paths equal ignoring case before any write
+PASS S6-B-04: vendor_assembly.py refuses a fixture path that is the directory of another before any write
+PASS S6-B-04: vendor_assembly.py refuses a HANDOFF file named like the HANDOFF copy before any write
+PASS S6-B-04: vendor_assembly.py refuses a c8d2_reference_copy outside reference/ before any write
+PASS S6-B-04: vendor_assembly.py refuses a read set not at the reviewed digest before any write
+PASS S6-B-04: vendor_assembly.py refuses vendor/ a symlink to a directory outside the package before any write
+PASS S6-B-04: vendor_assembly.py refuses an order8_assembly.py that lacks a used name (slots) before any write
+PASS S6-B-04: vendor_assembly.py refuses an order8_assembly.py whose execution fails before any write
+NOTE none: the HANDOFF arrived before Stage 3, so no stand-in Jacobian module was written
+NOTE prepare_inputs build opened 0 vendored files (it reads the pins from tools/VENDORED.json)
+NOTE prepare_inputs verify opened 14 vendored files, each through common.digest
+NOTE production.py plan opened 14 vendored files (the inputs manifest pins, through common.digest)
+NOTE production.py run opened 0 vendored files
+check_vendored: 31/31 checks passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/vendored_isolated.py  --output benchmarks/mac_2026-10-c8/s6res/test_python/vendored_isolated.json
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS vendored tests, LRI_ROOT=fixtures: counts equal the HANDOFF ({'passed': 30, 'skipped': 0, 'failed': 0, 'errors': 0})
+PASS vendored tests, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation
+PASS vendored tests, no LRI_ROOT: counts equal the HANDOFF ({'passed': 21, 'skipped': 9, 'failed': 0, 'errors': 0})
+PASS vendored tests, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation
+PASS exact_check.py completes, LRI_ROOT=fixtures
+PASS exact_check.py, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation
+PASS exact_check.py completes, no LRI_ROOT
+PASS exact_check.py, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation
+PASS the export is unchanged by the runs (no __pycache__, .pytest_cache or other new or changed file)
+vendored_isolated: 10/10 checks passed
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_delivery_verifier.py
+{
+  "status": "passed",
+  "tests": [
+    {
+      "test": "valid_package_from_another_directory",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "changed_payload_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Size mismatch: payload.txt",
+        "SHA-256 mismatch: payload.txt"
+      ]
+    },
+    {
+      "test": "missing_payload_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Missing regular file: payload.txt"
+      ]
+    },
+    {
+      "test": "changed_checksum_index_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "SHA256SUMS does not match the payload plus delivery manifest"
+      ]
+    },
+    {
+      "test": "unexpected_file_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "local_build_allowed_in_default_mode",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "local_build_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "unsafe_path_rejected_strict:../escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '../escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:../escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '../escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:<tmp>/escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '<tmp>/escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:<tmp>/escape.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: '<tmp>/escape.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:tools/../payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools/../payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:tools/../payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools/../payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:payload\\alias.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'payload\\\\alias.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:payload\\alias.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'payload\\\\alias.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:./payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: './payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:./payload.txt",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: './payload.txt'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_strict:tools//verify_delivery.py",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools//verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "unsafe_path_rejected_default:tools//verify_delivery.py",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Unsafe or noncanonical path: 'tools//verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "unsafe_paths_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "write_then_strict_passes_with_build_outputs_present",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "write_then_changed_file_rejected",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Size mismatch: new.txt",
+        "SHA-256 mismatch: new.txt"
+      ]
+    },
+    {
+      "test": "write_restored_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "link_internal_present_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "link_internal_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_internal'"
+      ]
+    },
+    {
+      "test": "link_internal_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_internal'"
+      ]
+    },
+    {
+      "test": "link_escape_present_rejected_in_strict_mode",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "link_escape_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_escape'"
+      ]
+    },
+    {
+      "test": "link_escape_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'link_escape'"
+      ]
+    },
+    {
+      "test": "symlinks_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    },
+    {
+      "test": "dir_symlink_component_listed_rejected_strict",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'sub/verify_delivery.py'",
+        "1 unexpected files in strict mode"
+      ]
+    },
+    {
+      "test": "dir_symlink_component_listed_rejected_default",
+      "status": "passed",
+      "expected_verifier_status": "failed",
+      "errors": [
+        "Symlink or escaping path: 'sub/verify_delivery.py'"
+      ]
+    },
+    {
+      "test": "dir_symlink_removed_passes",
+      "status": "passed",
+      "expected_verifier_status": "passed",
+      "errors": []
+    }
+  ]
+}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/check_inputs.py --output benchmarks/mac_2026-10-c8/s6res/test_python/check_inputs.json
+PASS make_lowloop regenerates inputs/gamma_d2_8.txt byte for byte
+PASS make_lowloop regenerates inputs/two_loop.json byte for byte
+PASS make_lowloop regenerates inputs/verification/two_loop_extension8.json byte for byte
+SKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack
+PASS prepare_inputs.verify(): every listed file and every vendored pin
+SKIPPED the L8 packs are not here (C8_ALLOW_NO_L8=1): their bytes are checked where they are built (J-IN-2)
+PASS manifest: schema, dimension 2, order 8, the twelve packs and the counts of the plan
+PASS the L3..L6 packs are at C7(2)'s manifest sha256s
+PASS the manifest pins the vendored assembly from tools/VENDORED.json (A-IN-4, A-ASM-1(b))
+PASS inventory.json rows carry the inspector fields, products, addends and kernel_bytes positive (A-IN-3)
+PASS the 2,298 and 590 members of C7(2)'s L7 packs are among the new L7 members, same bytes
+SKIPPED regeneration from inventory8_d2 (give --inventory TREE or C8_INVENTORY)
+PASS tests/fixtures/inputs_mini verifies (its own L8 packs, the package's L3..L7 packs)
+PASS a one-byte change to a pack makes verify() fail
+PASS S6-B-01: make inputs-l8 builds missing L8 packs at their pins
+PASS S6-B-01: make inputs-l8 replaces a corrupt and a truncated L8 pack with the pinned bytes
+PASS S6-B-01: a corrupt immutable input stops the rebuild; the L8 packs stay as they were
+PASS S6-B-01: a tree that does not verify against the pin stops the rebuild; the L8 packs stay as they were
+PASS S6-B-01: a rebuilt pack off its pin installs neither pack (no partial replacement), no temporary file
+PASS S6-B-01: ... and the next make inputs-l8 repairs both
+check_inputs: 17/17 checks passed, 2 skipped
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_profiling.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_profiling.json
+PASS lane_shapes_numa_aligned_partition_and_refusals
+PASS lpt_shares_and_production_blocks
+PASS perf_report_parsing_and_plan_shares
+PASS perf_stat_csv_ipc_and_record_summary
+PASS annotate_addr2line_ltrace_numa_and_kernel_regions
+PASS ratio_histogram_summaries_and_checks
+PASS committed_fixtures8_pins_sizes_seeds_nets
+PASS fixtures_rebuild_byte_identical
+prepare_benchmarks: /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp9teh7owk/fx exists without manifest.json (an interrupted build?): remove it and rerun
+usage: test_profiling.py [-h] [--order {7,8}] [--folder FOLDER] [--check]
+                         [--stage-check DIR]
+test_profiling.py: error: --folder, --check and --stage-check are order-8 options
+PASS refusals_staging_builds_shapes_executables
+PASS h7_admission_expanse_and_symmetry
+PASS job_and_submit_scripts
+PASS order7_builder_unchanged_apart_from_the_moved_import
+PASS e2e_lane_shapes_fake_worker
+PASS e2e_interleave_probe_driver
+PASS e2e_perf_profile_p1_fallback_p2_p3_fake_perf
+{"passed": true, "tests": 15, "failed": []}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_gmp_prefix.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_gmp_prefix.json
+PASS default_commands_unchanged
+PASS prefix_commands
+PASS prefix_refusals
+PASS build_record_gmp_identity
+PASS r4f_scripts
+PASS r4f_speed_dry_run
+PASS r4f_profile_dry_run
+{"passed": true, "tests": 7, "failed": []}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_numerics_flags.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_numerics_flags.json
+PASS make_profiles
+PASS hooks
+PASS pure
+PASS f2_f4_self_test_and_stub_identity
+PASS f2_profile_dC8_recomputed_bounds_doubling
+PASS s4c_scripts
+PASS overrides_mark_development_builds
+PASS f2_seeds_registered_rerun_present_collision_refused
+PASS X1_coverage_570210_refused_for_missing_evidence_only_gate_evidence_refusals_570373_accepted
+[23:53:11] X2: c8d2_gmp reproduced byte for byte from the source snapshot b48e0d2e5a86 in 0 s
+[23:53:11] X2: c8d2_gmp_dd reproduced byte for byte from the source snapshot b48e0d2e5a86 in 0 s
+[23:53:11] compiled tool from c8d2_gmp_dd's build command in the source snapshot in 0 s
+PASS X2_snapshot_bind_reproduced_stale_pins_command_refused_tool_from_snapshot_harness_refusals
+[23:53:17] F5 free: identical, teams as requested
+[23:53:17] F5 power: identical, teams as requested
+[23:53:17] F5 free: identical, teams as requested
+[23:53:17] F5 power: identical, teams as requested
+PASS X3_sanitized_omp_environment_observed_teams_required_f5_verdict_run_native_env
+{"passed": true, "tests": 11, "failed": []}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/test_dd_profile.py --output benchmarks/mac_2026-10-c8/s6res/test_python/test_dd_profile.json
+PASS constants 
+PASS exp_mpmath {"points": 4010, "max_relative_error_u2": 1.801}
+PASS ops_exact {"cases": 3000, "max_u2": {"add": 1.376, "add_d": 0.987, "mul": 2.387, "mul_d": 1.135, "div": 3.799, "div_d": 2.427}}
+PASS sum {"cases": 33, "max_u2_per_addend": 0.5545}
+PASS guards 
+PASS make 
+PASS structure 
+PASS scripts 
+{"passed": true, "tests": 8, "failed": []}
+OPENBLAS_NUM_THREADS=1 <HOME>/anaconda3/bin/python3 -B tests/sanitize.py --capture-check --output benchmarks/mac_2026-10-c8/s6res/test_python/sanitize_capture.json
+{"piped_exit": -6, "piped_report_seen": false, "pty_exit": -6, "pty_report_seen": true}
+EXIT 0

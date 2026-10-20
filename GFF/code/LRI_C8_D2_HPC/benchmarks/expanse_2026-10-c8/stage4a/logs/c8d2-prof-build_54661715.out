@@ -1,0 +1,50 @@
+job 54661715 on <NODE> at 2026-10-04T13:49:05-07:00; package <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b; evidence <SCRATCH>/temp_project/c8d2/evidence/c17688158e2b/profbuild.54661715.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+TMPDIR /scratch/<USER>/job_54661715/tmp
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+}
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+python3 -B tools/build_record.py bin/c8d2_gmp_prof gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+bin/c8d2_gmp_ratiohist.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+bin/c8d2_gmp_prof.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+make probes exit 0
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP benchmarks/probes/interleave_probe.cpp -lquadmath -lgmp -o bin/c8d2_interleave_probe
+builds in 32 s
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  bin/c8d2_gmp
+d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7  bin/c8d2_gmp_prof
+c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf  bin/c8d2_gmp_ratiohist
+1ac08cb247918d3388130d713618ecc1c4955db4d770787344965e91a7fb5bbc  bin/c8d2_interleave_probe
+{
+ "stage3_release": {
+  "bin/c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "bin/c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3"
+ },
+ "stage3_diagnostic": {
+  "bin/c8d2_gmp_prof": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+  "bin/c8d2_gmp_ratiohist": "c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf"
+ },
+ "now": {
+  "bin/c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "bin/c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3",
+  "bin/c8d2_gmp_prof": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+  "bin/c8d2_gmp_ratiohist": "c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf"
+ },
+ "release_identical": true,
+ "diagnostic_identical": {
+  "bin/c8d2_gmp_prof": true,
+  "bin/c8d2_gmp_ratiohist": true
+ },
+ "probe_build_exit": 0,
+ "note": "Stage-3 release hashes from jobs 54637262/54643359/54658871, diagnostic hashes from 54637262/54658970; same node type, Spack GCC 13.3.0, Boost 1.77, GMP 6.2.1. Profiles P1-P4 measure the release worker."
+}
+   "seconds": 0.1650650929659605
+  }
+ }
+}
+finished 2026-10-04T13:49:41-07:00

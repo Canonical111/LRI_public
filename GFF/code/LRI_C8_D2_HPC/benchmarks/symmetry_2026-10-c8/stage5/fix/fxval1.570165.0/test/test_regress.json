@@ -1,0 +1,218 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-2 comparison logic (gen/test_regress.py)",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "identical files",
+   "passed": true,
+   "detail": "{\"verdict\": \"identical\", \"info\": {}, \"want\": \"identical\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: legacy rate values are rate-only",
+   "passed": true,
+   "detail": "{\"verdict\": \"rate_only\", \"info\": {\"rate_entries_differing\": 1, \"whitespace_only\": false}, \"want\": \"rate_only\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: rate-only counts the differing entries",
+   "passed": true,
+   "detail": "{\"rate_entries_differing\": 1, \"whitespace_only\": false}"
+  },
+  {
+   "check": "free L3: a rate line differing only in its trailing space is rate-only",
+   "passed": true,
+   "detail": "{\"verdict\": \"rate_only\", \"info\": {\"rate_entries_differing\": 0, \"whitespace_only\": true}, \"want\": \"rate_only\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: ... and counted as whitespace-only",
+   "passed": true,
+   "detail": "{\"rate_entries_differing\": 0, \"whitespace_only\": true}"
+  },
+  {
+   "check": "CK-K02: only wa changed (identity permutation) is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: only wb changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: wa changed below binary64 resolution is refused (exact header text)",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: wa and a rate value changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: a rate table one entry short is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 63 entries for 2^E=64)\"]}, \"want\": \"other\", \"needle\": \"rate table of 63\"}"
+  },
+  {
+   "check": "CK-K02: a rate table one entry long is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 65 entries for 2^E=64)\"]}, \"want\": \"other\", \"needle\": \"rate table of 65\"}"
+  },
+  {
+   "check": "a changed 2^E line is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (2^E line '65' for E=6)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a changed id is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header counts or ids\"]}, \"want\": \"other\", \"needle\": \"header counts or ids\"}"
+  },
+  {
+   "check": "a mask reordering under the recorded identity permutation is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask order\", \"term values\"]}, \"want\": \"other\", \"needle\": \"mask order\"}"
+  },
+  {
+   "check": "a mask reordering under a recorded automorphism (free L3 G0) is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask order\", \"term values\"]}, \"want\": \"other\", \"needle\": \"mask order\"}"
+  },
+  {
+   "check": "a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": \"edge_permutation\"}"
+  },
+  {
+   "check": "a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after inverse edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": \"edge_permutation\"}"
+  },
+  {
+   "check": "the relabelled control really differs in masks and terms",
+   "passed": true,
+   "detail": "[\"mask values\", \"term values\", \"rate line\"]"
+  },
+  {
+   "check": "the relabelling with the rate values kept is accepted too",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": null}"
+  },
+  {
+   "check": "CK-K02: relabelled with wa changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with wb changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with the id changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header counts or ids\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header counts or ids\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with a rate table one entry short is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 255 entries for 2^E=256)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "relabelled with a changed 2^E line is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (2^E line '512' for E=8)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a relabelling by a permutation that is not the recorded one is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": null}"
+  },
+  {
+   "check": "a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"term order\"]}, \"want\": \"other\", \"needle\": \"term order\"}"
+  },
+  {
+   "check": "a mask value no permutation explains is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask values\"]}, \"want\": \"other\", \"needle\": \"mask values\"}"
+  },
+  {
+   "check": "power L3: a rate change is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"rate line\"]}, \"want\": \"other\", \"needle\": \"rate line\"}"
+  },
+  {
+   "check": "free L7: a rate change is refused (parity rule)",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"rate line\"]}, \"want\": \"other\", \"needle\": \"rate line\"}"
+  },
+  {
+   "check": "a malformed file is classified, not raised",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (bad header)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a file without its final newline is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (no final newline)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "the frozen trees: every G-file header agrees with its inventory row",
+   "passed": true,
+   "detail": "{\"free L3\": [], \"free L4\": [], \"free L5\": [], \"free L6\": [], \"free L7\": [], \"power L3\": [], \"power L4\": [], \"power L5\": [], \"power L6\": [], \"power L7\": []}"
+  },
+  {
+   "check": "a clean copy agrees",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "CK-K02: G1 header wa changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['wa'] (header ['3', '1', '2', '0', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header wb changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['wb'] (header ['3', '1', '1', '0.5', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header masks changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['masks'] (header ['3', '1', '1', '0', '17', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header id changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['masks', 'terms', 'wa', 'wb', 'id (file name)', 'file'] (header ['3', '7', '1', '0', '16', '1'], row {'L': 3, 'id': 7, 'wa': 0.5, 'wb': 0.16666666666666666, 'masks': None, 'terms': None, 'file': None})\"]"
+  },
+  {
+   "check": "a G-file without an inventory row is reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: no inventory row for id 1\"]"
+  },
+  {
+   "check": "an inventory row naming a missing G-file is reported",
+   "passed": true,
+   "detail": "[\"L3: inventory.json names L3/G3.txt, which does not exist\"]"
+  },
+  {
+   "check": "end to end: regress.py --loops 3 passes on copies of the frozen trees",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)",
+   "passed": true,
+   "detail": "[\"free L3: 1 G-files differ beyond the allowed rate lines\", \"free L3: 1 G-file headers of the new tree disagree with their inventory rows (L3/G1.txt: header and inventory row differ in ['wa'] (header ['3', '1', '2', '0', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'}))\"]"
+  },
+  {
+   "check": "end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2",
+   "passed": true,
+   "detail": "[\"free L3: 1 G-files differ beyond the allowed rate lines\"]"
+  }
+ ]
+}

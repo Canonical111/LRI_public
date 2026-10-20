@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,longtable,array,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{microtype}
+\makeatletter\def\input@path{{sections/}{sections/d2/}{sections/d3/}}
+\newcommand{\inputrows}[1]{\@@input #1 }\makeatother
+\graphicspath{{figures/}{sections/d2/}{sections/d3/}}
+\newcommand{\Ds}{\Delta_\sigma}
+\newcommand{\DE}{\Delta_\varepsilon}
+\newcommand{\eps}{\epsilon}
+\newcommand{\codeus}{\char95\allowbreak}% breakable underscore inside \code
+\newcommand{\code}[1]{{\ttfamily\let\_\codeus\def\{{\char123\relax}\def\}{\char125\relax}#1}}% tt braces in paths
+\input{numbers_d1}
+\IfFileExists{sections/d2/numbers_d2.tex}{\input{numbers_d2}}{}
+\IfFileExists{sections/d3/numbers_d3.tex}{\input{numbers_d3}}{}
+
+\title{Perturbative Hamiltonian truncation of the long-range Ising model\\[2pt]
+\large Finite-cutoff coefficients $C_2$ to $C_8$, window corrections, extrapolations in $d=1,2,3$, and how to reproduce them}
+\author{Companion note to the public repository, folder \texttt{HT\_Pert/}}
+\date{Draft}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{s01_summary}
+\input{s02_method}
+\input{s03_d1}
+\IfFileExists{sections/d2/sec_d2.tex}{\input{sec_d2}}{\section{Results in two dimensions}\label{d2:sec}(Contribution of HT2dPert pending.)}
+\IfFileExists{sections/d3/sec_d3.tex}{\input{sec_d3}}{\section{Results in three dimensions}\label{d3:sec}(Contribution of HT3dPert pending.)}
+\input{s06_checks}
+\input{s07_caveats}
+\input{s08_repro}
+\appendix
+\input{app_d2_eps4}
+\input{app_d2_eps5}
+\input{app_d2_legs}
+\input{sA_provenance}
+
+\begin{thebibliography}{9}
+\bibitem{Fisher:1972zz} M.~E.~Fisher, S.-k.~Ma and B.~G.~Nickel, \emph{Critical exponents for long-range interactions}, Phys.\ Rev.\ Lett.\ \textbf{29} (1972) 917.
+\bibitem{Sak:1973oqx} J.~Sak, \emph{Recursion relations and fixed points for ferromagnets with long-range interactions}, Phys.\ Rev.\ B \textbf{8} (1973) 281.
+\bibitem{Paulos:2015jfa} M.~F.~Paulos, S.~Rychkov, B.~C.~van~Rees and B.~Zan, \emph{Conformal invariance in the long-range Ising model}, Nucl.\ Phys.\ B \textbf{902} (2016) 246, arXiv:1509.00008.
+\bibitem{Hogervorst:2014rta} M.~Hogervorst, S.~Rychkov and B.~C.~van~Rees, \emph{Truncated conformal space approach in $d$ dimensions: A cheap alternative to lattice field theory?}, Phys.\ Rev.\ D \textbf{91} (2015) 025005, arXiv:1409.1581.
+\bibitem{Rychkov:2014eea} S.~Rychkov and L.~G.~Vitale, \emph{Hamiltonian truncation study of the $\phi^4$ theory in two dimensions}, Phys.\ Rev.\ D \textbf{91} (2015) 085011, arXiv:1412.3460.
+\bibitem{Elias-Miro:2020qwz} J.~Elias-Mir\'o and E.~Hardy, \emph{Exploring Hamiltonian truncation in $d=2+1$}, Phys.\ Rev.\ D \textbf{102} (2020) 065001, arXiv:2003.08405.
+\end{thebibliography}
+\end{document}

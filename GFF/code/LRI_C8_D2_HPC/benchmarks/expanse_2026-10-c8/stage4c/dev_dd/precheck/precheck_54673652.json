@@ -1,0 +1,91 @@
+{
+ "default": {
+  "bin/c8d2_decimal": {
+   "sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "final": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "final": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  }
+ },
+ "profiles": {
+  "bin/c8d2_gmp": {
+   "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "exact",
+    "diagnostic": false,
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   }
+  },
+  "bin/c8d2_gmp_dd": {
+   "sha256": "37cf09b7d29a9cc82b2280ba92e73ac7fd10ade618d87fb1a886e43a6233763c",
+   "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+     7,
+     8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd",
+    "diagnostic": false,
+    "numerics_params": {
+     "dd": {
+      "dd_ratio": "1e-20",
+      "routing": "cascade",
+      "cascade_low": "1e-23",
+      "range": 300,
+      "guard": "products",
+      "product_range": [
+       "2^-900",
+       "2^900"
+      ],
+      "exp": "dd-k-ln2-r64-taylor11-x6",
+      "sum": "compensated-b8",
+      "err": "double",
+      "development": false
+     }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+   }
+  }
+ },
+ "f1_tools": {
+  "bin/c8d2_gmp": {
+   "compiled": true,
+   "stderr": ""
+  },
+  "bin/c8d2_gmp_dd": {
+   "compiled": true,
+   "stderr": ""
+  }
+ }
+}

@@ -1,0 +1,73 @@
+job 570114 on <NODE> at 2026-10-05T08:18:52-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; sweep <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; work <SCRATCH>/c8d2/work/des5-5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5des5.570114.0
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+a1b6e5d2a8c089a51378bbe7b38e1d5b710c98d943353b509fdf36454a723692  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/cost_models/gmp_symmetry_amd_c8.json
+034b51ee10869524141fb950a082c11ae646b4a002b410251854aa39cd36ef32  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/design.py
+237dda88186c32695a1c2ed906a58af66957aff5f16e992ca7aac2e67b5e933e  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/production.py
+c21e561c3508d7e9a03d44828ed53666629df6c07603b68c4f16d2e7b4a09539  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/accounting.py
+d6ee4cbf1b2d75887daf026ae00a786513dd6e090be66b11e58ae36fa6f3747c  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/ledger.py
+c44ab0f457d12a253cf63742fc57c7073448a025bd0775181d8dd312c479ad71  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/seeds.py
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  <SCRATCH>/c8d2/pkg/5d7586e9f1ab/bin/c8d2_gmp
+81ee76a8664aa588d0c75135c707ba77dad8ccbe0640b1280ae69fc352442ba3  <SCRATCH>/c8d2/jobs/stage5/des5/des5_measure.py
+accounting sweep2-5d7586e9f1ab exit 0
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}
+accounting smk4-20261005 exit 0
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}
+accounting desc1-20261005 exit 0
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}
+accounting desc2-20261005 exit 0
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}
+J-SMK-4 lane eta_node 0.9146050173698389
+report (sweep eta) exit 0 after 8 s
+design report: pilot <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; |C8| = 46000; margin x1.5; eta_node 0.306 (tools/accounting.py (18.560 work core-h, 1 sacct records, complete))
+target rel  target SE    pred SE       core-h batches
+     0.001       46.0      32.63      11832.4       1
+    0.0005       23.0      22.61      17483.5       1
+   0.00025       11.5      11.31      69934.0       1
+  0.000135       6.21      6.083     228776.4       1
+note: no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum
+  free_L3            graphs     10 piloted     10 sd/rep 14.74 kurt None skew None max|z| None share None P8 None alpha None
+  free_L4            graphs     32 piloted     32 sd/rep 30.25 kurt None skew None max|z| None share None P8 None alpha None
+  free_L5            graphs    152 piloted    152 sd/rep 70.17 kurt None skew None max|z| None share None P8 None alpha None
+  free_L6            graphs    790 piloted    790 sd/rep 97.19 kurt None skew None max|z| None share None P8 None alpha None
+  free_L7            graphs   4882 piloted   4882 sd/rep 254.1 kurt None skew None max|z| None share None P8 None alpha None
+report (lane eta 0.9146050173698389) exit 0
+design report: pilot <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; |C8| = 46000; margin x1.5; eta_node 0.915 (--eta-node (test-only))
+target rel  target SE    pred SE       core-h batches
+     0.001       46.0      32.63       3963.0       1
+    0.0005       23.0      22.61       5855.7       1
+   0.00025       11.5      11.31      23422.8       1
+  0.000135       6.21      6.083      76623.4       1
+note: no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum
+  free_L3            graphs     10 piloted     10 sd/rep 14.74 kurt None skew None max|z| None share None P8 None alpha None
+freeze 1e-3 exit 0 after 5 s
+plan 1e-3 exit 0 after 307 s
+projected files: 21,810 (per-index task files 351, checkpoints 20,533, lane done markers and attempt logs 702, group files)
+{"target_rel": 0.001, "tasks": 5221600, "checkpoints": 20533, "indices": 351, "tasks_sqlite_bytes_total": 477376512, "task_files": 351, "task_files_bytes": 148229104, "manifest_bytes": 192750, "plan_wall_seconds": 307.0, "plan_peak_rss_bytes": 906559488, "max_index_wall_seconds": 5382.653578005346, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_1e-3
+freeze 5e-4 exit 0 after 5 s
+plan 5e-4 exit 0 after 497 s
+projected files: 23,005 (per-index task files 505, checkpoints 21,266, lane done markers and attempt logs 1,010, group files)
+{"target_rel": 0.0005, "tasks": 5365152, "checkpoints": 21266, "indices": 505, "tasks_sqlite_bytes_total": 492228608, "task_files": 505, "task_files_bytes": 153778844, "manifest_bytes": 264757, "plan_wall_seconds": 497.0, "plan_peak_rss_bytes": 904433664, "max_index_wall_seconds": 5385.270270494883, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_5e-4
+freeze 2.5e-4 exit 0 after 5 s
+plan 2.5e-4 exit 0 after 547 s
+projected files: 30,030 (per-index task files 1,976, checkpoints 23,878, lane done markers and attempt logs 3,952, group files)
+note: 1976 jobs exceed one array of 1000; slurm/submit.sh splits them into offset windows (C8_INDEX_OFFSET)
+{"target_rel": 0.00025, "tasks": 5892288, "checkpoints": 23878, "indices": 1976, "tasks_sqlite_bytes_total": 546541568, "task_files": 1976, "task_files_bytes": 179267454, "manifest_bytes": 952717, "plan_wall_seconds": 547.0, "plan_peak_rss_bytes": 958058496, "max_index_wall_seconds": 5399.718877974471, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_2.5e-4
+freeze 1.35e-4 exit 0 after 6 s
+plan 1.35e-4 exit 0 after 678 s
+projected files: 55,971 (per-index task files 6,424, checkpoints 36,475, lane done markers and attempt logs 12,848, group files)
+note: 6424 jobs exceed one array of 1000; slurm/submit.sh splits them into offset windows (C8_INDEX_OFFSET)
+{"target_rel": 0.000135, "tasks": 8545280, "checkpoints": 36475, "indices": 6424, "tasks_sqlite_bytes_total": 757788672, "task_files": 6424, "task_files_bytes": 276545136, "manifest_bytes": 3031715, "plan_wall_seconds": 678.0, "plan_peak_rss_bytes": 1402421248, "max_index_wall_seconds": 5400.473541783479, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_1.35e-4
+finished 2026-10-05T08:53:35-04:00, status 0

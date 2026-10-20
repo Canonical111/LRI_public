@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lri-spin-boson-hpc"
+version = "0.1.0"
+description = "Block-structured bosonic NRG with exact kept-space alpha tangents and restartable HPC workflows"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.11", "threadpoolctl>=3.1"]
+
+[project.optional-dependencies]
+validation = ["pytest>=7", "mpmath>=1.2"]
+
+[project.scripts]
+lri-spin = "lri_spin.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

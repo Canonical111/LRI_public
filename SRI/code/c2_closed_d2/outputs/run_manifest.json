@@ -1,0 +1,180 @@
+{
+  "scope": "Fresh C2-only calculation; saved reference comparisons are explicitly separate.",
+  "started_utc": "2026-10-08T01:36:22.942611+00:00",
+  "status": "complete",
+  "config": {
+    "working_dps": 80,
+    "independent_working_dps": 80,
+    "half_interval_terms": 400,
+    "direct_series_terms": 20000,
+    "convergence_terms": [
+      24,
+      40,
+      64,
+      96,
+      144,
+      224,
+      320,
+      400
+    ],
+    "reference_policy": "Saved outputs are comparison evidence only, never calculation inputs.",
+    "scope": "Final two-dimensional C2 formula, required contact/period reductions, and exact/local validation only."
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "code_sha256": {
+    "analytic_bridge_checks.py": "5786d5bc0d143e61bf32792c601c51a3ca66d54eb675fc8c307a1bf0f4411d0e",
+    "assemble_outputs.py": "400edfd4d2fea180335c55bae1972d78d938a4ab4242a88b60fb7deed507ed28",
+    "build_note.py": "b157cc2669a4d89a04938903fb1186956983ae12b74e3eb6054760cd64d9f8e2",
+    "certificate_boundaries.py": "4bf5fd8e8b566aff7ea143de8ed67dcc2e8f18ea1db00f2402c090931607fd1f",
+    "convergence.py": "83f5eedb89cd644a067feec9a3f1326a27d2d7c0119c6edbec215776c78a95d2",
+    "independent_c2_checks.py": "9ded8a6ad3216e6625b1fb7f32740443030d9d01909d9631b6db4bd49b00317f",
+    "lri_C2_renormalization_checks.py": "2ddd36c4c730c4fbe742fc48cbd13ba6a1b50f2279bd99545b62d438a73ff177",
+    "lri_C2_three_4F3.py": "08541f6ca1c16993655d40be8c5ccee71999a5f3e9e9f9d8d32b493c03fdd4de",
+    "reproduce.py": "f921067a948acf3731af201ec07b0e813d74370ddac6ecf231fc4b262c8be252",
+    "source_contact_checks.py": "3d6a5ce7e28350058921dd03280fd2e79a8bc73fe0a07d9bd75c617e5c93611c",
+    "verify_package.py": "317e531bc46959eaf09c8f5534c5f69cf6875b86bc7d35153a8d321e293057a7"
+  },
+  "steps": [
+    {
+      "name": "three_4f3",
+      "arguments": [
+        "lri_C2_three_4F3.py",
+        "--dps",
+        "80",
+        "--terms",
+        "400",
+        "--check",
+        "--symbolic",
+        "--json",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/outputs/raw/three_4f3_80dps.json"
+      ],
+      "started_utc": "2026-10-08T01:36:22.946423+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 3.390737882999929,
+      "finished_utc": "2026-10-08T01:36:26.337391+00:00"
+    },
+    {
+      "name": "certificate_boundaries",
+      "arguments": [
+        "certificate_boundaries.py"
+      ],
+      "started_utc": "2026-10-08T01:36:26.337874+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.7422871939998004,
+      "finished_utc": "2026-10-08T01:36:27.080769+00:00"
+    },
+    {
+      "name": "analytic_bridges",
+      "arguments": [
+        "analytic_bridge_checks.py",
+        "--dps",
+        "50",
+        "--json",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/outputs/raw/analytic_bridges.json"
+      ],
+      "started_utc": "2026-10-08T01:36:27.081236+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.8445885609999095,
+      "finished_utc": "2026-10-08T01:36:27.926254+00:00"
+    },
+    {
+      "name": "renormalization",
+      "arguments": [
+        "lri_C2_renormalization_checks.py",
+        "--dps",
+        "80",
+        "--symbolic",
+        "--json",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/outputs/raw/renormalization_80dps.json"
+      ],
+      "started_utc": "2026-10-08T01:36:27.927032+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.9269166510002833,
+      "finished_utc": "2026-10-08T01:36:28.854783+00:00"
+    },
+    {
+      "name": "source_contacts",
+      "arguments": [
+        "source_contact_checks.py",
+        "--dps",
+        "80",
+        "--json",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/outputs/raw/source_contacts_80dps.json"
+      ],
+      "started_utc": "2026-10-08T01:36:28.855392+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 6.006540615999256,
+      "finished_utc": "2026-10-08T01:36:34.862134+00:00"
+    },
+    {
+      "name": "independent",
+      "arguments": [
+        "independent_c2_checks.py",
+        "--dps",
+        "80",
+        "--tail-terms",
+        "20000",
+        "--output",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/outputs/raw/independent_c2_80dps.json"
+      ],
+      "started_utc": "2026-10-08T01:36:34.862867+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 19.523747227999593,
+      "finished_utc": "2026-10-08T01:36:54.386990+00:00"
+    },
+    {
+      "name": "convergence",
+      "arguments": [
+        "convergence.py",
+        "--dps",
+        "80",
+        "--terms",
+        "24",
+        "40",
+        "64",
+        "96",
+        "144",
+        "224",
+        "320",
+        "400"
+      ],
+      "started_utc": "2026-10-08T01:36:54.387889+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 7.1648751610000545,
+      "finished_utc": "2026-10-08T01:37:01.554622+00:00"
+    },
+    {
+      "name": "assemble",
+      "arguments": [
+        "assemble_outputs.py",
+        "--config",
+        "/workspace/scratch/b0b94e8a513c/c2_work/isolated_eight_stage_reproduction/inputs/calculation.json"
+      ],
+      "started_utc": "2026-10-08T01:37:01.555204+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.08689552700070635,
+      "finished_utc": "2026-10-08T01:37:01.642866+00:00"
+    }
+  ],
+  "finished_utc": "2026-10-08T01:37:01.643212+00:00",
+  "result_sha256": {
+    "outputs/raw/analytic_bridges.json": "10f1583f84db1917ff2b9842694df9a6fe356cd864fcf6e21cd6f30681673b53",
+    "outputs/raw/certificate_boundaries.json": "3424b3df2416fbcaec1bcdf962731a0d78c98b0ada298e75ba13f2484d276a37",
+    "outputs/raw/convergence.json": "791e2057f99dc812bdc7a9e1bc5f6f7785b9579a1382b3c7a69bead3d12e7fa0",
+    "outputs/raw/independent_c2_80dps.json": "40e0152f811beef63a0765c99e2bad2648f28bf19d0388d180128528fe4de06d",
+    "outputs/raw/renormalization_80dps.json": "0ae9fa28c5e992f069af8401846e154ffe9c12adbfd676f66194ce786fa2a331",
+    "outputs/raw/source_contacts_80dps.json": "e351dfaab0a3e50adf684577c6adf925dc087e02559b4bf798c98601139d5fae",
+    "outputs/raw/three_4f3_80dps.json": "de48ac584163e7ed133173f1e81f5d9b2ed894b69a5fe6ae9642d7e8e897a5cb"
+  }
+}

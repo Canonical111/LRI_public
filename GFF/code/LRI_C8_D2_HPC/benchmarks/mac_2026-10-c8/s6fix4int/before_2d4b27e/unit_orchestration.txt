@@ -1,0 +1,42 @@
+FAIL route_b_records: AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'F1_coverage': {'free': {'binary128_accepted': 29284, 'mp_promoted': 3541}, 'power': {'binary128_accepted': 50625, 'mp_promoted': 12568}}, 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True, 'gm
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4478, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 3948, in <lambda>
+    ('inputs',lambda c:test_inputs_refusals(c.E)),('exe',lambda c:test_executable_identity(c.E)),('route_b_records',lambda c:test_route_b_records(c.E)),
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 629, in test_route_b_records
+    try:p.route_b(meta(gates=gs),**kw);raise AssertionError(f'route_b accepted the gate entry {gs}')
+AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'F1_coverage': {'free': {'binary128_accepted': 29284, 'mp_promoted': 3541}, 'power': {'binary128_accepted': 50625, 'mp_promoted': 12568}}, 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True, 'gmp_library': {'exact': '1111111111111111111111111111111111111111111111111111111111111111', 'profile': '1111111111111111111111111111111111111111111111111111111111111111', 'f1_baseline_reused': False}}]
+
+FAIL ledger: AssertionError: []
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4478, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 3956, in <lambda>
+    ('ledger',lambda c:test_ledger_accounting(c.E)),('rates',lambda c:test_rates(c.E)),('staging',lambda c:test_staging(c.E)),('nets',lambda c:test_nets(c.E)),
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 2277, in test_ledger_accounting
+    assert r['complete']is False and r['eta_node']is None and any('not a valid checkpoint'in w and f0.name in w and 'W10'in w for w in r['incomplete'])and refused_by_design(),r['incomplete']
+AssertionError: []
+
+PASS Y2_live_team_check_verified_smaller_refused_64_unverified_unavailable
+FAIL w17_doc_env: AssertionError: (14, ['README.md:222: $C8_PACKAGE expanded without a guard (: "${C8_PACKAGE:?}")', 'README.md:223: $C8_SEEDS expanded before the site environment is sourced', 'README.md:223: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'README.md:227: $C8_SEEDS expanded before the site environment is sourced', 'README.md:227: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'README.md:228: $C8_PACKAGE expanded without a guard (: "${C8_PACKAGE:?}")', 'README.md:229: $C8_SEEDS expanded before 
+ceback (most recent call last):
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4478, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4053, in <lambda>
+    TESTS+=(('w17_doc_env',lambda c:test_doc_site_env(c.E)),)  # W16, W17 (fix round 4, integration)
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 3658, in test_doc_site_env
+    assert blocks>=10 and not bad,(blocks,bad)
+AssertionError: (14, ['README.md:222: $C8_PACKAGE expanded without a guard (: "${C8_PACKAGE:?}")', 'README.md:223: $C8_SEEDS expanded before the site environment is sourced', 'README.md:223: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'README.md:227: $C8_SEEDS expanded before the site environment is sourced', 'README.md:227: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'README.md:228: $C8_PACKAGE expanded without a guard (: "${C8_PACKAGE:?}")', 'README.md:229: $C8_SEEDS expanded before the site environment is sourced', 'README.md:229: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/DESIGN.md:218: $C8_SEEDS expanded before the site environment is sourced', 'docs/DESIGN.md:218: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/DESIGN.md:274: $C8_SEEDS expanded before the site environment is sourced', 'docs/DESIGN.md:274: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/DESIGN.md:275: $C8_SEEDS expanded before the site environment is sourced', 'docs/DESIGN.md:275: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/DESIGN.md:361: $C8_SEEDS expanded before the site environment is sourced', 'docs/DESIGN.md:361: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/DESIGN.md:361: a production batch planned outside a plan job (slurm/plan.sh)', 'docs/DESIGN.md:454: $C8_SEEDS expanded before the site environment is sourced', 'docs/DESIGN.md:454: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/HPC.md:503: $C8_DATA expanded before the site environment is sourced', 'docs/HPC.md:503: $C8_DATA expanded without a guard (: "${C8_DATA:?}")', 'docs/HPC.md:504: $C8_DATA expanded before the site environment is sourced', 'docs/HPC.md:504: $C8_DATA expanded without a guard (: "${C8_DATA:?}")', 'docs/HPC.md:505: $C8_DATA expanded before the site environment is sourced', 'docs/HPC.md:505: $C8_DATA expanded without a guard (: "${C8_DATA:?}")', 'docs/HPC.md:600: $C8_SEEDS expanded before the site environment is sourced', 'docs/HPC.md:600: $C8_SEEDS expanded without a guard (: "${C8_SEEDS:?}")', 'docs/HPC.md:622: $C8_DATA expanded before the site environment is sourced', 'docs/HPC.md:622: $C8_DATA expanded without a guard (: "${C8_DATA:?}")'])
+
+FAIL w8_gmp_binding: AssertionError: calibrate.measure accepted checkpoints of another libgmp
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4478, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4448, in <lambda>
+    TESTS+=(('w7_loader',lambda c:test_loader_overrides(c.E)),('w8_gmp_binding',lambda c:test_gate_gmp_binding(c.E)),('w9_stream',lambda c:test_stream_tasks(c.E)),
+  File "<TMP>/scratchpad/before_2d4b27e/tests/unit_orchestration.py", line 4212, in test_gate_gmp_binding
+    try:E.M.cal.measure(d);raise AssertionError('calibrate.measure accepted checkpoints of another libgmp')
+AssertionError: calibrate.measure accepted checkpoints of another libgmp
+
+{"status": "failed", "requested": ["route_b_records", "ledger", "omp_team", "w17_doc_env", "w8_gmp_binding"], "executed": 5, "tests": 1, "failed": ["route_b_records", "ledger", "w17_doc_env", "w8_gmp_binding"]}

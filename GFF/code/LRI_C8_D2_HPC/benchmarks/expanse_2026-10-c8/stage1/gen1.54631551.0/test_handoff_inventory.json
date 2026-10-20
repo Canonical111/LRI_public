@@ -1,0 +1,38 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-5 test_handoff_inventory",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "writes the HANDOFF when everything is green",
+   "passed": true,
+   "detail": "{\n \"written\": \"/scratch/<USER>/job_54631551/c8d2_handoff__b4i0tvh/HANDOFF_inventory8_d2.json\",\n \"manifest_sha256\": \"da0ddb723a9a84ab316c6ee5da97ece1c9e91380a0a69e420772100f91920ea6\",\n \"manifest_md5\": \"e081c910972228a0bd1842efc488d45a\"\n}\n"
+  },
+  {
+   "check": "refuses to overwrite an existing HANDOFF",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "refuses when an A-INV record is red",
+   "passed": true,
+   "detail": "refusing to write the HANDOFF:\n  A-INV-2 regress is not green (/scratch/<USER>/job_54631551/c8d2_handoff__b4i0tvh/evidence/gen1.1.0/regress_L3_L7.json)\n"
+  },
+  {
+   "check": "refuses without the C1 acknowledgment",
+   "passed": true,
+   "detail": "refusing to write the HANDOFF:\n  DECISIONS.md does not log C63d's acknowledgment of the d pipeline (C1)\n"
+  },
+  {
+   "check": "refuses when a copy does not verify",
+   "passed": true,
+   "detail": "refusing to write the HANDOFF:\n  copy /scratch/<USER>/job_54631551/c8d2_handoff__b4i0tvh/copy_bad does not verify against the pin\n"
+  },
+  {
+   "check": "refuses when a remote copy record is not a pass",
+   "passed": true,
+   "detail": "refusing to write the HANDOFF:\n  copy record /mnt/beegfs/elsewhere/inventory8_d2=/scratch/<USER>/job_54631551/c8d2_handoff__b4i0tvh/verify_remote_bad.json does not show a pass for that path and pin\n"
+  }
+ ]
+}

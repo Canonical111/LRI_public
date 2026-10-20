@@ -1,0 +1,29 @@
+{
+ "key": "numerics-end-to-end",
+ "date": "2026-10-03",
+ "inputs_md5": {
+  "general_d.tex": "see md5 below (read-only)",
+  "K_d_fragment.tex": "b2467347be00a43dfe00c37a4f102ba0 per STATUS.md",
+  "L,Z,foundation codes (symmetry copy identical)": "L_general 805c42c1, Z_general 6d2d7c59, hypsums 9c9a4543",
+  "rblocks.py": "6652a7dd5bf374fddb279690b11b7b7d"
+ },
+ "jobs": {"569478": "samples dps 60 (dump_samples.py, sharedq, 4 min)", "569482": "three-node tau-jets d=1.5,2.5,3 (kjet3.py, rblocks.tR3, r=0.08, N=48, K=30, M=400, dps 72; 30 min)"},
+ "C5_end_to_end": {
+  "d=1": {"value": "-731.139476624539825853869126582527231", "note": "-731.139476624539825853869126582527", "rel": "3.2e-34", "inputs": "gdr:C5reduced with code samples; K by gdk:Kr3 with r3 from five-node jets; P5(1) from fx:eq:Px at 60 digits (note's 30-digit P5(1) gives 9.9e-31, truncation)"},
+  "d=2": {"value": "-38.8336458962253605529369824675329232", "note": "-38.83364589622536055293698 (all 25 printed digits; rel 6.4e-26 = truncation)", "vs gc:C5twoClosed evaluated here": "2.0e-50 (jet r3); 1.7e-34 (gdk special r3(2)); 3.6e-31 (table r3)"},
+  "d=3": {"value": "-5.85035142075132722921794423049774430011099732 (three-node K)", "note": "-5.8503514207513272292179 (all 23 printed digits; truncation)", "vs LRI_C5_d3/c5_value.json": "7.8e-46 (five-node jet K), 5.2e-45 (three-node K), 2.2e-33 (special r3(3), 30 digits), 1.7e-51 (430-digit K3)"}
+ },
+ "masters_vs_note": {"d=1": "P4,L,Q,Z <= 1.4e-60", "d=2": "<= 1.6e-60", "d=3": "L 4.5e-53, Z 7.5e-51 (43-digit refs), P4 6e-34, Q 7e-34 (note's 33 digits)"},
+ "noninteger_refs": {
+  "P4,L,Q,Z (printed gdr formulas)": "<= 4.9e-50 at d=0.8,1.25,1.5,2.5,2.75; block <= 4.0e-50",
+  "K via gdk:Kr3, r3 from five-node jets (own Cauchy)": {"0.8": "2.2e-46", "1.25": "2.7e-41", "1.5": "4.1e-45", "2.5": "5.3e-44", "2.75": "5.8e-44"},
+  "K via gdk:Kr3, r3 from three-node rule (new)": {"1.5": "3.8e-45", "2.5": "5.0e-44", "3 (vs K3)": "8.1e-43"},
+  "K via gdk:Kr3, printed table r3": {"0.8": "1.3e-27", "1.25": "4.4e-29", "1.5": "4.4e-30", "2.5": "6.8e-29", "2.75": "1.8e-29"}
+ },
+ "other_checks": [
+  "printed Horn definitions (kappa, rho, h_u, s_u) evaluated independently: X_T, X_0, X_1/2 = code to <= 1.8e-40 at d=1,2,3; printed T3 at d=3 to 2.8e-31; T3 = Dixon (d=1) and Dixon^2 (d=2) incl. two b-derivatives to 4e-62",
+  "gdr:special d=1,2,3 claims (A,B relations, X0=Xh at d=1, M3=0 at d=2, D_L(1), L_1, L_2 lines, c0hat Gamma form at d=3 with two derivatives, zero-mode part, Z_3 closed form, -1332.48) all reproduced",
+  "gdk: Bell s_k vs Taylor of gdk:Sclosed 1.5e-61; r_-1=1, r0=s0, r1=s1, r2=s2+3U/2 to <=1e-34 (five-node) and <=1e-42 (three-node); gdk:E2 1e-37..6e-49; gdk:Ktau from stored F points reproduces the five-node column of the deviation table exactly; gdk:Delta Laurent to aliasing floor",
+  "gdk tables: K column and r3 column correctly rounded vs 100-digit MB; spectral-reference column reproduced"
+ ]
+}

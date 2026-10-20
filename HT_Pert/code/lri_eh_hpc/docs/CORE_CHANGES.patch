@@ -1,0 +1,101 @@
+--- original/lri_hpc/basis.py
++++ lri_eh/_core/basis.py
+@@ -140,9 +140,10 @@
+     return Edges(ptr,np.empty(ne,dtype=itype),np.empty(ne,dtype=mtype),np.empty(ne,dtype=np.uint8))
+ 
+ class RankedBasis:
+-    def __init__(self,cutoff:int,pmax:int,qmax:int,comm=None,memory_limit_gib=None,basis_cache=None):
++    def __init__(self,cutoff:int,pmax:int,qmax:int,comm=None,memory_limit_gib=None,basis_cache=None,compact_single=False):
+         if cutoff<2 or cutoff%2:raise ValueError('cutoff must be even and >=2')
+         if not 6<=pmax<=255 or not 0<=qmax<=pmax:raise ValueError('invalid particle caps')
++        if compact_single and (comm is not None or basis_cache is not None):raise ValueError('Compact memory estimate is for uncached single-process correction work only')
+         self.cutoff=cutoff;self.pmax=pmax;self.qmax=qmax
+         self.comm=comm;self.rank=0 if comm is None else comm.Get_rank()
+         self.size=1 if comm is None else comm.Get_size()
+@@ -166,12 +167,18 @@
+         self.global_dim=int(Z[pmax,qmax,4*cutoff])
+         self.begin=self.global_dim*self.rank//self.size;self.end=self.global_dim*(self.rank+1)//self.size
+         self.dim=self.end-self.begin
+-        if memory_limit_gib and 800*self.dim+table_bytes>memory_limit_gib*2**30:
++        if memory_limit_gib and (512 if compact_single else 800)*self.dim+table_bytes>memory_limit_gib*2**30:
+             raise MemoryError(f'{self.global_dim:,} states; vector working-set estimate alone exceeds the per-rank budget')
+         self.P,self.N,cc,bc=row_metadata(self.begin,self.end,G,Z,cutoff,pmax,qmax)
+         # Estimate includes conservative 100 float64 vectors, two edge orientations,
+         # metadata, and temporary indices. Halo communication can add more.
+-        self.estimated_working_bytes=int(100*8*self.dim+2*16*(int(cc.sum())+int(bc.sum()))+table_bytes)
++        if compact_single:
++            indexbytes=4 if self.global_dim<=np.iinfo(np.int32).max else 8
++            modebytes=2 if cutoff<=65536 else 4
++            edgebytes=16*(self.dim+1)+(indexbytes+modebytes+1)*(int(cc.sum())+int(bc.sum()))
++            self.estimated_working_bytes=int(64*8*self.dim+48*self.dim+edgebytes+table_bytes+512*2**20)
++        else:
++            self.estimated_working_bytes=int(100*8*self.dim+2*16*(int(cc.sum())+int(bc.sum()))+table_bytes)
+         if memory_limit_gib and self.estimated_working_bytes>memory_limit_gib*2**30:
+             raise MemoryError(f'Conservative per-rank estimate {self.estimated_working_bytes/2**30:.2f} GiB exceeds budget')
+         self.creation=make_edges(cc,self.global_dim,cutoff)
+--- original/lri_hpc/operators.py
++++ lri_eh/_core/operators.py
+@@ -2,7 +2,7 @@
+ import math,time
+ import numpy as np
+ from .basis import RankedBasis
+-from .kernels import ladder,dot_blocks,mask_vertex
++from .kernels import ladder,dot_blocks,mask_vertex,vertex_start,add_divided
+ from .parallel import Halo,global_sum
+ 
+ def square_root_jets(nmodes:int,degree:int)->np.ndarray:
+@@ -19,8 +19,8 @@
+     return out
+ 
+ class Space(RankedBasis):
+-    def __init__(self,cutoff,pmax,qmax,degree,comm=None,memory_limit_gib=None,basis_cache=None):
+-        super().__init__(cutoff,pmax,qmax,comm,memory_limit_gib,basis_cache)
++    def __init__(self,cutoff,pmax,qmax,degree,comm=None,memory_limit_gib=None,basis_cache=None,compact_single=False):
++        super().__init__(cutoff,pmax,qmax,comm,memory_limit_gib,basis_cache,compact_single)
+         u=square_root_jets(cutoff,degree)
+         self.weights=np.ascontiguousarray(u.T[:,None,:]*np.sqrt(np.arange(pmax+1,dtype=np.float64))[None,:,None])
+         self.haloC=Halo(self,self.creation);self.haloB=Halo(self,self.annihilation)
+@@ -61,16 +61,16 @@
+         opposite=1-parity if parity>=0 else -1
+         b1=self.linear(psi,degree,parity=parity)
+         c1=self.linear(psi,degree,True,parity=parity)
+-        m=self.linear(c1+2*b1,degree,True,parity=opposite)
+-        v=c1/12+b1/3
++        v=vertex_start(c1,b1)
++        m=self.linear(c1,degree,True,parity=opposite)
+         del c1
+         b2=self.linear(b1,degree,parity=opposite);del b1
+-        m+=b2
+-        v=self.linear(v,degree,True,parity=opposite);v+=b2/2
++        add_divided(m,b2,1.)
++        v=self.linear(v,degree,True,parity=opposite);add_divided(v,b2,2.)
+         b3=self.linear(b2,degree,parity=parity);del b2
+-        v=self.linear(v,degree,True,parity=parity);v+=b3/3
++        v=self.linear(v,degree,True,parity=parity);add_divided(v,b3,3.)
+         b4=self.linear(b3,degree,parity=opposite);del b3
+-        v=self.linear(v,degree,True,parity=opposite);v+=b4/12;del b4
++        v=self.linear(v,degree,True,parity=opposite);add_divided(v,b4,12.);del b4
+         mask_vertex(m,v,self.N)
+         self.timings['vertices']+=time.perf_counter()-t0
+         return m,v
+--- original/lri_hpc/kernels.py
++++ lri_eh/_core/kernels.py
+@@ -50,3 +50,18 @@
+         if N[i]%2==0 and P[i]%2==p%2 and den!=0.:
+             psi[i,k]=val/den
+         else:psi[i,k]=0.
++
++@njit(cache=True,parallel=True,fastmath=False)
++def vertex_start(c1,b1):
++    """Fuse two linear combinations, using c1 as scratch after V is formed."""
++    v=np.empty_like(c1)
++    for i in prange(c1.shape[0]):
++        for k in range(c1.shape[1]):
++            v[i,k]=c1[i,k]/12+b1[i,k]/3
++            c1[i,k]+=2*b1[i,k]
++    return v
++
++@njit(cache=True,parallel=True,fastmath=False)
++def add_divided(dst,src,den):
++    for i in prange(dst.shape[0]):
++        for k in range(dst.shape[1]):dst[i,k]+=src[i,k]/den

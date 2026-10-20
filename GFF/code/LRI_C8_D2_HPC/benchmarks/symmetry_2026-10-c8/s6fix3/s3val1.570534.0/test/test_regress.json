@@ -1,0 +1,493 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-2 comparison logic (gen/test_regress.py)",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "identical files",
+   "passed": true,
+   "detail": "{\"verdict\": \"identical\", \"info\": {}, \"want\": \"identical\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: legacy rate values are rate-only",
+   "passed": true,
+   "detail": "{\"verdict\": \"rate_only\", \"info\": {\"rate_entries_differing\": 1, \"whitespace_only\": false}, \"want\": \"rate_only\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: rate-only counts the differing entries",
+   "passed": true,
+   "detail": "{\"rate_entries_differing\": 1, \"whitespace_only\": false}"
+  },
+  {
+   "check": "free L3: a rate line differing only in its trailing space is rate-only",
+   "passed": true,
+   "detail": "{\"verdict\": \"rate_only\", \"info\": {\"rate_entries_differing\": 0, \"whitespace_only\": true}, \"want\": \"rate_only\", \"needle\": null}"
+  },
+  {
+   "check": "free L3: ... and counted as whitespace-only",
+   "passed": true,
+   "detail": "{\"rate_entries_differing\": 0, \"whitespace_only\": true}"
+  },
+  {
+   "check": "CK-K02: only wa changed (identity permutation) is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: only wb changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: wa changed below binary64 resolution is refused (exact header text)",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: wa and a rate value changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: a rate table one entry short is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 63 entries for 2^E=64)\"]}, \"want\": \"other\", \"needle\": \"rate table of 63\"}"
+  },
+  {
+   "check": "CK-K02: a rate table one entry long is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 65 entries for 2^E=64)\"]}, \"want\": \"other\", \"needle\": \"rate table of 65\"}"
+  },
+  {
+   "check": "a changed 2^E line is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (2^E line '65' for E=6)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a changed id is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header counts or ids\"]}, \"want\": \"other\", \"needle\": \"header counts or ids\"}"
+  },
+  {
+   "check": "a mask reordering under the recorded identity permutation is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask order\", \"term values\"]}, \"want\": \"other\", \"needle\": \"mask order\"}"
+  },
+  {
+   "check": "a mask reordering under a recorded automorphism (free L3 G0) is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask order\", \"term values\"]}, \"want\": \"other\", \"needle\": \"mask order\"}"
+  },
+  {
+   "check": "a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": \"edge_permutation\"}"
+  },
+  {
+   "check": "a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after inverse edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": \"edge_permutation\"}"
+  },
+  {
+   "check": "the relabelled control really differs in masks and terms",
+   "passed": true,
+   "detail": "[\"mask values\", \"term values\", \"rate line\"]"
+  },
+  {
+   "check": "the relabelling with the rate values kept is accepted too",
+   "passed": true,
+   "detail": "{\"verdict\": \"relabelled\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"], \"proof\": \"equal after edge_permutation of legacy map old=24\"}, \"want\": \"relabelled\", \"needle\": null}"
+  },
+  {
+   "check": "CK-K02: relabelled with wa changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with wb changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header weights\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header weights\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with the id changed is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"header counts or ids\", \"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": \"header counts or ids\"}"
+  },
+  {
+   "check": "CK-K02: relabelled with a rate table one entry short is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (rate table of 255 entries for 2^E=256)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "relabelled with a changed 2^E line is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (2^E line '512' for E=8)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a relabelling by a permutation that is not the recorded one is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask values\", \"term values\", \"rate line\"]}, \"want\": \"other\", \"needle\": null}"
+  },
+  {
+   "check": "a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"term order\"]}, \"want\": \"other\", \"needle\": \"term order\"}"
+  },
+  {
+   "check": "a mask value no permutation explains is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"mask values\"]}, \"want\": \"other\", \"needle\": \"mask values\"}"
+  },
+  {
+   "check": "power L3: a rate change is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"rate line\"]}, \"want\": \"other\", \"needle\": \"rate line\"}"
+  },
+  {
+   "check": "free L7: a rate change is refused (parity rule)",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"rate line\"]}, \"want\": \"other\", \"needle\": \"rate line\"}"
+  },
+  {
+   "check": "a malformed file is classified, not raised",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (bad header)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "a file without its final newline is refused",
+   "passed": true,
+   "detail": "{\"verdict\": \"other\", \"info\": {\"parts\": [\"structure (no final newline)\"]}, \"want\": \"other\", \"needle\": \"structure\"}"
+  },
+  {
+   "check": "the frozen trees: every G-file header agrees with its inventory row",
+   "passed": true,
+   "detail": "{\"free L3\": [], \"free L4\": [], \"free L5\": [], \"free L6\": [], \"free L7\": [], \"power L3\": [], \"power L4\": [], \"power L5\": [], \"power L6\": [], \"power L7\": []}"
+  },
+  {
+   "check": "a clean copy agrees",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "CK-K02: G1 header wa changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['wa'] (header ['3', '1', '2', '0', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header wb changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['wb'] (header ['3', '1', '1', '0.5', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header masks changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['masks'] (header ['3', '1', '1', '0', '17', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'})\"]"
+  },
+  {
+   "check": "CK-K02: G1 header id changed, its inventory row kept: reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: header and inventory row differ in ['masks', 'terms', 'wa', 'wb', 'id (file name)', 'file'] (header ['3', '7', '1', '0', '16', '1'], row {'L': 3, 'id': 7, 'wa': 0.5, 'wb': 0.16666666666666666, 'masks': None, 'terms': None, 'file': None})\"]"
+  },
+  {
+   "check": "a G-file without an inventory row is reported",
+   "passed": true,
+   "detail": "[\"L3/G1.txt: no inventory row for id 1\"]"
+  },
+  {
+   "check": "an inventory row naming a missing G-file is reported",
+   "passed": true,
+   "detail": "[\"L3: inventory.json names L3/G3.txt, which does not exist\"]"
+  },
+  {
+   "check": "end to end: regress.py --loops 3 passes on copies of the frozen trees",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "end to end: every builder gets OMP_NUM_THREADS and OMP_DYNAMIC=FALSE and no inherited OpenMP control",
+   "passed": true,
+   "detail": "{\"rc\": 0, \"seen\": [{\"sector\": \"free\", \"L\": 3, \"env\": {\"OMP_NUM_THREADS\": \"1\", \"OMP_DYNAMIC\": \"FALSE\"}}, {\"sector\": \"power\", \"L\": 3, \"env\": {\"OMP_NUM_THREADS\": \"1\", \"OMP_DYNAMIC\": \"FALSE\"}}, {\"sector\": \"free\", \"L\": 3, \"env\": {\"OMP_NUM_THREADS\": \"2\", \"OMP_DYNAMIC\": \"FALSE\"}}, {\"sector\": \"power\", \"L\": 3, \"env\": {\"OMP_NUM_THREADS\": \"2\", \"OMP_DYNAMIC\": \"FALSE\"}}]}"
+  },
+  {
+   "check": "builder_env (also gen/gates.py check_edge_forests): only PATH, OMP_NUM_THREADS=8 and OMP_DYNAMIC=FALSE",
+   "passed": true,
+   "detail": "{\"PATH\": \"/bin\", \"OMP_NUM_THREADS\": \"8\", \"OMP_DYNAMIC\": \"FALSE\"}"
+  },
+  {
+   "check": "gen/gates.py runs check_edge_forests in builder_env",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the generator job scripts and gen/run_l8.sh unset inherited OpenMP controls before any builder",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)",
+   "passed": true,
+   "detail": "[\"free L3: 1 G-files differ beyond the allowed rate lines\", \"free L3: 1 G-file headers of the new tree disagree with their inventory rows (L3/G1.txt: header and inventory row differ in ['wa'] (header ['3', '1', '2', '0', '16', '1'], row {'L': 3, 'id': 1, 'wa': 1, 'wb': 0, 'masks': 16, 'terms': 1, 'file': 'L3/G1.txt'}))\"]"
+  },
+  {
+   "check": "end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2",
+   "passed": true,
+   "detail": "[\"free L3: 1 G-files differ beyond the allowed rate lines\"]"
+  },
+  {
+   "check": "end to end: the --loops 3 run records partial coverage (no H1 evidence)",
+   "passed": true,
+   "detail": "{\"coverage\": {\"loops_L3_L7\": false, \"sectors\": [\"free\", \"power\"], \"thread_identity\": true, \"h1\": false}, \"h1\": [\"loops [3]: H1 needs every loop 3..7\", \"builds: 4 successful of 4 recorded, 20 required (every thread count, sector and loop)\", \"sectors: ['free_L4', 'free_L5', 'free_L6', 'free_L7', 'power_L4', 'power_L5', 'power_L6', 'power_L7'] missing or extra\", \"controls: ['side_files_free_eq_power_L4', 'side_files_free_eq_power_L5', 'side_files_free_eq_power_L6', 'side_files_free_eq_power_L7', 'side_file_L7_eq_c8d1_L7_inventory'] not true\"]}"
+  },
+  {
+   "check": "regress.py refuses '--loops 7-3' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --loops '7-3': a reversed range selects no loop\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--loops 3,3' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --loops '3,3': a loop is named twice\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--loops 8' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --loops '8': loops [8] have no frozen payload (the regression covers L3..L7)\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--loops ' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --loops '': not a comma-separated list of integers\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--threads ' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --threads '': not a comma-separated list of integers\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--threads 0,8' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --threads '0,8': thread counts are positive\\n\", \"work\": false}"
+  },
+  {
+   "check": "regress.py refuses '--threads 8,8' before building",
+   "passed": true,
+   "detail": "{\"rc\": 2, \"stderr\": \"usage: regress.py [-h] --classes CLASSES [--threads THREADS] [--loops LOOPS]\\n                  [--bin BIN] [--work WORK] [--explain] [--output OUTPUT]\\nregress.py: error: --threads '8,8': a thread count is named twice\\n\", \"work\": false}"
+  },
+  {
+   "check": "loops_arg('3-7') = [3, 4, 5, 6, 7]",
+   "passed": true,
+   "detail": "[3, 4, 5, 6, 7]"
+  },
+  {
+   "check": "loops_arg('3') = [3]",
+   "passed": true,
+   "detail": "[3]"
+  },
+  {
+   "check": "loops_arg('5,3') = [5, 3]",
+   "passed": true,
+   "detail": "[5, 3]"
+  },
+  {
+   "check": "loops_arg('7-7') = [7]",
+   "passed": true,
+   "detail": "[7]"
+  },
+  {
+   "check": "loops_arg('7-3') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('3,3') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('2') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('8') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('2-4') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('3-') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('x') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "loops_arg('3,,4') is refused (empty, reversed, repeated or out of 3..7)",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "threads_arg('1,8') -> [1, 8]",
+   "passed": true,
+   "detail": "[1, 8]"
+  },
+  {
+   "check": "threads_arg('1') -> [1]",
+   "passed": true,
+   "detail": "[1]"
+  },
+  {
+   "check": "threads_arg('') -> refused",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "threads_arg('0') -> refused",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "threads_arg('1,1') -> refused",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "threads_arg('-2') -> refused",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "threads_arg('a') -> refused",
+   "passed": true,
+   "detail": "refused"
+  },
+  {
+   "check": "h1_problems: a complete synthetic record is H1 evidence",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: loops [3] (gen/regress.py --loops 3)",
+   "passed": true,
+   "detail": "[\"loops [3]: H1 needs every loop 3..7\", \"builds: 4 successful of 4 recorded, 20 required (every thread count, sector and loop)\", \"sectors: ['free_L4', 'free_L5', 'free_L6', 'free_L7', 'power_L4', 'power_L5', 'power_L6', 'power_L7'] missing or extra\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: no loop at all",
+   "passed": true,
+   "detail": "[\"loops []: H1 needs every loop 3..7\", \"builds: 0 successful of 0 recorded, 20 required (every thread count, sector and loop)\", \"sectors: ['free_L3', 'free_L4', 'free_L5', 'free_L6', 'free_L7', 'power_L3', 'power_L4', 'power_L5', 'power_L6', 'power_L7'] missing or extra\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: one thread count (--threads 1)",
+   "passed": true,
+   "detail": "[\"threads [1]: H1 needs at least two distinct positive thread counts, one of them 1 (thread identity)\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: no serial run (threads 2 and 8)",
+   "passed": true,
+   "detail": "[\"threads [2, 8]: H1 needs at least two distinct positive thread counts, one of them 1 (thread identity)\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: a sector missing",
+   "passed": true,
+   "detail": "[\"sectors: ['power_L5'] missing or extra\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: thread identity false",
+   "passed": true,
+   "detail": "[\"thread identity: ['1_vs_8'] recorded, ['1_vs_8'] required, all identical\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: a build that failed",
+   "passed": true,
+   "detail": "[\"builds: 19 successful of 20 recorded, 20 required (every thread count, sector and loop)\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: free L7 not byte-identical",
+   "passed": true,
+   "detail": "[\"free_L7: 1 of 2 G-files byte-identical (only free L <= 6 may differ)\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: no header-row check (before CK-K02)",
+   "passed": true,
+   "detail": "[\"free_L3: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L4: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L5: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L6: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L7: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L3: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L4: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L5: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L6: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L7: no header-row check of the new and the frozen tree (a record from before CK-K02)\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: the L7 control false",
+   "passed": true,
+   "detail": "[\"controls: ['side_file_L7_eq_c8d1_L7_inventory'] not true\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: failures listed",
+   "passed": true,
+   "detail": "[\"the record is not a pass without failures\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: passed false",
+   "passed": true,
+   "detail": "[\"the record is not a pass without failures\"]"
+  },
+  {
+   "check": "h1_problems refuses partial evidence: another gate name",
+   "passed": true,
+   "detail": "[\"not an A-INV-2 regress record (schema 'c8-d2-gate-1', gate 'A-INV-2 comparison logic (gen/test_regress.py)')\"]"
+  },
+  {
+   "check": "h1_problems accepts the real J-GEN-1 record of the CK-K02 fix (Expanse 54658874)",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "h1_problems refuses the Stage-1 record (Expanse 54631551): it predates the CK-K02 header-row check",
+   "passed": true,
+   "detail": "[\"free_L3: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L4: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L5: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L6: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"free_L7: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L3: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L4: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L5: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L6: no header-row check of the new and the frozen tree (a record from before CK-K02)\", \"power_L7: no header-row check of the new and the frozen tree (a record from before CK-K02)\"]"
+  },
+  {
+   "check": "Z5: check_gfile accepts a well-formed G-file (frozen free L3 G1, C8 rate table)",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": true, \"min_twice\": 2, \"max_twice\": 2, \"at_floor\": 30}"
+  },
+  {
+   "check": "Z5: check_gfile refuses the first mask negated (-m)",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": false, \"error\": \"mask line: token '-11' is not a plain decimal integer\"}"
+  },
+  {
+   "check": "Z5: check_gfile refuses the first mask as int()'s '0_m' (an underscore)",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": false, \"error\": \"mask line: token '0_11' is not a plain decimal integer\"}"
+  },
+  {
+   "check": "Z5: check_gfile refuses the first mask as '+m'",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": false, \"error\": \"mask line: token '+11' is not a plain decimal integer\"}"
+  },
+  {
+   "check": "Z5: regress.parse_gfile refuses the negated first mask too (the parser check_gfile now matches)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "Z5: check_gfile refuses a term coefficient of 2^31 (outside the loader's int)",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": false, \"error\": \"term line 16 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 2147483648 1 1 1 1 \"}"
+  },
+  {
+   "check": "Z5: check_gfile refuses a term coefficient written 1_0",
+   "passed": true,
+   "detail": "{\"id\": 1, \"ok\": false, \"error\": \"term line 16 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1_0 1 1 1 1 1: token '1_0' is not a plain decimal integer\"}"
+  }
+ ]
+}

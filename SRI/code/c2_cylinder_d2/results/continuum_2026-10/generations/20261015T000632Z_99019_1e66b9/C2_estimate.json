@@ -1,0 +1,1364 @@
+{
+ "meta": {
+  "generated_utc": "2026-10-15T00:06:31.043867+00:00",
+  "python": "3.13.5 (main, Jul 23 2025, 00:18:28) [Clang 20.1.4 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "numpy": "2.3.5",
+  "inputs_sha256": {
+   "<PROJECT>/LRI_C2_expanse_loop/DEVIATIONS_ANALYSIS.md": "d183cea2bf86bc3e048605952bc181035575b253b56cce6d50b73302c0f17f30",
+   "data/hamiltonian/auxiliary/exact_leading_tail.json": "1dd7bc8bf3c64295d6d8ec20086daf79a894f8bbb82bc8d05179d3bd0b209d60",
+   "data/hamiltonian/auxiliary/leading_N384_k1_a0.075.json": "cd6d1ad684195039affbefe9fd2b071a5b3549626c301ae6baa878709be2d798",
+   "data/hamiltonian/auxiliary/leading_N384_k1_a0.1.json": "a0fe23edec1a38284270c49aacb486a2f94fa5d572b81af6971368c329f9aa02",
+   "data/hamiltonian/auxiliary/leading_N384_k2_a0.125.json": "510800ce179138cb8b8f3e8d86fe726129501024317727a871a3f715e563c208",
+   "data/hamiltonian/auxiliary/leading_N384_k3_a0.2.json": "b674171b1689c014f7edcac6d43c069838a02c12f78d75e12f78d8401cdadf0a",
+   "data/hamiltonian/raw/extended_k1_a0.075.json": "9aba39a37f7459a7a2cea538e93fed20873724ca8feaf0dcea83f71a785230ea",
+   "data/hamiltonian/raw/extended_k1_a0.1.json": "e2113d5f88bacc9be16715dddbbb35406e597c4107ae01ffd2f70094829ec675",
+   "data/hamiltonian/raw/extended_k2_a0.125.json": "41db92e1b8454d971c7e62ca8d502766bd5832c8b307560668726f8cd43580e1",
+   "data/hamiltonian/raw/extended_k3_a0.2.json": "dcca5bca630a6a46073464e74bdc12c3da80d1e763b1a35f09eadc4006519397",
+   "data/hamiltonian/raw/fine_k1_a0.1.json": "aacd993e7191a57f9c4e6d3581b7471baf3c9ecb5b011f9464ff6dc541d59766",
+   "data/hamiltonian/raw/fine_k1_a0.125.json": "cf5a5e02c2eadf20e954d69ec581e0267d9b5d01d27ec6aa1657ca6c9dac7a18",
+   "data/hamiltonian/raw/fine_k1_a0.15.json": "b590e1ff35e8692c4f722bbbbcabaee5212f2251f20f574f90e63dae4b696fa1",
+   "data/hamiltonian/raw/fine_k1_a0.2.json": "751bc379773d6936e0dabcab717c0cba314003483aac0a8e9df1baa138736f67",
+   "data/hamiltonian/raw/fine_k1_a0.25.json": "c7896b6ed7257c3a1fc3cb668c4d86fc9af87e9e32bf42999bde6a802af0b17c",
+   "data/hamiltonian/raw/fine_k2_a0.125.json": "8dd6655296867f10465f729332dea6945877a701b42d4224cab7786330292dc1",
+   "data/hamiltonian/raw/fine_k2_a0.175.json": "f044617cb476e10deb4efcb89084d36b0a05d8f9cb93a50a5c903cef0deed9e3",
+   "data/hamiltonian/raw/fine_k2_a0.25.json": "392c01d392ab904b3e3730e432aa36a7f3fbbbafdcc4a26c72ca47a9e5973a27",
+   "data/hamiltonian/raw/fine_k2_a0.35.json": "430b5ff0f73741794a57ab62ddf0fd9c18efc08c21cc00088ae8e95600f92416",
+   "data/hamiltonian/raw/fine_k3_a0.2.json": "8cf71a5ed4cbb3556710de7ede7a113c58a1e755c360e044bbcd7ca8dd51d494",
+   "data/hamiltonian/raw/fine_k3_a0.25.json": "c4ceb934bc67dce467654f963e4a6be1b0a6fb1dd3d9abe560332bc063b4b73d",
+   "data/hamiltonian/raw/fine_k3_a0.35.json": "a47251a3c34b3285431614e1c9924642a89e522abb5501d32569029d20e7f2ef",
+   "data/hamiltonian/raw/large_lambda_k3_a0.5.json": "a80a47b027ac3995f838f4b26ccb8e92ff25a41aab7561c8b8c7471a36e6aa82",
+   "data/hamiltonian/run_plan.json": "81f4a5f42ed9aae532c68db9dc0db5c95967e631b49ec9b93c335876d1111d34",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order1_df5f3ea33c2b/cluster_k1_a0.05_N1024.json": "e45216bac2b220617c1f0ae3b2a9afaaf13c280f4be48acd1d7a76f9ac6e0932",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order1_df5f3ea33c2b/cluster_k1_a0.05_N1024_analysis.json": "a8a01174041db5aab7280ba3759f47509607a9ea82cfa7d4958b48cd1b36dd0b",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order1_df5f3ea33c2b/task_receipt.json": "285ca84a1a4cc6f058fc5e79e14b6c0cc360bfe53cde9e977874fcf1f007e7c3",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order2_17714d814f42/cluster_k2_a0.0625_N1024.json": "8fc173e0b49642a57b8b8082fc9102b4ec6f03f6e741aee55f4f7e474e8431b9",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order2_17714d814f42/cluster_k2_a0.0625_N1024_analysis.json": "961167f1694b5c394f5aa734b64fc54dfeb2a3ff039d20d1fa5922cddda9baf1",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p0_order2_17714d814f42/task_receipt.json": "b0761d3abb73877a1a13d38e0981ce6402a8ecdbbf87e18b5f20f457e644e939",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order1_64a4464c285c/cluster_k1_a0.075_N1024.json": "66f9e7ed647e1395ef2b98312e7fa84c662b4799763d5583fac96cd3300b60d2",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order1_64a4464c285c/cluster_k1_a0.075_N1024_analysis.json": "39010b28f6b0472303609f3a0b502c45055c334c505152e89458cb2a94efbeb3",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order1_64a4464c285c/task_receipt.json": "fbac9837962ead03d8b5ab45a8bfea39cb6bf6f4527ddd1545502a5a50c1afbb",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order2_b227f50e2b29/cluster_k2_a0.1_N1024.json": "5b9ecc5b44c7adf5149341e8de7416530a7fde2773b80cac232f665ea5a9f3cf",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order2_b227f50e2b29/cluster_k2_a0.1_N1024_analysis.json": "3f4ee1188f2b49346e30a5447b22a0fd1df496c502a0fa8ae955bad476fb3532",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order2_b227f50e2b29/task_receipt.json": "2ed87a0d5b0159da340b0780cba20a7bcb8e6e4f56d01bc49ee07b2dfbd7980a",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order3_93892f9239b6/cluster_k3_a0.1_N1024.json": "3cc70d449c2632875f644e9b15ee9daa9d0066621cb2d4bd60d8a316181d0648",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order3_93892f9239b6/cluster_k3_a0.1_N1024_analysis.json": "fcb9eaeaccedb9221b48d861671bc90aaae20ae9ff03f8b23af74aa8cd34cdfb",
+   "outputs/expanse/analysis_checks_plan_20261013/outputs/analysis_checks_plan/M4d_N1024_r4p5_order3_93892f9239b6/task_receipt.json": "2ff77f8067871c20c048735f1df1f1e4f0df0820c8f53e1b9e619c1ebbc8059d",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order1_4eab0e333e67/cluster_k1_a0.05_N1024.json": "aa68d5378db4d369f56bf36bc426d5597297fbf92e2f5da562274fc702b9414e",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order1_4eab0e333e67/cluster_k1_a0.05_N1024_analysis.json": "596d55adf74ec2102b6fa54f61b6cd39beb3fe9c78609a79135aae7bbf543d7f",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order1_4eab0e333e67/cluster_k1_a0.0625_N1024.json": "9562eff8b5e33763a57f08d5bbe883deb0c5364e7b6e47868e1e83a5da8a5623",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order1_4eab0e333e67/cluster_k1_a0.0625_N1024_analysis.json": "5683908279e0d54e98973679e79fb5cfb42ff0424b26818afc663b2ff918a529",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order1_4eab0e333e67/task_receipt.json": "a802c0b2292356fc739a11d74059e46c2456c36b0afbbe3e9ec337577475d56f",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order2_7cd1279d7476/cluster_k2_a0.0625_N1024.json": "0e92d427e6aa3be7e83d56058372e474caf67ee1a0b7b04c3e4a73f5aab57d79",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order2_7cd1279d7476/cluster_k2_a0.0625_N1024_analysis.json": "b91dec86b8fa97ac9877f2fa9f19f6dc986dd320478ecd085eeef9c7fdbd229e",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order2_7cd1279d7476/cluster_k2_a0.075_N1024.json": "18847ae0085eb314c30370df20feda8c381537ebe47b1551cf350e7497e70999",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order2_7cd1279d7476/cluster_k2_a0.075_N1024_analysis.json": "4565e29c2400bb6683dd60986f1d6c502d11060dbad808abf7b85c285303f16c",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/P2_N1024_order2_7cd1279d7476/task_receipt.json": "b8c19fbc7b729d7a9242a85ed9070a4f548fa37056cadb04322e080187226f2e",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/cluster_k1_a0.1_N512.json": "b1b68f39ba9bd497b05312fb66180d803affb866ba61462f8d006321b2ae6f44",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/cluster_k1_a0.1_N512_analysis.json": "7c2d5fedc97d10176ffd3f77bd71a9931f85ceb8316c4ebec4c55900bdfa860c",
+   "outputs/expanse/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/task_receipt.json": "0590d70dacbea0b7c61054ecdfb5473657ab8b0df304761b23aa0d267026d00a",
+   "outputs/merged_analysis_checks_plan_20261013.json": "e18e6655944a2cafb872558bdc32b487e3c9dcb8b2bf0327e85a6073fb3f488b",
+   "outputs/merged_analysis_checks_plan_rev6_20261014.json": "e5a6d530e13a4d8bae4bad7370b50e8b02664b510130ab98cf40456fb20a5e8a",
+   "outputs/merged_production_plan_20261013.json": "38a932482a141617867866b2743ab5182ab6000fa556be2ad48ab79f9d192e8f",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order1_3282fb0f264e/cluster_k1_a0.0625_N1024.json": "a373a7714be9ff9e10ef114271ae9bf158056bd2a1ac91421a9d2276eeba1356",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order1_3282fb0f264e/cluster_k1_a0.0625_N1024_analysis.json": "1f1c902772903f37b8333db53b45bc41e27e93aac506dc24876839719c937a94",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order1_3282fb0f264e/task_receipt.json": "9d7c16eb11ba6f7b2b7f695350c056a1871fa65b1a42365c01e0d7604d020efd",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order2_3c673c2f6346/cluster_k2_a0.075_N1024.json": "8b03325bf4d13cb3cfe621a4111df76029633d20b13ea81f61ae6ce407a11e5b",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order2_3c673c2f6346/cluster_k2_a0.075_N1024_analysis.json": "5b3d4b2eda2a3b57b0b429ab08f0369321f9065bcbb1a53ec1e339ac631b67ca",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p0_order2_3c673c2f6346/task_receipt.json": "1ab6a73d309759bb57ee5f714d98ff1748cd462898c30b1fc7584f397dfb13ed",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order1_296ec8f6e95e/cluster_k1_a0.0875_N1024.json": "e5a6ef9494e480840946f2b5c79d30833b97ce5b607c0c14f23314e71f0219c7",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order1_296ec8f6e95e/cluster_k1_a0.0875_N1024_analysis.json": "2d58bf14e8d13702e00b2cff27728954f3ad8828e1747683d9c3a89478344e0a",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order1_296ec8f6e95e/cluster_k1_a0.1_N1024.json": "54575282b4e49172d0125ad1d2b59e62170bd4514dc9c1b4463063ddedcd531d",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order1_296ec8f6e95e/cluster_k1_a0.1_N1024_analysis.json": "f00ede6319eed33977493b3522541489a209bc9067f60fbda9845b9244568d08",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order1_296ec8f6e95e/task_receipt.json": "8ac240baf8c167eb6f1d7b8526a74dd676747bf25017855d679038c4e0accf0e",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order2_3531c526b3da/cluster_k2_a0.125_N1024.json": "ca94fdc04182912e8d7bf411ea787769d889f05a81f43ec0a546b78fb089a556",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order2_3531c526b3da/cluster_k2_a0.125_N1024_analysis.json": "5f8ee1ae416e6fb0dc46e3097544845d4a680199ee568f2c62d32a20d20ec575",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order2_3531c526b3da/cluster_k2_a0.15_N1024.json": "471f7c2dcd9933d1ee2f43da18de27d3238b91eac58fcd1a57115ba60dfa4a8f",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order2_3531c526b3da/cluster_k2_a0.15_N1024_analysis.json": "989d0a6907c7533e47124f7939d7e8c4df817258dc2cc7971c24874ae6a2fff7",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order2_3531c526b3da/task_receipt.json": "8fb7cb0e8f1868201a1c0c721ba8a40f025c653fdbf35bd87a87ba82376412bf",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.125_N1024.json": "4a0a4b4da04c12fe5f153ea841ebcf7efc3ad167b2f884dd3c845a7f8c2e6bda",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.125_N1024_analysis.json": "8942e044f808d248897204b43076802b7da866f4f99aa87ba20ec9d34447221f",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.15_N1024.json": "3ea2eee2848d8cb38bc854b087a754038ad1fd88546153dd96da8103d3f5f69a",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.15_N1024_analysis.json": "f1d270dab972903647d635ff58546a6a7cffde94a3d4ca53c1993583ad155a49",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.175_N1024.json": "dbd6ec3eefefe8f7eb7efd3ad95a6167e2215d34647f7db9a92d3c26705fd3c4",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/cluster_k3_a0.175_N1024_analysis.json": "15aa4b73b4d84e2e87c119924ce8ebed89df6ff239f298c7843ea355f6df72cd",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N1024_r4p5_order3_a460c9b3c01a/task_receipt.json": "25f08856ff6abaa8850fa95f01415510db184735929044dff58ef3a99950503d",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.125_N512.json": "9918fb1ec000ed986706315eca9a227fe2df99f6a779c284efe0268a78bad9f3",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.125_N512_analysis.json": "fba0b9c3b7cb32004da7fd9dfbd3c3c0c2898e246087d2b52e1d4a42140c5ce2",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.15_N512.json": "925219a1a51a2252ffbe54c1da38cb2d387a6536aaa22aff055e7c55ca244cb0",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.15_N512_analysis.json": "1e2cb913ed56b06a22fdcc796e589835a46129b4d1a0aea43fbd9980abdfd6e7",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.25_N512.json": "1d4644a7d312cb3707a6cbc7b70befb0569dac57d11d27f6e31f5b160470df1d",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.25_N512_analysis.json": "344b34d10ef416f94cd40b00481131b1cedd61194a863b55779c9241c80570dd",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.2_N512.json": "d908184861cfd677edf7ea65775899bb0574deff7a1d9da9feea7ed9df9ffae5",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/cluster_k1_a0.2_N512_analysis.json": "e14d734dca40d5e2dc9390b162b518cec1cc4186f89a4ef0b35c6c52eaf2136b",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order1_dd61c35163d3/task_receipt.json": "4dca1375061308e1858dcd78b534d35a1d093c842b9da0ee5924f9f79bdbdba0",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.175_N512.json": "346b5fc63f7d884657968839d70fc20f103f923dff649bc1d64429eda5961740",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.175_N512_analysis.json": "7119b9183a07e0114f2c5d0aef94ceccee2bcd5867ec22aaab8fff8dbb5b4313",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.25_N512.json": "264183721824616fabf3e2a07ac6b6c0b336ccefad05ad065fffd2b23650ac06",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.25_N512_analysis.json": "8f43238ee61fd14c2ce155b75a8da48d5f96443d3d2682dedd59ee842a58841c",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.35_N512.json": "8bb438b4975974cc8f2b6c38dbc2ea83eabae3215cf1c81d09f131c02ac4aa49",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/cluster_k2_a0.35_N512_analysis.json": "f52eedcd31aecb30b3aebe0a5de306930d04cccee67dadad2ad79995c33a4220",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order2_ade006e267b3/task_receipt.json": "d1ab9cabb0ec3d0f63942b848cc394952a3604c31b51d2859a1a9dfccd023555",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.25_N512.json": "8f14d050ab913f937a23218fcd0a59814c5e8e1ec71d49d11ef5c60499825a13",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.25_N512_analysis.json": "3ba6d3bd10bb322d6a2fb396f156af4eca3a9b55439da8a7223a46221ac1d810",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.2_N512.json": "37fa4cfb25baeaf8f0d9fea1974a0e454b3650d40b279aac21d3dddec2a54b38",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.2_N512_analysis.json": "721017e882f1fb5f6d8c2677d3db2f045eba831106ababb1097cad1c4768892c",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.35_N512.json": "04be18ca84d3080428ed68faf1c1ce058a638c53f389d759aa05fdbe591fcbc8",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.35_N512_analysis.json": "61aa7d2efb8d172f1154b506d154d24df50937f0c45eaaeb700a01a8028dafe2",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.5_N512.json": "413a25bdaa8e6246bf0e9d1215e4545ec38130e5ae62b7ccbad6a0cc02247846",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/cluster_k3_a0.5_N512_analysis.json": "7ea4ec6473998383027d51f7a8f6c0ebc87e1c4bdb437a593fcd4a649188c303",
+   "outputs/symmetry/analysis_checks_plan_rev6_final/outputs/analysis_checks_plan_rev6/M4d6_N512_r4p5_order3_087305aa687a/task_receipt.json": "ef93aa5c4745c358b5adc0d7149832a70a3115abde33ac4adbe80b71bdb8fb4d",
+   "outputs/symmetry/c2aux_574247/STAGE_INFO.json": "bdd32b459f2aa84296cb47c8c616caf1166da782b15b21ae5420d91457639255",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.05.json": "6bd69b8d618ee69eace20536c60af7e797e2c2bf113a6821e16331d2618b2e30",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.0625.json": "697b47ac2d32c4b1233f15ad051f2ae6da27dc30fe60b92ec18cc3af6316f293",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.075.json": "e0e6d7aa102b539238575221d12b65b903f0175cbdc41e5e0a71caf755b9081c",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.0875.json": "d951b1014cabf19f4977dfa2680d70cba92f32d887c87a6d42f07d7826946581",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.1.json": "862b68ad20f1ffecac785c5e80d2e3d019871c570b28425b0282489cc4682b71",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.125.json": "32ac1126f78e1a2533b17e87e53f21d46789d3774193222a072b02400160ab1f",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.15.json": "8ba9a83ae4c7299f0b51ff1a060bcee75ed56b022d9f7375d418123d75e179b6",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.2.json": "ad5c3c3e6156a4cfc76748f4cf01e161f2b1592d08de63f26230209986a57b3d",
+   "outputs/symmetry/c2aux_574247/aux_k1_a0.25.json": "c8ca55a4b7875fd94ab63f823c1357d172c8efecfbea6d9f8dc2a867e6033e2a",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.0625.json": "b9c5fa4e56db8c3cad7b6912a638097b25fefaf3190f12aa638013b98543e3fe",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.075.json": "6d7421b9a179d74a1b345f15ae6d66847f4777408aa16896e8ad12cef079836f",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.1.json": "a8e301a38c2fc697329e8490237267f2c6ef99f2a2205c14aba15a65396e1b1d",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.125.json": "d11b32e214aa0a2b04b43812e6afea83d2489610dcf8a3cfdcdef649178a676e",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.15.json": "34f2edb21a3c8bb27b535a7f846d7b20319ba36c7670799c3bd9070d3d432f97",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.175.json": "46e05370dd919ee10792580544a332e37cc6ec253c34d60fb919fbd66b79c93c",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.25.json": "a2955a106e340b96e4dad01dcdf9a9b3418a183865b71cbd02e34ad224ac96e3",
+   "outputs/symmetry/c2aux_574247/aux_k2_a0.35.json": "7e05a448f84f0b7f9dc1448c7a692147d52cd6af3456dae14f18f8db350d5196",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.1.json": "7ff7dbb64274919e3c6d9e7c50b78a14501d375f1c4283fe857075bca481423c",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.125.json": "ce74aec8cf183edf80286f25f5dc1459fdae83820fc8a953c750cb94874f633d",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.15.json": "cb87c32589cd945248759c0554e15b6c66ef7e8c16e2a5c143c5d426f3788dd3",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.175.json": "b044272450c8902f3b8cc236c130f4c265937f7752fa6d526d0e348dae95aa7d",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.2.json": "3d8e7c184542db7c49949598681c1606908b0b17a7584d72648e91a6604b88ac",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.25.json": "64e4a3f3dd0c213075c479fbd6ddb8895afcbe052d36b8b55e8dda652d0ab34f",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.35.json": "14f6de7fddab0a5c9dc432ec25955b557c913e88e81af127306834c4c4b9793d",
+   "outputs/symmetry/c2aux_574247/aux_k3_a0.5.json": "205a3069cc0fd869d698d1a678451a19b2d9fcd9696886d2fd1221f5b46b4a58",
+   "outputs/symmetry/c2aux_574247/aux_receipt.json": "b94b3f78cb579d1bc64182d7b7e4a3a5647a29bbcea0136e1134107165a4fe66",
+   "outputs/symmetry/c2aux_574247/env_check.json": "7d6a779be1759e9976b63084e40d5bfd89713b0e339f751d891ba92837a25eb4",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.075_N768.json": "9bb023bfb1d5449bcd5f804c952f4abe01747a823c2ea0c702008bc0aa3ef5f1",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.075_N768_analysis.json": "15fb927874b5c47f091190ccbfc485cbd82962f6f515cb00e36f8edefcd81f0b",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.0875_N768.json": "fb5e161cd0b06420351f7a3f513eb8706c42c6913cc34a7a8ec3ed8a31a144c4",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.0875_N768_analysis.json": "7607e05563e0c80654a03c75623619fbb1fb34bee7b2b55f0555252f3a28068a",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.1_N768.json": "9ca03535a2208d44d98bf0870cbe4634bdca59f6fad8fb939ee142019fe1aa6e",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/cluster_k1_a0.1_N768_analysis.json": "8a57e8c38ecb97968bac6d36f2946e5823814a2fd441f0252a5ff14d608263ed",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order1_0771c1cd3173/task_receipt.json": "d32eefe49bf68e101c5049218fe2694fa1290efea791500aaf99a2a289395cae",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.125_N768.json": "0927fc0854a3adea6c3b304ef6beb001cda92f850a11d2116665d02bbfb4da5b",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.125_N768_analysis.json": "b9e7d12013c78b4c0186f5eed69454dbf88c173a29cb03875e4caa36a3e0f738",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.15_N768.json": "b497c02c8466a81c97054c3c2037fe56baa2d3c84723211759616cc733990a8d",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.15_N768_analysis.json": "3d163eb6707480315e401135e4d56fc217ace3fd5827164e60f44bcd6ea173f4",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.1_N768.json": "d6969e061f8480dfda08577debdaa0bdf3910cbc583ec284bd3bf9ccec40bc7f",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/cluster_k2_a0.1_N768_analysis.json": "a75412cf323302252f6e62125b503b3a1cff508bf9991d154ca536cd92cc23f4",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order2_0dbe788d7a0d/task_receipt.json": "ef67516d15c761dda6ba48606eca7845e8dd9ae291f00f09990f9fcced7e1376",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.125_N768.json": "c1e208dcad0ef3a317c296a4ebc42663b8dbb9875adbca05e7d52093355b1c70",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.125_N768_analysis.json": "e81a3afe0e488d514de18022a293ca841e2b8dbb4beb4ef5df24a4922dc8d9e4",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.15_N768.json": "9a0a98994fa07067df6bfec61ca8805103bd80162ef6afc442d124171e14cc3a",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.15_N768_analysis.json": "82dc2327217d3b89c28acb69c7a1cc627e574f08497dca4edc64ecfeceec9e02",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.175_N768.json": "cb52d557a156e24da0671e7339a133aad9b9365f0c16cb5e93190552348a75e0",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.175_N768_analysis.json": "c072991afc1d77edc07b65f343adc990409ca4fbfc78c99d11d9eca11d744648",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.1_N768.json": "cc979280f6704f19133fffd2e174af0cf07926d2be9a8c035e7d4eb9bf3d623c",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/cluster_k3_a0.1_N768_analysis.json": "c3f52c4735f69a46a78e3b2026cb2d0e4ddc2c1a4a277a1f76c6811088ace6c0",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/P1_N768_order3_0fadc198be0e/task_receipt.json": "ceb2dbd64763910285581847936b2a66215679aa4769db9f215c4ab604580618",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/cluster_k1_a0.1_N512.json": "687e50f6c106b75ac59968664573722160c6d3477e03233cf6b7aaf4fde65af2",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/cluster_k1_a0.1_N512_analysis.json": "8ff04f3a05bc1c0b6d64031fc7fa5ec826e50eb9a32bd13a350101f7c4abb92e",
+   "outputs/symmetry/production_plan_20261013/outputs/production_plan/PILOT_N512_order1_2539070471a0/task_receipt.json": "93ed1abe892eeebaf89a15c63f77901648fb78bc6155181df60fe22680dc11c7",
+   "results/continuum_2026-10/evidence/legacy_macos/legacy_reproduction.json": "46f9e32ab870b57b4ff744f706e1b68f40e3c490e6c6ac841b2a4332d00b44dc",
+   "results/continuum_2026-10/evidence/rev4/C2_estimate.json": "86753ed9705b99a09ff1f4e1d3ea3275e7ef3f28a59f1ff3bd0c1afb0b235186",
+   "results/continuum_2026-10/evidence/rev4/continuum_points.json": "a98597bda7658439b78ccdfcca3aa7bb3edca0b38b7d48ffbfe8a5787c2d32ec"
+  },
+  "rules": {
+   "plan": {
+    "file": "LRI_C2_expanse_loop/PLAN_ANALYSIS.md",
+    "revision": 7,
+    "sha256": "f76af1bfb81f40474c2e83c9067df24824a85da8e950680a276322517494a378",
+    "history": "rev 4 (bf30ba3c...) built first; rev 6/7 replace the extraction rule (A5-1 on measured full-coverage profiles, A6-1 completion rows, R6-002 frozen rev-4 exception) and the A1 identity checks (A6-2, R6-001)"
+   },
+   "pools": "PRIMARY = archived records (data/hamiltonian/raw) + the production plan records; DIAGNOSTIC = the M4d extraction-check plan records. M5 selects from PRIMARY only; DIAGNOSTIC records enter only epsilon_grid on their overlap and are reported alongside (they never enter M6/M7, and never enter epsilon_cross, which feeds epsilon_spec).",
+   "point_selection": "M5: per (order, lambda) the largest-N PRIMARY record; ties at the same N: the production grid family (oversample 4, radius_cost 4.5) first, then larger mixed, tail and collapsed cutoffs; same configuration on several sites = one replica (Expanse representative), cross-site difference recorded.",
+   "auxiliary": {
+    "aligned_cutoffs": {
+     "mixed": 16384,
+     "collapsed": 800000,
+     "tail": 8192
+    },
+    "mixed_selection": "M1: mixed_sequence.extrapolate fits with >= 3 powers and Nmin >= Nmix/2; limit = median; half-spread = (max - min)/2; prefix check = same rule on the first Nmix/2 entries (Nmin >= Nmix/4)",
+    "eps_mix": "|t| * max(selected mixed half-spread, |prefix limit - limit|), t = ct/lambda + c_th*lambda",
+    "eps_coll": "|h(collapsed 400000 inputs: two_point and A_face(8192)) - h(800000 inputs)|",
+    "eps_tailcut": "|h(A_face at tail 2048, 800000 norms) - h(A_face at tail 8192, 800000 norms)|; a conservative one-step estimate of the residual tail-cutoff error at 8192",
+    "sources": "production records supply their own two_point 800000, mixed 16384 and sidecar A_face 8192; the c2aux job supplies them for archived-only (order, lambda) and supplies every 400000 and tail-2048 variant; one aligned set per (order, lambda) is used for every record of that (order, lambda), so cross-N comparisons differ only in the spectral part"
+   },
+   "spectral": {
+    "power_sets": [
+     [
+      2.75,
+      3.75
+     ],
+     [
+      2.75,
+      3.75,
+      4.75
+     ],
+     [
+      2.75,
+      3.5,
+      3.75,
+      4.75
+     ],
+     [
+      2.75,
+      3.5,
+      3.75,
+      4.75,
+      5.5
+     ]
+    ],
+    "exponential_orders": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nmin": [
+     "N//2",
+     "5*N//8",
+     "3*N//4",
+     "7*N//8"
+    ],
+    "columns": "as analyze_extended.py: 1, (n/N)^-p, exp(-lam (n-nmin)) (n/N)^(r-1-j), exp(-2 lam (n-nmin)) (n/N)^(2r+3/4-j), j < e; column-normalised; numpy lstsq rcond=1e-13",
+    "fitted_quantity": "h_n + A_face n^(-7/4) with the aligned A_face",
+    "selected": "3 or 4 power terms, e in {1, 2}, nmin in {5N//8, 3N//4} (8 fits; = 240/288 at N=384, 160/192 at N=256)",
+    "guards": "a fit is accepted only with full numerical rank (singular values of the column-normalised design > 1e-13 s_max) and >= 2 residual degrees of freedom; rejected selected fits are reported and excluded",
+    "estimate": "h(lambda) = median of the accepted selected fits; half-spread = (max - min)/2",
+    "influence": "v = intercept row of pinv(design, rcond=1e-13) / column scale: limit = sum_n v_n y_n"
+   },
+   "validation": {
+    "prefix": "M4a: N' in {round(N/2), round(2N/3), round(3N/4), N}, same fractional windows of N'; drift = max - min over N'; epsilon_spec uses |h(N) - h(round(3N/4))|",
+    "cross_N": "M4b: every retained record of the same (order, lambda), aligned auxiliary inputs; epsilon_cross = max over LOWER-N PRIMARY records with lambda*N >= the order minimum of |h(max N) - h(lower N)|; diagnostic records are compared and reported but do not enter epsilon_cross",
+    "lambda_N_minimum": {
+     "1": 50,
+     "2": 60,
+     "3": 75
+    },
+    "eps_spec": "max(half-spread, |h(N) - h(round(3N/4))|, epsilon_cross when available)",
+    "eps_grid": "M4d, rev 6/7 (A5-1, A6-1): delta_n = raw chain of the primary record - raw chain of a DIAGNOSTIC record of the same (order, lambda) with N_check >= N (a different Cauchy grid), SIGNED, at every n <= N (full coverage). On each accepted selected M3 window W: s = least-squares cubic in x = (n - mean_W n)/(max_W n - min_W n), rho = delta - s; value = |sum_W v_n s_n| + sum_W |v_n| |rho_n|; epsilon_grid = max over the selected fits and over ALL full-coverage comparisons of the point. Reported, not in E: the rev-4 L1 max sum_W |v_n| |delta_n| (superseded), the plain signed shift max |sum_W v_n delta_n| and max_W |rho_n|. The archived N=256 vs N=384 overlap is a full-coverage comparison for the N=256 records (reported; those records are not primary); the partial N=384 overlap is reported and never used. No transport, inheritance or continuation. A point without a full-coverage comparison (failed completion row) reuses its FROZEN rev-4 epsilon_grid and provenance from evidence/rev4/continuum_points.json, is flagged \"extraction comparison missing: rev-4 exception\", and the estimate is labelled \"extraction coverage incomplete\" (R6-002). A grid difference measures extraction sensitivity; it does not bound an error that both grids share.",
+    "eps_round": "M4e: r_n = |Xchain_n| 2^-52 sqrt(n) + |con| 2^-52; max over accepted selected fits of sum_n |v_n| r_n"
+   },
+   "regulator": {
+    "term_sets": [
+     [
+      "2",
+      "2log"
+     ],
+     [
+      "2",
+      "3"
+     ],
+     [
+      "2",
+      "2log",
+      "3"
+     ],
+     [
+      "2",
+      "2log",
+      "4"
+     ],
+     [
+      "2",
+      "3",
+      "4"
+     ],
+     [
+      "2",
+      "2log",
+      "3",
+      "4"
+     ]
+    ],
+    "sensitivity_term_set": [
+     "2",
+     "2log",
+     "3",
+     "3log"
+    ],
+    "sensitivity_term_set_role": "enumerated with the others: it can be admissible and then enters epsilon_model",
+    "basis": "regulator_extrapolation.basis: lambda^p and lambda^p log(lambda)",
+    "windows": {
+     "all": "all points",
+     "drop1": "drop the largest lambda",
+     "drop2": "drop the largest two",
+     "cuts": {
+      "1": [
+       0.15,
+       0.2,
+       0.25
+      ],
+      "2": [
+       0.15,
+       0.2,
+       0.25
+      ],
+      "3": [
+       0.2,
+       0.25,
+       0.35
+      ]
+     }
+    },
+    "weightings": [
+     "unweighted",
+     "weighted by 1/epsilon_spec (no floor)"
+    ],
+    "fit": "numpy lstsq on [1, basis...] (rcond=None, as final_analysis.py); influence row w = pinv(B)[0] (/epsilon_spec when weighted)",
+    "underdetermined": "fits with more parameters than points are not attempted (as final_analysis.py)",
+    "admissible": {
+     "min_dof": 2,
+     "residual_factor": 3.0,
+     "max_condition": 100000000.0,
+     "residual": "max |residual| <= 3 * the largest epsilon_spec in the window",
+     "condition": "np.linalg.cond of the design as fitted"
+    },
+    "preferred": {
+     "terms": [
+      "2",
+      "2log",
+      "3"
+     ],
+     "weighted": false,
+     "window": "lambda <= 0.25 (orders 1, 2) or lambda <= 0.35 (order 3)"
+    },
+    "fallback": "if the preferred fit is not admissible: the admissible fit with the fewest parameters, then the most points, then unweighted, then the smaller condition number; result marked \"preferred rejected\"",
+    "deduplication": "fits are deduplicated by (set of point identities, term set, weighting) before anything is counted; window labels selecting the same points are kept as metadata",
+    "validation": "an order with fewer than 3 distinct admissible fits is \"insufficiently validated\" and excluded",
+    "eps_model": "max over admissible fits of |h0_fit - h0(S_r)|",
+    "propagation": "every per-order epsilon is sum_i |w_i| epsilon_i with the influence row w of S_r (L1, no averaging)",
+    "E_r": "eps_prop + eps_mix + eps_coll + eps_grid + eps_round + eps_tailcut + eps_model (linear sum)"
+   },
+   "joint": {
+    "model": "shared h0, per-order coefficients; each retained order with its S_r (term set, points, weighting)",
+    "acceptance": "every order block has n_r - |T_r| - 1 >= 2, the residual rule per block (max |res| <= 3 * largest epsilon_spec of the block), condition < 1e8",
+    "propagation": "the same components through the h0 row of the joint pseudo-inverse (L1; shared systematics are never averaged down: worst-case signs)",
+    "variants": "the same alternative term set for every order x the same window variant (by index: all, drop1, drop2, cut1, cut2, cut3) x weighting; deduplicated by (per-order point sets, term set, weighting)",
+    "eps_model_joint": "max over admissible joint variants of |h0_variant - h0_joint|"
+   },
+   "consistency": "orders r, r' retained: consistent iff |h0_r - h0_r'| <= E_r + E_r' for every pair",
+   "outcome_table": [
+    "1: no retained order -> no estimate (\"insufficiently validated\")",
+    "2: one retained order -> h0_r +- E_r (\"single order, not cross-validated\")",
+    "3: >= 2 retained, not consistent -> envelope [min(h0_r - E_r), max(h0_r + E_r)] as midpoint +- half-width (\"orders inconsistent\")",
+    "4: >= 2 retained, consistent, joint accepted with >= 3 distinct admissible joint variants -> h0_joint +- E_joint",
+    "5: >= 2 retained, consistent, joint rejected or < 3 distinct admissible variants -> envelope as in 3 (\"orders consistent, joint fit not validated\")"
+   ],
+   "conversion": "C2 = -pi^2/(4 b0) + h0/b0^2, mpmath 50 digits, b0 = 9 pi^2/8 (Gamma(3/4)/Gamma(1/4))^2; Delta C2 = Delta h0 / b0^2",
+   "status": "numerical diagnostics, not rigorous bounds; no proposed closed form is used anywhere"
+  },
+  "proposed_closed_form_used": false,
+  "status": "numerical diagnostics, not rigorous bounds",
+  "generation": "20261015T000632Z_99019_1e66b9"
+ },
+ "extraction_coverage": {
+  "complete": true,
+  "exceptions": [],
+  "label": "extraction coverage complete",
+  "n_points": 25,
+  "n_measured": 25
+ },
+ "superseded_rev4": {
+  "note": "rev-4 result (L1 extraction rule with inheritance), archived in evidence/rev4; superseded",
+  "outcome_branch": 4,
+  "h0": -3.4136087539302262,
+  "E_h0": 3.5578561052927498,
+  "C2": -4.067049763363875,
+  "dC2": 2.211428803836843,
+  "per_order": {
+   "1": {
+    "h0": -3.4141499391977015,
+    "E": 3.2265324807203957
+   },
+   "2": {
+    "h0": -3.4127735187424815,
+    "E": 6.501637519925135
+   },
+   "3": {
+    "h0": -3.4122690135922866,
+    "E": 0.5160368193800912
+   }
+  }
+ },
+ "deviations": [
+  {
+   "title": "D1 \u2014 2026-10-13, user-approved: A6-1 stages A and B run on symmetry instead of Expanse",
+   "file": "evidence/DEVIATIONS_ANALYSIS.md",
+   "sha256": "d183cea2bf86bc3e048605952bc181035575b253b56cce6d50b73302c0f17f30"
+  }
+ ],
+ "legacy_validation": {
+  "performed": true,
+  "file": "results/continuum_2026-10/evidence/legacy_macos/legacy_reproduction.json",
+  "sha256": "46f9e32ab870b57b4ff744f706e1b68f40e3c490e6c6ac841b2a4332d00b44dc",
+  "problems": [],
+  "status": "PASSED",
+  "passed": true,
+  "platform": {
+   "python": "3.13.5 (main, Jul 23 2025, 00:18:28) [Clang 20.1.4 ]",
+   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+   "machine": "arm64",
+   "numpy": "2.3.5",
+   "scipy": "1.17.0"
+  },
+  "tolerances": {
+   "value_and_residual_abs": 0.0001,
+   "representative_C2_abs": 1e-08,
+   "condition_rel_gate": 0.1,
+   "unclassified": "fails"
+  },
+  "pristine_commit": "474487c",
+  "same_platform_pristine_bytes_identical": {
+   "tail_transseries_fits.json": true,
+   "extended_analysis.json": true,
+   "FINAL_NUMERICAL_RESULTS.json": true
+  },
+  "cross_platform_passed": {
+   "tail_transseries_fits.json": true,
+   "extended_analysis.json": true,
+   "FINAL_NUMERICAL_RESULTS.json": true
+  },
+  "bytes_identical_to_reference": {
+   "tail_transseries_fits.json": false,
+   "extended_analysis.json": false,
+   "FINAL_NUMERICAL_RESULTS.json": false
+  },
+  "max_abs_value_difference": {
+   "tail_transseries_fits.json": 1.5042327383696374e-09,
+   "extended_analysis.json": 2.1607244559795902e-05,
+   "FINAL_NUMERICAL_RESULTS.json": 8.074239417510398e-06
+  },
+  "max_rel_condition_difference": {
+   "tail_transseries_fits.json": 1.6036202689455362e-08,
+   "extended_analysis.json": 0.015464161166703645,
+   "FINAL_NUMERICAL_RESULTS.json": 1.2671057582603708e-08
+  },
+  "max_abs_representative_C2_difference": 4.504672190819292e-10
+ },
+ "per_order": {
+  "1": {
+   "order": 1,
+   "selection_status": "preferred admissible",
+   "validated": true,
+   "validation_status": "30 distinct admissible fits",
+   "exclusion_reason": null,
+   "n_admissible_distinct": 30,
+   "n_fits": 42,
+   "admissible_descriptive": {
+    "minimum": -3.4293030607432335,
+    "maximum": -3.413667718494523,
+    "half_range": 0.007817671124355163,
+    "count": 30
+   },
+   "preferred": {
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "all",
+     "lam<=0.25"
+    ],
+    "available": true,
+    "admissible": true,
+    "rejection_reasons": []
+   },
+   "S": {
+    "point_ids": [
+     "k1_a0.05_N1024_o4_r4.5_m16384_t8192_c800000_eebafa82d841_expanse",
+     "k1_a0.0625_N1024_o4_r4.5_m16384_t8192_c800000_eebafa82d841_expanse",
+     "k1_a0.075_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k1_a0.0875_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k1_a0.1_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k1_a0.125_N256_o5_r4_m4096_t2048_c200000_archived_archived",
+     "k1_a0.15_N256_o5_r4_m4096_t2048_c200000_archived_archived",
+     "k1_a0.2_N256_o5_r4_m4096_t2048_c200000_archived_archived",
+     "k1_a0.25_N256_o5_r4_m4096_t2048_c200000_archived_archived"
+    ],
+    "lambdas": [
+     0.05,
+     0.0625,
+     0.075,
+     0.0875,
+     0.1,
+     0.125,
+     0.15,
+     0.2,
+     0.25
+    ],
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "all",
+     "lam<=0.25"
+    ],
+    "coefficients": [
+     -3.4141499391977015,
+     24.386419360917085,
+     18.014447097299414,
+     -13.963825289584467
+    ],
+    "influence": [
+     1.5775523187540081,
+     0.7186296111461593,
+     0.048928797187953545,
+     -0.41831152276803185,
+     -0.6863023777501134,
+     -0.6944845196297741,
+     -0.19578602470736575,
+     0.9917725338324379,
+     -0.34199881606527427
+    ],
+    "condition": 13306.662651639026,
+    "max_residual": 5.208548386059775e-05,
+    "dof": 5,
+    "preferred": true
+   },
+   "h0": -3.4141499391977015,
+   "E": 0.016186347451370674,
+   "components": {
+    "eps_mix": 0.00014129483272669498,
+    "eps_coll": 6.899733324680338e-05,
+    "eps_grid": 9.65262005016143e-05,
+    "eps_round": 0.00011570601966934252,
+    "eps_tailcut": 1.9246745975989622e-09,
+    "half_spread": 0.0006106995950195664,
+    "prefix_d34": 0.00016632664381080976,
+    "eps_cross": 4.147620089829374e-08,
+    "grid_smooth": 5.1683543603888974e-05,
+    "grid_rough": 4.4842656897725324e-05,
+    "grid_rev4_l1": 2.7000842113540613,
+    "grid_signed": 5.556710474300354e-05,
+    "eps_prop": 0.0006106995950195664,
+    "eps_model": 0.015153121545532056
+   },
+   "sum_abs_influence": 5.673766521841118,
+   "C2": {
+    "b0": "1.2684043089391425437948799174033603432608419633593",
+    "a1_over_b0": "-1.9452796579790903456326843917373018162305535314005",
+    "C2": -4.067386143659561,
+    "dC2_per_dh0": 0.6215621819407114,
+    "dC2": 0.01006082143952443
+   }
+  },
+  "2": {
+   "order": 2,
+   "selection_status": "preferred admissible",
+   "validated": true,
+   "validation_status": "29 distinct admissible fits",
+   "exclusion_reason": null,
+   "n_admissible_distinct": 29,
+   "n_fits": 56,
+   "admissible_descriptive": {
+    "minimum": -3.413616007496138,
+    "maximum": -3.4086031053454002,
+    "half_range": 0.002506451075368954,
+    "count": 29
+   },
+   "preferred": {
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "drop1",
+     "lam<=0.25"
+    ],
+    "available": true,
+    "admissible": true,
+    "rejection_reasons": []
+   },
+   "S": {
+    "point_ids": [
+     "k2_a0.0625_N1024_o4_r4.5_m16384_t8192_c800000_eebafa82d841_expanse",
+     "k2_a0.075_N1024_o4_r4.5_m16384_t8192_c800000_eebafa82d841_expanse",
+     "k2_a0.1_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k2_a0.125_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k2_a0.15_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k2_a0.175_N256_o5_r4_m4096_t2048_c200000_archived_archived",
+     "k2_a0.25_N256_o5_r4_m4096_t2048_c200000_archived_archived"
+    ],
+    "lambdas": [
+     0.0625,
+     0.075,
+     0.1,
+     0.125,
+     0.15,
+     0.175,
+     0.25
+    ],
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "drop1",
+     "lam<=0.25"
+    ],
+    "coefficients": [
+     -3.4127735187424815,
+     -12.726973160826573,
+     -2.0038076464692556,
+     11.469558696487786
+    ],
+    "influence": [
+     2.6117354907262014,
+     0.5911522935325807,
+     -1.6587033877668727,
+     -1.740579937275328,
+     -0.29235326140946855,
+     1.7635319143377766,
+     -0.2747831121448904
+    ],
+    "condition": 18814.110261365146,
+    "max_residual": 3.215793684141488e-05,
+    "dof": 3,
+    "preferred": true
+   },
+   "h0": -3.4127735187424815,
+   "E": 0.0067050266271640475,
+   "components": {
+    "eps_mix": 0.0010206274513072072,
+    "eps_coll": 0.0001858294192843315,
+    "eps_grid": 0.0002385366958432973,
+    "eps_round": 0.00021720137451150827,
+    "eps_tailcut": 8.62867395555425e-09,
+    "half_spread": 0.000690486629427541,
+    "prefix_d34": 0.0005478565219291622,
+    "eps_cross": 0.0,
+    "grid_smooth": 0.00018007755956371582,
+    "grid_rough": 5.8459136279581516e-05,
+    "grid_rev4_l1": 5.8312971731750824,
+    "grid_signed": 0.00018080585144760323,
+    "eps_prop": 0.0008724096604625076,
+    "eps_model": 0.004170413397081241
+   },
+   "sum_abs_influence": 8.932839397193119,
+   "C2": {
+    "b0": "1.2684043089391425437948799174033603432608419633593",
+    "a1_over_b0": "-1.9452796579790903456326843917373018162305535314005",
+    "C2": -4.066530612758147,
+    "dC2_per_dh0": 0.6215621819407114,
+    "dC2": 0.0041675909803506545
+   }
+  },
+  "3": {
+   "order": 3,
+   "selection_status": "preferred admissible",
+   "validated": true,
+   "validation_status": "26 distinct admissible fits",
+   "exclusion_reason": null,
+   "n_admissible_distinct": 26,
+   "n_fits": 56,
+   "admissible_descriptive": {
+    "minimum": -3.4132124625318463,
+    "maximum": -3.4077473578517155,
+    "half_range": 0.0027325523400654195,
+    "count": 26
+   },
+   "preferred": {
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "drop1",
+     "lam<=0.35"
+    ],
+    "available": true,
+    "admissible": true,
+    "rejection_reasons": []
+   },
+   "S": {
+    "point_ids": [
+     "k3_a0.1_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k3_a0.125_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k3_a0.15_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k3_a0.175_N768_o4_r4.5_m16384_t8192_c800000_eebafa82d841_symmetry",
+     "k3_a0.2_N384_o4_r4.5_m4096_t2048_c800000_archived_archived",
+     "k3_a0.25_N256_o5_r4_m4096_t2048_c200000_archived_archived",
+     "k3_a0.35_N256_o5_r4_m4096_t2048_c200000_archived_archived"
+    ],
+    "lambdas": [
+     0.1,
+     0.125,
+     0.15,
+     0.175,
+     0.2,
+     0.25,
+     0.35
+    ],
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "windows": [
+     "drop1",
+     "lam<=0.35"
+    ],
+    "coefficients": [
+     -3.4122690135922866,
+     -4.822180084850627,
+     -1.298083246026819,
+     0.6147189561530815
+    ],
+    "influence": [
+     3.5549970375501694,
+     0.1004591599854204,
+     -1.6685778687145336,
+     -1.9419218188585203,
+     -1.0516426275818147,
+     2.3976438551122983,
+     -0.3909577374930206
+    ],
+    "condition": 8048.387179574766,
+    "max_residual": 3.3042688943218934e-05,
+    "dof": 3,
+    "preferred": true
+   },
+   "h0": -3.4122690135922866,
+   "E": 0.005563224761805821,
+   "components": {
+    "eps_mix": 0.0002581538445327832,
+    "eps_coll": 0.00010880085677091856,
+    "eps_grid": 4.770946584256855e-05,
+    "eps_round": 0.00013644995242776794,
+    "eps_tailcut": 7.15796699051736e-09,
+    "half_spread": 0.00027745249900063766,
+    "prefix_d34": 0.000424364609161474,
+    "eps_cross": 0.0,
+    "grid_smooth": 1.3025850471096406e-05,
+    "grid_rough": 3.4683615371472136e-05,
+    "grid_rev4_l1": 0.2887966177792929,
+    "grid_signed": 1.6764936775707397e-05,
+    "eps_prop": 0.0004904477436936186,
+    "eps_model": 0.004521655740571173
+   },
+   "sum_abs_influence": 11.106200105295777,
+   "C2": {
+    "b0": "1.2684043089391425437948799174033603432608419633593",
+    "a1_over_b0": "-1.9452796579790903456326843917373018162305535314005",
+    "C2": -4.066217031436191,
+    "dC2_per_dh0": 0.6215621819407114,
+    "dC2": 0.003457890121574621
+   }
+  }
+ },
+ "retained_orders": [
+  1,
+  2,
+  3
+ ],
+ "joint": {
+  "h0": -3.4136087539302262,
+  "accepted": true,
+  "blocks": [
+   {
+    "order": 1,
+    "points": 9,
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "block_dof": 5,
+    "max_residual": 0.0001688770104557591,
+    "residual_limit": 0.0010562301679997166,
+    "passed": true
+   },
+   {
+    "order": 2,
+    "points": 7,
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "block_dof": 3,
+    "max_residual": 0.00016002168838458175,
+    "residual_limit": 0.0006263829448946989,
+    "passed": true
+   },
+   {
+    "order": 3,
+    "points": 7,
+    "terms": [
+     "2",
+     "2log",
+     "3"
+    ],
+    "weighted": false,
+    "block_dof": 3,
+    "max_residual": 0.00020432510860590725,
+    "residual_limit": 0.00023057553466543368,
+    "passed": true
+   }
+  ],
+  "condition": 24197.34825169984,
+  "n_variants": 84,
+  "n_admissible_distinct": 22,
+  "eps_model_joint": 0.002439542349301327,
+  "components": {
+   "eps_mix": 0.00034401438675845086,
+   "eps_coll": 9.913230152629591e-05,
+   "eps_grid": 0.00012034074379354976,
+   "eps_round": 0.00014006115604817072,
+   "eps_tailcut": 4.042705810510692e-09,
+   "half_spread": 0.0005837596956803429,
+   "prefix_d34": 0.00028161911113765045,
+   "eps_cross": 2.7172776541591023e-08,
+   "grid_smooth": 7.393693331167422e-05,
+   "grid_rough": 4.640381048187555e-05,
+   "grid_rev4_l1": 3.049176922627719,
+   "grid_signed": 7.712932114449457e-05,
+   "eps_prop": 0.0006505940316385519,
+   "eps_model": 0.002439542349301327
+  },
+  "E": 0.0037936890117721564,
+  "validated": true,
+  "C2": {
+   "b0": "1.2684043089391425437948799174033603432608419633593",
+   "a1_over_b0": "-1.9452796579790903456326843917373018162305535314005",
+   "C2": -4.067049763363875,
+   "dC2_per_dh0": 0.6215621819407114,
+   "dC2": 0.002358013619761603
+  }
+ },
+ "outcome": {
+  "orders": [
+   1,
+   2,
+   3
+  ],
+  "pairs": [
+   {
+    "orders": [
+     1,
+     2
+    ],
+    "difference": 0.0013764204552200177,
+    "limit": 0.02289137407853472,
+    "consistent": true
+   },
+   {
+    "orders": [
+     1,
+     3
+    ],
+    "difference": 0.0018809256054148626,
+    "limit": 0.021749572213176496,
+    "consistent": true
+   },
+   {
+    "orders": [
+     2,
+     3
+    ],
+    "difference": 0.000504505150194845,
+    "limit": 0.012268251388969868,
+    "consistent": true
+   }
+  ],
+  "consistent": true,
+  "envelope": {
+   "low": -3.430336286649072,
+   "high": -3.397963591746331,
+   "midpoint": -3.4141499391977015,
+   "half_width": 0.016186347451370597
+  },
+  "branch": 4,
+  "label": "joint fit (orders consistent, joint fit validated)",
+  "h0": -3.4136087539302262,
+  "E": 0.0037936890117721564
+ },
+ "final": {
+  "h0": -3.4136087539302262,
+  "E_h0": 0.0037936890117721564,
+  "b0": "1.2684043089391425437948799174033603432608419633593",
+  "a1_over_b0": "-1.9452796579790903456326843917373018162305535314005",
+  "C2": -4.067049763363875,
+  "dC2_per_dh0": 0.6215621819407114,
+  "dC2": 0.002358013619761603,
+  "label": "extraction coverage complete"
+ },
+ "error_budget": {
+  "conversion_dC2_per_dh0": 0.6215621819407114,
+  "per_order": {
+   "1": {
+    "table": [
+     {
+      "component": "eps_prop",
+      "description": "spectral, propagated (sum |w| eps_spec)",
+      "h0": 0.0006106995950195664,
+      "C2": 0.00037958777279067056
+     },
+     {
+      "component": "half_spread",
+      "description": "  of which: spectral-model half-spread (breakdown, not additive)",
+      "h0": 0.0006106995950195664,
+      "C2": 0.00037958777279067056
+     },
+     {
+      "component": "prefix_d34",
+      "description": "  of which: prefix drift |h(N)-h(3N/4)| (breakdown, not additive)",
+      "h0": 0.00016632664381080976,
+      "C2": 0.00010338235164192244
+     },
+     {
+      "component": "eps_cross",
+      "description": "  of which: cross-N (breakdown, not additive)",
+      "h0": 4.147620089829374e-08,
+      "C2": 2.5780037928954753e-08
+     },
+     {
+      "component": "eps_mix",
+      "description": "mixed cutoff and mixed-model spread",
+      "h0": 0.00014129483272669498,
+      "C2": 8.782352452655238e-05
+     },
+     {
+      "component": "eps_tailcut",
+      "description": "tail cutoff (2048 vs 8192)",
+      "h0": 1.9246745975989622e-09,
+      "C2": 1.1963049424094718e-09
+     },
+     {
+      "component": "eps_coll",
+      "description": "collapsed cutoff (400000 vs 800000)",
+      "h0": 6.899733324680338e-05,
+      "C2": 4.28861330009735e-05
+     },
+     {
+      "component": "eps_grid",
+      "description": "grid/coefficient extraction (M4d, rev 6/7: |v.s| + sum|v||rho|)",
+      "h0": 9.65262005016143e-05,
+      "C2": 5.9997035798229976e-05
+     },
+     {
+      "component": "grid_smooth",
+      "description": "  of which: smooth part |v.s| (breakdown)",
+      "h0": 5.1683543603888974e-05,
+      "C2": 3.212453613286113e-05
+     },
+     {
+      "component": "grid_rough",
+      "description": "  of which: rough part sum|v||rho| (breakdown)",
+      "h0": 4.4842656897725324e-05,
+      "C2": 2.7872499665368848e-05
+     },
+     {
+      "component": "grid_rev4_l1",
+      "description": "rev-4 L1 sum|v||delta| (superseded, not in E)",
+      "h0": 2.7000842113540613,
+      "C2": 1.6782702338328954
+     },
+     {
+      "component": "grid_signed",
+      "description": "signed shift |sum v delta| (reported, not in E)",
+      "h0": 5.556710474300354e-05,
+      "C2": 3.453841086818934e-05
+     },
+     {
+      "component": "eps_round",
+      "description": "roundoff (M4e)",
+      "h0": 0.00011570601966934252,
+      "C2": 7.191848604935141e-05
+     },
+     {
+      "component": "eps_model",
+      "description": "regulator model",
+      "h0": 0.015153121545532056,
+      "C2": 0.00941860729105371
+     }
+    ],
+    "E": 0.016186347451370674,
+    "E_C2": 0.01006082143952443
+   },
+   "2": {
+    "table": [
+     {
+      "component": "eps_prop",
+      "description": "spectral, propagated (sum |w| eps_spec)",
+      "h0": 0.0008724096604625076,
+      "C2": 0.0005422568521032315
+     },
+     {
+      "component": "half_spread",
+      "description": "  of which: spectral-model half-spread (breakdown, not additive)",
+      "h0": 0.000690486629427541,
+      "C2": 0.0004291803759878699
+     },
+     {
+      "component": "prefix_d34",
+      "description": "  of which: prefix drift |h(N)-h(3N/4)| (breakdown, not additive)",
+      "h0": 0.0005478565219291622,
+      "C2": 0.0003405268951607393
+     },
+     {
+      "component": "eps_cross",
+      "description": "  of which: cross-N (breakdown, not additive)",
+      "h0": 0.0,
+      "C2": 0.0
+     },
+     {
+      "component": "eps_mix",
+      "description": "mixed cutoff and mixed-model spread",
+      "h0": 0.0010206274513072072,
+      "C2": 0.0006343834255830949
+     },
+     {
+      "component": "eps_tailcut",
+      "description": "tail cutoff (2048 vs 8192)",
+      "h0": 8.62867395555425e-09,
+      "C2": 5.363257411069289e-09
+     },
+     {
+      "component": "eps_coll",
+      "description": "collapsed cutoff (400000 vs 800000)",
+      "h0": 0.0001858294192843315,
+      "C2": 0.00011550453931914441
+     },
+     {
+      "component": "eps_grid",
+      "description": "grid/coefficient extraction (M4d, rev 6/7: |v.s| + sum|v||rho|)",
+      "h0": 0.0002385366958432973,
+      "C2": 0.0001482653891412877
+     },
+     {
+      "component": "grid_smooth",
+      "description": "  of which: smooth part |v.s| (breakdown)",
+      "h0": 0.00018007755956371582,
+      "C2": 0.00011192940084098163
+     },
+     {
+      "component": "grid_rough",
+      "description": "  of which: rough part sum|v||rho| (breakdown)",
+      "h0": 5.8459136279581516e-05,
+      "C2": 3.633598830030609e-05
+     },
+     {
+      "component": "grid_rev4_l1",
+      "description": "rev-4 L1 sum|v||delta| (superseded, not in E)",
+      "h0": 5.8312971731750824,
+      "C2": 3.624513794503407
+     },
+     {
+      "component": "grid_signed",
+      "description": "signed shift |sum v delta| (reported, not in E)",
+      "h0": 0.00018080585144760323,
+      "C2": 0.00011238207953342041
+     },
+     {
+      "component": "eps_round",
+      "description": "roundoff (M4e)",
+      "h0": 0.00021720137451150827,
+      "C2": 0.0001350041602618947
+     },
+     {
+      "component": "eps_model",
+      "description": "regulator model",
+      "h0": 0.004170413397081241,
+      "C2": 0.0025921712506845906
+     }
+    ],
+    "E": 0.0067050266271640475,
+    "E_C2": 0.0041675909803506545
+   },
+   "3": {
+    "table": [
+     {
+      "component": "eps_prop",
+      "description": "spectral, propagated (sum |w| eps_spec)",
+      "h0": 0.0004904477436936186,
+      "C2": 0.00030484376969810436
+     },
+     {
+      "component": "half_spread",
+      "description": "  of which: spectral-model half-spread (breakdown, not additive)",
+      "h0": 0.00027745249900063766,
+      "C2": 0.0001724539806637394
+     },
+     {
+      "component": "prefix_d34",
+      "description": "  of which: prefix drift |h(N)-h(3N/4)| (breakdown, not additive)",
+      "h0": 0.000424364609161474,
+      "C2": 0.00026376899240882303
+     },
+     {
+      "component": "eps_cross",
+      "description": "  of which: cross-N (breakdown, not additive)",
+      "h0": 0.0,
+      "C2": 0.0
+     },
+     {
+      "component": "eps_mix",
+      "description": "mixed cutoff and mixed-model spread",
+      "h0": 0.0002581538445327832,
+      "C2": 0.00016045866688417992
+     },
+     {
+      "component": "eps_tailcut",
+      "description": "tail cutoff (2048 vs 8192)",
+      "h0": 7.15796699051736e-09,
+      "C2": 4.449121580885558e-09
+     },
+     {
+      "component": "eps_coll",
+      "description": "collapsed cutoff (400000 vs 800000)",
+      "h0": 0.00010880085677091856,
+      "C2": 6.762649793155096e-05
+     },
+     {
+      "component": "eps_grid",
+      "description": "grid/coefficient extraction (M4d, rev 6/7: |v.s| + sum|v||rho|)",
+      "h0": 4.770946584256855e-05,
+      "C2": 2.965439968833275e-05
+     },
+     {
+      "component": "grid_smooth",
+      "description": "  of which: smooth part |v.s| (breakdown)",
+      "h0": 1.3025850471096406e-05,
+      "C2": 8.096376040448126e-06
+     },
+     {
+      "component": "grid_rough",
+      "description": "  of which: rough part sum|v||rho| (breakdown)",
+      "h0": 3.4683615371472136e-05,
+      "C2": 2.155802364788462e-05
+     },
+     {
+      "component": "grid_rev4_l1",
+      "description": "rev-4 L1 sum|v||delta| (superseded, not in E)",
+      "h0": 0.2887966177792929,
+      "C2": 0.17950505588399496
+     },
+     {
+      "component": "grid_signed",
+      "description": "signed shift |sum v delta| (reported, not in E)",
+      "h0": 1.6764936775707397e-05,
+      "C2": 1.0420450682406766e-05
+     },
+     {
+      "component": "eps_round",
+      "description": "roundoff (M4e)",
+      "h0": 0.00013644995242776794,
+      "C2": 8.481213015670972e-05
+     },
+     {
+      "component": "eps_model",
+      "description": "regulator model",
+      "h0": 0.004521655740571173,
+      "C2": 0.002810490208094162
+     }
+    ],
+    "E": 0.005563224761805821,
+    "E_C2": 0.003457890121574621
+   }
+  },
+  "joint": {
+   "table": [
+    {
+     "component": "eps_prop",
+     "description": "spectral, propagated (sum |w| eps_spec)",
+     "h0": 0.0006505940316385519,
+     "C2": 0.0004043846458628626
+    },
+    {
+     "component": "half_spread",
+     "description": "  of which: spectral-model half-spread (breakdown, not additive)",
+     "h0": 0.0005837596956803429,
+     "C2": 0.00036284295017611964
+    },
+    {
+     "component": "prefix_d34",
+     "description": "  of which: prefix drift |h(N)-h(3N/4)| (breakdown, not additive)",
+     "h0": 0.00028161911113765045,
+     "C2": 0.00017504378919492173
+    },
+    {
+     "component": "eps_cross",
+     "description": "  of which: cross-N (breakdown, not additive)",
+     "h0": 2.7172776541591023e-08,
+     "C2": 1.6889570276578697e-08
+    },
+    {
+     "component": "eps_mix",
+     "description": "mixed cutoff and mixed-model spread",
+     "h0": 0.00034401438675845086,
+     "C2": 0.0002138263328525785
+    },
+    {
+     "component": "eps_tailcut",
+     "description": "tail cutoff (2048 vs 8192)",
+     "h0": 4.042705810510692e-09,
+     "C2": 2.512793044525418e-09
+    },
+    {
+     "component": "eps_coll",
+     "description": "collapsed cutoff (400000 vs 800000)",
+     "h0": 9.913230152629591e-05,
+     "C2": 6.1616889637489e-05
+    },
+    {
+     "component": "eps_grid",
+     "description": "grid/coefficient extraction (M4d, rev 6/7: |v.s| + sum|v||rho|)",
+     "h0": 0.00012034074379354976,
+     "C2": 7.479925528868692e-05
+    },
+    {
+     "component": "grid_smooth",
+     "description": "  of which: smooth part |v.s| (breakdown)",
+     "h0": 7.393693331167422e-05,
+     "C2": 4.59564015952091e-05
+    },
+    {
+     "component": "grid_rough",
+     "description": "  of which: rough part sum|v||rho| (breakdown)",
+     "h0": 4.640381048187555e-05,
+     "C2": 2.8842853693477823e-05
+    },
+    {
+     "component": "grid_rev4_l1",
+     "description": "rev-4 L1 sum|v||delta| (superseded, not in E)",
+     "h0": 3.049176922627719,
+     "C2": 1.895253061151749
+    },
+    {
+     "component": "grid_signed",
+     "description": "signed shift |sum v delta| (reported, not in E)",
+     "h0": 7.712932114449457e-05,
+     "C2": 4.79406691421779e-05
+    },
+    {
+     "component": "eps_round",
+     "description": "roundoff (M4e)",
+     "h0": 0.00014006115604817072,
+     "C2": 8.705671775843946e-05
+    },
+    {
+     "component": "eps_model",
+     "description": "regulator model",
+     "h0": 0.002439542349301327,
+     "C2": 0.001516327265568502
+    }
+   ],
+   "E": 0.0037936890117721564,
+   "E_C2": 0.002358013619761603
+  },
+  "order_consistency": {
+   "pairs": [
+    {
+     "orders": [
+      1,
+      2
+     ],
+     "difference": 0.0013764204552200177,
+     "limit": 0.02289137407853472,
+     "consistent": true
+    },
+    {
+     "orders": [
+      1,
+      3
+     ],
+     "difference": 0.0018809256054148626,
+     "limit": 0.021749572213176496,
+     "consistent": true
+    },
+    {
+     "orders": [
+      2,
+      3
+     ],
+     "difference": 0.000504505150194845,
+     "limit": 0.012268251388969868,
+     "consistent": true
+    }
+   ],
+   "max_pair_difference": 0.0018809256054148626,
+   "envelope": {
+    "low": -3.430336286649072,
+    "high": -3.397963591746331,
+    "midpoint": -3.4141499391977015,
+    "half_width": 0.016186347451370597
+   }
+  },
+  "quoted": {
+   "branch": 4,
+   "label": "joint fit (orders consistent, joint fit validated)",
+   "E_h0": 0.0037936890117721564,
+   "E_C2": 0.002358013619761603
+  },
+  "status": "linear sums of systematic diagnostics, not rigorous bounds or standard deviations"
+ },
+ "comparison_after_computation": {
+  "note": "Computed after every estimate was fixed; the historical numbers are not inputs.",
+  "historical_representative": {
+   "1": {
+    "h0": -3.4134302349482164,
+    "C2": -4.0669388027158995
+   },
+   "2": {
+    "h0": -3.4151378674678776,
+    "C2": -4.068000202510772
+   },
+   "3": {
+    "h0": -3.4203982567694706,
+    "C2": -4.071269861562929
+   }
+  },
+  "per_order": [
+   {
+    "order": 1,
+    "new_C2": -4.067386143659561,
+    "new_dC2": 0.01006082143952443,
+    "historical_C2": -4.0669388027158995,
+    "difference": -0.0004473409436611675,
+    "in_units_of_new_error": -0.04446365998543287
+   },
+   {
+    "order": 2,
+    "new_C2": -4.066530612758147,
+    "new_dC2": 0.0041675909803506545,
+    "historical_C2": -4.068000202510772,
+    "difference": 0.0014695897526255663,
+    "in_units_of_new_error": 0.35262331633655597
+   },
+   {
+    "order": 3,
+    "new_C2": -4.066217031436191,
+    "new_dC2": 0.003457890121574621,
+    "historical_C2": -4.071269861562929,
+    "difference": 0.0050528301267371845,
+    "in_units_of_new_error": 1.461246583635305
+   }
+  ],
+  "earlier_reviewers": {
+   "C2": -4.067,
+   "uncertainty": 0.004
+  },
+  "final_minus_reviewers": -4.976336387496616e-05,
+  "final_dC2": 0.002358013619761603
+ }
+}

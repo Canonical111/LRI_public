@@ -1,0 +1,112 @@
+{
+ "test": "sanitize self-test (symmetry GCC 11.4 helper)",
+ "passed": true,
+ "probes": [
+  {
+   "probe": "glibcxx_assertions",
+   "expected": "Assertion",
+   "compile": [
+    "g++",
+    "-O1",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-D_GLIBCXX_ASSERTIONS",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_glibcxx_assertions.cpp",
+    "-lquadmath",
+    "-o",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_glibcxx_assertions",
+    "-I<SCRATCH>/c8d2/pkg/5d7586e9f1ab"
+   ],
+   "piped": {
+    "exit": -6,
+    "stderr_has_report": false,
+    "stderr_tail": "",
+    "stdout_tail": ""
+   },
+   "pty": {
+    "exit": 134,
+    "has_report": true,
+    "tail": "/usr/include/c++/11/array:188: constexpr std::array<_Tp, _Nm>::value_type& std::array<_Tp, _Nm>::operator[](std::array<_Tp, _Nm>::size_type) [with _Tp = long double; long unsigned int _Nm = 16; std::array<_Tp, _Nm>::reference = long double&; std::array<_Tp, _Nm>::size_type = long unsigned int]: Assertion '__n < this->size()' failed.\n"
+   },
+   "report": "/usr/include/c++/11/array:188: constexpr std::array<_Tp, _Nm>::value_type& std::array<_Tp, _Nm>::operator[](std::array<_Tp, _Nm>::size_type) [with _Tp = long double; long unsigned int _Nm = 16; std::array<_Tp, _Nm>::reference = long double&; std::array<_Tp, _Nm>::size_type = long unsigned int]: Asse",
+   "passed": true
+  },
+  {
+   "probe": "address",
+   "expected": "AddressSanitizer: stack-buffer-overflow",
+   "compile": [
+    "g++",
+    "-O1",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-D_GLIBCXX_ASSERTIONS",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_address.cpp",
+    "-lquadmath",
+    "-o",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_address",
+    "-I<SCRATCH>/c8d2/pkg/5d7586e9f1ab"
+   ],
+   "piped": {
+    "exit": -6,
+    "stderr_has_report": true,
+    "stderr_tail": "ight redzone:     f3\n  Stack after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left alloca redzone:     ca\n  Right alloca redzone:    cb\n  Shadow gap:              cc\n==252572==ABORTING\n",
+    "stdout_tail": ""
+   },
+   "pty": {
+    "exit": 134,
+    "has_report": true,
+    "tail": "1m\u001b[31mf3\u001b[1m\u001b[0m\n  Stack after return:      \u001b[1m\u001b[35mf5\u001b[1m\u001b[0m\n  Stack use after scope:   \u001b[1m\u001b[35mf8\u001b[1m\u001b[0m\n  Global redzone:          \u001b[1m\u001b[31mf9\u001b[1m\u001b[0m\n  Global init order:       \u001b[1m\u001b[36mf6\u001b[1m\u001b[0m\n  Poisoned by user:        \u001b[1m\u001b[34mf7\u001b[1m\u001b[0m\n  Container overflow:      \u001b[1m\u001b[34mfc\u001b[1m\u001b[0m\n  Array cookie:            \u001b[1m\u001b[31mac\u001b[1m\u001b[0m\n  Intra object redzone:    \u001b[1m\u001b[33mbb\u001b[1m\u001b[0m\n  ASan internal:           \u001b[1m\u001b[33mfe\u001b[1m\u001b[0m\n  Left alloca redzone:     \u001b[1m\u001b[34mca\u001b[1m\u001b[0m\n  Right alloca redzone:    \u001b[1m\u001b[34mcb\u001b[1m\u001b[0m\n  Shadow gap:              \u001b[1m\u001b[0mcc\u001b[1m\u001b[0m\n==252582==ABORTING\n"
+   },
+   "report": "==252572==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffffffd500 at pc 0x5555555554be bp 0x7fffffffd380 sp 0x7fffffffd370",
+   "passed": true
+  },
+  {
+   "probe": "undefined",
+   "expected": "runtime error: signed integer overflow",
+   "compile": [
+    "g++",
+    "-O1",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-D_GLIBCXX_ASSERTIONS",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp",
+    "-lquadmath",
+    "-o",
+    "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined",
+    "-I<SCRATCH>/c8d2/pkg/5d7586e9f1ab"
+   ],
+   "piped": {
+    "exit": 1,
+    "stderr_has_report": true,
+    "stderr_tail": " 2147483647 cannot be represented in type 'int'\n    #0 0x55555555529d in main /tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp:2\n    #1 0x155553f12d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #2 0x155553f12e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #3 0x555555555124 in _start (/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined+0x1124)\n\n",
+    "stdout_tail": ""
+   },
+   "pty": {
+    "exit": 1,
+    "has_report": false,
+    "tail": "\u001b[1m/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp:2:55:\u001b[1m\u001b[31m runtime error: \u001b[1m\u001b[0m\u001b[1msigned integer overflow: 1 + 2147483647 cannot be represented in type 'int'\u001b[1m\u001b[0m\n    #0 0x55555555529d in main /tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp:2\n    #1 0x155553f12d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #2 0x155553f12e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #3 0x555555555124 in _start (/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined+0x1124)\n\n"
+   },
+   "report": "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp:2:55: runtime error: signed integer overflow: 1 + 2147483647 cannot be represented in type 'int'",
+   "passed": true
+  }
+ ],
+ "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0"
+}

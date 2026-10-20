@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1949, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1948, in main
+    a=p.parse_args(argv);a.func(a)
+                         ^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1606, in merge
+    for n in todo:merge_group_serial(directory,m,n,a.scratch,mh,changes,rkey);published.append(n)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1680, in merge_group_serial
+    n=validate_checkpoint(load(f),block,cfg,m,mh,rates,rkey)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 957, in validate_checkpoint
+    if k!=runtime_key:raise ValueError(f'checkpoint was produced under another runtime library stack (runtime identity {str(k)[:12]}, the campaign\'s {runtime_key[:12]}; '
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: checkpoint was produced under another runtime library stack (runtime identity 04f1e51dfc2e, the campaign's 3d0c0a034250; host <NODE>): its libraries differ from the campaign's (X8)

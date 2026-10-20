@@ -1,0 +1,157 @@
+{
+ "note": "ARCHIVE-FREE definition chain for C8 (scripts/derive_requirements_C8.py); all symbolic checks asserted.",
+ "normalized_responses": {
+  "C3": "A3(v, d) - Z2(v, d)",
+  "C5": "-A3(v, d)*Z2(v, d) + A5(v, d) + Z2(v, d)**2 - Z4(v, d)",
+  "C7": "(Z2(v, d)**2 - Z4(v, d))*A3(v, d) - A5(v, d)*Z2(v, d) + A7(v, d) - Z2(v, d)**3 + 2*Z2(v, d)*Z4(v, d) - Z6(v, d)",
+  "C9": "(Z2(v, d)**2 - Z4(v, d))*A5(v, d) + (-Z2(v, d)**3 + 2*Z2(v, d)*Z4(v, d) - Z6(v, d))*A3(v, d) - A7(v, d)*Z2(v, d) + A9(v, d) + Z2(v, d)**4 - 3*Z2(v, d)**2*Z4(v, d) + 2*Z2(v, d)*Z6(v, d) + Z4(v, d)**2 - Z8(v, d)",
+  "K2": "Q2(v, d)",
+  "K4": "-Q2(v, d)*Z2(v, d) + Q4(v, d)",
+  "K6": "(Z2(v, d)**2 - Z4(v, d))*Q2(v, d) - Q4(v, d)*Z2(v, d) + Q6(v, d)",
+  "K8": "(Z2(v, d)**2 - Z4(v, d))*Q4(v, d) + (-Z2(v, d)**3 + 2*Z2(v, d)*Z4(v, d) - Z6(v, d))*Q2(v, d) - Q6(v, d)*Z2(v, d) + Q8(v, d)",
+  "EC3": "EA3(v, d) - EZ2(v, d) + 2*Z2(v, d)/(d + 1)",
+  "EC5": "-A3(v, d)*EZ2(v, d) - EA3(v, d)*Z2(v, d) + EA5(v, d) + 2*EZ2(v, d)*Z2(v, d) - EZ4(v, d) - 2*(Z2(v, d)**2 - Z4(v, d))/(d + 1)",
+  "EC7": "(2*EZ2(v, d)*Z2(v, d) - EZ4(v, d))*A3(v, d) + (Z2(v, d)**2 - Z4(v, d))*EA3(v, d) - A5(v, d)*EZ2(v, d) - EA5(v, d)*Z2(v, d) + EA7(v, d) - 3*EZ2(v, d)*Z2(v, d)**2 + 2*EZ2(v, d)*Z4(v, d) + 2*EZ4(v, d)*Z2(v, d) - EZ6(v, d) - 2*(-Z2(v, d)**3 + 2*Z2(v, d)*Z4(v, d) - Z6(v, d))/(d + 1)",
+  "EK2": "EQ2(v, d)",
+  "EK4": "-EQ2(v, d)*Z2(v, d) + EQ4(v, d) - EZ2(v, d)*Q2(v, d)",
+  "EK6": "(2*EZ2(v, d)*Z2(v, d) - EZ4(v, d))*Q2(v, d) + (Z2(v, d)**2 - Z4(v, d))*EQ2(v, d) - EQ4(v, d)*Z2(v, d) + EQ6(v, d) - EZ2(v, d)*Q4(v, d)"
+ },
+ "normalized_response_checks": {
+  "generating_function_equals_note_and_explicit_product_rule": {
+   "C3": true,
+   "C5": true,
+   "C7": true,
+   "C9": true,
+   "K2": true,
+   "K4": true,
+   "K6": true,
+   "K8": true,
+   "EC3": true,
+   "EC5": true,
+   "EC7": true,
+   "EK2": true,
+   "EK4": true,
+   "EK6": true
+  }
+ },
+ "recurrence_9th_order": {
+  "j1": "-2/(1+delta)",
+  "j3": "-2 d_v C3_0 + EC3_0",
+  "j5": "-2 d_v C5_0 + EC5_0",
+  "j7": "-2 d_v C7_0 + EC7_0  (note l.1156)",
+  "lambda2": "-2 Q2_0 - 4 v d_v Q2_0 + 2 v EQ2_0",
+  "lambda4": "-2 K4_0 - 4 v d_v K4_0 + 2 v EK4_0",
+  "lambda6": "-2 K6_0 - 4 v d_v K6_0 + 2 v EK6_0  [pattern extension; EXTRAPOLATIONS]",
+  "b3": "C3_1 + 2 v j1",
+  "h4": "K4_1 - 2 Q2_0 b3 + lambda2",
+  "b5": "C5_1 - 3 C3_0 b3 - 2 v j1 h4 + 2 v j3",
+  "h6": "K6_1 - 2 Q2_0 b5 - 4 K4_0 b3 - lambda2 h4 + lambda4",
+  "b7": "C7_1 - 3 C3_0 b5 - 5 C5_0 b3 - 2 v j1 h6 - 2 v j3 h4 + 2 v j5",
+  "h8": "K8_1 - 2 Q2_0 b7 - 4 K4_0 b5 - 6 K6_0 b3 - lambda2 h6 - lambda4 h4 + lambda6  (note l.1149-1151)",
+  "b9": "C9_1 - 3 C3_0 b7 - 5 C5_0 b5 - 7 C7_0 b3 - 2 v j1 h8 - 2 v j3 h6 - 2 v j5 h4 + 2 v j7  (note eq:b9, l.1152-1155)",
+  "rules": "all quantities functions of (v,delta), v = b0^2; derivatives act on the FULL recurrence (explicit v, j1(delta), lambda_n, j_n) before (v,delta) = (1,0); normalized products are formed with full eps/log expansions before extraction (note l.1157-1158: an unavailable raw scalar is an error, not a zero)"
+ },
+ "lambda6_dependence": {
+  "K": true,
+  "J9": true,
+  "Kv": true
+ },
+ "note_F1_F4_structure_checks": {
+  "Ndelta: coefficient of Q6_vd[eps^0 l^1]": {
+   "derived": "-4",
+   "note_implied": "-4",
+   "agree": true,
+   "note": "N_delta = -4 P6 + ..., P6 = [eps^0 l] Q6_vd (eq:NdP6, l.1328-1331)"
+  },
+  "Ndelta: coefficient of Q4_vvd[eps^0 l^0]": {
+   "derived": "16",
+   "note_implied": "16",
+   "agree": true,
+   "note": "(lambda4)_vd = -6 k_vd - 4 k_vvd + 2 e_d + 2 e_vd (l.1319-1321): -4 * (-4) = +16 on (Q4_vvd)_0"
+  },
+  "Ndelta: coefficient of EQ4_vd[eps^0 l^0]": {
+   "derived": "-8",
+   "note_implied": "-8",
+   "agree": true,
+   "note": "same line: -4 * 2 = -8 on (EE Q4_vd)_0"
+  },
+  "U: coefficient of A7_d[eps^0 l^1]": {
+   "derived": "1",
+   "note_implied": "1",
+   "agree": true,
+   "note": "U = A7_d_1 - Z6_d_1 + 2 (EE A5_d)_0 - 2 (EE Z4_d)_0 + D_lower (l.1344-1347)"
+  },
+  "U: coefficient of Z6_d[eps^0 l^1]": {
+   "derived": "-1",
+   "note_implied": "-1",
+   "agree": true,
+   "note": "same"
+  },
+  "U: coefficient of EA5_d[eps^0 l^0]": {
+   "derived": "2",
+   "note_implied": "2",
+   "agree": true,
+   "note": "same"
+  },
+  "U: coefficient of EZ4_d[eps^0 l^0]": {
+   "derived": "-2",
+   "note_implied": "-2",
+   "agree": true,
+   "note": "same"
+  },
+  "Kv: coefficient of Q8_v[eps^0 l^1]": {
+   "derived": "-4",
+   "note_implied": "-4",
+   "agree": true,
+   "note": "K_v = -4 P8 + 16 X_vv - 8 X_E + S3, P8 = [eps^0 l] Q8_v (l.1363-1366)"
+  },
+  "Kv: coefficient of Q6_vv[eps^0 l^0]": {
+   "derived": "16",
+   "note_implied": "16",
+   "agree": true,
+   "note": "same, X_vv = [eps^0 l^0] Q6_vv (via lambda6_v)"
+  },
+  "Kv: coefficient of EQ6_v[eps^0 l^0]": {
+   "derived": "-8",
+   "note_implied": "-8",
+   "agree": true,
+   "note": "same, X_E = [eps^0 l^0] d_v (EE Q6) (via lambda6_v)"
+  },
+  "J9: coefficient of A9_base[eps^0 l^1]": {
+   "derived": "1",
+   "note_implied": "1",
+   "agree": true,
+   "note": "J9 = A9_1 - Z8_1 + 2 (EE A7)_0 - 2 (EE Z6)_0 + D9_lower (l.1388-1391)"
+  },
+  "J9: coefficient of Z8_base[eps^0 l^1]": {
+   "derived": "-1",
+   "note_implied": "-1",
+   "agree": true,
+   "note": "same"
+  },
+  "J9: coefficient of EA7_base[eps^0 l^0]": {
+   "derived": "2",
+   "note_implied": "2",
+   "agree": true,
+   "note": "same"
+  },
+  "J9: coefficient of EZ6_base[eps^0 l^0]": {
+   "derived": "-2",
+   "note_implied": "-2",
+   "agree": true,
+   "note": "same"
+  },
+  "D_norm has 13 distinct Leibniz terms (note l.1309)": {
+   "derived": 13,
+   "agree": true
+  },
+  "(lambda4)_vd = -6 k_vd - 4 k_vvd + 2 e_d + 2 e_vd (note l.1319-1321)": {
+   "agree": true
+  }
+ },
+ "regression_vs_phase1": {
+  "25_old_input_expansions_identical": true,
+  "common_normalized_atoms_identical_leibniz_and_windows": true,
+  "C7_part_of_requirements_identical_to_out/raw_requirements.json": true
+ }
+}

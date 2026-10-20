@@ -1,0 +1,15 @@
+# Expanse probes of this workflow (UTC, from the Mac over the existing ControlMaster; times from the session log, +-1 min)
+15:15  hostname; date; squeue -A <ACCOUNT>; lfs quota; ls $C8_DATA/pkg      -> no answer within 120 s (stopped)
+15:17  date; timeout 60 squeue -A <ACCOUNT> | wc -l                          -> 8 lines (4 c8d3 compute jobs pending, others not ours)
+15:18  squeue -A <ACCOUNT>; timeout 90 lfs quota -u <USER> .../scratch      -> squeue answered; lfs quota printed nothing (killed at 90 s)
+15:20  timeout 90 lfs quota ...                                           -> nothing
+15:33  source env_expanse.sh; seeds.py check (in $C8_DATA/work)           -> no answer within 100 s
+15:34  date; ls <SCRATCH>/temp_project/c8d2/        -> no answer within 120 s
+15:36  date; timeout 40 stat <SCRATCH>               -> date 08:36:19 PDT, then no answer within 60 s
+15:41  echo alive; uptime                                                 -> "alive", then no answer (PATH lookup reaches /expanse/lustre/projects)
+15:41  echo a; echo b; /bin/date                                          -> answered (08:41:23 PDT)
+15:42  /usr/bin/timeout 8 /usr/bin/cat /proc/loadavg                      -> 32.62 25.69 18.48 2/4310
+15:47  /usr/bin/timeout 15 /usr/bin/stat .../c8d2                         -> timeout exit 124 (Lustre scratch not answering)
+15:53  any command                                                        -> "mux_client_request_session: session request failed: Session open refused by peer"
+16:03  ssh -o BatchMode=yes -o ControlMaster=no expanse ...               -> refused by the master; "Permission denied" (no login prompt)
+16:07  the same                                                           -> the same

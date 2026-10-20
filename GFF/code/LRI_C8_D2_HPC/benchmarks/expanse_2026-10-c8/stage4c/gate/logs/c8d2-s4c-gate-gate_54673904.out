@@ -1,0 +1,61 @@
+job 54673904 on <NODE> at 2026-10-04T23:53:26-07:00; package <SCRATCH>/temp_project/c8d2/pkg/5569c535dcfd; evidence <SCRATCH>/temp_project/c8d2/evidence/5569c535dcfd/s4cgate.54673904.0
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+scratch /scratch/<USER>/job_54673904
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+516148208820b00cf6490b9fee4d9caaa72112b0e45404cf2c204463a9807492  bin/c8d2_gmp_dd
+6bc26966935378211e54b4922d9a4ff1700c1a2f4e4f5148d4e02b3a6820f1de  bin/c8d2_gmp_dd+mp256+exp1
+0bf3f1a8ca32e0d99aac92af5e7ce37cb5387f51f4964d567ebfa2b26da3de27  bin/c8d2_gmp_exp1
+9e884b1bb61795a6a84013c9328d754e23c3dc005928cc6ff3e0d4138644674b  bin/c8d2_gmp_mp256
+== numerics_flags.py --profile exp1 --f1-baseline <SCRATCH>/temp_project/c8d2/evidence/5569c535dcfd/s4cgate.54673899.0/f1_baseline_full/f1_baseline
+[23:53:35] compiled numerics_f1_profile from c8d2_gmp_exp1's build command in 8 s
+[23:53:36] F1 free L7 [0,256) in 1 s
+[23:53:47] F1 free L8 [0,64) in 9 s
+[23:53:48] F1 power L7 [0,256) in 1 s
+[23:53:58] F1 power L8 [0,64) in 9 s
+[23:53:58] F2: paired mini-campaign
+[23:59:40] F2: replicates [0,4) done (772 blocks, 328 s)
+[23:59:41] F4: speed
+[23:59:53] F4 exact r0: lane-thread s 1216.6 (free 850.7, power 365.9), digest 17384d2a1463
+[00:00:02] F4 profile r0: lane-thread s 1203.6 (free 835.6, power 368.0), digest 17384d2a1463
+[00:00:12] F4 profile r1: lane-thread s 1201.7 (free 836.6, power 365.1), digest 17384d2a1463
+[00:00:22] F4 exact r1: lane-thread s 1209.7 (free 842.7, power 367.0), digest 17384d2a1463
+[00:00:32] F4 exact r2: lane-thread s 1208.3 (free 843.0, power 365.3), digest 17384d2a1463
+[00:00:41] F4 profile r2: lane-thread s 1199.6 (free 835.3, power 364.3), digest 17384d2a1463
+[00:00:41] F5: thread identity
+[00:00:52] F5 free: identical
+[00:01:09] F5 power: identical
+{
+ "mode": "profile",
+ "profile_name": "exp1",
+ "status": "passed",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+== numerics_flags.py --profile dd --profile-exe <SCRATCH>/temp_project/c8d2/pkg/241baca924d2/bin/c8d2_gmp_dd --parts F4
+[00:01:12] F4: speed
+[00:01:24] F4 exact r0: lane-thread s 1205.2 (free 840.2, power 365.0), digest 17384d2a1463
+[00:01:33] F4 profile r0: lane-thread s 1200.6 (free 836.1, power 364.6), digest 17384d2a1463
+[00:01:43] F4 profile r1: lane-thread s 1198.3 (free 835.0, power 363.3), digest 17384d2a1463
+[00:01:53] F4 exact r1: lane-thread s 1205.2 (free 840.6, power 364.5), digest 17384d2a1463
+[00:02:02] F4 exact r2: lane-thread s 1207.9 (free 840.9, power 366.9), digest 17384d2a1463
+[00:02:12] F4 profile r2: lane-thread s 1198.9 (free 835.6, power 363.3), digest 17384d2a1463
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "passed",
+ "verdicts": {
+  "F4_rows": true
+ },
+ "development": [],
+ "note": "stub profile(s) ['dd']: no numerics change implemented yet",
+ "error": null
+}
+finished 2026-10-05T00:02:13-07:00, status 0

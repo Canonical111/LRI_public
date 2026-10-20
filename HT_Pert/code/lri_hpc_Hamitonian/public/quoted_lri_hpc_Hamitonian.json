@@ -1,0 +1,250 @@
+[
+ {
+  "id": "a1.code",
+  "macro": null,
+  "what": "code and record binding: lri_hpc source fingerprint, checksum lists, shared files bound by other packages",
+  "quoted": "fingerprint c0c30783db5dd9a1...",
+  "rule": "sha256 over the sorted lri_hpc/*.py names and bytes equals the records' source_sha256; root MANIFEST_SHA256.json (as received) mismatches exactly the 5 files the review fixes changed; analysis_original manifest and reference/ originals verify; the shared files ship with the sha256 other packages bind (files in public/SCRUBBED.txt accepted)",
+  "compare": "exact"
+ },
+ {
+  "id": "a1.records",
+  "macro": null,
+  "what": "111 Expanse records, their copies in analysis/extended, and the exact low orders C0..C1, r1, g1 (HT_Pert note) at every thermal cutoff",
+  "quoted": "C0 = 1/2, C1 = -1/6, r1 = 0, g1 = 1/3",
+  "rule": "34 thermal d7, 44 phi6 d5 (52..160), 33 phi6 d3 (136..832 without 608); every record and plan.json carry the shipped fingerprint; *_new.json equal the records; max |C0-1/2|, |C1+1/6|, |r1|, |g1-1/3| over the 59 thermal cutoffs <= 1e-15",
+  "compare": "exact / bound"
+ },
+ {
+  "id": "a1.xcheck",
+  "macro": null,
+  "what": "cross-check with the C8 package's input table (data/HT_1d/c8/extrapolation/data.json)",
+  "quoted": "-",
+  "rule": "thermal_d7 field bitwise equal to these records; the independent lri_c8 raw C2..C7 at Lambda <= 92 agree to <= 1e-12 relative (SKIP when the other package's data are absent)",
+  "compare": "exact / bound"
+ },
+ {
+  "id": "a1.lam",
+  "macro": "\\HTpLamThermal",
+  "what": "largest cutoff with thermal C0..C7 at every even Lambda",
+  "quoted": "118",
+  "rule": "largest L such that every even Lambda in 2..L has a thermal record (supplied <= 50, Expanse 52..118)",
+  "compare": "exact"
+ },
+ {
+  "id": "a1.states",
+  "macro": "\\HTpStatesMax",
+  "what": "basis size at Lambda = 118",
+  "quoted": "3.5\\times10^{9}",
+  "rule": "basis_dimension of the thermal record at 118 (3,528,133,673), reproduced by the independent count public/count_states.py; two significant figures",
+  "compare": "sig. figures"
+ },
+ {
+  "id": "a1.frac4",
+  "macro": "\\HTpRawFracFour",
+  "what": "raw C4(118) as a percentage of the exact C4",
+  "quoted": "67",
+  "rule": "round(100 C4(118)/45.42488010356)",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.frac7",
+  "macro": "\\HTpRawFracSeven",
+  "what": "raw C7(118) as a percentage of the diagrammatic C7",
+  "quoted": "44",
+  "rule": "round(100 C7(118)/(-322550))",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.T2",
+  "macro": null,
+  "what": "C2 tail of the frozen cutoff (HT_Pert note): C2(Lambda) - C2 ~ -40/(81 sqrt pi) Lambda^{-1/2}",
+  "quoted": "-40/(81 sqrt pi)",
+  "rule": "(C2(L) - C2) sqrt(L) / (-40/(81 sqrt pi)) within 0.5 % of 1 at L = 118 and decreasing to 1 over 52..118; fitted leading amplitude (four bases, L >= 40) within 1e-3 of -40/(81 sqrt pi)",
+  "compare": "bound"
+ },
+ {
+  "id": "a1.gates",
+  "macro": null,
+  "what": "acceptance gates of the 111 records (worst residuals)",
+  "quoted": "shell <= 1e-13 (9e-14), tuning <= 1e-10 (9e-11)",
+  "rule": "max |second_order_shell_residual| <= 1e-13 and max |tuning_residual| (raw and vacuum_subtracted) <= 1e-10 over the 111 records; measured 8.66e-14, 9.09e-11, i.e. 9e-14 and 9e-11 to one significant figure (the package gates are 1e-10 and 1e-6)",
+  "compare": "bound"
+ },
+ {
+  "id": "a1.reruns",
+  "macro": null,
+  "what": "shipped analysis rerun unchanged on a re-pointed copy",
+  "quoted": "-",
+  "rule": "16 shipped analysis scripts and public/omega3_eff.py, public/engine_agree.py rerun on the re-pointed copy (public/repoint.py); 14 JSON outputs equal to the shipped ones within per-file tolerances on max(1,|x|) (1e-13 for the exact-arithmetic window table, 1e-12 for merged data, 1e-9 to 1e-4 for tail fits, about 10-50 times the drift measured between the production stack and Python 3.12/numpy 2.3.5 on Intel); fit diagnostics (cond*, gain*) within 50 %, those at or above 1e15 (beyond float64 resolution) only required to stay >= 1e14; dC_reconciled.csv identical",
+  "compare": "bound (stated tolerances)"
+ },
+ {
+  "id": "a1.win4",
+  "macro": "\\HTpWinCfour",
+  "what": "complete window shift of C4 at Lambda = 118",
+  "quoted": "0.080",
+  "rule": "dC_reconciled.json row 118, dC4_Dconn (0.0802302), rounded to the quoted decimals; rerun within 1e-13",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.win5",
+  "macro": "\\HTpWinCfive",
+  "what": "complete window shift of C5 at Lambda = 118",
+  "quoted": "0.71",
+  "rule": "dC_reconciled.json row 118, dC5_Dconn (0.7135827), rounded to the quoted decimals; rerun within 1e-13",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.win4inf",
+  "macro": "\\HTpWinCfourInf",
+  "what": "large-Lambda constant of the C4 window shift (HT_Pert note)",
+  "quoted": "0.0803",
+  "rule": "K (lri_eh exact.renormalized_constant, 0.0616119308426799) + the top-level shift limit (identity_checks/challenge-num/fit.py on top_a.jsonl, basis g, Lambda 24..96: 0.0186909946); every basis on 24..96 rounds the same",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.offset4",
+  "macro": "\\HTpRawOffsetFour",
+  "what": "raw C4 offset below exact (percent)",
+  "quoted": "0.19",
+  "rule": "raw C4 of the pre-registered bases A-F at lo 40, 50, 60, 70 (refit_rc.json, 24 fits): 0.191-0.199 % below exact; the range rounded to the quoted decimals (0.19-0.20) contains the quoted value; evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "range contains"
+ },
+ {
+  "id": "a1.c4AF",
+  "macro": "\\NOneCfourSolver",
+  "what": "solver-fit C4 with the complete window, bases A-F part of the quoted range (note-only macro of the HT_Pert note; the paper's \\HTpCfourOne now comes from the exact sums, code/lri_1d_c4_exact row x4.c4)",
+  "quoted": "45.415\\text{--}45.420",
+  "rule": "Dconn_full C4 of bases A-F, lo 40-70 (refit_rc.json): 45.4153-45.4189; its lower end rounds to the range's lower end, its upper end lies inside (the upper end 45.420 comes from the S1B floor ensemble of another package); evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "range part"
+ },
+ {
+  "id": "a1.c5pre",
+  "macro": "\\NOneCfivePre",
+  "what": "largest relative C5 miss of the pre-registered solver bases (note-only macro of the HT_Pert note; \\HTpCfiveOnePre is retired from the paper)",
+  "quoted": "2\\times10^{-3}",
+  "rule": "max |C5 - exact|/|exact| over Dconn_full C5 of bases A-F, lo 40-70 (refit_rc.json: misses -1.529..-0.508), one significant figure; evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "sig. figures"
+ },
+ {
+  "id": "a1.c5freed",
+  "macro": "\\NOneCfiveSolver",
+  "what": "solver-fit C5 with the complete window, freed-tail part of the quoted range (note-only macro of the HT_Pert note; the paper's \\HTpCfiveOne now comes from the exact sums, code/lri_1d_c5_exact row x5.c5)",
+  "quoted": "-731.36\\text{ to }{-730.97}",
+  "rule": "family (i) of freelead2.json (L^-1/2 and L^-1/2 log L free at orders 4 and 5), bases A-F, lo 50-70: C5 -731.356..-731.081 (miss -0.217..+0.058); its lower end rounds to the range's lower end, its upper end lies inside (the upper end -730.97 comes from the S1B floor ensemble of another package); evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "range part"
+ },
+ {
+  "id": "a1.omega3",
+  "macro": "\\HTpOmegaThree",
+  "what": "phi^6-gap omega_3",
+  "quoted": "556",
+  "rule": "extended_summary.json gap_reference.extended['3'] (556.2011, cubic gap fit with data to Lambda 832), rounded to an integer; rerun within 0.05",
+  "compare": "as quoted"
+ },
+ {
+  "id": "a1.omega3eff",
+  "macro": "\\HTpOmegaThreeEff",
+  "what": "effective omega_3 of the fits that reach the exact C5",
+  "quoted": "380\\text{--}430",
+  "rule": "public/omega3_eff.py: free-exponent fits (A, B, D, E) and E+zh fits at lo 40, 50, 60, 70 on Dconn-corrected data; keep the fits with |C5 - exact| <= 0.25; min and max of omega_3,eff (377.7, 431.4) rounded to the nearest 10",
+  "compare": "range (nearest 10)"
+ },
+ {
+  "id": "a1.protocol",
+  "macro": null,
+  "what": "pre-registered test protocol for the raw C4, C5 (verdict)",
+  "quoted": "unresolved",
+  "rule": "rerun write_updated_results.py; section 6 criteria window stability no, held-out yes, C4 tail yes, C5 tail no; a matching offset is claimed only if stability, held-out and tail insensitivity all hold -> unresolved",
+  "compare": "exact (status word)"
+ },
+ {
+  "id": "a1.engine",
+  "macro": "\\HTpEngineAgree",
+  "what": "agreement of the window engines through eps^5",
+  "quoted": "10^{-11}",
+  "rule": "max of (i) engine B full basis vs pipeline at integer Lambda <= 60, the analysis' own scope (1.26e-11; the shipped full-basis record at Lambda = 64 differs by 2.2e-11, printed, not in the bound: it would read 2\\times10^{-11}), (ii) cmp_ident.py engine A vs B on 3808 numbers (9.6e-12 relative), (iii) independent ht5.py vs the reconciled table at Lambda 2..28 (2.4e-12), one significant figure",
+  "compare": "sig. figures (Lambda <= 60; 64: 2.2e-11)"
+ },
+ {
+  "id": "a1.ident3",
+  "macro": "\\HTpIdentThree",
+  "what": "eps^3 descendant-identity violation with the window, per W",
+  "quoted": "0.003",
+  "rule": "reading of 'within 0.003 W' (source: 'within about 0.003 W in every sector tested'), PASS on the single-state sectors only: largest |extrapolated [eps^3] v_n|/W with Dconn over dphi, dphi^2, d2phi, d3phi, levels a4-a6 (engine A final fits, W from the record) and the reconciler medians (dphi, d2phi) <= 0.003 (measured 0.0019). Printed as reported, not bounded: the degenerate 2x2 block P = 2, N = 2 (engine A +0.0063 W, fit range [-0.030, +0.019]; the source's reconciler +0.004 W) and dphi^3, dphi^4 (engine A -0.115 W [-0.685, +0.005] and -0.369 W [-1.377, -0.115]; not extrapolable at Lambda <= 72). Evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "reading (single-state sectors)"
+ },
+ {
+  "id": "a1.ident4",
+  "macro": "\\HTpIdentFour",
+  "what": "percent of the eps^4 identity violation removed by the window",
+  "quoted": "96\\text{--}100",
+  "rule": "removed fraction 1 - |v4(Dconn)|/|v4(g2D)| from the medians of the reconciler's tail-fit ensembles (desc_profile.json) for dphi, d2phi, dphi^2, d3phi (97.7, 98.3, 95.8, 96.1 %): each rounded to an integer lies in 96-100; engine A's final fits are reported for comparison (93.4 % for dphi, 87.5 % for dphi^2: basis-dependent tails); evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "reading (range contains)"
+ },
+ {
+  "id": "a1.ident5",
+  "macro": "\\HTpIdentFive",
+  "what": "eps^5 identity residual with the window, per W",
+  "quoted": "0.1\\text{--}0.2",
+  "rule": "largest |median [eps^5] v_n|/W with Dconn over dphi, d2phi, d3phi at phases 0, 1/4, 3/4 (fit_ident_rc.json) lies in 0.1-0.2 (it is the dphi residual about -0.1, unconverged; the others are consistent with 0); evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "reading (range contains)"
+ },
+ {
+  "id": "a1.phase",
+  "macro": null,
+  "what": "cutoff-placement test (HT_Pert note): raw HT exact through eps^3 at Lambda = 1/4, 1/2 mod 2",
+  "quoted": "exact (<= 1e-14)",
+  "rule": "max |raw [eps^k] v1(dphi)|, k = 1..3, over the 58 cutoffs Lambda = L + 1/4 and L + 1/2 (8.25..64.5) of offset_ph0.25/0.5.json <= 1e-14",
+  "compare": "bound"
+ },
+ {
+  "id": "a1.phase.g2D",
+  "macro": null,
+  "what": "cutoff-placement test at eps^4 with g2D alone vs the required 3 x 0.018691 (HT_Pert note, \"agrees with the computed correction\")",
+  "quoted": "agrees (0.0561 required)",
+  "rule": "judgement: the g2D-only [eps^4] v1(dphi) at Lambda = L + 1/4 (fit_ident_rc.json median 0.050, range 0.042-0.056; C4 window shift 0.0165 [0.0141, 0.0186]) against 3 x 0.0186910 = 0.0561; reported, not computed (the required value lies just above the fit range); with Dconn the same quantity is -0.0063 [-0.0140, +0.0003], i.e. a residual C4 shift of about +0.002, about 10 % of 0.0187",
+  "compare": "judgement"
+ },
+ {
+  "id": "a1.W54",
+  "macro": null,
+  "what": "raw descendant violation at eps^2 (HT_Pert note)",
+  "quoted": "W/54",
+  "rule": "extrapolated raw [eps^2] v1(dphi) (W = 1) of identity_checks/A/analysis_extrap.json within 1e-5 of 1/54, and 1/54 inside its fit range; evaluated on the shipped outputs and again on the rerun outputs (both must give the quoted value)",
+  "compare": "bound"
+ },
+ {
+  "id": "a1.c4AF.range",
+  "macro": "\\NOneCfourAF",
+  "what": "solver C4 with Dconn, pre-registered bases A-F, lo 40-70 (refit_rc.json): range of the 24 intercepts",
+  "quoted": "45.415\\text{--}45.419",
+  "rule": "both ends to 3 decimals (nearest); shipped outputs and the rerun",
+  "compare": "exact string"
+ },
+ {
+  "id": "a1.c5pre.miss",
+  "macro": "\\NOneCfiveAFmiss",
+  "what": "solver C5 with Dconn, pre-registered bases A-F, lo 40-70: misses C5 - exact",
+  "quoted": "-1.53\\text{ to }{-0.51}",
+  "rule": "both ends to 2 decimals (nearest)",
+  "compare": "exact string"
+ },
+ {
+  "id": "a1.c5freed.miss",
+  "macro": "\\NOneCfiveFreedMiss",
+  "what": "solver C5, freed leading tail (family (i)), lo 50-70: misses C5 - exact",
+  "quoted": "-0.22\\text{ to }{+0.06}",
+  "rule": "both ends to 2 decimals (nearest), signed",
+  "compare": "exact string"
+ },
+ {
+  "id": "a1.phase.g2D.value",
+  "macro": "\\NOneGtwoDPhase",
+  "what": "g2D-only [eps^4] v1(dphi) at Lambda = L + 1/4 (median of the reconciler fits)",
+  "quoted": "+0.0495",
+  "rule": "4 decimals; the required value 3 x 0.0186910 = 0.0561 is checked alongside",
+  "compare": "exact string"
+ }
+]

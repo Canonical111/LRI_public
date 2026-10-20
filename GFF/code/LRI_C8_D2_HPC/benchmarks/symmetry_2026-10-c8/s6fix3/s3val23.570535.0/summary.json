@@ -1,0 +1,143 @@
+{
+ "validate_full": "passed",
+ "replay_summary": {
+  "test": "replay_summary",
+  "status": "passed",
+  "kernels": 3774,
+  "full": true,
+  "reference_binaries": {
+   "decimal": "e696d7f30cf2374e6b7051b659af334c0b2c9b385edaed2b0b55d36923124df5",
+   "gmp": "7e3c8c922bbbc70f0a15752ca23147acc360305ff4a947004484cce3024fe8c3"
+  },
+  "c8_binaries": {
+   "decimal": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+   "gmp": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41"
+  },
+  "rules": {
+   "G-REF": "decimal exact strings; gmp exact if mp=0, <=1e-30 normalized if mp>0; counters identical",
+   "G-C7": "exact strings in every row field the C7(2) worker writes (identity, values, quad, mp, max_abs), mp>0 rows included",
+   "G-JET": "b and c slots 0..7-L exact (c offset 8-L -> 9-L); quad, mp, max_abs and tail fields identical; new slot finite"
+  },
+  "wall_seconds": 73.9
+ },
+ "point_checks": "passed",
+ "point_checks_max": {
+  "decimal300": "1.84140410802270215193e-302",
+  "gmp350": "2.14242116783189203521e-353"
+ },
+ "point_checks_source_binding": {
+  "decimal300": true,
+  "gmp350": true
+ },
+ "workflow": "passed",
+ "staging": "passed",
+ "thread_identity": "passed",
+ "bk8": "passed",
+ "l8self": "passed",
+ "l8prev": "passed",
+ "forced_tiers": "passed",
+ "thread_identity_team_sizes_verified": true,
+ "forced_tiers_coverage": {
+  "complete": true,
+  "why": [],
+  "source_binding_checked": true
+ },
+ "forced_tiers_source_binding": {
+  "executable": "<SCRATCH>/c8d2/pkg/997639178c1f/bin/c8d2_gmp",
+  "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+  "reproduced_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+  "reproduced": true,
+  "seconds": 4.7,
+  "command": [
+   "g++",
+   "-O3",
+   "-std=c++17",
+   "-fopenmp",
+   "-ffp-contract=off",
+   "-fno-fast-math",
+   "-DC8_USE_GMP",
+   "src/c8d2_integrate.cpp",
+   "-lquadmath",
+   "-lgmp",
+   "-o",
+   "<reproduced>"
+  ]
+ },
+ "l8self_tests": [
+  {
+   "sector": "free",
+   "backend": "decimal",
+   "graphs": 1600,
+   "rows": 3200,
+   "quad_points": 762395,
+   "mp_points": 114648,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "free",
+   "backend": "gmp",
+   "graphs": 1600,
+   "rows": 3200,
+   "quad_points": 762395,
+   "mp_points": 114648,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "power",
+   "backend": "decimal",
+   "graphs": 400,
+   "rows": 800,
+   "quad_points": 359972,
+   "mp_points": 99884,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "power",
+   "backend": "gmp",
+   "graphs": 400,
+   "rows": 800,
+   "quad_points": 359972,
+   "mp_points": 99884,
+   "rule": "every scientific field exact"
+  }
+ ],
+ "l8prev_tests": [
+  {
+   "sector": "free",
+   "backend": "decimal",
+   "graphs": 1600,
+   "rows": 3200,
+   "quad_points": 762395,
+   "mp_points": 114648,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "free",
+   "backend": "gmp",
+   "graphs": 1600,
+   "rows": 3200,
+   "quad_points": 762395,
+   "mp_points": 114648,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "power",
+   "backend": "decimal",
+   "graphs": 400,
+   "rows": 800,
+   "quad_points": 359972,
+   "mp_points": 99884,
+   "rule": "every scientific field exact"
+  },
+  {
+   "sector": "power",
+   "backend": "gmp",
+   "graphs": 400,
+   "rows": 800,
+   "quad_points": 359972,
+   "mp_points": 99884,
+   "rule": "every scientific field exact"
+  }
+ ],
+ "ok": true
+}

@@ -1,0 +1,217 @@
+job 54673764 on <NODE> at 2026-10-04T22:41:21-07:00; package <SCRATCH>/temp_project/c8d2/pkg/dd171982f690; evidence <SCRATCH>/temp_project/c8d2/evidence/dd171982f690/s4cddspeed.54673764.0; speed dd dd_direct; F1 scale 1
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+scratch /scratch/<USER>/job_54673764
+== accuracy
+{
+ "exp_uniform_300": {
+  "max_u2": 2.214,
+  "bound": 40,
+  "passed": true
+ },
+ "exp_wide_m650_700": {
+  "max_u2": 2.328,
+  "bound": 40,
+  "passed": true
+ },
+ "exp_small": {
+  "max_u2": 0.5005,
+  "bound": 40,
+  "passed": true
+ },
+ "exp_edges": {
+  "max_u2": 2.723,
+  "bound": 40,
+  "passed": true
+ },
+ "exp_special": {
+  "max_u2": 1.166,
+  "bound": 40,
+  "passed": true
+ },
+ "arg_direct": {
+  "max_u2": 2.318,
+  "bound": 40,
+  "passed": true
+ },
+ "arg_shifted": {
+  "max_u2": 819.2,
+  "bound": 5377,
+  "passed": true
+ },
+ "add": {
+  "max_u2": 1.791,
+  "bound": 3,
+  "passed": true
+ },
+ "add_d": {
+  "max_u2": 0.9988,
+  "bound": 2,
+  "passed": true
+ },
+ "mul": {
+  "max_u2": 3.736,
+  "bound": 6,
+  "passed": true
+ },
+ "mul_d": {
+  "max_u2": 1.652,
+  "bound": 2,
+  "passed": true
+ },
+ "div": {
+  "max_u2": 5.477,
+  "bound": 11,
+  "passed": true
+ },
+ "div_d": {
+  "max_u2": 2.64,
+  "bound": 4,
+  "passed": true
+ },
+ "exact_ops": {
+  "max_u2": 6.58e-97,
+  "bound": 1e-60,
+  "passed": true
+ },
+ "sum_positive": {
+  "max_u2": 64,
+  "bound": 30720.0,
+  "passed": true
+ }
+}
+passed True
+== variants
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+37cf09b7d29a9cc82b2280ba92e73ac7fd10ade618d87fb1a886e43a6233763c  bin/c8d2_gmp_dd
+1bd3142e3b30d9b6ce8845db54f7bc9af44bdb0c837d28e11ce08fb1e10383df  bin/c8d2_gmp_dd_direct
+56540864a905d9a53931ff82744093bc3b41236fbaa3e32d5c133ea3d29e71a2  bin/c8d2_gmp_dd_never
+== F4 dd (2026-10-04T22:41:43-07:00)
+[22:41:43] F4: speed
+[22:41:58] F4 exact r0: lane-thread s 1203.9 (free 838.3, power 365.7), digest 17384d2a1463
+[22:42:05] F4 profile r0: lane-thread s 922.7 (free 623.6, power 299.1), digest 77fc4cac3097
+[22:42:13] F4 profile r1: lane-thread s 921.8 (free 622.9, power 298.9), digest 77fc4cac3097
+[22:42:22] F4 exact r1: lane-thread s 1205.0 (free 839.8, power 365.2), digest 17384d2a1463
+[22:42:32] F4 exact r2: lane-thread s 1205.4 (free 840.8, power 364.6), digest 17384d2a1463
+[22:42:40] F4 profile r2: lane-thread s 923.5 (free 624.1, power 299.4), digest 77fc4cac3097
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "passed",
+ "verdicts": {
+  "F4_rows": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+== F4 dd_direct (2026-10-04T22:42:40-07:00)
+[22:42:40] F4: speed
+[22:42:53] F4 exact r0: lane-thread s 1204.7 (free 839.2, power 365.5), digest 17384d2a1463
+[22:43:02] F4 profile r0: lane-thread s 1159.4 (free 782.7, power 376.7), digest e72db1d028eb
+[22:43:11] F4 profile r1: lane-thread s 1159.7 (free 783.1, power 376.6), digest e72db1d028eb
+[22:43:21] F4 exact r1: lane-thread s 1206.3 (free 840.8, power 365.5), digest 17384d2a1463
+[22:43:31] F4 exact r2: lane-thread s 1206.6 (free 840.8, power 365.8), digest 17384d2a1463
+[22:43:40] F4 profile r2: lane-thread s 1158.4 (free 781.8, power 376.6), digest e72db1d028eb
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "passed",
+ "verdicts": {
+  "F4_rows": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+== F1 dd at scale 1 (2026-10-04T22:43:41-07:00)
+[22:43:41] F1: the exact baseline (450-digit references)
+[22:43:49] compiled numerics_f1_exact from c8d2_gmp's build command in 8 s
+[22:44:01] F1 baseline free L7 [0,256) in 11 s
+[22:44:25] F1 baseline free L8 [0,64) in 24 s
+[22:44:34] F1 baseline power L7 [0,256) in 8 s
+[22:44:52] F1 baseline power L8 [0,64) in 18 s
+[22:45:01] compiled numerics_f1_profile from c8d2_gmp_dd's build command in 9 s
+[22:45:02] F1 free L7 [0,256) in 1 s
+[22:45:13] F1 free L8 [0,64) in 10 s
+[22:45:14] F1 power L7 [0,256) in 2 s
+[22:45:24] F1 power L8 [0,64) in 9 s
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "passed",
+ "verdicts": {
+  "F1": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+== F1 dd_never (2026-10-04T22:45:27-07:00)
+[22:45:35] compiled numerics_f1_profile from c8d2_gmp_dd_never's build command in 9 s
+[22:45:37] F1 free L7 [0,256) in 1 s
+[22:45:48] F1 free L8 [0,64) in 10 s
+[22:45:49] F1 power L7 [0,256) in 2 s
+[22:45:59] F1 power L8 [0,64) in 10 s
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "passed",
+ "verdicts": {
+  "F1": true
+ },
+ "development": [],
+ "note": null,
+ "error": null
+}
+{
+ "f4_dd": {
+  "status": "passed",
+  "F1": null,
+  "routes": null,
+  "speedup": {
+   "total": 1.3059746565777994,
+   "free": 1.3467018206302312,
+   "power": 1.2210642824227782
+  }
+ },
+ "f4_dd_direct": {
+  "status": "passed",
+  "F1": null,
+  "routes": null,
+  "speedup": {
+   "total": 1.0404402529351486,
+   "free": 1.0742603927152448,
+   "power": 0.9704815574234241
+  }
+ },
+ "f1_dd": {
+  "status": "passed",
+  "F1": {
+   "passed": true,
+   "violations": 0,
+   "failed_profile_checks": {},
+   "why": []
+  },
+  "routes": {
+   "accepted": 70620,
+   "ratio_to_binary128": 9289,
+   "ratio_to_mp": 16109
+  },
+  "speedup": null
+ },
+ "f1_dd_never": {
+  "status": "passed",
+  "F1": {
+   "passed": true,
+   "violations": 0,
+   "failed_profile_checks": {},
+   "why": []
+  },
+  "routes": {
+   "ratio_to_binary128": 96018
+  },
+  "speedup": null
+ }
+}
+finished 2026-10-04T22:46:00-07:00, status 0

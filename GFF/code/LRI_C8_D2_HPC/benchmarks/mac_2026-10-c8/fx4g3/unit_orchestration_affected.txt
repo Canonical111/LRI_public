@@ -1,0 +1,16 @@
+FAIL route_b_records: ValueError: --numerics-gate /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_y5edjaf9/gates/ok.json: not a passed full-scale J-FLAG gate of the production build of dd+mp256: no authenticated input-set identity (inputs: c8-d2-gate-inputs-1 with the inputs manifest sha256 the gate ran on, W18)
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/unit_orchestration.py", line 3830, in run
+    try:fn(ctx)
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/unit_orchestration.py", line 3752, in <lambda>
+    ('inputs',lambda c:test_inputs_refusals(c.E)),('exe',lambda c:test_executable_identity(c.E)),('route_b_records',lambda c:test_route_b_records(c.E)),
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g3/tests/unit_orchestration.py", line 625, in test_route_b_records
+    g=D.check_gate(gate('ok.json'),'dd+mp256',inv);assert g['profile_executable_sha256']=='e'*64 and g['sha256']==digest(gd/'ok.json')
+  File "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_y5edjaf9/pkg/tools/design.py", line 1252, in check_gate
+    if why:raise ValueError(f'--numerics-gate {path}: not a passed full-scale J-FLAG gate of the production build of {profile}: '+'; '.join(why))
+ValueError: --numerics-gate /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_y5edjaf9/gates/ok.json: not a passed full-scale J-FLAG gate of the production build of dd+mp256: no authenticated input-set identity (inputs: c8-d2-gate-inputs-1 with the inputs manifest sha256 the gate ran on, W18)
+
+PASS Y2_live_team_check_verified_smaller_refused_64_unverified_unavailable
+PASS Y12_sweep_resume_requires_same_rates_identity_and_cost_basis
+PASS Y13_sweep_registers_seed_before_any_index_runs
+{"status": "failed", "requested": ["route_b_records", "omp_team", "sweep_resume", "sweep_seed"], "executed": 4, "tests": 3, "failed": ["route_b_records"]}

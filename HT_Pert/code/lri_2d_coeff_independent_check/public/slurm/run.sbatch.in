@@ -1,0 +1,19 @@
+#!/bin/bash
+# Template for the production reruns of lri_2d_coeff_independent_check (REPRODUCE, "Production"). Fill in the
+# placeholders; submit from HT_Pert/code/lri_2d_coeff_independent_check:
+#   sbatch -p <PARTITION> -A <ACCOUNT> --job-name=<NAME> --mem=<MEM> --time=<TIME> public/slurm/run.sbatch.in <SUBDIR> "<ARGS>"
+# e.g. ... public/slurm/run.sbatch.in residual_log/large_L/lib_opt "prod5.py --Lmax 300 --workers 3 --raw_only --shard 0/12 --cache <CACHE> --out <OUT>"
+#SBATCH --nodes=1
+#SBATCH --exclusive
+#SBATCH --output=%x_%j.out
+set -uo pipefail
+PKG=$(pwd)
+cd "$PKG/$1" || exit 2
+export RS_EXACT_DIR=$PKG/rs_exact                     # the large_L engines import rs_exact/ref_fraction.py
+export NUMBA_CACHE_DIR=${NUMBA_CACHE_DIR:-$PKG/.work/numba}
+NT=${NT:-1}                                            # threads per worker process (engines: workers x NT <= cores)
+export OMP_NUM_THREADS=$NT NUMBA_NUM_THREADS=$NT OPENBLAS_NUM_THREADS=$NT MKL_NUM_THREADS=$NT ENGINE_THREADS=${ET:-1}
+echo "host $(hostname) start $(date) cpus=${SLURM_CPUS_ON_NODE:-?} job=${SLURM_JOB_ID:-?} dir=$1 args: $2"
+sha256sum *.py | sed 's/^/# /'
+${PYTHON:-python3} $2
+echo "end $(date) exit $?"

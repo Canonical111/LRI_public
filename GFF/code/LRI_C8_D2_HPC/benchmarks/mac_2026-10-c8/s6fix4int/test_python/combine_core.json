@@ -1,0 +1,78 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "combine core (synthetic)",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "two batches combine into the assembly of the concatenated replicates",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "per-batch C8 and the chi-square about the combination equal hand values",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "one batch of two gives a partial result (final false)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "refuses a different design bundle",
+   "passed": true,
+   "detail": "the batches differ in design_sha256: ['\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"', '\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"']; batches of different designs, inputs, numerics or rates cannot be combined"
+  },
+  {
+   "check": "refuses a different inputs manifest",
+   "passed": true,
+   "detail": "the batches differ in inputs_manifest_sha256: ['\"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\"', '\"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj\"']; batches of different designs, inputs, numerics or rates cannot be combined"
+  },
+  {
+   "check": "refuses a different numerics profile",
+   "passed": true,
+   "detail": "the batches differ in numerics: ['\"dd\"', '\"exact\"']; batches of different designs, inputs, numerics or rates cannot be combined"
+  },
+  {
+   "check": "refuses a different rates identity",
+   "passed": true,
+   "detail": "the batches differ in rates_identity: ['\"default\"', '\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\"']; batches of different designs, inputs, numerics or rates cannot be combined"
+  },
+  {
+   "check": "refuses a repeated group seed",
+   "passed": true,
+   "detail": "a group seed repeats across the batches: the batches are not independent"
+  },
+  {
+   "check": "refuses a repeated label",
+   "passed": true,
+   "detail": "batch labels must be distinct"
+  },
+  {
+   "check": "refuses fewer batches than the bundle without --partial",
+   "passed": true,
+   "detail": "the frozen design has 2 batches; 1 given (use --partial for an interim combination)"
+  },
+  {
+   "check": "refuses --partial with the full batch count",
+   "passed": true,
+   "detail": "--partial is for fewer batches than the bundle's 2"
+  },
+  {
+   "check": "Z8: refuses a combination whose covariance is asymmetric",
+   "passed": true,
+   "detail": "the combined result does not verify: ['/covariance[3][8]: 1e+30 differs from its transpose element [8][3] = -0.01438631413555723 beyond the rounding tolerance 6.03e-10 (not symmetric; Z8)', '/covariance: not positive semidefinite (the smallest eigenvalue of its correlation matrix is -8.28942e+28 < -9e-10; Z8)']"
+  },
+  {
+   "check": "Z8: refuses a combination whose covariance is indefinite",
+   "passed": true,
+   "detail": "the combined result does not verify: ['/covariance: not positive semidefinite (the smallest eigenvalue of its correlation matrix is -0.829218 < -9e-10; Z8)']"
+  },
+  {
+   "check": "Z8: the same combination with its covariance untouched is accepted",
+   "passed": true,
+   "detail": ""
+  }
+ ]
+}

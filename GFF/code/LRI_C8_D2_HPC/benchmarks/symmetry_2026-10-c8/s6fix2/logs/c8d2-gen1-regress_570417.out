@@ -1,0 +1,332 @@
+job 570417 restart 0 on <NODE> at 2026-10-06T02:25:51-04:00; evidence <SCRATCH>/c8d2/evidence/e914701b042b/gen1.570417.0; work <SCRATCH>/c8d2/gen/e914701b042b/gen1.570417.0
+CPU(s):                                  80
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+NUMA node(s):                            2
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+python 3.11.3 numpy 2.3.5 scipy 1.17.1 mpmath 1.3.0 sympy 1.14.0
+make: Entering directory '<SCRATCH>/c8d2/pkg/e914701b042b/gen'
+g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off build_free.cpp -o <SCRATCH>/c8d2/gen/e914701b042b/gen1.570417.0/bin/build_free
+g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off build_power.cpp -o <SCRATCH>/c8d2/gen/e914701b042b/gen1.570417.0/bin/build_power
+g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off check_edge_forests.cpp -o <SCRATCH>/c8d2/gen/e914701b042b/gen1.570417.0/bin/check_edge_forests
+g++ -O3 -std=c++17 -fopenmp -fno-fast-math -ffp-contract=off test_keys.cpp -o <SCRATCH>/c8d2/gen/e914701b042b/gen1.570417.0/bin/test_keys
+make: Leaving directory '<SCRATCH>/c8d2/pkg/e914701b042b/gen'
+{
+ "schema": "c8-d2-check-sources-1",
+ "reference_copies": 66,
+ "verbatim_ports": 11,
+ "review_base": "60fef98f270b1c388bbbdde0143676923aadb029",
+ "origins_checked": false,
+ "errors": [],
+ "notes": [
+  "no .git: port copies in c8-rb not checked (export)"
+ ],
+ "status": "passed"
+}
+PASS read and print back 2^64 and 2^70+1
+PASS driver: 2^128 overflows
+PASS driver: '12a' is refused
+PASS driver: truncated file
+PASS driver: surplus row (exactly NG rows)
+PASS driver: row with two tokens
+PASS driver: row with four tokens
+PASS driver: key wider than an n=4 class
+PASS driver: header n out of range
+PASS driver: non-decimal aut
+PASS driver: empty file
+PASS build_free: 2^128 overflows
+PASS build_free: '12a' is refused
+PASS build_free: truncated file
+PASS build_power: 2^128 overflows
+PASS build_power: '12a' is refused
+PASS build_power: truncated file
+PASS check_edge_forests: 2^128 overflows
+PASS check_edge_forests: '12a' is refused
+PASS check_edge_forests: truncated file
+PASS syntax driver round-trips the semantically invalid file: vertex of degree 6 (n=4, key 15)
+PASS test_keys --generator refuses: vertex of degree 6 (n=4, key 15)
+PASS build_free refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS build_power refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS check_edge_forests refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS syntax driver round-trips the semantically invalid file: zero-edge key
+PASS test_keys --generator refuses: zero-edge key
+PASS build_free refuses before writing: zero-edge key
+PASS build_power refuses before writing: zero-edge key
+PASS check_edge_forests refuses before writing: zero-edge key
+PASS syntax driver round-trips the semantically invalid file: n=1 (L=0)
+PASS test_keys --generator refuses: n=1 (L=0)
+PASS build_free refuses before writing: n=1 (L=0)
+PASS build_power refuses before writing: n=1 (L=0)
+PASS check_edge_forests refuses before writing: n=1 (L=0)
+PASS syntax driver round-trips the semantically invalid file: seven edges at n=4
+PASS test_keys --generator refuses: seven edges at n=4
+PASS build_free refuses before writing: seven edges at n=4
+PASS build_power refuses before writing: seven edges at n=4
+PASS check_edge_forests refuses before writing: seven edges at n=4
+PASS syntax driver round-trips the semantically invalid file: disconnected graph
+PASS test_keys --generator refuses: disconnected graph
+PASS build_free refuses before writing: disconnected graph
+PASS build_power refuses before writing: disconnected graph
+PASS check_edge_forests refuses before writing: disconnected graph
+PASS syntax driver round-trips the semantically invalid file: aut 0
+PASS test_keys --generator refuses: aut 0
+PASS build_free refuses before writing: aut 0
+PASS build_power refuses before writing: aut 0
+PASS check_edge_forests refuses before writing: aut 0
+PASS syntax driver round-trips the semantically invalid file: orbit 0
+PASS test_keys --generator refuses: orbit 0
+PASS build_free refuses before writing: orbit 0
+PASS build_power refuses before writing: orbit 0
+PASS check_edge_forests refuses before writing: orbit 0
+PASS syntax driver round-trips the semantically invalid file: aut * orbit is not n!
+PASS test_keys --generator refuses: aut * orbit is not n!
+PASS build_free refuses before writing: aut * orbit is not n!
+PASS build_power refuses before writing: aut * orbit is not n!
+PASS check_edge_forests refuses before writing: aut * orbit is not n!
+PASS syntax driver round-trips the semantically invalid file: aut * orbit overflows
+PASS test_keys --generator refuses: aut * orbit overflows
+PASS build_free refuses before writing: aut * orbit overflows
+PASS build_power refuses before writing: aut * orbit overflows
+PASS check_edge_forests refuses before writing: aut * orbit overflows
+PASS syntax driver round-trips the semantically invalid file: repeated key
+PASS test_keys --generator refuses: repeated key
+PASS build_free refuses before writing: repeated key
+PASS build_power refuses before writing: repeated key
+PASS check_edge_forests refuses before writing: repeated key
+PASS syntax driver round-trips the semantically invalid file: NG=0
+PASS test_keys --generator refuses: NG=0
+PASS build_free refuses before writing: NG=0
+PASS build_power refuses before writing: NG=0
+PASS check_edge_forests refuses before writing: NG=0
+PASS syntax driver round-trips the semantically invalid file: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS test_keys --generator refuses: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS build_free refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS build_power refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS check_edge_forests refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS classes1.txt round-trips byte for byte
+PASS classes1.txt passes the generator validation (same rows)
+PASS classes2.txt round-trips byte for byte
+PASS classes2.txt passes the generator validation (same rows)
+PASS classes3.txt round-trips byte for byte
+PASS classes3.txt passes the generator validation (same rows)
+PASS classes4.txt round-trips byte for byte
+PASS classes4.txt passes the generator validation (same rows)
+PASS classes5.txt round-trips byte for byte
+PASS classes5.txt passes the generator validation (same rows)
+PASS classes6.txt round-trips byte for byte
+PASS classes6.txt passes the generator validation (same rows)
+PASS classes7.txt round-trips byte for byte
+PASS classes7.txt passes the generator validation (same rows)
+PASS classes8.txt round-trips byte for byte
+PASS classes8.txt passes the generator validation (same rows)
+PASS classes8.txt holds 5,068 keys above 2^64
+PASS c8gen.hpp alone: no warning under -Wall -Wextra
+PASS build_free.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS build_power.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS check_edge_forests.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS test_keys.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS UBSan build of test_keys (g++ -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of build_free (g++ -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of build_power (g++ -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of check_edge_forests (g++ -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan test_keys: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan build_free: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan build_power: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan check_edge_forests: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan test_keys: every crafted file (22) is refused with exit 2 and no sanitizer report
+PASS UBSan test_keys --generator: classes1..8 pass with the same rows and no sanitizer report
+test_keys: 112/112 checks passed
+PASS an injected failing gate stops the pipeline before publication
+PASS a gates.py run that exits nonzero stops the pipeline before publication
+PASS control: a passing gate step reaches publication
+PASS a failing build stops the pipeline before the gates
+PASS an inherited OMP_THREAD_LIMIT, OMP_DYNAMIC=true, GOMP_* or KMP_* never reaches a pipeline step
+PASS an existing target is refused before any step
+test_run_l8: 6/6 checks passed
+PASS SHA256SUMS lists every file except MANIFEST.json and itself
+PASS MEMBERS.sha256 is listed in SHA256SUMS
+PASS MANIFEST.json pins sha256(SHA256SUMS)
+PASS no file records the hash of MANIFEST.json
+PASS MEMBERS.sha256 lists all 12 G-file members
+PASS untouched tree verifies (all four steps)
+PASS detects a one-byte change to a G-file member (step 3_members)
+PASS detects a one-byte change to a listed file (step 1_sha256sums)
+PASS detects a one-byte change to MEMBERS.sha256 (step 1_sha256sums)
+PASS detects a one-byte change to SHA256SUMS (step 2_manifest_pins_sha256sums)
+PASS detects the last LF of SHA256SUMS turned into CR (one byte) (step 2_manifest_pins_sha256sums)
+PASS detects the last LF of SHA256SUMS turned into CR, parsed (one byte) (step 1_sha256sums)
+PASS detects SHA256SUMS rewritten with CRLF line ends (step 2_manifest_pins_sha256sums)
+PASS detects SHA256SUMS rewritten with CRLF line ends, parsed (step 1_sha256sums)
+PASS detects MEMBERS.sha256 rewritten with CRLF line ends (step 1_sha256sums)
+PASS detects MEMBERS.sha256 rewritten with CRLF line ends, parsed (step 3_members)
+PASS detects a one-byte change to MANIFEST.json (step 4_external_pin)
+PASS detects an unlisted extra file (step 1_sha256sums)
+PASS detects a SHA256SUMS that lists MANIFEST.json (step 1_sha256sums)
+PASS detects a SHA256SUMS that lists itself (step 1_sha256sums)
+PASS a wrong pin fails step 4
+PASS a second publish to the same target refuses
+PASS a failure while writing leaves no published target
+1_sha256sums: FAIL (1): sha256 mismatch: selection.json
+2_manifest_pins_sha256sums: PASS
+3_members: PASS
+4_external_pin: PASS
+verify_inventory FAILED /tmp/c8d2_tvi_v950cwbg/bad_source
+PASS copy refuses a source that does not verify
+1_sha256sums: PASS
+2_manifest_pins_sha256sums: PASS
+3_members: PASS
+4_external_pin: PASS
+verify_inventory PASSED /tmp/c8d2_tvi_v950cwbg/inventory8_d2
+1_sha256sums: PASS
+2_manifest_pins_sha256sums: PASS
+3_members: PASS
+4_external_pin: PASS
+verify_inventory PASSED /tmp/c8d2_tvi_v950cwbg/.copy_ok.tmp.570417
+1_sha256sums: PASS
+2_manifest_pins_sha256sums: PASS
+3_members: PASS
+4_external_pin: PASS
+verify_inventory PASSED /tmp/c8d2_tvi_v950cwbg/copy_ok
+published /tmp/c8d2_tvi_v950cwbg/copy_ok (MANIFEST.json sha256 efa4f2d17120a6eb045b6c7956a1c8af0ccdc9bd2b05cbdd515a98d53b4666b7)
+PASS copy of a verified tree publishes a verified, byte-identical copy
+test_verify_inventory: 25/25 checks passed
+PASS identical files
+PASS free L3: legacy rate values are rate-only
+PASS free L3: rate-only counts the differing entries
+PASS free L3: a rate line differing only in its trailing space is rate-only
+PASS free L3: ... and counted as whitespace-only
+PASS CK-K02: only wa changed (identity permutation) is refused
+PASS CK-K02: only wb changed is refused
+PASS CK-K02: wa changed below binary64 resolution is refused (exact header text)
+PASS CK-K02: wa and a rate value changed is refused
+PASS CK-K02: a rate table one entry short is refused
+PASS CK-K02: a rate table one entry long is refused
+PASS a changed 2^E line is refused
+PASS a changed id is refused
+PASS a mask reordering under the recorded identity permutation is refused
+PASS a mask reordering under a recorded automorphism (free L3 G0) is refused
+PASS a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS the relabelled control really differs in masks and terms
+PASS the relabelling with the rate values kept is accepted too
+PASS CK-K02: relabelled with wa changed is refused
+PASS CK-K02: relabelled with wb changed is refused
+PASS CK-K02: relabelled with the id changed is refused
+PASS CK-K02: relabelled with a rate table one entry short is refused
+PASS relabelled with a changed 2^E line is refused
+PASS a relabelling by a permutation that is not the recorded one is refused
+PASS a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling
+PASS a mask value no permutation explains is refused
+PASS power L3: a rate change is refused
+PASS free L7: a rate change is refused (parity rule)
+PASS a malformed file is classified, not raised
+PASS a file without its final newline is refused
+PASS the frozen trees: every G-file header agrees with its inventory row
+PASS a clean copy agrees
+PASS CK-K02: G1 header wa changed, its inventory row kept: reported
+PASS CK-K02: G1 header wb changed, its inventory row kept: reported
+PASS CK-K02: G1 header masks changed, its inventory row kept: reported
+PASS CK-K02: G1 header id changed, its inventory row kept: reported
+PASS a G-file without an inventory row is reported
+PASS an inventory row naming a missing G-file is reported
+PASS end to end: regress.py --loops 3 passes on copies of the frozen trees
+PASS end to end: every builder gets OMP_NUM_THREADS and OMP_DYNAMIC=FALSE and no inherited OpenMP control
+PASS builder_env (also gen/gates.py check_edge_forests): only PATH, OMP_NUM_THREADS=8 and OMP_DYNAMIC=FALSE
+PASS gen/gates.py runs check_edge_forests in builder_env
+PASS the generator job scripts and gen/run_l8.sh unset inherited OpenMP controls before any builder
+PASS end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)
+PASS end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2
+PASS end to end: the --loops 3 run records partial coverage (no H1 evidence)
+PASS regress.py refuses '--loops 7-3' before building
+PASS regress.py refuses '--loops 3,3' before building
+PASS regress.py refuses '--loops 8' before building
+PASS regress.py refuses '--loops ' before building
+PASS regress.py refuses '--threads ' before building
+PASS regress.py refuses '--threads 0,8' before building
+PASS regress.py refuses '--threads 8,8' before building
+PASS loops_arg('3-7') = [3, 4, 5, 6, 7]
+PASS loops_arg('3') = [3]
+PASS loops_arg('5,3') = [5, 3]
+PASS loops_arg('7-7') = [7]
+PASS loops_arg('7-3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('8') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2-4') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3-') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('x') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,,4') is refused (empty, reversed, repeated or out of 3..7)
+PASS threads_arg('1,8') -> [1, 8]
+PASS threads_arg('1') -> [1]
+PASS threads_arg('') -> refused
+PASS threads_arg('0') -> refused
+PASS threads_arg('1,1') -> refused
+PASS threads_arg('-2') -> refused
+PASS threads_arg('a') -> refused
+PASS h1_problems: a complete synthetic record is H1 evidence
+PASS h1_problems refuses partial evidence: loops [3] (gen/regress.py --loops 3)
+PASS h1_problems refuses partial evidence: no loop at all
+PASS h1_problems refuses partial evidence: one thread count (--threads 1)
+PASS h1_problems refuses partial evidence: no serial run (threads 2 and 8)
+PASS h1_problems refuses partial evidence: a sector missing
+PASS h1_problems refuses partial evidence: thread identity false
+PASS h1_problems refuses partial evidence: a build that failed
+PASS h1_problems refuses partial evidence: free L7 not byte-identical
+PASS h1_problems refuses partial evidence: no header-row check (before CK-K02)
+PASS h1_problems refuses partial evidence: the L7 control false
+PASS h1_problems refuses partial evidence: failures listed
+PASS h1_problems refuses partial evidence: passed false
+PASS h1_problems refuses partial evidence: another gate name
+PASS h1_problems accepts the real J-GEN-1 record of the CK-K02 fix (Expanse 54658874)
+PASS h1_problems refuses the Stage-1 record (Expanse 54631551): it predates the CK-K02 header-row check
+test_regress: 90/90 checks passed
+PASS writes the HANDOFF when everything is green and complete
+PASS refuses to overwrite an existing HANDOFF
+PASS refuses when an A-INV record is red
+PASS S6-B-02: refuses the A-INV-2 record of regress.py --loops 3 --threads 1
+PASS S6-B-02: refuses an A-INV-2 record that selected no loop
+PASS S6-B-02: refuses an A-INV-2 record with a single thread count
+PASS S6-B-02: refuses a bare {"passed": true} test record
+PASS S6-B-02: refuses a tree whose summary records only a_zero_dim
+PASS S6-B-02: refuses a complete summary with the h_kirchhoff record missing
+PASS S6-B-02: refuses a complete summary with the j_rates record red
+PASS control: the complete tree alone (no second copy) is accepted
+PASS refuses without the C1 acknowledgment
+PASS refuses when a copy does not verify
+PASS refuses when a remote copy record is not a pass
+PASS S6-B-02: publication refuses a stage with only a_zero_dim in the summary
+PASS S6-B-02: publication refuses a stage with the j_rates record red
+PASS publication: the stage with the complete A-INV-3 gates is published and verifies
+test_handoff_inventory: 17/17 checks passed
+built free L3 threads=1 rc=0 0.0s
+built free L4 threads=1 rc=0 0.0s
+built free L5 threads=1 rc=0 0.2s
+built free L6 threads=1 rc=0 2.0s
+built free L7 threads=1 rc=0 52.0s
+built power L3 threads=1 rc=0 0.0s
+built power L4 threads=1 rc=0 0.0s
+built power L5 threads=1 rc=0 0.1s
+built power L6 threads=1 rc=0 0.5s
+built power L7 threads=1 rc=0 13.6s
+built free L3 threads=8 rc=0 0.1s
+built free L4 threads=8 rc=0 0.1s
+built free L5 threads=8 rc=0 0.1s
+built free L6 threads=8 rc=0 0.6s
+built free L7 threads=8 rc=0 16.1s
+built power L3 threads=8 rc=0 0.1s
+built power L4 threads=8 rc=0 0.1s
+built power L5 threads=8 rc=0 0.1s
+built power L6 threads=8 rc=0 0.2s
+built power L7 threads=8 rc=0 4.2s
+free L3: 0/5 identical, rate-only 5, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+free L4: 0/16 identical, rate-only 16, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+free L5: 0/76 identical, rate-only 76, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+free L6: 0/395 identical, rate-only 395, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+free L7: 2441/2441 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+power L3: 1/1 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+power L4: 3/3 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+power L5: 20/20 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+power L6: 107/107 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+power L7: 709/709 identical, rate-only 0, relabelled 0, other 0, inventory equal True, headers agree with the rows True
+A-INV-2 PASSED 
+J-GEN-1 passed at 2026-10-06T02:28:38-04:00

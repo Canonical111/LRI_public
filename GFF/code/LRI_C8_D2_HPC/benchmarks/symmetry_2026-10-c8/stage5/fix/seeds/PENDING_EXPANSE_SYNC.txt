@@ -1,0 +1,80 @@
+# Seeds added to symmetry's log (<SCRATCH>/c8-d2/forbidden_seeds.json) and to the mirror
+# designs/forbidden_seeds.json that Expanse's log ($C8_DATA/forbidden_seeds.json) does NOT yet hold.
+# Expanse's Lustre stopped answering on the login node at about 15:16 UTC on 2026-10-05, so the two-log sync could
+# not run. Owed once an Expanse session opens again (the ControlMaster must say "Master running"):
+#   bash benchmarks/symmetry_2026-10-c8/stage5/scripts/seedsync.sh fx
+# which merges symmetry's log into Expanse's (tools/seeds.py merge, under the log's lock), back, and into the mirror,
+# and leaves stage5/seeds/fx_{symmetry,expanse}.json with their sha256. Afterwards check that Expanse's log holds every
+# seed below, then mark this file done (add a line "synced <UTC> <sha256 of Expanse's log>").
+# Every later seed added on symmetry before that sync is appended here.
+#
+# seed                 added_utc             host   source
+3225605224505469430    2026-10-05T15:39:00Z  <NODE>  <SCRATCH>/c8-d2/io-2b3a9233353d (A-ORC-13 real-Slurm campaign, job 570168)
+7953283644819727315    2026-10-05T15:39:11Z  <NODE>  <SCRATCH>/c8-d2/drills-2b3a9233353d/drR (J-DRL-8 drill, job 570169)
+3934799973789933184    2026-10-05T16:54:04Z  <NODE>  <SCRATCH>/c8-d2/io-68ee571ee614 (A-ORC-13 rerun with the F12 fix, close-out job 570209; stage5/close/)
+synced 2026-10-05T19:53:52Z e8efb7661390350cf45a99257b83a3ca6734f801e9bbed55f7f8284f2ffed31d  (Expanse's log after the merge: 90 seeds, the same set as symmetry's log; it holds the 3 seeds above and the 9 pre-Stage-6 seeds added on symmetry 18:51:44-19:53:30 UTC; benchmarks/expanse_2026-10-c8/pre6/README.md, pre6/seeds/check_20261005T195346Z.json)
+# Pending again after the sync above: seeds added on symmetry by the pre-Stage-6b check of 77fab71 (job 570302,
+# benchmarks/symmetry_2026-10-c8/pre6b/). symmetry's log afterwards: 98 seeds, sha256 7b515f1b...; the mirror
+# designs/forbidden_seeds.json holds the same 98. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+646681868424905773     2026-10-05T21:33:43Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1e-3 (pre-Stage-6b, exact 1e-3 test-only plan, job 570302; deleted)
+4389531996626061086    2026-10-05T21:39:56Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_5e-4 (pre-Stage-6b, exact 5e-4 test-only plan, job 570302; deleted)
+1555153655230592368    2026-10-05T21:47:58Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_2.5e-4 (pre-Stage-6b, exact 2.5e-4 test-only plan, job 570302; deleted)
+4030516215308314467    2026-10-05T21:58:47Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1.35e-4 (pre-Stage-6b, exact 1.35e-4 test-only plan, job 570302; deleted)
+6634384558034372355    2026-10-05T22:01:15Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1e-3 (pre-Stage-6b, route (b) 1e-3 test-only plan, job 570302; deleted)
+1010815034822057179    2026-10-05T22:09:55Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_5e-4 (pre-Stage-6b, route (b) 5e-4 test-only plan, job 570302; deleted)
+1211354083646889487    2026-10-05T22:19:12Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_2.5e-4 (pre-Stage-6b, route (b) 2.5e-4 test-only plan, job 570302; deleted)
+8838276593323891731    2026-10-05T22:29:16Z  <NODE>  <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1.35e-4 (pre-Stage-6b, route (b) 1.35e-4 test-only plan, job 570302; deleted)
+# Also pending: seeds added on symmetry by the Stage-6 fix-round-1 validation (export c30bfc5f0bdf,
+# benchmarks/symmetry_2026-10-c8/s6fix1/). symmetry's log afterwards: 103 seeds, sha256 5d34d873...; the mirror
+# designs/forbidden_seeds.json holds the same 103. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+5596940901639240691    2026-10-06T02:13:20Z  <NODE>  <SCRATCH>/c8-d2/x8-c30bfc5f0bdf (X8 real-Slurm check, test-only, job 570376; kept on BeeGFS)
+8254371171828472440    2026-10-06T02:28:17Z  <NODE>  <SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1e-3 (route (b) re-freeze, 1e-3 test-only plan, job 570379; deleted)
+4667087343024846102    2026-10-06T02:37:35Z  <NODE>  <SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_5e-4 (route (b) re-freeze, 5e-4 test-only plan, job 570379; deleted)
+7487298389697020166    2026-10-06T02:46:32Z  <NODE>  <SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_2.5e-4 (route (b) re-freeze, 2.5e-4 test-only plan, job 570379; deleted)
+1291125770599527451    2026-10-06T02:57:09Z  <NODE>  <SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1.35e-4 (route (b) re-freeze, 1.35e-4 test-only plan, job 570379; deleted)
+# Also pending: seeds added on symmetry by the Stage-6 fix-round-2 validation (export e914701b042b,
+# benchmarks/symmetry_2026-10-c8/s6fix2/). symmetry's log afterwards: 105 seeds, sha256 59ec4a58...; the mirror
+# designs/forbidden_seeds.json holds the same 105. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+5949820605861326415    2026-10-06T06:28:05Z  <NODE>  <SCRATCH>/c8-d2/y2-e914701b042b (Y2/Y6 real-Slurm check, test-only, jobs 570418, 570420, 570421; kept on BeeGFS)
+5638617719944467077    2026-10-06T06:28:50Z  <NODE>  <SCRATCH>/c8-d2/y13sweep-e914701b042b (Y13 sweep seed registration, plan only, job 570418; kept on BeeGFS)
+# Also pending: seeds added on symmetry by the Stage-6 fix-round-3 validation (export 997639178c1f,
+# benchmarks/symmetry_2026-10-c8/s6fix3/). symmetry's log afterwards: 110 seeds, sha256 7f19432f...; the mirror
+# designs/forbidden_seeds.json holds the same 110. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+7431507595541975415    2026-10-06T10:30:26Z  <NODE>  <SCRATCH>/c8-d2/sweepdd-997639178c1f (dd+mp256 profile cost sweep of the fix-round-3 build, test-only, job 570538; kept on BeeGFS)
+8540795342523536361    2026-10-06T10:47:54Z  <NODE>  <SCRATCH>/c8d2/work/s3des-997639178c1f/plans/b_1e-3 (route (b) re-freeze, 1e-3 test-only plan, job 570539; deleted)
+5408404967237961878    2026-10-06T10:57:29Z  <NODE>  <SCRATCH>/c8d2/work/s3des-997639178c1f/plans/b_5e-4 (route (b) re-freeze, 5e-4 test-only plan, job 570539; deleted)
+5547428742305252863    2026-10-06T11:06:38Z  <NODE>  <SCRATCH>/c8d2/work/s3des-997639178c1f/plans/b_2.5e-4 (route (b) re-freeze, 2.5e-4 test-only plan, job 570539; deleted)
+8750737914650074664    2026-10-06T11:17:41Z  <NODE>  <SCRATCH>/c8d2/work/s3des-997639178c1f/plans/b_1.35e-4 (route (b) re-freeze, 1.35e-4 test-only plan, job 570539; deleted)
+# Also pending: seeds added on symmetry by the Stage-6 fix-round-4 validation (exports 392ed22d1d02 and 900e5906522a,
+# benchmarks/symmetry_2026-10-c8/s6fix4/). symmetry's log afterwards: 118 seeds, sha256 bfb06c11...; the mirror
+# designs/forbidden_seeds.json holds the same 118. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+1426164674849951575    2026-10-06T15:18:28Z  <NODE>  <SCRATCH>/c8d2/work/s4mem-392ed22d1d02/plans/w9_old (W9 memory check, old tools, test-only, job 570576, which failed at its claim; deleted)
+2305678658136620644    2026-10-06T15:20:01Z  <NODE>  <SCRATCH>/c8d2/work/s4mem-392ed22d1d02/plans/w9_new (W9 memory check, new tools, test-only, job 570576, which failed at its claim; deleted)
+7428002679483604354    2026-10-06T15:22:34Z  <NODE>  <SCRATCH>/c8d2/work/s4mem-392ed22d1d02/plans.570578/w9_old (W9 memory check, old tools, test-only, job 570578; deleted)
+7165359829991591804    2026-10-06T15:23:55Z  <NODE>  <SCRATCH>/c8d2/work/s4mem-392ed22d1d02/plans.570578/w9_new (W9 memory check, new tools, test-only, job 570578; deleted)
+4940946330635124793    2026-10-06T15:33:54Z  <NODE>  <SCRATCH>/c8d2/work/s4des-392ed22d1d02/plans/b_1e-3 (route (b) re-freeze, 1e-3 test-only plan, job 570579; deleted)
+8439688650531764430    2026-10-06T15:41:53Z  <NODE>  <SCRATCH>/c8d2/work/s4des-392ed22d1d02/plans/b_5e-4 (route (b) re-freeze, 5e-4 test-only plan, one block claimed, job 570579; deleted)
+8206153006953290833    2026-10-06T15:51:22Z  <NODE>  <SCRATCH>/c8d2/work/s4des-392ed22d1d02/plans/b_2.5e-4 (route (b) re-freeze, 2.5e-4 test-only plan, job 570579; deleted)
+7793555238787648191    2026-10-06T16:01:28Z  <NODE>  <SCRATCH>/c8d2/work/s4des-392ed22d1d02/plans/b_1.35e-4 (route (b) re-freeze, 1.35e-4 test-only plan, job 570579; deleted)
+# Also pending: the seed of the C8(2) L8 pilot campaign planned on symmetry (pilot preparation, export ba68f401e46e,
+# benchmarks/symmetry_2026-10-c8/pilot/). Registered by the non-test plan itself in symmetry's log (Z15, job 570635);
+# symmetry's log afterwards: 119 seeds, sha256 6882f30e...; the mirror designs/forbidden_seeds.json holds the same 119.
+# Owed to Expanse's log at the next sync (seedsync.sh, as above):
+3049594997687674958    2026-10-06T18:00:49Z  <NODE>  <SCRATCH>/c8-d2/pilot1-20261006-ba68f401e46e (C8(2) L8 pilot, non-test, planned by job 570635; NOT submitted yet; kept on BeeGFS)
+# Also pending: the seed of the C8(2) PRODUCTION campaign (batch 1 of 1, route (b) dd+mp256 at 2.5e-4) planned on
+# symmetry (production preparation, export ba68f401e46e, benchmarks/symmetry_2026-10-c8/production/). Registered by the
+# non-test plan itself in symmetry's log (Z15, job 570722); symmetry's log afterwards: 120 seeds, sha256 7660055d...;
+# the mirror designs/forbidden_seeds.json holds the same 120. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+6274393056071737300    2026-10-06T20:26:52Z  <NODE>  <SCRATCH>/c8-d2/prod1-2.5e-4-ddmp256-20261006-ba68f401e46e (C8(2) production batch 1, non-test, planned by job 570722; NOT submitted yet; kept on BeeGFS)
+# Also pending: the seed of the C8(2) TAIL CHECK part B (fresh nested-N runs of 48 selected L8 graphs with the
+# production executable a46f3060, test only, never in an estimate; benchmarks/symmetry_2026-10-c8/production/tailcheck/).
+# Registered by setup job 571358 with tools/seeds.py add --seed --label in symmetry's log (121 seeds, sha256 2992d45c...);
+# the mirror designs/forbidden_seeds.json holds the same 121. Owed to Expanse's log at the next sync (seedsync.sh, as above):
+7599440640766719655    2026-10-08T02:43:08Z  <NODE>  <SCRATCH>/c8-d2/tailcheck-nested-20261007-ba68f401e46e (C8(2) tail check part B, test only; jobs 571362/571363)
+# Also pending: the two seeds of the C8(2) TAIL CHECK follow-up to Codex's verification (multi-prime randomized
+# cancellation verification and double-lift targeted nested-N runs, test only, never in an estimate;
+# benchmarks/symmetry_2026-10-c8/production/tailcheck/). Registered by setup job 571401 with tools/seeds.py add --seed
+# --label in symmetry's log (123 seeds, sha256 da4155ac...); the mirror designs/forbidden_seeds.json holds the same 123.
+# Owed to Expanse's log at the next sync (seedsync.sh, as above):
+8738015587015592808    2026-10-08T03:45:13Z  <NODE>  tc2cert/tc2neg (verification randomness: primes and evaluation points, not an RQMC seed; jobs 571402/571403)
+7724198544039388897    2026-10-08T03:45:13Z  <NODE>  <SCRATCH>/c8-d2/tailcheck-dl-20261008-ba68f401e46e (C8(2) tail check, double-lift targeted nested-N, test only; jobs 571404/571405)

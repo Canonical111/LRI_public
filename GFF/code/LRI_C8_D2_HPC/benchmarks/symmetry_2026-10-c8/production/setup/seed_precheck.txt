@@ -1,0 +1,11 @@
+# Fresh production seed, drawn on the Mac 2026-10-06T20:12:54Z with python3 -c 'import secrets;print(secrets.randbits(63))'
+seed 6274393056071737300
+# 1. against the package mirror designs/forbidden_seeds.json (119 seeds, the same set as symmetry's log; sha256 d4d023da...):
+#    <HOME>/anaconda3/bin/python3 -B tools/seeds.py check 6274393056071737300 --log designs/forbidden_seeds.json
+{"seed": 6274393056071737300, "forbidden": false, "why": null}     (exit 0)
+# 2. against symmetry's live log $C8_SEEDS=<SCRATCH>/c8-d2/forbidden_seeds.json (sha256 6882f30e..., 119 seeds),
+#    with the export's tools on the login node:
+#    python3 -B <SCRATCH>/c8d2/pkg/ba68f401e46e/tools/seeds.py check 6274393056071737300
+{"seed": 6274393056071737300, "forbidden": false, "why": null}     (exit 0)
+# The plan job registers it itself in $C8_SEEDS under the log's lock (Z15) before publishing, and checks the derived
+# group seeds and the bundle's forbidden seeds; slurm/plan.sh's own seeds.py add then says "present".

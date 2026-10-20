@@ -1,0 +1,86 @@
+{
+  "_about": "Numbers and exact statements that the condensed note (GFF/note/long_range_ising_condensed.tex, edition fa71533 of 13 October 2026) quotes for the d=3 power-sector compensation of C6(3) and the d=3 finite-scheme inputs, and that the research-bundle package lri_C6_d3_complete_update produces. Sections: 'Analytic power-sector compensation at d=2,3' (subsections 'Power subgraphs: a separate three-dimensional audit', 'An exact cancellation avoids two unknown core integrals', 'Assembled power correction and completeness') and 'Finite-scheme sixth-order assembly' (subsections 'The changes required by dimension three', 'Regulator dependence and finite-order extraction'). The C6(3) production (GFF/code/LRI_C6_D3_HPC) uses this retained analytic compensation and does not redo it. Read by code/lri_C6_d3_complete_update/public/replay.py. Written by Claude (session C63d) on 2026-10-13 for the public release; the values were produced on 14 September 2026 in the research conversation that made the bundle.",
+  "sunset": {
+    "eq": "d3six:sunset",
+    "M3": "-16*pi/15",
+    "note_says": "M_3 = -16 pi/15; each of L6G106, L6G117 contributes -4 M_3 P_4(3) to b_6 and zero to c_6",
+    "graphs": ["L6G106", "L6G117"],
+    "tolerance": "1e-60 absolute (records at 65 to 90 working digits)"
+  },
+  "coverage": {
+    "note_says": "1, 5, 31 relevant power-containing classes at loops 3, 4, 5; at six loops all 121 power classes with 3w_B - w_A != 0 are included, the other 52 have zero weight; 660 sixth-order classes, 487 power-free and 173 with a proper power subgraph; 1, 5, 16, 76, 395 nonzero power-free kernels at L = 2..6; two non-power four-loop graphs rejected by the coordinate reduction are supplied by the finite-kernel integration",
+    "power_classes_audited": {"3": 1, "4": 5, "5": 31, "6": 121},
+    "zero_target_power_classes_L6": 52,
+    "all_classes_L6": 660,
+    "power_classes_L6": 173,
+    "power_free_classes_L6": 487,
+    "retained_finite_kernels": {"2": 1, "3": 5, "4": 16, "5": 76, "6": 395},
+    "rejected_non_power_L4": ["L4G009", "L4G027"],
+    "tolerance": "exact"
+  },
+  "core": {
+    "eq": "d3six:coreJet, d3six:chainJet, d3six:coreResidues, d3six:unknownCancellation",
+    "core_pole_jet": {"-2": "8", "-1": "2*A"},
+    "A": "2 + 4*log(2) - pi",
+    "N": "62/15 - pi - 4*log(2)",
+    "chain_constant": "M3",
+    "chain_linear": "7/4*M3*(A + N)",
+    "r_L5G086": "2*F0/5",
+    "r_L6G332": "A*F0/3 + 2*F1/15",
+    "r_L6G333": "A*F0/3 - 2*F1/15",
+    "physical_combination": "9/2*(r_L6G332 + r_L6G333) - 15/2*A*r_L5G086 = 0",
+    "trial_assignments": [["0", "0"], ["101", "-37"]],
+    "trial_residue_bound": "4e-73",
+    "note_says": "Substituting (u0,u1) = (0,0) and (101,-37) in the full graph recursion changes the three individual residues exactly as predicted, to better than 4e-73.",
+    "tolerance": "exact (SymPy) for the identities; 1e-70 for the numeric jets at 75 working digits; the stated bound for the trial residues"
+  },
+  "lower_power": {
+    "eq": "d3six:lowerPower",
+    "b3p": "M", "c3p": "M/3",
+    "b4p": "-11*A*M/2 - 3*M*N/2", "c4p": "-7*A*M/6 - M*N/2",
+    "tolerance": "exact (SymPy) in power_assembly_polynomial.json; 1e-60 numerically against the graph recursion"
+  },
+  "delta_R": {
+    "eq": "d3six:deltaR",
+    "expression": "M/24*(2727*A**3 + 603*A**2*N - 8*A*M + 72*A*Q + 63*A*R - 216*N*Q + 27*N*R - 192*P - 318*U + 36*V)",
+    "tolerance": "exact (SymPy)"
+  },
+  "power_correction": {
+    "eq": "d3six:powerCorrection, d3six:powerNumbers",
+    "note_says": "At 90 working digits the two parts, including the factor 1/2187, are +-0.0736516970441648694692229455611...; their sum is -1.02e-89. A separate 75-digit run with different core assignments gives -1.94e-75. A third algebraic stress test with Q=7, P=11, K=5, Z=13 and core (-17,29) gives 1.52e-65 at 65 working digits.",
+    "higher_90": "0.0736516970441648694692229455611",
+    "lower_90": "-0.0736516970441648694692229455611",
+    "runs": {
+      "shifted":           {"record": "records/correction_power_ms_d3_shifted.json",           "dps": 90, "core": ["101.0", "-37.0"], "sum": "-1.02e-89", "env": {"POWER_DPS": "90", "CORE_U0": "101", "CORE_U1": "-37"}},
+      "complete":          {"record": "records/correction_power_ms_d3_complete.json",          "dps": 75, "core": ["0.0", "0.0"],     "sum": "-1.94e-75", "env": {"POWER_DPS": "75", "CORE_U0": "0", "CORE_U1": "0"}},
+      "arbitrary_masters": {"record": "records/correction_power_ms_d3_arbitrary_masters.json", "dps": 65, "core": ["-17.0", "29.0"],   "sum": "1.52e-65",  "env": {"POWER_DPS": "65", "CORE_U0": "-17", "CORE_U1": "29", "POWER_Q": "7", "POWER_P4": "11", "POWER_KAP": "5", "POWER_Z": "13"}}
+    },
+    "tolerance": "higher/lower: one unit in the 31st decimal shown; sums: the recorded value rounded to three significant digits equals the note"
+  },
+  "gamma_jets": {
+    "eq": "d3six:GammaJets, d3six:norm",
+    "note_says": "All 20 Gamma logarithmic jets and five normalizations were freshly checked by independent 65-digit Cauchy evaluation of the analytic Gamma product. The maximum absolute discrepancy is 2.27e-59.",
+    "checks": 25, "dps": 65, "max_error": "2.27e-59",
+    "tolerance": "count exact; the maximum rounds to the shown three digits"
+  },
+  "two_loop": {
+    "eq": "d3six:twoLoopValues",
+    "note_says": "beta jets through z^4; two fresh 60-digit evaluations use radii 0.05, 0.07 and respectively 48, 64 Cauchy nodes",
+    "b2_jets": ["-9.7859764118999280", "13.1771369571188313", "-16.3759608428540408", "19.5740514096297382", "-22.7913170046010398"],
+    "radii_nodes": [["0.05", 48], ["0.07", 64]],
+    "dps": 60,
+    "tolerance": "one unit in the last shown digit (16 decimals); the two radii agree to 1e-50"
+  },
+  "lagrange": {
+    "eq": "d3six:lagrange",
+    "note_says": "An independent rational-polynomial implementation of implicit fixed-point substitution and bivariate Lagrange inversion gives 256 exact checks, including 32 checks of the constant-MS sixth-order assembly.",
+    "exact_rational_checks": 256, "constant_MS_sixth_assembly_checks": 32,
+    "tolerance": "exact"
+  },
+  "master_inputs": {
+    "note_says": "The audit uses Q_3 and P_4(3) as common inputs; their values are those of the section 'Three dimensions' (33 decimals shown there). The code carries 38 to 39 decimals as defaults.",
+    "Q3": "5.01710256455385536959085484569018",
+    "P4_3": "62.0583279434066724664633885840967",
+    "tolerance": "one unit in the last shown digit"
+  }
+}

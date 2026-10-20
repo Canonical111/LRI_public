@@ -1,0 +1,29 @@
+% d = 3 rows of the HT note's reproduction longtable {result & value & package & record & command & tolerance}
+% (phi4HT3d, 2026-10-13; readability review 2026-10-15). Package paths are relative to HT/code; records to HT/.
+% Commands are public.mk targets run in the package folder; the check id names the row of the PASS/FAIL table they
+% print. Abbreviations: P = lri_3d_window_hpc, I = lri_3d_window_indep, C = data/HT_3d/campaigns; campaign names as in
+% Section d3:campaigns. Paths use \code, which breaks after underscores; \allowbreak marks breaks after slashes.
+records intact (\texttt{REC-*}) & 105 records, 1 source hash & P & every \code{window\_L*.json} in C; \code{data/\allowbreak HT\_3d/\allowbreak MANIFEST.\allowbreak sha256} & \texttt{make replay} & sha256, self-hash, seed and basis chain, acceptance gates: exact\\
+$\Delta_\varepsilon(N)$, $N=8$--20, 15 $\Delta_\sigma$ (Table~\ref{ht:d3:tab-finiteN}; comparison figure of Ref.~\cite{ht:paper}) (\texttt{TABLE}) & \code{finite\_L\_table.csv} & P & the 105 window records & \texttt{make replay} & byte-identical rebuild\\
+largest cutoff (\texttt{NMAX}) & $N=20$ & P & 15 \code{window\_L20.json} & \texttt{make replay} & exact\\
+$N=20$ values in the $d=3$ results table of Ref.~\cite{ht:paper} (\texttt{NUM3}) & 15 values, 1.41924 \dots\ 1.49993 & P & 15 \code{window\_L20.json} & \texttt{make replay} & 5 decimals\\
+setup: teacher $N_t=6$, 24 states, $N_{\rm osc}=192$, 20 stored; $n_z=16$ (\texttt{CONFIG}) & as stated & P & \code{teacher\_L6.json}, window records & \texttt{make replay} & exact\\
+scalar bath states, $N=8$--20 (\texttt{SIZE}) & 110 \dots\ 196\,585 & P & window records (dimension$/2n_z$) & \texttt{make replay} & exact\\
+projector retries (\texttt{PROJECTOR}) & $N=18$: 8/17\,335; $N=20$: 62/40\,033; $|J_+Q|<10^{-14}$ & P & $N=18$, 20 window records & \texttt{make replay} & exact counts\\
+cost at $N=18$ (\texttt{COST-L18}) & 34--74 min, 38.5 GiB & P & $N=18$ window records & \texttt{make replay} & integer minutes, 0.1 GiB\\
+cost at $N=20$ (\texttt{COST-L20}) & 27--104 min, 84--87 GiB; 239 min, 328 GiB & P & $N=20$ window records & \texttt{make replay} & integer minutes, GiB\\
+last step at $\Delta_\sigma\geq0.74$ (\texttt{CONV-STEP}) & $<10^{-7}$ ($7.3\times10^{-8}$) & P & $N=18$, 20 & \texttt{make replay} & $<10^{-7}$\\
+last steps at $0.518\leq\Delta_\sigma\leq0.625$ (\texttt{MONO-STEPS}) & $(2.2\text{--}6.1)\times10^{-4}$ & P & $N=18$, 20 & \texttt{make replay} & 2 significant digits\\
+monotone rise there (\texttt{MONO-RISE}) & every step $>0$, $N=8$--20 & P & $N=8$--20 & \texttt{make replay} & sign\\
+shrink per step there (\texttt{MONO-SHRINK}) & 8 to 19\% & P & $N=16$--20 & \texttt{make replay} & integer percent\\
+no shrink at 0.65, 0.675 (\texttt{NO-SHRINK}) & $d_{20}/d_{18}=0.99$, 1.23 & P & $N=16$--20 & \texttt{make replay} & ratio $>0.99$\\
+short-range end (\texttt{SR-L20}) & 1.41924, rising & P & \code{grid20sri}, $N=20$ & \texttt{make replay} & 5 decimals\\
+distance to the 3d Ising value (\texttt{SR-GAP}) & $6.6\times10^{-3}$ & P & same; Ising value 1.41262528~\cite{ht:Chang:2024whx} & \texttt{make replay} & 2 significant digits\\
+resummed $\epsilon$ series at $\Delta_\sigma=0.7$ (\texttt{BP-0.7}) & 1.47214(3) & P & $C_0$--$C_7(3)$ (GFF folder) & \texttt{make replay} (\code{public/\allowbreak bp\_x07.py}) & median to $10^{-7}$; half-spread 1 digit\\
+$N=20$ below it and moving away (\texttt{BP-DEV}) & $2.2\times10^{-4}$ & P & \code{grid20}, $N=20$; \code{grid18}, $N=16$, 18; at 0.7 & \texttt{make replay} & 2 significant digits; order\\
+$C_4(N=20)/C_4(3)$ (\texttt{C4-RATIO}) & 60\% & P & \code{HT\_Pert/\allowbreak results/\allowbreak HT\_3d/\allowbreak SUMMARY.md}, row 20 consistent & \texttt{make replay} (SKIP without \code{HT\_Pert/}) & integer percent\\
+independent solver, tuned (\texttt{INDEP-TUNED}) & $2\times10^{-11}$ ($N\leq12$) & I & \code{results/\allowbreak cmp\_*.json} (23) & \texttt{make replay} & 1 significant digit\\
+independent solver, fixed couplings (\texttt{INDEP-FIXED}) & $\leq1.8\times10^{-12}$ & I & same & \texttt{make replay} & $\leq3\times10^{-12}$\\
+independent tunings converged (\texttt{INDEP-RESID}) & $\leq10^{-12}$ & I & same & \texttt{make replay} & $\leq10^{-12}$\\
+compared values are the records (\texttt{INDEP-PKG}) & exact & I & \code{cmp\_*.json}, \code{indep\_extract.json}, C & \texttt{make replay} & exact\\
+$J=0$ counts 3, 10, 33, 110 (\texttt{test}) & as stated & I & none & \texttt{make test} & exact\\

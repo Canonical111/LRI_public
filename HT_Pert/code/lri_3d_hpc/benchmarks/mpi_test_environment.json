@@ -1,0 +1,11 @@
+{
+  "mpi": "MPICH 5.0.2 with mpi4py 4.1.2",
+  "scope": "Multiple processes on one Linux host; no cross-node measurements",
+  "environment": {
+    "MPIR_CVAR_CH4_NETMOD": "ofi",
+    "MPIR_CVAR_CH4_CMA_ENABLE": "0"
+  },
+  "reason": "The sandbox disallows the process_vm_readv operation used by the default large-message CMA transport. Validation uses MPICH ordinary copy transport instead; no application numerical change or permission escalation.",
+  "topology": "Nine CPUs in affinity; host CPU-model and quota files unavailable.",
+  "startup_warnings": "The sandbox does not expose complete sysfs topology or a UCX boot identifier."
+}

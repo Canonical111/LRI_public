@@ -1,0 +1,30 @@
+job 54666273 on <NODE> at 2026-10-04T16:45:10-07:00; package <SCRATCH>/temp_project/c8d2/pkg/ef03b93255a9; evidence <SCRATCH>/temp_project/c8d2/evidence/ef03b93255a9/r4fdef.54666273.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+}
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+python3 -B tools/build_record.py bin/c8d2_gmp_prof gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1), optimized=True
+bin/c8d2_gmp_prof.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1), optimized=True
+make[1]: Leaving directory '<SCRATCH>/temp_project/c8d2/pkg/ef03b93255a9/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/
+builds in 32 s
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  bin/c8d2_gmp
+d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7  bin/c8d2_gmp_prof
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+	libgmp.so.10 => /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10 (0x0000155554e69000)
+ 0x0000000000000001 (NEEDED)             Shared library: [libgmp.so.10]
+{
+ "identical": {
+  "bin/c8d2_decimal": true,
+  "bin/c8d2_gmp": true,
+  "bin/c8d2_gmp_prof": true
+ },
+ "all_identical": true,
+ "GMP_PREFIX": ""
+}
+finished 2026-10-04T16:45:44-07:00

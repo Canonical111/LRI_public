@@ -1,0 +1,20 @@
+{
+  "name": "C2 Hamiltonian production plan: PILOT, P1 (N=768), P2 (N=1024); fixed-regulator records only",
+  "physical_delta": 0,
+  "status": "PILOT_RUN_P1_P2_PROPOSED",
+  "description": "Site-neutral: the same rows are run on Expanse or symmetry; the site profiles in cluster/<site>/profile.json hold all scheduler and resource sizing. Re-prioritised after review: the dominant errors are the lambda->0 extrapolation model and the N->infinity extrapolation at the smallest order-1 lambda. Every row keeps oversample 4 / radius_cost 4.5 (the grid family of the archived N=384 records), raises the mixed thermal cutoff from 4096 to 16384 (mixed error ~ lambda^-5) and the leading-tail cutoff from 2048 to 8192, and keeps the collapsed cutoff 800000. A row evaluates its lambda list sequentially on one shared grid. cluster/extension_plan.json is kept unchanged for reference. The PILOT row was run on Expanse on 2026-10-12 (results/expanse/pilot); P1 and P2 have not been run.",
+  "science_rules": {
+    "lambda_N_minimum": {"1": 50, "2": 60, "3": 75},
+    "lambda_N_basis": "Numerics reviewer: lambda*N of about 50 (order 1), 60 (order 2) and 75 (order 3) for ~1e-4 spectral accuracy; enforced by submit.py --check.",
+    "minimum_mixed_cutoff": 16384,
+    "auxiliary_cutoff_basis": "Expanse probe at lambda=0.05, order 1 (results/expanse/probe): the selected mixed-sum median moves by 9.4e-7 (8192 -> 16384) and 1.2e-7 (16384 -> 32768); the leading-tail coefficient by 2.3e-4 (4096 -> 8192) and 3.3e-5 (8192 -> 16384) on |A| = 3.07e5."
+  },
+  "jobs": [
+    {"id": "PILOT_N512_order1", "stage": "PILOT", "cutoff": 512, "order": 1, "lambda": [0.1], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "P1_N768_order1", "stage": "P1", "cutoff": 768, "order": 1, "lambda": [0.075, 0.0875, 0.1], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "P1_N768_order2", "stage": "P1", "cutoff": 768, "order": 2, "lambda": [0.1, 0.125, 0.15], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "P1_N768_order3", "stage": "P1", "cutoff": 768, "order": 3, "lambda": [0.1, 0.125, 0.15, 0.175], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "P2_N1024_order1", "stage": "P2", "cutoff": 1024, "order": 1, "lambda": [0.05, 0.0625], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "P2_N1024_order2", "stage": "P2", "cutoff": 1024, "order": 2, "lambda": [0.0625, 0.075], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5}
+  ]
+}

@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,shadows}
+\usepackage[margin = 2cm]{geometry}
+\definecolor{purple}{rgb}{0.4,.2,0.7}
+\definecolor{cEps}{rgb}{0.122,0.467,0.706}  %
+\definecolor{cSR}{rgb}{0.80,0.12,0.18}      %
+\definecolor{cRes}{rgb}{0.48,0.24,0.68}     %
+\definecolor{cHT}{rgb}{0.12,0.52,0.38}      %
+\definecolor{cNRG}{rgb}{0.85,0.39,0.08}     %
+\definecolor{cMC}{gray}{0.12}              %
+\usepackage[hyperfootnotes = false, colorlinks = true, linkcolor = blue, citecolor = purple, urlcolor = blue]{hyperref}
+\newcommand{\DE}{\Delta_{\mathcal E}}
+\newcommand{\CfourOne}{45.42488010356}       %
+\newcommand{\CfourOneOld}{45.3896}   %
+\newcommand{\AIfigSubagents}{1381} %
+\newcommand{\AIfigCodexRounds}{310} %
+\newcommand{\AIsessions}{35} %
+\newcommand{\AIfigGPTPackages}{20}      %
+\newcommand{\AIfigCoreHours}{$\approx10^{6}$ core-h} %
+
+\begin{document}
+
+\section*{AI agents and reproducibility}\label{combined:front:start}
+
+AI systems have recently contributed results in amplitudes~\cite{Guevara:2026qzd,Arkani-Hamed:2026rsz}, QCD~\cite{Schwartz:2026ekw}, integrable chains~\cite{Pozsgay:2026hvh} and mathematics~\cite{Romera-Paredes:2024fs}. To our knowledge, language-model agents had not computed new critical exponents or CFT data; reinforcement learning has recovered known ones~\cite{Kantor:2021kbx,Man:2025rl}, and neural networks trained on crossing symmetry reconstruct conformal correlators and partition functions~\cite{Ghosh:2026xnp,Ghosh:2026efw}. This part describes how the work of this study was organized and how its results were checked.
+
+\textit{Architecture of the collaboration.} The work was organized in layers (Fig.~\ref{fig:agents}). The author set the direction: the problem, the five descriptions and key choices of method, among them computing exact asymptotic forms to guide the numerical fits and proposing the transcendental bases in which to seek exact coefficients. The author also set the rules for the clusters, approved plans and production runs, and decided between options the agents presented; the logs contain no derivation or production code by the author. OpenAI's GPT-6 astra drafted the initial high-performance codes for the clusters and computed the coefficients near the short-range end. Anthropic's Claude Code agents, in host sessions that exchanged messages and spawned subagents, reviewed and extended these codes, ran the campaigns, derived and proved closed forms, wrote the fit protocols and the research notes, and drafted the article. OpenAI's Codex, running GPT-6 astra in sessions separate from those that did the work, reviewed plans, codes and results.
+
+\input{fig_agents}
+
+\textit{How the results were checked.} We did not rely on any single computation. Four layers of checks were used, and each result section of the article states which applied.
+\begin{enumerate}
+\item \emph{Review before production.} Production plans and codes were reviewed by Codex, in most cases until approved; where the author stopped a review early or a last fix was not inspected, the research notes record it.
+\item \emph{Rules fixed in advance.} Reporting rules, such as error bars of four sampling standard errors, were fixed before the results where possible; where a rule was fixed afterwards and confirmed by the author, the research notes that follow say so. For the MC fits this held only in part: in $d=1$ and $d=3$ some fit choices were made or amended after data had been seen, among them the amendment under which the $d=3$ value at $s=1.6$ is accepted. Part~VI records when each rule was fixed relative to the data.
+\item \emph{Independent recomputation.} Key results were recomputed by separately written codes or methods: the eight-loop coefficients in $d=2,3$, the short-range coefficients $C^{\rm SR}_5(1)$ to $C^{\rm SR}_8(1)$ and $C^{\rm SR}_2(2)$, the Hamiltonian-truncation solvers and the Wilson chain of NRG. Results reviews by Codex covered most of the final coefficients.
+\item \emph{Universality.} The five descriptions compute the same $\DE$ with unrelated errors (Sec.~3.5 of the article).
+\end{enumerate}
+These checks caught errors. The author's own earlier calculation of the four-loop coefficient gave $C_4(1)=\CfourOneOld$; when the Claude Code agents and GPT-6 astra checked it, both found $\CfourOne$, the value in Table~1 of the article. An audit requested by the author found that an earlier version of our MC report presented a fit-model spread as a standard deviation. The checks do not cover an error shared by all codes of one description; only the comparison across descriptions does.
+
+\clearpage
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{Guevara:2026qzd}
+A.~Guevara, A.~Lupsasca, D.~Skinner, A.~Strominger and K.~Weil,
+  \emph{{Single-minus gluon tree amplitudes are nonzero}},
+  \href{https://arxiv.org/abs/2602.12176}{{\ttfamily 2602.12176}}.
+
+\bibitem{Arkani-Hamed:2026rsz}
+N.~Arkani-Hamed, F.~Calisto, N.~Ussembayev, W.W.~Zhao and Z.~Zhou,
+  \emph{{Surface Water Wave Scattering and the Hydrotope}},
+  \href{https://arxiv.org/abs/2606.28280}{{\ttfamily 2606.28280}}.
+
+\bibitem{Schwartz:2026ekw}
+M.D.~Schwartz, \emph{{Resummation of the C-Parameter Sudakov Shoulder Using
+  Effective Field Theory}},  \href{https://arxiv.org/abs/2601.02484}{{\ttfamily
+  2601.02484}}.
+
+\bibitem{Pozsgay:2026hvh}
+B.~Pozsgay and I.~Vona, \emph{{Bethe Ansatz with a Large Language Model}},
+  \href{https://arxiv.org/abs/2603.29932}{{\ttfamily 2603.29932}}.
+
+\bibitem{Romera-Paredes:2024fs}
+B.~Romera-Paredes, M.~Barekatain, A.~Novikov, M.~Balog, M.P.~Kumar, E.~Dupont
+  et~al., \emph{{Mathematical discoveries from program search with large
+  language models}},
+  \href{https://doi.org/10.1038/s41586-023-06924-6}{\emph{Nature} {\bfseries
+  625} (2024) 468}.
+
+\bibitem{Kantor:2021kbx}
+G.~K{\'a}ntor, V.~Niarchos and C.~Papageorgakis, \emph{{Solving Conformal Field
+  Theories with Artificial Intelligence}},
+  \href{https://doi.org/10.1103/PhysRevLett.128.041601}{\emph{Phys. Rev. Lett.}
+  {\bfseries 128} (2022) 041601}
+  [\href{https://arxiv.org/abs/2108.08859}{{\ttfamily 2108.08859}}].
+
+\bibitem{Man:2025rl}
+H.~Man, C.~Wang, J.-R.~Li, Y.~Tian and S.-G.~Chen, \emph{{Autonomous discovery
+  of the Ising model's critical parameters with reinforcement learning}},
+  \href{https://doi.org/10.1088/1742-5468/ae22ea}{\emph{J. Stat. Mech.}
+  {\bfseries 2025} (2025) 123410}
+  [\href{https://arxiv.org/abs/2601.05577}{{\ttfamily 2601.05577}}].
+
+\bibitem{Ghosh:2026xnp}
+K.~Ghosh, S.~Kumar, V.~Niarchos and A.~Stergiou, \emph{{Neural spectral bias
+  and conformal correlators I introduction and applications}},
+  \href{https://doi.org/10.1016/j.nuclphysb.2026.117609}{\emph{Nucl. Phys. B}
+  {\bfseries 1030} (2026) 117609}
+  [\href{https://arxiv.org/abs/2604.18686}{{\ttfamily 2604.18686}}].
+
+\bibitem{Ghosh:2026efw}
+K.~Ghosh, S.~Kumar, V.~Niarchos and A.~Stergiou, \emph{{Neural Spectral Bias
+  and Conformal Correlators II: Modular and Annulus Bootstrap}},
+  \href{https://arxiv.org/abs/2607.24913}{{\ttfamily 2607.24913}}.
+
+\end{thebibliography}\endgroup
+
+\end{document}

@@ -1,0 +1,2879 @@
+{
+ "protocol": "LRI_2d_MC/FIT_MODEL_2D.md",
+ "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+ "evaluator_sha256": "3c3e35fca8f526c589a110326d8f57dd84ccc96d9f2e5195f6a69d684a263fc3",
+ "manifest": "LRI_2d_MC/prod/manifest.json",
+ "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+ "campaign_id": "prod2d-20260921",
+ "time": "2026-09-30_21:50:57",
+ "design": {
+  "replicas": 12,
+  "measurements": 1000000,
+  "warmup": 50000,
+  "beta_points": 5,
+  "sizes": [
+   64,
+   128,
+   256,
+   512,
+   1024
+  ],
+  "s": [
+   1.05,
+   1.1,
+   1.2,
+   1.3,
+   1.4,
+   1.5,
+   1.6,
+   1.7
+  ],
+  "beta_halfwidth": 0.0015,
+  "window_exponent": 0.75,
+  "reference_length": 64
+ },
+ "index_check": true,
+ "centers": "LRI_2d_MC/production_centers.csv",
+ "centers_sha256": "1a7e4f89986affe9bd88574def1f9263105400f81eee64773d7b58652310ee20",
+ "extensions": {},
+ "extensions_sha256": null,
+ "settings": {
+  "pairs": [
+   "64->128",
+   "128->256",
+   "256->512",
+   "512->1024"
+  ],
+  "omega_grid": [
+   0.2,
+   2.0,
+   0.01
+  ],
+  "omega_margin": 0.02,
+  "chi2_dof_max": 2.0,
+  "resolution_max": 5.0,
+  "common_valid_frac": 0.9,
+  "ess_min": 0.5,
+  "ratio_label": 3.0,
+  "reblock_tol": 0.3,
+  "reblocks": [
+   1000,
+   4000
+  ],
+  "primary_block": 2000,
+  "production_bootstrap": 500,
+  "production_seed": 571239,
+  "production_min_ess": 0.2,
+  "target_sigma": 0.003,
+  "population": {
+   "z_hard": 4.0,
+   "z_soft": 3.0,
+   "frac_max": 0.02,
+   "drift_z_max": 4.0,
+   "block_over_tau_min": 20.0
+  }
+ },
+ "points": {
+  "1.05": {
+   "s": 1.05,
+   "Delta_sigma": 0.475,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.05/results.json",
+    "results_sha256": "ac1fcade346342116930281e3d1cd43c77269cc6911b1d8ebd085a1c6c66100c",
+    "draws_sha256": "1c5aa4a1cece25b1cacdd0650e8ff99693d87e5a5ea3909ac22a344606fb3168",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9707783139834465,
+     "sigma_U4": 0.0020103911720239635,
+     "Delta_eff_Y": 0.8863121729660595,
+     "sigma_Y": 0.0020540017671924512
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9701847153938257,
+     "sigma_U4": 0.002483874811601294,
+     "Delta_eff_Y": 0.8964406622557068,
+     "sigma_Y": 0.0022838780214188663
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.002483874811601294,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.56,
+     "Delta_inf": 0.9749627760036076,
+     "chi2": 0.5055823568802895,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.00909494390213944,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.008318056899220399,
+     "omega_draws": {
+      "median": 0.53,
+      "p16": 0.2,
+      "p84": 1.88,
+      "draws_on_edge": 241,
+      "fraction_on_edge": 0.482
+     },
+     "sigma_inf_fixed_information": 0.001979691427647914,
+     "central": [
+      0.9632510778712697,
+      0.9660685812191012,
+      0.9707783139834465,
+      0.9701847153938257
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.84,
+     "Delta_inf": 0.9719105743880481,
+     "chi2": 0.28638723166169655,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.009254036791922327,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.007993679425843015,
+     "omega_draws": {
+      "median": 0.845,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 227,
+      "fraction_on_edge": 0.454
+     },
+     "sigma_inf_fixed_information": 0.0013827503272550328,
+     "central": [
+      0.9620612485506668,
+      0.965781016071307,
+      0.9697553473883018,
+      0.9693545070600729
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.96,
+     "Delta_inf": 0.9700203962482827,
+     "chi2": 0.13796829061763827,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.011256267125341002,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.008654057056380405,
+     "omega_draws": {
+      "median": 0.98,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 187,
+      "fraction_on_edge": 0.374
+     },
+     "sigma_inf_fixed_information": 0.001146847471766929,
+     "central": [
+      0.9585556895389824,
+      0.9637462096313016,
+      0.9675791937896083,
+      0.9679309632660811
+     ]
+    },
+    "Y": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.6,
+     "Delta_inf": 0.9207842479318106,
+     "chi2": 0.4400237017751868,
+     "dof": 1,
+     "omega_interval": [
+      0.43,
+      0.76
+     ],
+     "Delta_omega": 0.01452058484344948,
+     "sigma_inf": 0.0018097482401488855,
+     "sigma_inf_profiled": 0.017728304703043277,
+     "omega_draws": {
+      "median": 0.61,
+      "p16": 0.4384,
+      "p84": 0.7715999999999997,
+      "draws_on_edge": 2,
+      "fraction_on_edge": 0.004
+     },
+     "central": [
+      0.8390068392047494,
+      0.8658043434784128,
+      0.8863121729660595,
+      0.8964406622557068
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.26,
+     "Delta_inf": 0.9839997293620055,
+     "chi2": 8.32865611645115,
+     "dof": 4,
+     "omega_interval": [
+      0.26,
+      0.27
+     ],
+     "Delta_omega": 0.0012679622821520908,
+     "reason": "chi2/dof 2.08 > 2.0",
+     "sigma_inf_profiled": 0.004169652058364345,
+     "omega_draws": {
+      "median": 0.26,
+      "p16": 0.26,
+      "p84": 0.27,
+      "draws_on_edge": 0,
+      "fraction_on_edge": 0.0
+     },
+     "sigma_inf_fixed_information": 0.0036517788288504263,
+     "central": [
+      0.9632510778712697,
+      0.9660685812191012,
+      0.9707783139834465,
+      0.9701847153938257,
+      0.8390068392047494,
+      0.8658043434784128,
+      0.8863121729660595,
+      0.8964406622557068
+     ]
+    }
+   },
+   "eligible": [
+    "Y"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9207842479318106,
+    "sigma_stat": 0.017728304703043277,
+    "sigma_sys": null,
+    "reference_series": "Y",
+    "omega": 0.6,
+    "omega_interval": [
+     0.43,
+     0.76
+    ],
+    "Delta_omega": 0.01452058484344948,
+    "values": {
+     "Y": 0.9207842479318106
+    },
+    "median_series": "Y",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range",
+    "sigma_stat_profiled": 0.017728304703043277,
+    "sigma_stat_fixed": 0.0018097482401488855,
+    "sigma_rule": "profiled"
+   },
+   "crosscheck": {
+    "status": "unavailable",
+    "sigma_rule": "profiled"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.01913697110764102,
+      "primary": 0.017728304703043277,
+      "ratio": 1.0794586074750807,
+      "note": null,
+      "sigma_profiled": 0.01913697110764102,
+      "primary_profiled": 0.017728304703043277,
+      "ratio_profiled": 1.0794586074750807,
+      "note_profiled": null,
+      "sigma_fixed": 0.0019000365208980319,
+      "primary_fixed": 0.0018097482401488855,
+      "ratio_fixed": 1.0498899674253688,
+      "note_fixed": null
+     },
+     "4000": {
+      "sigma": 0.018467891020382557,
+      "primary": 0.017728304703043277,
+      "ratio": 1.041717825236404,
+      "note": null,
+      "sigma_profiled": 0.018467891020382557,
+      "primary_profiled": 0.017728304703043277,
+      "ratio_profiled": 1.041717825236404,
+      "note_profiled": null,
+      "sigma_fixed": 0.0018997749143751636,
+      "primary_fixed": 0.0018097482401488855,
+      "ratio_fixed": 1.0497454133282493,
+      "note_fixed": null
+     }
+    },
+    "record_problems": [],
+    "passed": true,
+    "available_fixed": true,
+    "passed_fixed": true,
+    "sigma_rule": "profiled"
+   },
+   "decision": "CONDITIONAL",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "profiled",
+    "p1_calibrated": true,
+    "strata_used": [
+     {
+      "stratum": "A1 Y",
+      "status": "PASS",
+      "n_eligible": 1493
+     }
+    ],
+    "fixed_rule_decision": "CONDITIONAL",
+    "A4": {
+     "label_changed": false,
+     "reference_series": "Y",
+     "reference_A1": "PASS",
+     "crosscheck_changed": false,
+     "crosscheck_A2": null,
+     "satisfied": true
+    }
+   }
+  },
+  "1.1": {
+   "s": 1.1,
+   "Delta_sigma": 0.44999999999999996,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.1/results.json",
+    "results_sha256": "6e83f23faf051be6ceaf171becc4094db5a7b036724af7863e1957023a4949b7",
+    "draws_sha256": "35393ab55320c9b1ebd96842dbe318639d414b6b4d24e9b0e16406fd42743c30",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.966395254204065,
+     "sigma_U4": 0.002008219380729201,
+     "Delta_eff_Y": 0.9044795998447412,
+     "sigma_Y": 0.001913579517307763
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.965919435910064,
+     "sigma_U4": 0.0022938510022225017,
+     "Delta_eff_Y": 0.9171893183184434,
+     "sigma_Y": 0.0023026643077881702
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0022938510022225017,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.17,
+     "Delta_inf": 0.966992205921359,
+     "chi2": 0.11327132944226762,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.006287593810008207,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.006028235944777713,
+     "omega_draws": {
+      "median": 1.13,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 306,
+      "fraction_on_edge": 0.612
+     },
+     "sigma_inf_fixed_information": 0.0011098589796259422,
+     "central": [
+      0.9608980099337319,
+      0.963872621910886,
+      0.966395254204065,
+      0.965919435910064
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.33,
+     "Delta_inf": 0.966347543133605,
+     "chi2": 0.10102548755432844,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0071847081716768235,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.006000799605606058,
+     "omega_draws": {
+      "median": 1.38,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 278,
+      "fraction_on_edge": 0.556
+     },
+     "sigma_inf_fixed_information": 0.001000135729401087,
+     "central": [
+      0.9595604900002315,
+      0.9632785572713671,
+      0.9658363153332647,
+      0.9654118662912909
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.41,
+     "Delta_inf": 0.965112954949447,
+     "chi2": 0.03384137204509463,
+     "dof": 1,
+     "omega_interval": [
+      0.39,
+      2.0
+     ],
+     "Delta_omega": 0.004438670460877925,
+     "reason": "omega' interval [0.39, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.006709075490054371,
+     "omega_draws": {
+      "median": 1.46,
+      "p16": 0.4184,
+      "p84": 2.0,
+      "draws_on_edge": 224,
+      "fraction_on_edge": 0.448
+     },
+     "sigma_inf_fixed_information": 0.0008858933176718358,
+     "central": [
+      0.9558465761223878,
+      0.9614354247378165,
+      0.964100285571525,
+      0.964341067648355
+     ]
+    },
+    "Y": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.8,
+     "Delta_inf": 0.9284606927222673,
+     "chi2": 1.095318855414224,
+     "dof": 1,
+     "omega_interval": [
+      0.61,
+      1.0
+     ],
+     "Delta_omega": 0.008503663188233701,
+     "sigma_inf": 0.0014519155384672086,
+     "sigma_inf_profiled": 0.010124901821469152,
+     "omega_draws": {
+      "median": 0.78,
+      "p16": 0.6,
+      "p84": 1.03,
+      "draws_on_edge": 0,
+      "fraction_on_edge": 0.0
+     },
+     "central": [
+      0.8608441782099567,
+      0.8912226098509943,
+      0.9044795998447412,
+      0.9171893183184434
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.35,
+     "Delta_inf": 0.9719987067101515,
+     "chi2": 15.278614119109402,
+     "dof": 4,
+     "omega_interval": [
+      0.35,
+      0.36
+     ],
+     "Delta_omega": 0.0005937576032217784,
+     "reason": "chi2/dof 3.82 > 2.0",
+     "sigma_inf_profiled": 0.003065544464654043,
+     "omega_draws": {
+      "median": 0.35,
+      "p16": 0.34,
+      "p84": 0.37,
+      "draws_on_edge": 0,
+      "fraction_on_edge": 0.0
+     },
+     "sigma_inf_fixed_information": 0.002777610182822835,
+     "central": [
+      0.9608980099337319,
+      0.963872621910886,
+      0.966395254204065,
+      0.965919435910064,
+      0.8608441782099567,
+      0.8912226098509943,
+      0.9044795998447412,
+      0.9171893183184434
+     ]
+    }
+   },
+   "eligible": [
+    "Y"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9284606927222673,
+    "sigma_stat": 0.010124901821469152,
+    "sigma_sys": null,
+    "reference_series": "Y",
+    "omega": 0.8,
+    "omega_interval": [
+     0.61,
+     1.0
+    ],
+    "Delta_omega": 0.008503663188233701,
+    "values": {
+     "Y": 0.9284606927222673
+    },
+    "median_series": "Y",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range",
+    "sigma_stat_profiled": 0.010124901821469152,
+    "sigma_stat_fixed": 0.0014519155384672086,
+    "sigma_rule": "profiled"
+   },
+   "crosscheck": {
+    "status": "unavailable",
+    "sigma_rule": "profiled"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.009072694577853325,
+      "primary": 0.010124901821469152,
+      "ratio": 0.8960772892251958,
+      "note": null,
+      "sigma_profiled": 0.009072694577853325,
+      "primary_profiled": 0.010124901821469152,
+      "ratio_profiled": 0.8960772892251958,
+      "note_profiled": null,
+      "sigma_fixed": 0.001421869986991461,
+      "primary_fixed": 0.0014519155384672086,
+      "ratio_fixed": 0.9793062676996579,
+      "note_fixed": null
+     },
+     "4000": {
+      "sigma": 0.011072463400295008,
+      "primary": 0.010124901821469152,
+      "ratio": 1.0935872362551327,
+      "note": null,
+      "sigma_profiled": 0.011072463400295008,
+      "primary_profiled": 0.010124901821469152,
+      "ratio_profiled": 1.0935872362551327,
+      "note_profiled": null,
+      "sigma_fixed": 0.001438057723539996,
+      "primary_fixed": 0.0014519155384672086,
+      "ratio_fixed": 0.9904554951303556,
+      "note_fixed": null
+     }
+    },
+    "record_problems": [],
+    "passed": true,
+    "available_fixed": true,
+    "passed_fixed": true,
+    "sigma_rule": "profiled"
+   },
+   "decision": "CONDITIONAL",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "profiled",
+    "p1_calibrated": true,
+    "strata_used": [
+     {
+      "stratum": "A1 Y",
+      "status": "PASS",
+      "n_eligible": 1672
+     }
+    ],
+    "fixed_rule_decision": "CONDITIONAL",
+    "A4": {
+     "label_changed": false,
+     "reference_series": "Y",
+     "reference_A1": "PASS",
+     "crosscheck_changed": false,
+     "crosscheck_A2": null,
+     "satisfied": true
+    }
+   }
+  },
+  "1.2": {
+   "s": 1.2,
+   "Delta_sigma": 0.4,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.2/results.json",
+    "results_sha256": "37a12b51b05968a6155ae2d7d25e8aa3153d58536dfb0b45c2c696ddcb753b98",
+    "draws_sha256": "253a59e8c13d773d0f0510df72e95f3c05c29929589848c24ba6e5284e486b5d",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9616096593982071,
+     "sigma_U4": 0.0019258456904726442,
+     "Delta_eff_Y": 0.9391189367606354,
+     "sigma_Y": 0.001879425393973715
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9631249315953354,
+     "sigma_U4": 0.002182371813125057,
+     "Delta_eff_Y": 0.9478263253769286,
+     "sigma_Y": 0.0022055564821154153
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.002182371813125057,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9654463061789388,
+     "chi2": 3.5658274791023308,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0023817275581993758,
+     "reason": "chi2/dof 3.57 > 2.0",
+     "sigma_inf_profiled": 0.004297741429414923,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 486,
+      "fraction_on_edge": 0.972
+     },
+     "sigma_inf_fixed_information": 0.004505050177989825,
+     "central": [
+      0.9610294684625424,
+      0.9575673275875507,
+      0.9616096593982071,
+      0.9631249315953354
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9656716323665645,
+     "chi2": 3.6573109344811225,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.44
+     ],
+     "Delta_omega": 0.0026644480392979952,
+     "reason": "chi2/dof 3.66 > 2.0",
+     "sigma_inf_profiled": 0.00423946904221017,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 484,
+      "fraction_on_edge": 0.968
+     },
+     "sigma_inf_fixed_information": 0.004359662037000179,
+     "central": [
+      0.960157969344922,
+      0.9569715036625661,
+      0.960840697627598,
+      0.962826672347187
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9685647497203387,
+     "chi2": 2.7329573458844836,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.78
+     ],
+     "Delta_omega": 0.003959258389807208,
+     "reason": "chi2/dof 2.73 > 2.0",
+     "sigma_inf_profiled": 0.0044060846399712065,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 464,
+      "fraction_on_edge": 0.928
+     },
+     "sigma_inf_fixed_information": 0.004043324998646191,
+     "central": [
+      0.9573069229615951,
+      0.955710726754595,
+      0.9594082627145393,
+      0.9619263041532593
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.34,
+     "Delta_inf": 0.9805781792443212,
+     "chi2": 0.00016100134082746128,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.6
+     ],
+     "Delta_omega": 0.02769468574906292,
+     "reason": "omega' interval [0.2, 0.6] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0236824566570836,
+     "omega_draws": {
+      "median": 0.35,
+      "p16": 0.2,
+      "p84": 0.63,
+      "draws_on_edge": 142,
+      "fraction_on_edge": 0.284
+     },
+     "sigma_inf_fixed_information": 0.0027346552364285468,
+     "central": [
+      0.9141605664241499,
+      0.9281337747993372,
+      0.9391189367606354,
+      0.9478263253769286
+     ]
+    },
+    "J": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.55,
+     "Delta_inf": 0.9620212269716256,
+     "chi2": 5.846044243700326,
+     "dof": 4,
+     "omega_interval": [
+      0.53,
+      0.57
+     ],
+     "Delta_omega": 0.0005873925397487101,
+     "sigma_inf": 0.00162216098576593,
+     "sigma_inf_profiled": 0.001818137508166915,
+     "omega_draws": {
+      "median": 0.55,
+      "p16": 0.52,
+      "p84": 0.57,
+      "draws_on_edge": 0,
+      "fraction_on_edge": 0.0
+     },
+     "central": [
+      0.9610294684625424,
+      0.9575673275875507,
+      0.9616096593982071,
+      0.9631249315953354,
+      0.9141605664241499,
+      0.9281337747993372,
+      0.9391189367606354,
+      0.9478263253769286
+     ]
+    }
+   },
+   "eligible": [
+    "J"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9620212269716256,
+    "sigma_stat": 0.001818137508166915,
+    "sigma_sys": null,
+    "reference_series": "J",
+    "omega": 0.55,
+    "omega_interval": [
+     0.53,
+     0.57
+    ],
+    "Delta_omega": 0.0005873925397487101,
+    "values": {
+     "J": 0.9620212269716256
+    },
+    "median_series": "J",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range",
+    "sigma_stat_profiled": 0.001818137508166915,
+    "sigma_stat_fixed": 0.00162216098576593,
+    "sigma_rule": "profiled"
+   },
+   "crosscheck": {
+    "status": "unavailable",
+    "sigma_rule": "profiled"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.001859833452703626,
+      "primary": 0.001818137508166915,
+      "ratio": 1.0229333283920585,
+      "note": null,
+      "sigma_profiled": 0.001859833452703626,
+      "primary_profiled": 0.001818137508166915,
+      "ratio_profiled": 1.0229333283920585,
+      "note_profiled": null,
+      "sigma_fixed": 0.0017433501047641599,
+      "primary_fixed": 0.00162216098576593,
+      "ratio_fixed": 1.0747084414319141,
+      "note_fixed": null
+     },
+     "4000": {
+      "sigma": 0.0019422711768198224,
+      "primary": 0.001818137508166915,
+      "ratio": 1.0682751816599734,
+      "note": null,
+      "sigma_profiled": 0.0019422711768198224,
+      "primary_profiled": 0.001818137508166915,
+      "ratio_profiled": 1.0682751816599734,
+      "note_profiled": null,
+      "sigma_fixed": 0.0017247508129053836,
+      "primary_fixed": 0.00162216098576593,
+      "ratio_fixed": 1.0632426917178102,
+      "note_fixed": null
+     }
+    },
+    "record_problems": [],
+    "passed": true,
+    "available_fixed": true,
+    "passed_fixed": true,
+    "sigma_rule": "profiled"
+   },
+   "decision": "CONDITIONAL",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "profiled",
+    "p1_calibrated": true,
+    "strata_used": [
+     {
+      "stratum": "A1 J",
+      "status": "PASS",
+      "n_eligible": 1805
+     }
+    ],
+    "fixed_rule_decision": "CONDITIONAL",
+    "A4": {
+     "label_changed": false,
+     "reference_series": "J",
+     "reference_A1": "PASS",
+     "crosscheck_changed": false,
+     "crosscheck_A2": null,
+     "satisfied": true
+    }
+   }
+  },
+  "1.3": {
+   "s": 1.3,
+   "Delta_sigma": 0.35,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.3/results.json",
+    "results_sha256": "3b96baf0fe4e9287cf198588565f1d33d42548280f6fb06481c688bff9aec4b2",
+    "draws_sha256": "5d3b107fe207e42f0767b75ed45e9a7a4185f19b63343de292dd5bb5661dab0b",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9604822477992789,
+     "sigma_U4": 0.0017116588304755872,
+     "Delta_eff_Y": 0.9708537845819316,
+     "sigma_Y": 0.0017895639542801973
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9583826317424682,
+     "sigma_U4": 0.0020001639321455236,
+     "Delta_eff_Y": 0.9697517860584828,
+     "sigma_Y": 0.001953691867402178
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0020001639321455236,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9594899446305296,
+     "chi2": 0.49166525393931365,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0014318939256708352,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0030285164246419277,
+     "omega_draws": {
+      "median": 1.71,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 402,
+      "fraction_on_edge": 0.804
+     },
+     "sigma_inf_fixed_information": 0.000747472804773849,
+     "central": [
+      0.9581248355039373,
+      0.9585957717937663,
+      0.9604822477992789,
+      0.9583826317424682
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9595251650403028,
+     "chi2": 0.5581813545157654,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0022002953227095445,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.002934935540095544,
+     "omega_draws": {
+      "median": 2.0,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 383,
+      "fraction_on_edge": 0.766
+     },
+     "sigma_inf_fixed_information": 0.00073270991751562,
+     "central": [
+      0.9574240592873648,
+      0.9584731775591586,
+      0.9605253181515032,
+      0.9583132786826898
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9594855725099642,
+     "chi2": 0.6966079893166401,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.004213503758823678,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0035977965991246014,
+     "omega_draws": {
+      "median": 2.0,
+      "p16": 0.2452000000000001,
+      "p84": 2.0,
+      "draws_on_edge": 342,
+      "fraction_on_edge": 0.684
+     },
+     "sigma_inf_fixed_information": 0.0006867432884438156,
+     "central": [
+      0.95563876943354,
+      0.9579125489921405,
+      0.9604710296241479,
+      0.9582309875365056
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9713936767731991,
+     "chi2": 0.7240979649454914,
+     "dof": 1,
+     "omega_interval": [
+      1.58,
+      2.0
+     ],
+     "Delta_omega": 0.00043958498987783923,
+     "reason": "omega' interval [1.58, 2.0] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0011978338000071778,
+     "omega_draws": {
+      "median": 2.0,
+      "p16": 1.82,
+      "p84": 2.0,
+      "draws_on_edge": 393,
+      "fraction_on_edge": 0.786
+     },
+     "sigma_inf_fixed_information": 0.0007319102937165332,
+     "central": [
+      0.9560675049091447,
+      0.9682657960846945,
+      0.9708537845819316,
+      0.9697517860584828
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9831918828569226,
+     "chi2": 201.0918712337745,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 50.27 > 2.0",
+     "sigma_inf_profiled": 0.004224665148363141,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 500,
+      "fraction_on_edge": 1.0
+     },
+     "sigma_inf_fixed_information": 0.004224665148363144,
+     "central": [
+      0.9581248355039373,
+      0.9585957717937663,
+      0.9604822477992789,
+      0.9583826317424682,
+      0.9560675049091447,
+      0.9682657960846945,
+      0.9708537845819316,
+      0.9697517860584828
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.002092141300813621,
+      "primary": 0.0020001639321455236,
+      "ratio": 1.045984915131149,
+      "note": null,
+      "sigma_profiled": 0.002092141300813621,
+      "primary_profiled": 0.0020001639321455236,
+      "ratio_profiled": 1.045984915131149,
+      "note_profiled": null
+     },
+     "4000": {
+      "sigma": 0.0020608157473250748,
+      "primary": 0.0020001639321455236,
+      "ratio": 1.0303234220979536,
+      "note": null,
+      "sigma_profiled": 0.0020608157473250748,
+      "primary_profiled": 0.0020001639321455236,
+      "ratio_profiled": 1.0303234220979536,
+      "note_profiled": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "fixed",
+    "p1_calibrated": false,
+    "strata_used": [],
+    "note": "P1 not applied: no eligible series (no calibrated quantity enters the label)"
+   }
+  },
+  "1.4": {
+   "s": 1.4,
+   "Delta_sigma": 0.30000000000000004,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.4/results.json",
+    "results_sha256": "d8cbb919efc5334092232ed5c8122d43eee76307b8d915508705f02b04a40e74",
+    "draws_sha256": "278c8516281684ce747067b2f576f830f21ba0bedadcc764453310a875863a28",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9582433002555455,
+     "sigma_U4": 0.0017290361302283958,
+     "Delta_eff_Y": 0.998569136661849,
+     "sigma_Y": 0.0016320844236658518
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9627269619978782,
+     "sigma_U4": 0.0019720742214445505,
+     "Delta_eff_Y": 0.9977057925358555,
+     "sigma_Y": 0.0018519862962122617
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0019720742214445505,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9624020007355372,
+     "chi2": 2.3770348781993027,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0013340130682886198,
+     "reason": "chi2/dof 2.38 > 2.0",
+     "sigma_inf_profiled": 0.0035196136142479407,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 475,
+      "fraction_on_edge": 0.95
+     },
+     "sigma_inf_fixed_information": 0.004217034644905791,
+     "central": [
+      0.9599075322477113,
+      0.9589626190085734,
+      0.9582433002555455,
+      0.9627269619978782
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.964330967707858,
+     "chi2": 2.302236731903287,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.002074957897215013,
+     "reason": "chi2/dof 2.30 > 2.0",
+     "sigma_inf_profiled": 0.0038431189041527414,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 2.0,
+      "draws_on_edge": 476,
+      "fraction_on_edge": 0.952
+     },
+     "sigma_inf_fixed_information": 0.0041261060162375044,
+     "central": [
+      0.9596004140606664,
+      0.9594166224678666,
+      0.9584253054599272,
+      0.9632995791130472
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9688618528177528,
+     "chi2": 1.8281801163352842,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.32
+     ],
+     "Delta_omega": 0.0036428165419932768,
+     "reason": "omega' interval [0.2, 1.32] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0044106944767153804,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.35159999999999964,
+      "draws_on_edge": 476,
+      "fraction_on_edge": 0.952
+     },
+     "sigma_inf_fixed_information": 0.003909780451001168,
+     "central": [
+      0.9588941572481331,
+      0.9601134698528693,
+      0.9592712476913361,
+      0.964245076461556
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.986805008429597,
+     "chi2": 1.8481141757536952,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.76
+     ],
+     "Delta_omega": 0.005159082999207143,
+     "reason": "omega' interval [0.2, 0.76] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.005142744721193613,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.28,
+      "draws_on_edge": 412,
+      "fraction_on_edge": 0.824
+     },
+     "sigma_inf_fixed_information": 0.004230730455077722,
+     "central": [
+      1.0024242542391257,
+      1.0032045799435985,
+      0.998569136661849,
+      0.9977057925358555
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9729958532547566,
+     "chi2": 93.97479482803674,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 23.49 > 2.0",
+     "sigma_inf_profiled": 0.003961042097526851,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 500,
+      "fraction_on_edge": 1.0
+     },
+     "sigma_inf_fixed_information": 0.003961042097525619,
+     "central": [
+      0.9599075322477113,
+      0.9589626190085734,
+      0.9582433002555455,
+      0.9627269619978782,
+      1.0024242542391257,
+      1.0032045799435985,
+      0.998569136661849,
+      0.9977057925358555
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0019804135319369935,
+      "primary": 0.0019720742214445505,
+      "ratio": 1.0042287001177543,
+      "note": null,
+      "sigma_profiled": 0.0019804135319369935,
+      "primary_profiled": 0.0019720742214445505,
+      "ratio_profiled": 1.0042287001177543,
+      "note_profiled": null
+     },
+     "4000": {
+      "sigma": 0.0020862242415641786,
+      "primary": 0.0019720742214445505,
+      "ratio": 1.0578832271515688,
+      "note": null,
+      "sigma_profiled": 0.0020862242415641786,
+      "primary_profiled": 0.0019720742214445505,
+      "ratio_profiled": 1.0578832271515688,
+      "note_profiled": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "fixed",
+    "p1_calibrated": false,
+    "strata_used": [],
+    "note": "P1 not applied: no eligible series (no calibrated quantity enters the label)"
+   }
+  },
+  "1.5": {
+   "s": 1.5,
+   "Delta_sigma": 0.25,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.5/results.json",
+    "results_sha256": "2eb27cfc61d7e64f0ddfca91c944cf5607e507f1be8543af357e270e0d125456",
+    "draws_sha256": "d00d77d17fc988785d4e8dc9d82d4514942f728b5ccfe5b80c5eabd92b45c9d0",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9640326036031146,
+     "sigma_U4": 0.001625647273304384,
+     "Delta_eff_Y": 1.033892439602317,
+     "sigma_Y": 0.0014524778222666946
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9661175860395073,
+     "sigma_U4": 0.0018409877351369178,
+     "Delta_eff_Y": 1.0245082124759652,
+     "sigma_Y": 0.0016524315498992336
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0018409877351369178,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9759288985619968,
+     "chi2": 0.4808032731630383,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.98
+     ],
+     "Delta_omega": 0.0052040402287836796,
+     "reason": "omega' interval [0.2, 0.98] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.005471168206545473,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.5631999999999994,
+      "draws_on_edge": 404,
+      "fraction_on_edge": 0.808
+     },
+     "sigma_inf_fixed_information": 0.0042202104553157585,
+     "central": [
+      0.9607892566415157,
+      0.9614961852152966,
+      0.9640326036031146,
+      0.9661175860395073
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9777353970562788,
+     "chi2": 0.4559150356311158,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.92
+     ],
+     "Delta_omega": 0.005485420625898185,
+     "reason": "omega' interval [0.2, 0.92] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.0056001251996684875,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.5615999999999998,
+      "draws_on_edge": 390,
+      "fraction_on_edge": 0.78
+     },
+     "sigma_inf_fixed_information": 0.004113715066886703,
+     "central": [
+      0.9614175955400523,
+      0.9623045987233478,
+      0.9650484878762762,
+      0.9670781590581863
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9818954518624677,
+     "chi2": 0.28516484175147533,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.91
+     ],
+     "Delta_omega": 0.006383020478933965,
+     "reason": "omega' interval [0.2, 0.91] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.006370462172315353,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.7615999999999997,
+      "draws_on_edge": 354,
+      "fraction_on_edge": 0.708
+     },
+     "sigma_inf_fixed_information": 0.003901588453842744,
+     "central": [
+      0.9625286225278042,
+      0.9640547836648397,
+      0.9672447781596363,
+      0.9689637752630749
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9810399097604547,
+     "chi2": 3.1469965923030685,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.27
+     ],
+     "Delta_omega": 0.007386149331861214,
+     "reason": "chi2/dof 3.15 > 2.0",
+     "sigma_inf_profiled": 0.0055295364032774495,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 480,
+      "fraction_on_edge": 0.96
+     },
+     "sigma_inf_fixed_information": 0.003810095732745979,
+     "central": [
+      1.0484441833787923,
+      1.042293715380728,
+      1.033892439602317,
+      1.0245082124759652
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9792229803395239,
+     "chi2": 18.48485826505683,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 4.62 > 2.0",
+     "sigma_inf_profiled": 0.003767935710169852,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 500,
+      "fraction_on_edge": 1.0
+     },
+     "sigma_inf_fixed_information": 0.003767935710169399,
+     "central": [
+      0.9607892566415157,
+      0.9614961852152966,
+      0.9640326036031146,
+      0.9661175860395073,
+      1.0484441833787923,
+      1.042293715380728,
+      1.033892439602317,
+      1.0245082124759652
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0018143153951511186,
+      "primary": 0.0018409877351369178,
+      "ratio": 0.9855119404237555,
+      "note": null,
+      "sigma_profiled": 0.0018143153951511186,
+      "primary_profiled": 0.0018409877351369178,
+      "ratio_profiled": 0.9855119404237555,
+      "note_profiled": null
+     },
+     "4000": {
+      "sigma": 0.001986944501143173,
+      "primary": 0.0018409877351369178,
+      "ratio": 1.0792817699002215,
+      "note": null,
+      "sigma_profiled": 0.001986944501143173,
+      "primary_profiled": 0.0018409877351369178,
+      "ratio_profiled": 1.0792817699002215,
+      "note_profiled": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "fixed",
+    "p1_calibrated": false,
+    "strata_used": [],
+    "note": "P1 not applied: no eligible series (no calibrated quantity enters the label)"
+   }
+  },
+  "1.6": {
+   "s": 1.6,
+   "Delta_sigma": 0.19999999999999996,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.6/results.json",
+    "results_sha256": "f249cccd155da3246a7d1888e31a58075b2963d3f7a39e60b7721e150152bb96",
+    "draws_sha256": "bac91fc6380ace26a2d25517ab423bfccee673b6558be550fd0f02493c20dba2",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9691055105172839,
+     "sigma_U4": 0.0015459063757118307,
+     "Delta_eff_Y": 1.0728719428544629,
+     "sigma_Y": 0.0013451188930744694
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9697605083909089,
+     "sigma_U4": 0.0018307382061930211,
+     "Delta_eff_Y": 1.0619776799463831,
+     "sigma_Y": 0.0015257878443049706
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0018307382061930211,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9798824666125853,
+     "chi2": 1.0881952763606755,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.97
+     ],
+     "Delta_omega": 0.00506551308503006,
+     "reason": "omega' interval [0.2, 0.97] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.005297541774476268,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.62,
+      "draws_on_edge": 389,
+      "fraction_on_edge": 0.778
+     },
+     "sigma_inf_fixed_information": 0.004127416478701528,
+     "central": [
+      0.9653482692630289,
+      0.9652067563115005,
+      0.9691055105172839,
+      0.9697605083909089
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9821779574458769,
+     "chi2": 0.5870240289670597,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.1
+     ],
+     "Delta_omega": 0.005474130284745471,
+     "reason": "omega' interval [0.2, 1.1] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.005692845242769733,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.9015999999999997,
+      "draws_on_edge": 367,
+      "fraction_on_edge": 0.734
+     },
+     "sigma_inf_fixed_information": 0.004056537069202568,
+     "central": [
+      0.9665641882353337,
+      0.9671676633579971,
+      0.9706311263510099,
+      0.9713911182197008
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.25,
+     "Delta_inf": 0.9838582764646534,
+     "chi2": 0.1785321210978023,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.47
+     ],
+     "Delta_omega": 0.006429374871152638,
+     "reason": "omega' interval [0.2, 1.47] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.006333993084987201,
+     "omega_draws": {
+      "median": 0.22,
+      "p16": 0.2,
+      "p84": 1.3731999999999995,
+      "draws_on_edge": 295,
+      "fraction_on_edge": 0.59
+     },
+     "sigma_inf_fixed_information": 0.003141343413553513,
+     "central": [
+      0.9688505579878468,
+      0.9707181012791195,
+      0.9736822569637236,
+      0.9744654934782015
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9919226630446477,
+     "chi2": 6.335865770874828,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.23
+     ],
+     "Delta_omega": 0.0058196042138725645,
+     "reason": "chi2/dof 6.34 > 2.0",
+     "sigma_inf_profiled": 0.005003895104175611,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 491,
+      "fraction_on_edge": 0.982
+     },
+     "sigma_inf_fixed_information": 0.003543114635446929,
+     "central": [
+      1.0977094554810432,
+      1.0884635097086401,
+      1.0728719428544629,
+      1.0619776799463831
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9915013112452177,
+     "chi2": 56.29163156996942,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 14.07 > 2.0",
+     "sigma_inf_profiled": 0.0035292575744813666,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 500,
+      "fraction_on_edge": 1.0
+     },
+     "sigma_inf_fixed_information": 0.003529257574481796,
+     "central": [
+      0.9653482692630289,
+      0.9652067563115005,
+      0.9691055105172839,
+      0.9697605083909089,
+      1.0977094554810432,
+      1.0884635097086401,
+      1.0728719428544629,
+      1.0619776799463831
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0016973188442197928,
+      "primary": 0.0018307382061930211,
+      "ratio": 0.9271226429197263,
+      "note": null,
+      "sigma_profiled": 0.0016973188442197928,
+      "primary_profiled": 0.0018307382061930211,
+      "ratio_profiled": 0.9271226429197263,
+      "note_profiled": null
+     },
+     "4000": {
+      "sigma": 0.001832269788026041,
+      "primary": 0.0018307382061930211,
+      "ratio": 1.0008365924892149,
+      "note": null,
+      "sigma_profiled": 0.001832269788026041,
+      "primary_profiled": 0.0018307382061930211,
+      "ratio_profiled": 1.0008365924892149,
+      "note_profiled": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "fixed",
+    "p1_calibrated": false,
+    "strata_used": [],
+    "note": "P1 not applied: no eligible series (no calibrated quantity enters the label)"
+   }
+  },
+  "1.7": {
+   "s": 1.7,
+   "Delta_sigma": 0.15000000000000002,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "LRI_2d_MC/prod/analysis_b2000_s1.7/results.json",
+    "results_sha256": "aee4fb66a89bb232673df7b37df135776eb8e1858cf70a1a10920082b8c765a8",
+    "draws_sha256": "0d94905742744a0ceb01a0c908dc1c417d0944d6de45e70c4e53e8aa29c509a1",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    },
+    "index_path_read": "LRI_2d_MC/prod/hist_b2000/index.json"
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9751031495425784,
+     "sigma_U4": 0.0015539518538242268,
+     "Delta_eff_Y": 1.1253935796190917,
+     "sigma_Y": 0.001372912372272986
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9773066082489981,
+     "sigma_U4": 0.0017160158003688994,
+     "Delta_eff_Y": 1.1088284067367171,
+     "sigma_Y": 0.0014362359336924934
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0017160158003688994,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9984449867181732,
+     "chi2": 0.508168097337903,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.66
+     ],
+     "Delta_omega": 0.00914793215522769,
+     "reason": "omega' interval [0.2, 0.66] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.008699738611180452,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.6215999999999997,
+      "draws_on_edge": 312,
+      "fraction_on_edge": 0.624
+     },
+     "sigma_inf_fixed_information": 0.0038708704250398377,
+     "central": [
+      0.9671112944382656,
+      0.9698807724758567,
+      0.9751031495425784,
+      0.9773066082489981
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0011876753319175,
+     "chi2": 0.5013954191266895,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.75
+     ],
+     "Delta_omega": 0.00979003382862409,
+     "reason": "omega' interval [0.2, 0.75] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.009277666954092153,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.7515999999999997,
+      "draws_on_edge": 270,
+      "fraction_on_edge": 0.54
+     },
+     "sigma_inf_fixed_information": 0.0037812211461177143,
+     "central": [
+      0.9690855982939766,
+      0.9722165426587215,
+      0.9775647136405956,
+      0.9793252803040333
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.36,
+     "Delta_inf": 0.9934955889916083,
+     "chi2": 0.5679441701365262,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.97
+     ],
+     "Delta_omega": 0.010667811514263825,
+     "reason": "omega' interval [0.2, 0.97] reaches the grid boundary (unresolved)",
+     "sigma_inf_profiled": 0.00967149339677108,
+     "omega_draws": {
+      "median": 0.335,
+      "p16": 0.2,
+      "p84": 0.95,
+      "draws_on_edge": 202,
+      "fraction_on_edge": 0.404
+     },
+     "sigma_inf_fixed_information": 0.0020678165071489783,
+     "central": [
+      0.9727754172150087,
+      0.9765036649753478,
+      0.9818145498732644,
+      0.9829369505275303
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0311011306540356,
+     "chi2": 5.817317784820489,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.23
+     ],
+     "Delta_omega": 0.006563109470910766,
+     "reason": "chi2/dof 5.82 > 2.0",
+     "sigma_inf_profiled": 0.00381107809288659,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 496,
+      "fraction_on_edge": 0.992
+     },
+     "sigma_inf_fixed_information": 0.0033882197102467564,
+     "central": [
+      1.1516073635899584,
+      1.1381370000368412,
+      1.1253935796190917,
+      1.1088284067367171
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0260466559989792,
+     "chi2": 225.4516384940974,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 56.36 > 2.0",
+     "sigma_inf_profiled": 0.0033661975963969124,
+     "omega_draws": {
+      "median": 0.2,
+      "p16": 0.2,
+      "p84": 0.2,
+      "draws_on_edge": 500,
+      "fraction_on_edge": 1.0
+     },
+     "sigma_inf_fixed_information": 0.003366197596396174,
+     "central": [
+      0.9671112944382656,
+      0.9698807724758567,
+      0.9751031495425784,
+      0.9773066082489981,
+      1.1516073635899584,
+      1.1381370000368412,
+      1.1253935796190917,
+      1.1088284067367171
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0016853269858292553,
+      "primary": 0.0017160158003688994,
+      "ratio": 0.982116240110932,
+      "note": null,
+      "sigma_profiled": 0.0016853269858292553,
+      "primary_profiled": 0.0017160158003688994,
+      "ratio_profiled": 0.982116240110932,
+      "note_profiled": null
+     },
+     "4000": {
+      "sigma": 0.0017274841478241703,
+      "primary": 0.0017160158003688994,
+      "ratio": 1.0066831246267112,
+      "note": null,
+      "sigma_profiled": 0.0017274841478241703,
+      "primary_profiled": 0.0017160158003688994,
+      "ratio_profiled": 1.0066831246267112,
+      "note_profiled": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE",
+   "sigma_rule": {
+    "requested": "profiled",
+    "applied": "fixed",
+    "p1_calibrated": false,
+    "strata_used": [],
+    "note": "P1 not applied: no eligible series (no calibrated quantity enters the label)"
+   }
+  }
+ },
+ "sigma_rule": "profiled",
+ "index_remap": [
+  {
+   "old": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/",
+   "new": "LRI_2d_MC/prod/"
+  }
+ ],
+ "deviations": [
+  "--index-remap /expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/=LRI_2d_MC/prod/: histogram indices read from restored copies (operational deviation; each must still hash to the index_sha256 of its record)"
+ ],
+ "amendment_P1": {
+  "amendment": "LRI_2d3d_reanalysis/AMENDMENT_PROFILED_SIGMA.md",
+  "amendment_sha256": "2a18c0ae3ae7b3f4fa5db8b83df0fb5a1d57eecd79d1603bdf04bcc7207574d0",
+  "calibration": "LRI_2d3d_reanalysis/calibration/run_20260930_213748/CALIBRATION.json",
+  "calibration_sha256": "897142c1685bcc8a1d6719bee0e79f8bed876760f37f9b8a98242342d3d28e58",
+  "calibration_valid": true,
+  "binding_checks": [
+   {
+    "check": "amendment file is the approved revision",
+    "passed": true,
+    "detail": "2a18c0ae3ae7b3f4fa5db8b83df0fb5a1d57eecd79d1603bdf04bcc7207574d0"
+   },
+   {
+    "check": "header amendment_sha256 = the amendment file",
+    "passed": true,
+    "detail": "2a18c0ae3ae7b3f4fa5db8b83df0fb5a1d57eecd79d1603bdf04bcc7207574d0"
+   },
+   {
+    "check": "header calibration_script_sha256 = calibrate_p1.py of this repository",
+    "passed": true,
+    "detail": "d94b59f200b3ec9f91b68d488928dadc1d546133f256b0764aad110d0628f3ee vs d94b59f200b3ec9f91b68d488928dadc1d546133f256b0764aad110d0628f3ee"
+   },
+   {
+    "check": "header evaluator sha256 (2D) = LRI_2d_MC/evaluate_2d.py of this repository",
+    "passed": true,
+    "detail": "3c3e35fca8f526c589a110326d8f57dd84ccc96d9f2e5195f6a69d684a263fc3 vs 3c3e35fca8f526c589a110326d8f57dd84ccc96d9f2e5195f6a69d684a263fc3"
+   },
+   {
+    "check": "header evaluator sha256 (3D) = LRI_3d_MC/evaluate_3d.py of this repository",
+    "passed": true,
+    "detail": "d635c917dd319755d4b49b448e18cb1d72cfab001f0ae76bed58d8ab9c1d37c2 vs d635c917dd319755d4b49b448e18cb1d72cfab001f0ae76bed58d8ab9c1d37c2"
+   },
+   {
+    "check": "this evaluator is the repository file",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "complete calibration (no --only subset)",
+    "passed": true,
+    "detail": "None"
+   },
+   {
+    "check": "header and strata cover both dimensions",
+    "passed": true,
+    "detail": "['2', '3'] / ['2', '3']"
+   },
+   {
+    "check": "header adoption thresholds = the amendment's",
+    "passed": true,
+    "detail": "{'A1_min_eligible': 200, 'A1_cov1_min': 0.6, 'A1_cov2_min': 0.9, 'A2_min_sets': 200, 'A2_false_fail_max': 0.1, 'A3_fixed_cov1_max': 0.6}"
+   },
+   {
+    "check": "the --plan given is the frozen protocol",
+    "passed": true,
+    "detail": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb"
+   },
+   {
+    "check": "2D protocol_sha256 = the frozen protocol",
+    "passed": true,
+    "detail": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb"
+   },
+   {
+    "check": "2D baseline_sha256 = the pinned baseline evaluation",
+    "passed": true,
+    "detail": "fbfc0ef980a060d526c03fde6f1ec08e38ffec2d0099675ef13ec160542f552d"
+   },
+   {
+    "check": "2D settings = the evaluator constants",
+    "passed": true,
+    "detail": "{'pairs': [64, 128, 256, 512], 'obs': {'U4': 2, 'U6': 3, 'U8': 4, 'Y': 1}, 'omega_grid': [0.2, 2.0, 0.01], 'omega_margin': 0.02, 'chi2_dof_max': 2.0, 'resolution_max': 5.0, 'common_valid_frac': 0.9, 'n_sets': 2000, 'n_draws': 500} vs {'pairs': [64, 128, 256, 512], 'obs': {'U4': 2, 'U6': 3, 'U8': 4, 'Y': 1}, 'omega_grid': [0.2, 2.0, 0.01], 'omega_margin': 0.02, 'chi2_dof_max': 2.0, 'resolution_max'"
+   },
+   {
+    "check": "2D pinned baseline evaluation present",
+    "passed": true,
+    "detail": "LRI_2d_MC/prod/evaluation_20260922_083649/evaluation_2d.json"
+   },
+   {
+    "check": "2D header points = the baseline points",
+    "passed": true,
+    "detail": "['1.05', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7'] vs ['1.05', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7']"
+   },
+   {
+    "check": "2D strata points = the baseline points",
+    "passed": true,
+    "detail": "['1.05', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7'] vs ['1.05', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7']"
+   },
+   {
+    "check": "2D s=1.05: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.05: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.05: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.05: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.05"
+   },
+   {
+    "check": "2D s=1.05: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.1: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.1: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.1: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.1: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.1"
+   },
+   {
+    "check": "2D s=1.1: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.2: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.2: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.2: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.2: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.2"
+   },
+   {
+    "check": "2D s=1.2: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.3: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.3: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.3: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.3: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.3"
+   },
+   {
+    "check": "2D s=1.3: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.4: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.4: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.4: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.4: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.4"
+   },
+   {
+    "check": "2D s=1.4: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.5: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.5: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.5: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.5: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.5"
+   },
+   {
+    "check": "2D s=1.5: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.6: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.6: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.6: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.6: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.6"
+   },
+   {
+    "check": "2D s=1.6: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.7: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "2D s=1.7: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "2D s=1.7: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "2D s=1.7: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_2d_MC/prod/analysis_b2000_s1.7"
+   },
+   {
+    "check": "2D s=1.7: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D protocol_sha256 = the frozen protocol",
+    "passed": true,
+    "detail": "682858f0327f7dbd051353ffd44ab3dd2e6de51b10371b93775e24ab6687ea4c"
+   },
+   {
+    "check": "3D baseline_sha256 = the pinned baseline evaluation",
+    "passed": true,
+    "detail": "ae9cf237d9eb9ba484ab44486882a6dafdedb5fae1a575a1ae2f1d38533755e0"
+   },
+   {
+    "check": "3D settings = the evaluator constants",
+    "passed": true,
+    "detail": "{'pairs': [8, 16, 32, 64], 'obs': {'U4': 2, 'U6': 3, 'U8': 4, 'Y': 1}, 'omega_grid': [0.2, 2.0, 0.01], 'omega_margin': 0.02, 'chi2_dof_max': 2.0, 'resolution_max': 5.0, 'common_valid_frac': 0.9, 'n_sets': 2000, 'n_draws': 500} vs {'pairs': [8, 16, 32, 64], 'obs': {'U4': 2, 'U6': 3, 'U8': 4, 'Y': 1}, 'omega_grid': [0.2, 2.0, 0.01], 'omega_margin': 0.02, 'chi2_dof_max': 2.0, 'resolution_max': 5.0, '"
+   },
+   {
+    "check": "3D pinned baseline evaluation present",
+    "passed": true,
+    "detail": "LRI_3d_MC/prod/evaluation_54387089_20260923_194523/evaluation_3d.json"
+   },
+   {
+    "check": "3D header points = the baseline points",
+    "passed": true,
+    "detail": "['1.55', '1.6', '1.7', '1.75', '1.8', '1.85', '1.9', '1.95'] vs ['1.55', '1.6', '1.7', '1.75', '1.8', '1.85', '1.9', '1.95']"
+   },
+   {
+    "check": "3D strata points = the baseline points",
+    "passed": true,
+    "detail": "['1.55', '1.6', '1.7', '1.75', '1.8', '1.85', '1.9', '1.95'] vs ['1.55', '1.6', '1.7', '1.75', '1.8', '1.85', '1.9', '1.95']"
+   },
+   {
+    "check": "3D s=1.55: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.55: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.55: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.55: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.55"
+   },
+   {
+    "check": "3D s=1.55: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.6: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.6: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.6: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.6: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.6"
+   },
+   {
+    "check": "3D s=1.6: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.7: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.7: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.7: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.7: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.7"
+   },
+   {
+    "check": "3D s=1.7: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.75: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.75: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.75: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.75: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.75"
+   },
+   {
+    "check": "3D s=1.75: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.8: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.8: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.8: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.8: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.8"
+   },
+   {
+    "check": "3D s=1.8: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.85: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.85: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.85: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.85: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.85"
+   },
+   {
+    "check": "3D s=1.85: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.9: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.9: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.9: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.9: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.9"
+   },
+   {
+    "check": "3D s=1.9: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.95: header point and strata entry are JSON objects",
+    "passed": true,
+    "detail": "dict / dict"
+   },
+   {
+    "check": "3D s=1.95: strata ['U4', 'U6', 'U8', 'Y', 'J', 'crosscheck'] with valid counts",
+    "passed": true,
+    "detail": "['J', 'U4', 'U6', 'U8', 'Y', 'crosscheck']"
+   },
+   {
+    "check": "3D s=1.95: record hashes = the baseline inputs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "3D s=1.95: record present with the bound hashes",
+    "passed": true,
+    "detail": "/home/zheng/lri_p1/LRI_3d_MC/prod/analysis_54387089_b2000_s1.95"
+   },
+   {
+    "check": "3D s=1.95: truths = this code's refit of the record",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "every stratum status follows from its recorded counts",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "A3 recomputed from the strata = the recorded A3",
+    "passed": true,
+    "detail": "{'n_pooled': 45440, 'fixed_cov1_pooled': 0.2870378521126761, 'holds': True} vs {'n_pooled': 45440, 'fixed_cov1_pooled': 0.2870378521126761, 'holds': True}"
+   },
+   {
+    "check": "s = 1.05: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.1: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.2: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.3: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.4: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.5: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.6: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "s = 1.7: record hashes and fitted truths",
+    "passed": true,
+    "detail": ""
+   }
+  ],
+  "A3": {
+   "n_pooled": 45440,
+   "fixed_cov1_pooled": 0.2870378521126761,
+   "holds": true
+  },
+  "adopted": true,
+  "rule": "labels of P1-CALIBRATED points are decided by the profiled quantities of amendment \u00a73; every other point keeps the complete frozen fixed-rule evaluation and carries the note \"P1 not applied: ...\" (\u00a73.6)",
+  "p1_calibrated_points": [
+   1.05,
+   1.1,
+   1.2
+  ]
+ }
+}

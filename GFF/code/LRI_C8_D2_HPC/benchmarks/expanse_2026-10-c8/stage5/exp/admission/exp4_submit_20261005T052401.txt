@@ -1,0 +1,23 @@
+== 2026-10-05T02:24:02-07:00 on login01: C8_RUN=<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4 C8_SBATCH_ARGS=-A <ACCOUNT> -p compute C8_LANE_MEM=240G C8_LANE_TIME=00:30:00 C8_LANES= C8_MERGE_TIME=
+== expanse-client project <ACCOUNT> -p
+bash: expanse-client: command not found
+== squeue -A <ACCOUNT> before
+54676908|RUNNING|compute|normal|1|<USER>|c8d2-s5e-sweep2
+54676898|RUNNING|debug|debug-normal|1|<USER>|c8d2-s5e-exp1b
+54507317|PENDING|shared|shared-oneweek|1|vdommes|bash
+54505594_14|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+54505594_7|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+54505594_1|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+== <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/slurm/submit.sh --lanes 1
+C8: queue <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4/lanes/queue.txt: 33 incomplete indices, 9.7 estimated core-hours
+C8: admission {"account": "<ACCOUNT>", "account_running_normal": 1, "admission_ref": null, "caps": {"C8_EXP_ACCOUNT_RUNNING": 32, "C8_EXP_NODES": 4, "C8_EXP_RUNNING": 11, "C8_EXP_SHARED": 32, "C8_EXP_SUBMITTED": 27}, "k": 2, "limits": {"c8d2 compute nodes": {"new": 2, "room": 2}, "c8d2 running normal-QOS": {"new": 2, "room": 10}, "c8d2 submitted normal-QOS": {"new": 2, "room": 26}, "<ACCOUNT> running normal-QOS": {"new": 2, "room": 31}}, "my_compute_nodes_live": 2, "my_running_normal": 1, "my_shared_live": 0, "my_submitted_normal": 1, "new_jobs": {"lane": {"count": 1, "partitions": ["compute"]}, "merge": {"count": 1, "partitions": ["compute"]}}, "partitions": ["compute"], "room": 2, "site": "expanse"}
+C8: partition compute: 596 idle node(s)
+C8: sbatch --test-only: sbatch: Job 54676910 to start at 2026-10-05T21:00:03 using 128 processors on nodes <NODE> in partition compute
+lane worker 54676911; log <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4/slurm_logs/lane-54676911.log
+merge 54676912 (afterany:54676911); log <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4/slurm_logs/merge-54676912.log
+status: <HOME>/c8d2/venv/bin/python3 <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tools/production.py status <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4   (more workers: slurm/submit.sh --lanes N)
+== submit.sh exit 0
+54676911 c8d2-lanes PENDING compute 0:00 30:00 Priority
+54676912 c8d2-merge PENDING compute 0:00 2:00:00 Dependency
+54676908 c8d2-s5e-sweep2 RUNNING compute 1:43 2:00:00 None
+54676898 c8d2-s5e-exp1b RUNNING debug 9:13 30:00 None

@@ -1,0 +1,16 @@
+P1a  L8 stage A: 1/8 stratified + heaviest 1% with certainty, R=8, 4096 : central    34.7  band [25.4, 65.4] busy core-h (both campaigns)
+P1a+P2  L8 all 20,400 kernels, R=8, 4096 (default)                      : central   219.1  band [160.4, 413.5] busy core-h (both campaigns)
+P1c  1/256 nested subset, R=8, 32768                                    : central     6.8  band [5.0, 12.9] busy core-h (both campaigns)
+P1b  L3-L7 all kernels, R=8, 4096                                       : central     9.4  band [9.4, 9.4] busy core-h (both campaigns)
+DEFAULT PILOT = full L8 pass + P1b + P1c                                : central   235.3  band [174.8, 435.8] busy core-h
+  stage A alone (go/no-go, histograms) = P1a + P1b + P1c                : central    50.9 busy core-h
+  R=16 instead of R=8 for the full L8 pass (halves the sigma-noise penalty, see checks [9]): +219 busy core-h
+  model-uncorrected kappa (repair round 1 basis), full L8 pass          : 265 busy core-h (approx.)
+[R1] L8 pass by sector (central): free 146.9, power 72.2 busy core-h; per-graph mean 38.7 core-s, median 20.7 core-s, max 209 core-s
+[R2] 29 strata: median share of the L8 pass 1.2%, so re-running a median stratum at 32,768 points costs 10% of the pass; largest: free T-bin 4 M-tertile 0 39.7% (3772 graphs; re-run 318% = 696 busy), free T-bin 4 M-tertile 1 12.7% (1147 graphs; re-run 102% = 223 busy), power T-bin 3 M-tertile 0 8.1% (971 graphs; re-run 64% = 141 busy)
+[R3] graph re-runs at 32,768 points (x8 per graph) capped at 25% of the L8 pass: 55 busy core-h (40-103); the cap holds every flagged graph while the flagged graphs carry <= 3.1% of the pass cost (about 638 graphs of mean cost)
+[R4] R = 16 for the L8 pass: +219 (160-414) busy core-h in all; per sector free +147, power +72
+[R5] budget: default pilot 235 (175-436) + contingency for every pre-registered branch (R = 16 for both sectors + capped re-runs) 274 (200-517) = at most 509 busy core-h (375-953); allocated at the x2.5 array-mode allowance: 588 default, at most 1273 (2382 at the band top)
+     allowance brackets: run1 lane mode x1.086; C7(3) M=1 pilot 1,181 task core-s in 4.7 min of one 64-core node = x15.3 (CAMPAIGN.md:31-33, overhead-bound); C8(1) L8 end-to-end QMC efficiency 0.12-0.14 (x7-8). Stage A measures it before the full pass
+[R6] R = 16 break-even, Gaussian replicates (measured R=8 / R=16): realism x1.140 -> x1.086; extra pilot 219 busy = 548 allocated; pays back at SE <= 1.35 (production >= 1.18e+04 allocated core-h); saving at SE 0.5: 3.58e+03 allocated
+[R6] R = 16 break-even, excess kurtosis 2 (Gamma model, high band): realism x1.255 -> x1.129; extra pilot 219 busy = 548 allocated; pays back at SE <= 2.01 (production >= 5.65e+03 allocated core-h); saving at SE 0.5: 8.33e+03 allocated

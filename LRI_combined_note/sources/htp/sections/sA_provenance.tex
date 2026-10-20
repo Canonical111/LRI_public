@@ -1,0 +1,43 @@
+% sA_provenance.tex (HT1dPert)
+\section{Provenance and reviews}\label{sec:provenance}
+Each package folder carries \code{PROVENANCE} and \code{REVIEWS} files with commits, dates, authors and review rounds;
+the review logs and agent transcripts themselves are not published. Codex below is the Codex CLI with model
+gpt-6-astra at reasoning effort xhigh.
+
+\paragraph{One dimension.}
+\begin{itemize}
+\item \emph{Solver} (\code{lri\_hpc\_Hamitonian}). Based on a supplied package written by OpenAI GPT-6 astra (via
+ ChatGPT); the Expanse layer, fixes and the analyses (joint tail fits, window engines, identity checks) were written by
+ Claude Code sessions in September and October 2026. Codex reviewed the plan (five rounds, approved) and inspected the
+ code twice; the second round's fixes and all later analyses were not inspected by Codex. The analyses were checked by
+ internal multi-agent workflows with independent engines and skeptic lenses.
+\item \emph{Eighth-order code} (\code{lri\_c8\_hpc}). A GPT-6 astra rewrite of its own original eighth-order code; the
+ port to the symmetry cluster by a Claude Code session; Codex inspection rounds 1--8, approved.
+\item \emph{Complete-window solver} (\code{lri\_d1\_full\_coefficient\_flow}). Supplied by the author as a GPT-6 astra
+ package; the extension on the symmetry cluster by Claude Code, Codex rounds 1--4, approved. The refits that use it
+ (\code{lri\_1d\_dconn\_refit}) were made by a Claude Code workflow with an independent verifier stage and had no Codex
+ review.
+\item \emph{Exact sums} (\code{lri\_1d\_c4\_exact}, \code{lri\_1d\_c5\_exact}). Written by the Claude Code session that
+ also wrote this note, in October 2026, ported from the $d=2$ exact-sum code. Codex approved the plans and inspected each
+ package twice; the last fix round of each is not re-inspected. The constrained $C_5$ fit was checked by two separate
+ Claude Code subagents (a blind re-implementation and a theory check).
+\item \emph{Second channel} (\code{lri\_d1\_fullblock\_tail\_response}). A GPT-6 astra research package, shipped
+ verbatim; reviewed by a Claude Code workflow, which rated the sign and normalization of its $J$ term plausible but did
+ not re-derive them.
+\end{itemize}
+
+\paragraph{Two dimensions, Appendices~\ref{d2:app:eps4} to~\ref{d2:app:legs}.} These appendices merge the method
+write-up of \code{lri\_2d\_coeff\_independent\_check}, which earlier shipped as a separate note in that package, in its
+public edition of 14 October 2026 (file paths made relative; an appendix on inconsistencies between internal sources and
+the values that later data superseded removed). The
+write-up and the computations behind it were made by Claude Code sessions (Claude Opus 5.5) between 8 and 14 October 2026:
+the coordinating session HT2dPert and the agents it launched. These were two clean-room solver agents that saw only the
+model specification, a continuum agent, the exact-$C_4$ agent, the zero-mode agent, the complete-window agent, the
+window-derivation agent, the large-$L$ agent and a write-up agent. The parent checks were made by the coordinating
+session. HT2dPert merged the write-up into this note on 16 October 2026, leaving out material that the main text already
+states and values that later data superseded. The merged text was then read by a fresh agent with no project context
+and reviewed against the write-up by the reviewing session; their findings were checked against the records named in
+each subsection. None of this material had an external code review.
+
+\paragraph{Two and three dimensions.} See the provenance files of the packages named in Sections~\ref{d2:sec}
+and~\ref{d3:sec}.

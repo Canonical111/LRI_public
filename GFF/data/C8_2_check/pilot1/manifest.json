@@ -1,0 +1,1559 @@
+{
+  "schema": "c8-d2-production-2",
+  "tool_sha256": {
+    "production.py": "8d5b6586cb60b43729f0b3ac60991f6a0b43194c669e5a1646e325b35c328126",
+    "assemble.py": "e6604fd47d3a6a8a823f56ec2e25c423adf49b6161aebe9e2c13bbefef64a74f",
+    "common.py": "9ac6f4d01c5be4db5a0d40d6cac9dd0eb1bf58d433ede8373c3c1ac841c6dc74",
+    "prepare_inputs.py": "f295f90708750c19c044dbb818793aa1635df38931bc143cd21c432b97aba7a3",
+    "task_schedule.py": "80ec991852ba713ee722478a5a1ab7850b093708ff0d707b62d4a48565ec4ff9",
+    "stage_runtime.py": "b0db50212869e49393780929bec38b0643a5aa98e0f0ce54f89f2165883f3df6",
+    "slurm_submit.py": "e9d67333dcfd25fb6ed22e12a9b9a349ac6505fa594506603006987d3d7bedf3"
+  },
+  "dimension": 2,
+  "order": 8,
+  "epsilon": "2s-2",
+  "package": "/home/zzheng8/c8ind/LRI_C8_D2_HPC_optimized",
+  "inputs_manifest_sha256": "badc807ee6a96c88d11afafc34e76d89d928c0d8532b31d017a1d21f28b97a78",
+  "backend": "gmp",
+  "build": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "order": 8,
+    "compiler": "13.3.0",
+    "boost_version": "1_77",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "build_record": {
+    "backend": "gmp",
+    "command": [
+      "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+    ],
+    "compiler_version": "g++ (Spack GCC) 13.3.0",
+    "executable_sha256": "e509a2e73beee04ef7437c85fc90c6c2d25106c240259ad037859947d3efaaf3",
+    "native": {
+      "boost_version": "1_77",
+      "compiler": "13.3.0",
+      "dimension": 2,
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511,
+      "order": 8,
+      "schema": "c8-d2-build-1"
+    },
+    "schema": "c8-d2-build-record-1",
+    "source_sha256": {
+      "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+      "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+      "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+    },
+    "variables": {
+      "CPPFLAGS": "",
+      "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+      "CXXFLAGS": "",
+      "LDFLAGS": "",
+      "LDLIBS": "",
+      "OPTFLAGS": "-O3",
+      "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+    }
+  },
+  "executable_sha256": "e509a2e73beee04ef7437c85fc90c6c2d25106c240259ad037859947d3efaaf3",
+  "threads": 128,
+  "checkpoint_tasks": 4096,
+  "primitive_mode": "recompute",
+  "task_order": "graph",
+  "checkpoint_graphs": 64,
+  "checkpoint_seconds": null,
+  "purpose": "pilot",
+  "allocation": {
+    "frozen": "inputs/inventory.json contains an untrained default of 4096 points; point_override and multipliers are fixed before this campaign",
+    "point_override": null,
+    "loop_points": {
+      "3": 16384,
+      "4": 4096,
+      "5": 2048,
+      "6": 1024,
+      "7": 512,
+      "8": 256
+    },
+    "multiplier": 1,
+    "power_multiplier": 1,
+    "power_divisor": 1,
+    "power_count": "max(4, points x multiplier x power_multiplier / power_divisor)",
+    "primitive_points": 4096,
+    "primitive": {
+      "allocation": "uniform",
+      "counts": {
+        "495": 256,
+        "2300": 256,
+        "2304": 256,
+        "6339": 256,
+        "6374": 256,
+        "6395": 256,
+        "6404": 256,
+        "7023": 256,
+        "7046": 256,
+        "7047": 256,
+        "7048": 256,
+        "7055": 256,
+        "13013": 256,
+        "13014": 256,
+        "13015": 256,
+        "13016": 256,
+        "13218": 256,
+        "13220": 256,
+        "13222": 256,
+        "13223": 256,
+        "13224": 256,
+        "14959": 256,
+        "15005": 256,
+        "15007": 256,
+        "15008": 256,
+        "15029": 256,
+        "15030": 256,
+        "15034": 256,
+        "15493": 256,
+        "15513": 256,
+        "15556": 256,
+        "15558": 256,
+        "15559": 256,
+        "15577": 256,
+        "15579": 256,
+        "15580": 256,
+        "15590": 256,
+        "15604": 256,
+        "15605": 256,
+        "15606": 256,
+        "15609": 256,
+        "15611": 256,
+        "17495": 256,
+        "17497": 256,
+        "17545": 256,
+        "17548": 256,
+        "17549": 256,
+        "17581": 256,
+        "17583": 256,
+        "17585": 256,
+        "17586": 256,
+        "17587": 256,
+        "17588": 256,
+        "17599": 256,
+        "17600": 256,
+        "17601": 256,
+        "17645": 256,
+        "17646": 256,
+        "17647": 256,
+        "17648": 256,
+        "17651": 256,
+        "17652": 256,
+        "17655": 256,
+        "17656": 256,
+        "17657": 256,
+        "17658": 256,
+        "18066": 256,
+        "18091": 256,
+        "18092": 256,
+        "18093": 256,
+        "18104": 256,
+        "18105": 256,
+        "18106": 256,
+        "18121": 256,
+        "18122": 256,
+        "18123": 256,
+        "18124": 256,
+        "21479": 256,
+        "21483": 256,
+        "21486": 256,
+        "21490": 256,
+        "21496": 256,
+        "21499": 256,
+        "21506": 256,
+        "21507": 256,
+        "21508": 256,
+        "21510": 256,
+        "21512": 256,
+        "21514": 256,
+        "21516": 256,
+        "21517": 256,
+        "21519": 256,
+        "21543": 256,
+        "21546": 256,
+        "21551": 256,
+        "21552": 256,
+        "21848": 256,
+        "21849": 256,
+        "21976": 256,
+        "21978": 256,
+        "22022": 256,
+        "22024": 256,
+        "22026": 256,
+        "22027": 256,
+        "22028": 256,
+        "22029": 256,
+        "22061": 256,
+        "22064": 256,
+        "22065": 256,
+        "22076": 256,
+        "22077": 256,
+        "22078": 256,
+        "22108": 256,
+        "22109": 256,
+        "22112": 256,
+        "22113": 256,
+        "22116": 256,
+        "22117": 256,
+        "22118": 256,
+        "22119": 256,
+        "22779": 256,
+        "22780": 256,
+        "22806": 256,
+        "22807": 256,
+        "22808": 256,
+        "22822": 256,
+        "22823": 256,
+        "22824": 256,
+        "22838": 256,
+        "22839": 256,
+        "22840": 256,
+        "22859": 256,
+        "22860": 256,
+        "22861": 256,
+        "22862": 256,
+        "22868": 256,
+        "22869": 256,
+        "22870": 256,
+        "22871": 256,
+        "22876": 256,
+        "22877": 256,
+        "22878": 256,
+        "22879": 256,
+        "22880": 256,
+        "22881": 256,
+        "25107": 256,
+        "25116": 256,
+        "25117": 256,
+        "25119": 256,
+        "25130": 256,
+        "25131": 256,
+        "25132": 256,
+        "25133": 256,
+        "25134": 256,
+        "25135": 256,
+        "25136": 256,
+        "25170": 256,
+        "25174": 256,
+        "25179": 256,
+        "25182": 256,
+        "25187": 256,
+        "25188": 256,
+        "25189": 256,
+        "25190": 256,
+        "25191": 256,
+        "25192": 256,
+        "25201": 256,
+        "25202": 256,
+        "25203": 256,
+        "25206": 256,
+        "25219": 256,
+        "25235": 256,
+        "25239": 256,
+        "25240": 256,
+        "25241": 256,
+        "25243": 256,
+        "25256": 256,
+        "25264": 256,
+        "25265": 256,
+        "25266": 256,
+        "25277": 256,
+        "25282": 256,
+        "25286": 256,
+        "25294": 256,
+        "25295": 256,
+        "25296": 256,
+        "25299": 256,
+        "25300": 256,
+        "25301": 256,
+        "25304": 256,
+        "25305": 256,
+        "25306": 256,
+        "25309": 256,
+        "25311": 256,
+        "25324": 256,
+        "25326": 256,
+        "25328": 256,
+        "25329": 256,
+        "25330": 256,
+        "25332": 256,
+        "25333": 256,
+        "25334": 256,
+        "25335": 256,
+        "25336": 256,
+        "25337": 256,
+        "25345": 256,
+        "25346": 256,
+        "25347": 256,
+        "25349": 256,
+        "25350": 256,
+        "25351": 256,
+        "25352": 256,
+        "25353": 256,
+        "25354": 256,
+        "25361": 256,
+        "25373": 256,
+        "25375": 256,
+        "25472": 256,
+        "25480": 256,
+        "25481": 256,
+        "25485": 256,
+        "25492": 256,
+        "25493": 256,
+        "25496": 256,
+        "25498": 256,
+        "25506": 256,
+        "25508": 256,
+        "25510": 256,
+        "25512": 256,
+        "25513": 256,
+        "25515": 256,
+        "26126": 256,
+        "26133": 256,
+        "26136": 256,
+        "26141": 256,
+        "26148": 256,
+        "26149": 256,
+        "26152": 256,
+        "26154": 256,
+        "26155": 256,
+        "26157": 256,
+        "26162": 256,
+        "26163": 256,
+        "26164": 256,
+        "26167": 256,
+        "26169": 256,
+        "26171": 256,
+        "26173": 256
+      },
+      "budget_points_per_replicate": 63488,
+      "points_per_replicate": 63488,
+      "projected_primitive_block_se": null,
+      "hypothetical": null,
+      "projection_note": "No C8 pilot variance is assumed."
+    }
+  },
+  "seed": 4154144192011134318,
+  "seed_scheme": "hashed",
+  "shard_policy": "cost",
+  "groups": [
+    {
+      "name": "a_free_L3",
+      "sha256": "06867919701da35ca9d1fb6d44bd69acc19650b205d9fe7f872ffd5fc76b309c"
+    },
+    {
+      "name": "a_free_L4",
+      "sha256": "e7c6d6603a26fc3c4970f446cc97561f2ba4c2191d9281a77c157b9e0f36707d"
+    },
+    {
+      "name": "a_free_L5",
+      "sha256": "fd408dcf18880524e21fdf918cbd593fcfbc79a350e35bee1013cfa709d9114d"
+    },
+    {
+      "name": "a_free_L6",
+      "sha256": "7e18d7f5de7ca706fc3aa302b12261943513db879bcb511a580ac911b8ab5ba0"
+    },
+    {
+      "name": "a_free_L7",
+      "sha256": "64089a0e98f8e5fbdcffcccbd669b008aff3e25ee5aceddd33bc9820c4001767"
+    },
+    {
+      "name": "a_free_L8",
+      "sha256": "6629b90ebe10855f8abeb567d677a09b9dc6ea9f1dc6adb3d41ef963972cfd06"
+    },
+    {
+      "name": "a_power_L3",
+      "sha256": "a2530f98ad8b2f6e370239aa6b6066234f71c014d1ffc9f104135bf6ae10e959"
+    },
+    {
+      "name": "a_power_L4",
+      "sha256": "a7161a1c915c87ec874e8021b572e928659e016e58521d6a1e597de637f5cd7d"
+    },
+    {
+      "name": "a_power_L5",
+      "sha256": "bfee912f1b54a66821f2b009868fee806613b416e8bc6795d9996354696bcdc9"
+    },
+    {
+      "name": "a_power_L6",
+      "sha256": "ec6fdaaa1368b0e49aef2e79a13581535f514de209c7594a6c2fba527501bd14"
+    },
+    {
+      "name": "a_power_L7",
+      "sha256": "8547513429f3ba7185789a5b489f856072f93643943eb50b40b53fd9fcdf4c8c"
+    },
+    {
+      "name": "a_power_L8",
+      "sha256": "2721c8dcdb66c1515128dba55f90f31aab6c559dff6c74c7893385bff7cc62f4"
+    },
+    {
+      "name": "b_free_L3",
+      "sha256": "42734e6845fd93637fb7f5b96abab3b55b1fa2562801b1c7766dfd52d1baae27"
+    },
+    {
+      "name": "b_free_L4",
+      "sha256": "489d6a0eea1fc983ef5252d6ede25f8b9809f273e54948d826b249a441c74b42"
+    },
+    {
+      "name": "b_free_L5",
+      "sha256": "2136d6f47e07e6cffa02194a650b105a673e14e6148728ea4d413d266cd1fc65"
+    },
+    {
+      "name": "b_free_L6",
+      "sha256": "c974c646c34e09a4d8907717d4b8626ea6bff80c254ad54af8cfb2baf9613c42"
+    },
+    {
+      "name": "b_free_L7",
+      "sha256": "ac224c0e0791eb8f2143d339cc6d733f8e634bde28e985532634e237f5c0b573"
+    },
+    {
+      "name": "b_free_L8",
+      "sha256": "a5515bbc535eb89888dd877bb5156ec60b2b3c08bfa2adeb9cebf344fc1257c7"
+    },
+    {
+      "name": "b_power_L3",
+      "sha256": "da39bf2de86c6e823aa5ad0d309c57b3b9dc9af41f5923d045e90d3c3eaa17ec"
+    },
+    {
+      "name": "b_power_L4",
+      "sha256": "14482719e6797b46e7af69c649f4879dc9d84470c51234a4a136a0fb038843d3"
+    },
+    {
+      "name": "b_power_L5",
+      "sha256": "87a3a60f60f6c23d87d7226a052f14d98770a7113b6d91c78e17acf0702813c2"
+    },
+    {
+      "name": "b_power_L6",
+      "sha256": "402c0249c10313c1934160ea8719067b23b5bd22bc571c0bd4b301395ebfb5fd"
+    },
+    {
+      "name": "b_power_L7",
+      "sha256": "96baebf3023e5229fc29040fa7867fda4b37b542c751d4f103f7eaacfc0adf23"
+    },
+    {
+      "name": "b_power_L8",
+      "sha256": "b5f537c52f008ff82daf1fb0ad6c930032d29df7fb63971f0bf3d749d6f3ca2c"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 0,
+      "group": "a_free_L3",
+      "shard": 0
+    },
+    {
+      "id": 1,
+      "group": "a_free_L4",
+      "shard": 0
+    },
+    {
+      "id": 2,
+      "group": "a_free_L5",
+      "shard": 0
+    },
+    {
+      "id": 3,
+      "group": "a_free_L6",
+      "shard": 0
+    },
+    {
+      "id": 4,
+      "group": "a_free_L7",
+      "shard": 0
+    },
+    {
+      "id": 5,
+      "group": "a_free_L7",
+      "shard": 1
+    },
+    {
+      "id": 6,
+      "group": "a_free_L8",
+      "shard": 0
+    },
+    {
+      "id": 7,
+      "group": "a_free_L8",
+      "shard": 1
+    },
+    {
+      "id": 8,
+      "group": "a_free_L8",
+      "shard": 2
+    },
+    {
+      "id": 9,
+      "group": "a_free_L8",
+      "shard": 3
+    },
+    {
+      "id": 10,
+      "group": "a_free_L8",
+      "shard": 4
+    },
+    {
+      "id": 11,
+      "group": "a_free_L8",
+      "shard": 5
+    },
+    {
+      "id": 12,
+      "group": "a_free_L8",
+      "shard": 6
+    },
+    {
+      "id": 13,
+      "group": "a_free_L8",
+      "shard": 7
+    },
+    {
+      "id": 14,
+      "group": "a_free_L8",
+      "shard": 8
+    },
+    {
+      "id": 15,
+      "group": "a_free_L8",
+      "shard": 9
+    },
+    {
+      "id": 16,
+      "group": "a_free_L8",
+      "shard": 10
+    },
+    {
+      "id": 17,
+      "group": "a_free_L8",
+      "shard": 11
+    },
+    {
+      "id": 18,
+      "group": "a_free_L8",
+      "shard": 12
+    },
+    {
+      "id": 19,
+      "group": "a_free_L8",
+      "shard": 13
+    },
+    {
+      "id": 20,
+      "group": "a_free_L8",
+      "shard": 14
+    },
+    {
+      "id": 21,
+      "group": "a_free_L8",
+      "shard": 15
+    },
+    {
+      "id": 22,
+      "group": "a_free_L8",
+      "shard": 16
+    },
+    {
+      "id": 23,
+      "group": "a_free_L8",
+      "shard": 17
+    },
+    {
+      "id": 24,
+      "group": "a_free_L8",
+      "shard": 18
+    },
+    {
+      "id": 25,
+      "group": "a_free_L8",
+      "shard": 19
+    },
+    {
+      "id": 26,
+      "group": "a_free_L8",
+      "shard": 20
+    },
+    {
+      "id": 27,
+      "group": "a_free_L8",
+      "shard": 21
+    },
+    {
+      "id": 28,
+      "group": "a_free_L8",
+      "shard": 22
+    },
+    {
+      "id": 29,
+      "group": "a_free_L8",
+      "shard": 23
+    },
+    {
+      "id": 30,
+      "group": "a_free_L8",
+      "shard": 24
+    },
+    {
+      "id": 31,
+      "group": "a_free_L8",
+      "shard": 25
+    },
+    {
+      "id": 32,
+      "group": "a_free_L8",
+      "shard": 26
+    },
+    {
+      "id": 33,
+      "group": "a_free_L8",
+      "shard": 27
+    },
+    {
+      "id": 34,
+      "group": "a_free_L8",
+      "shard": 28
+    },
+    {
+      "id": 35,
+      "group": "a_free_L8",
+      "shard": 29
+    },
+    {
+      "id": 36,
+      "group": "a_free_L8",
+      "shard": 30
+    },
+    {
+      "id": 37,
+      "group": "a_free_L8",
+      "shard": 31
+    },
+    {
+      "id": 38,
+      "group": "a_power_L3",
+      "shard": 0
+    },
+    {
+      "id": 39,
+      "group": "a_power_L4",
+      "shard": 0
+    },
+    {
+      "id": 40,
+      "group": "a_power_L5",
+      "shard": 0
+    },
+    {
+      "id": 41,
+      "group": "a_power_L6",
+      "shard": 0
+    },
+    {
+      "id": 42,
+      "group": "a_power_L7",
+      "shard": 0
+    },
+    {
+      "id": 43,
+      "group": "a_power_L8",
+      "shard": 0
+    },
+    {
+      "id": 44,
+      "group": "a_power_L8",
+      "shard": 1
+    },
+    {
+      "id": 45,
+      "group": "a_power_L8",
+      "shard": 2
+    },
+    {
+      "id": 46,
+      "group": "a_power_L8",
+      "shard": 3
+    },
+    {
+      "id": 47,
+      "group": "a_power_L8",
+      "shard": 4
+    },
+    {
+      "id": 48,
+      "group": "b_free_L3",
+      "shard": 0
+    },
+    {
+      "id": 49,
+      "group": "b_free_L4",
+      "shard": 0
+    },
+    {
+      "id": 50,
+      "group": "b_free_L5",
+      "shard": 0
+    },
+    {
+      "id": 51,
+      "group": "b_free_L6",
+      "shard": 0
+    },
+    {
+      "id": 52,
+      "group": "b_free_L7",
+      "shard": 0
+    },
+    {
+      "id": 53,
+      "group": "b_free_L7",
+      "shard": 1
+    },
+    {
+      "id": 54,
+      "group": "b_free_L8",
+      "shard": 0
+    },
+    {
+      "id": 55,
+      "group": "b_free_L8",
+      "shard": 1
+    },
+    {
+      "id": 56,
+      "group": "b_free_L8",
+      "shard": 2
+    },
+    {
+      "id": 57,
+      "group": "b_free_L8",
+      "shard": 3
+    },
+    {
+      "id": 58,
+      "group": "b_free_L8",
+      "shard": 4
+    },
+    {
+      "id": 59,
+      "group": "b_free_L8",
+      "shard": 5
+    },
+    {
+      "id": 60,
+      "group": "b_free_L8",
+      "shard": 6
+    },
+    {
+      "id": 61,
+      "group": "b_free_L8",
+      "shard": 7
+    },
+    {
+      "id": 62,
+      "group": "b_free_L8",
+      "shard": 8
+    },
+    {
+      "id": 63,
+      "group": "b_free_L8",
+      "shard": 9
+    },
+    {
+      "id": 64,
+      "group": "b_free_L8",
+      "shard": 10
+    },
+    {
+      "id": 65,
+      "group": "b_free_L8",
+      "shard": 11
+    },
+    {
+      "id": 66,
+      "group": "b_free_L8",
+      "shard": 12
+    },
+    {
+      "id": 67,
+      "group": "b_free_L8",
+      "shard": 13
+    },
+    {
+      "id": 68,
+      "group": "b_free_L8",
+      "shard": 14
+    },
+    {
+      "id": 69,
+      "group": "b_free_L8",
+      "shard": 15
+    },
+    {
+      "id": 70,
+      "group": "b_free_L8",
+      "shard": 16
+    },
+    {
+      "id": 71,
+      "group": "b_free_L8",
+      "shard": 17
+    },
+    {
+      "id": 72,
+      "group": "b_free_L8",
+      "shard": 18
+    },
+    {
+      "id": 73,
+      "group": "b_free_L8",
+      "shard": 19
+    },
+    {
+      "id": 74,
+      "group": "b_free_L8",
+      "shard": 20
+    },
+    {
+      "id": 75,
+      "group": "b_free_L8",
+      "shard": 21
+    },
+    {
+      "id": 76,
+      "group": "b_free_L8",
+      "shard": 22
+    },
+    {
+      "id": 77,
+      "group": "b_free_L8",
+      "shard": 23
+    },
+    {
+      "id": 78,
+      "group": "b_free_L8",
+      "shard": 24
+    },
+    {
+      "id": 79,
+      "group": "b_free_L8",
+      "shard": 25
+    },
+    {
+      "id": 80,
+      "group": "b_free_L8",
+      "shard": 26
+    },
+    {
+      "id": 81,
+      "group": "b_free_L8",
+      "shard": 27
+    },
+    {
+      "id": 82,
+      "group": "b_free_L8",
+      "shard": 28
+    },
+    {
+      "id": 83,
+      "group": "b_free_L8",
+      "shard": 29
+    },
+    {
+      "id": 84,
+      "group": "b_free_L8",
+      "shard": 30
+    },
+    {
+      "id": 85,
+      "group": "b_free_L8",
+      "shard": 31
+    },
+    {
+      "id": 86,
+      "group": "b_power_L3",
+      "shard": 0
+    },
+    {
+      "id": 87,
+      "group": "b_power_L4",
+      "shard": 0
+    },
+    {
+      "id": 88,
+      "group": "b_power_L5",
+      "shard": 0
+    },
+    {
+      "id": 89,
+      "group": "b_power_L6",
+      "shard": 0
+    },
+    {
+      "id": 90,
+      "group": "b_power_L7",
+      "shard": 0
+    },
+    {
+      "id": 91,
+      "group": "b_power_L8",
+      "shard": 0
+    },
+    {
+      "id": 92,
+      "group": "b_power_L8",
+      "shard": 1
+    },
+    {
+      "id": 93,
+      "group": "b_power_L8",
+      "shard": 2
+    },
+    {
+      "id": 94,
+      "group": "b_power_L8",
+      "shard": 3
+    },
+    {
+      "id": 95,
+      "group": "b_power_L8",
+      "shard": 4
+    }
+  ],
+  "campaign_weights": {
+    "a": 0.5,
+    "b": 0.5
+  },
+  "groups_independent_by_loop_campaign_sector": true,
+  "sampling_unit": "complete graph-summed randomized replicate, not chunk",
+  "power_sector": "explicitly integrated; NOT assumed zero",
+  "test_only": false,
+  "test_graphs": 0,
+  "cost_model_sha256": null,
+  "point_override": null,
+  "allocation_multiplier": 1,
+  "allocation_file_sha256": null,
+  "power_multiplier": 1,
+  "power_divisor": 1,
+  "primitive_points": 4096,
+  "estimates": {
+    "basis": "proxy (inventory cost x points, x CALIBRATION seconds per proxy unit)",
+    "backend": "gmp",
+    "calibration_rows": {
+      "a_free_L3": null,
+      "a_free_L4": null,
+      "a_free_L5": null,
+      "a_free_L6": null,
+      "a_free_L7": null,
+      "a_free_L8": null,
+      "a_power_L3": null,
+      "a_power_L4": null,
+      "a_power_L5": null,
+      "a_power_L6": null,
+      "a_power_L7": null,
+      "a_power_L8": null,
+      "b_free_L3": null,
+      "b_free_L4": null,
+      "b_free_L5": null,
+      "b_free_L6": null,
+      "b_free_L7": null,
+      "b_free_L8": null,
+      "b_power_L3": null,
+      "b_power_L4": null,
+      "b_power_L5": null,
+      "b_power_L6": null,
+      "b_power_L7": null,
+      "b_power_L8": null
+    },
+    "calibration_sha256": null,
+    "shard_basis": "uncalibrated proxy units (calibration unavailable for this backend)",
+    "assumed_thread_efficiency": 0.8,
+    "groups": {
+      "a_free_L3": {
+        "cost_units": 104857600.0,
+        "shards": 1,
+        "tasks": 160,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 5,
+          "max_tasks_per_block": 160,
+          "max_graphs_per_block": 5,
+          "max_estimated_cost_per_block": 104857600.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_free_L4": {
+        "cost_units": 460455936.0,
+        "shards": 1,
+        "tasks": 512,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 16,
+          "max_tasks_per_block": 512,
+          "max_graphs_per_block": 16,
+          "max_estimated_cost_per_block": 460455936.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_free_L5": {
+        "cost_units": 5131141120.0,
+        "shards": 1,
+        "tasks": 2432,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 2,
+          "graph_loads": 76,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 4942987264.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_free_L6": {
+        "cost_units": 63345426432.0,
+        "shards": 1,
+        "tasks": 12640,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 7,
+          "graph_loads": 395,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 20157825024.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_free_L7": {
+        "cost_units": 872664973312.0,
+        "shards": 2,
+        "tasks": 78112,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 40,
+          "graph_loads": 2441,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 62915084288.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_free_L8": {
+        "cost_units": 11991400128512.0,
+        "shards": 32,
+        "tasks": 514048,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 256,
+          "graph_loads": 16064,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 146716622848.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L3": {
+        "cost_units": 10485760.0,
+        "shards": 1,
+        "tasks": 32,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 1,
+          "max_tasks_per_block": 32,
+          "max_graphs_per_block": 1,
+          "max_estimated_cost_per_block": 10485760.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L4": {
+        "cost_units": 48234496.0,
+        "shards": 1,
+        "tasks": 96,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 3,
+          "max_tasks_per_block": 96,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 48234496.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L5": {
+        "cost_units": 709361664.0,
+        "shards": 1,
+        "tasks": 640,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 20,
+          "max_tasks_per_block": 640,
+          "max_graphs_per_block": 20,
+          "max_estimated_cost_per_block": 709361664.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L6": {
+        "cost_units": 9631891456.0,
+        "shards": 1,
+        "tasks": 3424,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 2,
+          "graph_loads": 107,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 7581466624.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L7": {
+        "cost_units": 152717852672.0,
+        "shards": 1,
+        "tasks": 22688,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 12,
+          "graph_loads": 709,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 36980654080.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "a_power_L8": {
+        "cost_units": 2038657515520.0,
+        "shards": 5,
+        "tasks": 138752,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 70,
+          "graph_loads": 4336,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 86960504832.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L3": {
+        "cost_units": 104857600.0,
+        "shards": 1,
+        "tasks": 160,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 5,
+          "max_tasks_per_block": 160,
+          "max_graphs_per_block": 5,
+          "max_estimated_cost_per_block": 104857600.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L4": {
+        "cost_units": 460455936.0,
+        "shards": 1,
+        "tasks": 512,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 16,
+          "max_tasks_per_block": 512,
+          "max_graphs_per_block": 16,
+          "max_estimated_cost_per_block": 460455936.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L5": {
+        "cost_units": 5131141120.0,
+        "shards": 1,
+        "tasks": 2432,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 2,
+          "graph_loads": 76,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 4942987264.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L6": {
+        "cost_units": 63345426432.0,
+        "shards": 1,
+        "tasks": 12640,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 7,
+          "graph_loads": 395,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 20157825024.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L7": {
+        "cost_units": 872664973312.0,
+        "shards": 2,
+        "tasks": 78112,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 40,
+          "graph_loads": 2441,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 62915084288.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_free_L8": {
+        "cost_units": 11991400128512.0,
+        "shards": 32,
+        "tasks": 514048,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 256,
+          "graph_loads": 16064,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 146716622848.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L3": {
+        "cost_units": 10485760.0,
+        "shards": 1,
+        "tasks": 32,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 1,
+          "max_tasks_per_block": 32,
+          "max_graphs_per_block": 1,
+          "max_estimated_cost_per_block": 10485760.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L4": {
+        "cost_units": 48234496.0,
+        "shards": 1,
+        "tasks": 96,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 3,
+          "max_tasks_per_block": 96,
+          "max_graphs_per_block": 3,
+          "max_estimated_cost_per_block": 48234496.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L5": {
+        "cost_units": 709361664.0,
+        "shards": 1,
+        "tasks": 640,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 1,
+          "graph_loads": 20,
+          "max_tasks_per_block": 640,
+          "max_graphs_per_block": 20,
+          "max_estimated_cost_per_block": 709361664.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L6": {
+        "cost_units": 9631891456.0,
+        "shards": 1,
+        "tasks": 3424,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 2,
+          "graph_loads": 107,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 7581466624.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L7": {
+        "cost_units": 152717852672.0,
+        "shards": 1,
+        "tasks": 22688,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 12,
+          "graph_loads": 709,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 36980654080.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      },
+      "b_power_L8": {
+        "cost_units": 2038657515520.0,
+        "shards": 5,
+        "tasks": 138752,
+        "core_hours": null,
+        "max_shard_core_seconds": null,
+        "max_shard_wall_seconds": null,
+        "estimate": "unavailable",
+        "checkpoint_layout": {
+          "layout": "c8-d2-explicit-blocks-1",
+          "blocks": 70,
+          "graph_loads": 4336,
+          "max_tasks_per_block": 2048,
+          "max_graphs_per_block": 64,
+          "max_estimated_cost_per_block": 86960504832.0,
+          "graph_bundles_split_for_task_limit": 0,
+          "graph_bundles_split_for_time_target": 0,
+          "indivisible_tasks_above_time_target": 0,
+          "max_tasks": 4096,
+          "max_graphs": 64,
+          "target_measured_seconds": null
+        }
+      }
+    },
+    "total_core_hours": null,
+    "max_shard_wall_seconds": null,
+    "suggested_time_seconds": null,
+    "power_divisor_effect": {
+      "power_divisor": 1,
+      "core_hours": null,
+      "core_hours_at_power_divisor_1": null,
+      "proxy_or_cost_units": 30269764648960.0,
+      "units_at_power_divisor_1": 30269764648960.0,
+      "change_core_hours": "unavailable",
+      "change_fraction_of_units": 0.0
+    },
+    "estimate": "unavailable",
+    "note": "planning estimates from a hardware-specific calibration, not measurements"
+  }
+}

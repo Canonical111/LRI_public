@@ -1,0 +1,96 @@
+job 54672484 on <NODE> at 2026-10-04T21:49:20-07:00; package <SCRATCH>/temp_project/c8d2/pkg/9870a68535a7; evidence <SCRATCH>/temp_project/c8d2/evidence/9870a68535a7/s4cflags.54672484.0
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+scratch /scratch/<USER>/job_54672484
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+e2eb509f0f1fd335328f89c0cf4fefa9328de7c34a8469680d2161f915225a87  bin/c8d2_gmp_dd
+864ece605c5baa2af99d91b61d69504fb220ee0fd32a8ce282c01d21da7372e1  bin/c8d2_gmp_dd+mp256+exp1
+388bd0d0fc39e4309a13e717461c0070af75d4a1b68f96c7ec1ce4eff8c936b5  bin/c8d2_gmp_exp1
+70109ccc0c798fa5eb2c9d120c72570602e14fc5e4e8925bceae08b83bf48c94  bin/c8d2_gmp_mp256
+== numerics_flags.py --self-test --f1-scale 0.05 --f2-graphs 16 --f4-sample 25 --f4-repeats 2 --f5-threads 1 8 16 --f5-lanes 4 --f5-lane-threads 4
+<SCRATCH>/temp_project/c8d2/pkg/9870a68535a7/tests/numerics_flags.py:427: SyntaxWarning: invalid decimal literal
+  tot=res['total'];zero=tot['dC8']==0.and all(v['dC8']==0.for v in res['per_sector_L'].values())and res['per_task']['over_bound']==0 \
+<SCRATCH>/temp_project/c8d2/pkg/9870a68535a7/tests/numerics_flags.py:427: SyntaxWarning: invalid decimal literal
+  tot=res['total'];zero=tot['dC8']==0.and all(v['dC8']==0.for v in res['per_sector_L'].values())and res['per_task']['over_bound']==0 \
+[21:49:20] F1: the exact baseline (450-digit references)
+[21:49:28] compiled numerics_f1_exact from c8d2_gmp's build command in 8 s
+[21:49:31] F1 baseline free L7 [0,256) in 2 s
+[21:49:34] F1 baseline free L8 [0,64) in 3 s
+[21:49:36] F1 baseline power L7 [0,256) in 1 s
+[21:49:38] F1 baseline power L8 [0,64) in 2 s
+[21:49:46] compiled numerics_f1_profile from c8d2_gmp's build command in 8 s
+[21:49:46] F1 free L7 [0,256) in 0 s
+[21:49:47] F1 free L8 [0,64) in 1 s
+[21:49:47] F1 power L7 [0,256) in 0 s
+[21:49:48] F1 power L8 [0,64) in 1 s
+[21:49:48] F2: paired mini-campaign
+[21:49:56] F2: replicates [0,4) done (40 blocks, 6 s)
+[21:49:57] F4: speed
+[21:49:58] F4 exact r0: lane-thread s 42.1 (free 19.7, power 22.4), digest ab1b34fd6744
+[21:50:00] F4 profile r0: lane-thread s 42.1 (free 19.7, power 22.5), digest ab1b34fd6744
+[21:50:01] F4 profile r1: lane-thread s 42.2 (free 19.7, power 22.5), digest ab1b34fd6744
+[21:50:02] F4 exact r1: lane-thread s 42.2 (free 19.7, power 22.5), digest ab1b34fd6744
+[21:50:02] F5: thread identity
+[21:50:14] F5 free: identical
+[21:50:32] F5 power: identical
+{
+ "mode": "self-test",
+ "profile_name": "exact",
+ "status": "development run (would pass)",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [
+  "--f1-scale 0.05",
+  "--f2-graphs 16",
+  "--f4-sample 25",
+  "--f4-repeats 2",
+  "F5 thread counts other than 1, 8, 16, 64 and 8 x 8 lanes"
+ ],
+ "note": null,
+ "error": null
+}
+== numerics_flags.py --profile dd --f1-baseline <SCRATCH>/temp_project/c8d2/evidence/9870a68535a7/s4cflags.54672484.0/selftest/f1_baseline --f1-scale 0.05 --f2-graphs 16 --f4-sample 25 --f4-repeats 2 --f5-threads 1 8 16 --f5-lanes 4 --f5-lane-threads 4
+<SCRATCH>/temp_project/c8d2/pkg/9870a68535a7/tests/numerics_flags.py:427: SyntaxWarning: invalid decimal literal
+  tot=res['total'];zero=tot['dC8']==0.and all(v['dC8']==0.for v in res['per_sector_L'].values())and res['per_task']['over_bound']==0 \
+<SCRATCH>/temp_project/c8d2/pkg/9870a68535a7/tests/numerics_flags.py:427: SyntaxWarning: invalid decimal literal
+  tot=res['total'];zero=tot['dC8']==0.and all(v['dC8']==0.for v in res['per_sector_L'].values())and res['per_task']['over_bound']==0 \
+[21:50:43] compiled numerics_f1_profile from c8d2_gmp_dd's build command in 8 s
+[21:50:43] F1 free L7 [0,256) in 0 s
+[21:50:44] F1 free L8 [0,64) in 1 s
+[21:50:44] F1 power L7 [0,256) in 0 s
+[21:50:45] F1 power L8 [0,64) in 1 s
+[21:50:45] F2: paired mini-campaign
+[21:50:54] F2: replicates [0,4) done (40 blocks, 6 s)
+[21:50:54] F4: speed
+[21:50:56] F4 exact r0: lane-thread s 42.1 (free 19.7, power 22.4), digest ab1b34fd6744
+[21:50:57] F4 profile r0: lane-thread s 41.4 (free 19.3, power 22.2), digest ab1b34fd6744
+[21:50:58] F4 profile r1: lane-thread s 41.4 (free 19.3, power 22.1), digest ab1b34fd6744
+[21:51:00] F4 exact r1: lane-thread s 42.2 (free 19.8, power 22.5), digest ab1b34fd6744
+[21:51:00] F5: thread identity
+[21:51:11] F5 free: identical
+[21:51:31] F5 power: identical
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "development run (would pass)",
+ "verdicts": {
+  "F1": true,
+  "F2": true,
+  "F4_rows": true,
+  "F5": true
+ },
+ "development": [
+  "--f1-scale 0.05",
+  "--f2-graphs 16",
+  "--f4-sample 25",
+  "--f4-repeats 2",
+  "F5 thread counts other than 1, 8, 16, 64 and 8 x 8 lanes"
+ ],
+ "note": "stub profile(s) ['dd']: no numerics change implemented yet",
+ "error": null
+}
+finished 2026-10-04T21:51:31-07:00, status 0

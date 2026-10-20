@@ -1,0 +1,131 @@
+{
+ "schema": "c8-inventory-d2-handoff-1",
+ "handoff": "H1",
+ "sender": "C62d (LRI_C8_D2_HPC)",
+ "recipient": "C63d (LRI_C8_D3_HPC)",
+ "date": "2026-10-03",
+ "manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099",
+ "manifest_md5": "a79eb5bf8090272cedefb83340d7bd82",
+ "copies": {
+  "/Users/zheng/Documents/Agent_LRI/LRI_C8_shared/inventory/inventory8_d2": true,
+  "/expanse/lustre/scratch/zzheng8/temp_project/LRI_C8_shared/inventory/inventory8_d2": true,
+  "/expanse/lustre/scratch/zzheng8/temp_project/c8d2/gen/36043bbc2117/inventory8_d2": true
+ },
+ "verify_command": "python3 -B src/gen/verify_inventory.py <tree> --pin <manifest_sha256> (the verifier is also in LRI_C8_D2_HPC/gen/)",
+ "generating_commit": "36043bbc211743de7e68000b8f2077d1d456e098",
+ "generating_jobs": [
+  "54631552"
+ ],
+ "host": "exp-2-06",
+ "cpu": "AMD EPYC 7742 64-Core Processor",
+ "counts": {
+  "L7_free": {
+   "exact-zero-kernel": 454,
+   "finite-kernel": 2441,
+   "power-sector-not-integrated": 1091
+  },
+  "L7_power": {
+   "exact-zero-kernel": 382,
+   "finite-kernel": 709,
+   "not-power": 2895
+  },
+  "L8_free": {
+   "exact-zero-kernel": 2511,
+   "finite-kernel": 16798,
+   "power-sector-not-integrated": 7231
+  },
+  "L8_power": {
+   "exact-zero-kernel": 2340,
+   "finite-kernel": 4891,
+   "not-power": 19309
+  }
+ },
+ "selection_counts": {
+  "L7_free": 2441,
+  "L7_power": 709,
+  "L8_free": 16064,
+  "L8_power": 4336
+ },
+ "payload": {
+  "L7_free": {
+   "sha256": "74ecb589e1b7cf893ec0ee9659c052404ddceac39056433fe69e4ba660e4cecb",
+   "md5": "d6f5f218aa787076b8f8643a897e9b23",
+   "members": 2441
+  },
+  "L7_power": {
+   "sha256": "f9a2688fdc56a98faa74d9e27483de2da8465a9bbdc5e7f55ee4f09f0c7c4c7b",
+   "md5": "6b3ecad5c8e7f6ccb436f81f9548fd85",
+   "members": 709
+  },
+  "L8_free": {
+   "sha256": "25e2fc1d2f60b523428b6baa99b537dccbcccbb679d1b30e5f1fb83b2bb01d8c",
+   "md5": "3269539203ba466139a8da78450d312a",
+   "members": 16798
+  },
+  "L8_power": {
+   "sha256": "4bc418cf45333ac9b56bb5e6e63cdd5e2a9f05d2c99a0aaa566942624f37420e",
+   "md5": "d2451baf275ec7da45898c838c427703",
+   "members": 4891
+  }
+ },
+ "gate_summary": {
+  "A-INV-1 test_keys": {
+   "passed": true,
+   "evidence": "gen1.54631551.0/test_keys.json"
+  },
+  "A-INV-1 injected failing gate": {
+   "passed": true,
+   "evidence": "gen1.54631551.0/test_run_l8.json"
+  },
+  "A-INV-2 regress": {
+   "passed": true,
+   "evidence": "gen1.54631551.0/regress_L3_L7.json"
+  },
+  "A-INV-4 crossnode": {
+   "passed": true,
+   "evidence": "gen3.54631553.0/crossnode.json"
+  },
+  "A-INV-5 test_verify_inventory": {
+   "passed": true,
+   "evidence": "gen1.54631551.0/test_verify_inventory.json"
+  },
+  "A-INV-3 gates": {
+   "passed": true,
+   "gates": {
+    "a_zero_dim": true,
+    "b_metadata": true,
+    "c_zeros": true,
+    "d_primitives": true,
+    "e_counts": true,
+    "f_coverage": true,
+    "g_edge_forests": true,
+    "h_kirchhoff": true,
+    "i_sizes": true,
+    "j_rates": true,
+    "k_forests": true
+   },
+   "evidence": "gates/*.json inside the tree"
+  },
+  "A-INV-5 second publish refused": {
+   "passed": true,
+   "evidence": "second_publish_mac.txt"
+  }
+ },
+ "d_pipeline": "The builder bodies (masks, terms, forests, weights, statuses) do not depend on d and come from gen/build_free and gen/build_power. The rate line (last line of a G-file) is the only d-dependent part: these builders write it at d=2 (parity rule, rate[S] = max(|S| odd ? 1 : 2, twice[S])/2 for 0 < S < 2^E - 1, and 0 at S = 0 and S = 2^E - 1); the d=3 rate line is rewritten from these d=2 G-files by C63d's regenerate_rates.cpp. The builders take no d parameter (DECISIONS.md C1, acknowledged by C63d on 2026-10-03).",
+ "d_pipeline_acknowledged": "DECISIONS.md item C1, ACK logged 2026-10-03",
+ "checksum_hierarchy": "G-file members -> MEMBERS.sha256; every file except MANIFEST.json and SHA256SUMS -> SHA256SUMS; SHA256SUMS -> MANIFEST.json (sha256sums_sha256); MANIFEST.json is pinned only from outside the tree (HANDOFF_inventory8_d2.json). Verify a copy with gen/verify_inventory.py TREE --pin <sha256 of MANIFEST.json>.",
+ "member_layout": "payload/<stem>.tar holds <stem>/G<id>.txt, id = class id in classesL.txt; text G-files, magic C7D2GRAPH1, the C7(2) format",
+ "r2_procedure": "inventory8_d2/ is never modified. A defect found after H1 (by C63d's gates 1-7, by C62d's tests or later) is handled by publishing inventory8_d2_r2/ with a new MANIFEST sha256 and a SUPERSEDES.json naming the defect and the affected classes; this HANDOFF file is then updated and both packages re-pin; C62d reruns A-IN-3..5 and A-RPL-7 on the affected kernels. Campaigns planned against r1 keep their inputs-manifest pin, so merge and assemble refuse them under the r2 package; they stay usable only with the commit they were planned with.",
+ "notes": [
+  "Site: generated on SDSC Expanse (account yun124), site deviation U1 of 2026-10-03 (symmetry's compute nodes are down): J-GEN-1 job 54631551 (shared), J-GEN-2 job 54631552 (one compute node, exp-2-06, 128 threads), A-INV-4 job 54631553 (a second compute node, exp-2-19, 64 threads), all from a git archive export of LRI_C8_D2_HPC commit 36043bbc2117 (branch c8), GCC 13.3.0, AMD EPYC 7742.",
+  "A-INV-4 on Expanse is a node and thread-count determinism check (two AMD EPYC 7742 nodes, 128 and 64 threads: MEMBERS.sha256 and both builder inventories byte-identical). The architecture cross-check of the plan (symmetry Intel debugq, 40 threads, J-GEN-3) is pending until symmetry's compute nodes are back; a difference there would go through the r2 procedure.",
+  "Copies verified against the pin: the Mac copy LRI_C8_shared/inventory/inventory8_d2 and the Expanse copy /expanse/lustre/scratch/zzheng8/temp_project/LRI_C8_shared/inventory/inventory8_d2 (for jobs on Expanse; both sessions run as zzheng8), plus C62d's Expanse staging copy. The symmetry copy /mnt/beegfs/zzheng1/LRI_C8_shared/inventory/inventory8_d2 is not made yet; it will be a verified copy of this tree.",
+  "Rate-line bytes: the free builder writes the parity-rule rate line with single spaces and no trailing space, exactly as the frozen C7(2) free L7 files; the power builder keeps the C7(2) power files' trailing space. Tokens are unchanged either way, and regenerate_rates.cpp rewrites the line for d=3."
+ ],
+ "c63d": {
+  "pin_recorded": null,
+  "gates_1_7": null,
+  "gate_5_forest_certificate": null,
+  "note": "C63d records here its pin of MANIFEST.json and its gates 1-7 (gate 5: whether the forest certificate covers the d=2 identity; a negative result triggers the bare-series identity at L8 under the r2 procedure)."
+ }
+}

@@ -1,0 +1,36 @@
+% repro_d2.tex -- d = 2 rows of the reproduction longtable {result & value & package & record & command & tolerance}
+% (from phi4HT2d, 2026-10-14; readability review 2026-10-15; Table tab:num2 of paper 827a27bf, 2026-10-16). Same check names as results_map.md.
+% Packages: P = HT/code/lri_2d_window_hpc, I = HT/code/lri_2d_window_indep, HP = HT_Pert/code/lri_2d_coeff_independent_check.
+% Records: R, V, O, C as in the header row. Paths use \code with \allowbreak after slashes (narrow columns).
+\multicolumn{6}{@{}p{\linewidth}@{}}{\emph{$d=2$, finite coupling.} Packages: P = \code{lri\_2d\_window\_hpc},
+I = \code{lri\_2d\_window\_indep}, HP = \code{HT\_Pert/code/lri\_2d\_coeff\_independent\_check}. Records:
+R = \code{data/HT\_2d/prod1/chains}, V = \code{results/HT\_2d/valley\_N24},
+O = \code{results/HT\_2d/independent\_check/out\_sym}, C = \code{data/HT\_2d/pert\_crosscheck/consistent\_C0\_C8.csv}.
+Command: replay = \code{make -f public.mk replay} in the package, followed by the check name.}\\
+record integrity; source hash = code 889a968 & 348 records & P & R & replay \code{d2.records.*} & exact\\
+largest cutoff (22 at $\Ds=0.125$, 0.126) & $N=24$ & P & R & replay \code{d2.Nmax} & exact\\
+$\DE(N)$, $N=8,\dots,24$, Table~\ref{d2:tab:values}, Fig.~\ref{d2:fig:DE} & 13 chains & P & R; \code{results/\allowbreak HT\_2d/\allowbreak prod1/\allowbreak points.csv} & replay \code{d2.points} & exact\\
+values at the largest $N$ (Ref.~\cite{paper}, Fig.~\code{fig:cmp2d3d}, Table~\code{tab:num2}) & 13 values & P & \code{results/\allowbreak HT\_2d/\allowbreak prod1/\allowbreak largest\_N.csv} & replay \code{d2.largest\_N}; \code{d2.num2} & exact; 5 decimals\\
+last step, $\Ds\ge0.45$ (largest at 0.45) & $\le2.6\times10^{-6}$ ($2.54\times10^{-6}$) & P & R & replay \code{d2.conv\_step} & bound\\
+shrink per step, $\Ds\ge0.45$ & 18--22\% & P & R & replay \code{d2.conv\_shrink} & integer \%\\
+rise, $0.25\le\Ds\le0.4$ & monotone & P & R & replay \code{d2.mono.rises} & sign\\
+last steps, $0.25\le\Ds\le0.4$ & $(0.6\text{--}4.3)\times10^{-4}$ & P & R & replay \code{d2.mono\_steps} & 2 digits\\
+shrink per step, $0.25\le\Ds\le0.4$ & 8--16\% & P & R & replay \code{d2.mono\_shrink} & integer \%\\
+$\Ds=0.2$ & not monotone & P & R & replay \code{d2.nonmono\_0.2} & sign\\
+fall, $0.125\le\Ds\le0.175$ & falls, steps grow & P & R & replay \code{d2.fall} & sign, ratio\\
+last step, $\Ds=0.175$ & $-1.0\times10^{-3}$ & P & R & replay \code{d2.fall\_small} & 2 digits\\
+last step, $\Ds=0.125$, $N=20\to22$ & $-2.0\times10^{-2}$ & P & R & replay \code{d2.fall\_large} & 2 digits\\
+$n_z$ convergence: $n_z=20$; 12 against 16 & $9.4\times10^{-11}$; $5.2\times10^{-7}$ & P & R & replay \code{d2.nz.*} & $10^{-10}$; $6\times10^{-7}$\\
+reference points ($N=14$) against $n_z=16$ & $\le10^{-9}$ & P & R (\code{ref*}) & replay \code{d2.refs} & $10^{-9}$\\
+Jacobian condition at the roots, $\Ds=0.125$, $N=12$; 22 & 84; 888 & P & R & replay \code{d2.cond} & integer\\
+stalled Newton residual, $N=24$, $\Ds=0.125$; 0.126 & $2.93\times10^{-3}$; $1.99\times10^{-3}$ & P & V & replay \code{d2.valley.best} & 2 digits\\
+no root at $N=24$, $\Ds=0.125$, 0.126: $f_1>0$ on $f_2=0$ & smallest $f_1$: $1.60\times10^{-3}$ & P & V & replay \code{d2.no\_root} & sign\\
+valley minima, $\Ds=0.125$; 0.126 & $2.686\times10^{-3}$; $1.556\times10^{-3}$ & P & V & replay \code{d2.valley.min} & $10^{-6}$\\
+fold & $\Ds\approx0.1274$ & P & V & replay \code{d2.fold} & $5\times10^{-5}$\\
+weak coupling: model agrees with the consistent scheme, $\Ds=0.495$; 0.475 & $9.4\times10^{-12}$; $7.6\times10^{-8}$ & P & R, C & replay \code{d2.pert\_consistent.*} & $10^{-11}$; $10^{-7}$\\
+$\ln N$ coefficient of $C_4(N)$, $-365/(4374\pi)$ & $-0.027$ & HP & exact $C_4(N)$, $N\le2000$ & replay \code{p2.c4\_log\_consistent} & set in HP\\
+independent solver, $N=12$, 16 & $1.4\times10^{-12}$ & I & O, R & replay \code{i2.dE.N12\_16} & 2 digits\\
+independent solver, levels & $7.6\times10^{-12}$ & I & O, R & replay \code{i2.levels.N12\_16} & $10^{-11}$\\
+independent solver, $N=18$; 20 & $4.5\times10^{-12}$; $4.6\times10^{-11}$ & I & O, R & replay \code{i2.dE.N18}; \code{N20} & $5\times10^{-12}$; $5\times10^{-11}$\\
+independent solver, $N=22$, $\Ds=0.125$; 0.126 & $4.4\times10^{-10}$; $4.0\times10^{-10}$ & I & O, R & replay \code{i2.dE.N22} & 2 digits\\
+independent re-tuning, $N\le12$; $N=16$ & $9\times10^{-11}$; $3.6\times10^{-8}$ & I & O, R & replay \code{i2.retune.*} & $10^{-10}$; $4\times10^{-8}$\\

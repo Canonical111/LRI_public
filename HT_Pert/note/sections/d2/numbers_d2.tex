@@ -1,0 +1,99 @@
+% numbers_d2.tex -- d = 2 numbers of the HT_Pert note (from HT2dPert, 2026-10-14).
+% Paper macros keep the paper's names and values (the paper's numbers file; rechecked against the final paper a6772872);
+% note-only macros use \NTwo.
+% Every macro has a replay row in repro_d2.tex (check ids p2.*).
+%
+% == paper macros (values identical to the paper's numbers.tex at a6772872) ==
+% Printed in the final paper (Sec. 3.1, Table 2): HTpCtwoTwo, HTpCtwoTwoDigits, HTpCthreeTwo, HTpCthreeTwoDev,
+% HTpCfourTwo, HTpCfourTwoDev, HTpCfiveTwo, HTpCfiveTwoDev, HTpTwoLowDev. Defined there but not printed: HTpTwoLprod,
+% HTpTwoLfour, HTpTwoLfive, HTpTwoImplAgree, HTpTwoIdentThree, HTpCfiveTwoLog, HTnpDtwoCfourLog.
+\newcommand{\HTpTwoLprod}{34}
+\newcommand{\HTpTwoLfour}{2000}
+\newcommand{\HTpTwoLfive}{300}
+\newcommand{\HTpCtwoTwo}{0.30806541358}
+\newcommand{\HTpCtwoTwoDigits}{35}
+\newcommand{\HTpCthreeTwo}{-0.8748500(1)}
+\newcommand{\HTpCthreeTwoDev}{1\times10^{-8}}
+\newcommand{\HTpCfourTwo}{5.0488682(10)}
+\newcommand{\HTpCfourTwoDev}{5\times10^{-8}}
+\newcommand{\HTpCfiveTwo}{-38.835(13)}
+\newcommand{\HTpCfiveTwoDev}{5\times10^{-5}}
+\newcommand{\HTpCfiveTwoLog}{0.1}
+\newcommand{\HTpTwoLowDev}{10^{-7}}
+\newcommand{\HTpTwoImplAgree}{4\times10^{-13}}
+\newcommand{\HTpTwoIdentThree}{95}
+\newcommand{\HTnpDtwoCfourLog}{-0.027}
+%
+% == note only ==
+% solvers and cross-checks
+\newcommand{\NTwoRSLmax}{18}                 % exact-rational RS, L = 0..18
+\newcommand{\NTwoCauchyLmax}{8}              % Cauchy-integral solver, L = 0..8
+\newcommand{\NTwoCauchyAgree}{5\times10^{-46}}  % Cauchy vs exact RS, worst scaled difference 4.76e-46
+\newcommand{\NTwoPkgCauchy}{1.6\times10^{-14}}  % package vs Cauchy, C_n, L = 2..8
+\newcommand{\NTwoLowAgree}{4\times10^{-14}}     % exact C2(L), C3(L) code vs package, L = 2..34, absolute
+\newcommand{\NTwoCfourAgree}{1.1\times10^{-13}} % large-L C4 code vs exact RS and package (relative)
+\newcommand{\NTwoCfiveAgree}{2.2\times10^{-13}} % large-L C2..C5 code vs package, L <= 34 (relative)
+\newcommand{\NTwoOptRegress}{7.3\times10^{-16}} % optimized C5 engine vs production engine, per task (norm-relative)
+\newcommand{\NTwoOptAssembly}{7.6\times10^{-13}}% L = 300 assembly vs L <= 200 production data, C5 (relative)
+\newcommand{\NTwoDeltaRational}{4\times10^{-16}}% delta^(3) chain sums vs exact rationals, L = 2..16 (absolute)
+% C2, C3
+\newcommand{\NTwoCthreeLmax}{600}
+\newcommand{\NTwoCthreeTail}{0.70734}        % ln L / L coefficient of C3(L), = (9/2) x 40/(81 pi)
+% C4 schemes (fits of exact C4(L), L <= 2000)
+\newcommand{\NTwoKappa}{2.2073\times10^{-4}} % C4^cons - C4^raw = kappa L + ...
+\newcommand{\NTwoCfourRawA}{5.0021}
+\newcommand{\NTwoCfourConsA}{5.0026(5)}
+\newcommand{\NTwoCfourZmA}{5.0213(5)}
+\newcommand{\NTwoCfourRawB}{-0.026381}
+\newcommand{\NTwoCfourConsB}{-0.026563(42)}
+\newcommand{\NTwoCfourZmB}{-0.010480(42)}
+\newcommand{\NTwoBlindLogMax}{8.3\times10^{-8}}  % blind L = 2000: log models miss by at most
+\newcommand{\NTwoBlindNoLogMin}{4.1\times10^{-7}}% blind L = 2000: no-log models miss by at least
+\newcommand{\NTwoRtwoSlope}{0.0235785}       % [r_2(2000) - r_2(1998)]/2
+\newcommand{\NTwoCfourZmOff}{5.0386139}      % limit of C4 with the full zero-mode window only
+\newcommand{\NTwoCfourChi}{0.0102543}        % limit of the chi-line mass-window shift of C4
+\newcommand{\NTwoCfourWFitSpread}{6\times10^{-7}} % half spread of the 9 no-log fits of C4^W
+\newcommand{\NTwoCfourWLogMax}{3.5\times10^{-6}}  % |free ln L coefficient| of C4^W, stable towers
+% eps^2 spacing
+\newcommand{\NTwoRtwoWcoef}{0.0114}          % R_2(chi_11) in W ~ 0.0114 / L
+\newcommand{\NTwoRtwoCons}{0.0243}           % R_2(chi_11), consistent window, L = 16 (constant)
+% C5
+\newcommand{\NTwoCfiveWLin}{-0.0019}         % linear coefficient of C5^W(L)
+\newcommand{\NTwoRthreeWcConst}{0.063}       % R_3^{Wc}(chi_aa)/(a w_aa) at L <= 16 (limit 16/(81 pi) = 0.06288)
+\newcommand{\NTwoDeltaMin}{-0.0159046}       % minimum of delta^(3)(L)
+\newcommand{\NTwoDeltaMinL}{34}
+\newcommand{\NTwoDeltaLmax}{16000}
+\newcommand{\NTwoDeltaIdent}{7\times10^{-11}}% |free-limit fit of delta_inf + 4/(81 pi)| <= this
+\newcommand{\NTwoSinf}{0.367187}             % C5 response to X/2 at eps^3, L -> inf
+\newcommand{\NTwoDeltaS}{-0.005772}          % delta_inf S_inf
+\newcommand{\NTwoShiftLmax}{1000}            % window shifts of C5 and S(L) known to L = 1000
+\newcommand{\NTwoBlindNoLog}{4.3\times10^{-6}}  % C5^Wcs blind error, fit <= 200 -> 202..300, k1 = 3, no ln L
+\newcommand{\NTwoBlindFreeLog}{9.4\times10^{-6}}% same with a free ln L
+\newcommand{\NTwoCfiveWc}{-38.830(13)}       % C5^Wc(inf), same protocol
+\newcommand{\NTwoBfreeTwoHundred}{-0.011}    % free ln L coefficient, Lmax = 200
+\newcommand{\NTwoBfreeThreeHundred}{+0.004}  % free ln L coefficient, Lmax = 300
+\newcommand{\NTwoBfitMin}{-0.05}             % individual fits at Lmax = 300, lower end
+\newcommand{\NTwoBfitMax}{+0.07}             % individual fits at Lmax = 300, upper end
+\newcommand{\NTwoBnull}{+0.0005}             % same estimator on C4^W (no ln L)
+\newcommand{\NTwoCfiveMedian}{-38.83544}        % unrounded median of the 15 C5^Wcs fits, L_min 30..100 (residual_log/fits/parent_check_largeL/refit_c5_300.txt; replay p2.c5_limit; HT2dPert 2026-10-15)
+\newcommand{\NTwoCfiveWcMedian}{-38.8297}       % unrounded median of the 15 C5^Wc fits (replay p2.c5_wc prints -38.82967)
+\newcommand{\NTwoBbias}{0.004}                  % median free-ln L estimator reads b - 0.004 on 7.7 C4^W + 2 ln^3L/L + b ln L, L_max = 300 (replay p2.c5_calibration: -0.0036/-0.0136/-0.0336 for b = 0/-0.01/-0.03; protocol of large_L/c5_fits300.py)
+\newcommand{\NTwoBcorr}{+0.008}              % bias-corrected median free ln L coefficient of C5^Wcs, 15 fits, Lmax 300 (replay p2.c5_calibration15: +0.0078; 12 fits +0.0090)
+\newcommand{\NTwoCfiveKfourShift}{+0.002}    % C5^Wcs: median of the 15 fits of Eq. C5tower with k1 = 4 minus that with k1 = 3 (-38.83342 vs -38.83544; replay p2.c5_k1)
+\newcommand{\NTwoCfiveKfourHalf}{0.050}      % half range of those 15 k1 = 4 fits (0.0497; k1 = 3: 0.0128, \HTpCfiveTwo; replay p2.c5_k1)
+\newcommand{\NTwoCfiveKfourTab}{+0.015}      % k1 = 3 -> 4 shift of the limit with the towers of Table d2:tab:k1 (-0.003 -> +0.012; replay p2.c5_k1)
+\newcommand{\NTwoBbound}{0.01}               % |b| bound
+\newcommand{\NTwoLneeded}{400}               % L needed to bound |b| well below 0.01
+% eps^3 and eps^4 spacings
+\newcommand{\NTwoRthreeWcsSixteen}{-1.6\times10^{-4}} % R_3^{Wcs}(chi_11), L = 16
+\newcommand{\NTwoRthreeWcSixteen}{0.0156}    % R_3^{Wc}(chi_11), L = 16
+\newcommand{\NTwoPhiDescTwo}{-0.057}         % R_3^{Wcs}, phi^2 descendant level 2, L = 16
+\newcommand{\NTwoPhiDescFour}{-0.059}        % R_3^{Wcs}, phi^2 descendant level 4, L = 16
+\newcommand{\NTwoRfourSlope}{0.028}          % growth of R_4(chi_11) per unit ln L in Wc, Wcs
+\newcommand{\NTwoGapTwo}{95}                 % % of the chi_22 gap closed by Wcs4chi at L = 14
+\newcommand{\NTwoGapThree}{90}               % % of the chi_33 gap closed by Wcs4chi at L = 14
+\newcommand{\NTwoCsixLog}{+0.010}            % predicted ln L coefficient of C6^{Wc}
+% C6 to C8
+\newcommand{\NTwoCsixSixteen}{165.4}         % C6(16), every scheme (165.35 to 165.39)
+\newcommand{\NTwoCsixStep}{7.5}              % rise of C6(L) per step of 2 in L at L = 16
+\newcommand{\NTwoCsixCont}{362.366(4)}       % continuum C6(2) (GFF), for comparison only

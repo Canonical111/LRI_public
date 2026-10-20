@@ -1,0 +1,19 @@
+{
+ "status": "failed",
+ "requested": [
+  "doc_examples"
+ ],
+ "executed": [
+  "doc_examples"
+ ],
+ "tests": [],
+ "failed": [
+  {
+   "test": "doc_examples",
+   "error": "AssertionError: (1, ['--lanes', '1'], 65, {'amd_cap': 4, 'amd_live': 3, 'amd_live_jobs': ['701', '702', '703'], 'k': 2, 'limits': {'c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)': {'new': 2, 'room': 1}}, 'new_jobs': {'lane': {'count': 1, 'partitions': ['amdq']}, 'merge': {'count': 1, 'partitions': ['amdq']}}, 'partitions': ['amdq'], 'room': 1, 'site': 'symmetry'}, 'C8: admission refused: 2 new job(s) on amdq exceed the budget (c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq): room 1). Largest admissible N for lanes N: 0; nothing submitted\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/before_696db78/tests/unit_orchestration.py\", line 3386, in run\n    try:fn(ctx)\n  File \"<TMP>/scratchpad/before_696db78/tests/unit_orchestration.py\", line 3357, in <lambda>\n    TESTS+=(('doc_examples',lambda c:test_doc_examples(c.E)),)\n  File \"<TMP>/scratchpad/before_696db78/tests/unit_orchestration.py\", line 3320, in test_doc_examples\n    assert cp.returncode==0 and adm['amd_cap']==4 and adm['site']=='symmetry',(i,args,cp.returncode,adm,cp.stderr[-400:])\nAssertionError: (1, ['--lanes', '1'], 65, {'amd_cap': 4, 'amd_live': 3, 'amd_live_jobs': ['701', '702', '703'], 'k': 2, 'limits': {'c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)': {'new': 2, 'room': 1}}, 'new_jobs': {'lane': {'count': 1, 'partitions': ['amdq']}, 'merge': {'count': 1, 'partitions': ['amdq']}}, 'partitions': ['amdq'], 'room': 1, 'site': 'symmetry'}, 'C8: admission refused: 2 new job(s) on amdq exceed the budget (c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq): room 1). Largest admissible N for lanes N: 0; nothing submitted\\n')\n"
+  }
+ ],
+ "python": "3.10.11",
+ "platform": "darwin"
+}

@@ -1,0 +1,26 @@
+job 54676897 on <NODE> at 2026-10-05T02:14:26-07:00; package <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5; campaigns under <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5; evidence <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eprep.54676897.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+== plan t2 2026-10-05T02:14:28-07:00: --pilot --points 4096 --replicates 2 --test-selection stratified --backend gmp --cost-model <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/benchmarks/expanse_2026-10-c8/stage3b/sweep1.54641706.0/cost_model.json --test-graphs 64 --threads 32 --seed 604064406400592787
+{"run": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2", "state": "added"}
+{"log": "<SCRATCH>/temp_project/c8d2/forbidden_seeds.json", "seed": 604064406400592787, "source": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2", "state": "added"}
+{'jobs': 24, 'tasks': 2154, 'checkpoints': 24, 'estimated_core_hours': 0.8052, 'max_index_wall_seconds': 22.2, 'projected_files': 320, 'array_mem_suggestion_mb': 2352}
+== plan t3 2026-10-05T02:15:33-07:00: --pilot --points 4096 --replicates 2 --test-selection stratified --backend gmp --cost-model <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/benchmarks/expanse_2026-10-c8/stage3b/sweep1.54641706.0/cost_model.json --test-graphs 1024 --threads 16 --checkpoint-tasks 256 --index-hours 0.05 --seed 2953464248843618050
+{"run": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t3", "state": "added"}
+{"log": "<SCRATCH>/temp_project/c8d2/forbidden_seeds.json", "seed": 2953464248843618050, "source": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t3", "state": "added"}
+{'jobs': 33, 'tasks': 17648, 'checkpoints': 89, 'estimated_core_hours': 9.734, 'max_index_wall_seconds': 173.9, 'projected_files': 412, 'array_mem_suggestion_mb': 3293}
+== plan t4 2026-10-05T02:17:00-07:00: --pilot --points 4096 --replicates 2 --test-selection stratified --backend gmp --cost-model <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/benchmarks/expanse_2026-10-c8/stage3b/sweep1.54641706.0/cost_model.json --test-graphs 1024 --threads 8 --checkpoint-tasks 256 --index-hours 0.1 --seed 8549950029915422195
+{"run": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4", "state": "added"}
+{"log": "<SCRATCH>/temp_project/c8d2/forbidden_seeds.json", "seed": 8549950029915422195, "source": "<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4", "state": "added"}
+{'jobs': 33, 'tasks': 17648, 'checkpoints': 89, 'estimated_core_hours': 9.734, 'max_index_wall_seconds': 347.8, 'projected_files': 412, 'array_mem_suggestion_mb': 3245}
+== t2: run every index except the two heaviest 2026-10-05T02:18:18-07:00
+{"left_for_the_array": [5, 11], "prerun": [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "left_detail": [{"id": 5, "group": "a_free_L8", "tasks": 144, "est_core_seconds": 639.4887608289719}, {"id": 11, "group": "a_power_L8", "tasks": 128, "est_core_seconds": 632.095657363534}]}
+t2 status exit 1 (2 incomplete indices expected)
+group b_power_L5: 1/1 blocks, not merged, 1 fingerprint(s): 078a116de04b x1 (AMD EPYC 7742 64-Core Processor, glibc 2.28, hosts <NODE>)
+group b_power_L6: 1/1 blocks, not merged, 1 fingerprint(s): 078a116de04b x1 (AMD EPYC 7742 64-Core Processor, glibc 2.28, hosts <NODE>)
+group b_power_L7: 1/1 blocks, not merged, 1 fingerprint(s): 078a116de04b x1 (AMD EPYC 7742 64-Core Processor, glibc 2.28, hosts <NODE>)
+group b_power_L8: 1/1 blocks, not merged, 1 fingerprint(s): 078a116de04b x1 (AMD EPYC 7742 64-Core Processor, glibc 2.28, hosts <NODE>)
+result: no C8_test_result.json
+2 incomplete job indices: 5,11
+resubmit: C8_MAX_ARRAY=1000 C8_RUN=<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2 C8_PACKAGE=<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5 <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/slurm/submit.sh --window 0:5,11
+then submit slurm/merge.sh once complete; or run slurm/resubmit.sh (arrays) or slurm/submit.sh --lanes N (lane mode), which also submit a merge that waits for the work
+finished 2026-10-05T02:20:04-07:00, status 0

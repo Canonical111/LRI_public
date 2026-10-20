@@ -1,0 +1,19 @@
+fingerprint c0605efa8951 (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz); fingerprint_bytes 7042286; cpu vendor GenuineIntel family 6
+claim_io {"cpu_vendor": "GenuineIntel", "fingerprint_bytes": 7042286, "fingerprint_key": "c0605efa8951", "fingerprint_rchar": 7077589, "index": 0, "native": {"launches": 0, "rchar": 0, "unmeasured": 0}, "non_own_bytes": 29872539, "non_own_minus_fingerprint_bytes": 22830253, "non_own_minus_fingerprint_rchar": 22794950, "own": {"task_file": {"bytes": 32, "files": 1}}, "own_bytes": 32, "rchar": 29872571, "rchar_start": 1842755, "schema": "c8-d2-claim-io-2", "status": "error"}
+Traceback (most recent call last):
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1949, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1948, in main
+    a=p.parse_args(argv);a.func(a)
+                         ^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1192, in run
+    try:_run(a);status='ok'
+        ^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 1236, in _run
+    if dest.exists():validate_checkpoint(load(dest),block,cfg,m,mh,rt['rates'],rkey);_own('checkpoints',dest.stat().st_size);continue
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/c8d2/pkg/c30bfc5f0bdf/tools/production.py", line 957, in validate_checkpoint
+    if k!=runtime_key:raise ValueError(f'checkpoint was produced under another runtime library stack (runtime identity {str(k)[:12]}, the campaign\'s {runtime_key[:12]}; '
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: checkpoint was produced under another runtime library stack (runtime identity 04f1e51dfc2e, the campaign's 3d0c0a034250; host <NODE>): its libraries differ from the campaign's (X8)

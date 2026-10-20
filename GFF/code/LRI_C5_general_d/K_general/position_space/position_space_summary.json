@@ -1,0 +1,44 @@
+{
+ "tag": "position_space",
+ "formulas": {
+  "MB_representation_of_J_t": "J_t = J_d(d/2,d/2,d/2,d-t,d/2) = J_d(d-t,d/2,d/2,d/2,d/2) (completion symmetry) = N (2 pi i)^-2 int int dz1 dz2 Phi_t, N = G(2q)^2/G(q)^4, q = d/4, w = z1+z2, Phi_t = G(-z1)^2 G(-z2)^2 G(q+w)^2 G(q+z2)/G(q-z2) * G(t/2+z1) G(q-t/2-w) / (G(2q-t/2-z1) G(q+t/2+w)); contours -t/2 < Re z1 < 0, -q < Re z2 < 0, Re w > -q. (y-integral = one-loop star with indices (q,q,q) in d=4q via Davydychev's 2-fold MB; x-integral = one-loop bubble.)",
+  "pole_split": "J_t = J_pole(t) + J_reg(t); J_pole(t) = G(2q) G(t/2)^2 G(q-t/2)^4 / (G(q)^4 G(2q-t)) (residue at z1=-t/2, Barnes first lemma); J_reg = same integral with -q < Re z1 < -|t|/2, analytic at t=0.",
+  "K_d": "K_d = A^2 s/2 + A (psi2(2q) - psi2(q))/2 - R s/4 + s^2/8 + (2 psi3(q) - 7 psi3(2q))/48 + I_d, s = 2 psi1(q) - psi1(2q), A = psi(2q)+psi(1)-2psi(q), R = psi1(2q)-psi1(1); I_d = N (2 pi i)^-2 int int Phi_0 (l1^2 + l2)/2, Phi_0 = G(-z1)^2 G(z1)/G(2q-z1) * G(-z2)^2 G(q+z2)/G(q-z2) * G(q+w) G(q-w), l1 = [psi(z1)+psi(2q-z1)-psi(q-w)-psi(q+w)]/2, l2 = [psi1(z1)-psi1(2q-z1)+psi1(q-w)-psi1(q+w)]/4; contours -q < Re z1, Re z2 < 0, Re w > -q.",
+  "byproduct_identities": "N (2 pi i)^-2 int int Phi_0 = psi1(2q) - 2 psi1(q);  N (2 pi i)^-2 int int Phi_0 l1 = -[A s + psi2(2q)/2 - psi2(q)]  (the vanishing [t^0],[t^1] of J_t - J_t^Gamma).",
+  "general_kite_six_families": "Star vertex S (indices nu1 to 0, nu2 to e, nu3 to B), bubble B (a3 to 0, a4 to e), h = d/2, lam = nu1+nu2+nu3-h, sig1 = nu2-lam, sig2 = nu1-lam, cw = a3+a4-h, P0 = G(h)^2/(G(nu1)G(nu2)G(nu3)G(h-lam)). J = sum_{i,j in {0,1}} P0 C_ij F^{2:2;2}_{2:1;1}[lam+s, nu3+s : h-a3+s1, 1-a3+s1 ; h-a4+s2, 1-a4+s2 | 1-cw+s, h-cw+s : 1-(-1)^i sig1 ; 1-(-1)^j sig2 | 1,1] + G_0 + G_1, s1 = i sig1, s2 = j sig2, s = s1+s2, C_ij = G((-1)^i sig1) G((-1)^j sig2) G(h-a3+s1) G(h-a4+s2) G(lam+s) G(nu3+s) G(cw-s) / (G(a3-s1) G(a4-s2) G(h-cw+s)); G_j = P0 sum_{k,n>=0} (-1)^{k+n}/(k! n!) G(lam+cw+k) G(nu3+cw+k)/G(h+k) R_j(n) G(s2-cw+n-k) G(sig1-cw+s2+n-k) G(a4-s2+k-n)/G(h-a4+s2+n-k), R_0(n) = G(sig2-n) G(h-a4+n)/G(a4-n), R_1(n) = G(-sig2-n) G(h-a4+sig2+n)/G(a4-sig2-n). Absolutely convergent at unit arguments iff E1 = -2+nu2+nu3+2a4-d, E2 = -2+nu1+nu3+2a3-d, E3 = -6-E1-E2 are all < -1.",
+  "K_path_confluent_series": "(symmetric-star orientation, valid for 0 < d < 2 + 2 Re t) J_t = N [S_I + S_II]; S_I = sum_{m,n>=0} f(m,n)/(m!^2 n!^2) [(L1 - 2 psi(m+1))(L2 - 2 psi(n+1)) + L12], f(z1,z2) = G(q+w)^2 G(q+z2) G(t/2+z1) G(q-t/2-w) / (G(q-z2) G(2q-t/2-z1) G(q+t/2+w)), L1 = 2psi(q+w)+psi(t/2+z1)+psi(2q-t/2-z1)-psi(q-t/2-w)-psi(q+t/2+w), L2 = 2psi(q+w)+psi(q+z2)+psi(q-z2)-psi(q-t/2-w)-psi(q+t/2+w), L12 = 2psi1(q+w)+psi1(q-t/2-w)-psi1(q+t/2+w); S_II = sum_{k,n>=0} (-1)^{k+1}/(k! n!^2) g [2psi(-z1)+psi(q+n)+psi(q-n)-psi(t/2+z1)-psi(2q-t/2-z1)-2psi(n+1)], z1 = q-t/2+k-n, w = q-t/2+k, g = G(-z1)^2 G(q+w)^2 G(q+n) G(t/2+z1) / (G(q-n) G(2q-t/2-z1) G(q+t/2+w)).",
+  "general_pole_split_near_B": "star = all-q vertex x (nu1=a/2, nu2=b/2, nu3=e/2), bubble y (a3=c/2, a4=f/2), eps = h-a4 = p1/2: J = J_pole^gen + J_reg^gen, J_pole^gen = P0 G(eps) G(sig2+eps) G(lam-eps) G(nu2-eps) G(nu3-eps) G(nu2+nu3-lam-eps) / (G(h) G(nu2+nu3-2 eps)), J_reg^gen analytic near B."
+ },
+ "K_d_100_digits": {
+  "0.8": "92.37277023992277163264539189903637646055824736983227503924499506724497858135092062824137716371752598",
+  "1": "39.33156912825903905750318715159786152304393802042225157098661796473929734768957631898411334285409254",
+  "1.25": "17.20334572992168832708572010654874727422170969827587352420766460877830992667116647729020331688389705",
+  "1.5": "9.018297401594820547084743104679319203622643409237647549808353994428002511375817349884265606636367787",
+  "2": "3.518109138590252241649090170307739522622672809471036069084557795421741635149209357828859773973341785",
+  "2.5": "1.840501295428588030730181860272315031184991755986190439223173684399089884595820026679350776448462251",
+  "2.75": "1.429249188660312000099175536883865557291559526369669749118933134383547061101092758552727464437611437",
+  "3": "1.148594649527179336556646310810673187633848101264317842111701512118454590027728988998389668906318804"
+ },
+ "checks": {
+  "J_t_finite_t_vs_exact": "d=2, t=0.6: |J_MB - pi^2[F(0.3)^2+F(0.7)^2]| = 2.0e-34;  d=1, t=0.3: |J_MB - Jhat(t)/t^2| = 1.9e-33 (jt_exact_check.py)",
+  "K_vs_exact": {
+   "1": "1.29e-99",
+   "2": "8.08e-101",
+   "3": "1.59e-101"
+  },
+  "K_vs_spectral_reference": {
+   "0.8": "3.02e-44",
+   "1.25": "1.72e-45",
+   "1.5": "7.62e-46",
+   "2.5": "4.01e-45",
+   "2.75": "3.63e-45"
+  },
+  "K_internal": "50-digit runs on a different contour agree with the 100-digit runs to <= 8e-55; [t^0],[t^1] residuals <= 1e-101",
+  "mixed_trace_pointwise": "J_{2tau} = C^2[G(q-tau/2)/G(q+tau/2)]^4 + C(tau) F(tau) with the spectral F(tau) of refvals/ref2_t_<d>.json at 3 complex tau each: |diff| <= 4.0e-32 at d=0.8, 1.25, 1.5, 2.5, 2.75 (mixed_trace_check.log)",
+  "Bjet": "d=1.25: full 15-coefficient quadratic jet of J - J^Gamma_jet reconstructed from 18 random lines: z1*z2 coefficient 17.2033457299196 (K = 17.2033457299217), other 14 coefficients <= 3e-12, orders t^-3..t^1 <= 1.7e-13 (bjet_quadform_d1.25.json); d=2.5: 5 lines, [t^2]/(v_z1 v_z2) = K to 1e-20 (one line 5e-13), [t^2] = 0 for v_z1 v_z2 = 0; d=0.8: 3 lines, K to 2e-18 (one 5e-13)",
+  "six_family_formula": "generic point d=1.7: 20 digits vs MB at x=(0.6,0.35); at unit arguments partial sums -> MB value with ~1/M tails (Richardson: 3e-6)",
+  "KLT_d2": "note done:kiteFactorization at a generic d=2 point equals the general MB to 22 digits (klt_check_d2.py)",
+  "confluent_K_path": "20 digits vs MB at x=(0.6,0.35) for (d,t)=(1.5,0.3),(1,0.4); unit arguments: partial sums -> MB value, tails ~1/M",
+  "orientations": "all 60 MB orientations of the K-path master contain a squared Gamma (enum_orient.py)"
+ }
+}

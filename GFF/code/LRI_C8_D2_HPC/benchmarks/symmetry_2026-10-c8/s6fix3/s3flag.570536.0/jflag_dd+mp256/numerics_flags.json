@@ -1,0 +1,1842 @@
+{
+  "schema": "c8-d2-numerics-flags-1",
+  "utc_start": "2026-10-06T10:29:49Z",
+  "exact": {
+    "path": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp",
+    "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+    "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+        7,
+        8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "11.4.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+    },
+    "build_record": {
+      "schema": "c8-d2-build-record-1",
+      "executable": "c8d2_gmp",
+      "backend": "gmp",
+      "executable_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "src/c8d2_integrate.cpp",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "bin/c8d2_gmp"
+      ],
+      "compiler_options": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP"
+      ],
+      "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "compiler_macro_version": "11.4.0",
+      "CXX": "g++",
+      "CPPFLAGS": "",
+      "OPTFLAGS": "-O3",
+      "CXXFLAGS": "",
+      "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+      "LDFLAGS": "",
+      "LDLIBS": "",
+      "NUMERICS": "exact",
+      "numerics_sources": null,
+      "parameter_overrides": [],
+      "macro_overrides": [],
+      "development": false,
+      "GMP_PREFIX": "",
+      "diagnostic": null,
+      "describe": {
+        "schema": "c8-d2-build-1",
+        "dimension": 2,
+        "orders": [
+          7,
+          8
+        ],
+        "lmax": 8,
+        "kmax": 6,
+        "emax": 16,
+        "dimmax": 31,
+        "numerics": "exact",
+        "diagnostic": false,
+        "tail_top": 16,
+        "compiler": "11.4.0",
+        "long_double_bits": 64,
+        "mp_backend": "gmp350",
+        "mp_digits10": 350,
+        "mp_max_digits10": 372,
+        "openmp": 201511
+      },
+      "required_flags_present": true,
+      "macros": {
+        "_OPENMP": "201511",
+        "__FAST_MATH__": null,
+        "__FINITE_MATH_ONLY__": "0",
+        "__OPTIMIZE__": "1"
+      },
+      "BOOST_LIB_VERSION": "1_77",
+      "BOOST_VERSION": "107700",
+      "gmp_version": "6.2.1",
+      "gmp_header": {
+        "cc": "x86_64-linux-gnu-gcc",
+        "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+      },
+      "gmp_library": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "fat": false,
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "optimized": true,
+      "preprocessor_probe": {
+        "flags": true,
+        "boost": true,
+        "gmp": true
+      },
+      "host": "cn094",
+      "created_utc": "2026-10-06T10:28:02Z"
+    },
+    "stub_profiles": []
+  },
+  "mode": "profile",
+  "profile": {
+    "path": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp_dd+mp256",
+    "sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+    "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+        7,
+        8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "dd+mp256",
+      "diagnostic": false,
+      "numerics_params": {
+        "dd": {
+          "dd_ratio": "1e-20",
+          "routing": "cascade",
+          "cascade_low": "1e-23",
+          "range": 300,
+          "guard": "products",
+          "product_range": [
+            "2^-900",
+            "2^900"
+          ],
+          "exp": "dd-k-ln2-r64-taylor11-x6",
+          "sum": "compensated-b8-x4",
+          "err": "double",
+          "development": false
+        },
+        "mp256": {
+          "digits10": 77,
+          "mpf_precision_bits": 320,
+          "ratio": "1e-63",
+          "error_estimate": "calculate_shared<MP77,true>",
+          "escalation": "mp350"
+        }
+      },
+      "tail_top": 16,
+      "compiler": "11.4.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+    },
+    "build_record": {
+      "schema": "c8-d2-build-record-1",
+      "executable": "c8d2_gmp_dd+mp256",
+      "backend": "gmp",
+      "executable_sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+      "command": [
+        "g++",
+        "-O3",
+        "-mavx2",
+        "-mfma",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "-DC8_NUMERICS",
+        "-DC8_NUMERICS_DD",
+        "-DC8_NUMERICS_MP256",
+        "src/c8d2_integrate.cpp",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "bin/c8d2_gmp_dd+mp256"
+      ],
+      "compiler_options": [
+        "g++",
+        "-O3",
+        "-mavx2",
+        "-mfma",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "-DC8_NUMERICS",
+        "-DC8_NUMERICS_DD",
+        "-DC8_NUMERICS_MP256"
+      ],
+      "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "compiler_macro_version": "11.4.0",
+      "CXX": "g++",
+      "CPPFLAGS": "",
+      "OPTFLAGS": "-O3",
+      "CXXFLAGS": "",
+      "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+      "LDFLAGS": "",
+      "LDLIBS": "",
+      "NUMERICS": "dd+mp256",
+      "numerics_sources": {
+        "defines": [
+          "-DC8_NUMERICS",
+          "-DC8_NUMERICS_DD",
+          "-DC8_NUMERICS_MP256"
+        ],
+        "files": {
+          "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+          "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+          "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+          "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb"
+        }
+      },
+      "parameter_overrides": [],
+      "macro_overrides": [],
+      "development": false,
+      "GMP_PREFIX": "",
+      "diagnostic": null,
+      "describe": {
+        "schema": "c8-d2-build-1",
+        "dimension": 2,
+        "orders": [
+          7,
+          8
+        ],
+        "lmax": 8,
+        "kmax": 6,
+        "emax": 16,
+        "dimmax": 31,
+        "numerics": "dd+mp256",
+        "diagnostic": false,
+        "numerics_params": {
+          "dd": {
+            "dd_ratio": "1e-20",
+            "routing": "cascade",
+            "cascade_low": "1e-23",
+            "range": 300,
+            "guard": "products",
+            "product_range": [
+              "2^-900",
+              "2^900"
+            ],
+            "exp": "dd-k-ln2-r64-taylor11-x6",
+            "sum": "compensated-b8-x4",
+            "err": "double",
+            "development": false
+          },
+          "mp256": {
+            "digits10": 77,
+            "mpf_precision_bits": 320,
+            "ratio": "1e-63",
+            "error_estimate": "calculate_shared<MP77,true>",
+            "escalation": "mp350"
+          }
+        },
+        "tail_top": 16,
+        "compiler": "11.4.0",
+        "long_double_bits": 64,
+        "mp_backend": "gmp350",
+        "mp_digits10": 350,
+        "mp_max_digits10": 372,
+        "openmp": 201511
+      },
+      "required_flags_present": true,
+      "macros": {
+        "_OPENMP": "201511",
+        "__FAST_MATH__": null,
+        "__FINITE_MATH_ONLY__": "0",
+        "__OPTIMIZE__": "1"
+      },
+      "BOOST_LIB_VERSION": "1_77",
+      "BOOST_VERSION": "107700",
+      "gmp_version": "6.2.1",
+      "gmp_header": {
+        "cc": "x86_64-linux-gnu-gcc",
+        "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+      },
+      "gmp_library": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "fat": false,
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "optimized": true,
+      "preprocessor_probe": {
+        "flags": true,
+        "boost": true,
+        "gmp": true
+      },
+      "host": "cn094",
+      "created_utc": "2026-10-06T10:29:00Z"
+    },
+    "stub_profiles": []
+  },
+  "profile_name": "dd+mp256",
+  "strict_identity": {
+    "required": false,
+    "why": null
+  },
+  "development": [],
+  "parts": [
+    "F1",
+    "F2",
+    "F4",
+    "F5"
+  ],
+  "build_binding": {
+    "schema": "c8-d2-build-binding-1",
+    "snapshot": {
+      "files": {
+        "src/c8d2_inspect.cpp": "66b8e418495638d5e656ecd1cb95c0d6f1f43e8fc15909695d33ed7c216f58ea",
+        "src/c8d2_integrate.cpp": "ae408b9da50e9cf2dfe39e358aa9b477a4eed265a4b7cda7882097528b0c90b8",
+        "src/diagnostics.hpp": "fa65d87f74247ab7e450476f52eff505f00f209b7b5b0b85b1bc3144555deccf",
+        "src/kernel.hpp": "6410731d49a004e30e25f0d87524202a9730f6947d17105e85aeb867f8a900e6",
+        "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+        "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+        "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+        "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb",
+        "src/quadfast.hpp": "b31ffc5968dd333aa924525fb2e479e5910da264ea57234ff0a9aaadb0db59a4",
+        "tests/numerics_f1.cpp": "4b638440fe47c0b8f2f9e8dffebdc7ea5b9a5e3bc241ca276f67f81bdac74df0"
+      },
+      "sha256": "f0c7137e21f4ca082e46e59083fad4e68fd873d035533661f6814ab7f1f77f12"
+    },
+    "executables": {
+      "exact": {
+        "executable": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp",
+        "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+        "reproduced_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+        "reproduced": true,
+        "snapshot_sha256": "f0c7137e21f4ca082e46e59083fad4e68fd873d035533661f6814ab7f1f77f12",
+        "command": [
+          "g++",
+          "-O3",
+          "-std=c++17",
+          "-fopenmp",
+          "-ffp-contract=off",
+          "-fno-fast-math",
+          "-DC8_USE_GMP",
+          "src/c8d2_integrate.cpp",
+          "-lquadmath",
+          "-lgmp",
+          "-o",
+          "<reproduced_exact>"
+        ],
+        "seconds": 4.7
+      },
+      "profile": {
+        "executable": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp_dd+mp256",
+        "sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+        "reproduced_sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+        "reproduced": true,
+        "snapshot_sha256": "f0c7137e21f4ca082e46e59083fad4e68fd873d035533661f6814ab7f1f77f12",
+        "command": [
+          "g++",
+          "-O3",
+          "-mavx2",
+          "-mfma",
+          "-std=c++17",
+          "-fopenmp",
+          "-ffp-contract=off",
+          "-fno-fast-math",
+          "-DC8_USE_GMP",
+          "-DC8_NUMERICS",
+          "-DC8_NUMERICS_DD",
+          "-DC8_NUMERICS_MP256",
+          "src/c8d2_integrate.cpp",
+          "-lquadmath",
+          "-lgmp",
+          "-o",
+          "<reproduced_profile>"
+        ],
+        "seconds": 5.5
+      }
+    },
+    "rule": "every executable rebuilt in the read-only source snapshot with its build record's command is byte-identical to it (sha256); the F1 tools are compiled in the same snapshot with the same commands"
+  },
+  "f2_seeds": {
+    "log": "/mnt/beegfs/zzheng1/c8-d2/forbidden_seeds.json",
+    "base_seed": 820262401,
+    "entries": 49,
+    "added": 0,
+    "present": 49,
+    "log_sha256_after": "59ec4a58e18de7fa0850b888e8843f7ccfd63f1a47f7ec1adcbf088ef6c044be"
+  },
+  "f1_baseline": {
+    "path": "/mnt/beegfs/zzheng1/c8d2/evidence/997639178c1f/s3flag.570536.0/jflag_dd+mp256/f1_baseline",
+    "sha256": "bfab78d3ed40d92e60c5d13b695cd6225e6210fdd554ee46565caa63a2e5f2e7",
+    "reused": false,
+    "reused_gmp_library": null,
+    "tool_gmp_library": {
+      "tool": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "worker_now": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "want_sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "match": true
+    }
+  },
+  "F1": {
+    "baseline": "/mnt/beegfs/zzheng1/c8d2/evidence/997639178c1f/s3flag.570536.0/jflag_dd+mp256/f1_baseline",
+    "baseline_sha256": "bfab78d3ed40d92e60c5d13b695cd6225e6210fdd554ee46565caa63a2e5f2e7",
+    "baseline_scale": 1.0,
+    "tool_command": [
+      "g++",
+      "-O3",
+      "-mavx2",
+      "-mfma",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_DD",
+      "-DC8_NUMERICS_MP256",
+      "tests/numerics_f1.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "/tmp/c8d2_570536/c8d2_flags_59en7apz/numerics_f1_profile"
+    ],
+    "tool_gmp_library": {
+      "tool": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "worker_now": {
+        "soname": "libgmp.so.10",
+        "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+        "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+        "rpath": null,
+        "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+        "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+      },
+      "want_sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "match": true
+    },
+    "tool_snapshot_sha256": "f0c7137e21f4ca082e46e59083fad4e68fd873d035533661f6814ab7f1f77f12",
+    "baseline_binding": {
+      "executable": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp",
+      "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+      "reproduced_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+      "reproduced": true,
+      "snapshot_sha256": "f0c7137e21f4ca082e46e59083fad4e68fd873d035533661f6814ab7f1f77f12",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "src/c8d2_integrate.cpp",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "<reproduced_exact>"
+      ],
+      "seconds": 4.7
+    },
+    "total": {
+      "points": 153600,
+      "tiers": {
+        "long_double": {
+          "points": 57582,
+          "fraction": 0.3748828125,
+          "max_relative_error": "5.06e-10",
+          "violations": 0
+        },
+        "double_double": {
+          "points": 70620,
+          "fraction": 0.459765625,
+          "max_relative_error": "5.18e-12",
+          "violations": 0
+        },
+        "binary128": {
+          "points": 9289,
+          "fraction": 0.06047526041666667,
+          "max_relative_error": "1.43e-11",
+          "violations": 0
+        },
+        "mp256": {
+          "points": 16097,
+          "fraction": 0.10479817708333333,
+          "max_relative_error": "1.02e-19",
+          "violations": 0
+        },
+        "mp350": {
+          "points": 12,
+          "fraction": 7.8125e-05,
+          "max_relative_error": "4.61e-20",
+          "violations": 0
+        }
+      },
+      "paired": {
+        "identical": 115157,
+        "max_relative_difference": "5.18e-12",
+        "hist_relative_difference": {
+          "-12": 73,
+          "-13": 1857,
+          "-14": 3866,
+          "-15": 4644,
+          "-16": 5277,
+          "-17": 5761,
+          "-18": 6329,
+          "-19": 7370,
+          "-20": 3266,
+          "zero_or_below": 115157
+        },
+        "transitions": {
+          "long_double->long_double": 57582,
+          "binary128->double_double": 70620,
+          "binary128->binary128": 9289,
+          "mp350->mp256": 16097,
+          "mp350->mp350": 12
+        }
+      },
+      "profile_checks": {
+        "dd_forced_out_of_range_points": 96018,
+        "dd_forced_product_guard_points": 96018,
+        "dd_guard_class_products_in_range": 96018,
+        "dd_points": 96018,
+        "dd_ratio_decade_-10_binary128_pass": 8379,
+        "dd_ratio_decade_-11_binary128_pass": 8206,
+        "dd_ratio_decade_-12_binary128_pass": 7898,
+        "dd_ratio_decade_-13_binary128_pass": 7602,
+        "dd_ratio_decade_-14_binary128_pass": 7141,
+        "dd_ratio_decade_-15_binary128_pass": 6584,
+        "dd_ratio_decade_-16_binary128_pass": 5995,
+        "dd_ratio_decade_-17_binary128_pass": 5475,
+        "dd_ratio_decade_-18_binary128_pass": 4959,
+        "dd_ratio_decade_-19_binary128_pass": 4438,
+        "dd_ratio_decade_-20_binary128_pass": 3943,
+        "dd_ratio_decade_-21_binary128_pass": 3568,
+        "dd_ratio_decade_-22_binary128_pass": 3057,
+        "dd_ratio_decade_-23_binary128_pass": 2664,
+        "dd_ratio_decade_-24_binary128_fail": 2349,
+        "dd_ratio_decade_-25_binary128_fail": 1983,
+        "dd_ratio_decade_-26_binary128_fail": 1780,
+        "dd_ratio_decade_-27_binary128_fail": 1474,
+        "dd_ratio_decade_-28_binary128_fail": 1276,
+        "dd_ratio_decade_-29_binary128_fail": 1091,
+        "dd_ratio_decade_-30_binary128_fail": 933,
+        "dd_ratio_decade_-31_binary128_fail": 823,
+        "dd_ratio_decade_-32_binary128_fail": 859,
+        "dd_ratio_decade_-33_binary128_fail": 2611,
+        "dd_ratio_decade_-34_binary128_fail": 781,
+        "dd_ratio_decade_-35_binary128_fail": 35,
+        "dd_ratio_decade_-99_binary128_fail": 95,
+        "dd_route_accepted": 70620,
+        "dd_route_ratio_to_binary128": 9289,
+        "dd_route_ratio_to_mp": 16109,
+        "dd_vs_binary128_scaled_decade_-32": 10248,
+        "dd_vs_binary128_scaled_decade_-33": 48402,
+        "dd_vs_binary128_scaled_decade_-34": 10785,
+        "dd_vs_binary128_scaled_decade_-35": 1045,
+        "dd_vs_binary128_scaled_decade_-36": 85,
+        "dd_vs_binary128_scaled_decade_-37": 8,
+        "dd_vs_binary128_scaled_decade_-38": 3,
+        "dd_vs_binary128_scaled_decade_-42": 2,
+        "dd_vs_binary128_scaled_decade_-44": 4,
+        "dd_vs_binary128_scaled_decade_-45": 7,
+        "dd_vs_binary128_scaled_decade_-47": 3,
+        "dd_vs_binary128_scaled_decade_-48": 3,
+        "dd_vs_binary128_scaled_decade_-49": 2,
+        "dd_vs_binary128_scaled_decade_-50": 2,
+        "dd_vs_binary128_scaled_decade_-52": 3,
+        "mp256_accepted": 16097,
+        "mp256_accepted_relative_e-41": 2,
+        "mp256_accepted_relative_e-43": 2,
+        "mp256_accepted_relative_e-44": 6,
+        "mp256_accepted_relative_e-48": 8,
+        "mp256_accepted_relative_e-49": 11,
+        "mp256_accepted_relative_e-51": 13,
+        "mp256_accepted_relative_e-52": 14,
+        "mp256_accepted_relative_e-53": 24,
+        "mp256_accepted_relative_e-54": 26,
+        "mp256_accepted_relative_e-55": 28,
+        "mp256_accepted_relative_e-56": 39,
+        "mp256_accepted_relative_e-57": 43,
+        "mp256_accepted_relative_e-58": 61,
+        "mp256_accepted_relative_e-59": 81,
+        "mp256_accepted_relative_e-60": 71,
+        "mp256_accepted_relative_e-61": 82,
+        "mp256_accepted_relative_e-62": 121,
+        "mp256_accepted_relative_e-63": 161,
+        "mp256_accepted_relative_e-64": 160,
+        "mp256_accepted_relative_e-65": 213,
+        "mp256_accepted_relative_e-66": 219,
+        "mp256_accepted_relative_e-67": 306,
+        "mp256_accepted_relative_e-68": 333,
+        "mp256_accepted_relative_e-69": 402,
+        "mp256_accepted_relative_e-70": 481,
+        "mp256_accepted_relative_e-71": 613,
+        "mp256_accepted_relative_e-72": 703,
+        "mp256_accepted_relative_e-73": 757,
+        "mp256_accepted_relative_e-74": 862,
+        "mp256_accepted_relative_e-75": 1025,
+        "mp256_accepted_relative_e-76": 1072,
+        "mp256_accepted_relative_e-77": 1036,
+        "mp256_accepted_relative_e-78": 1111,
+        "mp256_accepted_relative_e-79": 2224,
+        "mp256_accepted_relative_e-80": 2957,
+        "mp256_accepted_relative_e-81": 713,
+        "mp256_accepted_relative_e-82": 83,
+        "mp256_accepted_relative_e-83": 5,
+        "mp256_accepted_scaled_e-100": 1206,
+        "mp256_accepted_scaled_e-101": 1165,
+        "mp256_accepted_scaled_e-102": 1370,
+        "mp256_accepted_scaled_e-103": 1994,
+        "mp256_accepted_scaled_e-104": 1973,
+        "mp256_accepted_scaled_e-105": 1745,
+        "mp256_accepted_scaled_e-106": 1425,
+        "mp256_accepted_scaled_e-107": 1086,
+        "mp256_accepted_scaled_e-108": 736,
+        "mp256_accepted_scaled_e-109": 570,
+        "mp256_accepted_scaled_e-110": 387,
+        "mp256_accepted_scaled_e-111": 324,
+        "mp256_accepted_scaled_e-112": 193,
+        "mp256_accepted_scaled_e-113": 114,
+        "mp256_accepted_scaled_e-114": 66,
+        "mp256_accepted_scaled_e-115": 34,
+        "mp256_accepted_scaled_e-116": 28,
+        "mp256_accepted_scaled_e-97": 27,
+        "mp256_accepted_scaled_e-98": 543,
+        "mp256_accepted_scaled_e-99": 1099,
+        "mp256_escalated": 12,
+        "mp256_escalated_relative_e-34": 2,
+        "mp256_ld_identical": 16097,
+        "mp256_mp_promoted": 16109,
+        "mp256_ratio_e-24": 2349,
+        "mp256_ratio_e-25": 1983,
+        "mp256_ratio_e-26": 1780,
+        "mp256_ratio_e-27": 1474,
+        "mp256_ratio_e-28": 1276,
+        "mp256_ratio_e-29": 1090,
+        "mp256_ratio_e-30": 934,
+        "mp256_ratio_e-31": 825,
+        "mp256_ratio_e-32": 689,
+        "mp256_ratio_e-33": 548,
+        "mp256_ratio_e-34": 475,
+        "mp256_ratio_e-35": 404,
+        "mp256_ratio_e-36": 382,
+        "mp256_ratio_e-37": 305,
+        "mp256_ratio_e-38": 276,
+        "mp256_ratio_e-39": 194,
+        "mp256_ratio_e-40": 178,
+        "mp256_ratio_e-41": 170,
+        "mp256_ratio_e-42": 116,
+        "mp256_ratio_e-43": 117,
+        "mp256_ratio_e-44": 88,
+        "mp256_ratio_e-45": 82,
+        "mp256_ratio_e-46": 67,
+        "mp256_ratio_e-47": 61,
+        "mp256_ratio_e-48": 56,
+        "mp256_ratio_e-49": 28,
+        "mp256_ratio_e-50": 30,
+        "mp256_ratio_e-51": 20,
+        "mp256_ratio_e-52": 27,
+        "mp256_ratio_e-53": 13,
+        "mp256_ratio_e-55": 12,
+        "mp256_ratio_e-56": 9,
+        "mp256_ratio_e-57": 11,
+        "mp256_ratio_e-59": 7,
+        "mp256_ratio_e-60": 4,
+        "mp256_ratio_e-67": 1,
+        "dd_ratio_decade_-36_binary128_fail": 8,
+        "dd_ratio_decade_-38_binary128_fail": 3,
+        "dd_vs_binary128_scaled_decade_-31": 5,
+        "dd_vs_binary128_scaled_decade_-41": 3,
+        "mp256_accepted_relative_e-45": 4,
+        "mp256_accepted_relative_e-46": 8,
+        "mp256_accepted_relative_e-50": 8,
+        "mp256_accepted_relative_e-85": 1,
+        "mp256_escalated_relative_e-29": 2,
+        "mp256_escalated_relative_e-42": 1,
+        "mp256_ratio_e-54": 4,
+        "mp256_ratio_e-58": 8,
+        "mp256_ratio_e-69": 1,
+        "mp256_ratio_e-71": 1,
+        "mp256_ratio_e-72": 1,
+        "dd_ratio_decade_-40_binary128_fail": 1,
+        "dd_ratio_decade_-46_binary128_fail": 1,
+        "dd_ratio_decade_-52_binary128_fail": 1,
+        "dd_vs_binary128_scaled_decade_-39": 2,
+        "dd_vs_binary128_scaled_decade_-40": 1,
+        "dd_vs_binary128_scaled_decade_-46": 3,
+        "dd_vs_binary128_scaled_decade_-51": 2,
+        "dd_vs_binary128_scaled_decade_-53": 1,
+        "dd_vs_binary128_scaled_decade_-54": 1,
+        "mp256_accepted_relative_e-84": 1,
+        "mp256_accepted_scaled_e-117": 11,
+        "dd_ratio_decade_-37_binary128_fail": 3,
+        "dd_ratio_decade_-41_binary128_fail": 2,
+        "mp256_accepted_relative_e-40": 1,
+        "mp256_accepted_relative_e-42": 2,
+        "mp256_accepted_relative_e-47": 4,
+        "mp256_accepted_scaled_e-118": 1,
+        "mp256_escalated_relative_e-36": 1,
+        "mp256_escalated_relative_e-37": 1,
+        "mp256_escalated_relative_e-38": 1,
+        "mp256_escalated_relative_e-39": 1,
+        "mp256_escalated_relative_e-40": 1,
+        "mp256_escalated_relative_e-48": 2,
+        "mp256_ratio_e-61": 3,
+        "mp256_ratio_e-62": 2,
+        "mp256_ratio_e-64": 1,
+        "mp256_ratio_e-65": 1,
+        "mp256_ratio_e-66": 2,
+        "mp256_ratio_e-68": 2,
+        "mp256_ratio_e-70": 1,
+        "mp256_ratio_e-79": 1
+      }
+    },
+    "verdict": {
+      "passed": true,
+      "violations": 0,
+      "failed_profile_checks": {},
+      "why": []
+    },
+    "coverage": {
+      "complete": true,
+      "why": [],
+      "scale": 1.0,
+      "sample": {
+        "7": {
+          "heaviest": 50,
+          "random": 150,
+          "points": 256
+        },
+        "8": {
+          "heaviest": 100,
+          "random": 300,
+          "points": 64
+        }
+      },
+      "need": {
+        "binary128_accepted": 10000,
+        "mp_promoted": 1000
+      },
+      "sectors": {
+        "free": {
+          "doublings": 0,
+          "binary128_accepted": 29284,
+          "mp_promoted": 3541,
+          "need_met": true,
+          "by_L": {
+            "7": {
+              "graphs": 200,
+              "points_per_graph": 256,
+              "points_baseline": 51200,
+              "points_profile": 51200
+            },
+            "8": {
+              "graphs": 400,
+              "points_per_graph": 64,
+              "points_baseline": 25600,
+              "points_profile": 25600
+            }
+          }
+        },
+        "power": {
+          "doublings": 0,
+          "binary128_accepted": 50625,
+          "mp_promoted": 12568,
+          "need_met": true,
+          "by_L": {
+            "7": {
+              "graphs": 200,
+              "points_per_graph": 256,
+              "points_baseline": 51200,
+              "points_profile": 51200
+            },
+            "8": {
+              "graphs": 400,
+              "points_per_graph": 64,
+              "points_baseline": 25600,
+              "points_profile": 25600
+            }
+          }
+        }
+      },
+      "profile_checked": true
+    },
+    "wall_seconds": 19.7
+  },
+  "F3_tiers": {
+    "profile": {
+      "long_double": {
+        "points": 57582,
+        "fraction": 0.3748828125,
+        "max_relative_error": "5.06e-10",
+        "violations": 0
+      },
+      "double_double": {
+        "points": 70620,
+        "fraction": 0.459765625,
+        "max_relative_error": "5.18e-12",
+        "violations": 0
+      },
+      "binary128": {
+        "points": 9289,
+        "fraction": 0.06047526041666667,
+        "max_relative_error": "1.43e-11",
+        "violations": 0
+      },
+      "mp256": {
+        "points": 16097,
+        "fraction": 0.10479817708333333,
+        "max_relative_error": "1.02e-19",
+        "violations": 0
+      },
+      "mp350": {
+        "points": 12,
+        "fraction": 7.8125e-05,
+        "max_relative_error": "4.61e-20",
+        "violations": 0
+      }
+    },
+    "exact": {
+      "long_double": 57582,
+      "double_double": 0,
+      "binary128": 79909,
+      "mp256": 0,
+      "mp350": 16109
+    },
+    "transitions": {
+      "long_double->long_double": 57582,
+      "binary128->double_double": 70620,
+      "binary128->binary128": 9289,
+      "mp350->mp256": 16097,
+      "mp350->mp350": 12
+    }
+  },
+  "F2": {
+    "replicates": 4,
+    "points": 256,
+    "loops": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "graphs": {
+      "a_free_L3": 5,
+      "a_free_L4": 16,
+      "a_free_L5": 76,
+      "a_free_L6": 395,
+      "a_free_L7": 2441,
+      "a_free_L8": 16064,
+      "a_power_L3": 1,
+      "a_power_L4": 3,
+      "a_power_L5": 20,
+      "a_power_L6": 107,
+      "a_power_L7": 709,
+      "a_power_L8": 4336,
+      "b_free_L3": 5,
+      "b_free_L4": 16,
+      "b_free_L5": 76,
+      "b_free_L6": 395,
+      "b_free_L7": 2441,
+      "b_free_L8": 16064,
+      "b_power_L3": 1,
+      "b_power_L4": 3,
+      "b_power_L5": 20,
+      "b_power_L6": 107,
+      "b_power_L7": 709,
+      "b_power_L8": 4336
+    },
+    "gates": {
+      "free_L7": {
+        "dC8": 0.0,
+        "se": 0.0,
+        "bound": 0.0,
+        "passed": true,
+        "resolved": true
+      },
+      "free_L8": {
+        "dC8": 0.0,
+        "se": 0.0,
+        "bound": 0.0,
+        "passed": true,
+        "resolved": true
+      },
+      "power_L7": {
+        "dC8": 8.687236695628274e-17,
+        "se": 8.651624998896053e-17,
+        "bound": 3.464211169231643e-16,
+        "passed": true,
+        "resolved": true
+      },
+      "power_L8": {
+        "dC8": 4.5081738021955216e-17,
+        "se": 4.51558553108429e-17,
+        "bound": 1.805493039544839e-16,
+        "passed": true,
+        "resolved": true
+      },
+      "total": {
+        "dC8": 1.3129279229249093e-16,
+        "se": 9.773883363567203e-17,
+        "bound": 4.24509293199507e-16,
+        "passed": true,
+        "resolved": true
+      }
+    },
+    "total": {
+      "dC8": 1.3129279229249093e-16,
+      "se": 9.773883363567203e-17,
+      "bound": 4.24509293199507e-16,
+      "passed": true,
+      "resolved": true
+    },
+    "nonlinear": {
+      "C8_exact_means": 48271.70826194833,
+      "C8_profile_means": 48271.70826194833,
+      "dC8": 1.3129279229249063e-16,
+      "note": "the vendored coefficients at the two loop means in exact (Fraction) arithmetic: a cross-check of the linear map (partial sums when graphs or loops are subsets)"
+    },
+    "per_task": {
+      "normalized": {
+        "p50": 0.0,
+        "p90": 0.0,
+        "p99": 0.0,
+        "p999": 2.0140906111759582e-19,
+        "max": 5.5799972582428456e-14,
+        "n": 193384.0,
+        "zero": 192545.0
+      },
+      "relative": {
+        "p50": 0.0,
+        "p90": 0.0,
+        "p99": 0.0,
+        "p999": 5.488823141760716e-19,
+        "max": 5.5799972582428456e-14,
+        "n": 193384.0,
+        "zero": 192545.0
+      },
+      "hist_normalized": {
+        "zero": 192545,
+        "-19": 289,
+        "-20": 334,
+        "-18": 61,
+        "-17": 17,
+        "-21": 89,
+        "-16": 2,
+        "-22": 40,
+        "-23": 5,
+        "-15": 1,
+        "-14": 1
+      },
+      "hist_relative": {
+        "zero": 192545,
+        "-19": 431,
+        "-20": 263,
+        "-18": 104,
+        "-17": 31,
+        "-16": 8,
+        "-15": 1,
+        "-14": 1
+      },
+      "max_normalized": "5.579997258242845471237876047E-14",
+      "over_bound": 0,
+      "bound": "1E-9",
+      "by_group": {
+        "a_free_L3": {
+          "max_normalized": "0",
+          "zero": 20,
+          "tasks": 20
+        },
+        "a_free_L4": {
+          "max_normalized": "0",
+          "zero": 64,
+          "tasks": 64
+        },
+        "a_free_L5": {
+          "max_normalized": "0",
+          "zero": 304,
+          "tasks": 304
+        },
+        "a_free_L6": {
+          "max_normalized": "0",
+          "zero": 1580,
+          "tasks": 1580
+        },
+        "a_free_L7": {
+          "max_normalized": "0",
+          "zero": 9764,
+          "tasks": 9764
+        },
+        "a_free_L8": {
+          "max_normalized": "0",
+          "zero": 64256,
+          "tasks": 64256
+        },
+        "a_power_L3": {
+          "max_normalized": "0",
+          "zero": 4,
+          "tasks": 4
+        },
+        "a_power_L4": {
+          "max_normalized": "0",
+          "zero": 12,
+          "tasks": 12
+        },
+        "a_power_L5": {
+          "max_normalized": "0",
+          "zero": 80,
+          "tasks": 80
+        },
+        "a_power_L6": {
+          "max_normalized": "1.358029139422197887178234206E-19",
+          "zero": 425,
+          "tasks": 428
+        },
+        "a_power_L7": {
+          "max_normalized": "5.579997258242845471237876047E-14",
+          "zero": 2782,
+          "tasks": 2836
+        },
+        "a_power_L8": {
+          "max_normalized": "1.55474E-16",
+          "zero": 16902,
+          "tasks": 17344
+        },
+        "b_free_L3": {
+          "max_normalized": "0",
+          "zero": 20,
+          "tasks": 20
+        },
+        "b_free_L4": {
+          "max_normalized": "0",
+          "zero": 64,
+          "tasks": 64
+        },
+        "b_free_L5": {
+          "max_normalized": "0",
+          "zero": 304,
+          "tasks": 304
+        },
+        "b_free_L6": {
+          "max_normalized": "0",
+          "zero": 1580,
+          "tasks": 1580
+        },
+        "b_free_L7": {
+          "max_normalized": "0",
+          "zero": 9764,
+          "tasks": 9764
+        },
+        "b_free_L8": {
+          "max_normalized": "0",
+          "zero": 64256,
+          "tasks": 64256
+        },
+        "b_power_L3": {
+          "max_normalized": "0",
+          "zero": 4,
+          "tasks": 4
+        },
+        "b_power_L4": {
+          "max_normalized": "0",
+          "zero": 12,
+          "tasks": 12
+        },
+        "b_power_L5": {
+          "max_normalized": "2.207235776681612942241271674E-18",
+          "zero": 79,
+          "tasks": 80
+        },
+        "b_power_L6": {
+          "max_normalized": "1.129006206209113424393966376E-18",
+          "zero": 427,
+          "tasks": 428
+        },
+        "b_power_L7": {
+          "max_normalized": "1.187015563479062152758197323E-17",
+          "zero": 2802,
+          "tasks": 2836
+        },
+        "b_power_L8": {
+          "max_normalized": "5.375851512394608004050538461E-15",
+          "zero": 17040,
+          "tasks": 17344
+        }
+      },
+      "passed": true
+    },
+    "projection": {
+      "points_per_graph_mini": 1024,
+      "rule": "|dC8| + 3 SE_d sqrt(n_mini/n_prod): the mean difference kept as a bias, the SE scaled",
+      "by_points": {
+        "32768": {
+          "free_L7": {
+            "projected": 0.0,
+            "within": true
+          },
+          "free_L8": {
+            "projected": 0.0,
+            "within": true
+          },
+          "power_L7": {
+            "projected": 1.3275453724380116e-16,
+            "within": true
+          },
+          "power_L8": {
+            "projected": 6.90292466473869e-17,
+            "within": true
+          },
+          "total": {
+            "projected": 1.8312663632927657e-16,
+            "within": true
+          }
+        },
+        "262144": {
+          "free_L7": {
+            "projected": 0.0,
+            "within": true
+          },
+          "free_L8": {
+            "projected": 0.0,
+            "within": true
+          },
+          "power_L7": {
+            "projected": 1.0309416382921283e-16,
+            "within": true
+          },
+          "power_L8": {
+            "projected": 5.354846089273826e-17,
+            "within": true
+          },
+          "total": {
+            "projected": 1.4961882359917943e-16,
+            "within": true
+          }
+        },
+        "2097152": {
+          "free_L7": {
+            "projected": 0.0,
+            "within": true
+          },
+          "free_L8": {
+            "projected": 0.0,
+            "within": true
+          },
+          "power_L7": {
+            "projected": 9.260763824222253e-17,
+            "within": true
+          },
+          "power_L8": {
+            "projected": 4.807517660013418e-17,
+            "within": true
+          },
+          "total": {
+            "projected": 1.3777202279708913e-16,
+            "within": true
+          }
+        }
+      }
+    },
+    "doublings": 0,
+    "lanes": {
+      "shape": "8x8",
+      "numa_aligned": true,
+      "pinned": true
+    },
+    "wall_seconds": 513.4,
+    "passed": true
+  },
+  "F3_counters": {
+    "a_free_L3": {
+      "points": 5120,
+      "quad_exact": 0.0,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.006737311952747405,
+      "task_seconds_profile": 0.006063795008230954,
+      "speed_ratio_exact_over_profile": 1.1110718524623973
+    },
+    "a_free_L4": {
+      "points": 16384,
+      "quad_exact": 0.0,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.028401408955687657,
+      "task_seconds_profile": 0.09243089106166735,
+      "speed_ratio_exact_over_profile": 0.30727182903320727
+    },
+    "a_free_L5": {
+      "points": 77824,
+      "quad_exact": 0.0009380139802631579,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0009380139802631579,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.29708927497267723,
+      "task_seconds_profile": 0.2977622433390934,
+      "speed_ratio_exact_over_profile": 0.9977399137013829
+    },
+    "a_free_L6": {
+      "points": 404480,
+      "quad_exact": 0.0033326740506329114,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0033326740506329114,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 3.209216596034821,
+      "task_seconds_profile": 3.240586901840288,
+      "speed_ratio_exact_over_profile": 0.9903195603896158
+    },
+    "a_free_L7": {
+      "points": 2499584,
+      "quad_exact": 0.3698455422982384,
+      "mp_exact": 0.034643764722449816,
+      "quad_profile": 0.3698455422982384,
+      "mp_profile": 0.034643764722449816,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 303.1123524676077,
+      "task_seconds_profile": 110.10437936810195,
+      "speed_ratio_exact_over_profile": 2.7529545528270023
+    },
+    "a_free_L8": {
+      "points": 16449536,
+      "quad_exact": 0.4406854393947647,
+      "mp_exact": 0.06607858118308017,
+      "quad_profile": 0.4406854393947647,
+      "mp_profile": 0.06607858118308017,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 8183.568143631477,
+      "task_seconds_profile": 3006.776249678078,
+      "speed_ratio_exact_over_profile": 2.7217083893447858
+    },
+    "a_power_L3": {
+      "points": 1024,
+      "quad_exact": 0.0146484375,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0146484375,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.001619258982827887,
+      "task_seconds_profile": 0.001278676965739578,
+      "speed_ratio_exact_over_profile": 1.2663550108539874
+    },
+    "a_power_L4": {
+      "points": 3072,
+      "quad_exact": 0.12760416666666666,
+      "mp_exact": 0.0006510416666666666,
+      "quad_profile": 0.12760416666666666,
+      "mp_profile": 0.0006510416666666666,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.011152365943416953,
+      "task_seconds_profile": 0.0060801979561802,
+      "speed_ratio_exact_over_profile": 1.8342109950682053
+    },
+    "a_power_L5": {
+      "points": 20480,
+      "quad_exact": 0.398583984375,
+      "mp_exact": 0.0103515625,
+      "quad_profile": 0.398583984375,
+      "mp_profile": 0.0103515625,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.23701404902385548,
+      "task_seconds_profile": 0.15862685811589472,
+      "speed_ratio_exact_over_profile": 1.4941608996043414
+    },
+    "a_power_L6": {
+      "points": 109568,
+      "quad_exact": 0.616840683411215,
+      "mp_exact": 0.04502226927570094,
+      "quad_profile": 0.616840683411215,
+      "mp_profile": 0.04502226927570094,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 5.228097972751129,
+      "task_seconds_profile": 1.6703733805916272,
+      "speed_ratio_exact_over_profile": 3.129897802190428
+    },
+    "a_power_L7": {
+      "points": 726016,
+      "quad_exact": 0.7843890492771509,
+      "mp_exact": 0.130174817083921,
+      "quad_profile": 0.7843890492771509,
+      "mp_profile": 0.130174817083921,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 136.55645054392517,
+      "task_seconds_profile": 40.26224792539142,
+      "speed_ratio_exact_over_profile": 3.3916747717855498
+    },
+    "a_power_L8": {
+      "points": 4440064,
+      "quad_exact": 0.8723554435251384,
+      "mp_exact": 0.2513506562067574,
+      "quad_profile": 0.8723554435251384,
+      "mp_profile": 0.2513506562067574,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 3169.0925529025844,
+      "task_seconds_profile": 1060.0735366322333,
+      "speed_ratio_exact_over_profile": 2.989502561275637
+    },
+    "b_free_L3": {
+      "points": 5120,
+      "quad_exact": 0.0,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.008373097982257605,
+      "task_seconds_profile": 0.006411179056158289,
+      "speed_ratio_exact_over_profile": 1.306015306843565
+    },
+    "b_free_L4": {
+      "points": 16384,
+      "quad_exact": 0.0,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.029741399077465758,
+      "task_seconds_profile": 0.02836864101118408,
+      "speed_ratio_exact_over_profile": 1.0483899833531145
+    },
+    "b_free_L5": {
+      "points": 77824,
+      "quad_exact": 0.00029553865131578947,
+      "mp_exact": 0.0,
+      "quad_profile": 0.00029553865131578947,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.2927622838760726,
+      "task_seconds_profile": 0.2361099619884044,
+      "speed_ratio_exact_over_profile": 1.239940413401322
+    },
+    "b_free_L6": {
+      "points": 404480,
+      "quad_exact": 0.0016144185126582278,
+      "mp_exact": 0.0,
+      "quad_profile": 0.0016144185126582278,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 3.0072066230059136,
+      "task_seconds_profile": 3.239162056008354,
+      "speed_ratio_exact_over_profile": 0.9283902969373873
+    },
+    "b_free_L7": {
+      "points": 2499584,
+      "quad_exact": 0.3247596400040967,
+      "mp_exact": 0.021462371338590743,
+      "quad_profile": 0.3247596400040967,
+      "mp_profile": 0.021462371338590743,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 250.92819816316478,
+      "task_seconds_profile": 94.50945804829826,
+      "speed_ratio_exact_over_profile": 2.6550591162519424
+    },
+    "b_free_L8": {
+      "points": 16449536,
+      "quad_exact": 0.3984834587431524,
+      "mp_exact": 0.04437985363234562,
+      "quad_profile": 0.3984834587431524,
+      "mp_profile": 0.04437985363234562,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 6951.47913168394,
+      "task_seconds_profile": 2538.699511889892,
+      "speed_ratio_exact_over_profile": 2.738204777338547
+    },
+    "b_power_L3": {
+      "points": 1024,
+      "quad_exact": 0.005859375,
+      "mp_exact": 0.0,
+      "quad_profile": 0.005859375,
+      "mp_profile": 0.0,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.0013873529678676277,
+      "task_seconds_profile": 0.0012930829834658653,
+      "speed_ratio_exact_over_profile": 1.072903275046656
+    },
+    "b_power_L4": {
+      "points": 3072,
+      "quad_exact": 0.08463541666666667,
+      "mp_exact": 0.0003255208333333333,
+      "quad_profile": 0.08463541666666667,
+      "mp_profile": 0.0003255208333333333,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.008266401011496782,
+      "task_seconds_profile": 0.0062459280306939036,
+      "speed_ratio_exact_over_profile": 1.3234864332207827
+    },
+    "b_power_L5": {
+      "points": 20480,
+      "quad_exact": 0.324755859375,
+      "mp_exact": 0.0041015625,
+      "quad_profile": 0.324755859375,
+      "mp_profile": 0.0041015625,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 0.22590770074748434,
+      "task_seconds_profile": 0.07868976896861568,
+      "speed_ratio_exact_over_profile": 2.8708649638758565
+    },
+    "b_power_L6": {
+      "points": 109568,
+      "quad_exact": 0.5448306074766355,
+      "mp_exact": 0.024258907710280372,
+      "quad_profile": 0.5448306074766355,
+      "mp_profile": 0.024258907710280372,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 3.995442925050156,
+      "task_seconds_profile": 1.2999091630917974,
+      "speed_ratio_exact_over_profile": 3.073632403318942
+    },
+    "b_power_L7": {
+      "points": 726016,
+      "quad_exact": 0.7313075744887165,
+      "mp_exact": 0.08343204557475317,
+      "quad_profile": 0.7313075744887165,
+      "mp_profile": 0.08343204557475317,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 108.1143764667504,
+      "task_seconds_profile": 32.84678394199,
+      "speed_ratio_exact_over_profile": 3.2914752524231563
+    },
+    "b_power_L8": {
+      "points": 4440064,
+      "quad_exact": 0.8357676826279982,
+      "mp_exact": 0.18017352903021217,
+      "quad_profile": 0.8357676826279982,
+      "mp_profile": 0.18017352903021217,
+      "quad_change": 0.0,
+      "mp_change": 0.0,
+      "task_seconds_exact": 2623.913520118367,
+      "task_seconds_profile": 871.0262522962003,
+      "speed_ratio_exact_over_profile": 3.0124390776985237
+    }
+  },
+  "F4": {
+    "loop": 8,
+    "sample": {
+      "free": 1600,
+      "power": 400
+    },
+    "replicates": 2,
+    "points": 512,
+    "shape": "8x8",
+    "numa_aligned": true,
+    "pinned": true,
+    "repeats": 3,
+    "medians": {
+      "exact": {
+        "total": 1335.5974463915918,
+        "free": 953.8898700636346,
+        "power": 381.04424587171525
+      },
+      "profile": {
+        "total": 530.5586741114967,
+        "free": 385.1012552236207,
+        "power": 145.45741888787597
+      }
+    },
+    "speedup_exact_over_profile": {
+      "total": 2.5173416467617993,
+      "free": 2.4769845777566464,
+      "power": 2.6196274400100448
+    },
+    "rows_repeatable": true,
+    "rows_identical_between_binaries": false,
+    "metric": "lane-thread seconds: threads x the sum of the native blocks' wall times (start-up, load, integration, output), median of the repeats",
+    "passed": true
+  },
+  "F5": {
+    "executable": "/mnt/beegfs/zzheng1/c8d2/pkg/997639178c1f/bin/c8d2_gmp_dd+mp256",
+    "sha256": "a46f3060a27f4d5e3af19023fc5bb67a7ca2dc6c4242e671ef4bdb9427254c8c",
+    "threads": [
+      1,
+      8,
+      16,
+      64
+    ],
+    "lanes": "8x8",
+    "team_sizes_verified": true,
+    "teams": {
+      "free": {
+        "threads_1": 1,
+        "threads_8": 8,
+        "threads_16": 16,
+        "threads_64": 64,
+        "lanes_8x8": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "power": {
+        "threads_1": 1,
+        "threads_8": 8,
+        "threads_16": 16,
+        "threads_64": 64,
+        "lanes_8x8": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      }
+    },
+    "omp_environment": "sanitized (no OMP_*, GOMP_*, KMP_*; OMP_DYNAMIC=false)",
+    "passed": true,
+    "wall_seconds": 13.1
+  },
+  "verdicts": {
+    "F1": true,
+    "F2": true,
+    "F4_rows": true,
+    "F5": true
+  },
+  "status": "passed",
+  "wall_seconds": 841.4,
+  "environment": {
+    "host": "cn097",
+    "platform": "Linux-5.15.0-1094-nvidia-x86_64-with-glibc2.35",
+    "cpu_model": "AMD EPYC 7543 32-Core Processor",
+    "glibc": "glibc 2.35",
+    "python": "3.11.3",
+    "cpu_count": 64,
+    "executables": {
+      "c8d2_decimal": {
+        "sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "decimal300",
+          "mp_digits10": 300,
+          "mp_max_digits10": 328,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_decimal",
+          "backend": "decimal",
+          "executable_sha256": "a18ce425fbb81a0182e15f675a984c36ef9505ce8d90ffb2629590f08112f2bc",
+          "command": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-o",
+            "bin/c8d2_decimal"
+          ],
+          "compiler_options": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math"
+          ],
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "CXX": "g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "parameter_overrides": [],
+          "macro_overrides": [],
+          "development": false,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "11.4.0",
+            "long_double_bits": 64,
+            "mp_backend": "decimal300",
+            "mp_digits10": 300,
+            "mp_max_digits10": 328,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": null,
+          "gmp_header": null,
+          "gmp_library": null,
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": null
+          },
+          "host": "cn094",
+          "created_utc": "2026-10-06T10:28:04Z"
+        }
+      },
+      "c8d2_gmp": {
+        "sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+        "describe": {
+          "schema": "c8-d2-build-1",
+          "dimension": 2,
+          "orders": [
+            7,
+            8
+          ],
+          "lmax": 8,
+          "kmax": 6,
+          "emax": 16,
+          "dimmax": 31,
+          "numerics": "exact",
+          "diagnostic": false,
+          "tail_top": 16,
+          "compiler": "11.4.0",
+          "long_double_bits": 64,
+          "mp_backend": "gmp350",
+          "mp_digits10": 350,
+          "mp_max_digits10": 372,
+          "openmp": 201511
+        },
+        "build_record": {
+          "schema": "c8-d2-build-record-1",
+          "executable": "c8d2_gmp",
+          "backend": "gmp",
+          "executable_sha256": "7741f733fb888fd40f4bce733e41c44c76a73640d350a725ffa85be928c5ef41",
+          "command": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP",
+            "src/c8d2_integrate.cpp",
+            "-lquadmath",
+            "-lgmp",
+            "-o",
+            "bin/c8d2_gmp"
+          ],
+          "compiler_options": [
+            "g++",
+            "-O3",
+            "-std=c++17",
+            "-fopenmp",
+            "-ffp-contract=off",
+            "-fno-fast-math",
+            "-DC8_USE_GMP"
+          ],
+          "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+          "compiler_macro_version": "11.4.0",
+          "CXX": "g++",
+          "CPPFLAGS": "",
+          "OPTFLAGS": "-O3",
+          "CXXFLAGS": "",
+          "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+          "LDFLAGS": "",
+          "LDLIBS": "",
+          "NUMERICS": "exact",
+          "numerics_sources": null,
+          "parameter_overrides": [],
+          "macro_overrides": [],
+          "development": false,
+          "GMP_PREFIX": "",
+          "diagnostic": null,
+          "describe": {
+            "schema": "c8-d2-build-1",
+            "dimension": 2,
+            "orders": [
+              7,
+              8
+            ],
+            "lmax": 8,
+            "kmax": 6,
+            "emax": 16,
+            "dimmax": 31,
+            "numerics": "exact",
+            "diagnostic": false,
+            "tail_top": 16,
+            "compiler": "11.4.0",
+            "long_double_bits": 64,
+            "mp_backend": "gmp350",
+            "mp_digits10": 350,
+            "mp_max_digits10": 372,
+            "openmp": 201511
+          },
+          "required_flags_present": true,
+          "macros": {
+            "_OPENMP": "201511",
+            "__FAST_MATH__": null,
+            "__FINITE_MATH_ONLY__": "0",
+            "__OPTIMIZE__": "1"
+          },
+          "BOOST_LIB_VERSION": "1_77",
+          "BOOST_VERSION": "107700",
+          "gmp_version": "6.2.1",
+          "gmp_header": {
+            "cc": "x86_64-linux-gnu-gcc",
+            "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+          },
+          "gmp_library": {
+            "soname": "libgmp.so.10",
+            "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+            "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+            "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+            "fat": false,
+            "rpath": null,
+            "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+            "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+          },
+          "optimized": true,
+          "preprocessor_probe": {
+            "flags": true,
+            "boost": true,
+            "gmp": true
+          },
+          "host": "cn094",
+          "created_utc": "2026-10-06T10:28:02Z"
+        }
+      }
+    },
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  }
+}

@@ -1,0 +1,38 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-1 injected failing gate (gen/run_l8.sh)",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "an injected failing gate stops the pipeline before publication",
+   "passed": true,
+   "detail": "[2026-10-06T02:26:31-0400] step build: start\n[2026-10-06T02:26:31-0400] step build: exit 0\n[2026-10-06T02:26:31-0400] step gates: start\ngate k_forests: FAIL (injected)\n"
+  },
+  {
+   "check": "a gates.py run that exits nonzero stops the pipeline before publication",
+   "passed": true,
+   "detail": "[2026-10-06T02:26:31-0400] step build: start\n[2026-10-06T02:26:31-0400] step build: exit 0\n[2026-10-06T02:26:31-0400] step gates: start\nunknown gate 'no_such_gate': one of ('a_zero_dim', 'b_metadata', 'c_zeros', 'd_primitives', 'e_counts', 'f_coverage', 'g_edge_forests', 'h_kirchhoff', 'i_sizes', 'j_rates', 'k_forests')\n"
+  },
+  {
+   "check": "control: a passing gate step reaches publication",
+   "passed": true,
+   "detail": "[2026-10-06T02:26:31-0400] step build: start\n[2026-10-06T02:26:31-0400] step build: exit 0\n[2026-10-06T02:26:31-0400] step gates: start\n[2026-10-06T02:26:31-0400] step gates: exit 0\n[2026-10-06T02:26:31-0400] step publish: start\n[2026-10-06T02:26:31-0400] step publish: exit 0\n[2026-10-06T02:26:31-0400] published /tmp/c8d2_run_l8_4js9hq8u/control_inventory8_d2\n"
+  },
+  {
+   "check": "a failing build stops the pipeline before the gates",
+   "passed": true,
+   "detail": "[2026-10-06T02:26:31-0400] step build: start\n"
+  },
+  {
+   "check": "an inherited OMP_THREAD_LIMIT, OMP_DYNAMIC=true, GOMP_* or KMP_* never reaches a pipeline step",
+   "passed": true,
+   "detail": "['OMP_DYNAMIC=FALSE'] [2026-10-06T02:26:31-0400] step build: start\n[2026-10-06T02:26:31-0400] step build: exit 0\n[2026-10-06T02:26:31-0400] step gates: start\n[2026-10-06T02:26:31-0400] step gates: exit 0\n[2026-10-06T02:26:31-0400] step publish: start\n[2026-10-06T02:26:31-0400] step publish: exit 0\n[2026-10-06T02:26:31-0400] published /tmp/c8d2_run_l8_4js9hq8u/ompenv_inventory8_d2\n"
+  },
+  {
+   "check": "an existing target is refused before any step",
+   "passed": true,
+   "detail": "refusing: /tmp/c8d2_run_l8_4js9hq8u/exists_inventory8_d2 exists (published trees are frozen)\n"
+  }
+ ]
+}

@@ -1,0 +1,137 @@
+# replay_p2.py output on the exported tree: symmetry, Intel Xeon Gold 6148 (job 576516), Python 3.12.9, numpy 2.3.5, scipy 1.17.1, sympy 1.14.0, mpmath 1.3.0; 2026-10-16. On 2026-10-19 four expected-value labels were retargeted from the paper to the HT_Pert note (paper text final at a6772872); no value, tolerance or verdict changed
+PASS  p2.snapshot           602 files listed, 0 differ, 0 missing, 12 scrubbed (exist)
+                            expected: every snapshot file present and byte-identical (scrubbed files: present)  [sha256]
+PASS  p2.impl_agree         25 (scheme, L) pairs; worst scaled difference 3.861e-13
+                            expected: 25 pairs; 3.86e-13 (quoted 4e-13)  [1 significant digit; value in [3.8, 3.9]e-13]
+PASS  p2.rs_lmax            L = 0..18 (10 values)
+                            expected: L = 0..18 (\NTwoRSLmax)  [exact]
+PASS  p2.cauchy_vs_rs       15 cases; worst 4.76e-46
+                            expected: 15 cases; 4.76e-46 (\NTwoCauchyAgree 5e-46)  [1 significant digit]
+PASS  p2.pkg_vs_cauchy      worst C difference 1.56e-14
+                            expected: 1.56e-14 (\NTwoPkgCauchy 1.6e-14)  [2 significant digits]
+PASS  p2.cauchy_lmax        L = [0, 2, 4, 6, 8]
+                            expected: L = 0..8 (\NTwoCauchyLmax)  [exact]
+PASS  p2.low_agree          max |diff| 3.91e-14 over 34 records
+                            expected: <= 4e-14 (\NTwoLowAgree)  [1 significant digit]
+PASS  p2.c2_digits          C2(inf) = 0.308065413582197915296547609536967364; agrees with 4 log2/9 to 50 digits
+                            expected: 0.30806541358 (\HTpCtwoTwo), 35 digits (\HTpCtwoTwoDigits)  [>= 35 digits at 50-digit working precision]
+PASS  p2.c2_closed_form     max |closed form - exact code| = 3.1e-14 (49 L values)
+                            expected: closed form = HT C2(L)  [<= 1e-13 (float64 sums of the exact code to L = 600)]
+PASS  p2.c3_limit           C3(inf) fits -0.8748500372, -0.8748500106, -0.8748500065
+                            expected: -0.8748500(1) (\HTpCthreeTwo)  [every fit within 1e-7 of -0.8748500]
+PASS  p2.c3_dev             |C3 - exact|/|exact| = 1.45e-08
+                            expected: 1e-8 (\HTpCthreeTwoDev)  [1 significant digit]
+PASS  p2.c3_lmax            exact C3(L) to L = 600
+                            expected: 600 (\NTwoCthreeLmax)  [exact]
+PASS  p2.c3_tail            ln L / L coefficient 0.707342 (Lmin 64); (9/2) 40/(81 pi) = 0.707355
+                            expected: 0.70734 (\NTwoCthreeTail)  [5 decimals]
+PASS  p2.c4_lfour           exact C4(L), every even L <= 2000
+                            expected: 2000 (\HTpTwoLfour)  [exact]
+PASS  p2.c4_kappa           kappa = 2.207292996459e-04 (analytic 2.20729299645267e-4)
+                            expected: 2.2073e-4 (\NTwoKappa)  [4 decimals of 1e4 kappa]
+PASS  p2.c4_log_consistent  beta_cons = -0.026563 +- 0.000042 (12 fits); -365/(4374 pi) = -0.026562
+                            expected: -0.027 (\HTnpDtwoCfourLog); -0.026563(42) (\NTwoCfourConsB)  [3 decimals (\HTnpDtwoCfourLog), 6 decimals (\NTwoCfourConsB)]
+PASS  p2.c4_log_zm          beta_zm = -0.010480 +- 0.000042; -8/(243 pi) = -0.010479
+                            expected: -0.010480(42) (\NTwoCfourZmB)  [6 decimals]
+PASS  p2.c4_log_raw         beta_raw = beta_cons - lambda = -0.026381; -725/(8748 pi) = -0.026380
+                            expected: -0.026381 (\NTwoCfourRawB)  [6 decimals]
+PASS  p2.c4_A_schemes       A_cons = 5.00257 +- 0.00046, A_zm = 5.02133 +- 0.00046, A_raw = 5.00212
+                            expected: 5.0026(5), 5.0213(5), 5.0021 (\NTwoCfourConsA, ZmA, RawA)  [4 decimals]
+PASS  p2.c4_blind           L = 1200..2000: log models miss by <= 8.28e-08; L = 2000: no-log models by >= 4.11e-07 (over L = 1200..2000 by >= 1.9e-09)
+                            expected: 8.3e-8 (\NTwoBlindLogMax, max over L = 1200..2000), 4.1e-7 (\NTwoBlindNoLogMin, at L = 2000)  [2 significant digits]
+PASS  p2.r2_slope           [r2(2000) - r2(1998)]/2 = 0.02357851; 2/(27 pi) = 0.02357851
+                            expected: 0.0235785 (\NTwoRtwoSlope; note: r_2 ~ 2L/(27 pi))  [7 decimals]
+PASS  p2.c4W_limit          C4^W(inf) = 5.04886823 +- 5.6e-07 (9 no-log fits); exact 5.0488684314
+                            expected: 5.0488682(10) (\HTpCfourTwo)  [7 decimals; half spread <= 1e-6]
+PASS  p2.c4W_spread         half spread 5.57e-07
+                            expected: 6e-7 (\NTwoCfourWFitSpread)  [1 significant digit]
+PASS  p2.c4_dev             |5.0488682 - exact|/exact = 4.58e-08
+                            expected: 5e-8 (\HTpCfourTwoDev)  [1 significant digit]
+PASS  p2.c4W_nolog          max |free ln L coefficient| = 3.48e-06 (3 towers x Lmin 200, 300)
+                            expected: 3.5e-6 (\NTwoCfourWLogMax)  [2 significant digits]
+PASS  p2.c4_zmoff           C4corr + off-diagonal: 5.03861389
+                            expected: 5.0386139 (\NTwoCfourZmOff)  [7 decimals]
+PASS  p2.c4_chi             dC4_chi(inf) = 0.0102543394, 0.0102543393, 0.0102543394
+                            expected: 0.0102543 (\NTwoCfourChi)  [7 decimals, Lmin 400/1000/2000]
+PASS  p2.c4W_table          max |C4W_by_L.csv - series| = 5.3e-15
+                            expected: C4W_by_L.csv = C4corr + off + dC4_chi  [<= 1e-13]
+PASS  p2.c4_agree           shipped c4_L2000.npz vs exact RS (L <= 18) and package (L <= 34): max rel 5.75e-14; recorded validation (c4_exact/validate_rs.txt, production pruning): 1.1e-13
+                            expected: 1.1e-13 (\NTwoCfourAgree)  [recomputed <= 1.1e-13; record = 1.1e-13]
+PASS  p2.low_dev            C2: 35 digits; C3 1.4e-08; C4 4.6e-08
+                            expected: all below 1e-7 (\HTpTwoLowDev)  [bound]
+PASS  p2.lprod              production records to L = 34 (raw, consistent)
+                            expected: 34 (\HTpTwoLprod)  [exact]
+PASS  p2.c5_lfive           exact raw C5(L), every even L <= 300
+                            expected: 300 (\HTpTwoLfive)  [exact]
+PASS  p2.c5_assembly        L <= 200 overlap with the production run: max rel diff (C5) 7.55e-13
+                            expected: 7.6e-13 (\NTwoOptAssembly)  [2 significant digits]
+PASS  p2.c5_agree           shipped c5_L300.npz raw C2..C5 vs package L <= 34: max rel 1.67e-13; recorded validation (results/eps5/validation_c5.txt, raw and consistent): 2.2e-13
+                            expected: 2.2e-13 (\NTwoCfiveAgree)  [recomputed <= 2.2e-13; record = 2.2e-13]
+PASS  p2.c5_limit           C5^Wcs(inf) = -38.83544 +- 0.01277 (15 no-log fits, k1 = 3); exact -38.8336459
+                            expected: -38.835(13) (\HTpCfiveTwo); median -38.83544, half range 0.01277  [3 decimals; median to 5e-6]
+PASS  p2.c5_dev             |median - exact|/|exact| = 4.63e-05
+                            expected: 5e-5 (\HTpCfiveTwoDev)  [1 significant digit]
+PASS  p2.c5_blind           fit <= 200 -> 202..300, k1 = 3: no ln L 4.33e-06, free ln L 9.40e-06 (k1 = 2: 4.2e-05 vs 7.1e-06)
+                            expected: 4.3e-6 (\NTwoBlindNoLog), 9.4e-6 (\NTwoBlindFreeLog)  [2 significant digits; k1 = 2 prefers a log]
+PASS  p2.c5_k1              k1 = 0..4: C4^W hold-out errors 6.1e-04, 9.7e-06, 1.1e-07, 5.2e-08, 6.5e-08; C5^Wcs errors 1.2e-02, 3.5e-04, 5.3e-06, 3.7e-07, 5.7e-07, limit - exact +0.810, +0.160, +0.015, -0.003, +0.012; 15 fits with k1 = 4: median -38.83342 (shift +0.0020 from k1 = 3), half range 0.0497 (k1 = 3: 0.0128); Table k1 towers: k1 = 3 -> 4 moves the limit by +0.0153
+                            expected: Table d2:tab:k1; k1 = 4 (15 fits): -38.8334, shift +0.002 (\NTwoCfiveKfourShift), half range 0.050 (\NTwoCfiveKfourHalf) vs 0.013; Table k1 shift +0.015 (\NTwoCfiveKfourTab)  [2 significant digits; 3-4 decimals]
+PASS  p2.c5_bdrift          free b median by Lmax 200/240/280/300: -0.01128, -0.00423, +0.00295, +0.00403
+                            expected: -0.011 (\NTwoBfreeTwoHundred), +0.004 (\NTwoBfreeThreeHundred); -0.00423, +0.00295 at 240, 280  [3 decimals; 5e-5]
+PASS  p2.c5_bspread         individual fits at Lmax 300: [-0.0500, +0.0655]
+                            expected: -0.05 .. +0.07 (\NTwoBfitMin, \NTwoBfitMax)  [2 decimals]
+PASS  p2.c5_logshift        limit shift for b = -0.01 / +0.01: +0.1005 / -0.1025
+                            expected: 0.1 (\HTpCfiveTwoLog); +0.100 / -0.102  [1 significant digit]
+PASS  p2.c5_wc              C5^Wc(inf) = -38.82967 +- 0.01277
+                            expected: -38.830(13) (\NTwoCfiveWc); -38.8297  [3 decimals; 5e-5]
+PASS  p2.c5_wcs_minus_wc    limit(Wcs) - limit(Wc) = -0.0058
+                            expected: about delta_inf S_inf = -0.0058  [1e-3]
+PASS  p2.c5_null            C4^W: free b median +0.00049; no-log limit 5.04868 +- 0.00082
+                            expected: +0.0005 (\NTwoBnull); 5.04868  [1 significant digit; 5 decimals]
+PASS  p2.c5_calibration     estimator on 7.7 C4^W + 2 ln^3L/L + beta ln L, Lmax 300: beta +0.00 -> -0.0036, beta -0.01 -> -0.0136, beta -0.03 -> -0.0336
+                            expected: -0.0036, -0.0136, -0.0336 (bias about -0.004)  [4 decimals]
+PASS  p2.c5_calibration15   15 fits: estimator reads -0.0038 on the synthetic series (b = 0); bias-corrected median b: +0.0078 (15 fits), +0.0090 (12 fits)
+                            expected: -0.0038 (bias about 0.004 in both sets, \NTwoBbias); +0.0078 (\NTwoBcorr), +0.0090  [4 decimals]
+PASS  p2.c5_bdrift_agent    12-fit median b at Lmax 200 / 300: -0.0134 / +0.0054
+                            expected: -0.0134 / +0.0054 (c5_fits300.txt)  [4 decimals]
+PASS  p2.c5_W_linear        linear coefficient of the W shift -0.002329; with raw C5's +0.0004(4) L (profile fit, L <= 160: residual_log/WINDOW_SPEC.md; HT_Pert note, App. B.3): -0.0019
+                            expected: -0.0019 (\NTwoCfiveWLin)  [6 decimals (shift); 4 decimals (sum)]
+PASS  p2.c5_opt_regress     65 per-task rows, worst 5.9e-16; stated worst over 1448 tasks 7.3e-16
+                            expected: 7.3e-16 (\NTwoOptRegress), requirement <= 1e-12  [record (cited check)]
+PASS  p2.delta_lmax         delta^(3)(L) to L = 16000
+                            expected: 16000 (\NTwoDeltaLmax)  [exact]
+PASS  p2.delta_rational     chain sums vs exact rationals, L = 2..16: max |diff| 4.1e-16; tagged-phi = Wcs inputs: True
+                            expected: 4e-16 (\NTwoDeltaRational)  [1 significant digit]
+PASS  p2.delta_min          minimum delta = -0.0159045899 at L = 34
+                            expected: -0.0159046 at L = 34 (\NTwoDeltaMin, \NTwoDeltaMinL)  [7 decimals]
+PASS  p2.delta_limit        free-limit fits (1, l/L, 1/L, l/L2, 1/L2; Lmin 200/400/1000/2000 to 16000, and 200..4000) minus (-4/(81 pi)): -3.0e-11, -2.6e-11, -2.7e-11, +3.3e-11, -5.9e-11
+                            expected: <= 7e-11 (\NTwoDeltaIdent); limit -4/(81 pi)  [bound]
+PASS  p2.delta_lnL          limit fixed: ln L/L -0.0058946, -0.0058948; 1/L +0.013856, +0.013858
+                            expected: -1/(54 pi) = -0.0058946; 1/L 0.01386  [5e-7; 5 decimals]
+PASS  p2.S_limit            S(inf) = 0.36718683, 0.36718701, 0.36718707; max |free ln L coefficient| 6.8e-07
+                            expected: 0.367187 (\NTwoSinf), no ln L  [6 decimals; |b| < 1e-6]
+PASS  p2.delta_S            delta_inf S_inf = -0.0057718
+                            expected: -0.005772 (\NTwoDeltaS)  [6 decimals]
+PASS  p2.shift_lmax         S(L) and the C5 window shifts to L = 1000
+                            expected: 1000 (\NTwoShiftLmax)  [exact]
+PASS  p2.ident2_W           W: L R_2(chi_11) = 0.01131, 0.01138, 0.01143 (L = 12, 14, 16); all five spacings decrease: True
+                            expected: R_2 ~ 0.0114/L (\NTwoRtwoWcoef): restored ([eps^2] v_n -> 0, note Sec. 4.6)  [4 decimals]
+PASS  p2.ident2_cons        consistent: R_2(chi_11, L = 16) = 0.02432
+                            expected: 0.0243 (\NTwoRtwoCons)  [4 decimals]
+PASS  p2.ident3_chi         removed fraction 1 - |R3^Wcs|/|R3^Wc|, chi_aa, a = 1..3, L = 14, 16: 0.9969, 0.9993, 0.9709, 0.9900, 0.9872, 0.9975
+                            expected: at least 95 % at L <= 16 (\HTpTwoIdentThree)  [>= 0.95]
+PASS  p2.ident3_wc          R3^Wc(chi_aa)/(a w_aa) at L = 16: 0.06259, 0.06242, 0.06337; 16/(81 pi) = 0.06288
+                            expected: 0.063 (\NTwoRthreeWcConst)  [mean to 3 decimals; each within 1e-3 of 16/(81 pi)]
+PASS  p2.ident3_L16         R3(chi_11, L = 16): Wcs -1.569e-04, Wc 0.01565
+                            expected: -1.6e-4 (\NTwoRthreeWcsSixteen), 0.0156 (\NTwoRthreeWcSixteen)  [2 significant digits; 4 decimals]
+PASS  p2.ident3_phi2        R3^Wcs, phi^2 descendants, L = 16: level 2 -0.0574, level 4 -0.0586
+                            expected: -0.057, -0.059 (not settled)  [3 decimals]
+PASS  p2.eps4_R4slope       dR_4(chi_11)/d ln L = 0.0280 (L = 8..16); Wc = Wcs: True
+                            expected: 0.028 (\NTwoRfourSlope)  [3 decimals]
+PASS  p2.c6_L16             C6(16): Wc 165.372, Wcs 165.388, Wcs4X 165.355, Wcs4Xall 165.355, A 165.361; C6(16) - C6(14) = 7.54 (Wcs)
+                            expected: 165.4 (165.35 to 165.39) (\NTwoCsixSixteen), 7.5 (\NTwoCsixStep); continuum 362.366  [range; 1 decimal]
+PASS  p2.c6_identity        S(L) from variant A and proxy Wcs4, L = 6..14, vs legw S(L): max diff 7.6e-15; delta3 S_1 = +0.00179, +0.00207, +0.00227, +0.00242, +0.00254; C6^A - C6^Wcs at L = 14, 16: -0.0256, -0.0268
+                            expected: identity holds; delta3 S_1 = +0.0018 .. +0.0025; -0.0256, -0.0268  [1e-12; 4 decimals]
+PASS  p2.eps4_chiwindow     invariances (C0..C5, r, g <= 4, E <= 4, R2, R3) exact at 7 L; R4(chi_11) = budget-free at 7 L; gap closed at L = 14: chi_22 0.950, chi_33 0.897
+                            expected: 95 % (\NTwoGapTwo), 90 % (\NTwoGapThree); invariances exact  [nearest per cent]
+
+67/67 PASS

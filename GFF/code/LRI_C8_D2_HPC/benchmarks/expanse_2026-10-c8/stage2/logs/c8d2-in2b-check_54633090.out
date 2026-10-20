@@ -1,0 +1,94 @@
+job 54633090 on <NODE> at 2026-10-03T15:18:21-07:00; package <SCRATCH>/temp_project/c8d2/pkg/7aac898add43; tree <SCRATCH>/temp_project/LRI_C8_shared/inventory/inventory8_d2; evidence <SCRATCH>/temp_project/c8d2/evidence/7aac898add43/in2b.54633090.0
+Model name:          AMD EPYC 7742 64-Core Processor
+b3f044da1169ef169916ce4cfc4ca91d6f6ab1ae00967f86843c2b10b233cc6d  <HOME>/c8d2/env_expanse.sh
+/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_inspect.cpp -lquadmath -o bin/c8d2_inspect
+4b21155bb180544638d9494f2d06c95abcf842e505f6222b794c17774ce005d7  bin/c8d2_inspect
+python3 -B tools/prepare_inputs.py --l8 --inventory "<SCRATCH>/temp_project/LRI_C8_shared/inventory/inventory8_d2"
+SKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack
+{
+ "schema": "c8-d2-hpc-inputs-1",
+ "counts": {
+  "free": {
+   "3": 5,
+   "4": 16,
+   "5": 76,
+   "6": 395,
+   "7": 2441,
+   "8": 16064
+  },
+  "power": {
+   "3": 1,
+   "4": 3,
+   "5": 20,
+   "6": 107,
+   "7": 709,
+   "8": 4336
+  }
+ },
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+inputs-l8 in 69 s
+PASS make_lowloop regenerates inputs/gamma_d2_8.txt byte for byte
+PASS make_lowloop regenerates inputs/two_loop.json byte for byte
+PASS make_lowloop regenerates inputs/verification/two_loop_extension8.json byte for byte
+PASS prepare_inputs.verify(): every listed file and every vendored pin
+PASS manifest: schema, dimension 2, order 8, the twelve packs and the counts of the plan
+PASS the L3..L6 packs are at C7(2)'s manifest sha256s
+PASS the manifest pins the vendored assembly from tools/VENDORED.json (A-IN-4, A-ASM-1(b))
+PASS inventory.json rows carry the inspector fields, products, addends and kernel_bytes positive (A-IN-3)
+SKIPPED C7(2)'s L7 members (no .git here; checked in the checkout)
+PASS packs/free_L3.pack regenerates byte for byte
+PASS packs/free_L4.pack regenerates byte for byte
+PASS packs/free_L5.pack regenerates byte for byte
+PASS packs/free_L6.pack regenerates byte for byte
+PASS packs/free_L7.pack regenerates byte for byte
+PASS packs/free_L8.pack regenerates byte for byte
+PASS packs/power_L3.pack regenerates byte for byte
+PASS packs/power_L4.pack regenerates byte for byte
+PASS packs/power_L5.pack regenerates byte for byte
+PASS packs/power_L6.pack regenerates byte for byte
+PASS packs/power_L7.pack regenerates byte for byte
+PASS packs/power_L8.pack regenerates byte for byte
+PASS the regenerated L7 packs hold 2,441 and 709 members, the L8 packs 16,064 and 4,336
+PASS inventory.json regenerates byte for byte (inspector fields included)
+PASS manifest.json regenerates byte for byte
+PASS tests/fixtures/inputs_mini regenerates byte for byte
+PASS tests/fixtures/inputs_mini verifies (its own L8 packs, the package's L3..L7 packs)
+PASS a one-byte change to a pack makes verify() fail
+check_inputs: 26/26 checks passed, 1 skipped
+PASS the HANDOFF copy is at the sha256 VENDORED.json records
+PASS VENDORED.json records an accepting review of this HANDOFF with a step-0 verdict-gate decision
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS every vendored file is a regular file at the sha256, md5 and size the HANDOFF records
+PASS VENDORED.json lists the HANDOFF deliverables with the HANDOFF pins
+PASS vendor/c8_assembly_fixtures holds exactly the VENDORED.json fixtures
+PASS every fixture is a regular file at its pin (reference copies at their checksum-list entries)
+PASS no symlink is tracked anywhere in the package
+PASS the vendored order8_assembly exports every used name with the signature VENDORED.json records
+PASS vendor/ rule: prepare_inputs build opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: prepare_inputs verify opens vendored files only through the hash helper and imports nothing from vendor/
+PASS A-ASM-1(b): inputs/manifest.json records the HANDOFF sha256 and every vendored pin, equal to VENDORED.json and the HANDOFF
+PASS A-ASM-1(b): prepare_inputs.verify() passes with the vendored pins
+PASS A-ASM-1(b): a one-byte change to a vendored file makes prepare_inputs.verify() fail (the untouched scratch export verifies)
+NOTE git pin of LRI_C7_D3_HPC/inputs/gamma_d3_7.txt not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/inputs/two_loop.json not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/tools/assemble.py not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE review record not checked here (--no-review-record): LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json
+NOTE none: the HANDOFF arrived before Stage 3, so no stand-in Jacobian module was written
+NOTE prepare_inputs build opened 0 vendored files (it reads the pins from tools/VENDORED.json)
+NOTE prepare_inputs verify opened 14 vendored files, each through common.digest
+NOTE vendor/ rule for `plan` and `run --index`: deferred to G3 (production.py does not plan order 8 before Stage 3); G3 re-runs this check (PLAN "On HANDOFF")
+check_vendored: 14/14 checks passed
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+FAIL vendored tests, LRI_ROOT=fixtures: counts equal the HANDOFF ({'passed': 30, 'skipped': 0, 'failed': 0, 'errors': 0}): ========================= short test summary info ============================\nERROR ::expanse::lustre::scratch - OSError: [Errno 77] File descriptor in bad...\n1 error in 3.91s\nERROR: found no collectors for <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly/tests/test_order8_assembly.py\n\n", "outside_reads": ["no audit record of an open under <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly: the open-audit hook did not run", "os.scandir  /expanse", "os.scandir  /expanse/lustre", "os.scandir  /expanse/lustre/scratch"]}
+FAIL vendored tests, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation: ["no audit record of an open under <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly: the open-audit hook did not run", "os.scandir  /expanse", "os.scandir  /expanse/lustre", "os.scandir  /expanse/lustre/scratch"]
+FAIL vendored tests, no LRI_ROOT: counts equal the HANDOFF ({'passed': 21, 'skipped': 9, 'failed': 0, 'errors': 0}): ========================= short test summary info ============================\nERROR ::expanse::lustre::scratch - OSError: [Errno 77] File descriptor in bad...\n1 error in 0.50s\nERROR: found no collectors for <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly/tests/test_order8_assembly.py\n\n", "outside_reads": ["no audit record of an open under <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly: the open-audit hook did not run", "os.scandir  /expanse", "os.scandir  /expanse/lustre", "os.scandir  /expanse/lustre/scratch"]}
+FAIL vendored tests, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation: ["no audit record of an open under <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/vendor/c8_assembly: the open-audit hook did not run", "os.scandir  /expanse", "os.scandir  /expanse/lustre", "os.scandir  /expanse/lustre/scratch"]
+PASS exact_check.py completes, LRI_ROOT=fixtures
+PASS exact_check.py, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation
+PASS exact_check.py completes, no LRI_ROOT
+PASS exact_check.py, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation
+PASS the export is unchanged by the runs (no __pycache__, .pytest_cache or other new or changed file)
+vendored_isolated: 6/10 checks passed
+vendored_isolated --in-place did not pass (informational at this stage: a G3/J-VAL-1 item); see the record
+J-IN-2b finished at 2026-10-03T15:22:42-07:00

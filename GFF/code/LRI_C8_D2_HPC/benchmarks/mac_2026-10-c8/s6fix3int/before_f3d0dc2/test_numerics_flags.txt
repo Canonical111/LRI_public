@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/test_numerics_flags.py", line 498, in test_coverage
+    try:Dz.check_gate(G/'numerics_flags.json','dd+mp256',inv);raise AssertionError('check_gate accepted the 570210 record')
+  File "<f3d0dc2-export>/tools/design.py", line 1168, in check_gate
+    if why:raise ValueError(f'--numerics-gate {path}: not a passed full-scale J-FLAG gate of the production build of {profile}: '+'; '.join(why))
+ValueError: --numerics-gate <f3d0dc2-export>/benchmarks/symmetry_2026-10-c8/stage5/close/clflag.570210.0/jflag_dd+mp256/numerics_flags.json: not a passed full-scale J-FLAG gate of the production build of dd+mp256: no F1 coverage record (F1.coverage: sectors, loops, graphs, points and promotion counts, X1); no build binding (build_binding c8-d2-build-binding-1: the executables reproduced from the source snapshot the F1 tools were compiled from, X2); F5 records no verified OpenMP team sizes (every run and lane observed at its requested team, X3)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/test_numerics_flags.py", line 810, in main
+    try:fn()
+  File "<f3d0dc2-export>/tests/test_numerics_flags.py", line 502, in test_coverage
+    assert len(why)==6 and why[0].startswith('no F1 coverage record')and why[1].startswith('no build binding')and why[2].startswith("the profile's F1 tool is not shown")\
+AssertionError: ['no F1 coverage record (F1.coverage: sectors, loops, graphs, points and promotion counts, X1)', 'no build binding (build_binding c8-d2-build-binding-1: the executables reproduced from the source snapshot the F1 tools were compiled from, X2)', 'F5 records no verified OpenMP team sizes (every run and lane observed at its requested team, X3)']
+[06:01:22] X2: c8d2_gmp reproduced byte for byte from the source snapshot f0c7137e21f4 in 0 s
+[06:01:22] X2: c8d2_gmp_dd reproduced byte for byte from the source snapshot f0c7137e21f4 in 0 s
+[06:01:22] compiled tool from c8d2_gmp_dd's build command in the source snapshot in 0 s (libgmp 5a1c8dd94a0a...)
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/test_numerics_flags.py", line 810, in main
+    try:fn()
+  File "<f3d0dc2-export>/tests/test_numerics_flags.py", line 683, in test_binding
+    assert r_ok['f1_baseline']['reused']is True and r_ok['f1_baseline']['tool_gmp_library']==good_lib,r_ok.get('f1_baseline')
+KeyError: 'reused'
+{"passed": false, "tests": 2, "failed": ["coverage", "binding"]}

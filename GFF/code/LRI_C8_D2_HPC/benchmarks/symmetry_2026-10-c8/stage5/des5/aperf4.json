@@ -1,0 +1,966 @@
+{
+ "schema": "c8-d2-aperf4-1",
+ "rule": "A-PERF-4: the refined table of cost against target (docs/PERFORMANCE.md), from the J-DES-5 freezes. Mac, seconds.\n\n  aperf4_table.py --des5 DIR --bundles DIR --package PKG --out FILE.json [--markdown FILE.md]\n\n  DIR (--des5) is the job's evidence folder (s5des5.570114.0/); --bundles is its bundles.tgz unpacked (the four\n  bundles' counts/ files are read for the Expanse re-costing).\n\nBase (measured kappa, sigma^2 still projected until the pilot): the four test-only freezes of J-DES-5 on symmetry's\nJ-SWEEP-2 (all 24,173 graphs, 2 x 512 points, final default binary 2cc5e88e, AMD EPYC 7543). Each design.json stratum\ncarries s, V1, C1 (allocated core-seconds per replicate at s = 1, with the sweep's own eta_node) and the replicates r\nof its (sector, L): allocated core-hours = sum r s C1 / 3600 (checked against the freeze's total).\n\nColumns (each a fixed allocation: the frozen counts x s and r are kept; only the cost per point or the efficiency\nchanges):\n  literal      the freeze as frozen: eta_node of the sweep's own accounting (a 17-minute job: plan, tail and merge\n               inside the allocation);\n  symmetry     the same allocation at the lane-mode eta_node of the J-SMK-4 campaign (accounting.py on smk4-20261005,\n               one amdq node, 8 x 8 lanes, 1.4 h): core-hours x eta_sweep / eta_lane;\n  expanse      the same allocation re-costed with the Expanse cost model of the final binary (J-SWEEP-2E, EPYC 7742,\n               cost_models/gmp_expanse_amd_c8.json) per graph and campaign, with symmetry's per-group OpenMP efficiency\n               and the same lane eta_node (assumed: Expanse's lane campaigns J-EXP-3/4 lasted 4 minutes, too short for\n               an eta_node; Expanse SU = core-hours on compute/shared):\n               C1_E = C1 x [sum_g b_g kappa_E(g) / eta_omp,g] / [sum_g b_g kappa_S(g) / eta_omp,g] per (sector, L), the\n               sums over both campaigns with the base counts b_g of the bundle (both free L8 strata get the ratio of\n               their (sector, L): the count files do not mark the primitives);\n  continuous   the continuous Neyman optimum at the target (m_k = lambda sqrt(V1/C1), no powers of two, no shared r):\n               a lower bound for any integer design. At 1e-3 the frozen design is far above it (finding F11 below);\n  profiles     each opt-in profile at each site: every stratum's core-hours divided by the profile's measured speedup k\n               over the final default binary (Stage 4c gate, Expanse: F4 per sector for the L8 strata, F2's pooled\n               task seconds for L <= 7; benchmarks/expanse_2026-10-c8/stage4c/gate/scripts/aflag7_table.py\n               speedups()), the frozen allocation kept (A-FLAG-7's \"same allocation\" rule). The APPROVED profile\n               dd+mp256 (user check-in 2026-10-05: production after the pilot, pending its own J-FLAG build gate) was\n               measured as the dd+mp256+exp1 build: exp1 changes no value and no shifted point exists under the\n               planned sampling, so it acted only as code layout (its F4 x1.007, the all-stub layout control x1.005).\n               On symmetry the Expanse-measured k are assumed (not measured there; F10: GCC 11.4's binary128 tier is\n               slower, so the split between tiers differs).\n  R7           the measured ratio of A-FLAG-7 (fresh-under-map freezes against exact freezes, J-SWEEP-1 stand-in pilot);\n               quoted, not recomputed. Not approved.\n\nF11 (found here, design.py split()): the replicates r of a (sector, L) follow the LARGEST stratum multiplier of the\ngroup. At free L8 the cheap primitive stratum (248 graphs) has a multiplier about 5x that of the other free L8 graphs\nat 1e-3 (176.8 against 35.1), so the dominant stratum gets r = 128 at s = 1 where 32 would do: the 1e-3 freeze costs\nabout 3x the continuous optimum and overshoots the target (SE 32.6 against 46). 5e-4 and tighter are within 1.10x.\n",
+ "eta_lane": 0.9146050173698389,
+ "eta_lane_source": "tools/accounting.py on smk4-20261005 (J-SMK-4)",
+ "eta_sweep": 0.3063259633746171,
+ "profiles_k": {
+  "dd+mp256": {
+   "free_L3": 0.9554467549464382,
+   "free_L4": 1.0200256722091443,
+   "free_L5": 1.029955122698493,
+   "free_L6": 1.0185836633673135,
+   "free_L7": 2.3698384330389266,
+   "free_L8": 2.1129911923729887,
+   "power_L3": 1.1668446782201907,
+   "power_L4": 1.5540427310074645,
+   "power_L5": 2.3603362961152836,
+   "power_L6": 2.9150189993942135,
+   "power_L7": 3.0027787565001374,
+   "power_L8": 2.303966405898919
+  },
+  "dd": {
+   "free_L3": 1.0361409081748205,
+   "free_L4": 1.0426446232931863,
+   "free_L5": 1.0251063695810618,
+   "free_L6": 1.0248878987780137,
+   "free_L7": 1.585517454518809,
+   "free_L8": 1.4428167845913058,
+   "power_L3": 1.107880451987725,
+   "power_L4": 1.4681691856824601,
+   "power_L5": 1.6585152856575887,
+   "power_L6": 1.5064892500131128,
+   "power_L7": 1.381504174765685,
+   "power_L8": 1.279189428642422
+  },
+  "mp256": {
+   "free_L3": 0.943805301444168,
+   "free_L4": 0.9930341895071564,
+   "free_L5": 0.9998868563900151,
+   "free_L6": 1.0265782849529848,
+   "free_L7": 1.272110243302958,
+   "free_L8": 1.3066241655949595,
+   "power_L3": 1.0082284153365721,
+   "power_L4": 1.0243445377972589,
+   "power_L5": 1.2886642548134037,
+   "power_L6": 1.4882102216633544,
+   "power_L7": 1.6511285358839867,
+   "power_L8": 1.5547120817002276
+  },
+  "exp1": {
+   "free_L3": 0.9236501991846117,
+   "free_L4": 0.9943977779524894,
+   "free_L5": 0.9917471305193728,
+   "free_L6": 0.9917269024350855,
+   "free_L7": 1.007699429671238,
+   "free_L8": 1.0089064433446902,
+   "power_L3": 1.005811027795532,
+   "power_L4": 0.9543100314900844,
+   "power_L5": 1.003241074836598,
+   "power_L6": 1.0083514396268896,
+   "power_L7": 1.0043400671240643,
+   "power_L8": 1.0023721581404195
+  }
+ },
+ "profiles_status": {
+  "dd+mp256": "APPROVED for production after the pilot (user check-in 2026-10-05), pending its own J-FLAG gate of the exact dd+mp256 build; k measured on the dd+mp256+exp1 build (exp1 inert)",
+  "dd": "measured alone; production use is the approved dd+mp256 combination",
+  "mp256": "measured alone; production use is the approved dd+mp256 combination",
+  "exp1": "NOT approved (inert: no shifted point under the planned sampling; code layout only)"
+ },
+ "r7_status": "NOT approved (needs a real pilot under its map, R14)",
+ "targets": {
+  "1e-3": {
+   "batches": 1,
+   "predicted_se_total": 32.63060551890395,
+   "target_se": 46.0,
+   "literal_core_hours": 11832.406576377238,
+   "eta_sweep": 0.3063259633746171,
+   "symmetry_core_hours": 3962.993067731273,
+   "expanse_su": 3748.47261761559,
+   "continuous": {
+    "literal_core_hours": 3974.435198895101,
+    "symmetry_core_hours": 1331.1458695827603,
+    "expanse_su": 1251.6269333762496,
+    "frozen_over_continuous": 2.9771290722431867
+   },
+   "strata": {
+    "free_L3": {
+     "sector_L": "free_L3",
+     "r": 128,
+     "s": 32,
+     "C1": 0.3510903659778415,
+     "V1": 217.33244814020705,
+     "core_hours_literal": 0.3994628164014552,
+     "core_hours_symmetry": 0.13379090398870233,
+     "expanse_ratio": 0.8758808081787878,
+     "core_hours_expanse": 0.1171848851125952,
+     "continuous_multiplier": 3068.846865487586,
+     "continuous_core_hours_literal": 0.2992896025372189
+    },
+    "free_L4": {
+     "sector_L": "free_L4",
+     "r": 128,
+     "s": 32,
+     "C1": 1.0899624962572187,
+     "V1": 915.3586442385941,
+     "core_hours_literal": 1.2401351068526578,
+     "core_hours_symmetry": 0.4153547969961658,
+     "expanse_ratio": 1.0134853068013419,
+     "core_hours_expanse": 0.42095598386506816,
+     "continuous_multiplier": 3574.4749192207987,
+     "continuous_core_hours_literal": 1.0822343349340895
+    },
+    "free_L5": {
+     "sector_L": "free_L5",
+     "r": 128,
+     "s": 16,
+     "C1": 9.468420789543925,
+     "V1": 4924.124800511212,
+     "core_hours_literal": 5.3864793824961,
+     "core_hours_symmetry": 1.8040776670847982,
+     "expanse_ratio": 0.9865017424027629,
+     "core_hours_expanse": 1.779725762009065,
+     "continuous_multiplier": 2812.8601378790027,
+     "continuous_core_hours_literal": 7.398150946548039
+    },
+    "free_L6": {
+     "sector_L": "free_L6",
+     "r": 128,
+     "s": 8,
+     "C1": 116.27312563537254,
+     "V1": 9446.334738545987,
+     "core_hours_literal": 33.073244625172634,
+     "core_hours_symmetry": 11.077124364422367,
+     "expanse_ratio": 0.938377370880164,
+     "core_hours_expanse": 10.394522837999268,
+     "continuous_multiplier": 1111.7685383531832,
+     "continuous_core_hours_literal": 35.90800081594283
+    },
+    "free_L7": {
+     "sector_L": "free_L7",
+     "r": 128,
+     "s": 2,
+     "C1": 10314.259120924346,
+     "V1": 64544.44344238094,
+     "core_hours_literal": 733.4584263768423,
+     "core_hours_symmetry": 245.65506944323275,
+     "expanse_ratio": 0.9163725710574591,
+     "core_hours_expanse": 225.11156757899383,
+     "continuous_multiplier": 308.55514980627265,
+     "continuous_core_hours_literal": 884.0327133882015
+    },
+    "free_L8": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 1,
+     "C1": 277309.8724667674,
+     "V1": 22421.102802348927,
+     "core_hours_literal": 9859.906576596173,
+     "core_hours_symmetry": 3302.3494552274124,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 3118.8860601176016,
+     "continuous_multiplier": 35.07261980409949,
+     "continuous_core_hours_literal": 2701.6621458195136
+    },
+    "free_L8_primitive": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 1,
+     "C1": 308.4034183509551,
+     "V1": 633.728065751603,
+     "core_hours_literal": 10.965454874700626,
+     "core_hours_symmetry": 3.6726274889603845,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 3.4685931439483144,
+     "continuous_multiplier": 176.81303012897652,
+     "continuous_core_hours_literal": 15.14715080576855
+    },
+    "power_L3": {
+     "sector_L": "power_L3",
+     "r": 128,
+     "s": 1,
+     "C1": 0.13572449168599732,
+     "V1": 0.23017281883887605,
+     "core_hours_literal": 0.004825759704391016,
+     "core_hours_symmetry": 0.001616277477585959,
+     "expanse_ratio": 1.0974281306205549,
+     "core_hours_expanse": 0.0017737483707912648,
+     "continuous_multiplier": 160.62764579416864,
+     "continuous_core_hours_literal": 0.006055862660036657
+    },
+    "power_L4": {
+     "sector_L": "power_L4",
+     "r": 128,
+     "s": 2,
+     "C1": 0.5777722873153426,
+     "V1": 3.703079067040089,
+     "core_hours_literal": 0.04108602932020214,
+     "core_hours_symmetry": 0.013760822730824138,
+     "expanse_ratio": 1.1357998749588294,
+     "core_hours_expanse": 0.015629540737000673,
+     "continuous_multiplier": 312.26659445421,
+     "continuous_core_hours_literal": 0.0501163845916615
+    },
+    "power_L5": {
+     "sector_L": "power_L5",
+     "r": 128,
+     "s": 2,
+     "C1": 9.496654005887846,
+     "V1": 66.83236551934526,
+     "core_hours_literal": 0.6753176181964691,
+     "core_hours_symmetry": 0.22618213988458177,
+     "expanse_ratio": 1.019968302209765,
+     "core_hours_expanse": 0.23069861320824844,
+     "continuous_multiplier": 327.2129601900449,
+     "continuous_core_hours_literal": 0.8631745192131139
+    },
+    "power_L6": {
+     "sector_L": "power_L6",
+     "r": 128,
+     "s": 1,
+     "C1": 188.99160647899302,
+     "V1": 248.36339200470522,
+     "core_hours_literal": 6.719701563697529,
+     "core_hours_symmetry": 2.2506098435902233,
+     "expanse_ratio": 0.967897702043142,
+     "core_hours_expanse": 2.1783600958066525,
+     "continuous_multiplier": 141.398538605239,
+     "continuous_core_hours_literal": 7.423093601329453
+    },
+    "power_L7": {
+     "sector_L": "power_L7",
+     "r": 32,
+     "s": 2,
+     "C1": 5120.206351996911,
+     "V1": 859.2820520448846,
+     "core_hours_literal": 91.0258907021673,
+     "core_hours_symmetry": 30.4870333442515,
+     "expanse_ratio": 0.9311443331431201,
+     "core_hours_expanse": 28.387828332845128,
+     "continuous_multiplier": 50.52967748770901,
+     "continuous_core_hours_literal": 71.86732656581194
+    },
+    "power_L8": {
+     "sector_L": "power_L8",
+     "r": 32,
+     "s": 1,
+     "C1": 122569.87217912024,
+     "V1": 429.8463135601496,
+     "core_hours_literal": 1089.5099749255132,
+     "core_hours_symmetry": 364.90636541124087,
+     "expanse_ratio": 0.9796477969690147,
+     "core_hours_expanse": 357.4797169750924,
+     "continuous_multiplier": 7.304443339751555,
+     "continuous_core_hours_literal": 248.6957462480484
+    }
+   },
+   "profiles": {
+    "dd+mp256": {
+     "symmetry_core_hours": 1850.8628151108278,
+     "expanse_su": 1750.6214079662689,
+     "ratio_symmetry": 0.4670366017496988,
+     "ratio_expanse": 0.4670225946801346,
+     "status": "APPROVED for production after the pilot (user check-in 2026-10-05), pending its own J-FLAG gate of the exact dd+mp256 build; k measured on the dd+mp256+exp1 build (exp1 inert)"
+    },
+    "dd": {
+     "symmetry_core_hours": 2768.371780177316,
+     "expanse_su": 2620.047482579763,
+     "ratio_symmetry": 0.6985557968089376,
+     "ratio_expanse": 0.6989640181088956,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "mp256": {
+     "symmetry_core_hours": 2991.341338433772,
+     "expanse_su": 2827.8332652574595,
+     "ratio_symmetry": 0.7548187158818951,
+     "ratio_expanse": 0.7543961377677741,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "exp1": {
+     "symmetry_core_hours": 3931.037937304802,
+     "expanse_su": 3718.315915775099,
+     "ratio_symmetry": 0.9919366171274268,
+     "ratio_expanse": 0.9919549360721557,
+     "status": "NOT approved (inert: no shifted point under the planned sampling; code layout only)"
+    },
+    "R7": {
+     "ratio": 0.8231195836824259,
+     "symmetry_core_hours": 3262.0172040473053,
+     "expanse_su": 3085.4412204567175,
+     "status": "NOT approved (needs a real pilot under its map, R14)"
+    }
+   },
+   "l8_share_literal": 0.9263020109770568
+  },
+  "5e-4": {
+   "batches": 1,
+   "predicted_se_total": 22.613937192205945,
+   "target_se": 23.0,
+   "literal_core_hours": 17483.503011108933,
+   "eta_sweep": 0.3063259633746171,
+   "symmetry_core_hours": 5855.698144366616,
+   "expanse_su": 5487.225092733347,
+   "continuous": {
+    "literal_core_hours": 15897.740795580405,
+    "symmetry_core_hours": 5324.583478331041,
+    "expanse_su": 5006.507733504998,
+    "frozen_over_continuous": 1.0997476456509703
+   },
+   "strata": {
+    "free_L3": {
+     "sector_L": "free_L3",
+     "r": 128,
+     "s": 128,
+     "C1": 0.3510903659778415,
+     "V1": 217.33244814020705,
+     "core_hours_literal": 1.5978512656058208,
+     "core_hours_symmetry": 0.5351636159548093,
+     "expanse_ratio": 0.8758808081787878,
+     "core_hours_expanse": 0.4687395404503808,
+     "continuous_multiplier": 12275.387461950344,
+     "continuous_core_hours_literal": 1.1971584101488757
+    },
+    "free_L4": {
+     "sector_L": "free_L4",
+     "r": 128,
+     "s": 128,
+     "C1": 1.0899624962572187,
+     "V1": 915.3586442385941,
+     "core_hours_literal": 4.960540427410631,
+     "core_hours_symmetry": 1.6614191879846631,
+     "expanse_ratio": 1.0134853068013419,
+     "core_hours_expanse": 1.6838239354602726,
+     "continuous_multiplier": 14297.899676883195,
+     "continuous_core_hours_literal": 4.328937339736358
+    },
+    "free_L5": {
+     "sector_L": "free_L5",
+     "r": 128,
+     "s": 128,
+     "C1": 9.468420789543925,
+     "V1": 4924.124800511212,
+     "core_hours_literal": 43.0918350599688,
+     "core_hours_symmetry": 14.432621336678386,
+     "expanse_ratio": 0.9865017424027629,
+     "core_hours_expanse": 14.23780609607252,
+     "continuous_multiplier": 11251.44055151601,
+     "continuous_core_hours_literal": 29.592603786192157
+    },
+    "free_L6": {
+     "sector_L": "free_L6",
+     "r": 128,
+     "s": 32,
+     "C1": 116.27312563537254,
+     "V1": 9446.334738545987,
+     "core_hours_literal": 132.29297850069054,
+     "core_hours_symmetry": 44.30849745768947,
+     "expanse_ratio": 0.938377370880164,
+     "core_hours_expanse": 41.578091351997074,
+     "continuous_multiplier": 4447.074153412733,
+     "continuous_core_hours_literal": 143.6320032637713
+    },
+    "free_L7": {
+     "sector_L": "free_L7",
+     "r": 128,
+     "s": 16,
+     "C1": 10314.259120924346,
+     "V1": 64544.44344238094,
+     "core_hours_literal": 5867.667411014739,
+     "core_hours_symmetry": 1965.240555545862,
+     "expanse_ratio": 0.9163725710574591,
+     "core_hours_expanse": 1800.8925406319506,
+     "continuous_multiplier": 1234.2205992250906,
+     "continuous_core_hours_literal": 3536.130853552806
+    },
+    "free_L8": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 1,
+     "C1": 277309.8724667674,
+     "V1": 22421.102802348927,
+     "core_hours_literal": 9859.906576596173,
+     "core_hours_symmetry": 3302.3494552274124,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 3118.8860601176016,
+     "continuous_multiplier": 140.29047921639796,
+     "continuous_core_hours_literal": 10806.648583278055
+    },
+    "free_L8_primitive": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 8,
+     "C1": 308.4034183509551,
+     "V1": 633.728065751603,
+     "core_hours_literal": 87.72363899760501,
+     "core_hours_symmetry": 29.381019911683076,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 27.748745151586515,
+     "continuous_multiplier": 707.2521205159061,
+     "continuous_core_hours_literal": 60.5886032230742
+    },
+    "power_L3": {
+     "sector_L": "power_L3",
+     "r": 128,
+     "s": 8,
+     "C1": 0.13572449168599732,
+     "V1": 0.23017281883887605,
+     "core_hours_literal": 0.038606077635128126,
+     "core_hours_symmetry": 0.012930219820687672,
+     "expanse_ratio": 1.0974281306205549,
+     "core_hours_expanse": 0.014189986966330118,
+     "continuous_multiplier": 642.5105831766746,
+     "continuous_core_hours_literal": 0.024223450640146627
+    },
+    "power_L4": {
+     "sector_L": "power_L4",
+     "r": 128,
+     "s": 16,
+     "C1": 0.5777722873153426,
+     "V1": 3.703079067040089,
+     "core_hours_literal": 0.3286882345616171,
+     "core_hours_symmetry": 0.1100865818465931,
+     "expanse_ratio": 1.1357998749588294,
+     "core_hours_expanse": 0.12503632589600538,
+     "continuous_multiplier": 1249.06637781684,
+     "continuous_core_hours_literal": 0.200465538366646
+    },
+    "power_L5": {
+     "sector_L": "power_L5",
+     "r": 128,
+     "s": 16,
+     "C1": 9.496654005887846,
+     "V1": 66.83236551934526,
+     "core_hours_literal": 5.402540945571753,
+     "core_hours_symmetry": 1.8094571190766542,
+     "expanse_ratio": 1.019968302209765,
+     "core_hours_expanse": 1.8455889056659875,
+     "continuous_multiplier": 1308.8518407601796,
+     "continuous_core_hours_literal": 3.4526980768524558
+    },
+    "power_L6": {
+     "sector_L": "power_L6",
+     "r": 128,
+     "s": 4,
+     "C1": 188.99160647899302,
+     "V1": 248.36339200470522,
+     "core_hours_literal": 26.878806254790117,
+     "core_hours_symmetry": 9.002439374360893,
+     "expanse_ratio": 0.967897702043142,
+     "core_hours_expanse": 8.71344038322661,
+     "continuous_multiplier": 565.594154420956,
+     "continuous_core_hours_literal": 29.69237440531781
+    },
+    "power_L7": {
+     "sector_L": "power_L7",
+     "r": 128,
+     "s": 2,
+     "C1": 5120.206351996911,
+     "V1": 859.2820520448846,
+     "core_hours_literal": 364.1035628086692,
+     "core_hours_symmetry": 121.948133377006,
+     "expanse_ratio": 0.9311443331431201,
+     "core_hours_expanse": 113.55131333138051,
+     "continuous_multiplier": 202.11870995083603,
+     "continuous_core_hours_literal": 287.46930626324774
+    },
+    "power_L8": {
+     "sector_L": "power_L8",
+     "r": 32,
+     "s": 1,
+     "C1": 122569.87217912024,
+     "V1": 429.8463135601496,
+     "core_hours_literal": 1089.5099749255132,
+     "core_hours_symmetry": 364.90636541124087,
+     "expanse_ratio": 0.9796477969690147,
+     "core_hours_expanse": 357.4797169750924,
+     "continuous_multiplier": 29.21777335900622,
+     "continuous_core_hours_literal": 994.7829849921936
+    }
+   },
+   "profiles": {
+    "dd+mp256": {
+     "symmetry_core_hours": 2668.6881337982427,
+     "expanse_su": 2502.7291690562065,
+     "ratio_symmetry": 0.455742093940688,
+     "ratio_expanse": 0.45610105777700544,
+     "status": "APPROVED for production after the pilot (user check-in 2026-10-05), pending its own J-FLAG gate of the exact dd+mp256 build; k measured on the dd+mp256+exp1 build (exp1 inert)"
+    },
+    "dd": {
+     "symmetry_core_hours": 3988.790286493849,
+     "expanse_su": 3741.907543056805,
+     "ratio_symmetry": 0.6811809946745979,
+     "ratio_expanse": 0.6819307536722267,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "mp256": {
+     "symmetry_core_hours": 4470.719887599575,
+     "expanse_su": 4186.952165637497,
+     "ratio_symmetry": 0.7634819584920991,
+     "ratio_expanse": 0.7630363425736293,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "exp1": {
+     "symmetry_core_hours": 5810.348183486948,
+     "expanse_su": 5444.7919236947455,
+     "ratio_symmetry": 0.9922554134858717,
+     "ratio_expanse": 0.9922669166433877,
+     "status": "NOT approved (inert: no shifted point under the planned sampling; code layout only)"
+    },
+    "R7": {
+     "ratio": 0.8754311850829779,
+     "symmetry_core_hours": 5126.260766011062,
+     "expanse_su": 4803.687965748607,
+     "status": "NOT approved (needs a real pilot under its map, R14)"
+    }
+   },
+   "l8_share_literal": 0.6312888317350559
+  },
+  "2.5e-4": {
+   "batches": 1,
+   "predicted_se_total": 11.306968596102973,
+   "target_se": 11.5,
+   "literal_core_hours": 69934.01204443573,
+   "eta_sweep": 0.3063259633746171,
+   "symmetry_core_hours": 23422.792577466465,
+   "expanse_su": 21948.90037093339,
+   "continuous": {
+    "literal_core_hours": 63590.96318232162,
+    "symmetry_core_hours": 21298.333913324164,
+    "expanse_su": 20026.030934019993,
+    "frozen_over_continuous": 1.0997476456509703
+   },
+   "strata": {
+    "free_L3": {
+     "sector_L": "free_L3",
+     "r": 128,
+     "s": 512,
+     "C1": 0.3510903659778415,
+     "V1": 217.33244814020705,
+     "core_hours_literal": 6.391405062423283,
+     "core_hours_symmetry": 2.1406544638192373,
+     "expanse_ratio": 0.8758808081787878,
+     "core_hours_expanse": 1.8749581618015232,
+     "continuous_multiplier": 49101.549847801376,
+     "continuous_core_hours_literal": 4.788633640595503
+    },
+    "free_L4": {
+     "sector_L": "free_L4",
+     "r": 128,
+     "s": 512,
+     "C1": 1.0899624962572187,
+     "V1": 915.3586442385941,
+     "core_hours_literal": 19.842161709642525,
+     "core_hours_symmetry": 6.645676751938653,
+     "expanse_ratio": 1.0134853068013419,
+     "core_hours_expanse": 6.735295741841091,
+     "continuous_multiplier": 57191.59870753278,
+     "continuous_core_hours_literal": 17.315749358945432
+    },
+    "free_L5": {
+     "sector_L": "free_L5",
+     "r": 128,
+     "s": 512,
+     "C1": 9.468420789543925,
+     "V1": 4924.124800511212,
+     "core_hours_literal": 172.3673402398752,
+     "core_hours_symmetry": 57.73048534671354,
+     "expanse_ratio": 0.9865017424027629,
+     "core_hours_expanse": 56.95122438429008,
+     "continuous_multiplier": 45005.76220606404,
+     "continuous_core_hours_literal": 118.37041514476863
+    },
+    "free_L6": {
+     "sector_L": "free_L6",
+     "r": 128,
+     "s": 128,
+     "C1": 116.27312563537254,
+     "V1": 9446.334738545987,
+     "core_hours_literal": 529.1719140027622,
+     "core_hours_symmetry": 177.23398983075788,
+     "expanse_ratio": 0.938377370880164,
+     "core_hours_expanse": 166.3123654079883,
+     "continuous_multiplier": 17788.29661365093,
+     "continuous_core_hours_literal": 574.5280130550852
+    },
+    "free_L7": {
+     "sector_L": "free_L7",
+     "r": 128,
+     "s": 64,
+     "C1": 10314.259120924346,
+     "V1": 64544.44344238094,
+     "core_hours_literal": 23470.669644058955,
+     "core_hours_symmetry": 7860.962222183448,
+     "expanse_ratio": 0.9163725710574591,
+     "core_hours_expanse": 7203.5701625278025,
+     "continuous_multiplier": 4936.882396900362,
+     "continuous_core_hours_literal": 14144.523414211224
+    },
+    "free_L8": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 4,
+     "C1": 277309.8724667674,
+     "V1": 22421.102802348927,
+     "core_hours_literal": 39439.62630638469,
+     "core_hours_symmetry": 13209.39782090965,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 12475.544240470406,
+     "continuous_multiplier": 561.1619168655918,
+     "continuous_core_hours_literal": 43226.59433311222
+    },
+    "free_L8_primitive": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 32,
+     "C1": 308.4034183509551,
+     "V1": 633.728065751603,
+     "core_hours_literal": 350.89455599042003,
+     "core_hours_symmetry": 117.5240796467323,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 110.99498060634606,
+     "continuous_multiplier": 2829.0084820636243,
+     "continuous_core_hours_literal": 242.3544128922968
+    },
+    "power_L3": {
+     "sector_L": "power_L3",
+     "r": 128,
+     "s": 32,
+     "C1": 0.13572449168599732,
+     "V1": 0.23017281883887605,
+     "core_hours_literal": 0.1544243105405125,
+     "core_hours_symmetry": 0.05172087928275069,
+     "expanse_ratio": 1.0974281306205549,
+     "core_hours_expanse": 0.05675994786532047,
+     "continuous_multiplier": 2570.0423327066983,
+     "continuous_core_hours_literal": 0.09689380256058651
+    },
+    "power_L4": {
+     "sector_L": "power_L4",
+     "r": 128,
+     "s": 64,
+     "C1": 0.5777722873153426,
+     "V1": 3.703079067040089,
+     "core_hours_literal": 1.3147529382464684,
+     "core_hours_symmetry": 0.4403463273863724,
+     "expanse_ratio": 1.1357998749588294,
+     "core_hours_expanse": 0.5001453035840215,
+     "continuous_multiplier": 4996.26551126736,
+     "continuous_core_hours_literal": 0.801862153466584
+    },
+    "power_L5": {
+     "sector_L": "power_L5",
+     "r": 128,
+     "s": 64,
+     "C1": 9.496654005887846,
+     "V1": 66.83236551934526,
+     "core_hours_literal": 21.61016378228701,
+     "core_hours_symmetry": 7.237828476306617,
+     "expanse_ratio": 1.019968302209765,
+     "core_hours_expanse": 7.38235562266395,
+     "continuous_multiplier": 5235.407363040718,
+     "continuous_core_hours_literal": 13.810792307409823
+    },
+    "power_L6": {
+     "sector_L": "power_L6",
+     "r": 128,
+     "s": 16,
+     "C1": 188.99160647899302,
+     "V1": 248.36339200470522,
+     "core_hours_literal": 107.51522501916047,
+     "core_hours_symmetry": 36.00975749744357,
+     "expanse_ratio": 0.967897702043142,
+     "core_hours_expanse": 34.85376153290644,
+     "continuous_multiplier": 2262.376617683824,
+     "continuous_core_hours_literal": 118.76949762127124
+    },
+    "power_L7": {
+     "sector_L": "power_L7",
+     "r": 128,
+     "s": 8,
+     "C1": 5120.206351996911,
+     "V1": 859.2820520448846,
+     "core_hours_literal": 1456.4142512346768,
+     "core_hours_symmetry": 487.792533508024,
+     "expanse_ratio": 0.9311443331431201,
+     "core_hours_expanse": 454.20525332552205,
+     "continuous_multiplier": 808.4748398033441,
+     "continuous_core_hours_literal": 1149.877225052991
+    },
+    "power_L8": {
+     "sector_L": "power_L8",
+     "r": 64,
+     "s": 2,
+     "C1": 122569.87217912024,
+     "V1": 429.8463135601496,
+     "core_hours_literal": 4358.039899702053,
+     "core_hours_symmetry": 1459.6254616449635,
+     "expanse_ratio": 0.9796477969690147,
+     "core_hours_expanse": 1429.9188679003696,
+     "continuous_multiplier": 116.87109343602488,
+     "continuous_core_hours_literal": 3979.1319399687745
+    }
+   },
+   "profiles": {
+    "dd+mp256": {
+     "symmetry_core_hours": 10674.75253519297,
+     "expanse_su": 10010.916676224826,
+     "ratio_symmetry": 0.455742093940688,
+     "ratio_expanse": 0.45610105777700544,
+     "status": "APPROVED for production after the pilot (user check-in 2026-10-05), pending its own J-FLAG gate of the exact dd+mp256 build; k measured on the dd+mp256+exp1 build (exp1 inert)"
+    },
+    "dd": {
+     "symmetry_core_hours": 15955.161145975397,
+     "expanse_su": 14967.63017222722,
+     "ratio_symmetry": 0.6811809946745979,
+     "ratio_expanse": 0.6819307536722267,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "mp256": {
+     "symmetry_core_hours": 17882.8795503983,
+     "expanse_su": 16747.80866254999,
+     "ratio_symmetry": 0.7634819584920991,
+     "ratio_expanse": 0.7630363425736293,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "exp1": {
+     "symmetry_core_hours": 23241.392733947792,
+     "expanse_su": 21779.167694778982,
+     "ratio_symmetry": 0.9922554134858717,
+     "ratio_expanse": 0.9922669166433877,
+     "status": "NOT approved (inert: no shifted point under the planned sampling; code layout only)"
+    },
+    "R7": {
+     "ratio": 0.8754311850829779,
+     "symmetry_core_hours": 20505.043064044246,
+     "expanse_su": 19214.751862994428,
+     "status": "NOT approved (needs a real pilot under its map, R14)"
+    }
+   },
+   "l8_share_literal": 0.6312888317350559
+  },
+  "1.35e-4": {
+   "batches": 1,
+   "predicted_se_total": 6.08291470702871,
+   "target_se": 6.21,
+   "literal_core_hours": 228776.4151025081,
+   "eta_sweep": 0.3063259633746171,
+   "symmetry_core_hours": 76623.41056820241,
+   "expanse_su": 72124.5298039738,
+   "continuous": {
+    "literal_core_hours": 218076.00542634298,
+    "symmetry_core_hours": 73039.5538865712,
+    "expanse_su": 68676.37494519888,
+    "frozen_over_continuous": 1.0490673407890319
+   },
+   "strata": {
+    "free_L3": {
+     "sector_L": "free_L3",
+     "r": 128,
+     "s": 1024,
+     "C1": 0.3510903659778415,
+     "V1": 217.33244814020705,
+     "core_hours_literal": 12.782810124846566,
+     "core_hours_symmetry": 4.281308927638475,
+     "expanse_ratio": 0.8758808081787878,
+     "core_hours_expanse": 3.7499163236030464,
+     "continuous_multiplier": 168386.65928601296,
+     "continuous_core_hours_literal": 16.42192606514233
+    },
+    "free_L4": {
+     "sector_L": "free_L4",
+     "r": 128,
+     "s": 2048,
+     "C1": 1.0899624962572187,
+     "V1": 915.3586442385941,
+     "core_hours_literal": 79.3686468385701,
+     "core_hours_symmetry": 26.58270700775461,
+     "expanse_ratio": 1.0134853068013419,
+     "core_hours_expanse": 26.941182967364362,
+     "continuous_multiplier": 196130.31106835662,
+     "continuous_core_hours_literal": 59.381856512158556
+    },
+    "free_L5": {
+     "sector_L": "free_L5",
+     "r": 128,
+     "s": 1024,
+     "C1": 9.468420789543925,
+     "V1": 4924.124800511212,
+     "core_hours_literal": 344.7346804797504,
+     "core_hours_symmetry": 115.46097069342709,
+     "expanse_ratio": 0.9865017424027629,
+     "core_hours_expanse": 113.90244876858016,
+     "continuous_multiplier": 154340.74830611813,
+     "continuous_core_hours_literal": 405.9342083153931
+    },
+    "free_L6": {
+     "sector_L": "free_L6",
+     "r": 128,
+     "s": 512,
+     "C1": 116.27312563537254,
+     "V1": 9446.334738545987,
+     "core_hours_literal": 2116.6876560110486,
+     "core_hours_symmetry": 708.9359593230315,
+     "expanse_ratio": 0.938377370880164,
+     "core_hours_expanse": 665.2494616319532,
+     "continuous_multiplier": 61002.38893570279,
+     "continuous_core_hours_literal": 1970.2606757718972
+    },
+    "free_L7": {
+     "sector_L": "free_L7",
+     "r": 128,
+     "s": 128,
+     "C1": 10314.259120924346,
+     "V1": 64544.44344238094,
+     "core_hours_literal": 46941.33928811791,
+     "core_hours_symmetry": 15721.924444366896,
+     "expanse_ratio": 0.9163725710574591,
+     "core_hours_expanse": 14407.140325055605,
+     "continuous_multiplier": 16930.32372050879,
+     "continuous_core_hours_literal": 48506.59607068322
+    },
+    "free_L8": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 16,
+     "C1": 277309.8724667674,
+     "V1": 22421.102802348927,
+     "core_hours_literal": 157758.50522553877,
+     "core_hours_symmetry": 52837.5912836386,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 49902.176961881625,
+     "continuous_multiplier": 1924.4235832153356,
+     "continuous_core_hours_literal": 148239.34956485673
+    },
+    "free_L8_primitive": {
+     "sector_L": "free_L8",
+     "r": 128,
+     "s": 64,
+     "C1": 308.4034183509551,
+     "V1": 633.728065751603,
+     "core_hours_literal": 701.7891119808401,
+     "core_hours_symmetry": 235.0481592934646,
+     "expanse_ratio": 0.9444445848032831,
+     "core_hours_expanse": 221.98996121269212,
+     "continuous_multiplier": 9701.675178544667,
+     "continuous_core_hours_literal": 831.1193857760524
+    },
+    "power_L3": {
+     "sector_L": "power_L3",
+     "r": 128,
+     "s": 64,
+     "C1": 0.13572449168599732,
+     "V1": 0.23017281883887605,
+     "core_hours_literal": 0.308848621081025,
+     "core_hours_symmetry": 0.10344175856550138,
+     "expanse_ratio": 1.0974281306205549,
+     "core_hours_expanse": 0.11351989573064095,
+     "continuous_multiplier": 8813.588246593617,
+     "continuous_core_hours_literal": 0.3322832735273886
+    },
+    "power_L4": {
+     "sector_L": "power_L4",
+     "r": 128,
+     "s": 128,
+     "C1": 0.5777722873153426,
+     "V1": 3.703079067040089,
+     "core_hours_literal": 2.629505876492937,
+     "core_hours_symmetry": 0.8806926547727448,
+     "expanse_ratio": 1.1357998749588294,
+     "core_hours_expanse": 1.000290607168043,
+     "continuous_multiplier": 17133.969517377784,
+     "continuous_core_hours_literal": 2.749870210790755
+    },
+    "power_L5": {
+     "sector_L": "power_L5",
+     "r": 128,
+     "s": 128,
+     "C1": 9.496654005887846,
+     "V1": 66.83236551934526,
+     "core_hours_literal": 43.22032756457402,
+     "core_hours_symmetry": 14.475656952613233,
+     "expanse_ratio": 1.019968302209765,
+     "core_hours_expanse": 14.7647112453279,
+     "continuous_multiplier": 17954.0718897144,
+     "continuous_core_hours_literal": 47.362113537070734
+    },
+    "power_L6": {
+     "sector_L": "power_L6",
+     "r": 128,
+     "s": 64,
+     "C1": 188.99160647899302,
+     "V1": 248.36339200470522,
+     "core_hours_literal": 430.0609000766419,
+     "core_hours_symmetry": 144.0390299897743,
+     "expanse_ratio": 0.967897702043142,
+     "core_hours_expanse": 139.41504613162576,
+     "continuous_multiplier": 7758.493201933554,
+     "continuous_core_hours_literal": 407.3028039138247
+    },
+    "power_L7": {
+     "sector_L": "power_L7",
+     "r": 128,
+     "s": 16,
+     "C1": 5120.206351996911,
+     "V1": 859.2820520448846,
+     "core_hours_literal": 2912.8285024693537,
+     "core_hours_symmetry": 975.585067016048,
+     "expanse_ratio": 0.9311443331431201,
+     "core_hours_expanse": 908.4105066510441,
+     "continuous_multiplier": 2772.5474616026895,
+     "continuous_core_hours_literal": 3943.3375344752785
+    },
+    "power_L8": {
+     "sector_L": "power_L8",
+     "r": 128,
+     "s": 4,
+     "C1": 122569.87217912024,
+     "V1": 429.8463135601496,
+     "core_hours_literal": 17432.15959880821,
+     "core_hours_symmetry": 5838.501846579854,
+     "expanse_ratio": 0.9796477969690147,
+     "core_hours_expanse": 5719.675471601478,
+     "continuous_multiplier": 400.7925014952843,
+     "continuous_core_hours_literal": 13645.857132951904
+    }
+   },
+   "profiles": {
+    "dd+mp256": {
+     "symmetry_core_hours": 35505.32875466925,
+     "expanse_su": 33435.19643625909,
+     "ratio_symmetry": 0.46337442423116887,
+     "ratio_expanse": 0.4635759363302904,
+     "status": "APPROVED for production after the pilot (user check-in 2026-10-05), pending its own J-FLAG gate of the exact dd+mp256 build; k measured on the dd+mp256+exp1 build (exp1 inert)"
+    },
+    "dd": {
+     "symmetry_core_hours": 52909.41496249784,
+     "expanse_su": 49847.98021241307,
+     "ratio_symmetry": 0.6905123978448235,
+     "ratio_expanse": 0.6911376801747501,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "mp256": {
+     "symmetry_core_hours": 58269.630961715804,
+     "expanse_su": 54815.3416935406,
+     "ratio_symmetry": 0.7604677281997265,
+     "ratio_expanse": 0.760009692160523,
+     "status": "measured alone; production use is the approved dd+mp256 combination"
+    },
+    "exp1": {
+     "symmetry_core_hours": 76022.91740893284,
+     "expanse_su": 71560.30617584163,
+     "ratio_symmetry": 0.9921630588508578,
+     "ratio_expanse": 0.992177091071988,
+     "status": "NOT approved (inert: no shifted point under the planned sampling; code layout only)"
+    },
+    "R7": {
+     "ratio": 0.8624131923818307,
+     "symmetry_core_hours": 66081.04011930714,
+     "expanse_su": 62201.14599728354,
+     "status": "NOT approved (needs a real pilot under its map, R14)"
+    }
+   },
+   "l8_share_literal": 0.7688399779213059
+  }
+ }
+}

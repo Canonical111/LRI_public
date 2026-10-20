@@ -1,0 +1,47 @@
+job 54666182 on <NODE> at 2026-10-04T16:27:11-07:00; package <SCRATCH>/temp_project/c8d2/pkg/2c8b28f46538; baseline <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin; evidence <SCRATCH>/temp_project/c8d2/evidence/2c8b28f46538/r5build.54666182.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+TMPDIR /scratch/<USER>/job_54666182/tmp
+builds in 45 s
+b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5  bin/c8d2_decimal
+f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e  bin/c8d2_gmp
+b3242ddac237a8c1279040b52bbc1dcdc4625347a4cc41e41cc52373707ff278  bin/c8d2_gmp_prof
+3f353c4a22df38ad619503b7a6a95b7754b2e72475edc77614bf7e1c74a2159e  bin/c8d2_gmp_ratiohist
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_gmp
+{
+ "stage3": {
+  "c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3"
+ },
+ "baseline_dir": "<SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin",
+ "baseline_now": {
+  "c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3"
+ },
+ "candidate": {
+  "c8d2_decimal": "b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5",
+  "c8d2_gmp": "f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e"
+ },
+ "baseline_is_stage3": true,
+ "candidate_equals_stage3": {
+  "c8d2_decimal": false,
+  "c8d2_gmp": false
+ },
+ "note": "R5a changes src/c8d2_integrate.cpp (parallel graph loading), so the candidate hashes are expected to differ from Stage 3; exactness comes from the row comparisons (G-L8SELF, thread identity, the P4 rows digest)."
+}
+== validate 2026-10-04T16:27:56-07:00
+== validate exit 0 after 87 s
+   "gates": {
+    "G-C7/decimal": {
+    
+== first_error 2026-10-04T16:29:23-07:00
+== first_error exit 0 after 3 s
+last_only decimal: passed (25 candidate runs); baseline: 'graph identity mismatch'
+last_only gmp: passed (25 candidate runs); baseline: 'graph identity mismatch'
+{"status": "passed", "cases": 10, "wall_seconds": 2.3}
+finished 2026-10-04T16:29:26-07:00, status 0

@@ -1,0 +1,118 @@
+{
+ "schema": "c8-d2-asm-compare-1",
+ "baseline": "out/ipa/base_gmp_both.s",
+ "candidate": "out/ipa/new_gmp_both.s",
+ "baseline_sha256": "14d222c1700cbfb3fd5382ecdd59673544ece14f65635ef0fea47db1e3a1910c",
+ "candidate_sha256": "fd3f67349dbdb3e1894b1b2197d2e683ea35e49fc966bd5257d52b92a9164761",
+ "functions_baseline": 115,
+ "functions_candidate": 118,
+ "identical": 112,
+ "different": {
+  "_Z16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKee": {
+   "demangled": "std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)",
+   "baseline_lines": 459,
+   "candidate_lines": 3288,
+   "diff_head": [
+    "--- ",
+    "+++ ",
+    "@@ -3,10 +3,10 @@",
+    " pushq %r14",
+    "-movq %rsi, %r14",
+    " pushq %r13",
+    "-movq %rdx, %r13",
+    " pushq %r12",
+    "+movq %rdx, %r12",
+    " pushq %rbp",
+    " pushq %rbx",
+    "-subq $120, %rsp",
+    "-movq %rdi, 104(%rsp)",
+    "+subq $248, %rsp",
+    "+movq %rdi, 200(%rsp)",
+    "+movq %rsi, 144(%rsp)",
+    " cmpb $0, %fs:_ZGVZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff",
+    "@@ -14,6 +14,7 @@",
+    " L2:",
+    "+movq 144(%rsp), %rax",
+    " movq %fs:_ZZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff+520, %rcx",
+    "-movq 168(%r14), %rsi",
+    " movq %fs:_ZZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff+512, %rdx",
+    "-subq 160(%r14), %rsi",
+    "+movq 168(%rax), %rsi",
+    "+subq 160(%rax), %rsi",
+    " movq %rcx, %rax",
+    "@@ -28,7 +29,8 @@",
+    " L5:",
+    "+movq 144(%rsp), %rax",
+    " movq %fs:_ZZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff+544, %rcx",
+    "-movq 216(%r14), %rsi",
+    "+movq %fs:_ZZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff+536, %rdx",
+    "+movq 216(%rax), %rsi",
+    "+subq 208(%rax), %rsi",
+    " movabsq $-6148914691236517205, %rax",
+    "-movq %fs:_ZZ16calculate_sharedIgLb1EESt4pairIT_S1_ERK5GraphPKeeE7scratch@tpoff+536, %rdx",
+    "-subq 208(%r14), %rsi",
+    " sarq $2, %rsi",
+    "@@ -44,43 +46,40 @@"
+   ]
+  },
+  "_ZNK5boost10wrapexceptISt13runtime_errorE5cloneEv": {
+   "demangled": "boost::wrapexcept<std::runtime_error>::clone() const",
+   "baseline_lines": 198,
+   "candidate_lines": 198,
+   "diff_head": [
+    "--- ",
+    "+++ ",
+    "@@ -157,3 +157,3 @@",
+    " L35:",
+    "-.section .gcc_except_table._ZNK5boost10wrapexceptISt13runtime_errorE5cloneEv,\"aG\",@progbits,_ZNK5boost10wrapexceptISt13runtime_errorE5cloneEv,comdat",
+    "+.section .gcc_except_table",
+    " L36:"
+   ]
+  },
+  "_ZNK5boost10wrapexceptISt14overflow_errorE5cloneEv": {
+   "demangled": "boost::wrapexcept<std::overflow_error>::clone() const",
+   "baseline_lines": 199,
+   "candidate_lines": 199,
+   "diff_head": [
+    "--- ",
+    "+++ ",
+    "@@ -158,3 +158,3 @@",
+    " L35:",
+    "-.section .gcc_except_table",
+    "+.section .gcc_except_table._ZNK5boost10wrapexceptISt14overflow_errorE5cloneEv,\"aG\",@progbits,_ZNK5boost10wrapexceptISt14overflow_errorE5cloneEv,comdat",
+    " L36:"
+   ]
+  }
+ },
+ "only_baseline": [],
+ "only_candidate": [
+  "quadfast::slow_add(unsigned __int128, unsigned __int128)",
+  "quadfast::slow_mul(unsigned __int128, unsigned __int128)",
+  "quadfast::slow_sub(unsigned __int128, unsigned __int128)"
+ ],
+ "watched": {
+  "mp_backend": {
+   "functions": 9,
+   "identical": 9,
+   "different": [],
+   "only_baseline": [],
+   "only_candidate": []
+  },
+  "calculate_shared": {
+   "functions": 2,
+   "identical": 1,
+   "different": [
+    "std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)"
+   ],
+   "only_baseline": [],
+   "only_candidate": []
+  },
+  "worker_long_double": {
+   "functions": 11,
+   "identical": 11,
+   "different": [],
+   "only_baseline": [],
+   "only_candidate": []
+  }
+ }
+}

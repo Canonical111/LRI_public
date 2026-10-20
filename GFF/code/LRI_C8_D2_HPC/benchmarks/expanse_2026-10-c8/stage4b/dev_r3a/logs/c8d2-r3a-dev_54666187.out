@@ -1,0 +1,98 @@
+job 54666187 on <NODE> at 2026-10-04T16:30:11-07:00; dev <SCRATCH>/temp_project/c8d2/dev/r3a/try1
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+differential builds in 5 s
+qd exit 0 in 2 s
+{'add': (67108864, 66972300, 0), 'sub': (67108864, 66972389, 0), 'mul': (67108864, 55950919, 0)}
+{'add': (901761, 656002, 0), 'sub': (901761, 656296, 0), 'mul': (1350672, 1147346, 0)}
+{'add_chain_ns_libgcc': 21.904, 'add_chain_ns_quadfast': 15.791, 'mul_ns_libgcc': 25.482, 'mul_ns_quadfast': 23.45, 'identical': True} 1.338 0.231
+[]
+qd_san exit 0 in 1 s
+san {'add': (1048576, 1046453, 0), 'sub': (1048576, 1046542, 0), 'mul': (1048576, 874666, 0)} {'add': (901761, 0), 'sub': (901761, 0), 'mul': (1350672, 0)}
+inject {'add': 1020, 'sub': 1020, 'mul': 1020}
+worker builds in 9 s
+5d3fb10a3d8181cfc32960a9f8c85aad339f396e1911ba0466d8fb06bb4a688f  bin/c8d2_decimal
+98366e424f9e1c6e7df30f78d02409742d2e8b29f17a076ecd1c4955ecd5a55e  bin/c8d2_gmp
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_gmp
+   ".text:void boost::multiprecision::backends::eval_divide<350u, 350u, 350u>(boost::multiprecision::backends::gmp_float<350u>&, boost::multiprecision::backends::gmp_float<350u> const&, boost::multiprecision::backends::gmp_float<350u> const&)",
+   ".text:void boost::multiprecision::default_ops::detail::pow_imp<boost::multiprecision::backends::gmp_float<350u>, unsigned long>(boost::multiprecision::backends::gmp_float<350u>&, boost::multiprecision::backends::gmp_float<350u> const&, unsigned long const&, std::integral_constant<bool, false> const&) [clone .isra.0]",
+   ".text:void boost::multiprecision::default_ops::eval_exp<boost::multiprecision::backends::gmp_float<350u> >(boost::multiprecision::backends::gmp_float<350u>&, boost::multiprecision::backends::gmp_float<350u> const&)",
+   ".text:void boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::gmp_float<350u> >(boost::multiprecision::backends::gmp_float<350u>&, boost::multiprecision::backends::gmp_float<350u> const&)"
+  ],
+  "only_baseline": [],
+  "only_candidate": [
+   ".text:void boost::multiprecision::backends::eval_add<350u, 350u>(boost::multiprecision::backends::gmp_float<350u>&, boost::multiprecision::backends::gmp_float<350u> const&)"
+  ]
+ },
+ "calculate_shared": {
+  "functions": 2,
+  "identical_strict": 0,
+  "identical_loose_only": [],
+  "different": [
+   ".text:std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)",
+   ".text:std::pair<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1> > calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::gmp_float<350u>, (boost::multiprecision::expression_template_option)1>, false>(Graph const&, long double const*, long double)"
+  ],
+  "only_baseline": [],
+  "only_candidate": []
+ },
+ "worker": {
+  "functions": 11,
+  "identical_strict": 2,
+  "identical_loose_only": [],
+  "different": [
+   ".text:load_graph(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, long double)",
+   ".text:main._omp_fn.0",
+   ".text:main._omp_fn.0.cold",
+   ".text:prepare(Graph&)",
+   ".text:prepare(Graph&)::{lambda(int)#2}::operator()(int) const",
+   ".text:std::_Function_handler<int (unsigned int), prepare(Graph&)::{lambda(unsigned int)#1}>::_M_manager(std::_Any_data&, std::_Function_handler<int (unsigned int), prepare(Graph&)::{lambda(unsigned int)#1}> const&, std::_Manager_operation)",
+   ".text:std::_Function_handler<void (int), prepare(Graph&)::{lambda(int)#2}>::_M_manager(std::_Any_data&, std::_Function_handler<void (int), prepare(Graph&)::{lambda(int)#2}> const&, std::_Manager_operation)",
+   ".text:std::pair<long double, long double> calculate_reference<long double>(Graph const&, long double const*, long double)",
+   ".text:void std::vector<prepare(Graph&)::Node, std::allocator<prepare(Graph&)::Node> >::_M_realloc_insert<prepare(Graph&)::Node>(__gnu_cxx::__normal_iterator<prepare(Graph&)::Node*, std::vector<prepare(Graph&)::Node, std::allocator<prepare(Graph&)::Node> > >, prepare(Graph&)::Node&&)"
+  ],
+  "only_baseline": [],
+  "only_candidate": []
+ }
+}
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::operator+=(boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&) [clone .isra.0]",
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::operator/=(boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&) [clone .isra.0]",
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::pow2(long long)",
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::rd_string(char const*) [clone .isra.0]",
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::str[abi:cxx11](long, std::_Ios_Fmtflags) const",
+   ".text:boost::multiprecision::backends::cpp_dec_float<300u, int, void>::zero()",
+   ".text:std::enable_if<std::is_floating_point<long double>::value, boost::multiprecision::backends::cpp_dec_float<300u, int, void>&>::type boost::multiprecision::backends::cpp_dec_float<300u, int, void>::operator=<long double>(long double) [clone .isra.0]",
+   ".text:std::pair<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1>, boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1> > calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1>, false>(Graph const&, long double const*, long double)",
+   ".text:std::vector<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1>, std::allocator<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1> > >::_M_default_append(unsigned long)",
+   ".text:void boost::multiprecision::default_ops::detail::pow_imp<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, unsigned long long>(boost::multiprecision::backends::cpp_dec_float<300u, int, void>&, boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&, unsigned long long const&, std::integral_constant<bool, false> const&) [clone .isra.0]",
+   ".text:void boost::multiprecision::default_ops::detail::pow_imp<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, unsigned long long>(boost::multiprecision::backends::cpp_dec_float<300u, int, void>&, boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&, unsigned long long const&, std::integral_constant<bool, false> const&) [clone .part.0]",
+   ".text:void boost::multiprecision::default_ops::eval_exp<boost::multiprecision::backends::cpp_dec_float<300u, int, void> >(boost::multiprecision::backends::cpp_dec_float<300u, int, void>&, boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&)",
+   ".text:void boost::multiprecision::default_ops::hyp0F0<boost::multiprecision::backends::cpp_dec_float<300u, int, void> >(boost::multiprecision::backends::cpp_dec_float<300u, int, void>&, boost::multiprecision::backends::cpp_dec_float<300u, int, void> const&)",
+   ".text:void boost::multiprecision::detail::format_float_string<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, long, long, std::_Ios_Fmtflags, bool)"
+  ],
+  "only_baseline": [],
+  "only_candidate": []
+ },
+ "calculate_shared": {
+  "functions": 2,
+  "identical_strict": 0,
+  "identical_loose_only": [],
+  "different": [
+   ".text:std::pair<__float128, __float128> calculate_shared<__float128, true>(Graph const&, long double const*, long double)",
+   ".text:std::pair<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1>, boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1> > calculate_shared<boost::multiprecision::number<boost::multiprecision::backends::cpp_dec_float<300u, int, void>, (boost::multiprecision::expression_template_option)1>, false>(Graph const&, long double const*, long double)"
+  ],
+  "only_baseline": [],
+  "only_candidate": []
+ },
+ "worker": {
+  "functions": 11,
+  "identical_strict": 2,
+  "identical_loose_only": [],
+  "different": [
+   ".text:load_graph(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, long double)",
+   ".text:main._omp_fn.0",
+   ".text:main._omp_fn.0.cold",
+   ".text:prepare(Graph&)",
+   ".text:prepare(Graph&)::{lambda(int)#2}::operator()(int) const",
+   ".text:std::_Function_handler<int (unsigned int), prepare(Graph&)::{lambda(unsigned int)#1}>::_M_manager(std::_Any_data&, std::_Function_handler<int (unsigned int), prepare(Graph&)::{lambda(unsigned int)#1}> const
+finished 2026-10-04T16:30:32-07:00, status 0

@@ -1,0 +1,93 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-5 test_handoff_inventory",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "writes the HANDOFF when everything is green and complete",
+   "passed": true,
+   "detail": "{\n \"written\": \"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/HANDOFF_inventory8_d2.json\",\n \"manifest_sha256\": \"3dc24c56eb79774fdb4301e1179f692a3eb72bbc258d957611a73ebed20a2d1a\",\n \"manifest_md5\": \"236ee7f69f99ed9423b97f1d3dbca048\"\n}\n"
+  },
+  {
+   "check": "refuses to overwrite an existing HANDOFF",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "refuses when an A-INV record is red",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-2 regress is not green and complete (/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/evidence/gen1.1.0/regress_L3_L7.json): not passed; the record is not a pass without failures\n"
+  },
+  {
+   "check": "S6-B-02: refuses the A-INV-2 record of regress.py --loops 3 --threads 1",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-2 regress is not green and complete (/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/evidence/gen1.1.0/regress_L3_L7.json): loops [3]: H1 needs every loop 3..7; threads [1]: H1 needs at least two distinct positive thread counts, one of them 1 (thread identity)\n"
+  },
+  {
+   "check": "S6-B-02: refuses an A-INV-2 record that selected no loop",
+   "passed": true,
+   "detail": " not green and complete (/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/evidence/gen1.1.0/regress_L3_L7.json): loops []: H1 needs every loop 3..7; builds: 0 successful of 0 recorded, 20 required (every thread count, sector and loop); sectors: ['free_L3', 'free_L4', 'free_L5', 'free_L6', 'free_L7', 'power_L3', 'power_L4', 'power_L5', 'power_L6', 'power_L7'] missing or extra\n"
+  },
+  {
+   "check": "S6-B-02: refuses an A-INV-2 record with a single thread count",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-2 regress is not green and complete (/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/evidence/gen1.1.0/regress_L3_L7.json): threads [8]: H1 needs at least two distinct positive thread counts, one of them 1 (thread identity)\n"
+  },
+  {
+   "check": "S6-B-02: refuses a bare {\"passed\": true} test record",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-1 test_keys is not green and complete (/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/evidence/gen1.1.0/test_keys.json): schema None and gate None, not c8-d2-gate-1 'A-INV-1 test_keys'; failed checks, or no list of passed checks\n"
+  },
+  {
+   "check": "S6-B-02: refuses a tree whose summary records only a_zero_dim",
+   "passed": true,
+   "detail": "FoundError); gates/f_coverage.json missing or unreadable (FileNotFoundError); gates/g_edge_forests.json missing or unreadable (FileNotFoundError); gates/h_kirchhoff.json missing or unreadable (FileNotFoundError); gates/i_sizes.json missing or unreadable (FileNotFoundError); gates/j_rates.json missing or unreadable (FileNotFoundError); gates/k_forests.json missing or unreadable (FileNotFoundError)\n"
+  },
+  {
+   "check": "S6-B-02: refuses a complete summary with the h_kirchhoff record missing",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-3 is not green and complete: gates/h_kirchhoff.json missing or unreadable (FileNotFoundError)\n"
+  },
+  {
+   "check": "S6-B-02: refuses a complete summary with the j_rates record red",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  A-INV-3 is not green and complete: gates/j_rates.json is not a passed A-INV-3 j_rates record\n"
+  },
+  {
+   "check": "control: the complete tree alone (no second copy) is accepted",
+   "passed": true,
+   "detail": "{\n \"written\": \"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/h2h.json\",\n \"manifest_sha256\": \"3dc24c56eb79774fdb4301e1179f692a3eb72bbc258d957611a73ebed20a2d1a\",\n \"manifest_md5\": \"236ee7f69f99ed9423b97f1d3dbca048\"\n}\n"
+  },
+  {
+   "check": "refuses without the C1 acknowledgment",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  DECISIONS.md does not log C63d's acknowledgment of the d pipeline (C1)\n"
+  },
+  {
+   "check": "refuses when a copy does not verify",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  copy /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/copy_bad does not verify against the pin\n"
+  },
+  {
+   "check": "refuses when a remote copy record is not a pass",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to write the HANDOFF:\n  copy record /mnt/beegfs/elsewhere/inventory8_d2=/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/verify_remote_bad.json does not show a pass for that path and pin\n"
+  },
+  {
+   "check": "S6-B-02: publication refuses a stage with only a_zero_dim in the summary",
+   "passed": true,
+   "detail": "rc=1 exists=False missing or unreadable (FileNotFoundError)\n  gates/h_kirchhoff.json missing or unreadable (FileNotFoundError)\n  gates/i_sizes.json missing or unreadable (FileNotFoundError)\n  gates/j_rates.json missing or unreadable (FileNotFoundError)\n  gates/k_forests.json missing or unreadable (FileNotFoundError)\n"
+  },
+  {
+   "check": "S6-B-02: publication refuses a stage with the j_rates record red",
+   "passed": true,
+   "detail": "rc=1 exists=False refusing to publish: gates/ does not record a complete A-INV-3 pass:\n  gates/j_rates.json is not a passed A-INV-3 j_rates record\n"
+  },
+  {
+   "check": "publication: the stage with the complete A-INV-3 gates is published and verifies",
+   "passed": true,
+   "detail": "00x64756gsk0lbvlf_80000gp/T/c8d2_handoff__iuanu9k/pub_full/inventory8_d2\",\n \"manifest_sha256\": \"31996c9863fe82b1572f868c388e80e5858c17258fd024d3d293fcfba9e8d7a8\",\n \"manifest_md5\": \"26cd7a19b53f90975b6da53858ac37d2\",\n \"payload\": {\n  \"L7_free\": 1,\n  \"L7_power\": 1,\n  \"L8_free\": 1,\n  \"L8_power\": 1\n }\n}\n"
+  }
+ ]
+}

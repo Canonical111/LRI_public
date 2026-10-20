@@ -1,0 +1,863 @@
+{
+  "normalization": "r6=2187*C6(1)",
+  "formula": "2187*C6 = known_polynomial + 835584*Lambda + 391680*H5real + 13056*sqrt(2)*(32*G+3*pi**2)*H3real - 393*pi**3*Wcentral + 96*Pa - 784*pi**(3/2)*L7",
+  "scope": "A Coxeter second-order identity and two inherited wheel identities reduce the wheel to one central-binomial stream, linear in second-order harmonic numbers. Three auxiliary series remain. No finite summation, minimality, or upstream graph/RG recertification is claimed. Direct convergence slows from n^-10 to n^-4; the previous certified evaluator remains a valid alternative.",
+  "known_polynomial": "-4059*A**5/640 + 255*A**4*pi/8 + 63*A**3*Q/8 - 2985*A**3*pi**2/64 - 3264*A**2*G*pi - 57*A**2*Poct/4 - 7827*A**2*pi**3/64 + 7863*A**2*z3/16 - 18*A*Ell + 3072*A*G**2 + 15*A*G*Q + 2208*A*G*pi**2 - 36*A*PZ5 - 1197*A*Poct*pi/2 + 285*A*Q**2/2 + 79*A*Q*pi**2/8 + 788693*A*pi**4/640 - 1197*Ell*pi - 34816*G*pi**3 + 24*PB6 + PK6/3 + 24*PZ6 + 12*Poct*Q - 15*Poct*pi**2/4 + 58*Q**2*V/9 - 1247*Q**2*pi/2 + 2013*Q*pi**3/8 + 13551*Q*z3/2 - 8352*U*pi**4 - 413952*sqrt(2)*Z1*c7*ell*pi**(3/2) - 244608*Z1*c7*ell*pi**(3/2) + 4704*sqrt(2)*Z1*c7*pi**(5/2) + 159936*Z1*c7*pi**(5/2) - 329280*Z2*ell*pi**(3/2) + 75264*Z2*pi**(5/2) - 413952*sqrt(2)*Z3*c7*ell*pi**(3/2) + 244608*Z3*c7*ell*pi**(3/2) - 159936*Z3*c7*pi**(5/2) + 4704*sqrt(2)*Z3*c7*pi**(5/2) - 489216*Z3*c7*pi**(3/2) + 827904*sqrt(2)*Z3*c7*pi**(3/2) - 244608*Z5*ell*pi**(3/2)*s7 + 413952*sqrt(2)*Z5*ell*pi**(3/2)*s7 - 4704*sqrt(2)*Z5*pi**(5/2)*s7 + 159936*Z5*pi**(5/2)*s7 - 275968*sqrt(2)*Z5*pi**(3/2)*s7 + 163072*Z5*pi**(3/2)*s7 - 413952*sqrt(2)*Z7*ell*pi**(3/2)*s7 - 244608*Z7*ell*pi**(3/2)*s7 + 4704*sqrt(2)*Z7*pi**(5/2)*s7 + 159936*Z7*pi**(5/2)*s7 + 2935296*Z7*pi**(3/2)*s7/5 + 4967424*sqrt(2)*Z7*pi**(3/2)*s7/5 - 655*pi**6 - 413393*pi**5/128 - 3651379*pi**2*z3/16 + 20237049*z5/8",
+  "known_shift_in_r6": "17685*A*Poct*pi/4 + 17685*Ell*pi/2 + 32194560*G*pi**3/Q**2 - 1965*Poct*pi**2/2 - 655*pi**6 + 1310*pi**5 + 5790069*pi**3/4480 - 141470408704*pi**3/(4375*Q**2)",
+  "horn_terms": [],
+  "polylogarithm_terms": [
+    {
+      "name": "Lambda",
+      "coefficient": "835584",
+      "operation": "Re",
+      "function": "multiple_polylogarithm",
+      "indices": [
+        3,
+        2
+      ],
+      "arguments": [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ],
+      "strict_sum": "sum_{n>m>=1} ((1+i)/2)**n*(1-i)**m/(n**3*m**2)",
+      "GPL_word": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "GPL_sign": 1
+    }
+  ],
+  "polylogarithm_sum": "835584*Lambda",
+  "single_index_harmonic_series_terms": [
+    {
+      "id": "Wcentral",
+      "name": "Wcentral",
+      "coefficient_in_r6": "-393*pi**3",
+      "summation_indices": 1,
+      "n_starts_at": 1,
+      "a_n": "(1/2)_n/n!",
+      "delta_n": "pi**2/3-4*H_(2*n)^(2)+2*H_n^(2)",
+      "summand": "a_n**4*(8+5*pi*(4*n+1)*a_n**2)*delta_n",
+      "sum": "sum(n=1..infinity,summand)",
+      "coefficient_update": "a_(n+1)=a_n*(2*n+1)/(2*n+2); delta_(n+1)=delta_n-1/(n+1/2)**2+1/(n+1)**2",
+      "initial_values": "a_1=1/2; delta_1=pi**2/3-3",
+      "asymptotic": "14/(pi**2*n**4)+O(n**-5)",
+      "positive": true,
+      "q_or_Catalan_in_summand": false,
+      "direct_tail_bound": "(8+20*pi/3)/(54*(N-3/4)**3), terms 1<=n<N, N>=1",
+      "fixed_ordinary_pFq_evaluation_claimed": false,
+      "tradeoff": "One central-binomial stream instead of two shifts; direct decay n^-4 rather than n^-10. Prior certified W10 evaluator remains available as a numerical alternative."
+    },
+    {
+      "id": "L7",
+      "name": "L7",
+      "coefficient_in_r6": "-784*pi**(3/2)",
+      "summation_indices": 1,
+      "shifts_r_over_8": [
+        1,
+        2,
+        3,
+        5,
+        7
+      ],
+      "definition": "sum_{n>=0} (-1)^n sum_{r in {1,2,3,5,7}} w_r*(n+r/8)*(Gamma(n+(r+2)/8)/Gamma(n+(r+6)/8))**7 * H_(2n)((r+2)/4)",
+      "finite_harmonic_definition": "H_m(a)=sum_{j=0}^{m-1}1/(j+a); H_0(a)=0",
+      "weights": {
+        "1": "c7*(-264*sqrt(2) - 156)",
+        "2": "420",
+        "3": "c7*(156 - 264*sqrt(2))",
+        "5": "s7*(-156 + 264*sqrt(2))",
+        "7": "s7*(-264*sqrt(2) - 156)"
+      },
+      "ordinary_constant_coefficients": {
+        "1": "c7*(ell*(624 + 1056*sqrt(2)) - pi*(12*sqrt(2) + 408))",
+        "2": "840*ell - 192*pi",
+        "3": "c7*(pi*(408 - 12*sqrt(2)) + (8 - 4*ell)*(156 - 264*sqrt(2)))",
+        "5": "-s7*(pi*(408 - 12*sqrt(2)) + (8/3 - 4*ell)*(156 - 264*sqrt(2)))",
+        "7": "s7*(-pi*(12*sqrt(2) + 408) + (48/5 - 4*ell)*(-264*sqrt(2) - 156))"
+      },
+      "ordinary_constant_combination": "CZ=sum_r q_r*Z(r/8)",
+      "identity_mu": "mu=8*pi**(3/2)*L7+4*pi**(3/2)*CZ",
+      "max_harmonic_polynomial_degree": 1,
+      "max_harmonic_order": 1,
+      "asymptotic": "each shifted summand O(log(n)/n**(5/2))",
+      "finite_ordinary_pFq_evaluation_claimed": false,
+      "numerical_tradeoff": "five shifted gamma/binomial streams instead of one central-binomial stream",
+      "mu_Euler_exact_arithmetic_tail_bound": "2**(64-N) when both CZ and L7 use N Euler coefficients; arithmetic rounding must be bounded separately"
+    }
+  ],
+  "counts": {
+    "auxiliary_series": 3,
+    "harmonic_auxiliary_series": 2,
+    "recurrence_auxiliary_series": 1,
+    "finite_ordinary_evaluation_of_new_series": false,
+    "active_classical_polylogarithm_symbols": 0,
+    "active_depth_two_polylogarithm_values": 1,
+    "real_half_argument_replacement_values": 2,
+    "number_of_special_values_not_reduced": true
+  },
+  "latest_identity": "Wpositive=pi*((8+5*pi)*pi**2/3+Wcentral)",
+  "unproved_wheel_relation_used": false,
+  "ordinary_generating_identity": {
+    "I_s": "int(0..1)t**(s-1)*(1-t)**(-s)*k(t)*k(1-t) dt",
+    "strip": "0<Re(s)<1",
+    "prefactor": "Gamma(1+s)*Gamma(s)**2*Gamma(1-s)/Gamma(s+1/2)**2",
+    "upper": [
+      "s",
+      "s",
+      "s",
+      "s",
+      "1+s/2",
+      "1/2",
+      "1/2"
+    ],
+    "lower": [
+      "s/2",
+      "1",
+      "1",
+      "1",
+      "s+1/2",
+      "s+1/2"
+    ],
+    "argument": 1
+  },
+  "numeric_accuracy_note": "The central wheel has a separate exact-rational cubic-in-pi enclosure from finite fourth/sixth-power corrections. This certifies the defined central series, not the full upstream graph/RG coefficient.",
+  "kernel_definitions": {
+    "k": {
+      "numerators": [
+        "1/2",
+        "1/2"
+      ],
+      "denominators": [
+        "1"
+      ],
+      "function": "_2F_1"
+    },
+    "u": {
+      "numerators": [
+        "1/4",
+        "3/4"
+      ],
+      "denominators": [
+        "1"
+      ],
+      "function": "_2F_1"
+    },
+    "v": {
+      "numerators": [
+        "1/4",
+        "1/4"
+      ],
+      "denominators": [
+        "1"
+      ],
+      "function": "_2F_1"
+    },
+    "h": {
+      "numerators": [
+        "1/4",
+        "1/4"
+      ],
+      "denominators": [
+        "1/2"
+      ],
+      "function": "_2F_1"
+    },
+    "j": {
+      "numerators": [
+        "1",
+        "1"
+      ],
+      "denominators": [
+        "2"
+      ],
+      "function": "_2F_1"
+    },
+    "p": {
+      "numerators": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "denominators": [
+        "1",
+        "1"
+      ],
+      "function": "_3F_2"
+    },
+    "d": {
+      "numerators": [
+        "1",
+        "1",
+        "1"
+      ],
+      "denominators": [
+        "2",
+        "2"
+      ],
+      "function": "_3F_2",
+      "coefficient": "1/(n+1)^2",
+      "equivalent": "Li_2(t)/t"
+    },
+    "p4": {
+      "upper": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "1",
+        "1",
+        "1"
+      ],
+      "function": "4F3(1/2,1/2,1/2,1/2;1,1,1;t)",
+      "coefficients": "((1/2)_n/n!)**4"
+    },
+    "one": {
+      "upper": [
+        "1"
+      ],
+      "lower": [],
+      "function": "1F0(1;;t)=1/(1-t)",
+      "coefficients": "1"
+    }
+  },
+  "beta_Horn_definition": "B(alpha,beta)*sum_{m_i,n_j>=0} (alpha)_M*(beta)_N/(alpha+beta)_(M+N)*product_left a_f(m_i)*product_right a_f(n_j), M=sum m_i,N=sum n_j; a_f(n)=prod(a in numerators)(a)_n/[prod(b in denominators)(b)_n*n!]. All variables are 1.",
+  "coupled_Horn_definition": "sum_{n_i>=0} (p)_N*(q)_N/[(r)_N*(s)_N]*product_i a_f(n_i), N=sum n_i. Each occurrence specifies all four coupled parameters. All variables are 1.",
+  "ordinary_constant_definitions": "inputs/ordinary_and_horn_definitions.md (also embedded verbatim in ordinary_constant_definitions_source_text)",
+  "ordinary_constant_definitions_source_text": "# A complete finite special-function representation of the corrected C\u2086(1)\n\n## Scope and precise meaning of the result\n\nStarting from the corrected renormalization-group reduction supplied in this conversation, all four remaining integrals are replaced here by **43 explicitly specified four-index generalized-Lauricella/Horn values** at unit arguments. All their parameters are positive rationals, and every defining multiple series converges absolutely. There are no regulator derivatives, Laurent-coefficient extractions, undefined graph masters, or remaining integrals in the final representation.\n\nThis is a complete finite representation **in an enlarged special-function class**. It is **not** a proof of a reduction to the ordinary one-variable gamma\u2013hypergeometric basis requested earlier. The existing finite multiple-polylogarithm evaluation of the kite is retained. A formula in explicitly defined multivariate hypergeometric functions must not be described as a new one-variable summation theorem.\n\nThe starting graph identities, previously evaluated primitive periods, finite polylogarithm table, and repaired RG assembly are inherited analytic inputs. This calculation verifies their conversion and numerical assembly; it does not independently rederive the whole six-loop calculation. In particular, the previously stated zig-zag identification qualifications remain applicable.\n\nNo numerical value of the full coefficient is used to determine any coefficient in the formulas below. The unproved wheel relation involving 8c\u2080+c\u2081 is not used.\n\nThe convention is\n\\[\n\\Delta_{\\mathcal E}=\\frac12-\\frac\\epsilon6+\\sum_{n\\ge2}C_n(1)\\epsilon^n,\n\\qquad r_6=2187C_6(1).\n\\]\n\n## 1. The four-index function, defined by its convergent series\n\nFor two lists of Gauss parameter triples\n\\[\n\\mathcal A=((a_i,b_i;c_i))_{i=1}^{r},\\qquad\n\\mathcal B=((\\tilde a_j,\\tilde b_j;\\tilde c_j))_{j=1}^{s},\\qquad r+s=4,\n\\]\nput M=\u03a3m\u1d62 and N=\u03a3n\u2c7c and define\n\\[\n\\boxed{\\begin{aligned}\n\\mathbb H_{\\alpha,\\beta}(\\mathcal A;\\mathcal B)\n={}&\\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}\n\\sum_{\\substack{m_1,\\ldots,m_r\\ge0\\\\n_1,\\ldots,n_s\\ge0}}\n\\frac{(\\alpha)_M(\\beta)_N}{(\\alpha+\\beta)_{M+N}}\\\\\n&\\times\\prod_{i=1}^{r}\\frac{(a_i)_{m_i}(b_i)_{m_i}}{(c_i)_{m_i}m_i!}\n\\prod_{j=1}^{s}\\frac{(\\tilde a_j)_{n_j}(\\tilde b_j)_{n_j}}{(\\tilde c_j)_{n_j}n_j!}.\n\\end{aligned}}\\tag{1}\n\\]\nEmpty lists and empty products are permitted. All four variables of this multiple hypergeometric function are set to one. Here (a)\u2099=\u0393(a+n)/\u0393(a).\n\nThis is a specialization of a generalized Lauricella/Horn hypergeometric series, rather than an ordinary pFq. For example, increasing a left index by one multiplies its summand by\n\\[\n\\frac{\\alpha+M}{\\alpha+\\beta+M+N}\n\\frac{(a_i+m_i)(b_i+m_i)}{(c_i+m_i)(m_i+1)},\n\\]\na rational function of the indices. The right-index ratio has \u03b2+N in place of \u03b1+M. These ratios also specify the associated Horn system. General gamma-ratio multiple-series conventions are described in Bytev\u2013Kniehl\u2013Moch, especially their generalized-Lauricella appendix; their work is not an evaluation of this Ising coefficient.\n\nOnly these five parameter triples occur:\n\n| Formal letter | (a,b;c) |\n|---|---|\n| k | (1/2,1/2;1) |\n| u | (1/4,3/4;1) |\n| v | (1/4,1/4;1) |\n| h | (1/4,1/4;1/2) |\n| j | (1,1;2) |\n\nA barred letter denotes the same triple placed in the **right list** of (1); an unbarred letter is placed in the left list. Define the finite linear evaluation map\n\\[\nT_{\\alpha,\\beta}[x_1\\cdots x_r\\bar y_1\\cdots\\bar y_s]\n=\\mathbb H_{\\alpha,\\beta}((x_1,\\ldots,x_r);(y_1,\\ldots,y_s)),\\qquad r+s=4,\n\\tag{2}\n\\]\nwhere each letter is replaced by its tabled triple. Extend this map linearly to the finite degree-four polynomials below. **T is finite substitution notation, not an unevaluated integral operator.** For example,\n\\[\nT_{1/2,5/2}[k^2\\bar j^2]\n=\\mathbb H_{1/2,5/2}\n\\bigl((\\tfrac12,\\tfrac12;1),(\\tfrac12,\\tfrac12;1);\n(1,1;2),(1,1;2)\\bigr).\n\\]\n\nThe exact reflection identity\n\\[\n\\mathbb H_{\\alpha,\\beta}(\\mathcal A;\\mathcal B)\n=\\mathbb H_{\\beta,\\alpha}(\\mathcal B;\\mathcal A)\\tag{3}\n\\]\nis used to combine repeated values. No other conjectural identification is made.\n\n## 2. Finite formulas replacing the four remaining moments\n\nSet\n\\[\n\\eta=\\frac{\\Gamma(1/4)^2}{2\\pi^{3/2}}=\\frac{\\sqrt Q}{2\\pi},\n\\qquad Q=\\frac{\\Gamma(1/4)^4}{\\pi},\n\\]\nand form the explicit commuting polynomials\n\\[\nS=k+\\bar k,\\qquad\nM=u^2+\\bar u^2+\\frac3{\\sqrt2}u\\bar u,\n\\]\n\\[\nB=2\\eta^2\\bar h^2+\\eta v\\bar h,\n\\qquad \\bar B=2\\eta^2h^2+\\eta\\bar v h.\n\\tag{4}\n\\]\nA bar interchanges every barred and unbarred letter; it is not complex conjugation here.\n\nThe new expressions are\n\\[\n\\boxed{P_a=16\\pi^4\\left\\{2T_{1/2,1}[M\\bar B]+T_{1/2,1/2}[B\\bar B]\\right\\},}\\tag{5}\n\\]\n\\[\n\\boxed{\\begin{aligned}\n\\mu=8\\pi^3\\bigl\\{\n&-T_{1,3/2}[S(M+B)\\bar j]\n+T_{2,1/2}[SMj]\n+T_{3/2,1/2}[S\\bar B j]\\bigr\\},\n\\end{aligned}}\\tag{6}\n\\]\n\\[\n\\boxed{c_1=2\\pi^2\\left\\{\nT_{1/2,5/2}[S^2\\bar j^2]\n-T_{3/2,3/2}[S^2j\\bar j]\n+T_{1/2,3}[S^2\\bar j^2]\\right\\},}\\tag{7}\n\\]\n\\[\n\\boxed{c_0=2\\pi^2\\left\\{\nT_{3/2,3/2}[S^2j\\bar j]\n+2T_{5/2,1}[S^2j^2]\n-2T_{3/2,2}[S^2j\\bar j]\\right\\}.}\\tag{8}\n\\]\n\nEquations (1), (2), and (4) make (5)\u2013(8) finite specifications of ordinary fixed-parameter multiple hypergeometric values. The individual formulas contain 9, 20, 8, and 8 distinct values after (3). Two wheel values are shared, leaving **43 distinct values** in their combined contribution. This is not a count of independent transcendental constants.\n\n## 3. The complete coefficient, with no remaining integral symbols\n\nDefine\n\\[\n\\boxed{\\begin{aligned}\n\\mathcal R={}&1536\\pi^4\\left\\{2T_{1/2,1}[M\\bar B]+T_{1/2,1/2}[B\\bar B]\\right\\}\\\\\n&+784\\pi^3\\left\\{T_{1,3/2}[S(M+B)\\bar j]-T_{2,1/2}[SMj]-T_{3/2,1/2}[S\\bar B j]\\right\\}\\\\\n&+\\pi^2\\left\\{912T_{3/2,3/2}[S^2j\\bar j]+288T_{5/2,1}[S^2j^2]\n-288T_{3/2,2}[S^2j\\bar j]\\right.\\\\\n&\\hspace{20mm}\\left.-768T_{1/2,5/2}[S^2\\bar j^2]-768T_{1/2,3}[S^2\\bar j^2]\\right\\}.\n\\end{aligned}}\\tag{9}\n\\]\nThis is the fully substituted form of 96P\u2090+72c\u2080\u2212384c\u2081\u221298\u03bc.\n\nThe corrected thermal coefficient is\n\\[\n\\boxed{C_6(1)=\\frac{E+\\mathcal C_{\\rm MPL}+\\mathcal R}{2187}.}\\tag{10}\n\\]\nEvery object on the right is explicitly defined below or in (1)\u2013(9). In particular, there is no N\u2086, unspecified subtraction term, or graph-indexed coefficient left in (10).\n\nPut A=\u03c0+4log2 and G=\u03a3\u2099\u2265\u2080(\u22121)\u207f/(2n+1)\u00b2 (Catalan's constant). The ordinary-special-value part is\n\\[\n\\boxed{\\begin{aligned}\nE={}&24P_b+24P_{Z,6}+\\frac13P_K-36AP_5\n+(12Q-12A^2-6\\pi^2)P_4-9A\\mathcal L\\\\\n&+\\frac Q8\\left[63A^3+120AG+79A\\pi^2+2013\\pi^3\n+54204\\zeta(3)+1140AQ\\right]\\\\\n&+Q^2\\left(\\frac{58}{9}V-\\frac{1247}{2}\\pi\\right)-8352\\pi^4U+\\mathcal P,\n\\end{aligned}}\\tag{11}\n\\]\nwhere\n\\[\n\\boxed{\\begin{aligned}\n\\mathcal P={}&\\frac{21}{640}A^5-\\frac{4345}{64}A^3\\pi^2\n+\\frac{23997}{64}A^2\\pi^3+\\frac{99255}{16}A^2\\zeta(3)\\\\\n&-624AG(16G+3\\pi^2)-\\frac{398587}{640}A\\pi^4-11424A\\pi\\zeta(3)\\\\\n&+272\\pi G(48G-\\pi^2)+\\frac{76799}{128}\\pi^5\n+\\frac{69581}{16}\\pi^2\\zeta(3)+\\frac{1410297}{8}\\zeta(5).\n\\end{aligned}}\\tag{12}\n\\]\nThe polynomial (11)\u2013(12) includes the previously repaired contributions R147,\u22123=R148,\u22123=2/5. They must **not** be added a second time. It also includes the polynomial part of the finite kite evaluation. Its nonpolynomial part is precisely C_MPL in Section 5.\n\n### 3.1 Ordinary hypergeometric definitions\n\nThe notation a^{\u00d7m} means m repeated parameters. Define\n\\[\nB_-=\\Gamma(1/4)^4\\,{}_4F_3\\left(\\begin{matrix}1/4,1/4,1/2,1/2\\\\3/4,3/4,1\\end{matrix};1\\right),\n\\]\n\\[\nB_+=\\frac{64\\pi^4}{\\Gamma(1/4)^4}\\,{}_4F_3\\left(\\begin{matrix}3/4,3/4,1/2,1/2\\\\5/4,5/4,1\\end{matrix};1\\right),\n\\]\n\\[\nP_4=13B_--3B_+,\\qquad\n\\mathcal L=-\\frac{13A-3\\pi}{2}B_-+\\frac{3A-\\pi}{2}B_+.\n\\tag{13}\n\\]\nThe two product-period values are\n\\[\nU={}_5F_4\\left(\\begin{matrix}1/4,(1/2)^{\\times4}\\\\5/4,1^{\\times3}\\end{matrix};1\\right),\n\\qquad\nV={}_6F_5\\left(\\begin{matrix}1,1,(5/4)^{\\times4}\\\\2,(7/4)^{\\times4}\\end{matrix};1\\right).\n\\tag{14}\n\\]\nFor P_b put\n\\[\nH_-={}_7F_6\\left(\\begin{matrix}1,(1/4)^{\\times6}\\\\(3/4)^{\\times6}\\end{matrix};1\\right),\\quad\nH_0={}_6F_5\\left(\\begin{matrix}(1/2)^{\\times6}\\\\1^{\\times5}\\end{matrix};1\\right),\\quad\nH_+={}_7F_6\\left(\\begin{matrix}1,(3/4)^{\\times6}\\\\(5/4)^{\\times6}\\end{matrix};1\\right),\n\\]\n\\[\nP_b=\\frac{6Q^3}{\\pi}(2H_--1)-104\\pi^5H_0+\\frac{2^{18}\\pi^5}{Q^3}H_+.\n\\tag{15}\n\\]\nFor k=7,8 define the finite-parameter family\n\\[\n\\begin{aligned}\nZ_r^{(k)}(z)={}&\\frac r8\n\\left[\\frac{\\Gamma((r+2)/8)}{\\Gamma((r+6)/8)}\\right]^k\\\\\n&\\times{}_{k+2}F_{k+1}\\left(\\begin{matrix}1,1+r/8,((r+2)/8)^{\\times k}\\\\r/8,((r+6)/8)^{\\times k}\\end{matrix};z\\right).\n\\end{aligned}\\tag{16}\n\\]\nSet Y\u1d63=Z\u1d63\u207d\u2078\u207e(1), r=1,2,7, and\n\\[\n\\mathcal H=(17+12\\sqrt2)Y_1-(17-12\\sqrt2)Y_7.\n\\]\nThen\n\\[\nP_{Z,6}=\\pi^2[(816-828\\sqrt2)Y_2+23\\mathcal H],\n\\qquad\nP_K=\\pi^2[432(1-\\sqrt2)Y_2+12\\mathcal H].\n\\tag{17}\n\\]\nFor P\u2085 put Z\u1d63=Z\u1d63\u207d\u2077\u207e(\u22121), r=1,2,3,5,7, c=cos(\u03c0/8), s=sin(\u03c0/8), and\n\\[\nX_0=Z_2,\\quad X_+=c^7Z_3-s^7Z_5,\\quad X_-=c^7Z_1+s^7Z_7.\n\\]\nThe existing evaluation is\n\\[\nP_5=16\\pi^{3/2}\\left[-35X_0+(22\\sqrt2-13)X_++(22\\sqrt2+13)X_-\\right].\n\\tag{18}\n\\]\nAll the one-variable values in (13)\u2013(18) are convergent. Their graph identifications and prior analytic assumptions are inherited, not inferred from the current numerical agreement.\n\n## 4. Derivation of the new four-index evaluations\n\nThe inherited corrected expression is\n\\[\n2187C_6=E_{\\rm repaired}+96P_a+72c_0-384c_1-98\\mu.\n\\tag{19}\n\\]\nWith\n\\[\nF(x)=\\int_{\\mathbb R}|y(1-y)(y-x)|^{-1/2}\\,dy,\n\\quad\nJ(x)=\\int_{\\mathbb R}\\frac{F(y)}{\\sqrt{|y(1-y)(x-y)|}}\\,dy,\n\\]\nits four moments are\n\\[\nP_a=\\int_{\\mathbb R}J(x)J(1/x)\\frac{dx}{|x|},\n\\quad\n\\mu=\\int_{\\mathbb R}\\frac{F(x)J(x)}{\\sqrt{|1-x|}}\\log\\left|\\frac{x}{1-x}\\right|dx,\n\\]\n\\[\nc_1=\\frac14\\int_{\\mathbb R}\\rho(x)\\log^2\\left|\\frac{x}{1-x}\\right|dx,\n\\qquad\nc_0=\\frac12\\int_{\\mathbb R}\\rho(x)\\log|x|\\log|1-x|dx,\n\\quad \\rho(x)=\\frac{F(x)^2}{\\sqrt{|x(1-x)|}}.\n\\tag{20}\n\\]\nThese integrals are used only to prove the new fixed-value formulas; they do not remain in (10).\n\nFor this derivation, interpret the formal letters in Section 1 as Gauss functions of t, and bars as evaluation at 1\u2212t. The earlier kernel evaluations give\n\\[\nF(t)=2\\pi S(t),\\qquad J(t)=4\\pi^2M(t),\\quad 0<t<1,\n\\]\n\\[\nJ(-a)=\\frac{4\\pi^2}{\\sqrt{1+a}}B\\!\\left(\\frac a{1+a}\\right),\\quad a>0,\n\\qquad J(x)=J(1-x).\n\\tag{21}\n\\]\nThey follow from the evaluated repeated trivalent kernel; the negative-interval prefactor is essential. The Gauss coefficient \u03b7 in (4) is fixed by that formula, not fitted.\n\n### 4.1 Folding P_a\n\nThe positive real intervals are paired by x\u21921/x. For 0<x<1,\n\\[\nJ(1/x)=4\\pi^2\\sqrt x\\,B(1-x).\n\\]\nFor x=\u2212a use t=a/(1+a). Since da/a=dt/[t(1\u2212t)], equation (21) gives\n\\[\nP_a=32\\pi^4\\int_0^1t^{-1/2}M(t)B(1-t)dt\n+16\\pi^4\\int_0^1[t(1-t)]^{-1/2}B(t)B(1-t)dt.\n\\tag{22}\n\\]\nThis proves the beta weights in (5).\n\n### 4.2 Folding the five-loop logarithmic moment\n\nUse F(\u2212t/(1\u2212t))=\u221a(1\u2212t)F(t) and F(1/t)=\u221atF(t). Splitting the real line into its three intervals yields\n\\[\n\\begin{aligned}\n\\mu=4\\pi^2\\int_0^1F(t)\\left[\n\\frac{M(t)+B(t)}{\\sqrt{1-t}}\\log t\n-\\left(\\frac{M(t)}{\\sqrt{1-t}}+\n\\frac{B(1-t)}{\\sqrt{t(1-t)}}\\right)\\log(1-t)\\right]dt.\n\\end{aligned}\\tag{23}\n\\]\nThe logarithms have the elementary Gauss evaluations\n\\[\n\\log t=-(1-t)\\,{}_2F_1(1,1;2;1-t),\\qquad\n\\log(1-t)=-t\\,{}_2F_1(1,1;2;t).\n\\tag{24}\n\\]\nThus no differentiation of a beta or hypergeometric parameter is needed. Substitute (24) into (23), and F=2\u03c0S, to obtain (6).\n\n### 4.3 Folding the two wheel moments\n\nLet L=log t, C=log(1\u2212t),\n\\[\nd_0=[t(1-t)]^{-1/2},\\quad d_-=t^{-1/2},\\quad d_+=(1-t)^{-1/2}.\n\\]\nThe three-interval folding of (20) gives\n\\[\nc_1=\\pi^2\\int_0^1S(t)^2\\{d_0(L-C)^2+d_-L^2+d_+C^2\\}\\,dt,\n\\]\n\\[\nc_0=2\\pi^2\\int_0^1S(t)^2\\{d_0LC+d_-(C^2-LC)+d_+(L^2-LC)\\}\\,dt.\n\\]\nBecause S(t)\u00b2 is symmetric about 1/2, these become\n\\[\nc_1=2\\pi^2\\int_0^1S(t)^2\\{d_0L^2-d_0LC+d_-L^2\\}\\,dt,\n\\]\n\\[\nc_0=2\\pi^2\\int_0^1S(t)^2\\{d_0LC+2d_-(C^2-LC)\\}\\,dt.\n\\tag{25}\n\\]\nApplying (24) supplies exactly the shifted beta exponents in (7)\u2013(8). This does not use the conjectural identity for 8c\u2080+c\u2081.\n\n### 4.4 Evaluation of the beta products and convergence\n\nExpanding each Gauss function in the right-hand side of (22)\u2013(25), each term integrates to\n\\[\n\\int_0^1t^{\\alpha+M-1}(1-t)^{\\beta+N-1}dt\n=\\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}\n\\frac{(\\alpha)_M(\\beta)_N}{(\\alpha+\\beta)_{M+N}}.\n\\tag{26}\n\\]\nThis is precisely (1), via Euler beta integration. Each Gauss factor has positive series coefficients. The four zero-balanced factor types grow at most logarithmically at their singular endpoint; v has c\u2212a\u2212b=1/2 and is finite there. All beta exponents used in (5)\u2013(8) are positive. Consequently every product is bounded by an integrable beta weight times a polynomial in endpoint logarithms. Tonelli's theorem justifies integration term by term and proves absolute convergence of each individual four-index series at (1,1,1,1).\n\nNo cancellation of divergent series is used. Signed coefficients appear only when the finitely many separately convergent values are combined.\n\n## 5. Explicit finite multiple-polylogarithm part\n\nThe pre-existing kite formula contributes\n\\[\n\\boxed{\\mathcal C_{\\rm MPL}=1632\\mathfrak a_4+1632\\pi\\mathfrak b_3-1224\\pi^2\\mathfrak b_2.}\\tag{27}\n\\]\nThe following finite word rules specify it without referring to a master integral or a parameter derivative. They are the unchanged definitions from the earlier kite evaluation.\n\nFor indices s\u1d62\u22651 use\n\\[\n\\operatorname{Li}_{s_1,\\ldots,s_d}(z_1,\\ldots,z_d)\n=\\sum_{n_1>\\cdots>n_d>0}\\frac{z_1^{n_1}\\cdots z_d^{n_d}}\n{n_1^{s_1}\\cdots n_d^{s_d}}.\n\\tag{28}\n\\]\nFor a word ending in a nonzero letter, define its GPL value by\n\\[\n\\mathcal V(0^{s_1-1},a_1,\\ldots,0^{s_d-1},a_d)\n=(-1)^d\\operatorname{Li}_{s_1,\\ldots,s_d}\n(1/a_1,a_1/a_2,\\ldots,a_{d-1}/a_d).\n\\tag{29}\n\\]\nAll words in the fully expanded final table start with a letter different from 1 and end in a nonzero letter. The resulting multiple-polylogarithm arguments belong to {1,\u22121,i,\u2212i}. They are convergent values; no regularized endpoint value remains in the exported expression.\n\nFor a compact finite description use letters e\u2080,e\u2081,e\u208b\u2081,e\u1d62,e\u208b\u1d62, ordinary concatenation, and the shuffle product \u2a3f. Constants multiply the empty word. Put\n\\[\nq=e_1+e_{-1}+e_i+e_{-i},\\quad \\ell_-=e_1+e_{-1},\\quad\\ell_+=e_i+e_{-i},\n\\]\n\\[\nF_2=-4e_0q,\\quad F_3=8e_0qq,\\quad F_4=-16e_0qqq+16e_0qe_0q,\n\\]\n\\[\n\\mathscr T_-(W)=\\tfrac12(e_{-1}-e_1)W,\\qquad\n\\mathscr T_+(W)=\\frac{e_i-e_{-i}}{2i}W.\n\\]\nThen\n\\[\n\\begin{aligned}\n\\mathfrak a_4=\\mathcal V\\mathscr T_-\\left[\nF_4-\\frac{19\\pi^4}{360}\n+2\\ell_-\\amalg(F_3-2\\zeta(3))\n+2(\\ell_-\\amalg\\ell_-)\\amalg(F_2-\\pi^2/6)\n\\right],\n\\end{aligned}\n\\]\n\\[\n\\mathfrak b_2=\\mathcal V\\mathscr T_+[F_2+2\\ell_+\\amalg\\ell_+],\n\\]\n\\[\n\\mathfrak b_3=\\mathcal V\\mathscr T_+\\left[\nF_3+2\\ell_+\\amalg F_2+\\tfrac43\\ell_+\\amalg\\ell_+\\amalg\\ell_+\n\\right].\\tag{30}\n\\]\nBefore applying (29), eliminate intermediate words beginning in 1 by the finite shuffle reduction assigning the single-letter word (1) the regularized value zero. Explicitly, for w=(1,v), expand the shuffle (1)\u2a3fv. If w occurs with multiplicity m, replace w by \u22121/m times the sum of the other shuffle terms, and continue recursively; an all-1 word maps to zero. On these endpoint-subtracted combinations this operation produces their ordinary convergent limits. The attached machine table already performs this operation, so evaluating (10) does not require any limiting procedure.\n\nExpanding (27)\u2013(30) gives exactly the 292 GPL terms in `results/complete_expression.json`. `inputs/Y_multiple_polylogarithms.json` separately lists the equivalent multiple-Li values for Y; the nonpolynomial weights in C_MPL are 17/3 times those Y weights. The table is inherited and not counted as a new polylogarithm reduction.\n\n## 6. Direct evaluation of the four-index values\n\nThe numerical implementation evaluates the fixed-value formula (1), not the supplied graph moments. It uses Gauss connection formulas to develop each factor about the appropriate endpoint on two half intervals. This is an exponentially convergent acceleration of the positive multiple sum, not a new integration.\n\nFor a zero-balanced Gauss factor,\n\\[\n{}_2F_1(a,b;a+b;1-x)\n=\\frac{\\Gamma(a+b)}{\\Gamma(a)\\Gamma(b)}\n\\sum_{n\\ge0}\\frac{(a)_n(b)_n}{(n!)^2}\n\\left[2\\psi(n+1)-\\psi(n+a)-\\psi(n+b)-\\log x\\right]x^n.\n\\tag{31}\n\\]\nThe reflected v factor has the two convergent branches\n\\[\n\\begin{aligned}\n{}_2F_1(1/4,1/4;1;1-x)\n={}&\\frac{\\sqrt\\pi}{\\Gamma(3/4)^2}{}_2F_1(1/4,1/4;1/2;x)\\\\\n&-\\frac{2\\sqrt\\pi}{\\Gamma(1/4)^2}\\sqrt x\\,{}_2F_1(3/4,3/4;3/2;x).\n\\end{aligned}\\tag{32}\n\\]\nThe j factor at 1\u2212x is \u2212log x/(1\u2212x). Multiplying these expansions and the analytic weight (1\u2212x)^{\u03b2\u22121} produces only powers x\u207f, half-powers x\u207f\u207a\u00b9\u141f\u00b2, and powers of log x through degree four. Each term is summed by\n\\[\n\\int_0^{1/2}x^{s-1}(-\\log x)^d dx\n=2^{-s}\\sum_{k=0}^d\\binom dk\\frac{k!(\\log2)^{d-k}}{s^{k+1}}.\n\\tag{33}\n\\]\nInteger fixed-point polynomial products accelerate these finite convolutions. There is no quadrature call in `evaluate_values.py`.\n\n### Explicit analytic truncation bound\n\nOn |x|=3/4, the sum of analytic coefficient-function majorants for any one of the five Gauss types, in either endpoint expansion, is at most 40. This follows from the coefficient ratio bounds, the zero-balanced leading digamma constants (the largest is \u03c0+6log2<8), and (32). The analytic beta-weight factor has bound at most 4 for the \u03b2 values used here. Thus the product majorant is at most 4\u00b740\u2074, including the finite logarithmic and half-power channels.\n\nCauchy's coefficient bound and s\u22651/2 give the uniform one-value tail\n\\[\n\\boxed{|\\mathbb H-\\mathbb H_N|\n\\le 2\\cdot3\\cdot(4\\cdot40^4)\\cdot768\\,(2/3)^N.}\\tag{34}\n\\]\nHere degrees n=0,...,N\u22121 are retained in each analytic endpoint series. The factors 2 and 3 count the two halves and the geometric tail; 768 bounds d!/s^{d+1} for d\u22644,s\u22651/2. Terms with half-powers only improve the bound.\n\nFor the complete weighted contribution R/2187, summing absolute coefficient bounds gives a truncation allowance below 3.63\u00d710\u207b\u2079\u00b9 at N=600. The coefficient norm is bounded by the exact integer 75798528, using \u03c0<4, \u221a2<3/2, and \u03b7<2. The last inequality follows from \u0393(1/4)<4+1/2 and \u03c0>3; thus no floating-point gamma estimate is used in this bound. **This is an exact-arithmetic series-tail bound. It does not include rounding of gamma/elementary constants or fixed-point convolutions.** The current evaluator is not interval arithmetic. No new rigorous 90-digit enclosure of the complete coefficient is claimed.\n\n### Fresh numerical comparisons\n\nIndependent evaluations of the multiple-series formula were run at (N,digits)=(180,55),(400,85),(600,125). At the last setting they give\n\\[\nP_a=334926.04524805183788322200124007778661308590525313668\\ldots,\n\\]\n\\[\n\\mu=54292.238443788236565004976469781432292265267961065230\\ldots,\n\\]\n\\[\nc_1=9859.10247185916821546853047871650868118760915635997\\ldots,\n\\qquad c_0=691.40121478917148734772701193096297014587050472304\\ldots.\n\\]\nThe combined contribution is\n\\[\n\\frac{\\mathcal R}{2187}\n=10560.65227004692684305804529768668365362995491742778\\ldots.\n\\tag{35}\n\\]\n\nFresh quadrature of the pre-series moment formulas, using stable elliptic AGM and Gauss kernels, was separately run at 65 and 85 decimal digits. At 85 digits the largest observed absolute difference from the new series is 1.27\u00d710\u207b\u2078\u2070 (P\u2090). For c\u2080 it is 2.48\u00d710\u207b\u2078\u00b3; \u03bc and c\u2081 round to the same numbers at that precision. These are numerical cross-checks, not interval-certified errors. Both routes retain the inherited graph-to-kernel identities.\n\nThe exact conversion/implementation checker passes 288 checks. Most are parameter/convergence and term-count checks, not new integral identities. The substantive checks include both wheel foldings, logarithm insertion, reflection combination, equality of the complete weighted expression, invariance of the known polynomial, unchanged finite GPL terms, retention of the source repair exactly once, and signed integer convolution against a separately calculated exact product.\n\n## 7. Numerical full-coefficient assembly and limitations\n\nThe ordinary pFq constants in (13)\u2013(18) were freshly evaluated at 50 and 85 digits. The existing 292 GPL terms were also freshly summed, by midpoint Taylor expansions rather than a graph integral. Combined with (35), the formula gives\n\\[\n\\boxed{C_6(1)\\approx14331.687032758054320445463255246217118317323061989.}\\tag{36}\n\\]\nThis is the numerical value of the **accumulated corrected analytic representation**, not a newly certified physical accuracy claim. It differs from the independently retained all-sector estimator 14331.6870327683769636393... by \u22121.03226431938\u00d710\u207b\u2078, within the original empirical allowance 4.9\u00d710\u207b\u2077. That allowance remains empirical. The agreement does not independently prove every upstream graph normalization or special-period identification.\n\nThe present pass does not use or prove the conjecture\n\\[\n8c_0+c_1\\stackrel?=(2\\pi^2+20\\pi\\log2+52\\log^22)B_-\n-(4\\pi\\log2+12\\log^22)B_+.\n\\]\n\n**What is complete:** the finite specification (10) in ordinary hypergeometric, multiple-polylogarithmic, and four-index Horn special values, with every parameter explicit and no remaining integral or regulator derivative.\n\n**What is not complete:** reduction to the earlier strictly one-variable gamma\u2013hypergeometric basis; minimality or arithmetic independence; a rigorous enclosure of the full physical coefficient; a new independent derivation of the entire upstream RG/graph calculation.\n\n## 8. Reproduction\n\nThe scripts need Python 3, mpmath, and SymPy. No network access is needed.\n\n```text\npython formula.py\npython verify_algebra.py\npython evaluate_values.py 180 55\npython evaluate_values.py 400 85\npython evaluate_values.py 600 125\npython gpl_values.py 85 350\npython check_quadrature.py 85\npython evaluate_complete.py 85\n```\n\n`results/four_index_values.json` gives every one of the 43 values with its rational parameters and coefficient. `results/complete_expression.json` combines that table with the explicit ordinary-special-value polynomial and the finite GPL table. Input hashes and origins are recorded in `PROVENANCE.json`.\n\n## References and provenance\n\n1. Supplied `C6_missing_pole_repair_and_zigzag_reduction.md` and `C6_corrected_reduced_expression.json`: corrected RG expression, the two omitted leading poles, moment normalizations, and numerical all-sector comparison.\n2. Supplied `C6_new_primitive_closed_form.md`, `C6_wheel_certified_evaluation.md`, and preceding period notes: kernel evaluations and inherited special-value identities.\n3. Supplied `C6_cyclotomic_kite_evaluation.md` and `Y_multiple_polylogarithms.json`: finite GPL formula and conventions.\n4. V. Bytev, B. Kniehl, S. Moch, *Derivatives of Horn-type hypergeometric functions with respect to their parameters*, arXiv:1712.07579, especially the gamma-ratio series and generalized-Lauricella notation: https://arxiv.org/html/1712.07579 . Used to identify the function class, not as a published Ising evaluation.\n5. NIST DLMF \u00a715.6, Euler integral representations: https://dlmf.nist.gov/15.6 .\n6. NIST DLMF \u00a715.8, Gauss connection formulas, especially the zero-balanced limiting formula: https://dlmf.nist.gov/15.8 .\n7. E. Panzer, *Algorithms for the symbolic integration of hyperlogarithms with applications to Feynman integrals*, arXiv:1403.3385: https://arxiv.org/html/1403.3385 . General GPL/shuffle context; the finite kite word table is an inherited project result.\n\nThe graph-specific formulas (5)\u2013(12) are derived in this note from the inherited kernel and corrected-assembly inputs. They are not attributed to the general references.\n",
+  "definitions": {
+    "A": "pi+4*log(2)",
+    "G": "Catalan = beta(2)",
+    "Q": "Gamma(1/4)**4/pi",
+    "z3": "zeta(3)",
+    "z5": "zeta(5)",
+    "F8minus": "8F7(5/4,(1/2)^7;1/4,1^6;-1) = sum_{n>=0} (-1)^n(4n+1)*(binomial(2n,n)/4^n)^7",
+    "ell": "log(2)",
+    "c7": "cos(pi/8)**7",
+    "s7": "sin(pi/8)**7",
+    "Z1": "Z(1/8), Z(t)=t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7;t,(t+3/4)^7;-1)",
+    "Z2": "Z(2/8), Z(t)=t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7;t,(t+3/4)^7;-1)",
+    "Z3": "Z(3/8), Z(t)=t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7;t,(t+3/4)^7;-1)",
+    "Z5": "Z(5/8), Z(t)=t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7;t,(t+3/4)^7;-1)",
+    "Z7": "Z(7/8), Z(t)=t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7;t,(t+3/4)^7;-1)"
+  },
+  "gamma_constant_Q": "Gamma(1/4)^4/pi",
+  "eta": "Gamma(1/4)^2/(2*pi^(3/2))",
+  "source_correction": {
+    "reason": "Two missing leading Laurent coefficients in original symbolic skeleton",
+    "R147_-3": "2/5",
+    "R148_-3": "2/5",
+    "added_polynomial_r6": "1024*A**5/25 - 1216*A**3*pi**2/15 + 2672*A**2*pi**3/5 + 60864*A**2*z3/5 - 2738*A*pi**4/75 + 5963*pi**5/15 - 12046*pi**2*z3/5 + 711576*z5/5",
+    "correction_is_not_a_shift_of_the_independent_numerical_C6": true
+  },
+  "generalized_coupled_Horn_definition": "Sum over all local indices, with a factor product((a)_N)/product((b)_N) depending on their total N, times the explicit ordinary hypergeometric coefficient of each local factor. Each displayed coupled parameter list is used in full.",
+  "retained_previous_representation": "inputs/previous_expression.json",
+  "ordinary_generating_identity_symmetric": "J(alpha)=pi/2*Beta(alpha,alpha)*7F6(5/4,(1/2)^5,1-alpha;1/4,1^4,alpha+1/2;1), Re(alpha)>0. J(alpha)=int_0^1 [t*(1-t)]^(alpha-1)*k(t)*k(1-t) dt. Derivatives are proof devices, not final symbols.",
+  "provenance_latest": "The Coxeter second-coefficient identity is derived from Mishev invariance and the Bailey-Mishev 7F6 representation; its use here is informed by arXiv:2609.34016v1, Proposition 5.4. The central-wheel application and substitution are regenerated in verify.py.",
+  "double_index_harmonic_series_terms": [],
+  "frobenius_square_identity": {
+    "function": "Q*2F1(1/4,1/4;1/2;1-t)**2",
+    "series": "sum(n>=0) a_n**3 * t**n * ((-log(t))**2+2*(pi+6*h_n)*(-log(t))+12*pi*h_n+36*h_n**2+3*delta_n)",
+    "h_n": "log(2)+H_n-H_(2*n)",
+    "delta_n": "pi**2/3-4*H_(2*n)^(2)+2*H_n^(2)",
+    "range": "0<t<1; principal-log analytic extension to |t|<1 off its negative-real cut",
+    "endpoint_sum": "sum(n>=0) a_n**3*(12*pi*h_n+36*h_n**2+3*delta_n)=Q"
+  },
+  "single_index_recurrence_series_terms": [
+    {
+      "id": "Pa",
+      "name": "complete primitive P_a",
+      "coefficient_in_r6": "96",
+      "summation_indices": 1,
+      "type": "quadratic_Frobenius_recurrence",
+      "state_dimension": 9,
+      "max_lag": 2,
+      "rho": "3-2*sqrt(2)",
+      "kappa": "10*(3-2*sqrt(2))/9",
+      "sum": "4*sum(n>=0, sum(j=0..2,u[n,j]*J_j(n+1/2))+sum(j=0..1,v[n,j]*J_j(n+1)))",
+      "elementary_weight": "J_j(s)=rho**s*sum(r=0..j,binomial(j,r)*(-1)**r*r!*log(rho)**(j-r)/s**(r+1))",
+      "A_matrix": [
+        [
+          "0",
+          "2",
+          "0",
+          "2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2",
+          "1",
+          "0",
+          "2",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "2",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "1",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "C_matrix": [
+        [
+          "-1",
+          "-4",
+          "0",
+          "-4",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "1/4",
+          "2",
+          "-2",
+          "0",
+          "-4",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2",
+          "5",
+          "0",
+          "0",
+          "-4",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "1/4",
+          "0",
+          "0",
+          "1",
+          "-4",
+          "0",
+          "-2",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/4",
+          "0",
+          "1/4",
+          "4",
+          "-2",
+          "0",
+          "-2",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1/4",
+          "0",
+          "1/2",
+          "7",
+          "0",
+          "0",
+          "-2"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "0",
+          "0",
+          "3",
+          "-4",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "0",
+          "1/4",
+          "6",
+          "-2"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "0",
+          "1/2",
+          "9"
+        ]
+      ],
+      "branches": [
+        "0",
+        "1/2"
+      ],
+      "recurrence": "((n+lambda)*I-A)*z[n,j] = C*z[n-1,j]+((n-1+lambda)*I+A)*z[n-2,j]+(j+1)*(z[n-2,j+1]-z[n,j+1]), n>=2, j descending 2,1,0",
+      "zero_convention": "z[n,3]=0; half-integer logarithm-degree-2 terms vanish",
+      "output": "u[n,j] and v[n,j] are first components of integer and half-integer branches",
+      "seed_polynomials": {
+        "x": "L-(pi+4*log(2))",
+        "e": [
+          "1",
+          "0",
+          "0"
+        ],
+        "a": [
+          "15*x**2-12*pi*x-pi**2",
+          "15*x-6*pi",
+          "15"
+        ],
+        "b": [
+          "(15*(x**2+6*x)-12*pi*(x+3)-pi**2)/8",
+          "(15*(x**2+8*x+6)-12*pi*(x+4)-pi**2)/16",
+          "(15*(x+7)-6*pi)/8"
+        ],
+        "p": [
+          "pi+6*x",
+          "3",
+          "0"
+        ],
+        "q": [
+          "(pi+6*x+18)/8",
+          "(pi+6*x+24)/16",
+          "3/8"
+        ],
+        "U0": "Q*kron(a,e)",
+        "U1": "Q*(kron(b,e)+kron(a,[3/4,1/8,0]))-16*pi**4/Q*kron(e,[1,1/2,1/4])",
+        "V0": "8*pi**2*kron(p,[1,1/4,0])",
+        "V1": "8*pi**2*(kron(q,[1,1/4,0])+kron(p,[1,1/2,1/16]))",
+        "coefficient_convention": "U[i,j]=[L**j]U_i(L); similarly V; missing coefficients are zero",
+        "z_integer_0": "U[0,j]",
+        "z_integer_1": "4*U[1,j]-3*U[0,j]-2*(j+1)*U[0,j+1]",
+        "z_half_0": "2*V[0,j]",
+        "z_half_1": "8*V[1,j]-8*V[0,j]-4*(j+1)*V[0,j+1]"
+      },
+      "exact_truncation_bound": "2**29*(10*rho/9)**N, N>=2; excludes arithmetic rounding",
+      "finite_ordinary_hypergeometric_evaluation_claimed": false,
+      "approximate_value": "334926.045248051837883222001240077786613085905253136679683127",
+      "reference_implementation": "primitive_quadratic.py",
+      "rigorous_interval_file": "results/quadratic_intervals.json"
+    }
+  ],
+  "stieltjes_identity": {
+    "p": "p(z)=3F2(1/2,1/2,1/2;1,1;z)",
+    "left": "S(t)=int_0^infinity p(-x)/(x+t) dx",
+    "right": "Q/(4*pi)*h(1-t)**2-4*pi/Q*(1-t)*g(1-t)**2",
+    "h": "2F1(1/4,1/4;1/2;z)",
+    "g": "2F1(3/4,3/4;3/2;z)",
+    "domain": "t>0; analytic extension to Re(t)>0 used for numerical checks.",
+    "zeroth_moment": "S(1)=Q/(4*pi)",
+    "moment_coefficients": "M_n=Q*c_n/(4*pi)-4*pi*e_n/Q; M_n=int_0^infinity p(-x)/(1+x)^(n+1) dx"
+  },
+  "known_shift_compact": "-17*pi*(32*G + 3*pi**2)*(9*A**2 - 18*A*pi + 101*pi**2)/2",
+  "formerly_conjectural_wheel_identity": {
+    "status": "proved in current derivation",
+    "identity": "8*c0+c1=(2*pi**2+20*pi*ell+52*ell**2)*Bminus-(4*pi*ell+12*ell**2)*Bplus"
+  },
+  "wheel_relation_now_proved": true,
+  "depth_identity_elementary_polynomial": "G*ell**2*pi/64 + G*pi**3/256 + ell**5/128 - ell**3*pi**2/768 - 13*ell*pi**4/3072 + 1525*pi**2*z3/6144 - 4941*z5/2048",
+  "depth_two_geometric_series": {
+    "z": "(1+i)/2",
+    "formula": "Lambda=Re sum_{r>=1} z**r*C_r",
+    "C_r": "(zeta(3)-H_r^(3))/r**2+(3*zeta(2)-2*H_r^(2))/r**3-3*H_r/r**4",
+    "inner_sum": "C_r=sum_{m>=1}1/(m**2*(m+r)**3)",
+    "tail_bound_N_terms": "abs(error)<=zeta(2)*abs(z)**(N+1)/((N+2)**3*(1-abs(z)))",
+    "rational_tail_bound": "abs(error)<8*(3/4)**(N+1)/(N+2)**3"
+  },
+  "complete_cubic_sum_identity": "sum a_n**4*(128*h_n**3+24*h_n*delta_n+tau_n) = (Bminus+Bplus)/2",
+  "positive_wheel_input_identity": "Wpositive=Wres+4*pi**3/3+2480*zeta(5)/(3*pi**2); the old definition is retained in inputs/unchanged_expression.json.",
+  "closed_primitive_boundary_family": {
+    "definition": "J_j = sum(n=0..infinity) c_n*j!/(n+1/2)_(j+1), j nonnegative integer",
+    "seeds": [
+      "2*(pi**3+28*z3)/Q",
+      "(5*(pi**3+28*z3)-8)/(4*Q)"
+    ],
+    "recurrence": "8*(j+1)**3*J_(j+1) = (2*j+1)*(8*j**2+8*j+5)*J_j-8*j**3*J_(j-1), j>=1",
+    "closed_constant_space": "(r_j*(pi**3+28*z3)+s_j)/Q, r_j and s_j rational",
+    "third_moment": "J_2=(251*(pi**3+28*z3)-504)/(256*Q)"
+  },
+  "mixed_periodization_identity": {
+    "known_difference_Zrec_minus_392Zlin": "-141120*F8minus*pi**3/13 - 849856*G/13 + 3920*PZ5/(13*pi**2) - 4802*Q/3",
+    "periodic_spectrum": "0,+2*pi,-2*pi",
+    "antiperiodic_spectrum": "+pi,-pi,+3*pi,-3*pi",
+    "all_unaffected_terms_preserved": true
+  },
+  "ordinary_integer_beta_moment": {
+    "id": "Jstar",
+    "integral_for_proof": "integral(0..1) p(t)*k(1-t)/sqrt(1-t) dt",
+    "definition": "8/pi**(3/2)*(sqrt(2)*(Xplus+Xminus)-2*Xzero)",
+    "Z_t": "t*(Gamma(t+1/4)/Gamma(t+3/4))**7 * 9F8(1,1+t,(t+1/4)^7; t,(t+3/4)^7; -1)",
+    "Xzero": "Z(1/4)",
+    "Xplus": "cos(pi/8)**7*Z(3/8)-sin(pi/8)**7*Z(5/8)",
+    "Xminus": "cos(pi/8)**7*Z(1/8)+sin(pi/8)**7*Z(7/8)",
+    "existing_F8_relation": "Xzero=pi**(7/2)*F8minus/4",
+    "existing_P5_relation": "PZ5=16*pi**(3/2)*(-35*Xzero+(22*sqrt(2)-13)*Xplus+(22*sqrt(2)+13)*Xminus)",
+    "approximate_value": "2.681993374368414435155930264245288996822106173397028900927930203557567",
+    "qualification": "The last elimination uses the inherited tensor identity and ordinary P5 identification; the independent direct integral check does not re-certify the full graph calculation.",
+    "active_explicit_coefficient_in_known_part": "0 after this substitution; definition retained for provenance"
+  },
+  "active_auxiliary_series": [
+    "Wcentral",
+    "Pa",
+    "L7"
+  ],
+  "new_ordinary_constants": {},
+  "wheel_known_part": "5*Bd/2-5*Bs/4+14*pi**3/3-9*pi/10+81920*pi*(G-1)/Q**2-8192*pi/(625*Q**2)-2480*zeta(5)/(3*pi**2)",
+  "alternative_without_new_ordinary_constants": "The active telescoped form itself requires no new ordinary constants.",
+  "optional_bailey_primitive_reduction": {
+    "status": "Exact kernel transformation and complete endpoint sums. No finite evaluation of Pa or auxiliary-count reduction.",
+    "active_evaluator_replaced": false,
+    "coordinate": "z=4*x*(1-x), x=(1-sqrt(1-z))/2; first fold the symmetric primitive to 0<x<1/2",
+    "ordinary_kernels": {
+      "F": {
+        "upper": [
+          "1/4",
+          "1/4",
+          "1/4",
+          "3/4"
+        ],
+        "lower": [
+          "1/2",
+          "1/2",
+          "1"
+        ],
+        "argument": "z",
+        "coefficient": "f_n=(1/4)_n**3*(3/4)_n/((1/2)_n**2*(n!)**2)"
+      },
+      "J": {
+        "upper": [
+          "3/4",
+          "3/4",
+          "3/4",
+          "5/4"
+        ],
+        "lower": [
+          "3/2",
+          "3/2",
+          "1"
+        ],
+        "argument": "z",
+        "coefficient": "j_n=(3/4)_n**3*(5/4)_n/((3/2)_n**2*(n!)**2)"
+      }
+    },
+    "logarithmic_companion": {
+      "finite_sum": "H_n(a)=sum(r=0..n-1,1/(r+a))",
+      "p_n": "pi+8*log(2)-3*H_n(1/4)-H_n(3/4)+2*H_n(1)+2*H_n(1/2)",
+      "B": "sum(n=0..infinity, f_n*z**n*(p_n-log(z)))",
+      "domain": "0<abs(z)<1 on the branch continued from 0<z<1",
+      "f_initial": "1",
+      "j_initial": "1",
+      "p_initial": "pi+8*log(2)",
+      "f_ratio": "(n+1/4)**3*(n+3/4)/((n+1)**2*(n+1/2)**2)",
+      "j_ratio": "(n+3/4)**3*(n+5/4)/((n+1)**2*(n+3/2)**2)",
+      "p_increment": "-3/(n+1/4)-1/(n+3/4)+2/(n+1)+2/(n+1/2)"
+    },
+    "product_identities": [
+      "v(x)*h(x)=F(z)",
+      "sqrt(x)*v(x)*g(x)=sqrt(z)*J(z)/2",
+      "sqrt(Q)*h(x)*h(1-x)=B(z)",
+      "v(x)*v(1-x)=sqrt(Q)*F(z)/(2*pi)-sqrt(z/Q)*J(z)"
+    ],
+    "operator": "theta**2*(theta-1/2)**2-z*(theta+1/4)**3*(theta+3/4), theta=z*d/dz",
+    "endpoint_sums": {
+      "H": "2F1(1/4,1/4;1/2;1/2)",
+      "H1": "2F1(5/4,5/4;3/2;1/2)/8",
+      "S0": "sum(n>=0,f_n*p_n)=sqrt(Q)*H**2",
+      "S1": "sum(n>=0,f_n*(n*p_n-1))=sqrt(Q)*(H1**2-H*H1-H**2/4)/4",
+      "direct_tail_S0": "2/(3*sqrt(3)*(N-1)**(3/2)), N>=2, exact partial n<N",
+      "direct_abs_tail_S1": "4/(3*sqrt(3)*sqrt(N-1)), N>=2, exact partial n<N",
+      "floating_asymptotic_checks_certified": false
+    },
+    "full_primitive_beta_form": {
+      "N": "Q*(15*B**2+12*pi*F*B-pi**2*F**2)+4*pi**2*sqrt(z)*J*(pi*F-6*B)-4*pi**4*z*J**2/Q",
+      "Pa": "integral_0^1 N(z)/sqrt(z*(1-z)) dz",
+      "role": "Proof and analytic organization only; beta pairing not finitely summed."
+    },
+    "optional_explicit_double_series": {
+      "indices": "m,n>=0; k=m+n",
+      "a_k": "(1/2)_k/k!",
+      "h_k": "log(2)+H_k-H_(2*k)",
+      "delta_k": "pi**2/3-4*H_(2*k)^(2)+2*H_k^(2)",
+      "mu_k": "2*h_k",
+      "nu_k": "2/(2*k+1)-2*h_k",
+      "beta0": "pi*a_k",
+      "beta1": "2/((2*k+1)*a_k)",
+      "beta2": "pi*a_(k+1)",
+      "summand": "Q*beta0*f_m*f_n*(15*((p_m+mu_k)*(p_n+mu_k)+delta_k)+6*pi*(p_m+p_n+2*mu_k)-pi**2)+4*pi**2*beta1*f_m*j_n*(pi-6*(p_m+nu_k))-4*pi**4*beta2*j_m*j_n/Q",
+      "sum": "Pa=sum(m,n>=0,summand)",
+      "absolutely_convergent": true,
+      "tradeoff": "Matrix-free explicit coefficients, but two indices and slower raw convergence. Existing geometric single-index evaluator retained."
+    },
+    "primitive_weight_in_r6": "96",
+    "known_polynomial_shift": "0",
+    "new_upstream_certification": false,
+    "provenance": {
+      "input_sha256": "daa465621f596f05fa3db8911ed16d8210e3642a9cb07934d6d8df61d73ee7e0",
+      "new_derivation": "C6_Bailey_primitive_reduction.md"
+    }
+  },
+  "classical_polylogarithm_replacement_terms": [
+    {
+      "name": "H3real",
+      "coefficient_in_r6": "13056*sqrt(2)*(32*G+3*pi**2)",
+      "function": "4F3",
+      "upper": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "3/2",
+        "3/2",
+        "3/2"
+      ],
+      "argument": "1/2",
+      "series": "sum(n>=0,binomial(2*n,n)/(8**n*(2*n+1)**3))",
+      "tail_N_terms": "0<tail<2*binomial(2*N,N)/(8**N*(2*N+1)**3)"
+    },
+    {
+      "name": "H5real",
+      "coefficient_in_r6": "391680",
+      "function": "6F5",
+      "upper": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "lower": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "argument": "1/2",
+      "series": "sum(n>=0,1/(2**n*(n+1)**5))",
+      "tail_N_terms": "0<tail<2**(1-N)/(N+1)**5",
+      "identity": "Li5(1/2)=H5real/2; this is the already known defining-series rewrite, not a new summation theorem"
+    }
+  ],
+  "wheel_rational_hierarchy": {
+    "phi_-1(t)": "(t-1/4)**3/(t-1/2)**4",
+    "phi_j(t)": "(t-1/4)/(t**j*(t-1/2)**(j+4)), j>=0",
+    "q_M(t)": "sum_{j=-1}^M alpha_j*phi_j(t)",
+    "R_M(t)": "q_M(t)-((t+1/2)/(t+1))**4*q_M(t+1)",
+    "d_k": "Euler(2*k)*(2*k+1)/(2*16**k)",
+    "coefficient_rule": "alpha_-1=1/6; choose alpha_j uniquely so R_j(t) agrees with sum_{k=0}^{j+1} d_k/(t+1/4)**(2*k+2) through that order. Fully explicit rational generator in hierarchy.py.",
+    "alpha_j_through_40": {
+      "-1": "1/6",
+      "0": "-77/480",
+      "1": "139/896",
+      "2": "-19169/80640",
+      "3": "15647231/28385280",
+      "4": "-2729328923/1476034560",
+      "5": "28770966269/3373793280",
+      "6": "-16650899406503/321185120256",
+      "7": "5605422499425731/13948610936832",
+      "8": "-377764218356842535/97640276557824",
+      "9": "32547084646523306468261/718632435465584640",
+      "10": "-91049174239485754118335/143726487093116928",
+      "11": "479893797953715689296834139/45992475869797416960",
+      "12": "-1066433222010037526353959820573/5335127200896500367360",
+      "13": "11661150617790539898988527414010981/2646223091644664182210560",
+      "14": "-106591456080820675217945146855598129/962262942416241520803840",
+      "15": "533363818742698899737238819592006801561/169358277865258507661475840",
+      "16": "-180018131175907676262085713870945413439461/1790358937432732795278458880",
+      "17": "1436582653079663628180038263259807357153275243/401040401984932146142374789120",
+      "18": "-4656318479150341432477758044301781931594213487247/32885312962764435983674732707840",
+      "19": "55910148069510971156030157448353046277208556271013775/9050038127352772782707286441197568",
+      "20": "-53604499286890570458699919722754143544274212923644632367/181000762547055455654145728823951360",
+      "21": "2114181883017881370589761269475749988774065719369290527086981/136112573435385702651917588075611422720",
+      "22": "-483379441755583943398277241383320421369381930055702474956494633/544450293741542810607670352302445690880",
+      "23": "480081747663161225566490775917668201813499125593654970101258162181/8711204699864684969722725636839131054080",
+      "24": "-2105445927899130173646957899773734486295938689527698639020214877531/568588484104468353935104013241962987520",
+      "25": "599092426388497375796635208000324049977767082449346264819108398192001/2231247175257948457094275115922248171520",
+      "26": "-5628128569773654921206930252309289399671530364507819594020726965197359669/268621875835827376520904412365075750322176",
+      "27": "5594288537772906991971719349891033366808354087348312863237948065346028377911381/3187850924204835974620653049141653247251972096",
+      "28": "-856945636718534134771888039521966353866132409830782384296792561629234578458461116785/5444849378541859844652075407933943746306368339968",
+      "29": "111333595303136809849641491512734017884857336882573851616686999098519379206812830533829/7382846614972013348680780214147720333974736732160",
+      "30": "-536782879458069192454127014410460460301010625640433586135603926075998824482800797950071833/348470360226679030057732826107772399763607573757952",
+      "31": "312699589595320792033549085996492691686057579393504827673065618756609082424351171635953676388193/1867801130814999601109447947937660062732936595342622720",
+      "32": "-72184589106750383901106300964954468186916594302663696924625664758379766138470059333287331295014737/3735602261629999202218895895875320125465873190685245440",
+      "33": "1056201807408835257219949467071282253834928638029042641212860229158738246061800088490828081178968242947/446699386232808325654806919759406701318866520486151454720",
+      "34": "-16497350959339273065426813762789497869478343911044824111841842166518391168157732791162080543401840080139261/53875830322165665015931930235330182150371118601242788495360",
+      "35": "1661658989371130381929769442460795347495283237678723901289905891578537731708819635346750738087176858612493598499/39652611117113929451725900653203014062673143290514692332584960",
+      "36": "-137110783607205653787638663457314564219420643574329514352755120955065871654942816840773128014959786099581104639909/22658634924065102543843371801830293750098939023151252761477120",
+      "37": "184583431982531369325608625545587797666934810596939264790009784781559876543941640303364703565770246684033532387491660869/200483601808128027307926153702594439100875412476842284433549557760",
+      "38": "-2230398535574862312995632741953166246085906151178003220916781920741471224140014974357436597833791520203069146043228296769/15130837872311549230786879524724108611386823583157908259135815680",
+      "39": "11264165240404520811147485210241539476226545416800048591303738023250225406783039302674961481144126638283355265821001208186287/454144517187537774439106067577049748615714367197009046870368976896",
+      "40": "-4665346930450503661855881312215125912312016460063735851036209632571210580485529108094705708765576197884602875826414419811167947819/1064968892804776081059703728468181660503850191076986214911015250821120"
+    },
+    "Wtel_approximant": "Wtel_N +18*a_N**4*(q_M(N)-q_0(N))-5120*b_N**4*(q_M(N+1/4)-q_0(N+1/4))/Q**2",
+    "tail_bound": "23*K_(M,N)/(9*(2*M+7)*(N-3/4)**(2*M+7))",
+    "tail_bound_generator": "hierarchy.tail_bound(M,N) returns an exact rational upper bound; K_(M,N) is given explicitly in DERIVATION.md",
+    "limits": "M is finite. No convergence of q_M as M tends to infinity at fixed t is asserted. Global positivity is proved for W10, not for every higher-order residual.",
+    "certified_configuration": {
+      "N": 256,
+      "M": 40,
+      "wheel_interval_width_less_than": "1.632e-146"
+    }
+  },
+  "central_wheel_identity": {
+    "core": "sum a_n**4*(8*h_n*delta_n+tau_n) = pi**2*sum (4*n+1)*a_n**6*delta_n",
+    "positive_wheel": "Wpositive=pi*[(8+5*pi)*pi**2/3+Wcentral]",
+    "W10_replacement": "5*Bd/(2*pi) - 5*Bs/(4*pi) + 81920*G/Q**2 - Wcen - pi**2*(5*pi + 8)/3 + 6*pi**2 + 14733/4480 - 1079926784/(13125*Q**2)",
+    "external_input": "Mishev completed L invariance and its 7F6 representation. The second-order selection identity is also Proposition 5.4 in arXiv:2609.34016v1.",
+    "inherited_inputs": [
+      "quartic cubic identity",
+      "S7 to quartic-moment identity",
+      "Bsum=2*pi**4*V"
+    ]
+  },
+  "previous_faster_evaluator_note": "The W10 hierarchy object is retained as provenance only; its target is W10, not Wcentral. The exact W10 replacement above converts between them.",
+  "central_certified_evaluator": {
+    "script": "certify.py",
+    "initial_transcendental_constants": [
+      "pi"
+    ],
+    "finite_approximant": "sum_(n=1..N-1) a_n**4*(8+5*pi*(4*n+1)*a_n**2)*delta_n + 8*a_N**4*q4_M(N) + 5*pi*a_N**6*q6_(M+1)(N)",
+    "arithmetic": "exact rational cubic polynomial in pi, with rational interval enclosure of pi",
+    "bound": "[(8/9)*K4+(110/189)*K6]/[(2*M+7)*(N-3/4)**(2*M+7)], N>=2, M>=0",
+    "K_definition": "finite rational polynomial construction specified in DERIVATION.md Section 4 and implemented in certify.py",
+    "certificate": "results/rational_intervals.json",
+    "sample_enclosure": "N=256,M4=40,M6=41; width<2.123e-146",
+    "scope": "The new central series only, not the complete physical six-loop coefficient.",
+    "not_infinite_asymptotic_sum": true
+  },
+  "external_sources_this_reduction": [
+    {
+      "author": "Ilia D. Mishev",
+      "reference": "arXiv:1008.1011",
+      "role": "Completed-L invariance and 7F6 representation"
+    },
+    {
+      "author": "Dianbin Bao",
+      "reference": "arXiv:2609.34016v1, Proposition 5.4",
+      "role": "Explicit second-coefficient selection identity, rederived here"
+    },
+    {
+      "reference": "NIST DLMF 5.15; 5.11; 4.36",
+      "role": "Polygamma recurrence, gamma asymptotics, cosh product"
+    }
+  ]
+}

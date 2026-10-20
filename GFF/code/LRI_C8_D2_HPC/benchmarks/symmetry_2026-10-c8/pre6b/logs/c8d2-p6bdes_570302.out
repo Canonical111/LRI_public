@@ -1,0 +1,94 @@
+job 570302 on <NODE> at 2026-10-05T17:28:02-04:00; package <SCRATCH>/c8d2/pkg/77fab7153c0e (77fab7153c0e586743406a1bf4ddc555ddb76a6a); pilot <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; work <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e; evidence <SCRATCH>/c8d2/evidence/77fab7153c0e/p6bdes.570302.0
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+{"free": true, "power": true}
+make gmp (and inputs) in 36 s
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+make gmp NUMERICS=dd,mp256 in 38 s
+d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d  bin/c8d2_gmp_dd+mp256
+executables identical to 570239: {'bin/c8d2_gmp': True, 'bin/c8d2_gmp_dd+mp256': True} ; gmp unchanged by the profile build: True ; profile numerics: dd+mp256 ; BOOST: {'c8d2_gmp.build.json': '1_77', 'c8d2_gmp_dd+mp256.build.json': '1_77'}
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+a1b6e5d2a8c089a51378bbe7b38e1d5b710c98d943353b509fdf36454a723692  <SCRATCH>/c8d2/pkg/77fab7153c0e/cost_models/gmp_symmetry_amd_c8.json
+9b0dfec6d35d0c17bcfa1d0ae4b4c666829958a6770c7cdbbaf3cbace0d06042  <SCRATCH>/c8d2/pkg/77fab7153c0e/cost_models/gmp_symmetry_amd_c8_dd+mp256.json
+99e4290754919113aa93972fbca1a58d8883c849984f30613e86313e5c742c5e  <SCRATCH>/c8d2/pkg/77fab7153c0e/benchmarks/symmetry_2026-10-c8/stage5/close/clflag.570210.0/jflag_dd+mp256/numerics_flags.json
+ec9bde4ba66605d81b8306c9949485232849b35f88d3133511b0ab3e17c18aef  tools/design.py
+22b310f9cfc9588df0a9fdba6798494e124d7a267abbf152b31197c10ec24c68  tools/production.py
+c21e561c3508d7e9a03d44828ed53666629df6c07603b68c4f16d2e7b4a09539  tools/accounting.py
+d6ee4cbf1b2d75887daf026ae00a786513dd6e090be66b11e58ae36fa6f3747c  tools/ledger.py
+c44ab0f457d12a253cf63742fc57c7073448a025bd0775181d8dd312c479ad71  tools/seeds.py
+2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17  bin/c8d2_gmp
+d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d  bin/c8d2_gmp_dd+mp256
+81ee76a8664aa588d0c75135c707ba77dad8ccbe0640b1280ae69fc352442ba3  <SCRATCH>/c8d2/pkg/77fab7153c0e/benchmarks/symmetry_2026-10-c8/stage5/des5/scripts/des5_measure.py
+57f44aee77c22c161774e6f89d4ed2b3bfecf54e7a5e0f0acf36125de0f46900  <SCRATCH>/c8d2/jobscripts/pre6b/p6bdes.slurm
+7aed5a3c2353c19bccca692c735d7ca48d93556aba1942d4722e7c95a66b3200  <SCRATCH>/c8d2/jobscripts/pre6b/p6b_compare.py
+report exact exit 0 after 18 s
+design report: pilot <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; |C8| = 46000; margin x1.5; eta_node 0.306 (tools/accounting.py (18.560 work core-h, 1 sacct records, complete))
+target rel  target SE    pred SE       core-h batches
+     0.001       46.0         46       5082.7       1
+    0.0005       23.0         23      17139.0       1
+   0.00025       11.5       11.5      68555.8       1
+  0.000135       6.21       6.21     222653.8       1
+note: no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum
+  free_L3            graphs     10 piloted     10 sd/rep 14.74 kurt None skew None max|z| None share None P8 None alpha None
+report dd+mp256 exit 0 after 31 s
+design report: pilot <SCRATCH>/c8-d2/sweep2-5d7586e9f1ab; |C8| = 46000; margin x1.5; eta_node 0.306 (tools/accounting.py (18.560 work core-h, 1 sacct records, complete))
+numerics dd+mp256 (route (b)): costs from the cost model 9b0dfec6d35d measured under dd+mp256; sigma from the exact pilot; a freeze needs --approved-numerics-change and --numerics-gate
+target rel  target SE    pred SE       core-h batches
+     0.001       46.0         46       1906.2       1  route (b): reoptimized
+    0.0005       23.0         23       6690.2       1  route (b): kept_exact_allocation
+   0.00025       11.5       11.5      26760.6       1  route (b): kept_exact_allocation
+  0.000135       6.21       6.21      87564.0       1  route (b): kept_exact_allocation
+note: no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum
+  free_L3            graphs     10 piloted     10 sd/rep 14.74 kurt None skew None max|z| None share None P8 None alpha None
+freeze x_1e-3 exit 0 after 11 s
+{"se": 45.9998, "target": 46.0, "meets": true, "core_h_freeze": 5082.7, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": null, "vs": {"pre6_570241": [0.9797, true, false], "jdes5_570114": [0.4296, true, false]}}
+plan x_1e-3 exit 0 after 173 s
+projected files: 9,031 (per-index task files 161, checkpoints 8,324, lane done markers and attempt logs 322, group files)
+{"target_rel": 0.001, "tasks": 2111808, "checkpoints": 8324, "indices": 161, "tasks_sqlite_bytes_total": 192049152, "task_files": 161, "task_files_bytes": 58351022, "manifest_bytes": 106992, "plan_wall_seconds": 173.0, "plan_peak_rss_bytes": 424386560, "max_index_wall_seconds": 5364.5688007822255, "merge_passes_max": 1, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1e-3
+freeze x_5e-4 exit 0 after 5 s
+{"se": 22.9999, "target": 23.0, "meets": true, "core_h_freeze": 17139.0, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": null, "vs": {"pre6_570241": [0.9803, true, false], "jdes5_570114": [0.9803, true, false]}}
+plan x_5e-4 exit 0 after 366 s
+projected files: 22,860 (per-index task files 496, checkpoints 21,148, lane done markers and attempt logs 992, group files)
+{"target_rel": 0.0005, "tasks": 5365152, "checkpoints": 21148, "indices": 496, "tasks_sqlite_bytes_total": 491921408, "task_files": 496, "task_files_bytes": 153506204, "manifest_bytes": 263936, "plan_wall_seconds": 366.0, "plan_peak_rss_bytes": 905179136, "max_index_wall_seconds": 5399.156467371989, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_5e-4
+freeze x_2.5e-4 exit 0 after 5 s
+{"se": 11.5, "target": 11.5, "meets": true, "core_h_freeze": 68555.8, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": null, "vs": {"pre6_570241": [0.9803, true, false], "jdes5_570114": [0.9803, true, false]}}
+plan x_2.5e-4 exit 0 after 475 s
+projected files: 29,828 (per-index task files 1,937, checkpoints 23,793, lane done markers and attempt logs 3,874, group files)
+note: 1937 jobs exceed one array of 1000; slurm/submit.sh splits them into offset windows (C8_INDEX_OFFSET)
+{"target_rel": 0.00025, "tasks": 5890112, "checkpoints": 23793, "indices": 1937, "tasks_sqlite_bytes_total": 545841152, "task_files": 1937, "task_files_bytes": 179003340, "manifest_bytes": 937977, "plan_wall_seconds": 475.0, "plan_peak_rss_bytes": 958664704, "max_index_wall_seconds": 5399.205368071755, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_2.5e-4
+freeze x_1.35e-4 exit 0 after 6 s
+{"se": 6.2097, "target": 6.21, "meets": true, "core_h_freeze": 222653.8, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": null, "vs": {"pre6_570241": [0.9732, true, false], "jdes5_570114": [0.9732, true, false]}}
+plan x_1.35e-4 exit 0 after 641 s
+projected files: 55,193 (per-index task files 6,254, checkpoints 36,207, lane done markers and attempt logs 12,508, group files)
+note: 6254 jobs exceed one array of 1000; slurm/submit.sh splits them into offset windows (C8_INDEX_OFFSET)
+{"target_rel": 0.000135, "tasks": 8511360, "checkpoints": 36207, "indices": 6254, "tasks_sqlite_bytes_total": 754044928, "task_files": 6254, "task_files_bytes": 273846158, "manifest_bytes": 2955424, "plan_wall_seconds": 641.0, "plan_peak_rss_bytes": 1403207680, "max_index_wall_seconds": 5400.473541783479, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1.35e-4
+freeze b_1e-3 exit 0 after 10 s
+{"se": 46.0, "target": 46.0, "meets": true, "core_h_freeze": 1906.2, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": "reoptimized", "vs": {"pre6_570241": [0.6917, true, false]}}
+plan b_1e-3 exit 0 after 132 s
+projected files: 8,812 (per-index task files 70, checkpoints 8,378, lane done markers and attempt logs 140, group files)
+{"target_rel": 0.001, "tasks": 2135296, "checkpoints": 8378, "indices": 70, "tasks_sqlite_bytes_total": 194293760, "task_files": 70, "task_files_bytes": 59121592, "manifest_bytes": 70826, "plan_wall_seconds": 132.0, "plan_peak_rss_bytes": 428335104, "max_index_wall_seconds": 5351.111233476808, "merge_passes_max": 1, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1e-3
+freeze b_5e-4 exit 0 after 8 s
+{"se": 22.9999, "target": 23.0, "meets": true, "core_h_freeze": 6690.2, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": "kept_exact_allocation", "vs": {"pre6_570241": [0.6745, false, false]}}
+plan b_5e-4 exit 0 after 510 s
+projected files: 21,874 (per-index task files 205, checkpoints 21,035, lane done markers and attempt logs 410, group files)
+{"target_rel": 0.0005, "tasks": 5356096, "checkpoints": 21035, "indices": 205, "tasks_sqlite_bytes_total": 491552768, "task_files": 205, "task_files_bytes": 153180772, "manifest_bytes": 134299, "plan_wall_seconds": 510.0, "plan_peak_rss_bytes": 905703424, "max_index_wall_seconds": 5359.5029176119715, "merge_passes_max": 1, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_5e-4
+freeze b_2.5e-4 exit 0 after 8 s
+{"se": 11.5, "target": 11.5, "meets": true, "core_h_freeze": 26760.6, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": "kept_exact_allocation", "vs": {"pre6_570241": [0.6745, false, false]}}
+plan b_2.5e-4 exit 0 after 548 s
+projected files: 25,038 (per-index task files 767, checkpoints 22,513, lane done markers and attempt logs 1,534, group files)
+{"target_rel": 0.00025, "tasks": 5652416, "checkpoints": 22513, "indices": 767, "tasks_sqlite_bytes_total": 525299712, "task_files": 767, "task_files_bytes": 170319974, "manifest_bytes": 397035, "plan_wall_seconds": 548.0, "plan_peak_rss_bytes": 901873664, "max_index_wall_seconds": 5398.049767962139, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_2.5e-4
+freeze b_1.35e-4 exit 0 after 8 s
+{"se": 6.2097, "target": 6.21, "meets": true, "core_h_freeze": 87564.0, "K": 1, "caps_ok": true, "optimizer_kept": "smallest", "route_b_chosen": "kept_exact_allocation", "vs": {"pre6_570241": [0.8631, false, false]}}
+plan b_1.35e-4 exit 0 after 595 s
+projected files: 33,825 (per-index task files 2,470, checkpoints 26,191, lane done markers and attempt logs 4,940, group files)
+note: 2470 jobs exceed one array of 1000; slurm/submit.sh splits them into offset windows (C8_INDEX_OFFSET)
+{"target_rel": 0.000135, "tasks": 6395520, "checkpoints": 26191, "indices": 2470, "tasks_sqlite_bytes_total": 601600000, "task_files": 2470, "task_files_bytes": 197122042, "manifest_bytes": 1192032, "plan_wall_seconds": 595.0, "plan_peak_rss_bytes": 961306624, "max_index_wall_seconds": 5398.308713327472, "merge_passes_max": 2, "all_caps_hold": true}
+deleted <SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1.35e-4
+finished 2026-10-05T18:29:19-04:00, status 0

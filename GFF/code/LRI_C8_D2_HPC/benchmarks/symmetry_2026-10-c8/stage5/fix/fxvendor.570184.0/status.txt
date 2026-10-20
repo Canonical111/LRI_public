@@ -1,0 +1,70 @@
+numerics exact, rates identity default
+group a_free_L3: 1/1 blocks, not merged
+group a_free_L4: 1/1 blocks, not merged
+group a_free_L5: 2/2 blocks, not merged
+group a_free_L6: 10/10 blocks, not merged
+job      4 a_free_L7 shard    0: 0/29 blocks
+job      5 a_free_L7 shard    1: 0/29 blocks
+group a_free_L7: 0/58 blocks, not merged
+job      7 a_free_L8 shard    1: 0/9 blocks
+job      8 a_free_L8 shard    2: 0/9 blocks
+job      9 a_free_L8 shard    3: 0/9 blocks
+job     10 a_free_L8 shard    4: 0/9 blocks
+job     11 a_free_L8 shard    5: 0/9 blocks
+job     12 a_free_L8 shard    6: 0/9 blocks
+job     13 a_free_L8 shard    7: 0/9 blocks
+job     14 a_free_L8 shard    8: 0/9 blocks
+job     15 a_free_L8 shard    9: 0/9 blocks
+job     16 a_free_L8 shard   10: 0/9 blocks
+group a_free_L8: 9/99 blocks, not merged
+group a_power_L3: 1/1 blocks, not merged
+group a_power_L4: 1/1 blocks, not merged
+group a_power_L5: 1/1 blocks, not merged
+group a_power_L6: 3/3 blocks, not merged
+job     21 a_power_L7 shard    0: 0/17 blocks
+group a_power_L7: 0/17 blocks, not merged
+job     22 a_power_L8 shard    0: 0/9 blocks
+job     23 a_power_L8 shard    1: 0/9 blocks
+job     24 a_power_L8 shard    2: 0/9 blocks
+job     25 a_power_L8 shard    3: 0/9 blocks
+job     26 a_power_L8 shard    4: 0/9 blocks
+job     27 a_power_L8 shard    5: 0/9 blocks
+job     28 a_power_L8 shard    6: 0/9 blocks
+job     29 a_power_L8 shard    7: 0/9 blocks
+job     30 a_power_L8 shard    8: 0/9 blocks
+job     31 a_power_L8 shard    9: 0/9 blocks
+job     32 a_power_L8 shard   10: 0/9 blocks
+group a_power_L8: 0/99 blocks, not merged
+group b_free_L3: 1/1 blocks, not merged
+group b_free_L4: 1/1 blocks, not merged
+group b_free_L5: 2/2 blocks, not merged
+group b_free_L6: 10/10 blocks, not merged
+job     37 b_free_L7 shard    0: 0/58 blocks
+group b_free_L7: 0/58 blocks, not merged
+job     44 b_free_L8 shard    6: 0/10 blocks
+job     45 b_free_L8 shard    7: 0/10 blocks
+job     46 b_free_L8 shard    8: 0/10 blocks
+job     47 b_free_L8 shard    9: 0/10 blocks
+group b_free_L8: 60/100 blocks, not merged
+group b_power_L3: 1/1 blocks, not merged
+job     49 b_power_L4 shard    0: 0/1 blocks
+group b_power_L4: 0/1 blocks, not merged
+group b_power_L5: 1/1 blocks, not merged
+group b_power_L6: 3/3 blocks, not merged
+job     52 b_power_L7 shard    0: 0/17 blocks
+group b_power_L7: 0/17 blocks, not merged
+job     53 b_power_L8 shard    0: 0/11 blocks
+job     54 b_power_L8 shard    1: 0/11 blocks
+job     55 b_power_L8 shard    2: 0/11 blocks
+job     56 b_power_L8 shard    3: 0/11 blocks
+job     57 b_power_L8 shard    4: 0/11 blocks
+job     58 b_power_L8 shard    5: 0/11 blocks
+job     59 b_power_L8 shard    6: 0/11 blocks
+job     60 b_power_L8 shard    7: 0/11 blocks
+job     61 b_power_L8 shard    8: 0/11 blocks
+group b_power_L8: 0/99 blocks, not merged
+cpu vendor: AuthenticAMD (AMD EPYC 7543 32-Core Processor), pinned by the first claim (index 6 on <NODE>); claims on another vendor are refused (F5)
+result: no C8_test_result.json
+40 incomplete job indices: 4-5,7-16,21-32,37,44-47,49,52-61
+resubmit: C8_MAX_ARRAY=1000 C8_RUN=<SCRATCH>/c8-d2/io-2b3a9233353d C8_PACKAGE=<SCRATCH>/c8d2/pkg/2b3a9233353d <SCRATCH>/c8d2/pkg/2b3a9233353d/slurm/submit.sh --window 0:4-5,7-16,21-32,37,44-47,49,52-61
+then submit slurm/merge.sh once complete; or run slurm/resubmit.sh (arrays) or slurm/submit.sh --lanes N (lane mode), which also submit a merge that waits for the work

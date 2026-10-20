@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/before_696db78/tests/test_profiling.py", line 549, in main
+    try:fn()
+  File "<TMP>/scratchpad/before_696db78/tests/test_profiling.py", line 521, in test_perf_team
+    r=go('verified',0.3);assert r['team']['verdict']=='verified'and r['team']['watched']and r['returncode']==0 and r['env']==want,r
+  File "<TMP>/scratchpad/before_696db78/tests/test_profiling.py", line 512, in go
+    t0=time.time();r=pp.run(cmd,[0],4,td/f'{tag}.log',False,exe=sl);r['elapsed']=time.time()-t0;r['env']=json.loads((td/f'{tag}.env').read_text())
+TypeError: run() got an unexpected keyword argument 'exe'
+FAIL perf_team
+{"passed": false, "tests": 1, "failed": ["perf_team"]}

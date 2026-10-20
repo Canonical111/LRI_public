@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "<SCRATCH>/temp_project/c8d2/pkg/81aa9770e6fe/tests/merge_scale.py", line 100, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/81aa9770e6fe/tests/merge_scale.py", line 69, in main
+    d=Path(td)/'scale';info=campaign(X,d,P,a.shards,a.checkpoint_tasks,a.run_jobs,771200001);rec['scale']=dict(points=P,**info)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/81aa9770e6fe/tests/merge_scale.py", line 51, in campaign
+    X.T('plan',d,'--seed',seed,'--pilot','--points',points,'--replicates',2,'--test-graphs','all','--bootstrap-chunk',1,'--shards',shards,'--threads',1,'--checkpoint-tasks',ckpt)
+  File "<SCRATCH>/temp_project/c8d2/pkg/81aa9770e6fe/tests/merge_scale.py", line 43, in T
+    if check and cp.returncode:raise RuntimeError(f'production.py {args}: {cp.returncode}\n{cp.stderr[-2000:]}')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: production.py ('plan', PosixPath('<SCRATCH>/temp_project/c8d2/work/s3bmscale.54641705.0/c8d2_merge_scale_0fsuwg3j/scale'), '--seed', 771200001, '--pilot', '--points', 256, '--replicates', 2, '--test-graphs', 'all', '--bootstrap-chunk', 1, '--shards', 16, '--threads', 1, '--checkpoint-tasks', 4096): 1
+warning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions
+projected files: 2,624 (per-index task files 384, checkpoints 1,248, lane done markers and attempt logs 768, group files)
+Traceback (most recent call last):
+  File "<SCRATCH>/temp_project/c8d2/work/s3bmscale.54641705.0/c8d2_merge_scale_0fsuwg3j/pkg/tools/production.py", line 1357, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/work/s3bmscale.54641705.0/c8d2_merge_scale_0fsuwg3j/pkg/tools/production.py", line 1356, in main
+    a=p.parse_args(argv);a.func(a)
+                         ^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/work/s3bmscale.54641705.0/c8d2_merge_scale_0fsuwg3j/pkg/tools/production.py", line 526, in plan
+    if total_tasks>PLAN_TASKS_IN_JOB and not os.environ.get('SLURM_JOB_ID'):raise ValueError(f'{total_tasks:,} tasks > {PLAN_TASKS_IN_JOB:,}: plan inside a job (slurm/plan.sh), never on a login node')
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 3,879,936 tasks > 1,000,000: plan inside a job (slurm/plan.sh), never on a login node
+

@@ -1,0 +1,9 @@
+== 2026-10-05T11:40:03-04:00 C8_RUN=<SCRATCH>/c8-d2/smoke1-20261005-twin-2b3a92 TMPDIR=<SCRATCH>/c8-d2/drl1fx-tmp
+C8: queue <SCRATCH>/c8-d2/smoke1-20261005-twin-2b3a92/lanes/queue.txt: 29 incomplete indices, 15.4 estimated core-hours
+C8: admission {"amd_cap": 4, "amd_live": 2, "amd_live_jobs": ["570170", "570165"], "k": 2, "limits": {"c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {"new": 2, "room": 2}}, "new_jobs": {"lane": {"count": 1, "partitions": ["amdq"]}, "merge": {"count": 1, "partitions": ["amdq"]}}, "partitions": ["amdq"], "room": 2, "site": "symmetry"}
+C8: partition amdq: 14 idle node(s)
+C8: sbatch --test-only: sbatch: Job 570171 to start at 2026-10-05T12:29:03 using 64 processors on nodes <NODE> in partition amdq
+lane worker 570172; log <SCRATCH>/c8-d2/smoke1-20261005-twin-2b3a92/slurm_logs/lane-570172.log
+merge 570173 (afterany:570172); log <SCRATCH>/c8-d2/smoke1-20261005-twin-2b3a92/slurm_logs/merge-570173.log
+status: <HOME>/c8d2/venv/bin/python3 <SCRATCH>/c8d2/pkg/2b3a9233353d/tools/production.py status <SCRATCH>/c8-d2/smoke1-20261005-twin-2b3a92   (more workers: slurm/submit.sh --lanes N)
+exit 0

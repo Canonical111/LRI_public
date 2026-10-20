@@ -1,0 +1,63 @@
+{
+  "schema": "c8-d3-references-1",
+  "dimension": 3,
+  "epsilon": "2s-3",
+  "quantity": "coefficients of Delta_eps(3, eps), eps = 2s-3",
+  "coefficients": [
+    {
+      "order": 3,
+      "value": -0.3535815204331724,
+      "se": 0.0,
+      "source": "published d=3 values: reference/code/analyze.py refs (rounded: -.3535815204332, 1.228063545327623, -5.85035142075); full digits as in LRI_C6_D3_HPC reference/code/analyze.py REF[3]",
+      "label": "published values (not exact)"
+    },
+    {
+      "order": 4,
+      "value": 1.2280635453276232,
+      "se": 0.0,
+      "source": "published d=3 values: reference/code/analyze.py refs (rounded: -.3535815204332, 1.228063545327623, -5.85035142075); full digits as in LRI_C6_D3_HPC reference/code/analyze.py REF[3]",
+      "label": "published values (not exact)"
+    },
+    {
+      "order": 5,
+      "value": -5.85035142075,
+      "se": 0.0,
+      "source": "published d=3 values: reference/code/analyze.py refs (rounded: -.3535815204332, 1.228063545327623, -5.85035142075); full digits as in LRI_C6_D3_HPC reference/code/analyze.py REF[3]",
+      "label": "published values (not exact)"
+    },
+    {
+      "order": 6,
+      "value": 33.57542664131543,
+      "se": 0.00011854952350322613,
+      "source": "C6(3) M=8192 campaign, LRI_C6_D3_HPC run-20260929-m8192 C6_result.json (sha256 962a183d2f5bb7c89be5fb26ec9a3fe5d8a5eb166e9b0d3d9596401e95655490), sampling SE"
+    },
+    {
+      "order": 7,
+      "value": -220.35448047392794,
+      "se": 0.031818800575016494,
+      "source": "C7(3) run1 (symmetry 2026-09-30, M=4096), reference/c7d3_run1_results/C7_result.json (PLAN F27, HD8)",
+      "sha256": "6ab1043807ca38e2fe9483e69992dfc4a79f52d0011a21345dc3bdfb804d53b9"
+    }
+  ],
+  "secondary": [
+    {
+      "order": 6,
+      "value": 33.56819679857058,
+      "se": 0.0242,
+      "source": "earlier C6(3) used by the delivered C7(3) package (assemble.py refs); superseded, kept for comparison"
+    }
+  ],
+  "archived_C7": {
+    "value": -227.61810947469945,
+    "se": 3.8273968756607397,
+    "source": "reference/verification/C7_full_result.json (archived d=3 production_a + production_b)"
+  },
+  "zero_power_differences_orders": [
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "note": "References for consistency gates only (HD8). They are never used as constraints, inputs to the estimator, or to select or tune results. Pulls use both SEs; |pull| > 3 is flagged, not a gate. C3-C5 are published values (reference SE 0, not exact); C6(3) the M = 8192 campaign; C7(3) run1; the stale C6(3) 33.5682 only as secondary."
+}

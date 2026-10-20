@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "lri-coeff-2d"
+version = "0.1.0"
+description = "2D long-range Ising direct Taylor coefficient HT"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "numba>=0.58"]
+[project.optional-dependencies]
+validation = ["pytest", "mpmath", "threadpoolctl", "matplotlib"]
+[project.scripts]
+lri-coeff = "lri_coeff.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+lri_coeff = ["*.cpp"]

@@ -1,0 +1,48 @@
+{
+ "schema": "c8-d2-fx2g2-before-1",
+ "base": "2ae3db7 (the tools before fix round 2) with the fx2-g2 tests/unit_orchestration.py overlaid (git archive into a scratch directory)",
+ "command": "C8_ALLOW_NO_L8=1 python3 -B tests/unit_orchestration.py --only NAME --output FILE (Mac arm64, anaconda Python 3.10.11), one run per test",
+ "all_failed": true,
+ "tests": {
+  "omp_env": {
+   "status": "failed",
+   "error": "AssertionError: ('direct', [('2', {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '7', 'OMP_PROC_BIND': 'spread', 'OMP_PLACES': 'threads', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'compact'})])"
+  },
+  "omp_team": {
+   "status": "failed",
+   "error": "KeyError: 'verdict'"
+  },
+  "bench_team": {
+   "status": "failed",
+   "error": "AssertionError: {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'FALSE', 'OMP_NUM_THREADS': '4', 'OMP_PROC_BIND': 'close', 'OMP_PLACES': 'cores', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'compact'}"
+  },
+  "cgroup_min": {
+   "status": "failed",
+   "error": "AssertionError: ('step_looser', 68719476736, 17179869184)"
+  },
+  "fp_complete": {
+   "status": "failed",
+   "error": "AssertionError: production.py ('run', PosixPath('$TD/fpc'), '--index', 0, '--threads', 2, '--scratch', PosixPath('$TD/scratch')): exit 0, expected 1"
+  },
+  "fp_first": {
+   "status": "failed",
+   "error": "AssertionError: production.py ('merge', PosixPath('$TD/fpfirst'), '--group', 'a_free_L3', '--jobs', 1): exit 0, expected 1"
+  },
+  "bundle_reps": {
+   "status": "failed",
+   "error": "AssertionError: production.py ('plan', PosixPath('$TD/reps_repsB_t1'), '--seed', 771100347, '--threads', 2, '--checkpoint-tasks', 8, '--design', PosixPath('$TD/repsB_t1'), '--test-graphs', 1, '--bootstrap-chunk', 4, '--shards', 1): exit 0, expected 1"
+  },
+  "sweep_resume": {
+   "status": "failed",
+   "error": "AssertionError: ('swr_default', ('--rates', PosixPath('$TD/sw_rates1.json'), '--approved-numerics-change', 'user approval 2026-10-03 (test)'), '')"
+  },
+  "sweep_seed": {
+   "status": "failed",
+   "error": "AssertionError: ('nolog', 'warning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions\\nprojected files: 434 (per-index task files 24, checkpoints 138, lane done markers and attempt logs 48, group files)\\n')"
+  },
+  "plan_seed": {
+   "status": "failed",
+   "error": "AssertionError: (0, 'warning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores\\nwarning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions\\nprojected files: 416 (per-index task files 48, checkpoints 48, lane done markers and attempt logs 96, group files)\\n')"
+  }
+ }
+}

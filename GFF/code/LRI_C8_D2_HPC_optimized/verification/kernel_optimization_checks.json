@@ -1,0 +1,141 @@
+{
+  "schema": "c8-kernel-optimization-review-1",
+  "status": "correctness_checks_passed",
+  "created_utc": "2026-10-09T01:12:16.129499+00:00",
+  "original_kernel_sha256": "616be7da89ec9bb8ef0da4cf8629b1c06069539f0c616a62a891d0a4dafc1662",
+  "source_and_evidence_sha256": {
+    "src/kernel.hpp": "4ab38400b6ea9dbe017940519f7923ada38f601086aca0b28b00d72e2ab79584",
+    "src/positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a",
+    "tests/rate_palette.cpp": "d012cc920e57e37a935931e9cba627d6788dc4d27496bf3f58b94418340a0c14",
+    "tests/kernel_points.cpp": "34f569ed9dd13b45e23de82e18382324a2b8520b546e971b79779ff12227e654",
+    "tests/performance_harness.cpp": "8ebd71a87c0435321fb5139ee5f57e1577430784d346e33a58e637cdfd086737",
+    "optimization_work/rate_palette/enabled.json": "04a312777ddfb16a9eda8524a91f5e1408ba826f77c4a2fded3fdf486de87614",
+    "optimization_work/rate_palette/disabled.json": "aac65bce5bdd8923892deba3ca178daf01b0d9e46d2ac735ec018d9f7b7d0894",
+    "optimization_work/palette_only_comparison/comparison.json": "04a644c33593ab9c2aaf1f8387f17432a72f49a0580bfa1b8844f67ac3795f99",
+    "optimization_work/qadd_combined_comparison/comparison.json": "53b64577428d95b51dc58ca6e5ecd93b0da1053c569aec43fa3142a3603715ee",
+    "optimization_work/qadd_combined_direct/direct_comparison.json": "38a4c44d492b36ce590174231bf7eca2897843346773bd5e65425d84c6f1d2b7",
+    "optimization_work/kernel_candidates/decimal_direct/direct_comparison.json": "62fe341590a3407173fa60d600685cd19d0663f105a38e70115dd24efcad2fb9",
+    "optimization_work/kernel_candidates/independent_points/verification.json": "ffac9c2a723ea5e2169b7f2b95c2c8349c1c7b1191bc421a1d12b124e080446d"
+  },
+  "scientific_contract": {
+    "unchanged": [
+      "graph polynomials and forest terms",
+      "ordered product DAG and denominator addition sequence",
+      "importance proposal, exact scaled rates, dp and choice_total",
+      "long-double, binary128 and GMP350/decimal300 precision",
+      "promotion thresholds, rescaling, Taylor recurrence and sample identities"
+    ],
+    "qadd_scope": "Q denominator sums only, FE_TONEAREST checked once per call; all other rounding modes retain compiler addition; special operand classes fall back",
+    "qadd_value_contract": "Numerical result bits are preserved; floating exception flags are not synthesized by the specialized integer path and are not observed by production code. This is not a complete replacement for arbitrary IEEE floating-environment uses.",
+    "new_sampling": false
+  },
+  "candidates": {
+    "exact_rate_palette": {
+      "disable_macro": "C8_DISABLE_RATE_PALETTE",
+      "scaled_rate_values_checked": 1458176,
+      "physical_graph_rate_pairs": 16,
+      "original_alpha_payload_bytes": 16777216,
+      "compact_alpha_capacity_bytes": 1052672,
+      "dense_fallbacks": [
+        "more than256 distinct values",
+        "nonfinite entry",
+        "negative zero",
+        "non-L8 order"
+      ]
+    },
+    "persistent_promoted_scalars": {
+      "disable_macro": "C8_DISABLE_PROMOTED_SCALAR_REUSE",
+      "method": "Reuse equal-precision scalar storage with unchanged arithmetic expressions and resets."
+    },
+    "grow_only_promoted_buffers": {
+      "disable_macro": "C8_DISABLE_PROMOTED_GROW_ONLY",
+      "method": "Retain constructed vector tails; all reads/writes remain bounded by current graph dimensions.",
+      "memory_limit": "Retains per-thread high-water GMP objects outside graph payload cache accounting."
+    },
+    "positive_qadd": {
+      "disable_macro": "C8_DISABLE_FAST_Q_ADD",
+      "review": [
+        "Positive IEEE encodings preserve numerical ordering; sign and exponent gate excludes signed/subnormal/zero/nonfinite and overflow-risk operands.",
+        "An exponent distance greater than113 puts the smaller operand strictly below half an ulp.",
+        "Three guard/round/sticky bits preserve alignment and carry normalization; tie rounding uses mantissa parity.",
+        "No cancellation or reassociation is introduced."
+      ]
+    }
+  },
+  "validation": {
+    "native_replay": {
+      "palette_only": {
+        "cases": 52,
+        "threads": [
+          1,
+          2
+        ],
+        "result": "all scientific fields exact"
+      },
+      "combined": {
+        "cases": 52,
+        "threads": [
+          1,
+          2
+        ],
+        "result": "all scientific fields exact"
+      },
+      "coverage": [
+        "all12 sector/loop groups",
+        "all3 layouts",
+        "importance rates0.6/0.8/0.9",
+        "32/60-bit nets and high-index seeks",
+        "split23/41 consistency"
+      ]
+    },
+    "direct_replay": {
+      "backends": [
+        "gmp350",
+        "decimal300"
+      ],
+      "rows_per_rounding_mode_per_backend": 47,
+      "rounding_modes": [
+        "nearest",
+        "downward",
+        "upward",
+        "towardzero"
+      ],
+      "result": "full output documents exact, including Q value/error and380-digit MP strings",
+      "coverage": [
+        "forced severe cancellation",
+        "nonmoderate LD reference branch",
+        "nonzero common log shift",
+        "all regulator widths via L2/L3/L7/L8",
+        "physical L8 free and power graphs"
+      ]
+    },
+    "independent_reference": {
+      "decimal": {
+        "status": "passed",
+        "point_checks": 37,
+        "physical_graphs": 8,
+        "synthetic_sampling_checks": 6,
+        "cancellation_promotion": 2,
+        "backend": "decimal300",
+        "reference_digits": 450,
+        "max_scaled_error": "4.54996760150887278402e-304"
+      },
+      "gmp": {
+        "status": "passed",
+        "point_checks": 37,
+        "physical_graphs": 8,
+        "synthetic_sampling_checks": 6,
+        "cancellation_promotion": 2,
+        "backend": "gmp350",
+        "reference_digits": 450,
+        "max_scaled_error": "2.22257070968520577591e-354"
+      }
+    }
+  },
+  "scope_and_limits": [
+    "Finite regression coverage supports unchanged behavior; it is not an exhaustive proof for every graph and every stream point.",
+    "No new C8 estimate or lower Monte Carlo uncertainty is claimed by these performance changes.",
+    "Throughput attribution and scaling are recorded separately by benchmark_native.py on fixed streams.",
+    "No measured speedup claim is based on correctness-first runs overlapping compilation."
+  ]
+}

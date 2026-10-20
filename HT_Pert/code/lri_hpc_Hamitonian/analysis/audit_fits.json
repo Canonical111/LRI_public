@@ -1,0 +1,127 @@
+{
+ "omega3": 556.2143040443482,
+ "omega": {
+  "1": 3.5,
+  "2": -29.552388360629354,
+  "3": 556.2143040443482,
+  "4": -13457.689278748761,
+  "5": 376964.56135605404
+ },
+ "thermal": {
+  "A": {
+   "C": {
+    "4": 45.34047542706327,
+    "5": -734.4474271957748,
+    "6": 14359.625223819316,
+    "7": -323483.67601493496
+   },
+   "max_rel_vs_final_summary": 8.109896949627615e-13,
+   "float_vs_mpmath_max_rel": 3.580658116756316e-09,
+   "heldout_16_40_to_42_50": {
+    "4": 1.7196411050690585e-06,
+    "5": 0.00011860391254003844,
+    "6": 0.00040912412168836454,
+    "7": 0.011790104166720994
+   }
+  },
+  "B": {
+   "C": {
+    "4": 45.33002552571376,
+    "5": -733.516089970234,
+    "6": 14345.917287666647,
+    "7": -323123.17146750056
+   },
+   "max_rel_vs_final_summary": 4.8983881545182025e-12,
+   "float_vs_mpmath_max_rel": 4.8770262968866464e-08,
+   "heldout_16_40_to_42_50": {
+    "4": 1.4969580064416732e-07,
+    "5": 9.094062363601552e-06,
+    "6": 4.335201992944349e-06,
+    "7": 0.0036078398843528703
+   }
+  },
+  "C": {
+   "C": {
+    "4": 45.349131612479304,
+    "5": -734.0464566143003,
+    "6": 14350.305315773463,
+    "7": -323011.247038811
+   },
+   "max_rel_vs_final_summary": 1.6660146407270292e-11,
+   "float_vs_mpmath_max_rel": 2.1972155611172622e-08,
+   "heldout_16_40_to_42_50": {
+    "4": 2.6149536154207453e-06,
+    "5": 8.041595344820962e-05,
+    "6": 0.0006196246895342483,
+    "7": 0.012822915814467706
+   }
+  }
+ },
+ "heldout_checks": {
+  "A": {
+   "saved": [
+    1.719641133490768e-06,
+    0.00011860391464324493,
+    0.0004091241098649334,
+    0.011790105927502736
+   ],
+   "mine": [
+    1.7196411050690585e-06,
+    0.00011860391254003844,
+    0.00040912412168836454,
+    0.011790104166720994
+   ],
+   "max_rel": 1.49344013824763e-07,
+   "within_1e-9_abs_plus_1e-6_rel": true,
+   "C7_rounds_to_report_quote": true
+  },
+  "B": {
+   "saved": [
+    1.4969574380074846e-07,
+    9.09406344362651e-06,
+    4.335109224484768e-06,
+    0.003607837308663875
+   ],
+   "mine": [
+    1.4969580064416732e-07,
+    9.094062363601552e-06,
+    4.335201992944349e-06,
+    0.0036078398843528703
+   ],
+   "max_rel": 2.139933615902476e-05,
+   "within_1e-9_abs_plus_1e-6_rel": true,
+   "C7_rounds_to_report_quote": true
+  },
+  "C": {
+   "saved": [
+    2.614953665158737e-06,
+    8.041595538088586e-05,
+    0.0006196246704348596,
+    0.012822914810385555
+   ],
+   "mine": [
+    2.6149536154207453e-06,
+    8.041595344820962e-05,
+    0.0006196246895342483,
+    0.012822915814467706
+   ],
+   "max_rel": 7.830373714594789e-08,
+   "within_1e-9_abs_plus_1e-6_rel": true,
+   "C7_rounds_to_report_quote": true
+  }
+ },
+ "discrepancy_inventory": [
+  "REPORT \u00a76 does not state the reference thermal window; the code (final_joint.py) uses 16 <= Lambda <= 50, shift 0.",
+  "REPORT \u00a75 says the omega3 reference uses basis B and 24 <= Lambda <= 128 on third- and fifth-order data: matches fit_omega3/final_joint.",
+  "REPORT \u00a75: omega4, omega5 from the fifth-order data \"through 58\" with omega3 fixed: code uses basis A, Lambda >= 16 (all fifth-order rows, 4..58).",
+  "REPORT \u00a72 says 26 fifth-order phi6 cutoffs (4..50, 54, 58): data have no 52 or 56.",
+  "REPORT \u00a76 C4..C7 are fitted successively with C2, C3 exact controls: matches ThermalModel.",
+  "REPORT \u00a76 \"leading basis function is the actual T2(Lambda)\": code uses x = C2(Lambda) - A/9, i.e. T2 as defined in \u00a73.",
+  "The report quotes held-out C7 errors to 2 significant figures; the saved values are reproduced to <= 1e-6 relative."
+ ],
+ "qr_crosscheck": {
+  "solves": 28,
+  "max_rel": 3.29867090894182e-07
+ },
+ "pass": true
+}

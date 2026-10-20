@@ -1,0 +1,119 @@
+{
+ "schema": "c8-d3-exact-check-keys-1",
+ "description": "Classification of every leaf of the vendored exact_check_results.json (PLAN E.1; A-ASM-1(a), A-ASM-4 --exact; C62d's R09). exact: compared with the vendored results file by JSON equality, every one required. float_diagnostics: each checked against its bound and reported, never compared for equality. provenance: matched by pattern, never compared, recorded apart. A key in no class, a newly appeared key or a missing required key fails the gate (tests/exact_keys.py).",
+ "source": {
+  "file": "vendor/c8_assembly/exact_check_results.json",
+  "sha256": "c3e802345f05e6d4d58d9d3c86baee79c62b42b82c06e939e10929476d1d8dae",
+  "handoff_sha256": "f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437",
+  "run_mode": "full (no --fast), LRI_ROOT = the pinned fixture tree vendor/c8_assembly_fixtures; exact_check.py is never given --write"
+ },
+ "granularity": "leaf paths joined by \"/\"; loop7_exact, affinity_order7 and affinity_order8 are compared as whole values",
+ "exact": [
+  "module_md5",
+  "route_L_equals_route_F_order8",
+  "route_L_equals_route_F_order7",
+  "float_vs_exact_order8/order",
+  "float_vs_exact_order8/cases",
+  "float_vs_exact_order7/order",
+  "float_vs_exact_order7/cases",
+  "top_slot_exact_order8",
+  "top_slot_exact_order7",
+  "loop7_exact",
+  "affinity_order8",
+  "affinity_order7",
+  "ms_checks/C2 = A/9  [gd:C03, N:2264]",
+  "ms_checks/C3 = (A^2+R-8Q)/108 with gd:bc3  [gd:C03 N:2265; gd:bc3 N:2273-2275]",
+  "ms_checks/243 C4 = 60A^3-8Ab3+18Ac3+3c4-b4  [eq:C4RG, N:250-251]",
+  "ms_checks/243 C4 = D4-51A^3+9AR-48AQ-2AM with gd:bc3  [gd:C4, N:2653-2654]",
+  "ms_checks/729 C5 = 336A^4-60A^2b3+108A^2c3+b3^2-3b3c3-10Ab4+24Ac4+3c5-b5  [eq:C5RG, N:253-256]",
+  "ms_checks/729 C5 = D5+10AD4-6Ac4-... with gd:bc3  [gd:C5, N:2655-2660]",
+  "ms_checks/2187 C6 = c6:RGassembly  [N:7492-7499]",
+  "ms_checks/C7 = ms7 of LRI_C7_D2_HPC/reference/LRI_C7_d2_progress/code/check_assembly.py:53-55 (md5 f3c72eec0fa44629d3c39db2a18c04eb)",
+  "ms_checks/19683 C8 of C63d recon LRI_C8_D3_HPC_loop/recon/theory.md:263-271 (md5 c16fb42c451e6df7f54dfffd75ea9a88 on 2026-10-03)",
+  "ms_checks/6561 C7 of C63d recon LRI_C8_D3_HPC_loop/recon/theory.md:263-271 (md5 c16fb42c451e6df7f54dfffd75ea9a88 on 2026-10-03)",
+  "ms_checks/2187 C6 of C63d recon LRI_C8_D3_HPC_loop/recon/theory.md:263-271 (md5 c16fb42c451e6df7f54dfffd75ea9a88 on 2026-10-03)",
+  "ms_checks/19683 C8 of C62d LRI_C8_D2_HPC_loop/RECON.md:91-95 (md5 3bb715b1f748ebbaa6eefc97949b18fa on 2026-10-03)",
+  "ms_checks/ms8 monomials (A-substituted, times 19683)",
+  "ms_checks/ms8 monomials (general b2, c2, times 19683)",
+  "constant_jets_vs_ms",
+  "ms8_19683",
+  "power_bookkeeping/R8_free_symbols",
+  "power_bookkeeping/R8_monomials",
+  "power_bookkeeping/bookkeeping_identity",
+  "power_bookkeeping/ms_order4_power_difference",
+  "power_bookkeeping/ms_order5_power_difference"
+ ],
+ "float_diagnostics": {
+  "float_vs_exact_order8/max_relative_error": {
+   "kind": "abs_lt",
+   "bound": 1e-13,
+   "bound_source": "vendor/c8_assembly/tests/test_order8_assembly.py:177 (test_float_vs_exact); exact_check.py asserts no bound (H2 review minor note; PLAN F12)"
+  },
+  "float_vs_exact_order7/max_relative_error": {
+   "kind": "abs_lt",
+   "bound": 1e-13,
+   "bound_source": "vendor/c8_assembly/tests/test_order8_assembly.py:177 (test_float_vs_exact); exact_check.py asserts no bound (H2 review minor note; PLAN F12)"
+  },
+  "power_bookkeeping/d2_lowerPower_consistency_max_error": {
+   "kind": "abs_lt",
+   "bound": 1e-55,
+   "bound_source": "vendor/c8_assembly/exact_check.py:373 (asserted there)"
+  },
+  "power_bookkeeping/d2_order5_power_difference": {
+   "kind": "abs_lt_key",
+   "bound": "power_bookkeeping/d2_order5_printed_digit_resolution",
+   "bound_source": "vendor/c8_assembly/exact_check.py:391 (asserted there); vendor/c8_assembly/tests/test_order8_assembly.py:592"
+  },
+  "power_bookkeeping/d2_order5_lower_part": {
+   "kind": "near",
+   "bound": [
+    "-1.0775357715447757",
+    1e-15
+   ],
+   "bound_source": "vendor/c8_assembly/tests/test_order8_assembly.py:593 (the test literal; exact_check.py asserts no bound: H2 review minor note; PLAN F12)"
+  },
+  "power_bookkeeping/d2_order5_printed_digit_resolution": {
+   "kind": "abs_lt",
+   "bound": 2e-20,
+   "bound_source": "vendor/c8_assembly/tests/test_order8_assembly.py:592"
+  }
+ },
+ "provenance_patterns": [
+  "^ms_checks/19683 C8 of C62d, live file now \\(md5 [0-9a-f]{32}\\)$"
+ ],
+ "lri_root_dependent": {
+  "exact": [
+   "ms_checks/C7 = ms7 of LRI_C7_D2_HPC/reference/LRI_C7_d2_progress/code/check_assembly.py:53-55 (md5 f3c72eec0fa44629d3c39db2a18c04eb)"
+  ],
+  "provenance_patterns": [
+   "^ms_checks/19683 C8 of C62d, live file now \\(md5 [0-9a-f]{32}\\)$"
+  ],
+  "note": "exact_check.py reads these two files under LRI_ROOT and silently leaves the keys out when they are absent (exact_check.py:274-290). With LRI_ROOT = the fixtures both are required (the ms7 key is exact); without LRI_ROOT the gate accepts exactly their absence."
+ },
+ "counts": {
+  "exact": 33,
+  "float_diagnostics": 6,
+  "provenance": 1,
+  "leaves": 40
+ },
+ "cross_check": {
+  "c62d_committed": {
+   "source": "LRI_C8_D2_HPC@1769abc:tests/fixtures/exact_check_keys.json",
+   "sha256": "e9dcc0fe4acc0885e562dd499434ac914c0a1c94aff64a245877851597c19da3",
+   "result": "identical classes: the same 33 exact keys, the same 6 float keys with the same bound kinds and values, the same provenance pattern"
+  },
+  "c62d_draft": {
+   "source": "LRI_C8_shared/inventory/reviews/handoff-tests/exact_check_keys_draft.json",
+   "sha256": "c806fca7b182cf789972fa64c3c9b869365cc2d70a5fb64ad249b8950591c549",
+   "result": "identical except module_md5: provenance (^module_md5$) in the draft, exact here, as the draft's caution 3 allows and C62d's committed classification does (it must equal the HANDOFF md5 of exact_check.py, 6f04d40e...)"
+  }
+ },
+ "notes": [
+  "PLAN F12 / H2 review minor note: the live-RECON key embeds the md5 of the live LRI_C8_D2_HPC_loop/RECON.md, so a run after any RECON edit creates a new key name; it is provenance, matched by pattern. The embedded-copy key \"19683 C8 of C62d LRI_C8_D2_HPC_loop/RECON.md:91-95 (md5 3bb715b1... on 2026-10-03)\" carries a fixed md5 inside exact_check.py and is exact.",
+  "The C63d-recon keys carry fixed md5s inside exact_check.py and are exact.",
+  "The ms7 key embeds the md5 of the fixture check_assembly.py (f3c72eec...); it is exact and required with LRI_ROOT.",
+  "module_md5 is exact: the md5 of the vendored exact_check.py, equal to the HANDOFF md5 6f04d40e09cbcb78ab54c60986ba374c.",
+  "The unasserted float bounds (PLAN F12): float_vs_exact max_relative_error < 1e-13 (the delivered test :177) and d2_order5_lower_part within 1e-15 of -1.0775357715447757 (the test literal :593) are asserted by tests/vendored_isolated.py through this file.",
+  "The gate never runs exact_check.py with --write."
+ ]
+}

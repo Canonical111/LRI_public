@@ -1,0 +1,48 @@
+% s01_summary.tex (HT1dPert)
+\section{Summary}\label{htp:sec:summary}
+This note documents every perturbative Hamiltonian-truncation (HT) number quoted in the paper \emph{The long-range Ising
+CFT: perturbative and nonperturbative approaches} and in its Supplemental Material, and how to
+reproduce each from the folder \code{HT\_Pert/} of the public repository. The truncation at finite coupling is
+documented separately, in the note \emph{Hamiltonian truncation of the long-range Ising model at finite coupling}
+(folder \code{HT/}).
+
+The method expands the truncated Hamiltonian of the $\phi^4$-deformed generalized free field in $\eps=2s-d$ at fixed
+cutoff. Two exact relations fix the couplings, the gap $\DE=\sum_nC_n(\Lambda)\eps^n$ follows order by order, and the
+coefficients are extrapolated in the cutoff (Section~\ref{htp:sec:method}). Two observations recur. First, in every
+dimension, truncating the total energy or level of a state leaves it a vacuum window that does not close as the cutoff
+grows. A window correction with no free parameter removes the resulting bias. In $d=1$, with it, post hoc fits of the exact
+sums give $C_4$ and $C_5$ to $\HTpCfiveOneDev$ or better, and the solver data give $C_4$ to $C_7$ to
+$\HTpCsevenOneDev$ or better. In $d=2$ it
+works through $\eps^4$, and through $\eps^5$ with two further rules that are not derived in full. In $d=3$ it works
+through $\eps^4$, with $\eps^5$ provisional. It removes the $\eps^2$ violation of the descendant spacings in all three dimensions
+(in $d=3$ for the one state tested), and the $\eps^3$ violation in the single-state sectors of $d=1$; in $d=2$ it
+removes at least $\HTpTwoIdentThree\%$ of the $\eps^3$ violation of single-quantum descendants at $L=14$ and 16. Second, convergence is slow: the corrections fall like
+$\Lambda^{-1/2}$ times powers of $\log\Lambda$ in $d=1$ and like $1/L$ times powers of $\ln L$ in $d=2$ and $d=3$, so the
+tail model carries a large part of every limit and dominates the error. Section~\ref{htp:sec:refvals} gives the reference
+values (Table~\ref{htp:tab:refvals}), the deviation $\delta=|C_n^{\rm HT}/C_n-1|$ and the status words used below.
+
+\paragraph{One dimension (Section~\ref{htp:d1:sec}).} $C_2$ and $C_3$ come from exact sums over intermediate states to
+$\Lambda=\HTpOneLexact$, with a fit rule fixed in advance: $\delta=\HTpCtwoOneDev$ and $\HTpCthreeOneDev$. The same
+sums extend $C_4$ to $\Lambda=\HTpOneLexact$ and $C_5$ to $\NOneCfiveLmax$, and fits frozen before the largest runs
+predict them to $10^{-9}$. The frozen $C_4$ fits land $\HTpCfourOneDev$ from the exact value, with the basis and the
+median chosen post hoc. Fixing the $\log^3$ tail of $C_5$ by the exponentiated $C_4$ tail gives $C_5$ to
+$\HTpCfiveOneDev$, post hoc. With the complete window, the solver data to $\Lambda=\HTpLamThermal$ give $C_6$ to
+$\HTpCsixOneDev$ and $C_7$ to $\HTpCsevenOneDev$, with fit windows and tail models chosen after the data were seen. The
+same data give a $C_4$ range that lies below the exact value and excludes it (largest deviation
+$\NOneCfourSolverDev$) and a $C_5$ range that contains it (largest deviation $\NOneCfiveSolverDev$). $C_8$ lies $\HTpCeightOneDev$ from the reference, inside its
+uncertainty, when the tail models are calibrated on $C_6$ and $C_7$.
+
+\paragraph{Two dimensions (Section~\ref{htp:d2:sec}).} The complete window, built from the level left to each counterterm,
+removes the $\ln L$ divergence of $C_4$. $C_2$ to $C_4$ agree with the continuum values to better than
+$\HTpTwoLowDev$, and $C_5$ to $\HTpCfiveTwoDev$, if the $C_5$ data carry no residual $\ln L$ term. The data cannot exclude one; with
+the bound judged from the median of the fits it would move $C_5$ by up to about $\HTpCfiveTwoLog$, and the spread of
+single fits would allow $-0.7$ to $+0.5$. $C_6$ to $C_8$ are not reproduced.
+
+\paragraph{Three dimensions (Section~\ref{htp:d3:sec}).} With the complete window of $d=2$ carried over unchanged, exact sums
+over intermediate states ($C_2$ to $L=\HTpThreeLwin$, $C_3$ and $C_4$ to $L=\HTpThreeLfour$) reproduce $C_2$
+($\HTpCtwoThreeDigits$ digits), $C_3$ ($\delta=\HTpCthreeThreeDev$) and $C_4$ ($\delta=\HTpCfourThreeDev$). $C_5$, from
+$L\le\HTpThreeLfive$, gives $\HTpCfiveThree$ against $-5.850$ (provisional and calibrated on $C_4^{(3)}$; a term in
+$L^{-1/2}$ that $L\le\HTpThreeLfive$ cannot exclude would lower it by 0.5 to 1). The vacuum window alone diverges at
+order $\eps^4$. $C_6$ to $C_8$ are not reproduced.
+
+Section~\ref{htp:sec:repro} maps every number to its code, records, command and tolerance.

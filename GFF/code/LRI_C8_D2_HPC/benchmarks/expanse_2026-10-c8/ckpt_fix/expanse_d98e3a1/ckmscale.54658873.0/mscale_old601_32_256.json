@@ -1,0 +1,103 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ORC-6 merge_scale",
+ "rows_requested": 20000,
+ "python": "3.11.9",
+ "host": "<NODE>",
+ "platform": "linux",
+ "scale": {
+  "points": 8,
+  "rows": 39056,
+  "shards": 16,
+  "plan_seconds": 3.065317392349243,
+  "run_seconds": 1.6867802143096924,
+  "blocks": 16,
+  "parallel": {
+   "jobs": 4,
+   "wall_seconds": 0.8581609725952148,
+   "peak_rss_bytes": 36356096,
+   "phase1_rows_per_s": 121479,
+   "phase1_rows_per_s_per_process": 30369.75,
+   "phase1_seconds": 0.32,
+   "phase2_rows_per_s": 101783,
+   "phase2_seconds": 0.38
+  },
+  "serial": {
+   "wall_seconds": 1.171027421951294,
+   "peak_rss_bytes": 48537600
+  },
+  "byte_identical": true,
+  "passed": true
+ },
+ "memory_scaling": {
+  "checkpoint_tasks": 256,
+  "fan_in": 16,
+  "max_traced_growth_bytes": 2097152,
+  "max_rss_growth_bytes": 16777216,
+  "rss_bound": {
+   "platform": "linux",
+   "mb": 16.0,
+   "source": "platform default (16 MB; macOS 48 MB)"
+  },
+  "cases": {
+   "shards_1": {
+    "points": {
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 156224.0,
+      "blocks": 611,
+      "peak_rss_bytes": 122028032,
+      "traced_peak_bytes": 89970392,
+      "identical": true,
+      "wall_seconds": 5.405279874801636
+     },
+     "256": {
+      "rows": 1249792,
+      "rows_per_shard": 1249792.0,
+      "blocks": 4882,
+      "peak_rss_bytes": 763027456,
+      "traced_peak_bytes": 676714384,
+      "identical": true,
+      "wall_seconds": 45.624186277389526
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 586743992,
+    "rss_growth_bytes": 640999424,
+    "rss_growth_bytes_per_extra_row": 586.1541522795108,
+    "passed": false
+   },
+   "shards_4": {
+    "points": {
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 39056.0,
+      "blocks": 612,
+      "peak_rss_bytes": 53186560,
+      "traced_peak_bytes": 28664518,
+      "identical": true,
+      "wall_seconds": 5.447850465774536
+     },
+     "256": {
+      "rows": 1249792,
+      "rows_per_shard": 312448.0,
+      "blocks": 4884,
+      "peak_rss_bytes": 223678464,
+      "traced_peak_bytes": 174030960,
+      "identical": true,
+      "wall_seconds": 44.122987508773804
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 145366442,
+    "rss_growth_bytes": 170491904,
+    "rss_growth_bytes_per_extra_row": 155.90425469655293,
+    "passed": false
+   }
+  },
+  "passed": false
+ },
+ "passed": false
+}

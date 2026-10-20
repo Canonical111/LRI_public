@@ -1,0 +1,100 @@
+{
+ "CK-K02_comparator_edge_cases": {
+  "held": true,
+  "result": {
+   "relabelled_with_one_coefficient_changed": "other",
+   "relabelled_with_a_term_duplicated": "other",
+   "masks_relabelled_coefficients_not": "other",
+   "header_id_not_the_file_name": "other",
+   "relabelled_header_M_changed": "other"
+  },
+  "seconds": 0.0
+ },
+ "T-03_only_selection_edge_cases": {
+  "held": true,
+  "result": {
+   "tests/unit_orchestration.py --only roles,,nope": {
+    "exit": 2,
+    "seconds": 0.1,
+    "stderr": "ume, cached, recovery, arrays, lane_units, lanes, scan, markers, lsub, drill, admission, roles, unverified, cancel, ledger, rates, staging, nets, claim, drivers"
+   },
+   "tests/unit_orchestration.py --only  ": {
+    "exit": 2,
+    "seconds": 0.1,
+    "stderr": "ume, cached, recovery, arrays, lane_units, lanes, scan, markers, lsub, drill, admission, roles, unverified, cancel, ledger, rates, staging, nets, claim, drivers"
+   },
+   "tests/test_pipeline.py --only part1,PART2": {
+    "exit": 2,
+    "seconds": 0.1,
+    "stderr": "usage: test_pipeline.py [-h] [--output OUTPUT] [--only ONLY]\ntest_pipeline.py: error: --only: unknown part(s) PART2; the parts are part1, part2"
+   },
+   "tests/test_pipeline.py --only=": {
+    "exit": 2,
+    "seconds": 0.1,
+    "stderr": "usage: test_pipeline.py [-h] [--output OUTPUT] [--only ONLY]\ntest_pipeline.py: error: --only: no part named; the parts are part1, part2"
+   },
+   "tests/validate.py --only none": {
+    "exit": 2,
+    "seconds": 0.1,
+    "stderr": "S] [--threads THREADS] [--output OUTPUT]\nvalidate.py: error: no test selected (--only names no default part, and none of --bk8, --l2-control, --l8self is given)"
+   }
+  },
+  "seconds": 0.5
+ },
+ "T-05_ast_scan_extra_cases": {
+  "held": true,
+  "result": {
+   "del_in_nested_try_finally": {
+    "findings": 1,
+    "expected": 1
+   },
+   "del_in_with_body": {
+    "findings": 1,
+    "expected": 1
+   },
+   "while_else_after_del_break": {
+    "findings": 1,
+    "expected": 1
+   },
+   "reassigned_in_finally_after_handler_del": {
+    "findings": 0,
+    "expected": 0
+   },
+   "except_as_unbinds": {
+    "findings": 1,
+    "expected": 1
+   },
+   "loop_rebinds_before_use": {
+    "findings": 0,
+    "expected": 0
+   },
+   "nested_function_not_flagged": {
+    "findings": 0,
+    "expected": 0
+   }
+  },
+  "seconds": 0.0
+ },
+ "T-02_malformed_handoff_json_record": {
+  "held": true,
+  "result": {
+   "malformed_handoff_json": {
+    "exit": 1,
+    "passed": false,
+    "completed": false,
+    "error": "JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+   }
+  },
+  "seconds": 0.0
+ },
+ "O11_c8_d3_ledger_schema_reach": {
+  "held": true,
+  "result": {
+   "ledger_read_c8_d3": "refused: /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/tmp8jup8w9_/submissions.jsonl line 1 is not a c8-d2-ledger-1 record",
+   "accounting_reads_ledger_via": "ledger.jobs(run)",
+   "accounting_schema_param": true
+  },
+  "seconds": 0.0
+ },
+ "all_held": true
+}

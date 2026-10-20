@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lri-hamiltonian-hpc"
+version = "1.0.0"
+description = "Float64 row-distributed performance implementation of LRI Hamiltonian truncation"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "numba>=0.59"]
+
+[project.optional-dependencies]
+validation = ["scipy>=1.10"]
+mpi = ["mpi4py>=3.1"]
+
+[tool.setuptools.packages.find]
+include = ["lri_hpc*"]

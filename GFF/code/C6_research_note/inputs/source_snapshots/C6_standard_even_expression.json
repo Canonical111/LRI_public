@@ -1,0 +1,493 @@
+{
+  "normalization": "r6=2187*C6(1)",
+  "formula": "2187*C6 = known_polynomial + 208896*Re(SVHPL[0,1,1,1,0](i)) + 13056*(32*G-3*pi**2)*Im(Li3((1+i)/2)) + standard_even_values + 192*pi**2*PaCubic + 24*pi**3*M7central",
+  "scope": "Ecentral is removed as a project-specific series. Its contribution is represented by eight ordinary unit-argument generalized hypergeometric values and two fixed classical Kamp\u00e9 de F\u00e9riet values at (1,1). This enlarges the standard-function class to two variables and does not prove a smaller period space or an ordinary one-variable evaluation of the wheel. M7central and PaCubic remain custom sums. Upstream physical identification and earlier reductions remain inherited.",
+  "known_polynomial": "21*A**5/640 + 63*A**3*Q/8 + 7*A**3*pi**2/64 - 816*A**2*G*pi + 6045*A**2*pi**3/64 + 7863*A**2*z3/16 + 55296*A*G**2 + 15*A*G*Q - 2688*A*G*pi**2 - 249*A*Q**2 + 79*A*Q*pi**2/8 - 83067*A*pi**4/640 - 52224*G**2*pi - 7344*G*pi**3 - 144*Q**3/pi + 29*Q**2*pi + 2013*Q*pi**3/8 + 13551*Q*z3/2 + 164927*pi**5/128 + 4301*pi**2*z3/16 - 805959*z5/8",
+  "known_shift_in_r6": "-144*Q**3/pi",
+  "reason_for_known_shift": "Expand 24*Pb: 144*Q**3/pi*(2*Hminus-1). This is not an index-zero change in the wheel.",
+  "polylogarithm_terms": [
+    {
+      "function": "Brown single-valued harmonic polylogarithm",
+      "word": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "argument": "i",
+      "operation": "Re",
+      "coefficient_in_r6": "208896",
+      "normalization": "Dixon-Duhr-Pennington arXiv:1207.0186, equations (3.15)-(3.16) and (3.23)-(3.30); omega1=dz/(1-z)",
+      "is_project_defined_series": false,
+      "finite_HPL_expansion": "H01110+conj(H01110)+H0*conj(H0111)+H0111*conj(H0)+H01*conj(H011)+H011*conj(H01)+2*zeta(3)*(H0*conj(H1)+conj(H10)-conj(H01))"
+    },
+    {
+      "function": "classical polylogarithm",
+      "order": 3,
+      "argument": "(1+i)/2",
+      "operation": "Im",
+      "coefficient_in_r6": "13056*(32*G-3*pi**2)",
+      "is_project_defined_series": false
+    }
+  ],
+  "polylogarithm_sum": "208896*Re(SVHPL[0,1,1,1,0](i)) + 13056*(32*G-3*pi**2)*Im(Li3((1+i)/2))",
+  "standard_even_values": "(4*pi**3*(-42*A**2 - 18*A*pi + 96*Q - 1227*pi**2))*U4 + (2*pi**4*(-105*A**2/4 - 9*A*pi + 60*Q - 2469*pi**2/4))*U6 + (288*Q**3/pi)*Hminus + (-2496*pi**5)*H0 + (6291456*pi**5/Q**3)*Hplus + (pi**6*(4932 - 5004*sqrt(2)))*U8 + (556*pi**2*(12*sqrt(2) + 17))*Y1 + (-556*pi**2*(17 - 12*sqrt(2)))*Y7 + (-9432*pi**3)*F4 + (-5895*pi**4)*F6",
+  "ordinary_hypergeometric_terms": [
+    {
+      "id": "U4",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "1",
+        "1",
+        "1"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "4*pi**3*(-42*A**2 - 18*A*pi + 96*Q - 1227*pi**2)",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "U6",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "5/4",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "1/4",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "2*pi**4*(-105*A**2/4 - 9*A*pi + 60*Q - 2469*pi**2/4)",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "Hminus",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1",
+        "1/4",
+        "1/4",
+        "1/4",
+        "1/4",
+        "1/4",
+        "1/4"
+      ],
+      "lower": [
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "288*Q**3/pi",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "H0",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "-2496*pi**5",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "Hplus",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1",
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4",
+        "3/4"
+      ],
+      "lower": [
+        "5/4",
+        "5/4",
+        "5/4",
+        "5/4",
+        "5/4",
+        "5/4"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "6291456*pi**5/Q**3",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "U8",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "5/4",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "lower": [
+        "1/4",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "argument": "1",
+      "prefactor": "1",
+      "coefficient_in_r6": "pi**6*(4932 - 5004*sqrt(2))",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "Y1",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1",
+        "9/8",
+        "3/8",
+        "3/8",
+        "3/8",
+        "3/8",
+        "3/8",
+        "3/8",
+        "3/8",
+        "3/8"
+      ],
+      "lower": [
+        "1/8",
+        "7/8",
+        "7/8",
+        "7/8",
+        "7/8",
+        "7/8",
+        "7/8",
+        "7/8",
+        "7/8"
+      ],
+      "argument": "1",
+      "prefactor": "(1/8)*(Gamma(3/8)/Gamma(7/8))**8",
+      "coefficient_in_r6": "556*pi**2*(12*sqrt(2) + 17)",
+      "parameters_are_positive_rational": true
+    },
+    {
+      "id": "Y7",
+      "function": "generalized_hypergeometric_pFq",
+      "upper": [
+        "1",
+        "15/8",
+        "9/8",
+        "9/8",
+        "9/8",
+        "9/8",
+        "9/8",
+        "9/8",
+        "9/8",
+        "9/8"
+      ],
+      "lower": [
+        "7/8",
+        "13/8",
+        "13/8",
+        "13/8",
+        "13/8",
+        "13/8",
+        "13/8",
+        "13/8",
+        "13/8"
+      ],
+      "argument": "1",
+      "prefactor": "(7/8)*(Gamma(9/8)/Gamma(13/8))**8",
+      "coefficient_in_r6": "-556*pi**2*(17 - 12*sqrt(2))",
+      "parameters_are_positive_rational": true
+    }
+  ],
+  "kampe_de_feriet_terms": [
+    {
+      "id": "F4",
+      "function": "classical_Kampe_de_Feriet",
+      "notation_convention": "F_{A_prime:B_prime;C_prime}^{A:B;C}",
+      "shared_upper": [
+        "7/4",
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "shared_lower": [
+        "3/4",
+        "3/2",
+        "3/2",
+        "2",
+        "2"
+      ],
+      "x_upper": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "x_lower": [
+        "1",
+        "1",
+        "1"
+      ],
+      "y_upper": [
+        "1"
+      ],
+      "y_lower": [],
+      "arguments": [
+        "1",
+        "1"
+      ],
+      "coefficient_in_r6": "-9432*pi**3",
+      "parameter_counts": {
+        "shared_upper": 5,
+        "shared_lower": 5,
+        "x_upper": 4,
+        "x_lower": 3,
+        "y_upper": 1,
+        "y_lower": 0
+      },
+      "all_parameters_positive": true,
+      "absolute_convergence_proved": true,
+      "parameter_derivatives": false,
+      "regularization": false
+    },
+    {
+      "id": "F6",
+      "function": "classical_Kampe_de_Feriet",
+      "notation_convention": "F_{A_prime:B_prime;C_prime}^{A:B;C}",
+      "shared_upper": [
+        "7/4",
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "shared_lower": [
+        "3/4",
+        "3/2",
+        "3/2",
+        "2",
+        "2"
+      ],
+      "x_upper": [
+        "5/4",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "x_lower": [
+        "1/4",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "y_upper": [
+        "1"
+      ],
+      "y_lower": [],
+      "arguments": [
+        "1",
+        "1"
+      ],
+      "coefficient_in_r6": "-5895*pi**4",
+      "parameter_counts": {
+        "shared_upper": 5,
+        "shared_lower": 5,
+        "x_upper": 7,
+        "x_lower": 6,
+        "y_upper": 1,
+        "y_lower": 0
+      },
+      "all_parameters_positive": true,
+      "absolute_convergence_proved": true,
+      "parameter_derivatives": false,
+      "regularization": false
+    }
+  ],
+  "kampe_de_feriet_convention": "F = sum_{m,n>=0} (a)_(m+n)*(b)_m*(c)_n/((a_prime)_(m+n)*(b_prime)_m*(c_prime)_n)*x**m*y**n/(m!*n!); products over lists; empty products=1",
+  "single_index_harmonic_series_terms": [
+    {
+      "id": "M7central",
+      "name": "complete central seventh-power sector",
+      "coefficient_in_r6": "24*pi**3",
+      "summation_indices": 1,
+      "n_starts_at": 0,
+      "a_n": "binomial(2*n,n)/4**n",
+      "y_n": "n+1/4",
+      "h_n": "ell+H_n-H_(2*n)",
+      "delta_n": "pi**2/3-4*H_(2*n)^(2)+2*H_n^(2)",
+      "u_n": "1-14*y_n*h_n",
+      "v_n": "196*y_n*h_n**2-28*h_n+7*y_n*(delta_n-pi**2)",
+      "T_n": "80*pi**2*y_n-26*pi*u_n+11*v_n",
+      "V_n": "28*pi**2*y_n-10*pi*u_n+3*v_n",
+      "F_n": "(98*H_(2*n)+74*ell-6*pi)*T_n-98*pi*V_n-98*(11*u_n-13*pi*y_n)*(pi**2/3+4*H_(2*n)^(2))-8624*y_n*(z3-H_(2*n)^(3))",
+      "sum": "sum_(n=0..infinity) (-1)**n*a_n**7*F_n",
+      "constant_inputs": [
+        "pi",
+        "log(2)",
+        "zeta(3)"
+      ],
+      "n_zero_term": "39886*ell**3-10906*ell**2*pi-22792*ell**2-2188*ell*pi**2+8156*ell*pi-1679*pi**3/6+2330*pi**2/3-2156*z3",
+      "max_harmonic_polynomial_degree": 3,
+      "max_harmonic_order": 3,
+      "absolute_convergence": true,
+      "summand_asymptotic": "(-1)**n*294*log(n)/(pi**(3/2)*n**(5/2))+O(n**(-5/2))",
+      "Euler_approximant": "sum_(n=0..N-1) (-1)**n*(1-2**(-N)*sum_(k=0..n)binomial(N,k))*a_n**7*F_n",
+      "Euler_tail_bound": "2**(100-N), N>=1; excludes arithmetic error, which certify.py encloses separately",
+      "finite_ordinary_hypergeometric_evaluation_claimed": false,
+      "tradeoff": "One central coefficient sequence rather than five eighth-shifted gamma-ratio sequences; harmonic degree increases from one to three. P5 and CZ are folded into the same sector, not independently summed to elementary constants."
+    }
+  ],
+  "double_index_harmonic_series_terms": [
+    {
+      "id": "PaCubic",
+      "name": "positive cubic central-binomial primitive divided by 2*pi**2",
+      "coefficient_in_r6": "192*pi**2",
+      "summation_indices": 2,
+      "index_range": "m,n>=0",
+      "k": "m+n",
+      "a_n": "(1/2)_n/n!=binomial(2*n,n)/4**n",
+      "h_n": "log(2)+H_n-H_(2*n)",
+      "delta_n": "pi**2/3-4*H_(2*n)^(2)+2*H_n^(2)",
+      "H_n_r": "sum(j=1..n,1/j**r); H_0^(r)=0",
+      "t_mk": "8*h_m+H_k-H_m",
+      "e_mk": "4*delta_m+H_k^(2)-H_m^(2)",
+      "T_mn": "15*t_mk*t_nk*(t_mk+t_nk)+15*(t_mk*e_nk+t_nk*e_mk)+72*pi*(t_mk*t_nk+H_k^(2))+(30*H_k^(2)+7*pi**2)*(t_mk+t_nk)+28*pi**3-60*(zeta(3)-H_k^(3))",
+      "summand": "a_m**4*a_n**4/binomial(m+n,m)*T_mn",
+      "definition": "PaCubic=sum(m,n>=0,summand)",
+      "identity": "Pa=2*pi**2*PaCubic; PaCentral=2*pi*PaCubic",
+      "positive": true,
+      "pointwise_T_lower_bound": "T_mn>28*pi**3-60*zeta(3)>681",
+      "initial_T_00": "15360*log(2)**3+4608*pi*log(2)**2+432*pi**2*log(2)+28*pi**3-60*zeta(3)",
+      "zero_index_included": true,
+      "known_polynomial_shift": "0",
+      "initial_transcendentals": [
+        "pi",
+        "log(2)",
+        "zeta(3)"
+      ],
+      "contains_Q": false,
+      "contains_Catalan": false,
+      "contains_parameter_derivatives": false,
+      "max_harmonic_order": 3,
+      "max_harmonic_polynomial_degree": 3,
+      "direct_tail_for_Pa": "0 < Pa-2*pi**2*sum(m+n<N,summand) < 400*pi**2/(3*(N-1))*((7+log(N-1))**2+2*(7+log(N-1))+2), integer N>=2",
+      "arithmetic_note": "The tail theorem concerns exact partial sums. Sample numerical evaluations are not new outward-rounded interval certificates.",
+      "tradeoff": "Degree/order four becomes degree/order three, with no fourth harmonic accumulator. Two indices and slow literal convergence remain; the inherited geometric evaluator is still available.",
+      "finite_ordinary_special_value_evaluation_claimed": false
+    }
+  ],
+  "active_auxiliary_series": [
+    "M7central",
+    "PaCubic"
+  ],
+  "definitions": {
+    "A": "pi+4*log(2)",
+    "G": "Catalan = beta(2)",
+    "Q": "Gamma(1/4)**4/pi",
+    "z3": "zeta(3)",
+    "z5": "zeta(5)",
+    "ell": "log(2)"
+  },
+  "source_correction": {
+    "reason": "Two missing leading Laurent coefficients in original symbolic skeleton",
+    "R147_-3": "2/5",
+    "R148_-3": "2/5",
+    "added_polynomial_r6": "1024*A**5/25 - 1216*A**3*pi**2/15 + 2672*A**2*pi**3/5 + 60864*A**2*z3/5 - 2738*A*pi**4/75 + 5963*pi**5/15 - 12046*pi**2*z3/5 + 711576*z5/5",
+    "correction_is_not_a_shift_of_the_independent_numerical_C6": true
+  },
+  "coefficient_polynomials": {
+    "Cs": "-105*A**2/4 - 9*A*pi + 60*Q - 2469*pi**2/4",
+    "Cd": "-42*A**2 - 18*A*pi + 96*Q - 1227*pi**2"
+  },
+  "counts": {
+    "project_specific_infinite_sums_before": 3,
+    "project_specific_infinite_sums_after": 2,
+    "ordinary_hypergeometric_values_introduced": 8,
+    "standard_two_variable_hypergeometric_values_introduced": 2,
+    "expanded_known_monomials_before": 20,
+    "expanded_known_monomials_after": 21,
+    "arithmetic_independence_reduction_claimed": false,
+    "ordinary_one_variable_wheel_evaluation_claimed": false
+  },
+  "identities": {
+    "D4": "sum_{n>=0} a_n**4*delta_n = 3*F4",
+    "D6": "sum_{n>=0} (4*n+1)*a_n**6*delta_n = 3*F6",
+    "wheel": "Wcentral=24*F4+15*pi*F6-(8+5*pi)*pi**2/3",
+    "positive_rational_coupling": "1/(k+1/2)**2-1/(k+1)**2=3*(7/4)_k*(1/2)_k**2*(1)_k**2/((3/4)_k*(3/2)_k**2*(2)_k**2)",
+    "even_sector": "pi**3*Ecentral = standard_even_values - 144*Q**3/pi"
+  },
+  "proof_status": {
+    "new_step": "Exact Pochhammer coefficient identification and full finite weighted substitution.",
+    "inherited_step": "Even-sector Pb, PZ6, PK6 identities and all earlier SVHPL/primitive/graph identifications.",
+    "new_physical_RG_certificate": false
+  },
+  "provenance": {
+    "input_filename": "svhpl_expression.json",
+    "input_sha256": "951b65cb0dd6c2ee2a6476bfe59cf1f72b4b76b0ff5d210421db289dcecd7adb",
+    "sources": [
+      {
+        "reference": "arXiv:2212.14321, Introduction (classical complex-variable definition)",
+        "url": "https://arxiv.org/html/2212.14321"
+      },
+      {
+        "reference": "NIST DLMF 5.15",
+        "url": "https://dlmf.nist.gov/5.15"
+      },
+      {
+        "reference": "NIST DLMF 16.2",
+        "url": "https://dlmf.nist.gov/16.2"
+      }
+    ],
+    "legacy_input_retained": "inputs/svhpl_expression.json"
+  }
+}

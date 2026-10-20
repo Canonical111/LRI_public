@@ -1,0 +1,77 @@
+[17:46:13] ranges
+[17:46:18] ranges heavy_free_L8: 4096 points, 3420 binary128, 4.77 s
+[17:46:19] ranges heavy_power_L8: 4096 points, 3815 binary128, 4.04 s
+[17:46:19] ranges random_free_L8: 4096 points, 1615 binary128, 1.62 s
+[17:46:19] ranges random_power_L8: 4096 points, 3720 binary128, 2.14 s
+[17:46:19] ranges random_free_L7: 4096 points, 2077 binary128, 0.53 s
+[17:46:19] ranges random_power_L7: 4096 points, 3409 binary128, 0.43 s
+[17:46:19] windows add/sub {'observed': [15792, 16769], 'observed_unbiased': [-591, 386], 'window': [15280, 17281]} mul {'observed': [15845, 16383], 'observed_unbiased': [-538, 0], 'window': [15333, 16895]}
+[17:46:19] differential: <SCRATCH>/temp_project/c8d2/pkg/add273b9ecc7/bin/c8d2_quad_differential --pairs 4294967296 --seed 20261004 --threads 32 --kernel-add 15280:17281 --kernel-mul 15333:16895 --bench
+[17:47:00] differential done in 41 s
+[17:47:02] sanitizer build
+{
+ "status": "passed",
+ "gates": {
+  "random_pairs_per_op_at_least_min": true,
+  "random_zero_mismatches": true,
+  "edges_zero_mismatches": true,
+  "first_mismatches_empty": true,
+  "inject_detected_every_op": true,
+  "sanitizer_zero_mismatches": true
+ },
+ "summary": {
+  "add": {
+   "random_pairs": 4294967296,
+   "random_fast": 4286346880,
+   "random_mismatches": 0,
+   "edge_pairs": 901761,
+   "edge_fast": 656002,
+   "edge_mismatches": 0,
+   "edge_categories": {
+    "specials": 10000,
+    "align": 247296,
+    "cancel": 28928,
+    "carry": 15488,
+    "boundary": 400049,
+    "zeros": 200000
+   }
+  },
+  "sub": {
+   "random_pairs": 4294967296,
+   "random_fast": 4286350062,
+   "random_mismatches": 0,
+   "edge_pairs": 901761,
+   "edge_fast": 656296,
+   "edge_mismatches": 0,
+   "edge_categories": {
+    "specials": 10000,
+    "align": 247296,
+    "cancel": 28928,
+    "carry": 15488,
+    "boundary": 400049,
+    "zeros": 200000
+   }
+  },
+  "mul": {
+   "random_pairs": 4294967296,
+   "random_fast": 3849357005,
+   "random_mismatches": 0,
+   "edge_pairs": 1350672,
+   "edge_fast": 1147346,
+   "edge_mismatches": 0,
+   "edge_categories": {
+    "specials": 10000,
+    "mul_ties": 172032,
+    "mul_boundary": 368640,
+    "mul_carry": 800000
+   }
+  }
+ },
+ "bench": {
+  "add_chain_ns_libgcc": 22.028,
+  "add_chain_ns_quadfast": 6.042,
+  "mul_ns_libgcc": 24.125,
+  "mul_ns_quadfast": 17.347,
+  "identical": true
+ }
+}

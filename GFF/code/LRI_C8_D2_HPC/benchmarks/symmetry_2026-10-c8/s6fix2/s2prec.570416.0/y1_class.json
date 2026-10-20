@@ -1,0 +1,136 @@
+{
+ "sanitize_pc_tool": {
+  "decimal": {
+   "command": [
+    "g++",
+    "-O1",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-D_GLIBCXX_ASSERTIONS",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "<SCRATCH>/c8d2/pkg/e914701b042b/tests/point_checks.cpp",
+    "-lquadmath",
+    "-o",
+    "/tmp/c8d2_570416/pc_san_decimal"
+   ],
+   "binding": {
+    "backend": "decimal",
+    "worker": "<SCRATCH>/c8d2/pkg/e914701b042b/bin/c8d2_decimal_san"
+   }
+  },
+  "gmp": {
+   "command": [
+    "g++",
+    "-O1",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-D_GLIBCXX_ASSERTIONS",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "<SCRATCH>/c8d2/pkg/e914701b042b/tests/point_checks.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "/tmp/c8d2_570416/pc_san_gmp"
+   ],
+   "binding": {
+    "backend": "gmp",
+    "worker": "<SCRATCH>/c8d2/pkg/e914701b042b/bin/c8d2_gmp_san",
+    "worker_sha256": "0dd06cf935b2d47de96aeeeabad8ab7f2194da41b4624679cd85b80235a248b7",
+    "GMP_PREFIX": null,
+    "gmp_library": {
+     "soname": "libgmp.so.10",
+     "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+     "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0"
+    },
+    "linked": {
+     "tool": {
+      "soname": "libgmp.so.10",
+      "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "rpath": null,
+      "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+      "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+     },
+     "worker_now": {
+      "soname": "libgmp.so.10",
+      "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "rpath": null,
+      "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+      "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+     },
+     "want_sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+     "match": true
+    }
+   }
+  }
+ },
+ "perf_twin": {
+  "command": [
+   "g++",
+   "-O3",
+   "-g",
+   "-std=c++17",
+   "-fopenmp",
+   "-ffp-contract=off",
+   "-fno-fast-math",
+   "-DC8_USE_GMP",
+   "src/c8d2_integrate.cpp",
+   "-lquadmath",
+   "-lgmp",
+   "-o",
+   "/tmp/c8d2_570416/c8d2_gmp_dbginfo"
+  ],
+  "GMP_PREFIX": null,
+  "gmp_prefix_note": null,
+  "returncode": 0,
+  "seconds": 6.48632515600184,
+  "command_is_record_plus_g": true,
+  "same_code": {
+   "identical": true,
+   "differences": [],
+   "sections": [
+    ".bss",
+    ".data",
+    ".data.rel.ro",
+    ".dynamic",
+    ".dynstr",
+    ".dynsym",
+    ".eh_frame",
+    ".eh_frame_hdr",
+    ".fini",
+    ".fini_array",
+    ".gcc_except_table",
+    ".gnu.hash",
+    ".gnu.version",
+    ".gnu.version_r",
+    ".got",
+    ".init",
+    ".init_array",
+    ".interp",
+    ".plt",
+    ".plt.got",
+    ".plt.sec",
+    ".rela.dyn",
+    ".rela.plt",
+    ".rodata",
+    ".tbss",
+    ".text"
+   ]
+  }
+ },
+ "ok": true
+}

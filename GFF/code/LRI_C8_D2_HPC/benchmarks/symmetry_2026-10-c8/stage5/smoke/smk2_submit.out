@@ -1,0 +1,9 @@
+C8: queue <SCRATCH>/c8-d2/smoke1-20261005/lanes/queue.txt: 29 incomplete indices, 15.4 estimated core-hours
+C8: admission {"amd_cap": 4, "amd_live": 0, "amd_live_jobs": [], "k": 3, "limits": {"c8d2 AMD-pool jobs (amdq, amddebugq, amdpreq)": {"new": 3, "room": 4}}, "new_jobs": {"lane": {"count": 2, "partitions": ["amdq"]}, "merge": {"count": 1, "partitions": ["amdq"]}}, "partitions": ["amdq"], "room": 4, "site": "symmetry"}
+C8: partition amdq: 5 idle node(s)
+C8: sbatch --test-only: sbatch: Job 570051 to start at 2026-10-05T06:29:46 using 64 processors on nodes <NODE> in partition amdq
+lane worker 570052; log <SCRATCH>/c8-d2/smoke1-20261005/slurm_logs/lane-570052.log
+lane worker 570053; log <SCRATCH>/c8-d2/smoke1-20261005/slurm_logs/lane-570053.log
+merge 570054 (afterany:570052:570053); log <SCRATCH>/c8-d2/smoke1-20261005/slurm_logs/merge-570054.log
+status: <HOME>/c8d2/venv/bin/python3 <SCRATCH>/c8d2/pkg/5d7586e9f1ab/tools/production.py status <SCRATCH>/c8-d2/smoke1-20261005   (more workers: slurm/submit.sh --lanes N)
+submit exit 0

@@ -1,0 +1,702 @@
+{
+ "schema": "c8-design-handoff-1",
+ "schema_note": "unchanged: every field keeps its 2026-10-05 meaning; fields were added (supersedes, changes_since_previous_issue, import_closure_check, input_interface.submissions_jsonl_optionality, c63d_must_adapt, ...) and runtime_files gained tools/seeds.py",
+ "handoff": "H6",
+ "issue": "re-issue of 2026-10-08 (post-Stage-6 and post-production; F11, F13 and the report caps defect fixed)",
+ "sender": "C62d (LRI_C8_D2_HPC)",
+ "recipient": "C63d (LRI_C8_D3_HPC)",
+ "date": "2026-10-08",
+ "agreed": "DECISIONS.md A4 (2026-10-03), the \"H6 interface\" line (2026-10-04) and the \"H6 route for C8(3) Stage 5\" line (2026-10-05: C63d vendors the post-Stage-6 re-issue with F11/F13 fixed before its pilot; NOTE_C63d_to_C62d_2026-10-05c.md)",
+ "supersedes": {
+  "file": "HANDOFF_design.json.2026-10-05",
+  "sha256": "eac1e7598ba0efb5320b30db7a820d97bafb52098ddde733ec8024b72948a960",
+  "commit": "d8f9305a350def5e65b2576784974bd43b58f8fa",
+  "design_py_sha256": "034b51ee10869524141fb950a082c11ae646b4a002b410251854aa39cd36ef32",
+  "note": "NOTE_C62d_to_C63d_2026-10-05_H6.md"
+ },
+ "package": {
+  "path": "<PROJECT>/LRI_C8_D2_HPC",
+  "branch": "c8",
+  "commit_at_handoff": "aafa8a43f9d28ce2b4c42ae1abc4551c2554fe03",
+  "tool_last_changed_in": "aafa8a4 (2026-10-08: design.py report never fails on the caps of its hypothetical rows; job 571287)",
+  "note": "local commits only (no remote). Every file below is at the sha256 given, taken from the git object at commit_at_handoff and equal to the working tree; vendor it as a tree (see layout)."
+ },
+ "tool": {
+  "path": "tools/design.py",
+  "sha256": "0820f1b15412c32105425e131325ca6368a7395fad1ea7830ede57b72c9726f9",
+  "bytes": 145264,
+  "role": "the pilot -> Neyman design tool (report, freeze, rates)"
+ },
+ "runtime_files": [
+  {
+   "path": "tools/design.py",
+   "sha256": "0820f1b15412c32105425e131325ca6368a7395fad1ea7830ede57b72c9726f9",
+   "bytes": 145264,
+   "role": "the tool (report, freeze, rates)",
+   "imported": "the entry point; puts its own directory first on sys.path",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/common.py",
+   "sha256": "643fdecfd30213a5022e344a5d6042708c78406a20d93564cd916628d395cfef",
+   "bytes": 40844,
+   "role": "ROOT (= the parent of tools/), digest, canon/object_hash, read_verified, load, dump, pow2, replace_file, utc, slurm_ids, CampaignLock, Refuse, ...",
+   "imported": "at module level by design.py and by every module below",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/production.py",
+   "sha256": "f538db33b41bdd0362fc83164bb9ce88ef62829acc332289b314ca317d450344",
+   "bytes": 192708,
+   "role": "group_of (a group config at its manifest pin), validate_merged, block_name, checkpoint_runtime, read_seed_file, APPROVED_PROFILES, DEFAULT_RATES, validate_rates, load_cost_model (route (b)), verify_base and load_inventory (c8-d2 pilots only)",
+   "imported": "lazily by design.load_pilot, seeds_from_log, profile_recost, rates; by accounting.py; by assemble.py (other functions)",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/accounting.py",
+   "sha256": "687d140d23815c10a4edd759429f943d555dd9381fccb3e69af66325791f0d2e",
+   "bytes": 20975,
+   "role": "eta_node: account() over the ledger and sacct, checkpoint_ids, missing_checkpoints, AllocationUnknown (--schema-prefix)",
+   "imported": "lazily by design.eta_node",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/ledger.py",
+   "sha256": "d6ee4cbf1b2d75887daf026ae00a786513dd6e090be66b11e58ae36fa6f3747c",
+   "bytes": 7011,
+   "role": "ledger records <prefix>-ledger-1: check_campaign, read, jobs, WORK_ROLES {lane, array, sweep}",
+   "imported": "lazily by design.eta_node; at module level by accounting.py",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/assemble.py",
+   "sha256": "16891737cd2e3902260fc297b3d43e785eb3667925ca7e6228147873f03b3e76",
+   "bytes": 29646,
+   "role": "vendored(): the order-8 complex-step Jacobian (jacobians) after the tools/VENDORED.json pin check",
+   "imported": "lazily by design.jacobian_rows",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "tools/seeds.py",
+   "sha256": "e65d22232a828429155ae4cc959a4f2600c16e812b723f8ef6957f67f6c1669f",
+   "bytes": 12728,
+   "role": "seed-log locking and registration (production.registration_log / register_seed: production.py plan only)",
+   "imported": "lazily by production.py, never on design.py's path; in the import closure (NEW in this list: production.py imports it since Stage-6 fix round 3, Z15)",
+   "on_c8_d3_path": false
+  },
+  {
+   "path": "tools/prepare_inputs.py",
+   "sha256": "d715f836de6ca9e7273ad49ed56e30a6c0f4aefad580a1c3b9705949ca926f8d",
+   "bytes": 26540,
+   "role": "input preparation",
+   "imported": "lazily by production.plan only (never on design.py's path; in the import closure)",
+   "on_c8_d3_path": false
+  },
+  {
+   "path": "tools/lanes.py",
+   "sha256": "44bc2a87bc66541a283dead7c9b2dcecbc328e45900d850248b30f1ec6c8279e",
+   "bytes": 42044,
+   "role": "lane workers",
+   "imported": "lazily by production.status_report only (never on design.py's path; in the import closure)",
+   "on_c8_d3_path": false
+  },
+  {
+   "path": "tools/build_record.py",
+   "sha256": "f406a283b9b2a56b469e1b0600b19d9a40ef26a134580ca42c74e75c7222fcec",
+   "bytes": 40723,
+   "role": "build records",
+   "imported": "lazily by production.read_build_record only (never on design.py's path; in the import closure)",
+   "on_c8_d3_path": false
+  },
+  {
+   "path": "tools/VENDORED.json",
+   "sha256": "e62c3d1e7596795a1bdd03083f0cdf50d7f4d304095314c11d1c313dff7c773d",
+   "bytes": 39853,
+   "role": "the pin of vendor/c8_assembly/order8_assembly.py, read by assemble.vendored()",
+   "imported": "data (read by assemble.vendored)",
+   "on_c8_d3_path": true
+  },
+  {
+   "path": "vendor/c8_assembly/order8_assembly.py",
+   "sha256": "2127196f2c712700617834bf157b881b802bd32d67e6a5c8dbb17b1425bc1d77",
+   "bytes": 28520,
+   "role": "C63d's order-8 assembly (H2), byte-identical to LRI_C8_shared/assembly/order8_assembly.py; executed from the verified bytes",
+   "imported": "by assemble.vendored(): exec(compile(the bytes whose sha256 equals the VENDORED.json pin)) as module c8_order8_assembly",
+   "on_c8_d3_path": true
+  }
+ ],
+ "runtime_assembly_equals_shared_copy": {
+  "sha256": "2127196f2c712700617834bf157b881b802bd32d67e6a5c8dbb17b1425bc1d77",
+  "shared_copy": "<PROJECT>/LRI_C8_shared/assembly/order8_assembly.py",
+  "equal": true
+ },
+ "runtime_changes_since_previous_issue": {
+  "tools/design.py": "changed (was 034b51ee1086...)",
+  "tools/common.py": "changed (was a242c277027f...)",
+  "tools/production.py": "changed (was 237dda88186c...)",
+  "tools/accounting.py": "changed (was c21e561c3508...)",
+  "tools/ledger.py": "unchanged",
+  "tools/assemble.py": "changed (was 43fcb84bdba6...)",
+  "tools/seeds.py": "NEW in the list",
+  "tools/prepare_inputs.py": "changed (was 77f01ae98db0...)",
+  "tools/lanes.py": "changed (was 4c22fbd6f26c...)",
+  "tools/build_record.py": "changed (was 90110ad03e6e...)",
+  "tools/VENDORED.json": "unchanged",
+  "vendor/c8_assembly/order8_assembly.py": "unchanged"
+ },
+ "layout": [
+  "Keep the tree: tools/*.py side by side (design.py puts its own directory first on sys.path and imports the others by module name); ROOT = the parent of tools/ (common.ROOT). The files of runtime_files are the import closure of design.py (every module any of them imports, also lazily) plus the two data files; nothing else is read from ROOT on the path of another prefix's pilot (c8-d3).",
+  "assemble.vendored() reads ROOT/tools/VENDORED.json and executes ROOT/vendor/c8_assembly/order8_assembly.py from the very bytes whose sha256 equals the pin there (2127196f...: your own H2 file; W23's class, Stage-6 fix round 4: compiled from the verified bytes, never re-read through the import system).",
+  "A pilot of THIS package (prefix c8-d2) is verified by production.verify_base against ROOT/inputs/, the pinned tools and the vendored-assembly pins of its inputs manifest, so it needs the whole C62d package; the vendored subset serves pilots of another prefix (yours, c8-d3), which are read through the campaign interface only.",
+  "Python >= 3.10 with numpy and scipy (scipy.special.gammaln in the P8 penalty and scipy.stats kurtosis/skew in report; production.py imports scipy.stats.qmc only in plan code). Tested here with numpy 1.23.5 / scipy 1.10.0 (Mac, Python 3.10.11) and before with numpy 2.3.5 / scipy 1.17.0 (symmetry venv: the pilot, production and J-DES-5 jobs). Neither design.py nor the vendored assembly imports mpmath or sympy.",
+  "External commands: sacct and scontrol (tools/accounting.py, only when a checkpoint of the pilot carries a Slurm id; see input_interface.eta_node_paths)."
+ ],
+ "import_closure_check": {
+  "method": "ast over every Import/ImportFrom (module level and nested) of each module under tools/, transitively from tools/design.py; then python -c \"import X\" for every listed module in a tree holding only the listed runtime files",
+  "static_closure": {
+   "tools/accounting.py": {
+    "tools/common.py": [
+     53
+    ],
+    "tools/ledger.py": [
+     52,
+     170
+    ],
+    "tools/production.py": [
+     105,
+     124,
+     211
+    ]
+   },
+   "tools/assemble.py": {
+    "tools/common.py": [
+     46
+    ],
+    "tools/design.py": [
+     299
+    ],
+    "tools/production.py": [
+     346,
+     373
+    ]
+   },
+   "tools/build_record.py": {
+    "tools/common.py": [
+     40,
+     459
+    ]
+   },
+   "tools/common.py": {},
+   "tools/design.py": {
+    "tools/accounting.py": [
+     1088
+    ],
+    "tools/assemble.py": [
+     299
+    ],
+    "tools/common.py": [
+     162
+    ],
+    "tools/ledger.py": [
+     1088
+    ],
+    "tools/production.py": [
+     312,
+     1129,
+     1312,
+     1565
+    ]
+   },
+   "tools/lanes.py": {
+    "tools/common.py": [
+     61
+    ],
+    "tools/production.py": [
+     223,
+     232,
+     266,
+     272,
+     430,
+     518
+    ]
+   },
+   "tools/ledger.py": {
+    "tools/common.py": [
+     23
+    ]
+   },
+   "tools/prepare_inputs.py": {
+    "tools/common.py": [
+     58
+    ]
+   },
+   "tools/production.py": {
+    "tools/build_record.py": [
+     673
+    ],
+    "tools/common.py": [
+     76
+    ],
+    "tools/design.py": [
+     522,
+     593,
+     465
+    ],
+    "tools/lanes.py": [
+     2142
+    ],
+    "tools/prepare_inputs.py": [
+     814
+    ],
+    "tools/seeds.py": [
+     969,
+     984
+    ]
+   },
+   "tools/seeds.py": {
+    "tools/common.py": [
+     32
+    ],
+    "tools/production.py": [
+     169
+    ]
+   }
+  },
+  "closure_equals_listed_python_files": true,
+  "closure": [
+   "tools/accounting.py",
+   "tools/assemble.py",
+   "tools/build_record.py",
+   "tools/common.py",
+   "tools/design.py",
+   "tools/lanes.py",
+   "tools/ledger.py",
+   "tools/prepare_inputs.py",
+   "tools/production.py",
+   "tools/seeds.py"
+  ],
+  "listed": [
+   "tools/accounting.py",
+   "tools/assemble.py",
+   "tools/build_record.py",
+   "tools/common.py",
+   "tools/design.py",
+   "tools/lanes.py",
+   "tools/ledger.py",
+   "tools/prepare_inputs.py",
+   "tools/production.py",
+   "tools/seeds.py"
+  ],
+  "python_c_import_in_listed_only_tree": {
+   "tools/accounting.py": "ok",
+   "tools/assemble.py": "ok",
+   "tools/build_record.py": "ok",
+   "tools/common.py": "ok",
+   "tools/design.py": "ok",
+   "tools/lanes.py": "ok",
+   "tools/ledger.py": "ok",
+   "tools/prepare_inputs.py": "ok",
+   "tools/production.py": "ok",
+   "tools/seeds.py": "ok",
+   "vendor/c8_assembly/order8_assembly.py (assemble.vendored())": "ok (c8_order8_assembly)"
+  },
+  "all_import": true
+ },
+ "cli": {
+  "report": "design.py report --pilot RUN [--nested RUN_N] [--bundle B] [--target-se S] [--budget-core-hours B] [--json FILE] [--tails-out FILE] [--eta-node X (test-only)] [--test-only] [--numerics P --cost-model MODEL (route (b), c8-d2 only)] COMMON",
+  "freeze": "design.py freeze --pilot RUN --out BUNDLE (--target-rel R | --target-se S | --budget-core-hours B) [--test-only] [--batches K] [--spent-core-hours X] [--total-cap Y] [--seeds-log FILE (default $C8_SEEDS)] [--rates-bundle PROVISIONAL] [--eta-node X (test-only)] [--numerics P --approved-numerics-change TEXT --cost-model MODEL --numerics-gate RECORD ... (route (b), c8-d2 only)] COMMON",
+  "rates": "design.py rates --pilot RUN --source-bundle B (--rule one-step [--step 0.1] [--band 0.10] [--min-graphs 100] [--boot 1000] | --spec FILE) --out PROVISIONAL [--dimension D] [--schema-prefix P] [--half-d H] [--inventory F] [--two-loop F]",
+  "COMMON": {
+   "--dimension": 2,
+   "--schema-prefix": "c8-d2",
+   "--half-d": 1.0,
+   "--two-loop": "the pilot's inputs/two_loop.json (required for another prefix)",
+   "--inventory": "the pilot's inputs/inventory.json (required for another prefix)",
+   "--selection": "optional selection.json (L8 to-integrate sets; another prefix only, see X14)",
+   "--min-points": 4096,
+   "--min-replicates": 32,
+   "--max-replicates": 128,
+   "--variance-margin": "1.5 (freeze); report: unset = the bundle's frozen margin for --bundle and 1.5 for the table (Z10)",
+   "--task-seconds": 60.0,
+   "--min-chunk": 256,
+   "--max-task-seconds": 120.0,
+   "--threads": 8,
+   "--checkpoint-tasks": "max(16 x threads, 256)",
+   "--index-hours": 1.5,
+   "--max-tasks": 50000000,
+   "--max-checkpoints": 200000,
+   "--c8-magnitude": 46000.0,
+   "--impute": "addends (or median); report: unset = the bundle's frozen imputation for --bundle (Z10)"
+  },
+  "option_rules": "Y10 (Stage-6 fix round 2), checked before anything is designed (check_options; refusal exit 2): production (no --test-only) --min-replicates a power of two >= 32, --max-replicates a power of two <= 128 and >= min, --min-points a power of two >= 4096, --variance-margin >= 1; --test-only may reduce them (replicates powers of two >= 2, --min-points a power of two, margin > 0); always --threads, --max-tasks, --max-checkpoints positive integers, --min-chunk a power of two, --checkpoint-tasks in [1, 100000] and >= --threads, the times and --c8-magnitude finite and positive, targets/budgets/caps positive, --spent-core-hours >= 0, --batches >= 1, --eta-node in (0, 1]. report checks the same options (test-only rules when --test-only or the pilot is test-only).",
+  "new_since_previous_issue": {
+   "freeze --numerics P --approved-numerics-change TEXT --cost-model MODEL --numerics-gate RECORD (repeatable)": "route (b): an approved profile (production.APPROVED_PROFILES = {dd+mp256}) for a bundle frozen from an EXACT default-rate pilot of prefix c8-d2; refused for any other prefix (yours included)",
+   "report --numerics P --cost-model MODEL": "the table re-costed under an approved profile (c8-d2 only; --numerics-gate and --approved-numerics-change are refused by report)",
+   "report --variance-margin / --impute": "default unset (Z10): with --bundle the bundle is recomputed at its FROZEN margin and imputation; an explicit other value adds a labelled projection; the table uses 1.5 / addends when unset",
+   "freeze --batches K above 64": "W12: the minimum-batch search runs to max(64, K); a search without K says whether it hit its limit or the target is infeasible",
+   "report rows (this re-issue)": "a row that cannot be designed under the caps is printed INFEASIBLE (<reason>) and the report exits 0 (REPORT_ROWS; see changes_since_previous_issue)"
+  },
+  "c8_d3_invocation": "--dimension 3 --schema-prefix c8-d3 --half-d 1.5 --two-loop inputs/two_loop.json --inventory inputs/inventory.json [--selection inputs/selection.json] (your E.5); the three reuse parameters must agree (prefix c8-d<D>, half-d D/2); --two-loop, --inventory and --selection must be the files your inputs manifest pins (input_interface.inputs_for_another_prefix)",
+  "exit_codes": {
+   "0": "done (freeze/rates print a JSON summary; report prints the table, INFEASIBLE rows included)",
+   "2": "refused (ValueError/FileExistsError; the message names the reason; nothing is published)",
+   "1": "unexpected error (traceback): e.g. a KeyError for a manifest or merged.json field the interface requires (input_interface); fix the input"
+  },
+  "usage": {
+   "report": "usage: design.py report [-h] --pilot PILOT [--nested NESTED] [--bundle BUNDLE] [--target-se TARGET_SE] [--budget-core-hours BUDGET_CORE_HOURS] [--json JSON] [--tails-out TAILS_OUT] [--eta-node ETA_NODE] [--test-only] [--dimension DIMENSION] [--schema-prefix SCHEMA_PREFIX] [--half-d HALF_D] [--two-loop TWO_LOOP] [--inventory INVENTORY] [--selection SELECTION] [--min-points MIN_POINTS] [--min-replicates MIN_REPLICATES] [--max-replicates MAX_REPLICATES] [--variance-margin VARIANCE_MARGIN] [--task-seconds TASK_SECONDS] [--min-chunk MIN_CHUNK] [--max-task-seconds MAX_TASK_SECONDS] [--threads THREADS] [--checkpoint-tasks CHECKPOINT_TASKS] [--index-hours INDEX_HOURS] [--max-tasks MAX_TASKS] [--max-checkpoints MAX_CHECKPOINTS] [--c8-magnitude C8_MAGNITUDE] [--impute {addends,median}] [--numerics NUMERICS] [--cost-model COST_MODEL]",
+   "freeze": "usage: design.py freeze [-h] --pilot PILOT --out OUT [--test-only] [--target-rel TARGET_REL] [--target-se TARGET_SE] [--budget-core-hours BUDGET_CORE_HOURS] [--batches BATCHES] [--spent-core-hours SPENT_CORE_HOURS] [--total-cap TOTAL_CAP] [--seeds-log SEEDS_LOG] [--rates-bundle RATES_BUNDLE] [--eta-node ETA_NODE] [--dimension DIMENSION] [--schema-prefix SCHEMA_PREFIX] [--half-d HALF_D] [--two-loop TWO_LOOP] [--inventory INVENTORY] [--selection SELECTION] [--min-points MIN_POINTS] [--min-replicates MIN_REPLICATES] [--max-replicates MAX_REPLICATES] [--variance-margin VARIANCE_MARGIN] [--task-seconds TASK_SECONDS] [--min-chunk MIN_CHUNK] [--max-task-seconds MAX_TASK_SECONDS] [--threads THREADS] [--checkpoint-tasks CHECKPOINT_TASKS] [--index-hours INDEX_HOURS] [--max-tasks MAX_TASKS] [--max-checkpoints MAX_CHECKPOINTS] [--c8-magnitude C8_MAGNITUDE] [--impute {addends,median}] [--numerics NUMERICS] [--approved-numerics-change APPROVED_NUMERICS_CHANGE] [--cost-model COST_MODEL] [--numerics-gate NUMERICS_GATE]",
+   "rates": "usage: design.py rates [-h] --pilot PILOT --source-bundle SOURCE_BUNDLE [--rule {one-step}] [--spec SPEC] [--step STEP] [--band BAND] [--min-graphs MIN_GRAPHS] [--boot BOOT] --out OUT [--dimension DIMENSION] [--schema-prefix SCHEMA_PREFIX] [--half-d HALF_D] [--inventory INVENTORY] [--two-loop TWO_LOOP]",
+   "main": "usage: design.py [-h] {report,freeze,rates} ..."
+  }
+ },
+ "schema_prefix_rule": {
+  "campaign_manifest": "<prefix>-production-1, with \"dimension\" D and \"order\" 8",
+  "group_config": "<prefix>-group-1",
+  "merged": "<prefix>-merged-1",
+  "ledger": "<prefix>-ledger-1 (every record)",
+  "accounting": "<prefix>-accounting-1",
+  "bundle": "<prefix>-design-1 (design.json and design_meta.json)",
+  "rates_map": "<prefix>-rates-1",
+  "report": "<prefix>-design-report-1",
+  "not_prefixed": "the route-(b) gate record schema c8-d2-numerics-flags-1 and the build-binding/gate-inputs schemas (route (b) is refused for any prefix but c8-d2)",
+  "rule": "the prefix names the pilot campaign's own schema; a ledger record of another prefix is refused (freeze/report exit 2, accounting.py exit 2, ledger.py exit 64), never skipped. A c8-d3 campaign is accounted from its own c8-d3-ledger-1 ledger. A c8-d2 plan refuses a bundle of another prefix; design.read_bundle reads a bundle only under the prefix given."
+ },
+ "input_interface": {
+  "how_a_foreign_pilot_is_read": "For prefix != c8-d2, design.py reads the campaign through this interface only (no verify_base): the manifest, the group configs at their manifest pins, validated merged tables, its own ledger and checkpoints (eta_node), and the inputs you pass, which must be the files the pilot's inputs manifest lists. Unchanged since the previous issue except where a field says \"since\".",
+  "RUN/manifest.json": {
+   "schema": "<prefix>-production-1",
+   "fields_read": [
+    "schema, dimension, order (== 8): checked first",
+    "groups[] {name, sha256 (of groups/<name>/config.json)}",
+    "seed, executable_sha256, numerics, rates_identity, inputs_manifest_sha256, test_only, backend, threads, allocation: REQUIRED, copied into the bundle's pilot record (a missing key is a KeyError, exit 1); numerics and rates_identity must also equal every merged.json's; rates_identity \"default\" unless freeze --rates-bundle; test_only true allows only --test-only bundles",
+    "jobs[] {group, shard, blocks}: the checkpoint scan of eta_node (accounting.checkpoint_ids, missing_checkpoints)"
+   ],
+   "manifest_sha256": "sha256 of the file bytes (every merged.json must name it)"
+  },
+  "RUN/groups/<name>/config.json": {
+   "schema": "<prefix>-group-1",
+   "read_at": "the manifest's groups[].sha256 pin (common.read_verified: parsed from the digested bytes)",
+   "fields_read": [
+    "schema",
+    "campaign (a|b)",
+    "sector (free|power)",
+    "L (3..8)",
+    "replicates",
+    "counts {graph id as string: points per replicate} (the graphs of the group)"
+   ],
+   "config_hash": "object_hash(config) = sha256 of json.dumps(config, sort_keys=True, separators=(\",\", \":\"), allow_nan=False)"
+  },
+  "RUN/groups/<name>/merged.json": {
+   "schema": "<prefix>-merged-1",
+   "required": "every group merged (else refused: \"not merged\")",
+   "checks": [
+    "complete is true",
+    "manifest_sha256 == sha256(manifest.json)",
+    "config_hash == object_hash(config)",
+    "sector, L, campaign equal the config",
+    "rates_identity and numerics equal the manifest's (both REQUIRED in merged.json)",
+    "payload_sha256 == object_hash(merged.json without payload_sha256)",
+    "graph_replicates_sha256, graph_tails_sha256, graph_costs_sha256 == sha256 of the three CSV files",
+    "len(batches) == replicates == config.replicates"
+   ],
+   "fields_used": [
+    "row_seconds_sum and thread_seconds_sum: eta_omp,g = row_seconds_sum / thread_seconds_sum, capped at 1 (1.0 when thread_seconds_sum is 0 or absent; row_seconds_sum is REQUIRED when thread_seconds_sum is present)",
+    "thread_seconds_sum (accounting: busy thread-seconds; REQUIRED when eta_node comes from accounting.py)"
+   ]
+  },
+  "RUN/groups/<name>/graph_replicates.csv": {
+   "header": "replicate,graph,jet_0,...,jet_{2(9-L)-1} (the first line is skipped unread)",
+   "rows": "one per (replicate, graph) for EVERY graph of config.counts and every replicate 0..replicates-1: the jets of that graph summed over its points (floats as text). design.py does not check completeness (a missing row stays 0 and biases sigma); a graph not in config.counts is a KeyError",
+   "use": "sigma_g^2 = n_g Var_rep(J_8 . jet_g) at the pilot means; the pilot means (equal-weight campaigns); report statistics; rates rule"
+  },
+  "RUN/groups/<name>/graph_costs.csv": {
+   "header": "read with csv.DictReader: columns graph and row_seconds (any other column ignored; yours, graph,points,row_seconds,tasks, fits)",
+   "use": "c_g = row_seconds / (replicates x points per replicate); a graph without a row gets the cost floor 1e-12"
+  },
+  "RUN/groups/<name>/graph_tails.csv": {
+   "header": "read with csv.DictReader: graph, points, tail_n, tail_sum, top_1..top_<tail_n> (|t| descending; the column names are top_<i>, not tail_top_<i>); the replicate column is not read",
+   "rows": "one per (replicate, graph); a graph's rows are taken in file order, and a graph with fewer rows than replicates is \"undefined\"",
+   "use": "the Hill xi, largest share, screen/confirm (L8 only), undefined reasons (report)"
+  },
+  "RUN/submissions.jsonl": {
+   "schema": "<prefix>-ledger-1 (one JSON object per line; blank lines skipped)",
+   "read_by": "design.eta_node (ledger.read: the schema of every record, also with --eta-node) and tools/accounting.py account() (ledger.jobs and the attempt evidence)",
+   "fields_read": [
+    "schema (every line; another prefix is refused, never skipped)",
+    "type: \"note\" and \"attempt\" lines are not jobs (an attempt line still raises the number of sacct attempts required for its jobid)",
+    "jobid (as a string; the first non-note record of a jobid gives its role)",
+    "role: lane, array or sweep are the WORK roles (the eta_node denominator); plan, merge or anything else is overhead. ledger.py register accepts only sweep|plan|lane|array|merge; a record written directly with another role (e.g. pilot_lane) counts as overhead, not work",
+    "restart_count (string or int; the attempts that sacct --duplicates must show = max restart_count + 1)",
+    "array (role array only: the element spec, e.g. \"0-3,7%2\")"
+   ],
+   "not_read": "time, source, host, partition, cpus_on_node, account, note",
+   "written_by": "C62d: tools/slurm_submit.py, or ledger.py register RUN --role sweep|plan|lane|array|merge --job ID [--restart N] --schema-prefix P (under the campaign lock)"
+  },
+  "submissions_jsonl_optionality": {
+   "summary": "OPTIONAL only for a --test-only freeze or report whose pilot checkpoints carry no Slurm id (or that passes --eta-node): then design.py reads the file only if it exists (an absent file is an empty ledger) and assumes eta_node 1.0 (or takes --eta-node). REQUIRED for every non-test (production) freeze or report, and for any design whose checkpoints carry Slurm ids: every Slurm job a checkpoint names must be a ledger job, else \"allocation unknown\" (exit 2).",
+   "eta_node_paths": [
+    "--eta-node X: --test-only only (else refused); the ledger is still read (schema check), nothing else; eta_node = X",
+    "non-test: every checkpoint of every merged group (manifest jobs[] x blocks, groups/<group>/checkpoints/s<shard:06d>_p<part:06d>.json) must exist (Y9: else refused \"checkpoint(s) of the merged pilot are missing\"), every checkpoint must carry a Slurm id (else refused \"no Slurm id\"), and accounting.py must be complete (below); there is no assumed or overridden efficiency (Y9)",
+    "--test-only without Slurm ids in any checkpoint (or with no checkpoint files at all): eta_node 1.0 \"assumed\" (missing checkpoints are not checked)",
+    "--test-only with Slurm ids: as non-test from accounting.py, except that checkpoints without an id are tolerated",
+    "accounting.py (both): every checkpoint's Slurm job in the ledger; one sacct -X --duplicates -n -P -j <ledger jobids> -o JobIDRaw,JobID,ElapsedRaw,AllocCPUS,NodeList,State,Partition (7 fields, integer ElapsedRaw and AllocCPUS); scontrol show node <first node> for ThreadsPerCore when ElapsedRaw > 0; complete only when every line parses, every ledger job (and array element) has as many records as the attempts recorded, every current attempt is terminal (X15) and no checkpoint of a merged group is missing (Y9); eta_node = busy thread-seconds (sum of merged.json thread_seconds_sum) / allocated core-seconds of the work roles (ElapsedRaw x AllocCPUS / ThreadsPerCore), capped at 1 by design.py. Incomplete accounting refuses freeze and report (\"eta_node unavailable\")."
+   ]
+  },
+  "RUN/groups/<name>/checkpoints/s<shard:06d>_p<part:06d>.json": {
+   "fields_read": [
+    "runtime.fingerprint.slurm {SLURM_JOB_ID, SLURM_ARRAY_JOB_ID, SLURM_ARRAY_TASK_ID, SLURM_RESTART_COUNT}: production.checkpoint_runtime parses the first \"runtime\": value within the first 64 KiB of the file (full JSON parse as a fallback); the Slurm job is SLURM_ARRAY_JOB_ID if set, else SLURM_JOB_ID"
+   ],
+   "rule": "only existence and the runtime block are read on design.py's path (every group must be merged; an unmerged group of another prefix makes the accounting incomplete). The runtime block is provenance outside the checkpoint payload digest."
+  },
+  "slurm_commands": "sacct and scontrol as above (accounting.py); none for the --test-only paths without Slurm ids",
+  "inputs_for_another_prefix": {
+   "--inventory": "inventory.json: {sector: {str(L): [rows {id, primitive (bool; free L8), addends (or cost; the imputation regressor, default 1)}]}} for L 3..8 of both sectors; every graph gets a base count (imputed when not piloted)",
+   "--two-loop": "two_loop.json with key \"B2\" (the B2 jet; the bundle records sha256 of np.asarray(B2, float).tobytes())",
+   "--selection": "selection.json with key \"L8\": {free: [ids], power: [ids]} (optional; restricts the L8 inventory)",
+   "pin_rule": "the manifest.json beside --inventory must have sha256 == the pilot manifest's inputs_manifest_sha256 and list under its \"sha256\" key the sha256 of inventory.json and two_loop.json (and selection.json when --selection is given); anything else is refused (exit 2)"
+  },
+  "authenticated_overrides_c8_d2": "X14 (Stage-6 fix round 1): for a c8-d2 pilot, --inventory, --two-loop and --selection are accepted only as the very files its verified inputs manifest pins (same sha256; selection.json, which a c8-d2 inputs manifest does not list, is refused): an override can never change J8, the variances or the allocation under the pilot's inputs identity. Another prefix already had this rule (pin_rule).",
+  "seed_log": "--seeds-log or $C8_SEEDS: a {\"seeds\": [{\"seed\": int, ...} | int, ...]} log or a JSON list of integers (production.read_seed_file); the bundle forbids the pilot seed and every listed seed. A path that does not exist is read as an empty list (no error).",
+  "bundle_read_by_report_and_rates": "design.read_bundle (Z9): design_meta.json of schema <prefix>-design-1 and kind meta; design.json at design_sha256 (schema, kind design); exactly the 24 counts/<campaign>_<sector>_L<L>.txt at counts_sha256, each line \"<graph> <positive count>\\n\" with distinct graphs; a provisional bundle's rates.json at rates_sha256 = rates_identity. Only the verified bytes are parsed.",
+  "nested_pilot": "report --nested RUN_N: read like --pilot; must share the pilot's dimension, schema_prefix, half_d, inputs_manifest_sha256, two_loop_sha256, numerics, rates_identity and backend (Z12, NESTED_IDENTITY)"
+ },
+ "outputs": {
+  "bundle": {
+   "layout": [
+    "design.json",
+    "design_meta.json",
+    "counts/<campaign>_<sector>_L<L>.txt (one line \"<graph> <base count>\" per inventory graph, 24 files)"
+   ],
+   "publication": "atomic (staging directory + rename); an existing --out is refused (never overwritten)",
+   "design.json": [
+    "schema <prefix>-design-1",
+    "kind design",
+    "strata {13 strata: sector, L, primitive, s, V1, C1, graphs, piloted}",
+    "replicates {<sector>_L<L>: r}",
+    "batches K, batches_minimum",
+    "predicted {variance_per_batch, se_raw_per_batch, se_raw_total, se_total, cost_per_batch_core_hours, cost_total_core_hours, imputed_variance_share, variance_margin}",
+    "caps {ok, tasks_per_campaign, checkpoints, max_replicates, predicted_max_task_seconds, worst_task, predicted_max_index_wall_seconds, task_ok}",
+    "eta_node",
+    "eta_omp {<campaign>_<sector>_L<L>: value}"
+   ],
+   "design_meta.json": [
+    "schema",
+    "kind meta",
+    "test_only",
+    "provisional false",
+    "design_sha256",
+    "counts_sha256 {file: sha256}",
+    "pilot {campaign, manifest_sha256, seed, executable_sha256, numerics, rates_identity, inputs_manifest_sha256, test_only, backend, threads, allocation, two_loop_sha256, accepted_tool_changes, dimension, schema_prefix, half_d, verified_by}",
+    "numerics",
+    "profile_recost (null on the exact path)",
+    "rates_identity",
+    "inputs_manifest_sha256",
+    "executable_sha256",
+    "backend",
+    "forbidden_seeds",
+    "batches",
+    "target {se, rel, c8_magnitude}",
+    "budget_core_hours",
+    "spent_core_hours",
+    "total_cap",
+    "eta_node",
+    "eta_node_source",
+    "imputed {variance_share, graphs, impute}",
+    "predictions",
+    "parameters {dimension, schema_prefix, half_d, two_loop, min_points, min_replicates, max_replicates, variance_margin}",
+    "rates_bundle",
+    "rule",
+    "optimizer (NEW)",
+    "route_b_choice (NEW; null on the exact path)",
+    "frozen_utc"
+   ],
+   "optimizer": "design_meta.optimizer (F13): {rule: design.OPTIMIZER (text), mode: target|budget, kept: smallest|largest (the start kept; F11's on ties), starts: {smallest|largest: {split (text), greedy {cost_total_core_hours, se_total}, final {cost_total_core_hours, se_total}, caps_ok, prune_steps, lattice_boxes, lattice_moves, replicates {<sector>_L<L>: r}, s {stratum: s}}}}",
+   "route_b_choice": "design_meta.route_b_choice (F13, route (b) only; null otherwise): {rule: design.ROUTE_B_KEEP, mode, reoptimized {cost_total_core_hours, se_total, batches, replicates, s, feasible true, optimizer_kept}, kept_exact_allocation {the same, feasible, caps_ok, exact_cost_total_core_hours, exact_se_total, optimizer_kept} or {feasible false, reason}, chosen: reoptimized|kept_exact_allocation}. A bundle that keeps the exact allocation records the exact path's batches_minimum and optimizer.",
+   "profile_recost": "route (b) only (c8-d2): {route b, rule, profile, approval, approved_set, approved_set_reference, gates [{path, sha256, slurm_job, profile, profile_executable_sha256, exact_executable_sha256, host, cpu_model, compiler, utc_start, F2_total, F1_violations, F1_coverage, source_snapshot_sha256, F5_team_sizes_verified, gmp_library, inputs_manifest_sha256}], exact_pilot {...}, cost_model {...}, variance, efficiencies}",
+   "identity": "the sha256 of design_meta.json is the bundle identity (C62d's production.py plan --design records it)"
+  },
+  "freeze_stdout": "JSON {bundle, numerics, batches, batches_minimum, predicted_se_total, predicted_se_raw_total, allocated_core_hours_total, replicates, s, imputed_variance_share, eta_node, imputed_graphs, optimizer_kept, route_b_chosen}",
+  "provisional_rates_bundle": "design.py rates: rates.json (<prefix>-rates-1) + design_meta.json with provisional true, rates_identity = rates_sha256 = sha256(rates.json), source_design_meta_sha256, source_rates_identity, rate_rule; no counts, no design.json (every plan refuses it). R7 is not approved for production.",
+  "report_json": "<prefix>-design-report-1: pilot, c8_magnitude, variance_margin, eta_node, eta_source, numerics, profile_recost, targets[] (target_rel, target_se, feasible (NEW); designed rows: batches, predicted_se_with_margin, predicted_se_raw, allocated_core_hours, replicates, s, imputed_variance_share, optimizer_kept, [route_b_chosen]; infeasible rows (NEW): infeasible and error, the reason), extra[] (the --target-se and --budget-core-hours rows, same fields), rows (NEW) {rule, infeasible (count), caps {max_tasks, max_checkpoints, max_replicates, max_task_seconds, task_seconds, min_chunk, threads, checkpoint_tasks, index_hours, batch_search_limit}}, strata {st: V1, C1, V1_imputed, graphs, piloted, graph_campaigns, kurtosis, skewness, max_abs_z, largest_share, varQ, blocks, P8, P8_flag, alpha}, alpha_note, nested, sector_P8, tails {rule, screened, confirmed, undefined, diagnostics_L_le_7, graph_campaigns, graph_campaigns_L8}, bundle (bundle_prediction: bundle, meta_sha256, batches, frozen_settings, se_raw_total, se_total, frozen_prediction, pilot_is_the_frozen_pilot, frozen_pilot_manifest_sha256, kind, relative_difference, agrees, projection)",
+  "tails_csv": "campaign,sector,L,graph,points,replicates,xi_hat,largest_share,use,status"
+ },
+ "changes_since_previous_issue": [
+  "F11 FIXED (23540b2, then 77fab71): split() takes r of a (sector, L) from its SMALLEST positive stratum multiplier (no stratum forced above its optimum); the Stage-5 rule (largest) is kept as optimize()'s second start. J-DES-5's 1e-3 design: 1,738 lane core-h with 23540b2 and 1,702 with 77fab71, instead of 3,963.",
+  "F13 FIXED (77fab71): optimize() runs, from both split rules, the greedy loop, a prune pass (target) and a bounded meet-in-the-middle lattice search over the power-of-two allocations held to the per-batch caps, and keeps the better start: never costlier (target) or less precise (budget) than either rule's greedy design at the same K; recorded as design_meta.optimizer. The minimum K is the smallest batch count whose OPTIMIZED design meets the caps (it can be smaller than the old tool's).",
+  "Route (b) (23540b2, 77fab71, e88bf4f; C62d only): an approved profile for a bundle frozen from an exact pilot, re-costed with a profile cost model; keep-cheaper between the re-optimized design and the exact design re-costed (route_b_choice). Allow-lists: production.APPROVED_PROFILES = {dd+mp256}, APPROVED_RATES and APPROVED_PROFILE_PILOTS empty; a gated build and gate evidence (X1-X3, Z19, W18) required. Refused for any prefix but c8-d2.",
+  "X14 (fix round 1): c8-d2 --inventory/--two-loop/--selection overrides authenticated (pin_rule already applied to other prefixes).",
+  "X15 (fix round 1, accounting.py): live or pending allocations make the accounting incomplete (eta_node unavailable, design.py refuses).",
+  "Y9 (fix round 2): no assumed efficiency for a production design: a merged pilot with missing checkpoints, checkpoints without a Slurm id, or no Slurm id at all is refused unless --test-only.",
+  "Y10 (fix round 2): check_options (option_rules) before designing, check_allocation before publishing.",
+  "Z9 (fix round 3): one verified bundle reader (read_bundle, parse_counts) for report --bundle, freeze --rates-bundle and rates --source-bundle.",
+  "Z10 (fix round 3): report --bundle recomputes at the bundle's FROZEN margin and imputation; explicit other settings are a labelled projection.",
+  "Z12 (fix round 3): nested alpha keeps each graph's own point ratio; the nested pilot must share the scientific identity.",
+  "W10's class (fix round 4, accounting.py): an unmerged group's busy time counts only validated checkpoints; an unmerged group of another prefix makes the accounting incomplete.",
+  "W12 (fix round 4): the minimum-batch search runs up to max(64, --batches); limit versus infeasibility told apart; an explicit --batches allocation checked against every cap.",
+  "W18 (fix round 4): a route-(b) gate must carry the authenticated input set of the pilot (c8-d2 only).",
+  "W23's class (fix round 4, assemble.py): the vendored assembly is executed from the verified bytes.",
+  "THIS RE-ISSUE (2026-10-08, after job 571287): report never fails on the per-batch caps of its hypothetical rows; a row that cannot be designed is feasible false with the reason (INFEASIBLE in the printed table), the strata come from strata_for (no cap enters), every other section is unchanged, exit 0. freeze keeps every cap check."
+ ],
+ "tests": {
+  "run": "from a git archive export of the commit (the tests need the whole package: tests/pkgcopy.py builds a scratch copy): python3 -B tests/test_pipeline.py --only part1,part2 --output FILE (part3 adds the non-test chains); Mac: C8_ALLOW_NO_L8=1; the full pure-Python suite is C8_ALLOW_NO_L8=1 make test-python",
+  "c8_d3_coverage": [
+   {
+    "test": "A-DES-6_d3_vendored_B2_subsample_imputation_nested_alpha (part1)",
+    "covers": "freeze_core of a synthetic d = 3 pilot with the vendored inputs_d3/two_loop.json at the HANDOFF_assembly sha256 (--dimension 3 --half-d 1.5 --schema-prefix c8-d3): a c8-d3-design-1 bundle of 24 count files that passes check_optimizer; refusals of mismatched dimension/half-d/prefix; the 1/8 L8 subsample imputation (imputed share = the hand value); nested alpha within 0.02"
+   },
+   {
+    "test": "O11_C8-3_command_line_freeze_report_rates_on_a_c8-d3_pilot_its_c8-d3_ledger_eta_node_schemas_follow_prefix_refusals (part2)",
+    "covers": "the command line on a c8-d3 view of a merged fake pilot (d3_view: schemas c8-d3-production-1/-group-1/-merged-1, dimension 3, every pin re-made, its own inputs manifest, its own c8-d3-ledger-1 ledger registered with ledger.py --schema-prefix c8-d3): freeze and report take eta_node from that ledger through accounting.py; the J8 differs from d = 2; rates on it; refusals of mixed prefixes and of a d = 2 plan of the c8-d3 bundle"
+   },
+   {
+    "test": "R-REP-1 (part1 report_caps_synthetic, part2 report_caps_cli)",
+    "covers": "this re-issue's fix (prefix-independent code): rows infeasible under the caps, every other section unchanged, exit 0; freeze still refuses"
+   }
+  ],
+  "last_results": [
+   "Mac (numpy 1.23.5, scipy 1.10.0), the re-issue commit: tests/test_pipeline.py 41/41 (parts 1-3); C8_ALLOW_NO_L8=1 make test-python exit 0 (LRI_C8_D2_HPC benchmarks/mac_2026-10-c8/repcaps/)",
+   "symmetry J-VAL-1 570583 (900e590 = the tools of the pilot and production, design.py a95994fe...): make test exit 0",
+   "the H6 self-check of this re-issue (vendored tree, fake c8-d3 campaign): NOTE_C62d_to_C63d_2026-10-08_H6.md"
+  ],
+  "files": [
+   {
+    "path": "tests/test_pipeline.py",
+    "sha256": "6923194f82f0c81654143683366180de0326ce80195cd9bcc7a2441a8cff2426",
+    "bytes": 205828,
+    "role": "the design tests: A-DES-1/2/6, F11/F13 (check_optimizer, optimizer_property, jdes5_records), route (b) in process and on the command line, tails, A-ORC-9, O11 (c8-d3), A-ASM-6, R14/R19, A-FLAG-6, X10/X14/X15, Y9/Y10, Z9/Z10/Z12, W10/W11/W12/W18/W20, and R-REP-1 (this re-issue's fix); part1 in process, part2/part3 on fake campaigns"
+   },
+   {
+    "path": "tests/pkgcopy.py",
+    "sha256": "f74f46b2de80c078d75b1d079ce793f23025ba66ce6c0ce1b6cbae5528d28ada",
+    "bytes": 3288,
+    "role": "the scratch package copy the pipeline tests run in (fake bin/c8d2_gmp, inputs_mini)"
+   },
+   {
+    "path": "tests/fake_worker.py",
+    "sha256": "c0c4c6fc4ff36b45cef8e0fabf9b7629727bfd2a0cdc52b1fe5d9b73d434e665",
+    "bytes": 6820,
+    "role": "the fake integrator of the fake campaigns"
+   },
+   {
+    "path": "tests/unit_orchestration.py",
+    "sha256": "ad0c4e0e8b89b3e1a2c04dfa30407efdc6c8ca5d965d09ac9437a5def5a03eeb",
+    "bytes": 413976,
+    "role": "design.py coverage outside test_pipeline: route_b_records (every branch of design.check_gate and production.route_b), ledger (incomplete accounting refuses design.py), plan_bundle_counts_strict (design.parse_counts at plan), bundle_relocation"
+   },
+   {
+    "path": "tests/test_numerics_flags.py",
+    "sha256": "90dca487bb76ff9c9cd9cdd0740c11cc4500f0508956287b81dcf17e0e058e0c",
+    "bytes": 92487,
+    "role": "coverage: design.GATE_F1_SAMPLE / GATE_F1_NEED equal numerics_flags' (route (b) gate evidence)"
+   }
+  ],
+  "all_sub_tests": [
+   "A-DES-1_full_size_freeze_counts_replicates_budget_infeasible_K_atomic_seeds_caps",
+   "A-DES-2_report_table_and_independent_bundle_SE",
+   "Y10_allocation_options_production_bounds_test_only_reduced_never_below_two_allocation_checked_before_publication",
+   "F11_A-DES-1_2_r_from_smallest_multiplier_primitives_take_s_cost_near_continuous_optimum_old_rule_reproduced",
+   "F13_F11_optimizer_randomized_never_costlier_than_either_old_rule_feasible_budget_dual",
+   "F13_J-DES-5_records_exact_and_route_b_recomputed_not_costlier_keep_cheaper",
+   "A-DES-6_d3_vendored_B2_subsample_imputation_nested_alpha",
+   "W12_batch_search_past_64_with_batches_limit_vs_infeasible_selected_allocation_checked",
+   "R-REP-1_report_marks_cap_infeasible_rows_keeps_every_section_freeze_caps_unchanged_synthetic",
+   "Z10_report_bundle_SE_at_its_frozen_margin_and_imputation_projection_labelled",
+   "Z9_report_reads_the_bundle_through_the_verified_reader",
+   "Z12_nested_alpha_per_graph_ratio_and_scientific_identity",
+   "A-DES_tails_L8_thresholds_L7_diagnostics_undefined_sector_P8_L8_4096",
+   "A-FLAG-6_G4c_one_step_rule_branches_W_r_bootstrap_hand_values_refusals",
+   "route_b_synthetic_freeze_recosted_sigma_kept_keep_cheaper_both_branches_recomputed_record_report_refusals",
+   "O09_sweep_finalization_resumes_reuses_its_model_refuses_another",
+   "A-ORC-9_bootstrap_sweep_ledger_accounting_eta_node_design_allocation_unknown",
+   "X15_live_allocations_incomplete_terminal_complete_requeue_in_sum",
+   "X10_class_factors_same_numerics_only",
+   "W10_calibrate_validates_checkpoints_and_timings",
+   "W20_sweep_seed_registration_one_locked_transaction",
+   "A-ORC-9_local_checkpoints_accepted_only_by_test_only_freeze",
+   "X14_own_prefix_overrides_authenticated_pinned_accepted_others_refused",
+   "A-DES-2_on_the_fake_pilot_bundle_recomputed_independently",
+   "Z10_report_cli_frozen_margin_and_labelled_projection",
+   "Z9_report_cli_refuses_damaged_bundles",
+   "R-REP-1_report_cli_cap_infeasible_rows_exit_0_tails_strata_bundle_unchanged_freeze_refuses",
+   "O11_C8-3_command_line_freeze_report_rates_on_a_c8-d3_pilot_its_c8-d3_ledger_eta_node_schemas_follow_prefix_refusals",
+   "A-ASM-6_combine_final_partial_chi2_hand_verify_result_and_rejections",
+   "route_b_cli_test_only_sweep_numerics_freeze_recosted_plan_run_assemble_combine_refuses_mixing",
+   "A-FLAG-6_rates_per_graph_spec_equal_refused_source_unchanged_tool_change_recorded",
+   "W11_calibration_one_identity_per_file_package_file_exact_default_only",
+   "Z9_class_rates_bundle_and_source_bundle_verified",
+   "A-FLAG-6_sweep_under_the_map_feeds_a_fresh_freeze_recomputed_another_map_refused",
+   "A-FLAG-6_G4c_rates_rule_one_step_cli_map_record_recomputed_refusals",
+   "R14_R19_provisional_bundle_map_measurement_fresh_freeze_recomputed_source_allocation_misses",
+   "Y9_Y10_nontest_pilot_checkpoints_removed_refused_test_only_assumed_one_missing_incomplete_allocation_options_refused",
+   "A-FLAG-6_G4c_non_test_plan_accepts_fresh_R7_bundle_with_approval_and_map_cost_model_refuses_without",
+   "route_b_non_test_plan_accepts_recosted_bundle_with_all_pieces_records_route_refuses_without",
+   "allow_list_non_test_plans_refuse_numerics_outside_APPROVED_PROFILES_pilot_and_route_a_design_test_only_accepted",
+   "Stage6_non_test_pilot_exact_profile_pilot_needs_go_and_gate_route_a_gated_test_only_unchanged"
+  ]
+ },
+ "real_data_runs": {
+  "J-SMK-3 (symmetry, 2026-10-05)": "freeze --test-only on the merged L8 smoke with sacct accounting, plan --design, run, merge, assemble, combine --partial and final (benchmarks/symmetry_2026-10-c8/stage5/README.md); design.py 034b51ee (the previous issue)",
+  "J-DES-5 (symmetry 570114, 2026-10-05)": {
+   "tool": "design.py 034b51ee (the previous issue; F11 open)",
+   "pilot": "<SCRATCH>/c8-d2/sweep2-5d7586e9f1ab (J-SWEEP-2: all 24,173 graphs, both campaigns, 2 x 512 points)",
+   "evidence": "benchmarks/symmetry_2026-10-c8/stage5/des5/",
+   "eta_node_sweep": 0.3063,
+   "result": "K = 1 at every target; 5.2-8.5 million tasks, 20,533-36,475 checkpoints, 351-6,424 indices per plan; plan wall 307-678 s, peak RSS 0.84-1.31 GiB; every freeze 5.4 s; every cap held (the full per-target record is in HANDOFF_design.json.2026-10-05, real_data_runs). Found F11."
+  },
+  "pre6b (symmetry 570302, 2026-10-05)": {
+   "tool": "export 77fab7153c0e (F13 optimizer, route-(b) keep-cheaper)",
+   "pilot": "J-DES-5's sweep",
+   "evidence": "benchmarks/symmetry_2026-10-c8/pre6b/",
+   "result": "exact freezes 1,702 / 5,740 / 22,961 / 74,573 lane core-h at 1e-3 / 5e-4 / 2.5e-4 / 1.35e-4 (x0.97-0.98 of the 23540b2 tool), r, s, cost and SE equal to the Mac recomputation; route (b) 638 / 2,241 / 8,963 / 29,328 (x0.375-0.393 of exact); reports 18 s (exact) and 31 s (route (b)); freezes 5.6-11.1 s at 0.2 GiB; 8 test-only plans, every cap held"
+  },
+  "s6fix3 (symmetry 570539, 2026-10-06)": {
+   "tool": "export of 945e526",
+   "evidence": "benchmarks/symmetry_2026-10-c8/s6fix3/",
+   "result": "route-(b) re-freeze with the re-measured profile cost model 18e50440 and gate 570536: 639 / 2,251 / 9,002 / 29,473 lane core-h, every SE at its target; 4 test-only plans (2.1-6.4 million tasks), every cap held"
+  },
+  "s6fix4 (symmetry 570579, 2026-10-06)": {
+   "tool": "export of 392ed22 (design.py a95994fe..., the tool of the pilot and production)",
+   "evidence": "benchmarks/symmetry_2026-10-c8/s6fix4/",
+   "result": "route-(b) re-freeze with gate 570574 (W18 input set): design.json byte-identical to 570539's at all four targets; 4 test-only plans, every cap held; a real gated claim"
+  },
+  "pilot analysis (symmetry 570669 and 570672, 2026-10-06)": {
+   "tool": "export ba68f401e46e (design.py a95994fe...)",
+   "pilot": "the exact L8 pilot <SCRATCH>/c8-d2/pilot1-20261006-ba68f401e46e (lanes 570638-570640, merge 570641; eta_node 0.837 from its ledger)",
+   "evidence": "benchmarks/symmetry_2026-10-c8/pilot/analysis/",
+   "result": "eight NON-test freezes, K = 1 and every cap held in each, report --bundle agrees for each: exact 2,552 / 9,698 / 38,792 / 146,517 lane core-h; route (b) dd+mp256 943 / 3,616 / 14,465 / 52,326 (exact allocation kept at the first three, re-optimized at 1.35e-4); two reports, all rows feasible; 570669 404 s"
+  },
+  "production (symmetry, 2026-10-06/07)": "the 2.5e-4 route-(b) bundle of the pilot analysis planned (1,129 indices, 6.19 million tasks) and run: C8(2) = 45,990.0 +- 8.2; realized SE 8.22 against the raw prediction 7.67 (x1.07; 11.5 with the margin 1.5); allocated 13,454 core-h = x0.93 of the design's 14,465 (benchmarks/symmetry_2026-10-c8/production/result/)",
+  "production report (symmetry 571287 and 571296, 2026-10-07)": {
+   "tool": "design.py a95994fe... (before this re-issue's fix)",
+   "evidence": "benchmarks/symmetry_2026-10-c8/production/result/ (prres.571287.0, prres2.571296.0)",
+   "result": "571287: report --pilot <the production batch> with the default caps exited 2 before writing anything (the defect fixed here); 571296: the same with --max-checkpoints 100000000 --max-tasks 2000000000: 48,346 graph-campaigns, 40,800 L8; 9,628 L8 graphs screened, 4,832 confirmed \"possible infinite variance\" (4,631 free, 201 power; later shown to be tail warnings of bounded weights, tailcheck/README.md), 0 undefined; the table's rows describe designs at the batch's 524,288-point replicates (not a design input); report --bundle labels the frozen bundle a PROJECTION (another pilot), SE 11.85; the report took 5:01 wall and 5.85 GB peak RSS. The fixed tool was tested on the Mac only (R-REP-1); it was not re-run on symmetry."
+  }
+ },
+ "known_issues": [
+  "LOW, read windows (fix round 4 verifier, logged as known): some digest-then-reread windows remain: validate_merged checks the CSV digests and load_pilot re-reads the files; foreign_inputs digests --inventory/--two-loop and then loads them. A file replaced between the two reads is not detected. Do not modify a pilot while it is designed.",
+  "LOW, provenance: the checkpoint runtime block (the Slurm ids eta_node accounts) is outside the checkpoint payload digest.",
+  "LOW, interface: graph_replicates.csv completeness is not checked by design.py (a missing (replicate, graph) row stays 0); the campaign's own merge must guarantee it.",
+  "LOW, message: with a budget whose design breaks the caps at small K, the batch search raises the budget refusal at the K where K x the minimum design exceeds the budget (\"the minimum design costs X core-hours\", X at that K) rather than naming the caps. freeze refuses either way (unchanged here); report marks the row infeasible.",
+  "LOW, seeds: a --seeds-log / $C8_SEEDS path that does not exist is read as an empty list (only the pilot seed is then forbidden).",
+  "LOW, route (b) only (C8(2)): the gate pins libgmp, not libquadmath, libm or libgomp.",
+  "C63d-side: tools/design_adapter.py at your 4fbd1ba makes a byte-copy view; design.py needs more than that view gives (c63d_must_adapt)."
+ ],
+ "notes": [
+  "eta_node comes from the pilot's own ledger over the work roles (lane, array, sweep) and is busy thread-seconds / allocated core-seconds (<= 1, capped): a short or tail-heavy job gives a low eta_node and a high allocated cost (J-SWEEP-2: 0.306; the L8 pilot: 0.837; the production batch: 0.983). Your accounting.py's eta_node is the inverse ratio (allocated / busy; design_fallback.py uses 1/max(1, it)); do not feed it to --eta-node unchanged.",
+  "With 2 replicates per graph (a sweep), kurtosis, skewness, max|z| and P8 are undefined (None); 8 replicates define them. The sector P8 pools only L8 graph-campaigns at exactly 4,096 points per replicate (a production batch has none: P8 null).",
+  "A production batch (or any campaign with large replicates) as --pilot: the target rows are hypothetical designs sized from its replicates and will usually be INFEASIBLE under the default caps (C62d's: 2.49 SE at 600,875 core-h with raised caps); read the tails and strata from it, never a design.",
+  "design.py pins the numerics and rates identity of its pilot in the bundle. design.py never plans: the bundle is read by your own plan code.",
+  "The tests above need C62d's whole package (fixtures, fake worker); vendoring design.py and its runtime files is enough to run it on your campaigns (self-check in NOTE_C62d_to_C63d_2026-10-08_H6.md)."
+ ],
+ "c63d_must_adapt": [
+  "Vendor runtime_files as a tree at the listed sha256s (tools/seeds.py is new in the list); check vendor/c8_assembly/order8_assembly.py = your H2 file 2127196f....",
+  "Present your merged pilot as a c8-d3 campaign the interface accepts (tests/test_pipeline.py d3_view is a worked example): manifest.json of schema c8-d3-production-1 with dimension 3, order 8, groups[] pins and ALL of seed, executable_sha256, numerics, rates_identity, inputs_manifest_sha256, test_only, backend, threads, allocation, jobs[] {group, shard, blocks}. At your 4fbd1ba (read-only look) the manifest has no rates_identity (add \"default\"), and merged.json has no rates_identity and no row_seconds_sum (yours has integration_core_seconds = the sum of row seconds): a view must add them and re-make the pins (merged.json config_hash, manifest_sha256, payload_sha256; the manifest's groups[].sha256 if a config changes). A byte copy of your files (the current design_adapter.py) does not satisfy this; design.py would stop with a KeyError (exit 1).",
+  "Group configs: schema c8-d3-group-1 with campaign, sector, L, replicates, counts {graph id string: points per replicate}.",
+  "Tables: graph_replicates.csv complete (every graph and replicate; yours has the same header); graph_costs.csv with graph and row_seconds (yours fits); graph_tails.csv with graph, points, tail_n, tail_sum, top_1..top_<tail_n>, one row per replicate per graph. At your 4fbd1ba the tail columns are named tail_top_1..tail_top_16: design.py reads top_<i> (a KeyError, exit 1), so the view must rename them (and re-pin graph_tails_sha256 and payload_sha256 in merged.json).",
+  "Inputs: --inventory and --two-loop (and --selection when given) at the sha256 your inputs manifest lists under \"sha256\", that manifest beside --inventory at the manifest's inputs_manifest_sha256. Your view copies inputs/manifest.json, inventory.json and two_loop.json; a --selection must be listed there too.",
+  "eta_node, the submissions question: for a NON-test freeze or report the view must contain RUN/submissions.jsonl (c8-d3-ledger-1 records {schema, jobid, role, restart_count, [type], [array]}, one per Slurm job of the pilot: role lane for your lane workers (pilot_lane would count as overhead), merge/plan as overhead) AND the checkpoints of every merged group (groups/<g>/checkpoints/s<shard:06d>_p<part:06d>.json for k < blocks of every manifest job, each with runtime.fingerprint.slurm), and sacct/scontrol must answer for those job ids on the host that runs design.py. Without them only --test-only works (eta_node 1.0 assumed, or --eta-node X with X = busy/allocated, i.e. the inverse of your accounting's ratio), and the bundle is then a test-only bundle (design_meta test_only true). Alternatively write the ledger with tools/ledger.py register RUN --role lane|merge|plan --job ID --restart N --schema-prefix c8-d3 (it refuses another role).",
+  "Seeds: pass --seeds-log with your seed log (a c8-d3 log {\"seeds\": [...]} or a JSON list of integers is read; a missing path is silently empty).",
+  "Exit code 1 means an interface gap (traceback), 2 a refusal with its reason; with the fix, report exits 0 with INFEASIBLE rows when the caps cannot be met.",
+  "Route (b), --numerics and --numerics-gate are C8(2)-only (refused for c8-d3); R7 rates (design.py rates) assume the c8-d2 default rates a .8 / b .9 in --rule one-step and production.DEFAULT_RATES for --spec, which are not yours (.8 / .7): do not use rates for C8(3)."
+ ]
+}

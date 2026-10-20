@@ -1,0 +1,58 @@
+{
+ "node_vendor": "vendor_id\t: GenuineIntel\nmodel name\t: Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz",
+ "pin": {
+  "schema": "c8-d2-cpu-vendor-1",
+  "vendor": "AuthenticAMD",
+  "family": "25",
+  "model": "1",
+  "model_name": "AMD EPYC 7543 32-Core Processor",
+  "first_claim": {
+   "index": 6,
+   "host": "<NODE>",
+   "slurm_job": "570170",
+   "utc": "2026-10-05T15:39:56Z"
+  },
+  "rule": "every claim of this campaign runs on this CPU vendor (F5); production.py run refuses another one (exit 64)"
+ },
+ "run_exit": 64,
+ "run_message": [
+  "C8: index 49: this node (<NODE>) has CPU vendor GenuineIntel (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz), but the campaign's first claim (index 6 on <NODE>) ran on AuthenticAMD (AMD EPYC 7543 32-Core Processor); <SCRATCH>/c8-d2/io-2b3a9233353d/cpu_vendor.json. Native rows differ between CPU vendors (x87 expl/logl, docs/HPC.md): keep a campaign on one vendor and submit it to the partitions of that vendor only (symmetry: amdq, not defq). Nothing run (exit 64)."
+ ],
+ "run_claim_io": [
+  {
+   "cpu_vendor": "GenuineIntel",
+   "fingerprint_bytes": 7042283,
+   "fingerprint_key": "d4ea3511eba6",
+   "fingerprint_rchar": 7077584,
+   "index": 49,
+   "native": {
+    "launches": 0,
+    "rchar": 0,
+    "unmeasured": 0
+   },
+   "non_own_bytes": 29896815,
+   "non_own_minus_fingerprint_bytes": 22854532,
+   "non_own_minus_fingerprint_rchar": 22819231,
+   "own": {
+    "task_file": {
+     "bytes": 350,
+     "files": 1
+    }
+   },
+   "own_bytes": 350,
+   "rchar": 29897165,
+   "rchar_start": 1811801,
+   "schema": "c8-d2-claim-io-1",
+   "status": "cpu vendor refused"
+  }
+ ],
+ "worker_exit": 64,
+ "worker_tail": [
+  "C8: this node's CPU vendor is GenuineIntel (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz), but the campaign's first claim ran on AuthenticAMD (AMD EPYC 7543 32-Core Processor; cpu_vendor.json). Native rows differ between CPU vendors (x87 expl/logl, docs/HPC.md): keep a campaign on one vendor, i.e. submit it to the partitions of that vendor only (symmetry: amdq, not defq)"
+ ],
+ "campaign_unchanged": true,
+ "status_pin_lines": [
+  "cpu vendor: AuthenticAMD (AMD EPYC 7543 32-Core Processor), pinned by the first claim (index 6 on <NODE>); claims on another vendor are refused (F5)"
+ ],
+ "passed": true
+}

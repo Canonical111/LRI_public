@@ -1,0 +1,42 @@
+job 54668998 on <NODE> at 2026-10-04T17:39:12-07:00; package <SCRATCH>/temp_project/c8d2/pkg/ef705e395924; workers <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl; evidence <SCRATCH>/temp_project/c8d2/evidence/ef705e395924/r4fctrl.54668998.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+Model name:          AMD EPYC 7742 64-Core Processor
+perf_event_paranoid 1
+total 2
+drwxr-xr-x 2 <USER> <ACCOUNT>   4 Oct  4 17:39 .
+drwxr-xr-x 5 <USER> <ACCOUNT>   5 Oct  4 17:39 ..
+lrwxrwxrwx 1 <USER> <ACCOUNT> 124 Oct  4 17:39 include -> /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/include
+lrwxrwxrwx 1 <USER> <ACCOUNT> 120 Oct  4 17:39 lib -> /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib
+ "inventory8_d2_manifest_sha256": "46341a3c0f11d74f0cf7c08cdd685d9cf073a142160de5a0ca408e021b4ff099"
+}
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp
+0a77b88e81e4e8b779684fcacf078a817a5f7ff866b861726ebb1a1c6cc622ee  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp
+b9de4709b9b9645f37c2bf3adcd17723bc71661b94d929a672ccfc82cf30cc95  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp
+d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/base/bin/c8d2_gmp_prof
+c722d5f81e592f449c74029ceecc7c871942b41b2d8a8f47a8105003dfb0b94d  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/host/bin/c8d2_gmp_prof
+5923acc520008721aa603aff9e5eb83976da4fb8fc7e2d5eb0a2f6742555c735  <SCRATCH>/temp_project/c8d2/work/ef705e395924/r4f-ctrl/spak/bin/c8d2_gmp_prof
+# base
+	libgmp.so.10 => /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10 (0x0000155554e69000)
+ 0x000000000000000f (RPATH)              Library rpath: [/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64]
+# spak
+	libgmp.so.10 => <HOME>/c8d2/opt/gmp-6.2.1-spak/lib/libgmp.so.10 (0x0000155554e69000)
+ 0x000000000000000f (RPATH)              Library rpath: [/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-spak/lib]
+# host
+	libgmp.so.10 => <HOME>/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10 (0x0000155554e67000)
+ 0x000000000000000f (RPATH)              Library rpath: [/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:<HOME>/c8d2/opt/gmp-6.2.1-zen2/lib]
+{"base_ok": true, "host_ok": true, "layout_ok": true, "spak_vs_host": {"c8d2_gmp": {"size_a": 211656, "size_b": 211656, "differing_bytes": 4, "offsets": [14075, 14076, 14077, 14078]}, "c8d2_gmp_prof": {"size_a": 216128, "size_b": 216128, "differing_bytes": 4, "offsets": [14208, 14209, 14210, 14211]}}}
+== profile round 1 (base spak host) 2026-10-04T17:39:42-07:00
+[17:42:41]   base: MP 3363.956780613649 us/call, binary128 1598.0791221878667 us/call
+[17:43:22]   spak: MP 3376.193895512417 us/call, binary128 1598.6881453862948 us/call
+[17:44:01]   host: MP 3066.6880535003147 us/call, binary128 1600.2785839218773 us/call
+[17:47:00]   base: MP 2604.5755921542113 us/call, binary128 1139.8723924579754 us/call
+[17:47:43]   spak: MP 2616.6481003973618 us/call, binary128 1142.6475165171014 us/call
+[17:48:24]   host: MP 2380.6422329852894 us/call, binary128 1146.1500623069494 us/call
+== profile round 2 (host spak base) 2026-10-04T17:48:24-07:00
+[17:51:20]   host: MP 3299.510794673346 us/call, binary128 1768.4956652701644 us/call
+[17:52:06]   spak: MP 3827.725315015653 us/call, binary128 1816.6420028473767 us/call
+[17:52:50]   base: MP 3657.225864086829 us/call, binary128 1737.8191864216028 us/call
+[17:55:52]   host: MP 2426.039629533733 us/call, binary128 1202.624936672925 us/call
+[17:56:37]   spak: MP 2721.784700836996 us/call, binary128 1189.6758173384876 us/call
+[17:57:20]   base: MP 2667.98432016719 us/call, binary128 1169.871583857622 us/call
+finished 2026-10-04T17:57:20-07:00, status 0

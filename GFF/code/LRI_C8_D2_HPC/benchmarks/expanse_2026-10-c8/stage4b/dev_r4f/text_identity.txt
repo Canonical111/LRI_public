@@ -1,0 +1,11 @@
+# Worker machine code with GMP_PREFIX against the default build (Expanse login node, 2026-10-04 17:13 PDT, read-only).
+# Baseline: pkg/913e56a97a6b/bin/c8d2_gmp (5c5328af..., Spack GMP); variants: work/913e56a97a6b/r4f-{fat,host}/bin/c8d2_gmp.
+# Command (per binary), then diff of the normalized listings:
+#   objdump -d --no-show-raw-insn -j .text BIN | awk -F"\t" 'NF>=2 {print $2}' \
+#     | sed -E 's/0x[0-9a-f]+/X/g; s/[0-9a-f]{6,}/X/g; s/<[^>]*>//g'
+fat: 26595 insns baseline, 26595 variant; normalized diff lines: 0
+host: 26595 insns baseline, 26595 variant; normalized diff lines: 0
+# Section sizes (sections_vs_baseline.json of r4fval-fat.54666322.0 and r4fval-host.54666323.0): only .dynstr differs
+# (6586 -> 6627 fat, 6628 host bytes: the longer DT_RPATH string); every later section keeps its size and moves by
+# 0x30 bytes, so the .text bytes differ only through absolute addresses. gmp.h of the new builds differs from Spack's
+# only in __GMP_CC and __GMP_CFLAGS (4 diff lines), which the worker does not use.

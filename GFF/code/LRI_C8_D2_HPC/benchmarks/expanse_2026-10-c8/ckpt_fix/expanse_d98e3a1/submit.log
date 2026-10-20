@@ -1,0 +1,34 @@
+commit under test d98e3a10c6e978852812e9715d4fd4a3939160d1; export <SCRATCH>/temp_project/c8d2/pkg/d98e3a10c6e9; local listing in <TMP>/scratchpad/c8d2_ckfix.ywT4mk
+Disk quotas for usr <USER> (uid 540858):
+     Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace
+/expanse/lustre/scratch
+                339082511       0 10240000000       - 1166030       0 2000000       -
+{"commit": "d98e3a10c6e978852812e9715d4fd4a3939160d1", "files_git": 5230, "files_archive": 5230, "files_export": 5230, "equal": true}
+2026-10-04T14:20:41-0400 H7E-R before build: <ACCOUNT> running normal-QOS 1 (<= 32); c8d2 normal-QOS running 0 (<= 11), submitted 0 (<= 27); c8d2 shared live 0 (+1 <= 32); c8d2 compute nodes 0 (<= 4)
+   account normal RUNNING: 1
+   account shared-normal PENDING: 3
+   account shared-oneweek PENDING: 1
+2026-10-04T14:20:42-0400 H7E-R before val1: <ACCOUNT> running normal-QOS 1 (<= 32); c8d2 normal-QOS running 0 (<= 11), submitted 0 (<= 27); c8d2 shared live 1 (+1 <= 32); c8d2 compute nodes 0 (<= 4)
+   account normal RUNNING: 1
+   account shared-normal PENDING: 4
+   account shared-oneweek PENDING: 1
+2026-10-04T14:20:44-0400 H7E-R before mscale: <ACCOUNT> running normal-QOS 1 (<= 32); c8d2 normal-QOS running 0 (<= 11), submitted 0 (<= 27); c8d2 shared live 2 (+1 <= 32); c8d2 compute nodes 0 (<= 4)
+   account normal RUNNING: 1
+   account shared-normal PENDING: 5
+   account shared-oneweek PENDING: 1
+2026-10-04T14:20:45-0400 H7E-R before gen1: <ACCOUNT> running normal-QOS 1 (<= 32); c8d2 normal-QOS running 0 (<= 11), submitted 0 (<= 27); c8d2 shared live 3 (+1 <= 32); c8d2 compute nodes 0 (<= 4)
+   account normal RUNNING: 1
+   account shared-normal PENDING: 6
+   account shared-oneweek PENDING: 1
+build 54658871, val1 54658872, mscale 54658873, gen1 54658874; logs <SCRATCH>/temp_project/c8d2/logs/c8d2-ckfix-{build,val1,mscale,gen1}_<id>.out; evidence <SCRATCH>/temp_project/c8d2/evidence/d98e3a10c6e9/
+54658856 c8d3-val_e1-a7b8369a0a0e-7bccc908fb3e RUNNING compute normal None
+54658873 c8d2-ckfix-mscale PENDING shared shared-normal Dependency
+54658872 c8d2-ckfix-val1 PENDING shared shared-normal Dependency
+54658871 c8d2-ckfix-build PENDING shared shared-normal Priority
+54658874 c8d2-ckfix-gen1 PENDING shared shared-normal Priority
+2026-10-04T14:40:27-0400 H7E-R before diag: <ACCOUNT> running normal-QOS 0 (<= 32); c8d2 normal-QOS running 0 (<= 11), submitted 0 (<= 27); c8d2 shared live 1 (+1 <= 32); c8d2 compute nodes 0 (<= 4)
+   account shared-normal RUNNING: 1
+   account shared-normal PENDING: 3
+   account shared-oneweek PENDING: 1
+54658970
+diag 54658970 (--dependency=afterany:54658873; ~/c8d2/jobs/expanse_ckpt_diag.slurm, sha256 7498454c89c6c9cb546a1edd906242a7b5603a87b3d9d77508b1f1356a2c271c = ckpt_fix/scripts/expanse_ckpt_diag.slurm; submitted by hand after the driver)

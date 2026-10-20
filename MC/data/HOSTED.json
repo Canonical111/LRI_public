@@ -1,0 +1,27 @@
+{
+ "about": "Files of the MC folder that are not in git, hosted in the project's Zenodo data record, doi:10.5281/zenodo.23466766 (https://doi.org/10.5281/zenodo.23466766). `make fetch-data` (code/package_tools/fetch_data.py) downloads them from base_url, checks bytes and sha256, and unpacks them into this folder. The raw trees (1D trajectories 0.655 TB; 2D and 3D chains, packed histograms and analyses, 257.5 and 237.2 GiB) are not hosted; they are available from the author on request.",
+ "base_url": "https://zenodo.org/records/23466766/files",
+ "record_doi": "10.5281/zenodo.23466766",
+ "files": [
+  {
+   "name": "MC__1d_refit_inputs.tar.gz",
+   "kind": "refit",
+   "bytes": 1411739747,
+   "sha256": "5c14776984429cd9b97a2322bbc9facfd863acab46ceb3780427fac4bbfbcec3",
+   "members": 4278,
+   "unpacks_to": "data/1d/scan_data/ds*/stage*_an_b{2048,4096,8192}_<snapshot>/ and merged_b{2048,4096,8192}_<snapshot>/",
+   "content": "per-stage block archives (blocks_*.npz, summary.json) and merged summaries of the selected snapshot of each of the 20 couplings, byte-identical to production; every file is pinned by the coupling's analysis_v3_<snapshot>.manifest",
+   "needed_by": "make refit1d, make refit-cited (REPRODUCE.md R7), the robust-ladder study"
+  },
+  {
+   "name": "MC__1d_fits_per_degree.tar.gz",
+   "kind": "fits",
+   "bytes": 42202556,
+   "sha256": "b664a340b34bdbc64cc98eccc941c6d34959a78ff7b4d2cde65620c675a133c5",
+   "members": 5666,
+   "unpacks_to": "data/1d/scan_data/ds*/<selected run>/fits/",
+   "content": "the per-degree fit results of the selected fit run of each coupling (every rung of every degree ladder), except the 19 that git tracks; no record pins them, so the cluster scratch prefix is replaced by <SCRATCH>",
+   "needed_by": "inspection only; no make target needs them"
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+  "physical_delta": 0,
+  "mixed_cutoff": 4096,
+  "description": "Recompute all regulator/cutoff cases used by the final analysis. Last row is the additional larger-regulator check.",
+  "jobs": [
+    {
+      "cutoff": 256,
+      "order": 1,
+      "lambda": [
+        0.1,
+        0.125,
+        0.15,
+        0.2,
+        0.25
+      ],
+      "oversample": 5,
+      "radius_cost": 4.0,
+      "workers": 1,
+      "collapsed_cutoff": 200000
+    },
+    {
+      "cutoff": 256,
+      "order": 2,
+      "lambda": [
+        0.125,
+        0.175,
+        0.25,
+        0.35
+      ],
+      "oversample": 5,
+      "radius_cost": 4.0,
+      "workers": 1,
+      "collapsed_cutoff": 200000
+    },
+    {
+      "cutoff": 256,
+      "order": 3,
+      "lambda": [
+        0.2,
+        0.25,
+        0.35
+      ],
+      "oversample": 5,
+      "radius_cost": 4.0,
+      "workers": 1,
+      "collapsed_cutoff": 200000
+    },
+    {
+      "cutoff": 384,
+      "order": 1,
+      "lambda": [
+        0.075,
+        0.1
+      ],
+      "oversample": 4,
+      "radius_cost": 4.5,
+      "workers": 3,
+      "collapsed_cutoff": 800000
+    },
+    {
+      "cutoff": 384,
+      "order": 2,
+      "lambda": [
+        0.125
+      ],
+      "oversample": 4,
+      "radius_cost": 4.5,
+      "workers": 3,
+      "collapsed_cutoff": 800000
+    },
+    {
+      "cutoff": 384,
+      "order": 3,
+      "lambda": [
+        0.2
+      ],
+      "oversample": 4,
+      "radius_cost": 4.5,
+      "workers": 3,
+      "collapsed_cutoff": 800000
+    },
+    {
+      "cutoff": 128,
+      "order": 3,
+      "lambda": [
+        0.5
+      ],
+      "oversample": 5,
+      "radius_cost": 4.0,
+      "workers": 1,
+      "collapsed_cutoff": 200000
+    }
+  ],
+  "analysis_policy": {
+    "fresh": "Regenerate all available spectral tail fits, including order 3, lambda 0.35.",
+    "recorded": "Preserve original saved model availability; order 3, lambda 0.35 falls back to raw-power fits.",
+    "large_lambda": "Fix the leading N^(-7/4) coefficient using the highest-N auxiliary record; do not refit it."
+  }
+}

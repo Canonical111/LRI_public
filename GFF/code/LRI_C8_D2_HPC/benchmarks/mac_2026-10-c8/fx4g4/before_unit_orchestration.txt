@@ -1,0 +1,21 @@
+FAIL w14_group_cleanup: AssertionError: ([], None)
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3922, in run
+    try:fn(ctx)
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3867, in <lambda>
+    TESTS+=(('w14_group_cleanup',lambda c:test_group_cleanup(c.E)),('w15_launch_cleanup',lambda c:test_launch_boundary_cleanup(c.E)))
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3812, in test_group_cleanup
+    assert caught is not None and 'deliberate failure after the leader was reaped'in str(caught)and 'Z13 cleanup: owned processes at the failure'in str(caught)and str(helper)in str(caught),str(caught)[-800:]
+AssertionError: ([], None)
+
+FAIL w15_launch_cleanup: AssertionError: (143, 'warning: checkpoint_tasks=8 < 16 x 2 threads; per-block barriers and start-up will idle cores\nrun: stopped by signal 15; native work stopped, job-private runtime removed, committed checkpoints kept\n')
+Traceback (most recent call last):
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3922, in run
+    try:fn(ctx)
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3867, in <lambda>
+    TESTS+=(('w14_group_cleanup',lambda c:test_group_cleanup(c.E)),('w15_launch_cleanup',lambda c:test_launch_boundary_cleanup(c.E)))
+  File "<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py", line 3862, in test_launch_boundary_cleanup
+    assert caught is not None and kids and 'Z13 cleanup: owned processes at the failure'in str(caught)and str(kids[0].pid)in str(caught),str(caught)[-800:]
+AssertionError: (143, 'warning: checkpoint_tasks=8 < 16 x 2 threads; per-block barriers and start-up will idle cores\nrun: stopped by signal 15; native work stopped, job-private runtime removed, committed checkpoints kept\n')
+
+{"status": "failed", "requested": ["w14_group_cleanup", "w15_launch_cleanup"], "executed": 2, "tests": 0, "failed": ["w14_group_cleanup", "w15_launch_cleanup"]}

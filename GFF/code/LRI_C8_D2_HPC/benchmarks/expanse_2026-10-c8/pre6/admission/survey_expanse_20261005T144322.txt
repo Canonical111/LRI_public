@@ -1,0 +1,193 @@
+== login01 == surveyed 2026-10-05T11:43:23-07:00 == user <USER> ==
+-- slurm version --
+slurm 23.02.7
+-- physical node classes (count CPUS MEMORY GRES), deduped by node, all partitions incl. ind-*/nairr-* --
+      4 128 2063800 (null)
+    784 128 257400 (null)
+      8 128 512000 (null)
+      1 40 385500 gpu:v100:4
+     55 40 385500 gpu:v100:4(S:0-1)
+      6 64 507233 gpu:a100:4(S:0-1,3)
+      4 72 920000 gpu:h100:4(S:0-1)
+      5 72 920000 gpu:h100:4(S:0-7)
+     25 72 920000 gpu:h100:4(S:1,3,5,7)
+-- partitions (PARTITION TIMELIMIT NODES) --
+compute 2-00:00:00 734
+debug 30:00 2
+gpu 2-00:00:00 56
+gpu-debug 30:00 2
+gpu-preempt 7-00:00:00 50
+gpu-shared 2-00:00:00 56
+large-shared 2-00:00:00 4
+shared* 2-00:00:00 734
+-- partition rules --
+PartitionName=shared Default=YES MaxNodes=1 MaxTime=2-00:00:00 OverSubscribe=NO DefMemPerCPU=1024 MaxMemPerNode=249325 
+
+PartitionName=compute MaxNodes=32 MaxTime=2-00:00:00 OverSubscribe=EXCLUSIVE DefMemPerNode=249208 MaxMemPerNode=249208 
+
+PartitionName=large-shared MaxNodes=UNLIMITED MaxTime=2-00:00:00 OverSubscribe=NO DefMemPerCPU=1024 MaxMemPerNode=2055652 
+
+PartitionName=debug MaxNodes=2 MaxTime=00:30:00 OverSubscribe=NO DefMemPerCPU=1024 MaxMemPerNode=249208 
+
+PartitionName=gpu MaxNodes=4 MaxTime=2-00:00:00 OverSubscribe=EXCLUSIVE DefMemPerNode=377393 MaxMemPerNode=377393 
+
+PartitionName=gpu-shared MaxNodes=1 MaxTime=2-00:00:00 OverSubscribe=NO DefMemPerCPU=1024 MaxMemPerNode=377393 
+
+-- my associations (account|qos) --
+<ACCOUNT>|debug-normal,large-shared-normal,normal,preempt-normal,shared-normal,shared-oneweek
+-- QOS caps (Name|MaxWall|MaxJobsPA|MaxSubmitPA|MaxJobsPU|MaxTRESPU) --
+normal|2-00:00:00|32|64|32|cpu=8192,node=64
+shared-normal|2-00:00:00|4096|4096|4096|cpu=8192,node=64
+large-shared-normal|2-00:00:00|4|4|2|
+preempt-normal|7-00:00:00||128||
+gpu-normal|2-00:00:00|8|16|4|cpu=160,gres/gpu=16,node=4
+gpu-shared-normal|2-00:00:00|24|24|24|cpu=240,gres/gpu=24,mem=2301000M
+debug-normal|01:00:00|2|2|2|cpu=256,node=2
+shared-oneweek|7-00:00:00||||
+-- config --
+DefMemPerCPU            = 1024
+MaxArraySize            = 1000
+TaskPlugin              = task/cgroup,task/affinity
+-- availability per partition (PARTITION STATE NODES CPUS(A/I/O/T)) --
+compute alloc 168 21504/0/0/21504
+compute down* 3 0/0/384/384
+compute drain 51 0/0/6528/6528
+compute drain$ 7 0/0/896/896
+compute drain* 21 0/0/2688/2688
+compute drng 303 33874/0/4910/38784
+compute fail 2 0/256/0/256
+compute fail* 8 0/0/1024/1024
+compute idle 68 0/8704/0/8704
+compute inval 1 0/0/128/128
+compute mix 96 5923/6365/0/12288
+compute resv 6 0/768/0/768
+debug drain 1 0/0/128/128
+debug drng 1 24/0/104/128
+gpu-shared alloc 11 440/0/0/440
+gpu-shared down* 2 0/0/104/104
+gpu-shared drain 5 0/0/320/320
+gpu-shared drng 25 872/0/128/1000
+gpu-shared fail* 1 0/0/40/40
+gpu-shared maint 1 0/40/0/40
+gpu-shared mix 11 287/153/0/440
+large-shared drain 1 0/0/128/128
+large-shared drain$ 1 0/0/128/128
+large-shared drng 2 152/0/104/256
+shared* alloc 168 21504/0/0/21504
+shared* down* 3 0/0/384/384
+shared* drain 51 0/0/6528/6528
+shared* drain$ 7 0/0/896/896
+shared* drain* 21 0/0/2688/2688
+shared* drng 303 33874/0/4910/38784
+shared* fail 2 0/256/0/256
+shared* fail* 8 0/0/1024/1024
+shared* idle 68 0/8704/0/8704
+shared* inval 1 0/0/128/128
+shared* mix 96 5923/6365/0/12288
+shared* resv 6 0/768/0/768
+-- shared: CPU-ONLY candidate count = state idle|mix AND >= 128 idle CPUs (memory NOT yet considered) --
+68 nodes
+-- shared: ALL CPU candidates with scheduler CPUAlloc/CPUTot and AllocMem/RealMemory; ELIGIBLE = idle CPUs >= 128 AND free memory >= 245760 MB (AllocMem is what the scheduler committed; %e would be OS free memory) --
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>   cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  <NODE>  cpu_idle=128 free_mem_mb= 257400 ELIGIBLE
+  eligible for 128 CPUs + 245760 MB: 68 nodes
+-- large-shared nodes: CPUAlloc/CPUTot and AllocMem/RealMemory --
+  <NODE>  cpu_idle= 96 free_mem_mb=1551800 -
+  <NODE>  cpu_idle=128 free_mem_mb=2063800 ELIGIBLE
+  <NODE>  cpu_idle=  8 free_mem_mb=1807800 -
+  <NODE>  cpu_idle=128 free_mem_mb=2063800 ELIGIBLE
+  eligible for 128 CPUs + 245760 MB: 2 nodes
+-- reservations (count) --
+7
+-- storage --
+10.22.100.114:/pool4<HOME>  212T   36T  177T  17% <HOME>
+                 347.6G      0k  9.537T       - 1497748       0 2000000       -
+-- allocation (AVAILABLE in the user table = total allocation, NOT the remainder; remaining = Total allocation - Total spent) --
+ Total allocation  22080000           
+ Total spent       52011              
+ Expiration        September 30, 2027 
+ NAME     STATUS   USED  AVAILABLE  USED BY PROJECT 
+ cflynn2  allow       0   22080000            52011 
+ dpoland  allow       0   22080000            52011 
+ dsd      allow   19968   22080000            52011 
+ gzhou2   allow       0   22080000            52011 
+ rse      allow       0   22080000            52011 
+ vdommes  allow    3711   22080000            52011 
+ <USER>  allow   28332   22080000            52011 
+ <USER>  allow  <ACCOUNT>   TG-PHY190023  28332   22080000            52011 
+-- my queue --
+        1 compute RUNNING
+-- account load (user state) --
+        3 dsd PENDING
+        1 vdommes RUNNING
+        1 <USER> RUNNING
+-- modules --
+anaconda3/2021.05/q4munrg gcc/10.2.0/npcyll4 cpu/0.15.4 cpu/0.17.3b cpu/0.21.2a 
+
+survey: complete

@@ -1,0 +1,137 @@
+{
+  "build": {
+    "decimal": {
+      "backend": "decimal",
+      "command": [
+        "g++",
+        "-I../dependencies/boost/usr/include",
+        "-I../dependencies/gmp/usr/include",
+        "-I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "src/c8d2_integrate.cpp",
+        "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "-lquadmath",
+        "-o",
+        "bin/c8d2_decimal"
+      ],
+      "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+      "executable_sha256": "22915c466d251432e0f075f421c6159f89f423e4b6dff5ab3375ad3f17f4deef",
+      "native": {
+        "boost_version": "1_74",
+        "compiler": "13.3.0",
+        "dimension": 2,
+        "long_double_bits": 64,
+        "mp_backend": "decimal300",
+        "mp_digits10": 300,
+        "mp_max_digits10": 328,
+        "openmp": 201511,
+        "order": 8,
+        "schema": "c8-d2-build-1"
+      },
+      "schema": "c8-d2-build-record-1",
+      "source_sha256": {
+        "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+        "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+      },
+      "variables": {
+        "CPPFLAGS": "-I../dependencies/boost/usr/include -I../dependencies/gmp/usr/include -I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "CXX": "g++",
+        "CXXFLAGS": "",
+        "LDFLAGS": "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "LDLIBS": "",
+        "OPTFLAGS": "-O3",
+        "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+      }
+    },
+    "gmp": {
+      "backend": "gmp",
+      "command": [
+        "g++",
+        "-I../dependencies/boost/usr/include",
+        "-I../dependencies/gmp/usr/include",
+        "-I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-ffp-contract=off",
+        "-fno-fast-math",
+        "-DC8_USE_GMP",
+        "src/c8d2_integrate.cpp",
+        "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "-lquadmath",
+        "-lgmp",
+        "-o",
+        "bin/c8d2_gmp"
+      ],
+      "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+      "executable_sha256": "2bdb822367431a3212bba6495fb74a09163a0687a9dd0f2b0ddf908bc6858548",
+      "native": {
+        "boost_version": "1_74",
+        "compiler": "13.3.0",
+        "dimension": 2,
+        "long_double_bits": 64,
+        "mp_backend": "gmp350",
+        "mp_digits10": 350,
+        "mp_max_digits10": 372,
+        "openmp": 201511,
+        "order": 8,
+        "schema": "c8-d2-build-1"
+      },
+      "schema": "c8-d2-build-record-1",
+      "source_sha256": {
+        "c8d2_integrate.cpp": "92d91891b3ee339b20ffd08c9c7173ef0f165293909436f1af360b38a02c1f28",
+        "kernel.hpp": "7b7848e3f5088acd249188c2713520afcae33cb13c201f080c0b9403c8a64694",
+        "positive_qadd.hpp": "33e450587eccf1f788309d049b00322e05dc1b8e65cbe5ea7ad32271730bed8a"
+      },
+      "variables": {
+        "CPPFLAGS": "-I../dependencies/boost/usr/include -I../dependencies/gmp/usr/include -I../dependencies/gmp/usr/include/x86_64-linux-gnu",
+        "CXX": "g++",
+        "CXXFLAGS": "",
+        "LDFLAGS": "-L../dependencies/gmp/usr/lib/x86_64-linux-gnu",
+        "LDLIBS": "",
+        "OPTFLAGS": "-O3",
+        "REQUIRED": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math"
+      }
+    }
+  },
+  "point_checks": {
+    "decimal": {
+      "backend": "decimal300",
+      "cancellation_promotion": 2,
+      "max_scaled_error": "4.54996760150887278402e-304",
+      "physical_graphs": 8,
+      "point_checks": 37,
+      "reference_digits": 450,
+      "status": "passed",
+      "synthetic_sampling_checks": 6
+    },
+    "gmp": {
+      "backend": "gmp350",
+      "cancellation_promotion": 2,
+      "max_scaled_error": "2.22257070968520577591e-354",
+      "physical_graphs": 8,
+      "point_checks": 37,
+      "reference_digits": 450,
+      "status": "passed",
+      "synthetic_sampling_checks": 6
+    }
+  },
+  "point_graph_sha256": {
+    "tests/fixtures/free_G319.txt": "46dd7be4ebbeefd26de77b8bd40c239ee3ca14eb7f2e8da7cf88672edd6b6b46",
+    "tests/fixtures/free_G348.txt": "9b77d94e84e974f4932c712ee4a20dc74d6e4a751a1d14a77ba471557948a5d5",
+    "tests/fixtures/free_G360.txt": "4a755c792afc54807ce218bac1fb270baa54200332909fa52b0a585df6f1b5b8",
+    "tests/fixtures/free_G387.txt": "cd45fe1c240f0b13881e976d1f53002cc067872d41a72881b139762a901285a8",
+    "tests/fixtures/power_G3.txt": "0cff83e244ccd66a342027ebd1f60aeee45d8746660a906d4ec670c59955f186",
+    "tests/fixtures/power_G58.txt": "a2f2a6506bb633350c6e51436119fc80b3b07cc28c2f8364f165e2e94c8691cd",
+    "tests/fixtures/power_G7.txt": "269bb7a0ef805d4c16397717a958e3ddcfe8c58228b5e209cb0056e4437136fc",
+    "tests/fixtures/power_G84.txt": "d19a7950cb3e9fd54109226ff415f63a14a4066427ef2670f73d5fe343bf86b9"
+  },
+  "sanitizer": false,
+  "schema": "c8-d2-kernel-checks-1",
+  "status": "passed"
+}

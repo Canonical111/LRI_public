@@ -1,0 +1,86 @@
+job 54666183 on <NODE> at 2026-10-04T16:30:12-07:00; package <SCRATCH>/temp_project/c8d2/pkg/2c8b28f46538; baseline <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin; evidence <SCRATCH>/temp_project/c8d2/evidence/2c8b28f46538/r5bench.54666183.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+NUMA node(s):        8
+Model name:          AMD EPYC 7742 64-Core Processor
+node-local scratch /scratch/<USER>/job_54666183
+b36bf334cec9fe03a9bf9beea8ad4e152ca00c1d03265677b6c822f7cf5056f5  bin/c8d2_decimal
+f4ad369c0e08220a9e8dae8a28acd64354c33e6e517e79e1ce8c7ce1e6aa745e  bin/c8d2_gmp
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  <SCRATCH>/temp_project/c8d2/pkg/c17688158e2b/bin/c8d2_gmp
+== p4_before 2026-10-04T16:30:12-07:00
+== p4_before exit 0 after 370 s
+[16:30:13] P4 workload p4_L8 x 1.0: 4018 tasks, 42254 cost-model s (330 s ideal on 128 cores); shapes ['16x8']
+[16:30:13] shape 16x8: 16 lanes, blocks of 256 tasks, lane shares [2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641] cost-model s
+[16:36:22] shape 16x8: wall 368.0 s, throughput 114.8 cost-model s per node-second, busy 0.950, errors []
+[16:36:22] wrote <SCRATCH>/temp_project/c8d2/evidence/2c8b28f46538/r5bench.54666183.0/p4_before/p4.json; best shape 16x8; identical rows across shapes: True
+== p4_after 2026-10-04T16:36:22-07:00
+== p4_after exit 0 after 363 s
+[16:36:23] P4 workload p4_L8 x 1.0: 4018 tasks, 42254 cost-model s (330 s ideal on 128 cores); shapes ['16x8']
+[16:36:23] shape 16x8: 16 lanes, blocks of 256 tasks, lane shares [2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641, 2641] cost-model s
+[16:42:25] shape 16x8: wall 361.7 s, throughput 116.8 cost-model s per node-second, busy 0.966, errors []
+[16:42:25] wrote <SCRATCH>/temp_project/c8d2/evidence/2c8b28f46538/r5bench.54666183.0/p4_after/p4.json; best shape 16x8; identical rows across shapes: True
+== l8self 2026-10-04T16:42:25-07:00
+== l8self exit 0 after 161 s
+  "numpy": "2.3.5",
+  "scipy": "1.17.1"
+ }
+}
+== thread_identity 2026-10-04T16:45:06-07:00
+== thread_identity exit 0 after 145 s
+      "16-31",
+      "32-47",
+      "48-63",
+      "64
+{
+ "before": {
+  "wall_seconds": 367.9796509742737,
+  "throughput_cost_model_s_per_node_s": 114.8283462244857,
+  "busy_fraction": 0.949764485744032,
+  "openmp_efficiency": 0.9826967240558289,
+  "load_share_of_node_time": 0.013494401095911277,
+  "stage_share_of_node_time": 0.003520020874181956,
+  "load_staging_share_of_node_time": 0.017014421970093233,
+  "load_seconds": 79.4506400860846,
+  "stage_seconds": 20.724736843258142,
+  "native_overhead_seconds": 4.270457673817873,
+  "lane_end_spread_seconds": 10.102972745895386,
+  "max_rss_kb_per_lane": 712296,
+  "sum_lane_peak_rss_kb": 11177012,
+  "blocks": 32,
+  "tasks": 4018,
+  "quad": 34449541,
+  "mp": 6836869,
+  "rows": 4018,
+  "rows_digest": "16d6ff3dd0fe973f64b91be4e494fedc2765f838e59f0afd89598632dd311538",
+  "errors": [],
+  "lowest_lane_numa_local_fraction": 0.9925182228315167
+ },
+ "after": {
+  "wall_seconds": 361.6646203994751,
+  "throughput_cost_model_s_per_node_s": 116.83336545047531,
+  "busy_fraction": 0.9659732075780897,
+  "openmp_efficiency": 0.9825411174619271,
+  "load_share_of_node_time": 0.0020314943926880227,
+  "stage_share_of_node_time": 0.0007455365401372158,
+  "load_staging_share_of_node_time": 0.0027770309328252383,
+  "load_seconds": 11.755514374002814,
+  "stage_seconds": 4.314147036522627,
+  "native_overhead_seconds": 4.326368525624275,
+  "lane_end_spread_seconds": 8.191102027893066,
+  "max_rss_kb_per_lane": 740924,
+  "sum_lane_peak_rss_kb": 11660308,
+  "blocks": 32,
+  "tasks": 4018,
+  "quad": 34449541,
+  "mp": 6836869,
+  "rows": 4018,
+  "rows_digest": "16d6ff3dd0fe973f64b91be4e494fedc2765f838e59f0afd89598632dd311538",
+  "errors": [],
+  "lowest_lane_numa_local_fraction": 0.99298192657435
+ },
+ "rows_identical": true,
+ "p4_stage4a_digest_prefix": "16d6ff3d",
+ "rows_equal_stage4a_p4": true,
+ "throughput_ratio_after_over_before": 1.0174610128240449
+}
+finished 2026-10-04T16:47:31-07:00, status 0

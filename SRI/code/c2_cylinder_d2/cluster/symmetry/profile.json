@@ -1,0 +1,219 @@
+{
+  "site": "symmetry",
+  "description": "Perimeter symmetry cluster (user <USER>), Slurm 21.08, every CPU partition OverSubscribe=EXCLUSIVE (whole nodes, no SU). amdq first (AMD EPYC 7532, 2 x 32 cores, 256 GB, NPS=4), defq as fallback (Intel Xeon Gold 6148, 2 x 20 cores, 191 GB); jobs that may run on either vendor list \"amdq,defq\" with --mem=180G and size workers inside the job. Rows are packed into whole nodes, one pinned process per CPU package.",
+  "ssh_host": "symmetry",
+  "scheduler": {
+    "account": null,
+    "slurm_path": "/cm/shared/apps/slurm/current/bin",
+    "job_prefix": "c2ham-",
+    "max_array_index": 1000
+  },
+  "paths": {
+    "persistent_root": "/mnt/beegfs/{user}/lri_c2",
+    "node_scratch_base": "/local1/{user}",
+    "clean_node_scratch": true,
+    "env": "{home}/envs/lri_c2/py3.13-mamba",
+    "code_root": "{home}/lri_c2/pkgs",
+    "stripe_count": 0
+  },
+  "modules": [
+    "python/3.13-mamba"
+  ],
+  "max_threads_per_process": 32,
+  "partitions": {
+    "amdq": {
+      "max_mem_gb": 245,
+      "max_hours": 24,
+      "tmp_gb": 84,
+      "whole_node": true,
+      "packages": 2,
+      "cores_per_package": 32,
+      "mem_per_package_gb": 120,
+      "vendor": "AMD",
+      "exclude": "cn112",
+      "billing": {
+        "unit": "node-h",
+        "per_node": 1
+      }
+    },
+    "defq": {
+      "max_mem_gb": 180,
+      "max_hours": 24,
+      "tmp_gb": 560,
+      "whole_node": true,
+      "packages": 2,
+      "cores_per_package": 20,
+      "mem_per_package_gb": 90,
+      "vendor": "Intel",
+      "billing": {
+        "unit": "node-h",
+        "per_node": 1
+      }
+    },
+    "amddebugq": {
+      "max_mem_gb": 245,
+      "max_hours": 1,
+      "tmp_gb": 84,
+      "whole_node": true,
+      "packages": 2,
+      "cores_per_package": 32,
+      "mem_per_package_gb": 120,
+      "vendor": "AMD",
+      "exclude": "cn112",
+      "billing": {
+        "unit": "node-h",
+        "per_node": 1
+      }
+    },
+    "debugq": {
+      "max_mem_gb": 180,
+      "max_hours": 1,
+      "tmp_gb": 560,
+      "whole_node": true,
+      "packages": 2,
+      "cores_per_package": 20,
+      "mem_per_package_gb": 90,
+      "vendor": "Intel",
+      "billing": {
+        "unit": "node-h",
+        "per_node": 1
+      }
+    }
+  },
+  "forbidden_partitions": [
+    "longq",
+    "amdpreq",
+    "preq",
+    "sharedq",
+    "largememq",
+    "reservedq",
+    "amdreservedq"
+  ],
+  "profiles": {
+    "512": {
+      "grid": {
+        "partition": "amdq,defq",
+        "mem_gb": 180,
+        "time": "02:00:00",
+        "workers": "auto",
+        "pin": "package",
+        "projected_hours": 0.2
+      },
+      "task": {
+        "partition": "amdq,defq",
+        "mem_gb": 180,
+        "time": "02:00:00",
+        "rows_per_job": 2,
+        "pin": "package",
+        "projected_hours": 0.2
+      }
+    },
+    "768": {
+      "grid": {
+        "partition": "defq",
+        "mem_gb": 180,
+        "time": "06:00:00",
+        "workers": "auto",
+        "pin": "package",
+        "projected_hours": 0.8,
+        "vendor_reason": "AMD nodes have only 84 GB of node-local /local1 (measured on <NODE> and <NODE>), less than the grid needs (N=768: 122 GB, N=1024: 287 GB); Intel nodes have 568 GB (rotating disk). Alternatively copy the grid from Expanse with cluster/sitekit/transfer_grid.sh."
+      },
+      "task": {
+        "partition": "amdq,defq",
+        "mem_gb": 180,
+        "time": "06:00:00",
+        "rows_per_job": 2,
+        "pin": "package",
+        "projected_hours": 1.2
+      }
+    },
+    "1024": {
+      "grid": {
+        "partition": "defq",
+        "mem_gb": 180,
+        "time": "12:00:00",
+        "workers": "auto",
+        "pin": "package",
+        "projected_hours": 5.5,
+        "vendor_reason": "AMD nodes have only 84 GB of node-local /local1 (measured on <NODE> and <NODE>), less than the grid needs (N=768: 122 GB, N=1024: 287 GB); Intel nodes have 568 GB (rotating disk). Alternatively copy the grid from Expanse with cluster/sitekit/transfer_grid.sh."
+      },
+      "task": {
+        "partition": "amdq,defq",
+        "mem_gb": 180,
+        "time": "08:00:00",
+        "rows_per_job": 1,
+        "pin": "package",
+        "projected_hours": 1.8
+      }
+    },
+    "probe": {
+      "probe": {
+        "partition": "amddebugq,debugq",
+        "mem_gb": 64,
+        "time": "00:50:00"
+      }
+    },
+    "smoke": {
+      "grid": {
+        "partition": "amddebugq,debugq",
+        "mem_gb": 16,
+        "time": "00:20:00",
+        "workers": 2,
+        "pin": "none"
+      },
+      "task": {
+        "partition": "amddebugq,debugq",
+        "mem_gb": 16,
+        "time": "00:20:00",
+        "rows_per_job": 1,
+        "pin": "package"
+      }
+    }
+  },
+  "profile_basis": "Rows: from the Expanse pilot and the symmetry pilot (calibration below); rows run on either vendor (amdq,defq, --mem=180G) and are packed two per node (one numactl-pinned process per package) for N <= 768, one per node for N = 1024. Grids for N >= 768 need more node-local disk than the AMD nodes have (84 GB), so they run on Intel defq nodes (568 GB rotating /local1: the N=1024 generator writes and re-reads a 208 GB memory-mapped array, estimated 5-6 h, 12 h limit) or are copied from Expanse with cluster/sitekit/transfer_grid.sh. Projections assume the slower vendor; every job ends within half of the 24 h wall.",
+  "calibration": {
+    "source": "symmetry jobs of 2026-10-12/13 (packages lri_c2_417b75d91d1c)",
+    "intel_debugq_node_<NODE>_probe_574034": {
+      "cpu": "GenuineIntel Xeon Gold 6148, 2 packages x 20 cores (SMT: 80 cpus), NUMA node = package, ids interleaved",
+      "local1": "568 GB xfs on a rotating disk (TOSHIBA MG04ACA1), 564 GB free; direct-I/O write 143 MB/s, read 150 MB/s",
+      "memory_numa_nodes_MB": [
+        95307,
+        96704
+      ],
+      "sha256sum_GB_per_s": 0.17
+    },
+    "smoke_N12": {
+      "grid_job": "574035 (debugq, <NODE>)",
+      "rows_job": "574036_0 (debugq, <NODE>, numactl --cpunodebind=0, 20 workers)",
+      "cross_site_raw_chain_max_abs_difference_vs_expanse": 5.46e-12
+    },
+    "amd_node_probe_<NODE>_574042": {
+      "cpu": "AuthenticAMD EPYC 7532, 2 packages x 32 cores, NPS=4",
+      "local1": "84 GB (/dev/sda5), 83 GB free; direct-I/O write 424 MB/s, read 656 MB/s",
+      "python_hashlib_sha256_4GiB_s": 3.33
+    },
+    "pilot_N512_amdq_<NODE>": {
+      "cpu": "AuthenticAMD EPYC 7543 (amdq is not homogeneous: <NODE> is a 7532)",
+      "grid_job_574037": {
+        "workers": 32,
+        "pinning": "numactl --cpunodebind=0,1,2,3 (package 0)",
+        "compute_seconds": 167,
+        "mean_busy_cores": 23.0,
+        "anon_peak_GB": 37.2,
+        "node_local_scratch_peak_GB": 32.5,
+        "hash_seconds": 21.8,
+        "publish_to_beegfs_seconds": 43.8
+      },
+      "row_job_574038": {
+        "workers": 32,
+        "pinning": "numactl --cpunodebind=0,1,2,3",
+        "fetch_grid_seconds": 33.6,
+        "run_seconds": 173,
+        "mean_busy_cores": 2.3,
+        "anon_peak_GB": 10.9,
+        "largest_process_peak_GB": 13.0
+      },
+      "compared_with_expanse_pilot": "raw partial sums agree to 6.9e-11 absolute (2.1e-15 relative) over all 512 cutoffs; finite-cutoff h of the sidecar to 1.0e-9 (driven by the mixed-sum fit median, 5.3e-11); two-point sums, planar and curvature constants and the tail coefficient are bit-identical (results/symmetry/pilot)"
+    }
+  }
+}

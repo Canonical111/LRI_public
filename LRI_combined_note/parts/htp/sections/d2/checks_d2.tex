@@ -1,0 +1,16 @@
+% checks_d2.tex -- d = 2 paragraph of the independent-checks section (from HT2dPert, 2026-10-14). Checks p2.*.
+\paragraph{Two dimensions.}\label{htp:d2:checks}
+Two solvers were written from a first-principles specification of the $d=2$ model (Sec.~\ref{htp:d2:model}) by agents that saw
+neither the production code nor each other's work. The first is plain Rayleigh--Schr\"odinger perturbation theory to $\eps^8$
+with full wavefunction corrections in exact rational arithmetic, in two codes (\texttt{fractions} over the full space, and a
+reflection-reduced code modulo many primes with rational reconstruction checked on held-out primes), for
+$L=0,\dots,\NTwoRSLmax$ in all three schemes. The second uses no perturbation theory: the truncated Hamiltonian is built at
+complex $\eps$ on a circle with 256-bit arithmetic, $r$ and $g$ are Newton-solved, the eigenvalues are followed from the
+references, and Cauchy integrals give the coefficients, for $L\le\NTwoCauchyLmax$. Over $C_n$, $r_n$, $g_n$, the reference
+energies and all sub-cutoff vacua, $n\le8$, the production solver agrees with the exact one to $\HTpTwoImplAgree$ (scaled
+difference $\max|a-b|/\max(1,|b|)$; raw and consistent $L\le\NTwoRSLmax$, literal $L\le14$), the Cauchy solver with the exact one
+to $\NTwoCauchyAgree$, and the production $C_n$ with the Cauchy ones to $\NTwoPkgCauchy$. The large-$L$ sum codes of
+Sec.~\ref{htp:d2:solvers} reproduce these values at small $L$. The raw scheme was specified from first principles; for the
+consistent and literal schemes the definitions were taken from the production package, so there the check covers the
+implementation, not the choice of window. These checks verify that we compute the stated truncation; they do not test its
+continuum limit.

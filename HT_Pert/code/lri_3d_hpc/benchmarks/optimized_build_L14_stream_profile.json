@@ -1,0 +1,970 @@
+{
+  "cutoff": 14,
+  "degree": 6,
+  "mode": "stream",
+  "profiled": true,
+  "numpy": "2.5.3",
+  "python": "3.12.14",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "precision_significand_bits": 64,
+  "environment_threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "NUMBA_NUM_THREADS": "1"
+  },
+  "wall_seconds": 109.01036017799925,
+  "build_peak_rss_kib": 680308,
+  "vertex_metadata": {
+    "basis_seconds": 4.0270505730004515,
+    "bath_graph_array_bytes": 152208934,
+    "coordinate_storage": "scratch files",
+    "cutoff": 14,
+    "degree": 6,
+    "dtype": "float128",
+    "field_dimension": "(3-epsilon)/4",
+    "full_bath_states": 1784949,
+    "magnetic_zero_states": 175057,
+    "projector_diagnostics": {
+      "Jplus_residual": 3.3306690738754696e-15,
+      "orthogonality": 1.5543122344752192e-15,
+      "svd_statistics": {
+        "blocks": 2961,
+        "fallback_blocks": [],
+        "gesdd_blocks": 2916,
+        "gesvd_fallbacks": 0,
+        "inversion": 0,
+        "largest_block": {
+          "L": 14,
+          "N": 14,
+          "expected_nullity": 20,
+          "inversion": 0,
+          "particles": 7,
+          "sources": 846,
+          "species_rank": 717,
+          "spin": 0,
+          "targets": 826
+        },
+        "largest_dense_bytes": 5590368,
+        "largest_source": 846,
+        "largest_target": 826,
+        "rcond": 5e-13,
+        "spin": 0,
+        "trivial_blocks": 45
+      }
+    },
+    "projector_seconds": 13.738804144995811,
+    "projector_source_dtype": "float64",
+    "scalar_bath_states": 4486,
+    "series_convention": "ordinary Taylor coefficients, derivative/factorial",
+    "sparse_products_executed": 2912,
+    "vertex_array_bytes": 374904784,
+    "vertex_nnz": [
+      [
+        27912,
+        27912,
+        27912,
+        27912,
+        27912,
+        27912,
+        27912
+      ],
+      [
+        188633,
+        188629,
+        188631,
+        188393,
+        188579,
+        188514,
+        188524
+      ],
+      [
+        724732,
+        724732,
+        724732,
+        724732,
+        724732,
+        724730,
+        724726
+      ],
+      [
+        1733150,
+        1733150,
+        1733150,
+        1733150,
+        1733142,
+        1733054,
+        1732913
+      ]
+    ],
+    "vertex_seconds": 90.9073518380028,
+    "zero_sparse_products_skipped": 1484,
+    "vertex_store": "/workspace/scratch/812c07028e21/work/hpc_vertices_L14_store",
+    "store_format": "ht3d-taylor-csr-npy-v1",
+    "store_array_bytes": 341642656,
+    "unique_sparse_patterns": 15,
+    "precision": {
+      "byteorder": "little",
+      "dtype": "<f16",
+      "itemsize": 16,
+      "maxexp": 16384,
+      "nexp": 15,
+      "nmant": 63
+    },
+    "store_verified": false
+  },
+  "top_cumulative": [
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 171,
+      "function": "build_taylor_vertices",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 0.626859281,
+      "cumulative_seconds": 109.006018888
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 86,
+      "function": "_sum_products",
+      "primitive_calls": 1099,
+      "total_calls": 1099,
+      "self_seconds": 0.14220897100000002,
+      "cumulative_seconds": 73.642105446
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 788,
+      "function": "_matmul_dispatch",
+      "primitive_calls": 3689,
+      "total_calls": 3689,
+      "self_seconds": 0.11177197400000001,
+      "cumulative_seconds": 65.134755616
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 919,
+      "function": "__matmul__",
+      "primitive_calls": 2912,
+      "total_calls": 2912,
+      "self_seconds": 0.042352262,
+      "cumulative_seconds": 63.985945974
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 415,
+      "function": "_matmul_sparse",
+      "primitive_calls": 2912,
+      "total_calls": 2912,
+      "self_seconds": 0.441759214,
+      "cumulative_seconds": 63.727426429000005
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matmat>",
+      "primitive_calls": 2898,
+      "total_calls": 2898,
+      "self_seconds": 42.819323788000005,
+      "cumulative_seconds": 42.819323788000005
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 238,
+      "function": "images",
+      "primitive_calls": 80,
+      "total_calls": 80,
+      "self_seconds": 0.026579189000000003,
+      "cumulative_seconds": 20.545005403
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 30,
+      "function": "__init__",
+      "primitive_calls": 12686,
+      "total_calls": 15626,
+      "self_seconds": 0.6973872670000001,
+      "cumulative_seconds": 14.784922614000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 407,
+      "function": "highest_weight",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 0.026242960000000003,
+      "cumulative_seconds": 13.738786278000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 483,
+      "function": "_ranked_highest_weight",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 1.941395087,
+      "cumulative_seconds": 13.712543318000002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_csc.py",
+      "line": 44,
+      "function": "tocsr",
+      "primitive_calls": 2947,
+      "total_calls": 2947,
+      "self_seconds": 0.148649297,
+      "cumulative_seconds": 11.235156444000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 451,
+      "function": "asformat",
+      "primitive_calls": 4788,
+      "total_calls": 4788,
+      "self_seconds": 0.024096893,
+      "cumulative_seconds": 11.08752888
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_tocsc>",
+      "primitive_calls": 3299,
+      "total_calls": 3299,
+      "self_seconds": 10.757571714000001,
+      "cumulative_seconds": 10.757571714000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 740,
+      "function": "__add__",
+      "primitive_calls": 1876,
+      "total_calls": 1876,
+      "self_seconds": 0.066261733,
+      "cumulative_seconds": 10.427911673
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 257,
+      "function": "_add_sparse",
+      "primitive_calls": 1876,
+      "total_calls": 1876,
+      "self_seconds": 0.039482105,
+      "cumulative_seconds": 10.266967260000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1189,
+      "function": "_binopt",
+      "primitive_calls": 1876,
+      "total_calls": 1876,
+      "self_seconds": 0.122545413,
+      "cumulative_seconds": 10.227485155
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 85,
+      "function": "_highest_weight_kernel",
+      "primitive_calls": 2961,
+      "total_calls": 2961,
+      "self_seconds": 0.737166105,
+      "cumulative_seconds": 9.96210327
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/_lib/_util.py",
+      "line": 1149,
+      "function": "wrapper",
+      "primitive_calls": 2916,
+      "total_calls": 5832,
+      "self_seconds": 0.22887269200000002,
+      "cumulative_seconds": 8.835498558000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/linalg/_decomp_svd.py",
+      "line": 361,
+      "function": "null_space",
+      "primitive_calls": 2916,
+      "total_calls": 2916,
+      "self_seconds": 0.33492408500000004,
+      "cumulative_seconds": 8.673192998000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matmat_maxnnz>",
+      "primitive_calls": 2912,
+      "total_calls": 2912,
+      "self_seconds": 7.923970552,
+      "cumulative_seconds": 7.923970552
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_plus_csr>",
+      "primitive_calls": 1876,
+      "total_calls": 1876,
+      "self_seconds": 7.910840672000001,
+      "cumulative_seconds": 7.910840672000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/linalg/_decomp_svd.py",
+      "line": 16,
+      "function": "svd",
+      "primitive_calls": 2916,
+      "total_calls": 2916,
+      "self_seconds": 7.280336701,
+      "cumulative_seconds": 7.767103055000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 106,
+      "function": "canonical",
+      "primitive_calls": 1162,
+      "total_calls": 1162,
+      "self_seconds": 0.011380094,
+      "cumulative_seconds": 7.581847146
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1063,
+      "function": "sum_duplicates",
+      "primitive_calls": 1193,
+      "total_calls": 1193,
+      "self_seconds": 0.044700258,
+      "cumulative_seconds": 5.332327445000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 1110,
+      "function": "sort_indices",
+      "primitive_calls": 2082,
+      "total_calls": 2082,
+      "self_seconds": 0.030675231,
+      "cumulative_seconds": 4.247447769
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_sort_indices>",
+      "primitive_calls": 920,
+      "total_calls": 920,
+      "self_seconds": 4.190479002,
+      "cumulative_seconds": 4.190479002
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 321,
+      "function": "build",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 2.190371809,
+      "cumulative_seconds": 4.027025395
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 1525,
+      "function": "_get_index_dtype",
+      "primitive_calls": 23425,
+      "total_calls": 23425,
+      "self_seconds": 0.346523951,
+      "cumulative_seconds": 2.6382770960000004
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 51,
+      "function": "append",
+      "primitive_calls": 1210,
+      "total_calls": 1210,
+      "self_seconds": 0.074672847,
+      "cumulative_seconds": 2.5012222630000003
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'write' of '_io.BufferedWriter' objects>",
+      "primitive_calls": 3690,
+      "total_calls": 3690,
+      "self_seconds": 2.3652348350000003,
+      "cumulative_seconds": 2.3652348350000003
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_coo.py",
+      "line": 349,
+      "function": "tocsr",
+      "primitive_calls": 28,
+      "total_calls": 28,
+      "self_seconds": 0.0072724370000000005,
+      "cumulative_seconds": 2.2680188620000004
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 264,
+      "function": "get_index_dtype",
+      "primitive_calls": 23425,
+      "total_calls": 23425,
+      "self_seconds": 1.6259709690000002,
+      "cumulative_seconds": 2.1977082770000003
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numba/core/dispatcher.py",
+      "line": 342,
+      "function": "_compile_for_args",
+      "primitive_calls": 7,
+      "total_calls": 7,
+      "self_seconds": 0.000217798,
+      "cumulative_seconds": 1.9473329400000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numba/core/dispatcher.py",
+      "line": 873,
+      "function": "compile",
+      "primitive_calls": 7,
+      "total_calls": 7,
+      "self_seconds": 0.0005042660000000001,
+      "cumulative_seconds": 1.902417451
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numba/core/caching.py",
+      "line": 742,
+      "function": "load_overload",
+      "primitive_calls": 7,
+      "total_calls": 7,
+      "self_seconds": 0.00012956800000000002,
+      "cumulative_seconds": 1.8893148430000002
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numba/core/base.py",
+      "line": 261,
+      "function": "refresh",
+      "primitive_calls": 7,
+      "total_calls": 258,
+      "self_seconds": 0.006101746000000001,
+      "cumulative_seconds": 1.631989386
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/vertex_store.py",
+      "line": 169,
+      "function": "add",
+      "primitive_calls": 28,
+      "total_calls": 28,
+      "self_seconds": 0.004434461000000001,
+      "cumulative_seconds": 1.3443271060000002
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 1349,
+      "function": "_find_and_load",
+      "primitive_calls": 79,
+      "total_calls": 174,
+      "self_seconds": 0.00161223,
+      "cumulative_seconds": 1.3229760510000002
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 1304,
+      "function": "_find_and_load_unlocked",
+      "primitive_calls": 46,
+      "total_calls": 141,
+      "self_seconds": 0.005099094,
+      "cumulative_seconds": 1.320187481
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 911,
+      "function": "_load_unlocked",
+      "primitive_calls": 47,
+      "total_calls": 138,
+      "self_seconds": 0.000890651,
+      "cumulative_seconds": 1.313096113
+    }
+  ],
+  "top_self": [
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matmat>",
+      "primitive_calls": 2898,
+      "total_calls": 2898,
+      "self_seconds": 42.819323788000005,
+      "cumulative_seconds": 42.819323788000005
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_tocsc>",
+      "primitive_calls": 3299,
+      "total_calls": 3299,
+      "self_seconds": 10.757571714000001,
+      "cumulative_seconds": 10.757571714000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_matmat_maxnnz>",
+      "primitive_calls": 2912,
+      "total_calls": 2912,
+      "self_seconds": 7.923970552,
+      "cumulative_seconds": 7.923970552
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_plus_csr>",
+      "primitive_calls": 1876,
+      "total_calls": 1876,
+      "self_seconds": 7.910840672000001,
+      "cumulative_seconds": 7.910840672000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/linalg/_decomp_svd.py",
+      "line": 16,
+      "function": "svd",
+      "primitive_calls": 2916,
+      "total_calls": 2916,
+      "self_seconds": 7.280336701,
+      "cumulative_seconds": 7.767103055000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_sort_indices>",
+      "primitive_calls": 920,
+      "total_calls": 920,
+      "self_seconds": 4.190479002,
+      "cumulative_seconds": 4.190479002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'write' of '_io.BufferedWriter' objects>",
+      "primitive_calls": 3690,
+      "total_calls": 3690,
+      "self_seconds": 2.3652348350000003,
+      "cumulative_seconds": 2.3652348350000003
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 321,
+      "function": "build",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 2.190371809,
+      "cumulative_seconds": 4.027025395
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 483,
+      "function": "_ranked_highest_weight",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 1.941395087,
+      "cumulative_seconds": 13.712543318000002
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_sputils.py",
+      "line": 264,
+      "function": "get_index_dtype",
+      "primitive_calls": 23425,
+      "total_calls": 23425,
+      "self_seconds": 1.6259709690000002,
+      "cumulative_seconds": 2.1977082770000003
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_eliminate_zeros>",
+      "primitive_calls": 1162,
+      "total_calls": 1162,
+      "self_seconds": 1.226503935,
+      "cumulative_seconds": 1.226503935
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.coo_tocsr>",
+      "primitive_calls": 30,
+      "total_calls": 30,
+      "self_seconds": 0.9155262510000001,
+      "cumulative_seconds": 0.9155262510000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_data.py",
+      "line": 134,
+      "function": "_mul_scalar",
+      "primitive_calls": 777,
+      "total_calls": 777,
+      "self_seconds": 0.880250029,
+      "cumulative_seconds": 1.2247312110000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method scipy.sparse._sparsetools.csr_sum_duplicates>",
+      "primitive_calls": 920,
+      "total_calls": 920,
+      "self_seconds": 0.859606139,
+      "cumulative_seconds": 0.859606139
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+      "primitive_calls": 27784,
+      "total_calls": 27784,
+      "self_seconds": 0.857754588,
+      "cumulative_seconds": 0.857754588
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/vendor/ht3d/basis.py",
+      "line": 85,
+      "function": "_highest_weight_kernel",
+      "primitive_calls": 2961,
+      "total_calls": 2961,
+      "self_seconds": 0.737166105,
+      "cumulative_seconds": 9.96210327
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 30,
+      "function": "__init__",
+      "primitive_calls": 12686,
+      "total_calls": 15626,
+      "self_seconds": 0.6973872670000001,
+      "cumulative_seconds": 14.784922614000001
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/lri_3d_hpc/code/taylor_vertices.py",
+      "line": 171,
+      "function": "build_taylor_vertices",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "self_seconds": 0.626859281,
+      "cumulative_seconds": 109.006018888
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'update' of '_hashlib.HASH' objects>",
+      "primitive_calls": 262,
+      "total_calls": 262,
+      "self_seconds": 0.504686996,
+      "cumulative_seconds": 0.504686996
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'tofile' of 'numpy.ndarray' objects>",
+      "primitive_calls": 60,
+      "total_calls": 60,
+      "self_seconds": 0.501834956,
+      "cumulative_seconds": 0.5027265710000001
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_compressed.py",
+      "line": 415,
+      "function": "_matmul_sparse",
+      "primitive_calls": 2912,
+      "total_calls": 2912,
+      "self_seconds": 0.441759214,
+      "cumulative_seconds": 63.727426429000005
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.compile>",
+      "primitive_calls": 109,
+      "total_calls": 109,
+      "self_seconds": 0.43017766100000004,
+      "cumulative_seconds": 0.43017766100000004
+    },
+    {
+      "file": "/workspace/scratch/812c07028e21/deps/numpy/_core/getlimits.py",
+      "line": 399,
+      "function": "__init__",
+      "primitive_calls": 49770,
+      "total_calls": 49770,
+      "self_seconds": 0.427090379,
+      "cumulative_seconds": 0.427090379
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.empty>",
+      "primitive_calls": 25037,
+      "total_calls": 25037,
+      "self_seconds": 0.381049841,
+      "cumulative_seconds": 0.381049841
+    },
+    {
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/sparse/_base.py",
+      "line": 1525,
+      "function": "_get_index_dtype",
+      "primitive_calls": 23425,
+      "total_calls": 23425,
+      "self_seconds": 0.346523951,
+      "cumulative_seconds": 2.6382770960000004
+    }
+  ],
+  "reference_checks": [
+    {
+      "k": 1,
+      "r": 0,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 1,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 2,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 3,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 4,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 5,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 1,
+      "r": 6,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 0,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 1,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 2,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 3,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 4,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 5,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 2,
+      "r": 6,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 0,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 1,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 2,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 3,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 4,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 5,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 3,
+      "r": 6,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 0,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 1,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 2,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 3,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 4,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 5,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    },
+    {
+      "k": 4,
+      "r": 6,
+      "max_absolute_error": 0.0,
+      "max_scaled_error": 0.0,
+      "values_identical": true,
+      "indices_identical": true,
+      "indptr_identical": true
+    }
+  ],
+  "max_scaled_vertex_error": 0.0,
+  "reference_comparison_peak_rss_kib": 915600
+}

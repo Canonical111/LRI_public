@@ -1,0 +1,68 @@
+{
+ "note": "All C9 values are predictions or scenarios, NOT a ninth-order graph calculation.",
+ "C8_switch": {
+  "LRI_C8_1": "final",
+  "C8": "8059766.723129955",
+  "allowance": 17000,
+  "sampling_se": 4209.576151,
+  "source": "update_2026-10-13/C8_1_ext/c8_1_final.json (condensed note fa71533, lines 104, 129, 147, 11390)",
+  "references": "update_2026-10-13/references_nrg_rev2.csv",
+  "output_root": "update_2026-10-13/C8_1_ext"
+ },
+ "C9_reference": {
+  "8": "-217840171.91594809771121293131579230941343918754638398672890096859",
+  "4": "-219050663.30085608"
+ },
+ "C9_reference_method": {
+  "8": "CB prediction of the K=8 baseline (endpoint-v CB8, N=8, b_L=3, alpha=0, C^SR_8): its own ninth-order re-expansion",
+  "4": "archived scenario value: order-8 endpoint_v Pade-Borel [5/3], b=3, K=4, computed with the PREVIOUS C8(1) = 8066723.342964563; kept fixed for all K (not recomputed with the final C8(1))"
+ },
+ "sensitivity_identity": "At fixed A, b, alpha, K and endpoint prescription, F9 - F8 = kernel(x) (C9 - C9_implied_by_F8); with C9_ref = C9_implied_by_F8 at K=8 the shift vanishes identically.",
+ "prediction_checks": {
+  "K4_CB_C9_vs_archived_c9_predictions_change_C8_dependent": 0.0029730302044007617,
+  "K4_CB_C9_vs_pipeline_c9_predictions_K_rel": 0.0,
+  "K4_route_a_vs_route_b_rel": 1.2813206409157747e-58,
+  "K8_CB_C9_vs_pipeline_c9_predictions_K_rel": 0.0,
+  "K8_route_a_vs_route_b_rel": 3.1479921955489078e-58,
+  "order7_to_C8_vs_held_out_K_max_rel": 0.0
+ },
+ "kernel_checks": [
+  {
+   "K": 4,
+   "null_innovation_max_error": 0.0,
+   "linearity_max_error": 9.454242944073599e-17,
+   "identity_F9_minus_F8_max_error": 7.670793897805988e-17,
+   "kernel_GL_vs_adaptive_relative": 5.329070518200751e-15
+  },
+  {
+   "K": 8,
+   "null_innovation_max_error": 0.0,
+   "linearity_max_error": 1.0495077029659683e-16,
+   "identity_F9_minus_F8_max_error": 0.0,
+   "kernel_GL_vs_adaptive_relative": 5.329070518200751e-15
+  }
+ ],
+ "regressions_vs_stage3_tables": {
+  "14": {
+   "K4_all_columns_max_abs": 0.0,
+   "K8_kernel_and_CB8_max_abs": 0.0,
+   "K8_responses_vs_rescaled_old_max_abs": 2.168404344971009e-19
+  },
+  "dense": {
+   "K4_all_columns_max_abs": 0.0,
+   "K8_kernel_and_CB8_max_abs": 0.0,
+   "K8_responses_vs_rescaled_old_max_abs": 4.336808689942018e-19
+  }
+ },
+ "inputs_sha256": {
+  "c9_predictions_K.csv": "56dc8e07121433146945ad019496839ba942c9002f6a31602a1a4b410dedad68",
+  "c9_sensitivity_K.csv": "efbcb056b25df0ceea6b77bdd273667647134aaf86b50a0deeefe003ddeb2b83",
+  "c9_sensitivity_dense_K.csv": "d1f9b47ff6c8dc8b18734abf6c90947e7e89c6c469a26f275f30c5ea7b44bab6",
+  "c9_inherited_K.csv": "3a802055c9d84e2993318fc2fdafc91fca627af5b14c7cdf4cd2e0402c0aa3f7",
+  "c9_inherited_dense_K.csv": "76e83b4d44e2b1d8635d04d5bf29bf39eb36b374dc3b5b55d5429e794405b7f5",
+  "held_out_K.csv": "feb3168897ac6ec7329b3d28e57be3b139bc4a5d7990ac505167cffabba9f4e8",
+  "c9_validation.json": "99c1069885d078fc51fdcfbdeea04bc9c71ee5120b453c8385b1eb5f7f905d05",
+  "archived_c9_predictions.csv": "02ae017ab41999442fa5650c2d59ea6f8fe218fb33fbbaeda4a68ac1114c09ff"
+ },
+ "elapsed_seconds": 1.0
+}

@@ -1,0 +1,74 @@
+job 54681003 on <NODE> partition debug at 2026-10-05T12:30:24-07:00; package <SCRATCH>/temp_project/c8d2/pkg/99bbfddd0719; packs <SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs; evidence <SCRATCH>/temp_project/c8d2/evidence/99bbfddd0719/fxeexp1.54681003.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+NUMA node(s):        8
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+TMPDIR /scratch/<USER>/job_54681003/tmp
+== 2026-10-05T12:30:25-07:00 1. re-hash the L8 packs against inputs/manifest.json, then hard-link
+{
+ "free": {
+  "source": "<SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs/free_L8.pack",
+  "bytes": 6093071533,
+  "inode": 162135497701883868,
+  "sha256": "e5dd7271ad074a6c4373c1952c705b86d660b753f4771416f47ee6a4d6f69017",
+  "manifest": "e5dd7271ad074a6c4373c1952c705b86d660b753f4771416f47ee6a4d6f69017",
+  "equal": true
+ },
+ "power": {
+  "source": "<SCRATCH>/temp_project/c8d2/pkg/7aac898add43/inputs/packs/power_L8.pack",
+  "bytes": 1402876509,
+  "inode": 162135497701883869,
+  "sha256": "3d77d0c4e222779e767420a3a733970030007f6d7fe5bfb8d7b79f7ed44c1899",
+  "manifest": "3d77d0c4e222779e767420a3a733970030007f6d7fe5bfb8d7b79f7ed44c1899",
+  "equal": true
+ }
+}
+== 2026-10-05T12:30:46-07:00 2. make && make gmp; make c7ref; make inspect
+builds in 430 s
+99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf  bin/c8d2_decimal
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+== 2026-10-05T12:37:56-07:00 3. checks: BOOST_LIB_VERSION 1_77, executables against the final default build
+{
+ "executables": {
+  "bin/c8d2_decimal": {
+   "sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "expected": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "expected": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  },
+  "bin/c8d2_inspect": {
+   "sha256": "63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002",
+   "expected": "63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002",
+   "identical": true
+  },
+  "bin/ref/c7d2_decimal": {
+   "sha256": "4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf",
+   "expected": "4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf",
+   "identical": true
+  },
+  "bin/ref/c7d2_gmp": {
+   "sha256": "6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52",
+   "expected": "6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52",
+   "identical": true
+  }
+ },
+ "BOOST_LIB_VERSION": {
+  "bin/c8d2_decimal.build.json": "1_77",
+  "bin/c8d2_gmp.build.json": "1_77",
+  "bin/ref/c7d2_decimal.build.json": "1_77",
+  "bin/ref/c7d2_gmp.build.json": "1_77"
+ },
+ "boost_1_77_everywhere": true,
+ "identical": true,
+ "ok": true
+}
+== 2026-10-05T12:37:56-07:00 4. check_venv --strict; make test OUTPUT=<SCRATCH>/temp_project/c8d2/evidence/99bbfddd0719/fxeexp1.54681003.0/test
+check_venv: passed
+slurmstepd: error: *** JOB 54681003 ON <NODE> CANCELLED AT 2026-10-05T12:51:14 ***

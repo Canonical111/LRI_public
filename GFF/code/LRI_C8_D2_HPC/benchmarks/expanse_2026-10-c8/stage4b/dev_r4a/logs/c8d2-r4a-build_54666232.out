@@ -1,0 +1,74 @@
+job 54666232 on <NODE> at 2026-10-04T16:37:11-07:00; package <SCRATCH>/temp_project/c8d2/pkg/6bdc081cc8bd; evidence <SCRATCH>/temp_project/c8d2/evidence/6bdc081cc8bd/r4abuild.54666232.0
+Model name:          AMD EPYC 7742 64-Core Processor
+g++ (Spack GCC) 13.3.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+TMPDIR /scratch/<USER>/job_54666232/tmp
+}
+python3 -B tools/build_record.py bin/c8d2_decimal decimal -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d2_integrate.cpp -lquadmath -o bin/c8d2_decimal
+bin/c8d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+}
+python3 -B tools/build_record.py bin/c8d2_gmp gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+python3 -B tools/build_record.py bin/c8d2_gmp_prof gmp -- /cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++ -O3 -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC8_USE_GMP -DC8_TIER_TIMERS src/c8d2_integrate.cpp -lquadmath -lgmp -o bin/c8d2_gmp_prof
+bin/c8d2_gmp_ratiohist.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+bin/c8d2_gmp_prof.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1, optimized=True
+make[1]: Leaving directory '<SCRATCH>/temp_project/c8d2/pkg/6bdc081cc8bd/build/c7ref'
+cp build/c7ref/bin/c7d2_decimal build/c7ref/bin/c7d2_gmp build/c7ref/bin/c7d2_decimal.build.json build/c7ref/bin/c7d2_gmp.build.json bin/ref/
+builds in 35 s
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/c8d2_decimal
+2fab13288efb3ad9a0ee781ccd43cd014de0b16b702e26345d8a34479f08600c  bin/c8d2_gmp
+081b134c711435d415e3458de5e7903431fe4fcdaa8fe56bc365d1e9d45f2c26  bin/c8d2_gmp_prof
+6edf48d580f846fc71e9e7e21e5aec2564cf5a3bf236dcfb27ef924b98f724ef  bin/c8d2_gmp_ratiohist
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  bin/baseline/c8d2_decimal
+5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3  bin/baseline/c8d2_gmp
+d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7  bin/baseline/c8d2_gmp_prof
+c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf  bin/baseline/c8d2_gmp_ratiohist
+{
+ "stage3": {
+  "c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3",
+  "c8d2_gmp_prof": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+  "c8d2_gmp_ratiohist": "c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf"
+ },
+ "baseline_copies": {
+  "c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "c8d2_gmp": "5c5328af932912bb6dff0ba72f124381f61ae25219b04d74c6f0e0b0d5153ed3",
+  "c8d2_gmp_prof": "d1cc6551df116cd106ebf99985cf20035387acaad9ff1fcd77274a0b51de75d7",
+  "c8d2_gmp_ratiohist": "c307f2a314a67fea489d85073325edf12e4521ac08772789ecf7626f37326ecf"
+ },
+ "candidate": {
+  "c8d2_decimal": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+  "c8d2_gmp": "2fab13288efb3ad9a0ee781ccd43cd014de0b16b702e26345d8a34479f08600c",
+  "c8d2_gmp_prof": "081b134c711435d415e3458de5e7903431fe4fcdaa8fe56bc365d1e9d45f2c26",
+  "c8d2_gmp_ratiohist": "6edf48d580f846fc71e9e7e21e5aec2564cf5a3bf236dcfb27ef924b98f724ef"
+ },
+ "baseline_copies_ok": true,
+ "decimal_identical_to_stage3": true,
+ "gmp_changed": {
+  "c8d2_gmp": true,
+  "c8d2_gmp_prof": true,
+  "c8d2_gmp_ratiohist": true
+ },
+ "note": "R4a changes only code under #ifdef C8_USE_GMP: the decimal worker must be byte-identical to the Stage-3 baseline (same node type, Spack GCC 13.3.0, Boost 1.77, GMP 6.2.1); the gmp builds change."
+}
+648c5794909ec863d4062cd8d008c714052a14c787eee4f00b628f21ce7ab84f  bin/dev/mpf_trace.so
+e3e136e0d95ffe4a89e8ff1b952f4ddcec2ca688ddfcbd5b2359000da8a05c0a  bin/dev/r4a_mpdiff
+r4a_trace exit 1
+PASS point rows identical 
+FAIL point: identical sequence of non-lifetime, non-copy mpf calls {'lengths': (74201, 73045)}
+PASS point: R4a adds no call of any kind 
+FAIL digest heavy_power_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 107}
+FAIL digest heavy_free_L8 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 51}
+FAIL digest heavy_power_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 39}
+FAIL digest heavy_free_L7 release (NeedError=false): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 24}
+FAIL digest heavy_power_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 107}
+FAIL digest heavy_free_L8 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 51}
+FAIL digest heavy_power_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 39}
+FAIL digest heavy_free_L7 ratiohist (NeedError=true): rows identical, V/Q/VQ digests and V/Q op counts identical, mp > 0 {'mp_points': 24}
+512 graphs staged for r4a_mpdiff
+r4a_mpdiff exit 0
+points 16384 shifted 4095 mismatches r4a 0 r4a(NeedError) 0 prefetch 0; speedup r4a 1.01793 prefetch 1.01006
+finished 2026-10-04T16:40:35-07:00, trace status 1, mpdiff status 0

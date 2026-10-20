@@ -1,0 +1,75 @@
+FAIL chunking: AssertionError: warning: --checkpoint-tasks 16 < 16 x 2 threads; per-block barriers will idle cores
+warning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions
+AssertionError: the LPT ran before the task-count caps
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1963, in <lambda>
+    ('chunking',lambda c:test_chunking_sizing(c.E)),('atomic',lambda c:test_atomic_plan(c.E)),('bootstrap',lambda c:test_bootstrap(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 419, in test_chunking_sizing
+    assert needle in r.stderr and 'LPT ran'not in r.stderr and gone(d2),r.stderr[-300:]
+AssertionError: warning: --checkpoint-tasks 16 < 16 x 2 threads; per-block barriers will idle cores
+warning: no build record c8d2_gmp.build.json; rebuild with `make clean && make` (or `make -B`) to record compiler, flags and library versions
+AssertionError: the LPT ran before the task-count caps
+
+FAIL cached: AssertionError: ('value digit', '')
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1965, in <lambda>
+    ('fanin',lambda c:test_fan_in(c.E)),('resume',lambda c:test_merge_resume(c.E)),('cached',lambda c:test_merge_cached_runs_verified(c.E)),('recovery',lambda c:test_recovery_plan(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 887, in test_merge_cached_runs_verified
+    assert f'{target.name}'in r.stderr and 'fails verification'in r.stderr and 'rebuilt'in r.stderr,(name,r.stderr[-600:])
+AssertionError: ('value digit', '')
+
+FAIL drill: AssertionError: (['--job-name=c8d2-lanes', '--nodes=1', '--ntasks=1', '--exclusive', '--mem=180G', '--time=24:00:00', '--output=c8d2-lanes-%j.log'], ['--parsable', '-p', 'sharedq', '--nodes=1', '--ntasks=1', '--cpus-per-task=2', '--mem=3G', '--no-requeue', '--output=/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/drill/slurm_logs/lane-%j.log', '--comment=c8:b75e4cd011ea:lane', '--job-name=c8d2-lanes', '--export=ALL', '--time=24:00:00', '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1967, in <lambda>
+    ('markers',lambda c:test_done_markers(c.E)),('lsub',lambda c:test_lane_submission(c.E)),('drill',lambda c:test_drill_mode(c.E)),('admission',lambda c:test_admission(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1309, in test_drill_mode
+    assert not excl(directives('lane_worker.sh')+lw)and not excl(directives('merge.sh')+mg),(directives('lane_worker.sh'),lw)
+AssertionError: (['--job-name=c8d2-lanes', '--nodes=1', '--ntasks=1', '--exclusive', '--mem=180G', '--time=24:00:00', '--output=c8d2-lanes-%j.log'], ['--parsable', '-p', 'sharedq', '--nodes=1', '--ntasks=1', '--cpus-per-task=2', '--mem=3G', '--no-requeue', '--output=/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/drill/slurm_logs/lane-%j.log', '--comment=c8:b75e4cd011ea:lane', '--job-name=c8d2-lanes', '--export=ALL', '--time=24:00:00', '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/pkg/slurm/lane_worker.sh'])
+
+FAIL roles: AssertionError: (['--parsable', '-p', 'amdq', '--exclude=cn112', '-q', 'devel', '-p', 'defq', '--exclusive', '--nodes=1', '--ntasks=1', '--mem=180G', '--output=/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/roles/slurm_logs/lane-%j.log', '--comment=c8:980453b8d116:lane', '--job-name=c8d2-lanes', '--export=ALL', '--time=24:00:00', '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/pkg/slurm/lane_worker.sh'], ['--parsable', '-p', 'amdq', '--exclude=cn112', '-
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1968, in <lambda>
+    ('roles',lambda c:test_submission_roles(c.E)),('unverified',lambda c:test_unverified_stop(c.E)),('cancel',lambda c:test_conditional_cancel(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1419, in test_submission_roles
+    assert len(lw)==1 and len(mg)==1 and partition_of(lw[0]['args'])=='defq'and partition_of(mg[0]['args'])=='defq',(lw[0]['args'],mg[0]['args'])
+AssertionError: (['--parsable', '-p', 'amdq', '--exclude=cn112', '-q', 'devel', '-p', 'defq', '--exclusive', '--nodes=1', '--ntasks=1', '--mem=180G', '--output=/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/roles/slurm_logs/lane-%j.log', '--comment=c8:980453b8d116:lane', '--job-name=c8d2-lanes', '--export=ALL', '--time=24:00:00', '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/pkg/slurm/lane_worker.sh'], ['--parsable', '-p', 'amdq', '--exclude=cn112', '-q', 'devel', '--nodes=1', '--ntasks=1', '--cpus-per-task=24', '--mem=64G', '--dependency=afterany:701', '--output=/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/roles/slurm_logs/merge-%j.log', '--comment=c8:980453b8d116:merge', '--job-name=c8d2-merge', '--export=ALL', '--time=02:00:00', '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_orch_olcbjdsv/pkg/slurm/merge.sh'])
+
+FAIL unverified: AssertionError: (70, ['lane_worker.sh', 'lane_worker.sh', 'merge.sh'], 'C8: job 702 was accepted with TimeLimit=1-00:00:00, not UNLIMITED, although C8_TIME_POLICY=unlimited submitted --time=0. It was NOT cancelled and nothing further was submitted: inspect it (scontrol show job 702) and scancel it yourself if needed; 1 of 3 lane workers were submitted, and merge 703 waits for them and for 1 live worker(s)\n')
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1968, in <lambda>
+    ('roles',lambda c:test_submission_roles(c.E)),('unverified',lambda c:test_unverified_stop(c.E)),('cancel',lambda c:test_conditional_cancel(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1456, in test_unverified_stop
+    assert cp.returncode==70 and [x['script']for x in c]==['lane_worker.sh','lane_worker.sh']and [x['jobid']for x in c]==['701','702'],(cp.returncode,[x['script']for x in c],cp.stderr[-600:])
+AssertionError: (70, ['lane_worker.sh', 'lane_worker.sh', 'merge.sh'], 'C8: job 702 was accepted with TimeLimit=1-00:00:00, not UNLIMITED, although C8_TIME_POLICY=unlimited submitted --time=0. It was NOT cancelled and nothing further was submitted: inspect it (scontrol show job 702) and scancel it yourself if needed; 1 of 3 lane workers were submitted, and merge 703 waits for them and for 1 live worker(s)\n')
+
+FAIL cancel: AssertionError: a merge that started after the snapshot was cancelled
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1968, in <lambda>
+    ('roles',lambda c:test_submission_roles(c.E)),('unverified',lambda c:test_unverified_stop(c.E)),('cancel',lambda c:test_conditional_cancel(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1479, in test_conditional_cancel
+    assert q8['661']['state']=='RUNNING','a merge that started after the snapshot was cancelled'
+AssertionError: a merge that started after the snapshot was cancelled
+
+FAIL ledger: AssertionError: design.py accepted incomplete accounting
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1999, in run
+    try:fn(ctx)
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1969, in <lambda>
+    ('ledger',lambda c:test_ledger_accounting(c.E)),('rates',lambda c:test_rates(c.E)),('staging',lambda c:test_staging(c.E)),('nets',lambda c:test_nets(c.E)),
+  File "<TMP>/scratchpad/hyb/tests/unit_orchestration.py", line 1532, in test_ledger_accounting
+    r=acc(ledger_extra=[{'jobid':'810','role':'lane'}]);assert refused_by_design(),'design.py accepted incomplete accounting'
+AssertionError: design.py accepted incomplete accounting
+
+{"status": "failed", "requested": ["chunking", "cached", "drill", "roles", "unverified", "cancel", "ledger"], "executed": 7, "tests": 0, "failed": ["chunking", "cached", "drill", "roles", "unverified", "cancel", "ledger"]}

@@ -1,0 +1,14 @@
+job 570031 on <NODE> at 2026-10-05T05:05:05-04:00; package <SCRATCH>/c8d2/pkg/5d7586e9f1ab; evidence <SCRATCH>/c8d2/evidence/5d7586e9f1ab/s5val4b.570031.0
+Model name:                              Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+e5fdb68c88464071e3f96db10da91dd36fc0d99cff94a831fa84dcd5685e0b65  <HOME>/c8d2/env.sh
+34d048175b9f2d6d25d0ec5344ac174015e42e6da22e4385a8b81f60b28937e1  <SCRATCH>/c8d2/jobs/stage5/s5val4_selftest.py
+make -q bin/c8d2_{decimal,gmp}_san exit 0 (0 = current)
+3ad3d3747ef980d84f65475fb99de7b9cc5511eba7a93e45b1718cf13785b2db  bin/c8d2_decimal_san
+bcd3fa968ca864972e49d6c690d41c849d381731262821364eea1a4721d11013  bin/c8d2_gmp_san
+sanitize.py (no --selftest) after 647 s
+{"backend": "gmp350", "command": ["g++", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS", "-std=c++17", "-fopenmp", "-ffp-contract=off", "-fno-fast-math", "-DC8_USE_GMP", "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tests/poi
+{"status": "passed", "test": "sanitize", "flags": ["-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS"], "asan_options": "detect_leaks=0:abort_on_error=1", "ubsan_options": "halt_on_error=1:print_stacktrace=1", "point_checks": [{"backend": "decimal300", "command": ["g++", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-D_GLIBCXX_ASSERTIONS", "-std=c++17", "-fopenmp", "-ffp-contract=off", "-fno-fast-math", "<SCRATCH>/c8d2/pkg/5d7586e9f1ab/tests/point_checks.c
+{"probe": "glibcxx_assertions", "report": "/usr/include/c++/11/array:188: constexpr std::array<_Tp, _Nm>::value_type& std::array<_Tp, _Nm>::operator[](std::array<_Tp, _Nm>::size_type) [with _Tp = long double; long unsigned int _Nm = 16; std::array<_Tp, _Nm>::reference = long double&; std::array<_Tp, _Nm>::size_type = long unsigned int]: Asse", "passed": true, "piped_exit": -6, "pty_exit": 134}
+{"probe": "address", "report": "==252572==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffffffd500 at pc 0x5555555554be bp 0x7fffffffd380 sp 0x7fffffffd370", "passed": true, "piped_exit": -6, "pty_exit": 134}
+{"probe": "undefined", "report": "/tmp/c8d2_570031/c8d2_selftest_taxmp93b/probe_undefined.cpp:2:55: runtime error: signed integer overflow: 1 + 2147483647 cannot be represented in type 'int'", "passed": true, "piped_exit": 1, "pty_exit": 1}
+finished 2026-10-05T05:16:00-04:00, status 0

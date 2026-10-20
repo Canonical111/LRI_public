@@ -1,0 +1,709 @@
+{
+  "title": "C6(1): nine fixed values, all three bivariate functions at (1,1) with unit slopes",
+  "normalization": "r6=2187*C6(1)",
+  "scope": "Exact phase-average and duplication transformation of the seventh H-value. H7=(pi/2)*H7unit. The nine-value count and polynomial are unchanged. All three bivariate functions now have unit slopes and arguments (1,1). The second local parameter list increases from 2/2 to 5/5. This is a function-class/branch simplification, not a period-independence theorem, elementary evaluation, or reduction of the number of fixed values. Upstream graph/RG identities are inherited.",
+  "formula_C6": "7*A**5/466560 + 7*A**3*Q/1944 + 7*pi**2*A**3/139968 + 2621*A**2*z3/11664 + 383*pi**3*A**2/46656 + 1024*A*G**2/729 + 5*A*G*Q/729 + 64*pi**2*A*G/243 - 83*A*Q**2/729 + 79*pi**2*A*Q/17496 + 4951*pi**4*A/466560 + 139264*D3*G/2187 + 4352*pi**2*D3/243 - 278528*D5/2187 - 544*pi**3*G/6561 - 4*pi**2*G4packed*rho4/2187 + 64*sqrt(290)*pi*G6packed/729 + 8*pi**(3/2)*G7*rho7/729 + 16*pi**3*G8*rho8/2187 + 1568*sqrt(185)*pi**(5/2)*H7unit/729 + 2560*pi**3*Hstar/729 - 131*sqrt(89)*pi*Hw/729 + 29*pi*Q**2/2187 + 4517*Q*z3/1458 + 671*pi**3*Q/5832 + 722279*pi**2*z3/104976 - 89551*z5/1944 + 37631*pi**5/279936",
+  "known_polynomial": "21*A**5/640 + 63*A**3*Q/8 + 7*A**3*pi**2/64 + 1149*A**2*pi**3/64 + 7863*A**2*z3/16 + 3072*A*G**2 + 15*A*G*Q + 576*A*G*pi**2 - 249*A*Q**2 + 79*A*Q*pi**2/8 + 14853*A*pi**4/640 - 544*G*pi**3/3 + 29*Q**2*pi + 2013*Q*pi**3/8 + 13551*Q*z3/2 + 37631*pi**5/128 + 722279*pi**2*z3/48 - 805959*z5/8",
+  "known_polynomial_change_this_assembly": "0",
+  "elementary_definitions": {
+    "A": "pi+4*log(2)",
+    "G": "Catalan = beta(2)",
+    "Q": "Gamma(1/4)**4/pi",
+    "z3": "zeta(3)",
+    "z5": "zeta(5)",
+    "ell": "log(2)",
+    "c7": "cos(pi/8)**7",
+    "s7": "sin(pi/8)**7",
+    "alphaW": "atan(5/8)/pi",
+    "a7": "259*A-49*pi",
+    "b7": "481*A-539*pi",
+    "c7quad": "407*A-1127*pi",
+    "rho7": "sqrt((a7-c7quad)**2+b7**2)",
+    "Delta7": "sqrt(b7**2-4*a7*c7quad)",
+    "eta7_plus": "atan((b7+Delta7)/(2*a7))/pi",
+    "eta7_minus": "atan((b7-Delta7)/(2*a7))/pi",
+    "beta7": "atan((13+i*sqrt(139))/14)/pi",
+    "beta7_conjugate": "conjugate(beta7)"
+  },
+  "polylogarithm_values": [
+    {
+      "id": "D3",
+      "function": "multiple_polylogarithm",
+      "indices": [
+        2,
+        1
+      ],
+      "arguments": [
+        "i",
+        "1"
+      ],
+      "operation": "Im"
+    },
+    {
+      "id": "D5",
+      "function": "multiple_polylogarithm",
+      "indices": [
+        2,
+        1,
+        2
+      ],
+      "arguments": [
+        "i",
+        "1",
+        "1"
+      ],
+      "operation": "Re"
+    }
+  ],
+  "ordinary_hypergeometric_terms": [],
+  "univariate_meijer_g_terms": [
+    {
+      "id": "G8",
+      "function": "ordinary univariate MeijerG",
+      "p": 11,
+      "q": 11,
+      "m": 3,
+      "n": 8,
+      "upper_numerator": [
+        "-1/4",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "upper_denominator": [
+        "1/2",
+        "alpha_plus",
+        "alpha_minus"
+      ],
+      "lower_numerator": [
+        "0",
+        "0",
+        "0"
+      ],
+      "lower_denominator": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "3/4",
+        "alpha_plus",
+        "alpha_minus"
+      ],
+      "argument": "1",
+      "coefficient_in_r6": "16*pi**3*rho8",
+      "Mellin_contour_for_proof": "Re(s)=1/4, upward",
+      "proof_kernel": "Gamma(s)**3*Gamma(1/2-s)**7*Gamma(5/4-s)/(Gamma(1-s)**5*Gamma(1/2+s)*Gamma(1/4-s)*Gamma(s+alpha_plus)*Gamma(1-s-alpha_plus)*Gamma(s+alpha_minus)*Gamma(1-s-alpha_minus))",
+      "no_parameter_derivative_or_limit": true,
+      "repeated_parameters_in_denominators_do_not_cancel": true,
+      "new_rigorous_interval_claimed": false
+    },
+    {
+      "id": "G4packed",
+      "function": "MeijerG",
+      "p": 5,
+      "q": 5,
+      "m": 2,
+      "n": 3,
+      "upper_numerator": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "upper_denominator": [
+        "1/2",
+        "alpha4"
+      ],
+      "lower_numerator": [
+        "0",
+        "0"
+      ],
+      "lower_denominator": [
+        "0",
+        "0",
+        "alpha4"
+      ],
+      "argument": "1",
+      "coefficient_in_r6": "-4*pi**2*rho4",
+      "parameter_branch": "alpha4=atan(Y4/X4)/pi, 0<alpha4<1/2",
+      "kernel": "Gamma(s)**2*Gamma(1/2-s)**3/(Gamma(1-s)**2*Gamma(1/2+s)*Gamma(s+alpha4)*Gamma(1-s-alpha4))"
+    },
+    {
+      "id": "G6packed",
+      "function": "ordinary univariate MeijerG",
+      "p": 7,
+      "q": 7,
+      "m": 4,
+      "n": 5,
+      "upper_numerator": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "upper_denominator": [
+        "1/2",
+        "alpha6"
+      ],
+      "lower_numerator": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "lower_denominator": [
+        "0",
+        "0",
+        "alpha6"
+      ],
+      "argument": "1",
+      "coefficient_in_r6": "192*pi*sqrt(290)",
+      "alpha6": "atan(11/13)/pi",
+      "identity": "sqrt(290)*G6packed=13*X35+11*X44; inherited earlier sixth-sector reduction"
+    },
+    {
+      "id": "G7",
+      "function": "ordinary univariate MeijerG",
+      "p": 10,
+      "q": 10,
+      "m": 3,
+      "n": 8,
+      "upper_numerator": [
+        "-1/4",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "upper_denominator": [
+        "eta7_plus",
+        "eta7_minus"
+      ],
+      "lower_numerator": [
+        "0",
+        "0",
+        "0"
+      ],
+      "lower_denominator": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "3/4",
+        "eta7_plus",
+        "eta7_minus"
+      ],
+      "argument": "1",
+      "coefficient_in_r6": "24*pi**(3/2)*rho7",
+      "inverse_Mellin_kernel": "Gamma(s)**3*Gamma(1/2-s)**7*Gamma(5/4-s)/(Gamma(1-s)**4*Gamma(1/4-s)*Gamma(s+eta7_plus)*Gamma(1-s-eta7_plus)*Gamma(s+eta7_minus)*Gamma(1-s-eta7_minus))",
+      "contour": "Re(s)=1/4 upward"
+    }
+  ],
+  "lower_parameters": {
+    "X4": "42*A**2 + 18*A*pi - 96*Q + 1227*pi**2",
+    "Y4": "105*A**2/4 + 9*A*pi - 60*Q + 2469*pi**2/4",
+    "rho4": "sqrt(X4**2+Y4**2)",
+    "alpha4": "atan(Y4/X4)/pi",
+    "proof_of_signs": "X4>4171,Y4>2453/2 from A>5, pi>3, Gamma(1/4)<4."
+  },
+  "eighth_parameters": {
+    "rho8": "sqrt(2177203-1028322*sqrt(2))",
+    "d8": "atan(556/(1233-417*sqrt(2)))/(2*pi)",
+    "eta8": "acosh((1233-139*sqrt(2))/rho8)/(2*pi)",
+    "alpha_plus": "d8+i*eta8",
+    "alpha_minus": "d8-i*eta8",
+    "parameter_branch": "d8,eta8 positive real; all inverse functions principal",
+    "a_for_proof": "1233-278*sqrt(2)",
+    "b_for_proof": "556",
+    "c_for_proof": "139*sqrt(2)"
+  },
+  "kampe_de_feriet_terms": [],
+  "kampe_de_feriet_convention": "F = sum_{m,n>=0} (a)_(m+n)*(b)_m*(c)_n/((a_prime)_(m+n)*(b_prime)_m*(c_prime)_n)*x**m*y**n/(m!*n!); products over lists; empty products=1",
+  "bivariate_fox_H_terms": [
+    {
+      "id": "Hstar",
+      "function": "bivariate Fox H, all slopes one",
+      "shared": {
+        "p": 0,
+        "q": 1,
+        "m": 0,
+        "n": 0,
+        "upper": [],
+        "lower": [
+          [
+            "0",
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "local_x": {
+        "p": 6,
+        "q": 5,
+        "m": 3,
+        "n": 3,
+        "upper_numerator": [
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "upper_denominator": [
+          "1/2",
+          "beta_p_upper",
+          "beta_p_lower"
+        ],
+        "lower_numerator": [
+          "0",
+          "0",
+          "0"
+        ],
+        "lower_denominator": [
+          "beta_p_upper",
+          "beta_p_lower"
+        ],
+        "slopes": "all 1"
+      },
+      "local_y": {
+        "p": 6,
+        "q": 5,
+        "m": 3,
+        "n": 3,
+        "upper_numerator": [
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "upper_denominator": [
+          "1/2",
+          "beta_m_upper",
+          "beta_m_lower"
+        ],
+        "lower_numerator": [
+          "0",
+          "0",
+          "0"
+        ],
+        "lower_denominator": [
+          "beta_m_upper",
+          "beta_m_lower"
+        ],
+        "slopes": "all 1"
+      },
+      "arguments": [
+        "1",
+        "1"
+      ],
+      "coefficient_in_r6": "7680*pi**3",
+      "kernel": "Gamma(s)^3*Gamma(1/2-s)^3*Gamma(t)^3*Gamma(1/2-t)^3 / (Gamma(1/2+s)*Gamma(1/2+t)*Gamma(1-s-t)*product_{b in beta_p}[Gamma(s+b)*Gamma(1-s-b)]*product_{b in beta_m}[Gamma(t+b)*Gamma(1-t-b)])",
+      "contours": "Re(s)=Re(t)=1/4, both upward; measure ds dt/(2*pi*i)^2",
+      "dimension": 2,
+      "no_parameter_derivative_or_limit": true
+    },
+    {
+      "id": "Hw",
+      "function": "standard bivariate Fox H (unit-slope bivariate Meijer G subclass)",
+      "p_shared": 2,
+      "q_shared": 2,
+      "m_shared": 0,
+      "n_shared": 2,
+      "upper_shared": [
+        [
+          "1/2",
+          "1",
+          "1"
+        ],
+        [
+          "1/2",
+          "1",
+          "1"
+        ]
+      ],
+      "lower_shared": [
+        [
+          "-1/2",
+          "1",
+          "1"
+        ],
+        [
+          "-1/2",
+          "1",
+          "1"
+        ]
+      ],
+      "p_s": 5,
+      "q_s": 5,
+      "m_s": 2,
+      "n_s": 3,
+      "upper_s": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "alphaW",
+          "1"
+        ]
+      ],
+      "lower_s": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "alphaW",
+          "1"
+        ]
+      ],
+      "p_t": 2,
+      "q_t": 2,
+      "m_t": 2,
+      "n_t": 2,
+      "upper_t": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "lower_t": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "arguments": [
+        "1",
+        "1"
+      ],
+      "coefficient_in_r6": "-393*pi*sqrt(89)",
+      "contours_for_normalization": [
+        "Re(s)=1/4 upward",
+        "Re(t)=1/8 upward"
+      ],
+      "specialized_inverse_Mellin_kernel": "Gamma(s)**2*Gamma(1/2-s)**3*Gamma(t)*Gamma(t+1/2)*Gamma(1/2-t)*Gamma(1-t)/(Gamma(1-s)**2*Gamma(1/2+s)*Gamma(s+alphaW)*Gamma(1-s-alphaW)*(1/2-s-t)**2)",
+      "no_parameter_derivative_or_limit": true,
+      "all_slopes_one": true,
+      "absolute_convergence": "|N(s)|=O((1+|Im(s)|)**-2), t gamma product decays exponentially, and |1/2-s-t|>=1/8."
+    },
+    {
+      "id": "H7unit",
+      "function": "bivariate Fox H with unit slopes; bivariate Meijer G subclass",
+      "argument": [
+        "1",
+        "1"
+      ],
+      "argument_logs": [
+        "0",
+        "0"
+      ],
+      "shared": {
+        "p": 1,
+        "q": 1,
+        "m": 0,
+        "n": 1,
+        "upper": [
+          [
+            "1/2",
+            "1",
+            "1"
+          ]
+        ],
+        "lower": [
+          [
+            "-1/2",
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "first_local": {
+        "p": 10,
+        "q": 10,
+        "m": 3,
+        "n": 8,
+        "upper": [
+          [
+            "-1/4",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "beta7",
+            "1"
+          ],
+          [
+            "beta7_conjugate",
+            "1"
+          ]
+        ],
+        "lower": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "3/4",
+            "1"
+          ],
+          [
+            "beta7",
+            "1"
+          ],
+          [
+            "beta7_conjugate",
+            "1"
+          ]
+        ]
+      },
+      "second_local": {
+        "p": 5,
+        "q": 5,
+        "m": 2,
+        "n": 3,
+        "upper": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "1"
+          ],
+          [
+            "3/4",
+            "1"
+          ]
+        ],
+        "lower": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "-1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "1"
+          ],
+          [
+            "3/4",
+            "1"
+          ]
+        ]
+      },
+      "coefficient_in_r6": "4704*pi**(5/2)*sqrt(185)",
+      "local_kernel_s": "Gamma(s)**3*Gamma(1/2-s)**7*Gamma(5/4-s)/(Gamma(1-s)**3*Gamma(-s)*Gamma(1/4-s)*Gamma(s+beta7)*Gamma(1-s-beta7)*Gamma(s+beta7_conjugate)*Gamma(1-s-beta7_conjugate))",
+      "local_kernel_t": "Gamma(t)*Gamma(t+1/2)*Gamma(1-t)*Gamma(1/2-t)**2/(Gamma(3/2-t)*Gamma(t+1/4)*Gamma(t+3/4)*Gamma(1/4-t)*Gamma(3/4-t))",
+      "shared_kernel": "Gamma(1/2-s-t)/Gamma(3/2-s-t)",
+      "phase": "1",
+      "contours": [
+        "Re(s)=1/4 upward",
+        "Re(t)=1/16 upward"
+      ],
+      "all_slopes_one": true,
+      "maximum_slope": 1,
+      "absolute_convergence": "Cotangent is bounded on Re(t)=1/16. Inner rational factors have a uniform L2-convolution bound; outer gamma factor is O((1+|Im(s)|)^(-3/2)*exp(-pi*|Im(s)|)).",
+      "value_is_real": true,
+      "sign": "negative; no positivity claimed",
+      "parameter_derivatives": false,
+      "no_parameter_derivative_or_limit": true
+    }
+  ],
+  "bivariate_fox_H_convention": {
+    "shared_factor": "prod Gamma(1-e_j-E_j*s-F_j*t) [first n_shared upper] / (prod Gamma(e_j+E_j*s+F_j*t) [remaining upper] * prod Gamma(1-f_j-A_j*s-B_j*t) [all shared lower])",
+    "local_factor": "prod Gamma(b_j+B_j*s) [first m lower] * prod Gamma(1-a_j-A_j*s) [first n upper] / (prod Gamma(1-b_j-B_j*s) [remaining lower] * prod Gamma(a_j+A_j*s) [remaining upper])",
+    "integrand": "shared_factor*local_factor_s*local_factor_t*x**(-s)*y**(-t)/(2*pi*i)**2",
+    "published_definition_url": "https://doi.org/10.1007/s40314-017-0451-z",
+    "author_posted_full_text": "https://www.researchgate.net/publication/316770540_Exact_Bayesian_computation_using_H-functions",
+    "specialized_kernel_location": "Each bivariate term has its own kernel; Hstar retains its source definition, Hw is specified explicitly."
+  },
+  "counts": {
+    "polylogarithm_values": 2,
+    "ordinary_hypergeometric_values": 0,
+    "univariate_meijer_G_values": 4,
+    "kampe_de_feriet_values": 0,
+    "bivariate_H_values": 3,
+    "total_fixed_function_values": 9,
+    "explicit_residual_sums": 0,
+    "explicit_residual_integrals": 0,
+    "parameter_derivatives": 0,
+    "known_polynomial_monomials": 18,
+    "new_seventh_parameter_entries_counting_multiplicity": 52,
+    "new_seventh_nonrational_shift_parameters": 4,
+    "new_seventh_implicit_polynomial_root_problems": 0,
+    "arithmetic_independence_claimed": false,
+    "all_bivariate_slopes_one": true,
+    "all_bivariate_arguments_one_one": true
+  },
+  "residual_replacements": {
+    "W0": "sqrt(89)*Hw/pi**2",
+    "M7": "(rho7*G7+196*pi*sqrt(185)*H7unit)/pi**(3/2)",
+    "primitive_spectral_bracket": "10*Hstar",
+    "Pa": "80*pi**3*Hstar",
+    "Wcentral": "sqrt(89)*Hw/pi**2-(8+5*pi)*pi**2/3",
+    "seventh": {
+      "complete_r6": "24*pi**(3/2)*(rho7*G7+196*pi*sqrt(185)*H7unit)",
+      "explicit_infinite_sum": false,
+      "full_ordinary_correction_included": true
+    }
+  },
+  "source_correction_unchanged": {
+    "reason": "Two missing leading Laurent coefficients in original symbolic skeleton",
+    "R147_-3": "2/5",
+    "R148_-3": "2/5",
+    "added_polynomial_r6": "1024*A**5/25 - 1216*A**3*pi**2/15 + 2672*A**2*pi**3/5 + 60864*A**2*z3/5 - 2738*A*pi**4/75 + 5963*pi**5/15 - 12046*pi**2*z3/5 + 711576*z5/5",
+    "correction_is_not_a_shift_of_the_independent_numerical_C6": true
+  },
+  "new_all_sector_evaluation": false,
+  "new_interval_certificate": false,
+  "provenance": {
+    "input_file": "C6_compact_H_expression.json",
+    "input_sha256": "1f27a856d198fcf5788273785e60be6f8e5d34fd91fcd3ab00010367b2e9fce8",
+    "inherited_core_identity": "sum a_n**4*(8*h_n*delta_n+tau_n)=pi**2*sum(4*n+1)*a_n**6*delta_n",
+    "inherited_core_source": "C6_central_binomial_wheel_reduction.md section 2; equivalently C6_wheel_Meijer_curvature_derivation.md section 4.",
+    "new_identity": "24*F4+15*pi*F6=sqrt(89)*Hw/pi**2",
+    "new_all_sector_evaluation": false,
+    "independence_claimed": false
+  },
+  "primitive_compression_parameters": {
+    "lambda": "unique root in (15,16) of 4*lambda**3-112*lambda**2+909*lambda-2250=0",
+    "lambda_elementary": "(28+sqrt(409)*cos(acos(7298/(409*sqrt(409)))/3))/3",
+    "eta": "sqrt((40*lambda-279)/400)",
+    "chi": "2*(21*lambda-150)/(40*lambda-279)",
+    "B_sigma": "21/20+sigma*eta, sigma=+1,-1",
+    "C_sigma": "lambda/10+sigma*eta*chi",
+    "beta_sigma_upper": "atan(B_sigma/2+i*sqrt(C_sigma-B_sigma**2/4))/pi",
+    "beta_sigma_lower": "conjugate(beta_sigma_upper)",
+    "branches": "positive real square roots; principal complex atan; lambda as isolated above",
+    "D_sigma_for_proof": "sqrt((1-C_sigma)**2+B_sigma**2); D_plus*D_minus=1",
+    "dependence": "only fixed rational/algebraic and elementary constants; no unknown period occurs in a parameter"
+  },
+  "wheel_reduction": {
+    "old_block_r6": "-9432*pi**3*F4-5895*pi**4*F6",
+    "new_block_r6": "-393*pi*sqrt(89)*Hw",
+    "known_polynomial_shift": "0",
+    "new_identity_requires_inherited_core": true,
+    "primitive_compression_preserved": true,
+    "numerical_method": "Outer Barnes gamma kernel with proved inner evaluation; independent direct inner-Barnes spot checks.",
+    "interval_scope": "Optional exact Hw enclosure is PROPAGATED from an existing wheel certificate, not certified numerical double Barnes integration."
+  },
+  "formula_r6_block": "E+Bpol+Blow+B6+B8-393*pi*sqrt(89)*Hw+24*pi**(3/2)*(rho7*G7+196*pi*sqrt(185)*H7unit)+7680*pi**3*Hstar",
+  "provenance_this_step": {
+    "input_file": "previous_expression.json",
+    "input_sha256": "93f792e5eab0cb5a01f3deb015723f3aad6631e141bcc6a596d2cf0e300f78d9",
+    "mathematica_kernel_executed": false,
+    "full_C6_reevaluated": false,
+    "new_interval_certificate": false
+  },
+  "seventh_reduction": {
+    "identity": "H7=(pi/2)*H7unit",
+    "complete_r6": "24*pi**(3/2)*(rho7*G7+196*pi*sqrt(185)*H7unit)",
+    "new_steps": "opposite phase Barnes integrals agree because their difference has no left poles; average phases, set t=2v, apply gamma reflection.",
+    "tradeoff": "unit slopes and positive arguments instead of a slope 2 and argument -1; second local order increases 2/2 to 5/5",
+    "fixed_values_reduced": false
+  }
+}

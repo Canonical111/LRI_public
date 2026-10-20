@@ -1,0 +1,171 @@
+\section{Model, truncation and tuning}\label{sec:model}
+
+\subsection{Radial quantization of the GFF}
+Radial quantization turns the GFF of dimension $\Ds$ into free oscillators $a_k$ of energy $\Ds+\kappa_k$:
+\begin{equation}
+ \phi(\hat n)=\sum_k u_k\left[f_k(\hat n)\,a_k+f_k(\hat n)^*a_k^\dagger\right],
+ \label{eq:modes}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+ d=1:&\quad k=n,&&\kappa=n,&&f=(\pm1)^n,&&u_n^2=\frac{(2\Ds)_n}{n!},\\
+ d=2:&\quad k=(a,b),&&\kappa=a+b,&&f=e^{-\ii(a-b)\vartheta},&&u_{ab}^2=\frac{(\Ds)_a(\Ds)_b}{a!\,b!},\\
+ d=3:&\quad k=(n,l,m),&&\kappa=2n+l,&&f=\sqrt{4\pi}\,Y_{lm},&&u_{nl}^2=\frac{(\Ds)_{n+l}(\Ds-\frac12)_n}{n!\,(\frac32)_{n+l}},
+\end{aligned}
+\label{eq:weights}
+\end{equation}
+These reproduce the two-point function on $\mathbb R\times S^{d-1}$; $\kappa_k$ is the level of mode $k$ and
+$\vartheta$ the angle on the circle. In $d=1$ the ``sphere'' $S^0$ is the pair of points $x=\pm1$, and
+$f_n(\pm1)=(\pm1)^n$. A Fock state with occupation numbers $n_k$ has:
+\begin{itemize}
+\item level $\ell=\sum_k\kappa_k n_k$;
+\item particle number $P=\sum_k n_k$;
+\item free energy $H_0=\ell+\Ds P$.
+\end{itemize}
+The zero mode $a_0$ ($\kappa=0$, $u_0=1$) costs no level.
+
+\subsection{Hamiltonian and sectors}
+The tuning and $\DE$ use the sector of rotation scalars that are even under reflection (inversion in $d=3$). There
+we diagonalize
+\begin{equation}
+ H=H_0+r\,V_2+g\,V_4,\qquad V_2=\big\langle{:}\phi^2{:}\big\rangle,\qquad V_4=\tfrac1{12}\big\langle{:}\phi^4{:}\big\rangle,
+ \label{eq:H}
+\end{equation}
+with $\langle\cdot\rangle$ the average over $S^{d-1}$. Normal ordering is with respect to all oscillators, the zero
+mode included. In $d=1$:
+\begin{itemize}
+\item the reflection $x\to-x$ acts as $a_n\to(-1)^na_n$, so the reflection-even sector contains the states of even
+ total level;
+\item on that sector the sphere average equals the vertex at $x=+1$;
+\item the descendant diagnostic below also diagonalizes the reflection-odd sector (odd total level), which contains
+ the level-1 descendants.
+\end{itemize}
+The Ising symmetry $\phi\to-\phi$ splits each sector by the parity of $P$.
+
+\subsection{Tuning conditions and the prediction}
+We denote by $E_v<E_\varepsilon$ the two lowest $\mathbb Z_2$-even scalar levels (the vacuum and the energy operator
+$\varepsilon$) and by $E_\sigma<E_{\phi^3}$ the two lowest odd ones. We impose
+\begin{equation}
+ E_\sigma-E_v=\Ds,\qquad E_{\phi^3}-E_v=d-\Ds,\qquad\DE=E_\varepsilon-E_v ,
+ \label{eq:tune}
+\end{equation}
+two conditions for $(r,g)$ and one prediction. The shadow $d-\Ds$ is $\phi^3$ at weak coupling. The vacuum energy
+at cutoff $N$ is $E_v=E_v(N)$ in the notation of Section~\ref{sec:window}. Conformality also
+requires the descendant spacings
+\begin{equation}
+ v_n(\mathcal O)\equiv E(\partial^n\mathcal O)-E(\mathcal O)-n=0 ,
+ \label{eq:v}
+\end{equation}
+a test that needs no continuum input. In $d=1$ we evaluate $v_1$ and $v_2$ by identifying $\partial\mathcal O$
+through its overlap with $L_{-1}\mathcal O$, where $L_{-1}$ is the generator of the free GFF, with the zero-mode
+operator $a_0$ projected onto the zero-mode basis of Section~\ref{sec:zerobasis}.
+This is a diagnostic: $L_{-1}$ is not the interacting generator, and ambiguous identifications are flagged.
+
+At weak coupling, $\Ds=(d-\eps)/4$ with $\eps\to0$:
+\begin{itemize}
+\item the solution has $g=\eps/3+O(\eps^2)$ and $r=O(\eps^2)$;
+\item the prediction is $\DE=d/2-\eps/6+C_2(N)\eps^2+\dots$, with the cutoff-dependent coefficients $C_n(N)$ of the
+ truncated model (Section~\ref{sec:d1-pert}). Their continuum values are the GFF coefficients $C_n$, written $C_n(d)$
+ where the dimension matters.
+\end{itemize}
+
+\subsection{Zero mode and bath}\label{sec:split}
+We split the field into the zero mode and a bath of all other modes,
+\begin{equation}
+ \phi=q+\chi,\qquad q=a_0+a_0^\dagger,\qquad p=\ii\big(a_0^\dagger-a_0\big),\qquad
+ \chi=\sum_{k\neq0}u_k\big[f_k\,a_k+f_k^*a_k^\dagger\big].
+ \label{eq:split}
+\end{equation}
+Normal ordering the zero mode gives ${:}q^2{:}=q^2-1$, ${:}q^3{:}=q^3-3q$ and ${:}q^4{:}=q^4-6q^2+3$. Up to a
+constant,
+\begin{equation}
+ H=H_z\otimes1+1\otimes H_b+\sum_{j=1}^4L_j\otimes W_j,\qquad W_j=\big\langle{:}\chi^j{:}\big\rangle ,
+ \label{eq:Hsplit}
+\end{equation}
+\begin{equation}
+ H_z=\frac{\Ds}4p^2+A\,q^2+\frac g{12}q^4,\qquad A=\frac{\Ds}4+r-\frac g2 ,
+ \label{eq:Hz}
+\end{equation}
+\begin{equation}
+ L_1=(2r-g)\,q+\frac g3q^3,\qquad L_2=r-\frac g2+\frac g2q^2,\qquad L_3=\frac g3q,\qquad L_4=\frac g{12} .
+ \label{eq:Lj}
+\end{equation}
+\begin{itemize}
+\item $H_b=\ell+\Ds P_b$ is the free bath Hamiltonian.
+\item In $H_z$:
+ \begin{itemize}
+ \item $\frac{\Ds}4(p^2+q^2)$ is the free part of the zero mode;
+ \item $r q^2$ comes from $r{:}\phi^2{:}$;
+ \item $-\frac g2q^2$ comes from normal ordering ${:}q^4{:}$.
+ \end{itemize}
+\item At the tuned couplings $A$ can be negative, and $H_z$ is then a double well. In $d=1$, $A<0$ at every cutoff for
+ $\Ds=0.2$ and 0.175, and its sign changes with the cutoff at $\Ds\le\HTq{S12}$.
+\item $L_j$ is the zero-mode operator that multiplies $W_j$ in $r{:}\phi^2{:}+\frac g{12}{:}\phi^4{:}$. For example,
+ $L_1$ collects $2rq\chi$ and $\frac g3{:}q^3{:}\chi$.
+\end{itemize}
+
+\paragraph{Truncation.} We keep all bath states with level $\ell\le N$, with no limit on the bath particle number, and
+$n_z$ zero-mode states per parity (Section~\ref{sec:zerobasis}). The full $H$ of Eq.~\eqref{eq:Hsplit}, the couplings
+$L_j\otimes W_j$ included, is diagonalized on their product; the eigenstates of $H_z$ alone serve at most to choose
+the zero-mode states. The normal-ordered $W_j$ never pass through a level above both endpoints, so $H$ at cutoff $M<N$ is exactly the
+$\ell\le M$ projection of $H$ at cutoff $N$. This property is used by the window correction. The same split is used
+in $d=2,3$, with the $J=0$ projection of Section~\ref{d3:sec} in $d=3$.
+
+\subsection{Zero-mode basis}\label{sec:zerobasis}
+$H_z$ and the $L_j$ are represented in an auxiliary harmonic-oscillator basis of $N_{\rm osc}$ states
+($N_{\rm osc}=384$ in production), with an adaptive scale $t$. Of this basis we keep $n_z$ states per parity. The product space has $2n_z$ times as many
+states as the bath, so $n_z$ sets the cost.
+
+\paragraph{Energy basis.} The original choice keeps the $n_z$ lowest eigenstates of $H_z$ in each parity. At strong
+coupling in $d=1$ this basis is not converged at fixed $n_z$ beyond $N\approx24$, because the tuned $g$ grows with
+$N$. At $\Ds=0.025$, $N=28$, $n_z=32$, 40 and 48 give $\DE=\HTq{B1}$ (window). The energy-basis campaign
+\code{prod1--7} (Section~\ref{sec:d1-campaigns}) therefore needed $n_z$ up to 56.
+
+\paragraph{Density basis.} Instead, we keep the zero-mode states that the low-lying spectrum actually uses: the
+leading eigenvectors, in each parity, of the reduced density matrix
+\begin{equation}
+ \rho=\tfrac16\big(\rho_{\rm vac}+\rho_\sigma+\rho_{\phi^3}\big)+\frac1{N_t}\sum_{M=0,2,\dots}^{N_t-2}\rho_{\rm vac}(M).
+ \label{eq:rho}
+\end{equation}
+\begin{itemize}
+\item \emph{What $\rho$ averages.} It is obtained by tracing the bath out of the states the calculation needs. The
+ first term covers the vacuum, $\sigma$ and $\phi^3$, which enter the tuning, at the training cutoff $N_t$. The sum
+ covers the vacua at all lower even cutoffs, which enter the window correction. The $\varepsilon$ state plays no
+ role in the selection.
+\item \emph{Training.} The basis is trained once per $\Ds$ at $N_t=\HTq{S6}$, against a reference calculation in
+ the energy basis with $\HTq{S7}$ states per parity (the \emph{teacher}). The outer loop alternates density
+ selection and retuning in the selected span. It stops when the couplings change by less than $2\times10^{-8}$ and
+ the teacher's tuning residuals are below $10^{-7}$, after at least two sweeps.
+\item \emph{Stored basis.} Each trained basis is stored in a file that keeps $\HTq{S8}$ states per parity: the
+ isometry $U$ and the scale $t$. Its first $n_z$ columns give a nested smaller basis, and production uses
+ $n_z=\HTq{S5}$.
+\item \emph{Operators.} The powers $q^j$ are formed in the full auxiliary basis before projection,
+ $q_j=U^{\sf T}(t^jQ^j)U$; powers of the projected $q$ are not used. For the descendant diagnostic the actual $a_0$
+ is projected.
+\item \emph{What is frozen.} The span and $t$ are fixed within a solve, while the window table is recomputed at every
+ coupling.
+\end{itemize}
+
+In $d=1$ the density basis reproduces the $\DE$ of a converged zero mode to $\HTq{S9}$ at a tenth of the cost. Two comparisons
+support this:
+\begin{itemize}
+\item against the $n_z=48$ and 56 energy-basis records at $N=32$: at most $6.4\times10^{-7}$;
+\item against the blind solver's grid zero mode at $N\le20$: at most $5.6\times10^{-7}$.
+\end{itemize}
+The difference between 24 and 16 kept states is at most $1.8\times10^{-9}$ at $N=36$, 40. That difference measures
+only the truncation within one span.
+
+\subsection{Tuning}
+The couplings are tuned by Newton's method on Eq.~\eqref{eq:tune}, with backtracking: the Newton step is halved
+until the norm of the two residuals decreases, at most 13 times. The Jacobian comes from Hellmann--Feynman
+derivatives of the levels; with the window it includes the window response, Eq.~\eqref{eq:dEv}. In $d=1$ the
+internal coordinates are $\theta=(\theta_0,\theta_1)$, with $g=192e^{3\theta_1}/\Ds^2$ and
+$A=4e^{2\theta_1}\theta_0/\Ds$ (as in $d=2$, Section~\ref{d2:sec}). Points are
+continued from weak coupling or from saved seeds; a seed is only a starting point.
+
+Tolerances:
+\begin{itemize}
+\item tuning residuals $\le5\times10^{-10}$;
+\item ARPACK tolerance $3\times10^{-11}$, eigenvector residuals $\le2\times10^{-7}$;
+\item window fixed points $\le10^{-12}$.
+\end{itemize}

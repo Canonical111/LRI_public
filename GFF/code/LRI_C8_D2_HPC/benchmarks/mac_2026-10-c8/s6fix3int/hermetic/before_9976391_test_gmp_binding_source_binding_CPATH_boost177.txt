@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<repo>/tests/test_gmp_binding.py", line 138, in refused
+    try:fn();raise AssertionError(f'accepted {what}')
+  File "<repo>/tests/test_gmp_binding.py", line 347, in <lambda>
+    bind=lambda wk=w:BR.bound_tool_command([ROOT/'tests/forced_tiers.cpp'],out,wk,'gmp',['C8_USE_GMP'],('-lquadmath','-lgmp'))
+  File "<repo>/tools/build_record.py", line 342, in bound_tool_command
+    cmd=cxx_command([snap/r for r in rels],output,defines,libs,gmp_prefix=t['GMP_PREFIX']);comp=bind_command(cmd,t)
+  File "<repo>/tools/build_record.py", line 259, in bind_command
+    if why:raise BindingRefused(f'the precision tool is not built like {target["worker"]} (Y1): '+'; '.join(why))
+build_record.BindingRefused: the precision tool is not built like <tmp>/tmplgljq2ue/bin/c8d2_gmp (Y1): BOOST_VERSION: '108300' for the tool, '107700' for the worker
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<repo>/tests/test_gmp_binding.py", line 453, in main
+    try:fn()
+  File "<repo>/tests/test_gmp_binding.py", line 368, in test_source_binding
+    with W.active(CPATH=W.td/'boost183'):refused(bind,"BOOST_VERSION: '108300' for the tool, '107400' for the worker",'another Boost version through CPATH')
+  File "<repo>/tests/test_gmp_binding.py", line 139, in refused
+    except (ValueError,SystemExit)as e:assert needle in str(e),(what,str(e)[-600:]);return str(e)
+AssertionError: ('another Boost version through CPATH', "the precision tool is not built like <tmp>/tmplgljq2ue/bin/c8d2_gmp (Y1): BOOST_VERSION: '108300' for the tool, '107700' for the worker")
+{"passed": false, "tests": 1, "failed": ["source_binding"]}

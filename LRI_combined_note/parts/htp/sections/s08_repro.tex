@@ -1,0 +1,53 @@
+% s08_repro.tex (HT1dPert): reproduction section; rows come from repro_d1.tex, sections/d2/repro_d2.tex, sections/d3/repro_d3.tex
+\section{Reproduction}\label{htp:sec:repro}
+
+\subsection{Layout}
+All paths are relative to the folder \code{HT\_Pert/} of the public repository.
+\begin{itemize}
+\item \code{code/<package>/}: one package per solver or analysis, shipped at the commit its production ran. Each has a
+ \code{public.mk} with the targets \code{test} and \code{replay} (some also \code{smoke}, \code{replay-full},
+ \code{fetch-data}) and a \code{public/} folder with the replay scripts.
+\item \code{data/HT\_<d>d/}: the production records.
+\item \code{results/HT\_<d>d/}: the expected value of every quoted number (\code{quoted\_numbers.json}) and summaries.
+\end{itemize}
+\code{make test} and \code{make replay} in \code{HT\_Pert/} run the targets of every package; in a package folder,
+\code{make -f public.mk test|replay}. A replay recomputes every quoted number of its package from the shipped records,
+without a production rerun, prints a PASS/FAIL table and exits non-zero on any failure.
+
+\subsection{Packages and records}
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}p{4.4cm}p{2.3cm}p{8.2cm}@{}}
+\toprule
+package (\code{code/}) & $d$, role & content, records, cost\\
+\midrule\endhead
+\bottomrule\endfoot
+\code{lri\_hpc\_Hamitonian} & 1: solver, analyses & HT solver to $\eps^7$; joint tail fits, window engines, identities. Records \code{data/HT\_1d/thermal\_expanse} (111 cutoffs) and the analysis outputs \\
+\code{lri\_eh\_hpc} & 1: window & isolated $g^2D$ window, closed form $K$ \\
+\code{lri\_c8\_hpc} & 1: solver & eighth order, $\Lambda\le\HTpLamCeight$; records \code{data/HT\_1d/c8} \\
+\code{lri\_d1\_full\_coefficient\_flow} & 1: solver & complete window through $\eps^8$, $\Lambda\le\HTpWinLamEight$; records \code{data/HT\_1d/s10\_production} \\
+\code{lri\_1d\_dconn\_refit} & 1: analysis & extrapolations of $C_4$--$C_8$ with the complete window \\
+\code{lri\_1d\_c4\_exact}, \code{lri\_1d\_c5\_exact} & 1: exact sums & $C_2$--$C_4$ to $\Lambda=\HTpOneLexact$, $C_5$ to $\NOneCfiveLmax$; records \code{data/HT\_1d/exact\_c4}, \code{exact\_c5}; blind fit records \\
+\code{lri\_d1\_fullblock\_tail\_response} & 1: cited check & second $\Lambda^{-1/2}$ channel \\
+\IfFileExists{parts/htp/sections/d2/packages_d2.tex}{\inputrows{parts/htp/sections/d2/packages_d2.tex}}{}
+\IfFileExists{parts/htp/sections/d3/packages_d3.tex}{\inputrows{parts/htp/sections/d3/packages_d3.tex}}{}
+\end{longtable}
+\endgroup
+
+\subsection{Rules that are part of the results}
+The fit families and windows, the selection and calibration rules, the rounding of quoted ranges and the status words
+are part of the results; the \code{REPRODUCE} file of each package lists them under ``Decisions you must not make''.
+
+\subsection{\texorpdfstring{Result $\to$ code, record, command, tolerance}{Result to code, record, command, tolerance}}
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}>{\raggedright}p{3.7cm}>{\raggedright}p{2.8cm}p{0.8cm}>{\raggedright}p{2.75cm}>{\raggedright}p{2.25cm}>{\raggedright\arraybackslash}p{1.6cm}@{}}
+\toprule
+result & value & pkg & records & command & tolerance\\
+\midrule\endhead
+\bottomrule\endfoot
+\inputrows{parts/htp/sections/repro_d1.tex}
+\midrule
+\inputrows{parts/htp/sections/d2/repro_d2.tex}
+\midrule
+\inputrows{parts/htp/sections/d3/repro_d3.tex}
+\end{longtable}
+\endgroup

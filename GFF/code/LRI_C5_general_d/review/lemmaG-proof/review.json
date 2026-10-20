@@ -1,0 +1,53 @@
+{
+ "key": "lemmaG-proof",
+ "date": "2026-10-03",
+ "object": "foundation/general_b_periodization.tex Theorem 6 (th:topG = th:top), product form (a)-(c) and wheel case (d), with its proof; general_d.tex Section gdr:top",
+ "accept": true,
+ "scripts": "review/lemmaG-proof/t1_laplace.py, t2_s1formula.py, t3_endpoint.py, t3b_endpoint.py, t3c_endpoint.py, t4_lower.py, t5_r34.py, t5b_r4.py (Mac, mpmath; copied from the reviewer's scratchpad lgrev/)",
+ "issues": [
+  {
+   "step": "Step 3, Laplace representation (foundation general_b_periodization.tex, l.494-495)",
+   "severity": "minor",
+   "description": "The text says 'small quarter circles around these points'. At v=2πk with k≥1 the singular points lie on the real-axis part of the rotated contour, so the indentations there are small semicircles. Only v=0 gets a quarter circle. Either way the contribution is O(ε^{Re g}) → 0, so this is wording only.",
+   "fix": "Write 'a small quarter circle at 0 and small semicircles at 2πk, k≥1'."
+  },
+  {
+   "step": "Estimates eq:boundsG (foundation l.412-413; same phrase in Lemma 2)",
+   "severity": "minor",
+   "description": "The text says 'the finitely many terms with small arguments are bounded one by one'. In the right part, a right factor f_{g_i}(β_i−n−t) with small n occurs for every ℓ, so infinitely many terms are involved; the same holds for left factors with small k in the left part. The argument actually works per factor: each such factor is bounded on K and does not depend on ℓ. Wording only, and the same wording is in the reviewed Lemma 2.",
+   "fix": "Write 'the finitely many factor values with small arguments are bounded on K one by one'."
+  },
+  {
+   "step": "Endpoint bound eq:endpoint / eq:endprod, case ϰ=1",
+   "severity": "minor",
+   "description": "The factor λ=1+|log|2π−V|| at ϰ=1 is only an upper bound. When Σg_i−1 is purely imaginary and nonzero, a(2π−ε) stays bounded and oscillates like ε^{i·Im Σg_i}. I checked this numerically for r=2, g=(0.45+0.3i, 0.55). The log is attained only when Im Σg_i=0. The proof uses only the upper bound, so nothing depends on this.",
+   "fix": "Optional: write 'at most logarithmic at ϰ=1'."
+  },
+  {
+   "step": "Documentation of numerical support (foundation Remark 7 and Open points; general_d.tex gdr:checks; RESULT.md)",
+   "severity": "minor",
+   "description": "The product form's numerical support cites only check_topG.py (≤9e-16, from plain truncated sums at large ϰ) and C63d's per-spin code (≤6.5e-16). The independent 48-digit probe review/lemmaG-numeric is not cited. It covers 12 mixed wheels (r=3,4; d=1.3, 2.4, 3.1), the R family, a case with Re g_1<0, and both half-planes separately, with top modes ≤4.7e-44. Its controls show the top mode is linear in the per-factor imbalance.",
+   "fix": "Cite review/lemmaG-numeric in Remark 7, Open points, gdr:checks and RESULT.md. If this review is accepted, change the status labels of Theorem 6(a)-(c) (status table, footnote, RESULT status) from 'not yet independently reviewed' to reviewed."
+  },
+  {
+   "step": "Remark 7 (foundation l.729)",
+   "severity": "minor",
+   "description": "The text says 'five R kernels (0.5≤d≤3.3, complex τ)', but C63d's R5 has real τ=0.7.",
+   "fix": "Write 'real and complex τ'."
+  },
+  {
+   "step": "general_d.tex compact proof, Step 0 (l.242)",
+   "severity": "minor",
+   "description": "The bound |S(x+iy)| ≤ C|y|^{max(d,1)−2ϰ}(1+log|y|) is stated without its range. The foundation states it for |y| ≥ max(Y_0, 2), and Lemma 3's Y-bound needs Y ≥ 2.",
+   "fix": "Add 'for |y| ≥ max(Y_0, 2)'."
+  },
+  {
+   "step": "lemmaG_statement.md (endpoint and integrability summary)",
+   "severity": "minor",
+   "description": "The file still lists only 'alpha>1/2' and 'alpha>d-1 when alpha>1' as the integrability conditions. That is incomplete: for ϰ<1 the condition is 2ϰ>max(d,1), and at ϰ=1 it is d<2. The writer flagged this; the statement 'lie inside (C)' is still true, and the foundation's Step 4 is correct.",
+   "fix": "Optionally add a one-line pointer in lemmaG_statement.md to foundation Step 4, where the integrability condition is shown to be exactly (C)."
+  }
+ ],
+ "summary": "VERDICT: ACCEPT. Theorem 6 (th:topG = th:top) in product form and its proof are correct. I found no fatal or major issue, only seven wording and documentation items. general_d.tex section gdr:top restates the statement and proof faithfully.\n\nHAND VERIFICATION, step by step, for the product case:\n- Estimates for all three lattice parts. The left part has no mirror map; both reflected forms were rederived, including the sine ratios. Each factor contributes the power −Re g_i of a common base, so only ϰ = Σ Re g_i enters, whatever the signs of the individual Re g_i.\n- Large-|y| bounds. Every numerator Gamma argument and every denominator sine has |Im| ≥ |y|−Y_0+1. This uses (B) through Im(β_i+g_i) = −Im(σ+α_i) and Im(σ+α_i+g_i) = −Im β_i. The writer is right that Y_0 = 1+max_i(|Im(σ+α_i)|, |Im β_i|) is needed; C63d's \"|y| ≥ 2\" is wrong for complex parameters.\n- Parts (a) and (b). Pole orders are at most ν(t_0), and D vanishes to exactly ν(t_0). Modes |m| ≥ r vanish because 2ϰ > max(d,1). The γ_m are analytic on the convex set U_d, by uniform convergence on the segment Im t = Y_B.\n- Step 1. The constants κ± = (−1/4)^r e^{∓iπΣc_j} are correct, and γ_{1−r} = κ+ s1+, γ_{r−1} = κ− s1−.\n- Step 2. The unfolding is correct.\n- Step 3, Laplace forms. Both rotations are correct for complex g, and so is the continuation to Re w < 0. Fubini, c+c− = Π Γ(g_i)^{−2}, and A, A′ ∈ L¹ all hold.\n- Step 3, endpoint bound in product form. Near 0 Dirichlet gives V^{ϰ−1}. On [π, 2π+δ] at most one coordinate can be near 2π, and the |ε|u substitution gives |2π−V|^{min(ϰ−1,0)}, with a log only at ϰ=1. The case ε < 0 (V > 2π) is covered, which is needed for L² continuity of K at 2π. Hence eq:endprod holds with exponent ϰ−1+min(ϰ−1,0), the correct product analogue of the corrected wheel estimate.\n- Fourier inversion. It holds at a point of continuity of K = A*A′, since K̂ is O(|x|^{−2ϰ}) and K̂ ∈ L¹.\n- Step 4. The Abel limit, the bound |1−ρe^{iV}| ≥ √2|sin(V/2)| and dominated convergence are all valid. The integrability condition ϰ+min(ϰ−1,0) > max(d−1,0) is exactly (C), in both cases ϰ ≥ 1 and ϰ < 1.\n- Step 5. The per-factor identity h_i = e^{−iπ(g_i−1)} e^{i(d/2−1−σ)v} h′_i holds on (0, 2π). The total rate in V cancels. The map ι preserves vol and the product Π h′_i(v_i) h′_i(v′_i), while cos(V/2) changes sign, so s1+ = 0. The phase identity Θ−Θ∘ι = Σ_i(σ+α_i+β_i+g_i−d/2)(v_i−v′_i) is correct. The one-variable odd integral eq:s1one is correct, and it reduces to e^{iπ(σ+1/2)}/Γ(g)^{2r} for the wheels. The writer is right that C63d's full-Ω exchange is valid but unnecessary.\n- Step 6. The conjugation gives γ_m(p̄) = conj γ_{−m}(p), with p̄ satisfying (B) and (C).\n- Step 7. Analyticity on a convex open set plus vanishing on the nonempty open part where all Re g_i > 0 gives vanishing on all of U_d (identity theorem).\n- Specializations. Mixed wheels: the dictionary is correct; (B) holds automatically and (C) ⇔ mean Re b_i < b_max. R family: Lemma 1(a) R_τ(s) = g_ℓ(s+(τ−q)/2; d−2τ) checks out. Its parameters (g_i) = (q,q,τ), α_i = 0, (β_i) = (0,0,q−τ) are correct, and (C) ⇔ Re τ > max(0, 2q−1, 1/2−2q). The hedge for the continued τ-circle is appropriate. Wheels (part (d)): the reduction is correct.\n- Sanity check of the mechanism. Extended formally to r=1 at d=2, it predicts that Σ_m Γ(m+a)/Γ(m+a+g) = 0 for Re g > 1. That is a known corollary of Dougall's formula, so the mechanism does not prove too much.\n\nINDEPENDENT NUMERICS (Mac, mpmath; scripts now in review/lemmaG-proof/):\n- t1, Laplace forms. Both formulas hold for complex g, including Re w < 0, to 1e-20 to 1e-26. At Re g = 0.35 the agreement is 1e-9, limited by the quadrature.\n- t2, t5, Steps 1–4 machinery. Tested in UNBALANCED cases, where the top mode is nonzero, so the derivation itself is tested and not only its final cancellation. κ+ s1+ from eq:s1, with every constant, reproduces the lattice γ_{1−r}: r=2, real: 7e-11; r=2, complex: 2e-8 (lattice-truncation limited); r=2, total balance only: 2e-13; r=3, g=(1,2,3), complex: 1e-12; r=4, g=(1,1,2,2), d=2.9, total balance kept: 3e-12. In the balanced cases the formula gives 1e-22 to 2e-27, while the lattice values fall with the cutoff. An initial r=4 mismatch was the reviewer's own cancellation artifact and disappears at higher working precision.\n- t4, Step 6 and the lower half-plane. The direct formula and the conjugation identity both reproduce γ_{+1} to 3e-12 at complex unbalanced r=2, where |γ_{+1}| ≠ |γ_{−1}|.\n- t3c, endpoint exponents. The fitted slope is −0.300 at ϰ=0.7 and −0.600 at ϰ=0.4, on both sides of 2π. At ϰ=1.2 the value stays bounded. At ϰ=1 with complex g it is bounded and oscillatory, consistent with the log being only an upper bound.\n\nCONSISTENCY:\n- The probe's 12 mixed wheels, its R-family points, the A4 case with Re g_1 < 0, the separate vanishing of both top modes, and the linear onset under per-factor imbalance are all consistent with the theorem; the A4 record was checked against the dictionary and (C).\n- The numbers quoted in the documents match check_topG.log and C63d's Table 1.\n- Builds: 24 and 15 pages, no undefined references, no overfull boxes, no em dashes. Theorem and Remark numbers 1–13 are unchanged, and no file cites foundation equations by number.\n- The documents did not yet cite the 43-digit probe; see the issues.",
+ "fixes_applied": "2026-10-03: all seven issues applied in foundation/general_b_periodization.tex, foundation/validation_section.tex, general_d.tex, RESULT.md and lemmaG_statement.md (wording and documentation only; no statement, hypothesis or formula changed)."
+}

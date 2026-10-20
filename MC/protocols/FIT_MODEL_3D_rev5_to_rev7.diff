@@ -1,0 +1,50 @@
+--- FIT_MODEL_3D_rev5_approved.md	2026-10-13 14:28:37
++++ FIT_MODEL_3D.md	2026-10-13 14:28:37
+@@ -1,7 +1,8 @@
+ # 3D long-range Ising: production plan and analysis protocol for Δ_ε(Δ_σ) (FIT_MODEL_3D)
+ 
+-Status: revision 5 (2026-09-21) — after Codex review rounds 1–4 (20 findings FIT3D-001…020, all accepted and applied; round cap raised to 7 by the user);
+-for round 5. Changes since revision 4 are in the tooling only (frozen extension ledger per snapshot; empty-primary evaluation), see FIT_MODEL_3D-REVIEW-LOG.md.
++Status: revision 7 (2026-09-21) — revision 5 was APPROVED in round 5 (SHA b4ccf436…); revisions 6–7 amend ONE gate condition in §5.1 (τ cap 30 →
++τ ≤ 50 = the §4.1 equilibration rule at b = 1000) after the first preflight gate attempt failed only that condition (post-hoc, disclosed), and make the
++evaluator enforce that rule on reblock records too (FIT3D-021); gate records are per attempt (FIT3D-022); for review round 7 (last).
+ whole-node benchmarks (54383841, 54384046) are in; the preflight (arrays 54385146/54385147, analysis 54385148) is queued/running and its two numbers
+ (pinned L = 128 rate; 64→128 bracket/ESS) enter §5.1 as the gate record; D4 below fixes 10⁶ sweeps at every size; the preflight rate sets only the array-A wall limit (§5.1 gate record).
+ Sister document: `../LRI_2d_MC/FIT_MODEL_2D.md` (revision 5, Codex-reviewed 2026-09-20, evaluator `evaluate_2d.py` rev 5); everything not stated here
+@@ -73,10 +74,13 @@
+ ## 5. Numerics plan and schedule (allocation ends 2026-09-30; the 2D production occupies 5 nodes until ≈ 2026-09-21 16:00 PDT)
+ 5.1 Stage 0 + benchmarks (2026-09-21, done; §2): centres, ESS, τ, rates, contention — every 16→32 and 32→64 crossing inside its bracket, ESS ≥ 0.67,
+     τ ≤ 19 sweeps. Preflight (arrays 54385146/54385147 + analysis 54385148): 8 points × L ∈ {64, 128} × 5 frozen-D3 β × 2 replicas × 5×10⁴ sweeps
+-    under the production pinning. GATE for production: every 64→128 U4 crossing inside its bracket with ESS ≥ 0.5 at both sizes, no bootstrap
+-    failures, τ ≤ 30 sweeps; the pinned L = 128 rate r fixes the array-A wall limit (D4). The gate job (`expanse/preflight_analysis_3d.slurm`, FIT3D-005) requires the complete
+-    chain set and all eight analyses, evaluates every condition, and writes `$C3/preflight/GATE.json` (decision, reasons, r, wall limit, per-point rows,
+-    manifest/index/results hashes); `submit_production_3d.sh` refuses to run without a passed gate record. RESULT: [preflight].
++    under the production pinning. GATE for production: every 64→128 U4 crossing inside its bracket with ESS ≥ 0.5 at both sizes, no bootstrap failures, and τ_int ≤ 50 sweeps
++    (block/τ ≥ 20 at the smallest production block b = 1000 — the §4.1 equilibration criterion applied to the largest size); the pinned L = 128 rate r
++    fixes the array-A wall limit (D4). AMENDMENT (revision 6, 2026-09-21, post hoc): the first gate attempt (job 54385730, record
++    `preflight/GATE_attempt1.json`) met every condition at all eight points — bracket positions 0.49–0.65, ESS 0.74–0.77 (L = 64) / 0.56–0.58 (L = 128),
++    no bootstrap failures, |drift z| ≤ 3.0, r = 103.3 ms → wall limit 43 h — except the τ cap, which read "τ ≤ 30 sweeps" and failed at s = 1.6
++    (τ_max 34.3) and s = 1.85 (32.6). The cap of 30 had no basis in §4; it is replaced by the criterion the production evaluation applies: the §4.1 equilibration rule (block/τ ≥ 20, drift, finiteness) is enforced by `evaluate_3d.py` on the primary record (b = 2000, decision row EQUILIBRATION FAILED) AND — a 3D addition to the inherited evaluator, made in revision 7 — on each reblock record at its own block (b = 1000 → τ ≤ 50; a failing reblock yields REBLOCKING FAILED), so τ_int ≤ 50 at the largest size is exactly what production requires. Disclosed here after the data were seen; the second gate attempt re-evaluates the
++    SAME preflight data under the amended rule and its record names the attempt. The gate job (`expanse/preflight_analysis_3d.slurm`, FIT3D-005) requires the complete chain set and all eight analyses, evaluates every condition, and writes one immutable record per attempt, `$C3/preflight/GATE_<jobid>.json` (decision, reasons, r, wall limit, per-point rows, manifest/index/results hashes, D3 constants, packing); the passed record's path is given explicitly to the submission (`GATE=$C3/preflight/GATE_<jobid>.json SUBMIT=1 bash submit_production_3d.sh`, also by `auto_submit_after_gate.slurm`), which refuses any record that did not pass, is not bound to this design, or was not evaluated under the current rule. `$C3/preflight/GATE.json` is the archived FAILED first attempt (job 54385730), never used for submission. RESULT: [preflight].
+ 5.2 Production: one campaign `prod3d-<date>` (prepare.py --dim 3 with the frozen D3/D4 constants, `production_centers_3d.csv`, seed base <date>):
+     8 × 5 × 5 × 12 = 2400 chains, 2.4×10⁹ measured sweeps at every size, ≈ 154 GB raw. Work: array A = 480 L = 128 chains in 15 slots of 32 (one per
+     CCX): per chain 1.05×10⁶ × r = 31 h (r = 105 ms) … 38 h (130 ms); 15 nodes × 31–38 h ≈ 460–570 node-h (≈ 60–75 k SU); the requested wall limit 1.4 × r × 1.05×10⁶ reaches its 46 h cap at r = 113 ms (a safety-margin threshold, not a runtime); a chain actually
+@@ -104,7 +108,7 @@
+ ## 6. Assumptions and risks
+ - A1 the reference centres were within the stage-0 brackets at L ≤ 64 at every point (verified 2026-09-21); the L = 128 centres are extrapolated by the last drift (≤ 3.8×10⁻⁵) and covered by w(128) = 1.25×10⁻⁴.
+ - A2 the pinned (one per CCX) L = 128 rate on a full production node is 105–130 ms/sweep (single chain 105 ms; packed four per CCX 246–250 ms); measured
+-  by the preflight and recorded in GATE.json; above 113 ms the requested wall limit is capped at 46 h (safety margin < 1.4×), above ≈ 158 ms a chain actually needs the continuation, above 274 ms no production (D4).
++  by the preflight and recorded in GATE.json; above 113 ms the requested wall limit is capped at 46 h (safety margin < 1.4×), above ≈ 158 ms a chain actually needs the continuation, above 274 ms no production (D4). Measured (preflight, 80 chains, one per CCX): 103.3 ms median → 43 h wall limit; recorded in the gate record `GATE_<jobid>.json`.
+ - A3 corrections to scaling at the Gaussian end (s = 1.55, 1.6: ω ≈ 0.1–0.2) and at the crossover (s = 1.95) are not resolvable with L ≤ 128;
+   the plan reports the labelled finite-size outcome there (§4.7).
+ - A4 storage: 2400 chains × 64 MB = 154 GB raw on Lustre (quota 9.5 TB, 3.3 TB used).
+@@ -112,8 +116,7 @@
+ ## 7. Verification
+ 1. `evaluate_3d.py --no-index-check` on the stage-0 analyses (preview): runs end to end and labels every point NON-PRODUCTION for the expected
+    reasons (block 1000, 2 replicas, 10⁵ sweeps, stage-0 window constants) — done 2026-09-21, `stage0/evaluation_preview/run1/`.
+-2. Preflight (§5.1): the array log must show the mask line (32 CPUs for 32 workers), every chain DONE, the 64→128 crossings inside their brackets
+-   with ESS ≥ 0.5, and the measured pinned rate r; the D4 rule is applied from r and the outcome written into §5.1 RESULT before submission.
++2. Preflight (§5.1): the array log must show the mask line (32 CPUs for 32 workers), every chain DONE, the 64→128 crossings inside their brackets with ESS ≥ 0.5, τ_int ≤ 50, and the measured pinned rate r; the gate record `GATE_<jobid>.json` of the passing attempt is the input of the submission (explicit path); outcomes are documented in PREFLIGHT_RESULT.md.
+ 3. Stage-0 confirmation of the package's earlier 3D numbers (§2, `compare_stage0_reference.py`): recorded.
+ 4. Production: 2400/2400 DONE before packing (gate in the pack job), then §5.3; the evaluation's provenance chain verifies (§4.8).
+ 5. Production wrappers `expanse/prod_pack_3d.slurm`, `prod_analysis_3d.slurm`, `prod_evaluate_3d.slurm` (derived from the 2D ones: pack b = 2000/1000/4000

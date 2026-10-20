@@ -1,0 +1,45 @@
+{
+ "passed": false,
+ "tests": 5,
+ "failed": [
+  "invariance",
+  "invariance_team",
+  "run_env",
+  "tools_env",
+  "sanitize_env"
+ ],
+ "requested": [
+  "invariance",
+  "invariance_team",
+  "run_env",
+  "tools_env",
+  "sanitize_env"
+ ],
+ "results": [
+  {
+   "test": "invariance",
+   "status": "failed",
+   "error": "AssertionError: runs with an uncontrolled OpenMP environment (inherited {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '64', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'none'}): [{'threads': 1, 'omp': {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '64', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'none'}, 'team': 1}, {'threads': 4, 'omp': {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '64', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'none'}, 'team': 1}, {'threads': 1, 'omp': {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '64', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'none'}, 'team': 1}]"
+  },
+  {
+   "test": "invariance_team",
+   "status": "failed",
+   "error": "AssertionError: a runtime that ignores the request: invariance passed (12 records, e.g. {'test': 'random_access_chunks', 'backend': 'decimal', 'sector': 'free', 'L': 7, 'layout': 0, 'graphs': [11, 12, 13], 'max_normalized_difference': '0', 'tail_top_and_argmax_identical': True, 'tail_sum_max_relative_difference': '0', 'threads': [1, 4], 'chunk_size': 23, 'thread_identical': True})"
+  },
+  {
+   "test": "run_env",
+   "status": "failed",
+   "error": "TypeError: run() got an unexpected keyword argument 'threads'"
+  },
+  {
+   "test": "tools_env",
+   "status": "failed",
+   "error": "TypeError: run_json() got an unexpected keyword argument 'threads'"
+  },
+  {
+   "test": "sanitize_env",
+   "status": "failed",
+   "error": "AssertionError: {'OMP_THREAD_LIMIT': '1', 'OMP_DYNAMIC': 'true', 'OMP_NUM_THREADS': '4', 'GOMP_SPINCOUNT': '0', 'KMP_AFFINITY': 'none'}"
+  }
+ ]
+}

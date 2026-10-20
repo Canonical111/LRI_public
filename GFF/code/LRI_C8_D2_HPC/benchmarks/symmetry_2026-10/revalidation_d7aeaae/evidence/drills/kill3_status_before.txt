@@ -1,0 +1,44 @@
+job      0 a_free_L3 shard    0: 0/1 blocks
+group a_free_L3: 0/1 blocks, not merged
+job      1 a_free_L4 shard    0: 0/1 blocks
+group a_free_L4: 0/1 blocks, not merged
+job      2 a_free_L5 shard    0: 0/5 blocks
+group a_free_L5: 0/5 blocks, not merged
+job      3 a_free_L6 shard    0: 0/25 blocks
+group a_free_L6: 0/25 blocks, not merged
+job      4 a_free_L7 shard    0: 1/144 blocks
+group a_free_L7: 1/144 blocks, not merged, 1 fingerprint(s): d4ea3511eba6 x1 (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz, glibc 2.35, hosts <NODE>)
+job      5 a_power_L3 shard    0: 0/1 blocks
+group a_power_L3: 0/1 blocks, not merged
+job      6 a_power_L4 shard    0: 0/1 blocks
+group a_power_L4: 0/1 blocks, not merged
+job      7 a_power_L5 shard    0: 0/2 blocks
+group a_power_L5: 0/2 blocks, not merged
+job      8 a_power_L6 shard    0: 0/7 blocks
+group a_power_L6: 0/7 blocks, not merged
+job      9 a_power_L7 shard    0: 1/37 blocks
+group a_power_L7: 1/37 blocks, not merged, 1 fingerprint(s): d4ea3511eba6 x1 (Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz, glibc 2.35, hosts <NODE>)
+job     10 b_free_L3 shard    0: 0/1 blocks
+group b_free_L3: 0/1 blocks, not merged
+job     11 b_free_L4 shard    0: 0/1 blocks
+group b_free_L4: 0/1 blocks, not merged
+job     12 b_free_L5 shard    0: 0/5 blocks
+group b_free_L5: 0/5 blocks, not merged
+job     13 b_free_L6 shard    0: 0/25 blocks
+group b_free_L6: 0/25 blocks, not merged
+job     14 b_free_L7 shard    0: 0/144 blocks
+group b_free_L7: 0/144 blocks, not merged
+job     15 b_power_L3 shard    0: 0/1 blocks
+group b_power_L3: 0/1 blocks, not merged
+job     16 b_power_L4 shard    0: 0/1 blocks
+group b_power_L4: 0/1 blocks, not merged
+job     17 b_power_L5 shard    0: 0/2 blocks
+group b_power_L5: 0/2 blocks, not merged
+job     18 b_power_L6 shard    0: 0/7 blocks
+group b_power_L6: 0/7 blocks, not merged
+job     19 b_power_L7 shard    0: 0/37 blocks
+group b_power_L7: 0/37 blocks, not merged
+result: no C7_result.json
+20 incomplete job indices: 0-19
+resubmit: C7_MAX_ARRAY=1000 C7_RUN=<SCRATCH>/c7d2_fix/kill3 C7_PACKAGE=<SCRATCH>/c7d2_fix/final3 <SCRATCH>/c7d2_fix/final3/slurm/submit.sh --window 0:0-19
+then submit slurm/merge.sh once complete; or run slurm/resubmit.sh instead, which submits the missing windows and a merge that waits for them and for live work (cancel any merge still pending first)

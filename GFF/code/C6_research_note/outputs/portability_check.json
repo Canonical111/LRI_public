@@ -1,0 +1,58 @@
+{
+  "scope": "Selected fresh tasks and postprocessing run from a renamed temporary copy; no dependence on original absolute project path. Historical source snapshots remain inputs.",
+  "all_passed": true,
+  "elapsed_seconds": 14.907160494999971,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "code/reproduce.py",
+        "--profile",
+        "core",
+        "--only",
+        "real_checks_45",
+        "complete_smoke"
+      ],
+      "returncode": 0,
+      "stdout": "RUN real_checks_45\npassed 2.059\nRUN complete_smoke\npassed 3.478\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "code/make_outputs.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"C6\": \"14331.6870327580543204454632552462171183173230619887904582031423037431269640763932938790983564585491\",\n  \"discrepancies\": {\n    \"real_vs_HPL_polylog_compensation\": \"8.45280997016e-90\",\n    \"full_series_vs_refined_interval_midpoint\": \"3.96973289927e-94\",\n    \"real_form_via_series_conversions_vs_refined_midpoint\": \"4.26199842489e-93\",\n    \"seventh_Barnes_vs_certified_series_r6\": \"9.06272067721e-34\",\n    \"real_form_with_fresh_Barnes_seventh_vs_refined_midpoint\": \"4.1439052022e-37\"\n  },\n  \"exact_checks\": {\n    \"recommended_known_polynomial_has_18_monomials\": true,\n    \"G_pi_cubed_coefficient\": true,\n    \"pi_fifth_coefficient\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "code/make_figures.py"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote outputs/figures/wheel_convergence.pdf and .png\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "code/build_note.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"engine\": \"pdfTeX 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian)\",\n  \"runs\": 3,\n  \"source_sha256\": \"689e81aedc3ecfc875e1d83f3b5f668639d2aca55eff1ca476c063075954d800\",\n  \"pdf_sha256\": \"c0f491ac4ff5bea3ae58a007d1280233bfbd3d14a77ea37375b1b3cd8ba693b3\",\n  \"warnings\": [],\n  \"self_contained_tex\": true,\n  \"external_figure_files_required\": false,\n  \"shell_escape_used\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "code/audit_package.py",
+        "--skip-manifest"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"report\": \"outputs/package_audit.json\",\n  \"all_structural_checks_passed\": true,\n  \"selected_tasks_passed\": 31,\n  \"python_files_parsed\": 193,\n  \"manifest_status\": \"skipped\",\n  \"manifest_mismatches\": [],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    }
+  ]
+}

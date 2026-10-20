@@ -1,0 +1,951 @@
+{
+ "schema": "c8-d2-prof-p4-1",
+ "profile": "P4",
+ "identity": {
+  "utc": "2026-10-04T21:47:42Z",
+  "host": "<NODE>",
+  "cpu_model": "AMD EPYC 7543 32-Core Processor",
+  "kernel": "5.15.0-1094-nvidia",
+  "platform": "Linux-5.15.0-1094-nvidia-x86_64-with-glibc2.35",
+  "python": "3.11.3",
+  "package": "<SCRATCH>/c8d2/pkg/7a8aad783c31",
+  "package_commit": "export 7a8aad783c31",
+  "cpu_count": 64,
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   49,
+   50,
+   51,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60,
+   61,
+   62,
+   63
+  ],
+  "slurm": {
+   "SLURM_JOB_ID": "569788",
+   "SLURM_JOB_NAME": "c8d2-prof4s",
+   "SLURM_JOB_NODELIST": "<NODE>",
+   "SLURM_JOB_PARTITION": "amddebugq",
+   "SLURM_CPUS_ON_NODE": "64",
+   "SLURM_RESTART_COUNT": null,
+   "SLURM_MEM_PER_NODE": "250880"
+  },
+  "omp_env": {},
+  "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  64\nOn-line CPU(s) list:                     0-63\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 7543 32-Core Processor\nCPU family:                              25\nModel:                                   1\nThread(s) per core:                      1\nCore(s) per socket:                      32\nSocket(s):                               2\nStepping:                                1\nBogoMIPS:                                5589.87\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 invpcid_single hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 invpcid cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload vgif v_spec_ctrl umip pku ospke vaes vpclmulqdq rdpid overflow_recov succor smca ibpb_exit_to_user\nVirtualization:                          AMD-V\nL1d cache:                               2 MiB (64 instances)\nL1i cache:                               2 MiB (64 instances)\nL2 cache:                                32 MiB (64 instances)\nL3 cache:                                512 MiB (16 instances)\nNUMA node(s):                            8\nNUMA node0 CPU(s):                       0-7\nNUMA node1 CPU(s):                       8-15\nNUMA node2 CPU(s):                       16-23\nNUMA node3 CPU(s):                       24-31\nNUMA node4 CPU(s):                       32-39\nNUMA node5 CPU(s):                       40-47\nNUMA node6 CPU(s):                       48-55\nNUMA node7 CPU(s):                       56-63\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Mitigation; safe RET\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable: Clear CPU buffers attempted, no microcode\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n",
+  "numactl_hardware": "available: 8 nodes (0-7)\nnode 0 cpus: 0 1 2 3 4 5 6 7\nnode 0 size: 31814 MB\nnode 0 free: 27086 MB\nnode 1 cpus: 8 9 10 11 12 13 14 15\nnode 1 size: 32252 MB\nnode 1 free: 31526 MB\nnode 2 cpus: 16 17 18 19 20 21 22 23\nnode 2 size: 32252 MB\nnode 2 free: 30767 MB\nnode 3 cpus: 24 25 26 27 28 29 30 31\nnode 3 size: 32240 MB\nnode 3 free: 31336 MB\nnode 4 cpus: 32 33 34 35 36 37 38 39\nnode 4 size: 32252 MB\nnode 4 free: 31795 MB\nnode 5 cpus: 40 41 42 43 44 45 46 47\nnode 5 size: 32252 MB\nnode 5 free: 31344 MB\nnode 6 cpus: 48 49 50 51 52 53 54 55\nnode 6 size: 32205 MB\nnode 6 free: 31619 MB\nnode 7 cpus: 56 57 58 59 60 61 62 63\nnode 7 size: 32249 MB\nnode 7 free: 31167 MB\nnode distances:\nnode   0   1   2   3   4   5   6   7 \n  0:  10  12  12  12  32  32  32  32 \n  1:  12  10  12  12  32  32  32  32 \n  2:  12  12  10  12  32  32  32  32 \n  3:  12  12  12  10  32  32  32  32 \n  4:  32  32  32  32  10  12  12  12 \n  5:  32  32  32  32  12  10  12  12 \n  6:  32  32  32  32  12  12  10  12 \n  7:  32  32  32  32  12  12  12  10 \n",
+  "perf_version": "perf version 5.15.193\n",
+  "perf_event_paranoid": "-1",
+  "kptr_restrict": "0",
+  "executables": {
+   "worker": {
+    "path": "<SCRATCH>/c8d2/pkg/7a8aad783c31/bin/c8d2_gmp",
+    "present": true,
+    "sha256": "23624153cd3e8b45cf8438658c905893689bb9707516038b4717a60c8c26d3a3",
+    "bytes": 219464,
+    "describe": {
+     "schema": "c8-d2-build-1",
+     "dimension": 2,
+     "orders": [
+      7,
+      8
+     ],
+     "lmax": 8,
+     "kmax": 6,
+     "emax": 16,
+     "dimmax": 31,
+     "numerics": "exact",
+     "diagnostic": false,
+     "tail_top": 16,
+     "compiler": "11.4.0",
+     "long_double_bits": 64,
+     "mp_backend": "gmp350",
+     "mp_digits10": 350,
+     "mp_max_digits10": 372,
+     "openmp": 201511
+    },
+    "build_record": {
+     "schema": "c8-d2-build-record-1",
+     "executable": "c8d2_gmp",
+     "backend": "gmp",
+     "executable_sha256": "23624153cd3e8b45cf8438658c905893689bb9707516038b4717a60c8c26d3a3",
+     "command": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+     ],
+     "compiler_options": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP"
+     ],
+     "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+     "compiler_macro_version": "11.4.0",
+     "CXX": "g++",
+     "CPPFLAGS": "",
+     "OPTFLAGS": "-O3",
+     "CXXFLAGS": "",
+     "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+     "LDFLAGS": "",
+     "LDLIBS": "",
+     "NUMERICS": "exact",
+     "diagnostic": null,
+     "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+       7,
+       8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "11.4.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+     },
+     "required_flags_present": true,
+     "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+     },
+     "BOOST_LIB_VERSION": "1_77",
+     "BOOST_VERSION": "107700",
+     "gmp_version": "6.2.1",
+     "optimized": true,
+     "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+     },
+     "host": "<NODE>",
+     "created_utc": "2026-10-04T21:47:36Z"
+    },
+    "build_text": null
+   }
+  }
+ },
+ "fixtures_manifest_sha256": "d22d6a43b9fa869670eec370abb26d68e04f18df13a5ef9653ee4896aa8fcf00",
+ "workload": {
+  "name": "p4_L8",
+  "fraction": 0.5,
+  "tasks": 2010,
+  "cost_model_seconds": 20619.12143832445,
+  "parts": {
+   "p4_free_L8": {
+    "sector": "free",
+    "L": 8,
+    "graphs": 791,
+    "seed": 2311984699532775898
+   },
+   "p4_power_L8": {
+    "sector": "power",
+    "L": 8,
+    "graphs": 214,
+    "seed": 1218603389855926871
+   }
+  }
+ },
+ "settings": {
+  "shapes": [
+   "1x64",
+   "2x32",
+   "4x16",
+   "8x8"
+  ],
+  "block_tasks": "auto",
+  "pinned": true,
+  "fake_topology": null,
+  "cores": 64,
+  "numa_sample_seconds": 15.0,
+  "scratch": "/tmp/c8d2_prof4_569788/c8d2_p4_f0iu4eup",
+  "omp": {
+   "OMP_PROC_BIND": "close",
+   "OMP_PLACES": "cores",
+   "OMP_DYNAMIC": "FALSE"
+  }
+ },
+ "shapes": [
+  {
+   "shape": "1x64",
+   "lanes": 1,
+   "threads": 64,
+   "cores": 64,
+   "wall_seconds": 336.4171998500824,
+   "wall_including_setup_seconds": 336.5290411780006,
+   "cost_model_seconds": 20619.12143832445,
+   "throughput_cost_model_s_per_node_s": 61.29033071886025,
+   "throughput_per_core": 0.9576614174821914,
+   "busy_fraction": 0.9205683230003802,
+   "openmp_efficiency": 0.968261764112018,
+   "stage_seconds": 1.0430791469989344,
+   "load_seconds": 14.776440608984558,
+   "native_overhead_seconds": 0.6801317939971341,
+   "load_staging_share_of_node_time": 0.047023516523629426,
+   "stage_share_of_node_time": 0.0031005523720658806,
+   "load_share_of_node_time": 0.04392296415156355,
+   "lane_end_spread_seconds": 0.0,
+   "max_rss_kb_per_lane": 1889832,
+   "sum_lane_peak_rss_kb": 1889832,
+   "blocks": 3,
+   "tasks": 2010,
+   "points": 32931840,
+   "quad": 16945460,
+   "mp": 3339217,
+   "lanes_detail": [
+    {
+     "lane": 0,
+     "cpus": "0-63",
+     "numa_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "blocks": 3,
+     "wall_seconds": 336.4171998500824,
+     "cost_model_seconds": 20619.12143832445,
+     "task_seconds": 19820.48111964634,
+     "max_rss_kb": 1889832,
+     "numa_local_fraction": 1.0,
+     "stage_seconds": 1.0430791469989344,
+     "load_seconds": 14.776440608984558,
+     "error": null
+    }
+   ],
+   "numastat_delta": {
+    "0": {
+     "numa_hit": 897920,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 897918,
+     "other_node": 2
+    },
+    "1": {
+     "numa_hit": 98053,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 98053,
+     "other_node": 0
+    },
+    "2": {
+     "numa_hit": 97250,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 96994,
+     "other_node": 256
+    },
+    "3": {
+     "numa_hit": 100445,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 100445,
+     "other_node": 0
+    },
+    "4": {
+     "numa_hit": 97670,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 97668,
+     "other_node": 2
+    },
+    "5": {
+     "numa_hit": 206073,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 206068,
+     "other_node": 5
+    },
+    "6": {
+     "numa_hit": 103850,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 103850,
+     "other_node": 0
+    },
+    "7": {
+     "numa_hit": 100659,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 100654,
+     "other_node": 5
+    }
+   },
+   "rows_digest": "937154fbc4e47d0d3683255be052428b05b19d85560988722d36301c98d811dd",
+   "rows": 2010,
+   "errors": []
+  },
+  {
+   "shape": "2x32",
+   "lanes": 2,
+   "threads": 32,
+   "cores": 64,
+   "wall_seconds": 342.5656855106354,
+   "wall_including_setup_seconds": 342.6843720420002,
+   "cost_model_seconds": 20619.12143832445,
+   "throughput_cost_model_s_per_node_s": 60.19027097705122,
+   "throughput_per_core": 0.9404729840164253,
+   "busy_fraction": 0.9112536022792341,
+   "openmp_efficiency": 0.9681317562279229,
+   "stage_seconds": 2.192761565980618,
+   "load_seconds": 29.225682037023944,
+   "native_overhead_seconds": 1.638941300654551,
+   "load_staging_share_of_node_time": 0.04585754635081385,
+   "stage_share_of_node_time": 0.0032004979756102,
+   "load_share_of_node_time": 0.04265704837520365,
+   "lane_end_spread_seconds": 7.063977241516113,
+   "max_rss_kb_per_lane": 1852992,
+   "sum_lane_peak_rss_kb": 3705760,
+   "blocks": 6,
+   "tasks": 2010,
+   "points": 32931840,
+   "quad": 16945460,
+   "mp": 3339217,
+   "lanes_detail": [
+    {
+     "lane": 0,
+     "cpus": "0-31",
+     "numa_nodes": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "blocks": 3,
+     "wall_seconds": 342.56509590148926,
+     "cost_model_seconds": 10309.560719162226,
+     "task_seconds": 10099.66615126573,
+     "max_rss_kb": 1852992,
+     "numa_local_fraction": 0.999757010179428,
+     "stage_seconds": 1.1118386089947307,
+     "load_seconds": 14.729879324018839,
+     "error": null
+    },
+    {
+     "lane": 1,
+     "cpus": "32-63",
+     "numa_nodes": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "blocks": 3,
+     "wall_seconds": 335.50170826911926,
+     "cost_model_seconds": 10309.560719162226,
+     "task_seconds": 9878.84360481886,
+     "max_rss_kb": 1852768,
+     "numa_local_fraction": 0.9964971899098157,
+     "stage_seconds": 1.0809229569858871,
+     "load_seconds": 14.495802713005105,
+     "error": null
+    }
+   ],
+   "numastat_delta": {
+    "0": {
+     "numa_hit": 996650,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 996643,
+     "other_node": 7
+    },
+    "1": {
+     "numa_hit": 206479,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 206475,
+     "other_node": 4
+    },
+    "2": {
+     "numa_hit": 209799,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 208887,
+     "other_node": 912
+    },
+    "3": {
+     "numa_hit": 151720,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 151720,
+     "other_node": 0
+    },
+    "4": {
+     "numa_hit": 945440,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 945440,
+     "other_node": 0
+    },
+    "5": {
+     "numa_hit": 216708,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 216707,
+     "other_node": 1
+    },
+    "6": {
+     "numa_hit": 177812,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 177812,
+     "other_node": 0
+    },
+    "7": {
+     "numa_hit": 165656,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 165651,
+     "other_node": 5
+    }
+   },
+   "rows_digest": "937154fbc4e47d0d3683255be052428b05b19d85560988722d36301c98d811dd",
+   "rows": 2010,
+   "errors": []
+  },
+  {
+   "shape": "4x16",
+   "lanes": 4,
+   "threads": 16,
+   "cores": 64,
+   "wall_seconds": 331.5074052810669,
+   "wall_including_setup_seconds": 331.6197270620032,
+   "cost_model_seconds": 20619.12143832445,
+   "throughput_cost_model_s_per_node_s": 62.19807192796382,
+   "throughput_per_core": 0.9718448738744346,
+   "busy_fraction": 0.9420065641151528,
+   "openmp_efficiency": 0.9728261310577192,
+   "stage_seconds": 2.346937965034158,
+   "load_seconds": 29.46766150901385,
+   "native_overhead_seconds": 1.7378745611349586,
+   "load_staging_share_of_node_time": 0.02399237465530684,
+   "stage_share_of_node_time": 0.0017698985962653823,
+   "load_share_of_node_time": 0.022222476059041457,
+   "lane_end_spread_seconds": 4.0419628620147705,
+   "max_rss_kb_per_lane": 931500,
+   "sum_lane_peak_rss_kb": 3724408,
+   "blocks": 12,
+   "tasks": 2010,
+   "points": 32931840,
+   "quad": 16945460,
+   "mp": 3339217,
+   "lanes_detail": [
+    {
+     "lane": 0,
+     "cpus": "0-15",
+     "numa_nodes": [
+      0,
+      1
+     ],
+     "blocks": 3,
+     "wall_seconds": 331.50087451934814,
+     "cost_model_seconds": 5155.02803248167,
+     "task_seconds": 5044.841745554062,
+     "max_rss_kb": 931448,
+     "numa_local_fraction": 0.9961542497700575,
+     "stage_seconds": 0.5951508340076543,
+     "load_seconds": 7.461456008008099,
+     "error": null
+    },
+    {
+     "lane": 1,
+     "cpus": "16-31",
+     "numa_nodes": [
+      2,
+      3
+     ],
+     "blocks": 3,
+     "wall_seconds": 331.2697196006775,
+     "cost_model_seconds": 5155.02803248167,
+     "task_seconds": 5043.4411454639485,
+     "max_rss_kb": 931500,
+     "numa_local_fraction": 0.9959146268085645,
+     "stage_seconds": 0.5878731170232641,
+     "load_seconds": 7.359920225004316,
+     "error": null
+    },
+    {
+     "lane": 2,
+     "cpus": "32-47",
+     "numa_nodes": [
+      4,
+      5
+     ],
+     "blocks": 3,
+     "wall_seconds": 327.4654424190521,
+     "cost_model_seconds": 5154.532686680555,
+     "task_seconds": 4949.032844087094,
+     "max_rss_kb": 930628,
+     "numa_local_fraction": 0.9927180278748808,
+     "stage_seconds": 0.5735214840096887,
+     "load_seconds": 7.296939984007622,
+     "error": null
+    },
+    {
+     "lane": 3,
+     "cpus": "48-63",
+     "numa_nodes": [
+      6,
+      7
+     ],
+     "blocks": 3,
+     "wall_seconds": 327.47297835350037,
+     "cost_model_seconds": 5154.532686680555,
+     "task_seconds": 4948.741981857922,
+     "max_rss_kb": 930832,
+     "numa_local_fraction": 0.9929784207499773,
+     "stage_seconds": 0.5903925299935509,
+     "load_seconds": 7.349345291993814,
+     "error": null
+    }
+   ],
+   "numastat_delta": {
+    "0": {
+     "numa_hit": 537547,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 537537,
+     "other_node": 10
+    },
+    "1": {
+     "numa_hit": 201317,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 201317,
+     "other_node": 0
+    },
+    "2": {
+     "numa_hit": 523647,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 523101,
+     "other_node": 546
+    },
+    "3": {
+     "numa_hit": 198221,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 198215,
+     "other_node": 6
+    },
+    "4": {
+     "numa_hit": 506140,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 506140,
+     "other_node": 0
+    },
+    "5": {
+     "numa_hit": 172033,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 172027,
+     "other_node": 6
+    },
+    "6": {
+     "numa_hit": 448803,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 448803,
+     "other_node": 0
+    },
+    "7": {
+     "numa_hit": 242294,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 242290,
+     "other_node": 4
+    }
+   },
+   "rows_digest": "937154fbc4e47d0d3683255be052428b05b19d85560988722d36301c98d811dd",
+   "rows": 2010,
+   "errors": []
+  },
+  {
+   "shape": "8x8",
+   "lanes": 8,
+   "threads": 8,
+   "cores": 64,
+   "wall_seconds": 325.0988771915436,
+   "wall_including_setup_seconds": 325.20348369400017,
+   "cost_model_seconds": 20619.12143832445,
+   "throughput_cost_model_s_per_node_s": 63.42415457244401,
+   "throughput_per_core": 0.9910024151944377,
+   "busy_fraction": 0.9617758891633084,
+   "openmp_efficiency": 0.986641423708162,
+   "stage_seconds": 2.1462497929896927,
+   "load_seconds": 29.586681652988773,
+   "native_overhead_seconds": 2.3865587639593286,
+   "load_staging_share_of_node_time": 0.012201261551605528,
+   "stage_share_of_node_time": 0.000825229623803481,
+   "load_share_of_node_time": 0.011376031927802047,
+   "lane_end_spread_seconds": 6.362069606781006,
+   "max_rss_kb_per_lane": 736128,
+   "sum_lane_peak_rss_kb": 5587024,
+   "blocks": 16,
+   "tasks": 2010,
+   "points": 32931840,
+   "quad": 16945460,
+   "mp": 3339217,
+   "lanes_detail": [
+    {
+     "lane": 0,
+     "cpus": "0-7",
+     "numa_nodes": [
+      0
+     ],
+     "blocks": 2,
+     "wall_seconds": 321.8976843357086,
+     "cost_model_seconds": 2577.2685576677322,
+     "task_seconds": 2517.9035019529256,
+     "max_rss_kb": 663980,
+     "numa_local_fraction": 0.9892902777213395,
+     "stage_seconds": 0.26854087099491153,
+     "load_seconds": 3.7085692420077976,
+     "error": null
+    },
+    {
+     "lane": 1,
+     "cpus": "8-15",
+     "numa_nodes": [
+      1
+     ],
+     "blocks": 2,
+     "wall_seconds": 321.68303298950195,
+     "cost_model_seconds": 2577.2685576677322,
+     "task_seconds": 2515.1757275350683,
+     "max_rss_kb": 664164,
+     "numa_local_fraction": 0.9941715838754678,
+     "stage_seconds": 0.27512263199605513,
+     "load_seconds": 3.6963412050099578,
+     "error": null
+    },
+    {
+     "lane": 2,
+     "cpus": "16-23",
+     "numa_nodes": [
+      2
+     ],
+     "blocks": 2,
+     "wall_seconds": 325.0988771915436,
+     "cost_model_seconds": 2577.7609874010086,
+     "task_seconds": 2525.5441154719447,
+     "max_rss_kb": 736128,
+     "numa_local_fraction": 0.9893558745329277,
+     "stage_seconds": 0.2698928230092861,
+     "load_seconds": 3.767787874006899,
+     "error": null
+    },
+    {
+     "lane": 3,
+     "cpus": "24-31",
+     "numa_nodes": [
+      3
+     ],
+     "blocks": 2,
+     "wall_seconds": 324.6897220611572,
+     "cost_model_seconds": 2577.7609874010086,
+     "task_seconds": 2524.8723940847703,
+     "max_rss_kb": 735868,
+     "numa_local_fraction": 0.993992161752917,
+     "stage_seconds": 0.26749655399180483,
+     "load_seconds": 3.73374200098624,
+     "error": null
+    },
+    {
+     "lane": 4,
+     "cpus": "32-39",
+     "numa_nodes": [
+      4
+     ],
+     "blocks": 2,
+     "wall_seconds": 319.2703619003296,
+     "cost_model_seconds": 2577.266543507576,
+     "task_seconds": 2478.955678698054,
+     "max_rss_kb": 661848,
+     "numa_local_fraction": 0.9890928905641344,
+     "stage_seconds": 0.26427717800834216,
+     "load_seconds": 3.64477988499857,
+     "error": null
+    },
+    {
+     "lane": 5,
+     "cpus": "40-47",
+     "numa_nodes": [
+      5
+     ],
+     "blocks": 2,
+     "wall_seconds": 319.27030634880066,
+     "cost_model_seconds": 2577.266543507576,
+     "task_seconds": 2478.7182396470016,
+     "max_rss_kb": 661464,
+     "numa_local_fraction": 0.9890797739400626,
+     "stage_seconds": 0.27089156200236175,
+     "load_seconds": 3.638541660984629,
+     "error": null
+    },
+    {
+     "lane": 6,
+     "cpus": "48-55",
+     "numa_nodes": [
+      6
+     ],
+     "blocks": 2,
+     "wall_seconds": 318.8834445476532,
+     "cost_model_seconds": 2577.264630585909,
+     "task_seconds": 2484.9696325541736,
+     "max_rss_kb": 731848,
+     "numa_local_fraction": 0.9895676422064414,
+     "stage_seconds": 0.2635525149817113,
+     "load_seconds": 3.6940881269983947,
+     "error": null
+    },
+    {
+     "lane": 7,
+     "cpus": "56-63",
+     "numa_nodes": [
+      7
+     ],
+     "blocks": 2,
+     "wall_seconds": 318.71034812927246,
+     "cost_model_seconds": 2577.264630585909,
+     "task_seconds": 2484.8854573770222,
+     "max_rss_kb": 731724,
+     "numa_local_fraction": 0.9892677022392576,
+     "stage_seconds": 0.2664756580052199,
+     "load_seconds": 3.7028316579962848,
+     "error": null
+    }
+   ],
+   "numastat_delta": {
+    "0": {
+     "numa_hit": 289341,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 289341,
+     "other_node": 0
+    },
+    "1": {
+     "numa_hit": 267920,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 267920,
+     "other_node": 0
+    },
+    "2": {
+     "numa_hit": 266476,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 265926,
+     "other_node": 550
+    },
+    "3": {
+     "numa_hit": 266599,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 266594,
+     "other_node": 5
+    },
+    "4": {
+     "numa_hit": 264919,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 264919,
+     "other_node": 0
+    },
+    "5": {
+     "numa_hit": 264462,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 264458,
+     "other_node": 4
+    },
+    "6": {
+     "numa_hit": 261033,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 261033,
+     "other_node": 0
+    },
+    "7": {
+     "numa_hit": 261209,
+     "numa_miss": 0,
+     "numa_foreign": 0,
+     "interleave_hit": 0,
+     "local_node": 261209,
+     "other_node": 0
+    }
+   },
+   "rows_digest": "937154fbc4e47d0d3683255be052428b05b19d85560988722d36301c98d811dd",
+   "rows": 2010,
+   "errors": []
+  }
+ ],
+ "table": [
+  {
+   "shape": "1x64",
+   "wall_seconds": 336.4171998500824,
+   "throughput_cost_model_s_per_node_s": 61.29033071886025,
+   "throughput_per_core": 0.9576614174821914,
+   "busy_fraction": 0.9205683230003802,
+   "openmp_efficiency": 0.968261764112018,
+   "load_staging_share_of_node_time": 0.047023516523629426,
+   "max_rss_kb_per_lane": 1889832,
+   "errors": []
+  },
+  {
+   "shape": "2x32",
+   "wall_seconds": 342.5656855106354,
+   "throughput_cost_model_s_per_node_s": 60.19027097705122,
+   "throughput_per_core": 0.9404729840164253,
+   "busy_fraction": 0.9112536022792341,
+   "openmp_efficiency": 0.9681317562279229,
+   "load_staging_share_of_node_time": 0.04585754635081385,
+   "max_rss_kb_per_lane": 1852992,
+   "errors": []
+  },
+  {
+   "shape": "4x16",
+   "wall_seconds": 331.5074052810669,
+   "throughput_cost_model_s_per_node_s": 62.19807192796382,
+   "throughput_per_core": 0.9718448738744346,
+   "busy_fraction": 0.9420065641151528,
+   "openmp_efficiency": 0.9728261310577192,
+   "load_staging_share_of_node_time": 0.02399237465530684,
+   "max_rss_kb_per_lane": 931500,
+   "errors": []
+  },
+  {
+   "shape": "8x8",
+   "wall_seconds": 325.0988771915436,
+   "throughput_cost_model_s_per_node_s": 63.42415457244401,
+   "throughput_per_core": 0.9910024151944377,
+   "busy_fraction": 0.9617758891633084,
+   "openmp_efficiency": 0.986641423708162,
+   "load_staging_share_of_node_time": 0.012201261551605528,
+   "max_rss_kb_per_lane": 736128,
+   "errors": []
+  }
+ ],
+ "best_shape": "8x8",
+ "relative_to_best": {
+  "1x64": 0.9663562901552518,
+  "2x32": 0.9490117981517752,
+  "4x16": 0.9806685220678859,
+  "8x8": 1.0
+ },
+ "all_shapes_identical_rows": true,
+ "finished_utc": "2026-10-04T22:09:58Z"
+}

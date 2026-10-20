@@ -1,0 +1,26 @@
+% s06_checks.tex (HT1dPert): independent checks; d = 2, 3 paragraphs are \input from their folders.
+\section{Independent checks}\label{htp:sec:checks}
+
+\paragraph{One dimension.}
+\begin{itemize}
+\item \emph{Window engines.} The complete window through $\eps^5$ was computed by two independent engines, one on the
+ solver's kernels and one written from scratch with exact rationals, plus a third engine for a skeptic's check. Four
+ algorithms within the second engine agree to $1.3\times10^{-11}$; the two engines agree on 3808 numbers to
+ $9.6\times10^{-12}$; the third reproduces $\Delta C_5$ at $\Lambda\le28$ to $2.4\times10^{-12}$
+ (quoted as $\HTpEngineAgree$ in the paper).
+\item \emph{Eighth-order window.} The complete-window solver reproduces the exact $\Delta C_4$, $\Delta C_5$ at
+ $\Lambda=46$--$72$ to $\HTpSTenMatch$.
+\item \emph{Exact sums against the solver.} The exact sums reproduce the solver's raw $C_4$ and $C_5$ at
+ $\Lambda\le118$ to $1.4\times10^{-12}$ and $10^{-11}$, and the window pieces to $10^{-15}$; brute-force
+ Rayleigh--Schr\"odinger on explicit bases at small cutoffs agrees to $10^{-11}$.
+\item \emph{Eighth-order code.} The optimized eighth-order code reproduces the 38 saved records of its original
+ version to $2.1\times10^{-8}$ and the thermal solver's $C_0$--$C_7$ to $6\times10^{-14}$ relative.
+\item \emph{Blind protocol of the exact sums.} Fit records were frozen and hash-committed before each larger run
+ existed: $\Lambda\le1000$ before $2000$ for $C_4$, $\Lambda\le320$ before 400 and $\Lambda\le400$ before 500 for $C_5$.
+ Their predictions of the new cutoffs are quoted in Section~\ref{htp:d1:sec:extrap}.
+\item \emph{Constrained $C_5$.} A separately written fit of the constrained extrapolation, made without reading the
+ package's fit code, gives $\HTpCfiveOne$; a separate derivation confirms $\omega_1=\tfrac72$ as the one-loop
+ exponent of $\phi^6$ and the closed form \eqref{htp:eq:toplog}.
+\end{itemize}
+\IfFileExists{parts/htp/sections/d2/checks_d2.tex}{\input{parts/htp/sections/d2/checks_d2.tex}}{}
+\IfFileExists{parts/htp/sections/d3/checks_d3.tex}{\input{parts/htp/sections/d3/checks_d3.tex}}{}

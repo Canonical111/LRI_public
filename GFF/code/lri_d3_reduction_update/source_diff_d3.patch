@@ -1,0 +1,630 @@
+--- before_d3_reduction.tex
++++ long_range_ising_complete.tex
+@@ -22,7 +22,7 @@
+ \title{The thermal dimension of the\\one-dimensional long-range Ising model\\through fifth order\\[2mm]
+ \large One-dimensional closed forms and finite multivariable hypergeometric forms in general dimension}
+ \author{Research calculation record}
+-\date{Original consolidation: 7 September 2026\\General-dimensional periodization revision: 11 September 2026}
++\date{Original consolidation: 7 September 2026\\Three-dimensional half-shift revision: 11 September 2026}
+ 
+ \setcounter{tocdepth}{2}\newcommand{\ii}{\mathrm i}\newcommand{\GG}{\mathcal G}\newcommand{\rep}[1]{(#1)^{\times7}}\newcommand{\repeatparams}[2]{(#1)^{\times #2}}\newcommand{\Aut}{\operatorname{Aut}}
+ \hypersetup{pdftitle={Long-range Ising thermal dimension through fifth order},pdfauthor={Research calculation record},pdfsubject={Consolidated derivation and evidence boundaries}}
+@@ -59,6 +59,18 @@
+ It does not yet remove the general-dimensional nonprimitive functions.
+ The compact ordinary-${}_pF_q$ problem for the complete $C_5(d)$ remains
+ explicitly distinguished from multivariate function-class closure.
++\par\smallskip
++Appendix~\ref{app:threeDimensionalReduction} adds an explicit
++three-dimensional half-shift determinant reduction.  Part of each
++primitive period factorizes into ordinary hypergeometric moments, two
++of whose combinations admit Gamma evaluations.  With positive rational
++parameters the residual two-variable counts are one for $Q_3$, two for
++$P_4(3)$ and five for $P_5(3)$.  Fixed complex-node alternatives lower
++the latter two counts to one and two.  Complete arrays, finite formulas,
++proofs and fresh independent real-axis Gamma-kernel checks are supplied.
++This is not a completed ordinary-${}_pF_q$ reduction of the primitive
++sector or of the full $C_5(3)$; the complementary ordered-lattice sector
++and the nonprimitive combination are identified explicitly.
+ \end{abstract}
+ \tableofcontents
+ \clearpage
+@@ -81,7 +93,10 @@
+ Horn presentation, with explicit parameter lists, convergence domains,
+ and continuation conventions. The preferred five-positive-rational-parameter
+ hypergeometric expression for $P_5(1)$ is unchanged.
+-For the latest genuine reduction of the primitive summations, see
++For the dimension-three specialization and its exact half-shift
++determinants, see Appendix~\ref{app:threeDimensionalReduction}; it states
++precisely which two-variable values remain.  For the preceding reduction
++of the generic-dimensional primitive summations, see
+ Appendix~\ref{app:generalPeriodization}; its two-dimensional quadratic
+ factorization uses no new ordinary hypergeometric values. The
+ nonprimitive target is isolated in \eqref{fp:remainingCombination}.
+@@ -7318,8 +7333,586 @@
+ factorizations \eqref{fp:P4two}--\eqref{fp:P5two}; it does not rerun the
+ four- or five-loop graph calculation.
+ 
++\clearpage
++\section{Three-dimensional reduction: half-shift determinants and residual two-variable periods}
++\label{app:threeDimensionalReduction}
++
++\subsection{Result and the boundary of the reduction}
++The integer dimension $d=3$ has a further reduction, but not the same square
++factorization as $d=2$.  Its multiplicity $d_\ell=2\ell+1$ produces an
++antisymmetric determinant on two half-integer-offset lattices.  This
++eliminates an entire Fourier-parity sector in favour of ordinary
++hypergeometric values.  The complementary sector is not fixed by that
++identity.  The formulas below evaluate it using a small, explicitly
++specified set of two-variable Horn values.  They contain no parameter
++derivatives, Barnes integrals, or external infinite sums.  They do
++\emph{not} prove that those remaining two-variable functions are finite
++combinations of ordinary ${}_pF_q$'s.
++
++For the real, positive-rational-parameter formulas proved here the counts
++of distinct function evaluations are bounded as follows:
++\begin{center}\small
++\begin{tabular}{@{}lrrrr@{}}\toprule
++Period & Previous total, at most & New two-variable values & New ordinary values & New total\\\midrule
++$Q_3$ &15&1&0&1\\
++$P_4(3)$&20&2&3&5\\
++$P_5(3)$&56&5&18&23\\\bottomrule
++\end{tabular}
++\end{center}
++Gamma factors and finite arithmetic are not counted.  These are upper
++bounds, not independence or minimality statements.  Some fixed complex
++nodes reduce the two-variable counts further, to one for $P_4(3)$ and two
++for $P_5(3)$; that alternative and its parameter tradeoff are stated
++separately below.  The preferred one-dimensional five-value formula and
++the two-dimensional quadratic formulas remain unchanged.
++
++One particularly short new formula is
++\begin{equation}\boxed{
++ Q_3=4\pi^2\mathfrak H_3(0)
++       -\frac{\Gamma(\tfrac14)^{10}}{48\pi^{7/2}}.
++}\label{td:Qanswer}\end{equation}
++Here $Q_3$ means $Q_{d=3}$, not the one-dimensional three-loop coefficient.
++The fixed \emph{two-variable} function $\mathfrak H_3(0)$ is fully specified
++in \eqref{td:Hbase} below.  In particular \eqref{td:Qanswer} is not a
++Gamma-only evaluation of the tetrahedron.
++
++\subsection{Ordinary hypergeometric moments}
++Write $h(x)=\Gamma(x+\tfrac18)/\Gamma(x+\tfrac78)$.  For
++$\omega=\pm1$ and nonnegative integer $m$ define the ordinary function
++\begin{equation}\begin{aligned}
++ \mathfrak U_{r,m}^{(\omega)}(u)={}&
++ u^m h(u)^r\,
++ {}_{r+m+1}F_{r+m}\!\left(
++ \begin{matrix}1,(u+\tfrac18)^{\times r},(u+1)^{\times m}\\
++ (u+\tfrac78)^{\times r},u^{\times m}\end{matrix};\omega\right).
++\end{aligned}\label{td:Udefinition}\end{equation}
++Repeated parameters with multiplicity zero are absent.  Identical fixed
++upper and lower parameters may be cancelled.  Its series is
++$\sum_{n\ge0}\omega^n(n+u)^m h(n+u)^r$.  The required pairs are
++$(r,m)=(3,0),(3,1),(4,0),(4,1),(7,1),(7,3)$; all satisfy
++$3r/4-m>1$, so the displayed ordinary series converge absolutely at both
++arguments $\omega=1$ and $-1$ \cite{DLMF16}.
++
++Use the following finite combination, also entirely in ordinary functions:
++\begin{equation}\boxed{\begin{aligned}
++ \Psi_{r,m}^{(\omega)}(u)={}&
++ \sin^r\!\bigl(\pi(u+\tfrac18)\bigr)
++       \mathfrak U_{r,m}^{(\omega)}(u)\\
++ &+\omega(-1)^m\sin^r\!\bigl(\pi(\tfrac18-u)\bigr)
++       \mathfrak U_{r,m}^{(\omega)}(1-u).
++\end{aligned}}\label{td:Psidefinition}\end{equation}
++In all real formulas below $0<u<1$; all upper and lower parameters of the
++uncancelled ordinary functions are positive rational numbers.  At
++$u=1/8$ the second term vanishes exactly, so its function need not be
++computed.  The symbol $\omega$ is a hypergeometric argument, not the
++physical expansion parameter $\epsilon$.
++
++The finite-mode identities needed here are
++\begin{equation}\boxed{\begin{aligned}
++ \Psi_{3,0}^{(+)}(u)&=\mathfrak a_3\cos\pi u,&
++ \Psi_{3,1}^{(+)}(u)&=\mathfrak b_3\sin\pi u,\\
++ \Psi_{4,0}^{(+)}(u)&=\mathfrak a_4+\mathfrak c_4\cos2\pi u,&
++ \Psi_{4,1}^{(+)}(u)&=\mathfrak b_4\sin2\pi u,\\
++ \Psi_{7,m}^{(-)}(u)&=\sum_{j=1}^3 h_{m,j}\sin(2\pi j u),
++ &&m=1,3.
++\end{aligned}}\label{td:momentModes}\end{equation}
++The coefficient $\mathfrak c_4$ will cancel from every answer.  The useful
++amplitudes have the fixed-value definitions
++\begin{equation}\begin{aligned}
++ \mathfrak a_3&=\frac{\Psi_{3,0}^{(+)}(1/8)}{\cos(\pi/8)},&
++ \mathfrak b_3&=\frac{\Psi_{3,1}^{(+)}(1/8)}{\sin(\pi/8)},\\
++ \mathfrak a_4&=\Psi_{4,0}^{(+)}(1/4),&
++ \mathfrak b_4&=\frac{\Psi_{4,1}^{(+)}(1/8)}{\sin(\pi/4)}.
++\end{aligned}\label{td:wheelAmplitudes}\end{equation}
++For $m=1,3$ let $Y_{m,-}=\Psi_{7,m}^{(-)}(1/8)$,
++$Y_{m,0}=\Psi_{7,m}^{(-)}(1/4)$ and
++$Y_{m,+}=\Psi_{7,m}^{(-)}(3/8)$.  The three coefficients are explicitly
++\begin{equation}\begin{aligned}
++ h_{m,1}&=\frac{Y_{m,0}}2+\frac{Y_{m,-}+Y_{m,+}}{2\sqrt2},\\
++ h_{m,2}&=\frac{Y_{m,-}-Y_{m,+}}2,\\
++ h_{m,3}&=-\frac{Y_{m,0}}2+\frac{Y_{m,-}+Y_{m,+}}{2\sqrt2}.
++\end{aligned}\label{td:hcoefficients}\end{equation}
++This is a finite sine transform on a proved three-mode space, not
++numerical interpolation of an arbitrary function.
++
++\subsubsection{Two Gamma evaluations within the ordinary sector}
++Dixon's sum and the Rogers--Dougall sum \cite[eqs.~16.4.4 and
++16.4.9]{DLMF16} give
++\begin{equation}\boxed{
++ \mathfrak a_3\mathfrak b_3
++   =\frac{\Gamma(\tfrac14)^{10}}{16\sqrt2\,\pi^4},
++ \qquad
++ \mathfrak b_4=\frac{\Gamma(\tfrac14)^6}{16\pi^{5/2}}.
++}\label{td:gammaAmplitudes}\end{equation}
++For clarity the particular sums used in this step are
++\begin{equation}\begin{aligned}
++ {}_3F_2\!\left(\begin{matrix}(\tfrac14)^{\times3}\\1,1\end{matrix};1\right)
++ &=\frac{\Gamma(\tfrac98)\Gamma(\tfrac58)}
++ {\Gamma(\tfrac54)\Gamma(\tfrac78)^2\Gamma(\tfrac34)},\\
++ {}_4F_3\!\left(\begin{matrix}\tfrac98,(\tfrac14)^{\times3}\\
++ \tfrac18,1,1\end{matrix};1\right)
++ &=\frac{\Gamma(\tfrac58)\Gamma(\tfrac18)}
++ {\Gamma(\tfrac54)\Gamma(\tfrac34)\Gamma(\tfrac38)^2},\\
++ {}_5F_4\!\left(\begin{matrix}\tfrac98,(\tfrac14)^{\times4}\\
++ \tfrac18,1,1,1\end{matrix};1\right)
++ &=\frac{\sqrt\pi}{\Gamma(\tfrac54)\Gamma(\tfrac34)^3}.
++\end{aligned}\label{td:DixonDougall}\end{equation}
++For the second identity insert a cancelled pair $5/8$ into the
++Rogers--Dougall ${}_5F_4$, with $a=b=c=1/4$, $d=5/8$.
++For the third take $a=b=c=d=1/4$.  Their convergence conditions hold.
++Substitution into \eqref{td:wheelAmplitudes}, followed by reflection and
++duplication \cite{DLMF5}, proves \eqref{td:gammaAmplitudes}.  Thus the
++Gamma powers in \eqref{td:Qanswer} are analytic evaluations, not PSLQ fits.
++
++\subsection{The remaining two-variable functions and complete sample formulas}
++Use the Horn convention \eqref{fp:HornDefinition}.  Put
++$\boldsymbol e=(1,0)$, $\boldsymbol f=(0,1)$,
++$\boldsymbol c=(1,1)$ and $\boldsymbol v=(1,2)$, and set
++\begin{equation}\begin{aligned}
++ \mathsf U_r(t)=\{&(1,\boldsymbol e),(1,\boldsymbol f),
++ (\tfrac32,\boldsymbol e),
++ (\tfrac34+t,\boldsymbol c)^{\times r},
++ (\tfrac14+t,\boldsymbol f)^{\times r}\},\\
++ \mathsf V_r(t)=\{&(\tfrac12,\boldsymbol e),
++ (\tfrac32+t,\boldsymbol c)^{\times r},
++ (1+t,\boldsymbol f)^{\times r}\}.
++\end{aligned}\label{td:Harrays}\end{equation}
++For $r=3,4$ define the fixed two-variable function
++\begin{equation}\boxed{
++ \mathfrak H_r(t)=\mathfrak H[
++       \mathsf U_r(t);\mathsf V_r(t);(1,1)].
++}\label{td:Hbase}\end{equation}
++For $r=7$ adjoin three upper/lower row pairs:
++\begin{equation}\begin{aligned}
++ x_t&=t+\tfrac58,& y_t&=t+\tfrac18,& v_t&=2t+\tfrac34,\\
++ \mathfrak H_7(t)=\mathfrak H\Big[&
++ \mathsf U_7(t)\cup\{(1+x_t,\boldsymbol c),
++       (1+y_t,\boldsymbol f),(1+v_t,\boldsymbol v)\};\\
++ &\mathsf V_7(t)\cup\{(x_t,\boldsymbol c),
++       (y_t,\boldsymbol f),(v_t,\boldsymbol v)\};(-1,1)\Big].
++\end{aligned}\label{td:Hseven}\end{equation}
++Every row is printed here; there is no unevaluated coefficient-extraction
++instruction.  The two upper rows with parameter $1$ cancel the two
++factorials of the Horn convention.  The ratio
++$(3/2)_\ell/(1/2)_\ell=2\ell+1$ supplies the three-dimensional angular
++multiplicity.  The three additional pairs supply $x$, $y$ and $x+y$.
++All real nodes used below have positive rational rows.
++
++For compact scalar prefactors write
++\begin{equation}\begin{aligned}
++ G_r(t)&=\left[
++ \frac{\Gamma(\tfrac34+t)\Gamma(\tfrac14+t)}
++      {\Gamma(\tfrac32+t)\Gamma(1+t)}\right]^r,\\
++ V_r(t)&=G_r(t)\mathfrak H_r(t),&&r=3,4,\\
++ V_7(t)&=4x_ty_tv_tG_7(t)\mathfrak H_7(t).
++\end{aligned}\label{td:Vfinite}\end{equation}
++The symbol $V_r(t)$ here is local to this appendix; it is not the
++polygamma constant $V$ in the general-dimensional coefficient formula.
++
++Let $\mathsf X_r(t)=\Xi_r(t)|_{q=3/4}$, with $\Xi_r$ as in
++\eqref{fp:periodization}, and define
++\begin{equation}\begin{aligned}
++ t^\dagger&=\tfrac14-t,& f(t)&=-\tfrac12\cos2\pi t,\\
++ D(t)&=\sin\pi t\sin\pi(t+\tfrac34),&
++ T(t)&=\tan\pi(\tfrac34+2t),& z_t&=\tfrac78-t.
++\end{aligned}\label{td:sampleScalars}\end{equation}
++A sample in a wheel is now just
++\begin{equation}\boxed{\begin{aligned}
++ \mathsf X_r(t)={}&f(t)^rV_r(t)+f(t^\dagger)^rV_r(t^\dagger)\\
++ &+2D(t)^r\bigl[
++ \mathfrak U_{r,1}^{(+)}(x_t)\mathfrak U_{r,0}^{(+)}(z_t)
++ +\mathfrak U_{r,0}^{(+)}(x_t)\mathfrak U_{r,1}^{(+)}(z_t)\bigr],
++ \qquad r=3,4.
++\end{aligned}}\label{td:wheelSample}\end{equation}
++The corresponding five-loop sample is
++\begin{equation}\boxed{\begin{aligned}
++ \mathsf X_7(t)=T(t)\Big\{&f(t)^7V_7(t)-f(t^\dagger)^7V_7(t^\dagger)\\
++ &+8D(t)^7\bigl[
++ \mathfrak U_{7,3}^{(-)}(x_t)\mathfrak U_{7,1}^{(-)}(z_t)
++ -\mathfrak U_{7,1}^{(-)}(x_t)\mathfrak U_{7,3}^{(-)}(z_t)\bigr]\Big\}.
++\end{aligned}}\label{td:sevenSample}\end{equation}
++Only fixed ordinary and two-variable functions appear.  In particular
++the middle triangular part of the former spin lattice has factorized
++into ordinary products.  At $t=0$ the left and middle pieces vanish,
++giving the especially simple nonsingular formulas
++\begin{equation}\boxed{\begin{aligned}
++ \mathsf X_3(0)&=-2\sqrt2\,\pi^{3/2}\mathfrak H_3(0),\\
++ \mathsf X_4(0)&=4\pi^2\mathfrak H_4(0),\\
++ \mathsf X_7(0)&=\frac{15\sqrt2}{8}\pi^{7/2}\mathfrak H_7(0).
++\end{aligned}}\label{td:zeroSamples}\end{equation}
++These are values of already regularized functions, not singular
++parameter limits to be taken by the reader.
++
++\subsection{Primitive formulas with only real rational parameters}
++Let $c_8=\cos(\pi/8)$ and $s_8=\sin(\pi/8)$ as before.
++For the four-loop answer use
++\begin{equation}\begin{aligned}
++ X_0&=4\pi^2\mathfrak H_4(0),\\
++ X_h&=\frac1{32}\left[
++ \frac{\Gamma(\tfrac78)\Gamma(\tfrac38)}
++      {\Gamma(\tfrac{13}8)\Gamma(\tfrac98)}\right]^4
++       \mathfrak H_4(\tfrac18)
++       +4s_8^8\mathfrak U_{4,0}^{(+)}(\tfrac34)
++                \mathfrak U_{4,1}^{(+)}(\tfrac34),\\
++ \mathfrak a_4&=c_8^4\mathfrak U_{4,0}^{(+)}(\tfrac14)
++               +s_8^4\mathfrak U_{4,0}^{(+)}(\tfrac34),&
++ \mathfrak b_4&=\frac{\Gamma(\tfrac14)^6}{16\pi^{5/2}}.
++\end{aligned}\label{td:P4data}\end{equation}
++Here $X_0=\mathsf X_4(0)$ and $X_h=\mathsf X_4(1/8)$; they are not the
++one-dimensional $X_0,X_+,X_-$ of Appendix~\ref{app:generalPeriodization}.
++The answer is
++\begin{equation}\boxed{
++ P_4(3)=2\pi X_0-10\pi X_h
++            +(14\sqrt2-20)\pi\mathfrak a_4\mathfrak b_4.
++}\label{td:P4answer}\end{equation}
++This uses two $\mathfrak H_4$ values, two ordinary ${}_5F_4(1)$ values,
++and one ordinary ${}_6F_5(1)$ value, plus Gamma factors.  No claim that
++the two $\mathfrak H_4$ values have become ordinary functions is intended.
++
++For $P_5(3)$ form the two ordinary-product constants
++\begin{equation}\begin{aligned}
++ \alpha&=h_{3,2}h_{1,1}-h_{3,1}h_{1,2},\\
++ \beta&=h_{3,2}h_{1,3}-h_{3,3}h_{1,2},\\
++ \theta(t)&=2\pi(t+\tfrac38),\qquad w(t)=\cos\theta(t),\\
++ \mathcal O(t)&=16w(t)\bigl(1-w(t)^2\bigr)
++             \bigl[-\alpha-3\beta+4\beta w(t)^2\bigr].
++\end{aligned}\label{td:oddSeven}\end{equation}
++All $h_{m,j}$ were given by the finite ordinary evaluations
++\eqref{td:hcoefficients}.  Use three regularized samples
++\begin{equation}\begin{aligned}
++ t_0&=0,&t_+&=\tfrac1{16},&t_-&=-\tfrac1{16},\\
++ u_0&=0,&u_+&=\tfrac1{\sqrt2},&u_-&=-\tfrac1{\sqrt2},\\
++ E_j&=\frac{\mathsf X_7(t_j)-\mathcal O(t_j)}{1-u_j},
++ &&j=0,+,-.
++\end{aligned}\label{td:sevenE}\end{equation}
++Equations \eqref{td:sevenSample} and \eqref{td:zeroSamples} specify each
++sample without derivatives.  The result is
++\begin{equation}\boxed{\begin{aligned}
++ P_5(3)={}&4\sqrt2\,\pi^{3/2}
++ \left[-35E_0+
++ \left(22+\frac{13}{\sqrt2}\right)E_+
++ +\left(22-\frac{13}{\sqrt2}\right)E_-\right]\\
++ &-448\pi^{3/2}(2\beta-\alpha).
++\end{aligned}}\label{td:P5answer}\end{equation}
++The only two-variable values are
++\begin{equation}
++ \mathfrak H_7(0),\quad\mathfrak H_7(\tfrac1{16}),\quad
++ \mathfrak H_7(-\tfrac1{16}),\quad
++ \mathfrak H_7(\tfrac3{16}),\quad
++ \mathfrak H_7(\tfrac5{16}).
++ \label{td:fiveHornNodes}
++\end{equation}
++All their uncancelled parameters are positive rational, and their
++arguments are $(-1,1)$.  The ten ordinary values for $h_{1,j},h_{3,j}$
++use $u=1/8,1/4,3/4,3/8,5/8$ and $m=1,3$.  Eight further ordinary values
++in the two middle determinants use $u=9/16,11/16,13/16,15/16$ and $m=1,3$.
++This accounts for the eighteen ordinary values in the count table.
++The excess of every one of these ordinary series is $17/4-m>0$.
++
++\subsection{Proof of the dimension-three determinant}
++\subsubsection{The half-offset lattice, not a dimension-two square}
++At $q=3/4$ set $k=\ell+n$, $j=n$ in the bilateral proof
++representation, and put
++\[
++ x=k+t+5/8,\qquad y=j+t+1/8,\qquad u=t+1/8.
++\]
++Gamma reflection gives, as a meromorphic identity,
++\begin{equation}
++ g_\ell(a_\ell+n+t)
++   =-\frac{\sin\pi(3/4-t)}{\sin\pi t}\,h(x)h(y),
++ \qquad d_\ell=2\ell+1=2(x-y).
++ \label{td:latticeKernel}
++\end{equation}
++Here $k\ge j$, with both indices otherwise bilateral.  The two sequences
++are $h(k+u+1/2)$ and $h(j+u)$; unlike $d=2$, they are not the same
++sequence on the same integer lattice.
++
++The five-loop Gamma measure becomes elementary:
++\begin{equation}\boxed{
++ \frac{\Gamma(\tfrac12+v)\Gamma(\tfrac12-v)}
++      {\Gamma(v)\Gamma(-v)}=-v\tan\pi v.
++}\label{td:elementaryMeasure}\end{equation}
++This follows directly from the two reflection formulas in
++\cite{DLMF5}.  At a sampled pole-family shift $v=2s=x+y$,
++\[
++ (\ell+\tfrac12)^2-v^2=-4xy,
++ \qquad (-1)^\ell=(-1)^{k-j}.
++\]
++Multiplying by $d_\ell$ gives the polynomial
++$8xy(x^2-y^2)$ times the common tangent $T(t)$ and the alternating
++sign.  Splitting the bilateral lattice into its two infinite tails and
++its middle part now proves \eqref{td:wheelSample}--\eqref{td:sevenSample}.
++For example the middle part has $\ell=j+k+1$, $j,k\ge0$, and
++$x=k+t+5/8$, $y=j+7/8-t$.  Its weight is $2(x+y)$ in a wheel and the
++rank-two polynomial $8(x^3y-xy^3)T(t)$ in the primitive.  These separate
++into the displayed ordinary products.
++
++\subsubsection{Completing only the antisymmetric half}
++A shift $t\mapsto t+1/2$ interchanges the two lattices.  In a wheel the
++factor $x-y$ changes sign.  In the primitive the extra alternating sign
++also changes sign.  After reindexing the two complementary half-planes,
++the full-square sums factor into determinants.  The result is
++\begin{equation}\begin{aligned}
++ &\mathsf X_r(t)-(-1)^r\mathsf X_r(t+\tfrac12)\\
++ &\quad=2(-1)^r\bigl[
++ \Psi_{r,1}^{(+)}(u+\tfrac12)\Psi_{r,0}^{(+)}(u)
++ -\Psi_{r,0}^{(+)}(u+\tfrac12)\Psi_{r,1}^{(+)}(u)\bigr],
++ \quad r=3,4,\\[1mm]
++ &\mathsf X_7(t)-\mathsf X_7(t+\tfrac12)\\
++ &\quad=-8T(t)\bigl[
++ \Psi_{7,3}^{(-)}(u+\tfrac12)\Psi_{7,1}^{(-)}(u)
++ -\Psi_{7,1}^{(-)}(u+\tfrac12)\Psi_{7,3}^{(-)}(u)\bigr].
++\end{aligned}\label{td:determinants}\end{equation}
++The factors are obtained from
++$\sin\pi(t+1/4)\sin\pi(t+3/4)=\cos(2\pi t)/2$.
++All moments involved obey $3r/4-m>1$, so the product sums used in the
++reindexing are absolutely convergent.  The formulas extend across
++removable trigonometric singularities by equality of the complete
++meromorphic expressions, not by discarding a pole family.
++
++For the proof of the finite modes, reflection gives
++\[
++ h(-x)=\frac{\sin\pi(x+1/8)}{\sin\pi(1/8-x)}h(x).
++\]
++It turns \eqref{td:Psidefinition} into the regularized bilateral moment
++$\sin^r\pi(u+1/8)\sum_{n\in\mathbb Z}\omega^n(n+u)^m h(n+u)^r$.
++This proof representation has all poles cancelled, and satisfies
++\begin{equation}\begin{aligned}
++ \Psi(u+1)&=(-1)^r\omega\Psi(u),&
++ \Psi(-u)&=(-1)^m\Psi(u),\\
++ |\Psi(x+\ii y)|&=O\!\left(e^{r\pi|y|}|y|^{m+1-3r/4}\right)
++ &&(|y|\to\infty).
++\end{aligned}\label{td:momentGrowth}\end{equation}
++The growth estimate follows from centered Gamma-ratio asymptotics and
++absolute integral comparison \cite{DLMFStirling}.  Periodicity or
++antiperiodicity supplies integer or half-integer Fourier frequencies.
++Vertical contour translation excludes their boundary frequencies when
++$m+1-3r/4<0$.  Reflection then leaves exactly the modes in
++\eqref{td:momentModes}.  This proves finite-dimensionality, rather than
++assuming it from a few samples.
++
++Substituting those modes in \eqref{td:determinants} yields
++\begin{equation}\boxed{\begin{aligned}
++ \mathsf X_3(t)+\mathsf X_3(t+\tfrac12)
++       &=-2\mathfrak a_3\mathfrak b_3,\\
++ \mathsf X_4(t)-\mathsf X_4(t+\tfrac12)
++       &=4\mathfrak a_4\mathfrak b_4\cos\theta(t),\\
++ \mathsf X_7(t)-\mathsf X_7(t+\tfrac12)
++       &=2\mathcal O(t).
++\end{aligned}}\label{td:projectedAnswer}\end{equation}
++In the cosine convention \eqref{fp:finiteFourier}, the first two lines
++prove $c_{3,2}=0$, $c_{3,0}=-\mathfrak a_3\mathfrak b_3$,
++$c_{4,3}=0$, and $c_{4,1}=2\mathfrak a_4\mathfrak b_4$.
++The last line fixes
++\begin{equation}
++ c_{7,1}=-4\alpha-4\beta,\qquad
++ c_{7,3}=4\alpha+8\beta,\qquad c_{7,5}=-4\beta.
++ \label{td:sevenOddCoefficients}
++\end{equation}
++These are the precise additional restrictions special to three dimensions.
++
++\subsubsection{Finite residue algebra and the remaining even polynomial}
++For a self-contained normalization check, the weights
++$B_{r,k}/\pi^{r-1}$ in \eqref{fp:finiteFunctional} at $q=3/4$ are
++\begin{equation}\begin{aligned}
++ r=3:&\quad(8,-6\sqrt2,12),\\
++ r=4:&\quad(32,-24\sqrt2,40,-40\sqrt2),\\
++ r=7:&\quad(2624,-1904\sqrt2,2912,-2352\sqrt2,
++             4032,-3696\sqrt2,7392).
++\end{aligned}\label{td:residueWeights}\end{equation}
++Together with
++$Q_3=\Gamma(3/2)^3\mathcal E_3/3$,
++$P_4(3)=\Gamma(3/2)^4\mathcal E_4$, and
++$P_5(3)=\Gamma(3/2)^5\mathcal E_7/2$, these weights give
++\eqref{td:Qanswer} and \eqref{td:P4answer} immediately.  The clockwise
++right closure supplies the minus sign in $\mathcal E_r$.
++
++For $r=7$ there are also exact zeros
++\begin{equation}
++ \mathsf X_7(\tfrac18)=\mathsf X_7(\tfrac58)=0.
++ \label{td:sevenZeros}
++\end{equation}
++Indeed $v=\ell+3/4+2n+2t$ is an integer at either point, and the
++measure in \eqref{td:elementaryMeasure} vanishes.  No Gamma pole of
++$g_\ell$ occurs there.  The termwise vanishing is legitimate in the
++absolutely convergent regularized sum.  Hence the even part is exactly
++\begin{equation}
++ \mathsf X_7(t)-\mathcal O(t)
++  =(1-u)\bigl(p_0+p_1u+p_2u^2\bigr),\qquad
++ u=\cos(4\pi(t+3/8)).
++ \label{td:evenPolynomial}
++\end{equation}
++The even-mode contribution to the $r=7$ residue weight is
++$-32(9p_0+13p_1+22p_2)$; the odd contribution is
++$1792\sqrt2(2\beta-\alpha)$.  For every quadratic polynomial $p$,
++\begin{equation}
++ 9p_0+13p_1+22p_2
++ =-35p(0)+\left(22+\frac{13}{\sqrt2}\right)p(1/\sqrt2)
++           +\left(22-\frac{13}{\sqrt2}\right)p(-1/\sqrt2).
++ \label{td:quadraticRule}
++\end{equation}
++This is verified by comparing three coefficients.  It proves
++\eqref{td:P5answer} without a derivative, infinitesimal step, or numerical
++interpolation error.
++
++Crucially, \eqref{td:projectedAnswer} does not determine the complementary
++parity sector.  It leaves one coefficient for $r=3$, two for $r=4$, and
++three for the even $r=7$ polynomial.  Equations \eqref{td:Hbase} and
++\eqref{td:Hseven} evaluate that remaining information.  This explains
++why the dimension-two square proof cannot simply be repeated with the
++replacement $d_\ell=2\ell+1$.  It does not prove that some different
++identity could never reduce the residual Horn values further.
++
++\subsection{Optional fewer-value version with fixed complex parameters}
++The real rational formulas above are the preferred presentation when
++parameter simplicity matters.  For completeness two exact finite-node
++identities give smaller \emph{two-variable} counts.  Define
++\begin{equation}\begin{aligned}
++ t_4^*&=-\tfrac38+\frac{\ii\log2}{4\pi},\\
++ t_7^*&=-\tfrac38+\frac{\ii}{4\pi}\operatorname{arcosh}(22/13),\qquad
++ E_0^*=\mathsf X_7(0)-\mathcal O(0),\qquad
++ E_*^*=\mathsf X_7(t_7^*)-\mathcal O(t_7^*).
++\end{aligned}\label{td:complexNodes}\end{equation}
++Then
++\begin{equation}\boxed{\begin{aligned}
++ P_4(3)&=8\pi\left[3\sqrt2\,\mathfrak a_4\mathfrak b_4
++                                  -\mathsf X_4(t_4^*)\right],\\
++ P_5(3)&=\frac{2\sqrt2\,\pi^{3/2}}{11}
++        \left[29E_0^*-\frac{2197}{9}E_*^*\right]
++                   -448\pi^{3/2}(2\beta-\alpha).
++\end{aligned}}\label{td:complexAnswers}\end{equation}
++The samples are real on this complex reflection axis.  The first formula
++uses $\cos(4\pi(t_4^*+3/8))=5/4$.  The second follows from
++$9p_0+13p_1+22p_2=(29/22)p(0)+(169/22)p(22/13)$ and
++$1-22/13=-9/13$.
++
++To verify that a sample on this axis really requires only one Horn value,
++let $t=-3/8+\ii\sigma$, $\sigma>0$.  Then $t^\dagger=1+\bar t$.
++The exact index shift is
++\begin{equation}\begin{aligned}
++ V_r(t+1)&=V_r(t)-B_r(t),\\
++ B_r(t)&=2h(y_t)^r\left[
++          \mathfrak U_{r,1}^{(+)}(x_t)
++             -y_t\mathfrak U_{r,0}^{(+)}(x_t)\right],&&r=3,4,\\
++ B_7(t)&=8h(y_t)^7\left[
++ y_t\mathfrak U_{7,3}^{(-)}(x_t)
++             -y_t^3\mathfrak U_{7,1}^{(-)}(x_t)\right].
++\end{aligned}\label{td:boundaryShift}\end{equation}
++Consequently $V_r(t^\dagger)=\overline{V_r(t)-B_r(t)}$.
++The other ordinary factors reduce using
++$\mathfrak U_{r,m}^{(\omega)}(u+1)
++=\omega[\mathfrak U_{r,m}^{(\omega)}(u)-u^mh(u)^r]$.
++This proves the claimed one/two-Horn counts without concealing a second
++complex Horn call.  The nodes are fixed constants, not regulators.
++They do introduce fixed complex parameters, some with negative real part;
++there are no denominator poles at the stated nodes.  No minimality claim
++is made for this variant.
++
++\subsection{Numerical verification and implications for the coefficients}
++The three new evaluations begin
++\begin{equation}\begin{aligned}
++ Q_3&=5.01710256455385536959085484569018369956\ldots,\\
++ P_4(3)&=62.05832794340667246646338858409673691827\ldots,\\
++ P_5(3)&=240.34031775908354981636654638800359825615\ldots.
++\end{aligned}\label{td:numerics}\end{equation}
++Formula-side runs used 55 and 90 decimal working digits and changed both
++the truncation point and the asymptotic-tail order.  Their results have
++more than 49 common decimal digits.  Separately, 75-digit off-grid checks
++verified the half-shift determinants, the mode restrictions, and the
++complex-node formulas.  The numerical tail acceleration is based on the
++Gamma-ratio Stirling expansion and Hurwitz zeta; it is not an interval
++bound and does not constitute a proof by fitting.
++
++Fresh real-axis Gamma-kernel calculations were also performed, without
++reading the stored primitive values as inputs.  The wheel spin tail was
++computed from analytically integrated centered-Stirling coefficients,
++not from a fit to the new answer.  For reproducibility, with
++$\alpha=3r/4$, define $e_0=1$ and
++\begin{equation}\begin{aligned}
++ \lambda_j&=-\frac{rB_{2j+1}(1/8)}{j(2j+1)},&
++ e_j&=\frac1j\sum_{k=1}^j k\lambda_k e_{j-k},\\
++ A_{r,h}&=2\Gamma(3/2)^r\Gamma(2\alpha+2h-1)
++ \sum_{j=0}^h\frac{e_j e_{h-j}}
++ {\Gamma(\alpha+2j)\Gamma(\alpha+2h-2j)}.
++\end{aligned}\label{td:analyticWheelTail}\end{equation}
++After the first $L$ spins, its numerical asymptotic tail is
++$\sum_{h=0}^{H}A_{r,h}\zeta(2\alpha-2+2h,L+1/2)$.
++This is a finite \emph{numerical} acceleration, not an extra operation in
++\eqref{td:Qanswer} or \eqref{td:P4answer}.  The five-loop real-axis kernel
++was checked with a separately accelerated alternating spin sum.
++For the 60-digit real-axis run, the new formula minus the independent
++kernel evaluation was approximately $-1.47\times10^{-51}$ for $Q_3$,
++$-1.53\times10^{-52}$ for $P_4(3)$, and $-2.41\times10^{-53}$ for
++$P_5(3)$.  The largest 75-digit off-grid determinant residual was
++$2.42\times10^{-67}$; the complex-node $P_5$ formula differed from the
++real-node formula by $2.75\times10^{-65}$.  These are observed residuals,
++not bounds.  Twenty-five exact symbolic checks and 288 rational
++Horn-coefficient comparisons passed.  Six literal ordinary-hypergeometric
++checks at 40 working digits agreed with the separate tail evaluator
++within $2.06\times10^{-38}$.
++
++Full numerical records and settings are supplied
++in \texttt{verification/general\_d3/}.  These are master-level checks,
++not a new three-dimensional full-graph calculation or a rigorous enclosure.
++
++The polygamma constants in the physical coefficient formulas specialize to
++\begin{equation}\begin{aligned}
++ A_3&=2+4\log2-\pi,&R_3&=\frac{\pi^2}{3}-4,\\
++ U_3&=2\pi^3-56\zeta(3),&V_3&=16-16\zeta(3),\\
++ X_3&=\frac{14\pi^4}{15}-96.
++\end{aligned}\label{td:physicalDictionary}\end{equation}
++For direct use, the coefficients through fourth order read
++\begin{equation}\boxed{\begin{gathered}
++ C_0(3)=\tfrac32,\qquad C_1(3)=-\tfrac16,\qquad C_2(3)=A_3/9,\\
++ 108C_3(3)=A_3^2+\tfrac{\pi^2}{3}-4-8Q_3,\\
++ \begin{aligned}
++ 648C_4(3)={}&16P_4(3)-A_3^3-8A_3Q_3-A_3\pi^2+12A_3\\
++             &+53\pi^3-1436\zeta(3)-48.
++ \end{aligned}
++\end{gathered}}\label{td:C0C4}\end{equation}
++Here \eqref{td:Qanswer} and \eqref{td:P4answer} supply the periods.
++The resulting $C_4(3)$ is $1.22806354532762307997\ldots$.
++This is a reevaluation of the existing coefficient formula, not a fresh
++four-loop full-graph integration.
++
++The special values in \eqref{td:physicalDictionary}
++follow from reflection, recurrence and the integer/half-integer
++polygamma values \cite{DLMFPolygamma,DLMFDigamma}.  Insert
++\eqref{td:Qanswer}, \eqref{td:P4answer} and \eqref{td:P5answer} into
++\eqref{gs:C0C4} and \eqref{fp:C5target}; none of their assembly
++coefficients changes.  The nonprimitive combination
++$\mathcal N_3=\mathcal K_3+3\mathcal L_3/8-149Z_3/32$ keeps its
++previous specified representation.  In particular this appendix must
++not be read as a completed ordinary-${}_pF_q$ reduction of the full
++$C_5(3)$.
++
++\paragraph{Reproduction.}
++From the source-package root run
++\begin{lstlisting}
++python code/general_d3/check_exact.py
++python code/general_d3/verify_d3.py
++python code/general_d3/check_spectral.py
++\end{lstlisting}
++The first command checks the finite residue algebra, polynomial
++identities and rational Horn coefficients.  The second independently
++recomputes the formula-side values and mode checks.  The third uses the
++real-axis Gamma kernels.  Complete positive-rational parameter arrays
++for the eight residual real-node Horn values are supplied in
++\texttt{verification/general\_d3/horn\_arrays.json}.
++
++\clearpage
+ \section{Provenance and limits of the consolidation}\label{app:provenance}
+-The latest reduction is Appendix~\ref{app:generalPeriodization}: finite
++The latest addition is Appendix~\ref{app:threeDimensionalReduction}:
++dimension-three half-shift determinant identities, Gamma amplitude
++summations, and finite positive-rational Horn/ordinary formulas, with
++fixed-complex-node alternatives.  The new checks compare these formulas
++with fresh Gamma kernels and verify their finite algebra and literal
++parameter rows.  They are not a new full-graph check.  The ordinary
++one-variable reduction is still incomplete, even for the primitive
++three-dimensional sector, and no three-dimensional nonprimitive master
++was newly evaluated in this revision.
++
++The preceding reduction is Appendix~\ref{app:generalPeriodization}: finite
+ Fourier sampling reduces the primitive sector to at most two-variable
+ functions and proves exact quadratic two-dimensional factorizations in
+ the retained one-dimensional ordinary hypergeometric values. This does

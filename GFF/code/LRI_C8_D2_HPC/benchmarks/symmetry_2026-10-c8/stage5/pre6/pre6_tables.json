@@ -1,0 +1,506 @@
+{
+ "schema": "c8-d2-pre6-tables-1",
+ "rule": "Before the Stage-6 inspection (Mac, seconds): the F11 fix on J-DES-5's four freezes and the refined cost table with\nsymmetry's own dd+mp256 factors.\n\n  pre6_tables.py --package PKG --out FILE.json [--markdown FILE.md]\n\nInputs (all committed records):\n  benchmarks/symmetry_2026-10-c8/stage5/des5/s5des5.570114.0/design_<T>.json, design_meta_<T>.json: J-DES-5's four\n      test-only freezes on symmetry's J-SWEEP-2 (every stratum's V1, C1 and s, the replicates r, eta_node 0.306 of the\n      sweep, the target SE);\n  benchmarks/symmetry_2026-10-c8/stage5/des5/aperf4.json: the lane eta_node 0.915 (J-SMK-4), Expanse's per-(sector, L)\n      re-costing ratio of each bundle (base counts x kappa_Expanse / kappa_symmetry; the base counts do not depend on\n      the split into r and s, so the ratio holds for the F11-fixed design too) and the Expanse-measured profile factors\n      k (Stage-4c gate, dd+mp256+exp1, Expanse job 54673902);\n  benchmarks/symmetry_2026-10-c8/stage5/close/clflag.570210.0/jflag_dd+mp256/numerics_flags.json: the dd+mp256 J-FLAG\n      gate of the exact dd+mp256 build on symmetry (job 570210): symmetry's own k per (sector, L) by the rule of\n      benchmarks/expanse_2026-10-c8/stage4c/gate/scripts/aflag7_table.py speedups() (F4 per sector at L8, F2's pooled\n      task seconds at L <= 7);\n  tools/design.py of PKG (its sha256 is recorded): optimize() with the F11-fixed split().\n\n1. F11: for each target, optimize() of the frozen strata (V1, C1) at the frozen target with (a) the Stage-5 rule (r from\n   the LARGEST multiplier of each (sector, L), reimplemented here) must reproduce the frozen r and s exactly, and (b)\n   the package's current rule (r from the SMALLEST multiplier). Only 1e-3 changes: the free L8 group goes from r = 128\n   to r = 32 and the primitives take s = 8.\n2. The cost table per design (Stage-5 freeze and F11-fixed): allocated core-hours sum_k r s C1 / 3600 at the sweep's\n   eta_node (the freeze), at the lane eta_node (symmetry: x eta_sweep / eta_lane), Expanse (x the bundle's ratio per\n   (sector, L)), the continuous Neyman bound, and dd+mp256 per site: each stratum's core-hours divided by k, with\n   symmetry's own k (gate 570210) on symmetry and Expanse's k on Expanse; the allocation is kept (A-FLAG-7's \"same\n   allocation\" rule; route (b) re-costs and so can only do better). sigma^2 is still the sweep's projection (2 x 512\n   points per graph), with the margin 1.5, until the pilot measures it.\n3. A-PERF-5's dd+mp256 column on symmetry (benchmarks/symmetry_2026-10-c8/stage5/close/aperf5.json): the final default\n   binary's factor over Stage 3 on symmetry times symmetry's own k (gate 570210), in place of Expanse's k.\n",
+ "design_py_sha256": "33db74b14b9c1e489350c97bf6cb405fa9fb1558eb37cb564ed1f9706e9b5ae4",
+ "gate_570210_sha256": "99e4290754919113aa93972fbca1a58d8883c849984f30613e86313e5c742c5e",
+ "k_symmetry_dd_mp256": {
+  "free_L3": 0.896662032650647,
+  "free_L4": 1.093254174261488,
+  "free_L5": 1.0797511209735695,
+  "free_L6": 1.020460073530651,
+  "free_L7": 2.7275413334600938,
+  "free_L8": 2.4852049894626442,
+  "power_L3": 1.2282975652651318,
+  "power_L4": 1.32245547400225,
+  "power_L5": 2.3933466464213464,
+  "power_L6": 3.1597834936479194,
+  "power_L7": 3.3440056727655576,
+  "power_L8": 2.644063769219165
+ },
+ "k_expanse_dd_mp256": {
+  "free_L3": 0.9554467549464382,
+  "free_L4": 1.0200256722091443,
+  "free_L5": 1.029955122698493,
+  "free_L6": 1.0185836633673135,
+  "free_L7": 2.3698384330389266,
+  "free_L8": 2.1129911923729887,
+  "power_L3": 1.1668446782201907,
+  "power_L4": 1.5540427310074645,
+  "power_L5": 2.3603362961152836,
+  "power_L6": 2.9150189993942135,
+  "power_L7": 3.0027787565001374,
+  "power_L8": 2.303966405898919
+ },
+ "eta_lane": 0.9146050173698389,
+ "eta_sweep": 0.3063259633746171,
+ "targets": {
+  "1e-3": {
+   "target_se": 46.0,
+   "continuous_literal_core_hours": 3974.4351988951,
+   "continuous_symmetry_core_hours": 1331.1458695827598,
+   "stage5_freeze": {
+    "predicted_se_total": 32.63060551890395,
+    "literal_core_hours": 11832.406576377238,
+    "symmetry_core_hours": 3962.993067731273,
+    "expanse_su": 3748.47261761559,
+    "dd_mp256_symmetry_own_k": 1581.3461737907944,
+    "dd_mp256_symmetry_expanse_k": 1850.8628151108278,
+    "dd_mp256_expanse": 1750.6214079662689,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 32,
+     "power_L8": 32,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 32,
+     "free_L4": 32,
+     "free_L5": 16,
+     "free_L6": 8,
+     "free_L7": 2,
+     "free_L8": 1,
+     "free_L8_primitive": 1,
+     "power_L3": 1,
+     "power_L4": 2,
+     "power_L5": 2,
+     "power_L6": 1,
+     "power_L7": 2,
+     "power_L8": 1
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39902824626843986,
+    "ratio_dd_mp256_expanse": 0.4670225946801346,
+    "over_continuous": 2.9771290722431876
+   },
+   "f11_fixed": {
+    "predicted_se_total": 44.214137044225424,
+    "literal_core_hours": 5188.008233971368,
+    "symmetry_core_hours": 1737.6043101500848,
+    "expanse_su": 1639.916060914656,
+    "dd_mp256_symmetry_own_k": 678.062942964057,
+    "dd_mp256_symmetry_expanse_k": 785.9583896037648,
+    "dd_mp256_expanse": 742.0510843804946,
+    "r": {
+     "free_L8": 32,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 32,
+     "power_L8": 32,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 32,
+     "free_L4": 32,
+     "free_L5": 32,
+     "free_L6": 8,
+     "free_L7": 4,
+     "free_L8": 1,
+     "free_L8_primitive": 8,
+     "power_L3": 2,
+     "power_L4": 4,
+     "power_L5": 4,
+     "power_L6": 1,
+     "power_L7": 2,
+     "power_L8": 1
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39022862627768784,
+    "ratio_dd_mp256_expanse": 0.45249333308353523,
+    "over_continuous": 1.3053447784011283
+   },
+   "changed": {
+    "r": {
+     "free_L8": [
+      128,
+      32
+     ]
+    },
+    "s": {
+     "free_L5": [
+      16,
+      32
+     ],
+     "free_L7": [
+      2,
+      4
+     ],
+     "free_L8_primitive": [
+      1,
+      8
+     ],
+     "power_L3": [
+      1,
+      2
+     ],
+     "power_L4": [
+      2,
+      4
+     ],
+     "power_L5": [
+      2,
+      4
+     ]
+    }
+   }
+  },
+  "5e-4": {
+   "target_se": 23.0,
+   "continuous_literal_core_hours": 15897.7407955804,
+   "continuous_symmetry_core_hours": 5324.583478331039,
+   "stage5_freeze": {
+    "predicted_se_total": 22.613937192205945,
+    "literal_core_hours": 17483.503011108933,
+    "symmetry_core_hours": 5855.698144366616,
+    "expanse_su": 5487.225092733347,
+    "dd_mp256_symmetry_own_k": 2298.222765075877,
+    "dd_mp256_symmetry_expanse_k": 2668.6881337982427,
+    "dd_mp256_expanse": 2502.7291690562065,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 32,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 128,
+     "free_L4": 128,
+     "free_L5": 128,
+     "free_L6": 32,
+     "free_L7": 16,
+     "free_L8": 1,
+     "free_L8_primitive": 8,
+     "power_L3": 8,
+     "power_L4": 16,
+     "power_L5": 16,
+     "power_L6": 4,
+     "power_L7": 2,
+     "power_L8": 1
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39247630400601274,
+    "ratio_dd_mp256_expanse": 0.45610105777700544,
+    "over_continuous": 1.0997476456509707
+   },
+   "f11_fixed": {
+    "predicted_se_total": 22.613937192205945,
+    "literal_core_hours": 17483.503011108933,
+    "symmetry_core_hours": 5855.698144366616,
+    "expanse_su": 5487.225092733347,
+    "dd_mp256_symmetry_own_k": 2298.222765075877,
+    "dd_mp256_symmetry_expanse_k": 2668.6881337982427,
+    "dd_mp256_expanse": 2502.7291690562065,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 32,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 128,
+     "free_L4": 128,
+     "free_L5": 128,
+     "free_L6": 32,
+     "free_L7": 16,
+     "free_L8": 1,
+     "free_L8_primitive": 8,
+     "power_L3": 8,
+     "power_L4": 16,
+     "power_L5": 16,
+     "power_L6": 4,
+     "power_L7": 2,
+     "power_L8": 1
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39247630400601274,
+    "ratio_dd_mp256_expanse": 0.45610105777700544,
+    "over_continuous": 1.0997476456509707
+   },
+   "changed": {
+    "r": {},
+    "s": {}
+   }
+  },
+  "2.5e-4": {
+   "target_se": 11.5,
+   "continuous_literal_core_hours": 63590.9631823216,
+   "continuous_symmetry_core_hours": 21298.333913324157,
+   "stage5_freeze": {
+    "predicted_se_total": 11.306968596102973,
+    "literal_core_hours": 69934.01204443573,
+    "symmetry_core_hours": 23422.792577466465,
+    "expanse_su": 21948.90037093339,
+    "dd_mp256_symmetry_own_k": 9192.891060303507,
+    "dd_mp256_symmetry_expanse_k": 10674.75253519297,
+    "dd_mp256_expanse": 10010.916676224826,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 64,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 512,
+     "free_L4": 512,
+     "free_L5": 512,
+     "free_L6": 128,
+     "free_L7": 64,
+     "free_L8": 4,
+     "free_L8_primitive": 32,
+     "power_L3": 32,
+     "power_L4": 64,
+     "power_L5": 64,
+     "power_L6": 16,
+     "power_L7": 8,
+     "power_L8": 2
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39247630400601274,
+    "ratio_dd_mp256_expanse": 0.45610105777700544,
+    "over_continuous": 1.0997476456509707
+   },
+   "f11_fixed": {
+    "predicted_se_total": 11.306968596102973,
+    "literal_core_hours": 69934.01204443573,
+    "symmetry_core_hours": 23422.792577466465,
+    "expanse_su": 21948.90037093339,
+    "dd_mp256_symmetry_own_k": 9192.891060303507,
+    "dd_mp256_symmetry_expanse_k": 10674.75253519297,
+    "dd_mp256_expanse": 10010.916676224826,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 64,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 512,
+     "free_L4": 512,
+     "free_L5": 512,
+     "free_L6": 128,
+     "free_L7": 64,
+     "free_L8": 4,
+     "free_L8_primitive": 32,
+     "power_L3": 32,
+     "power_L4": 64,
+     "power_L5": 64,
+     "power_L6": 16,
+     "power_L7": 8,
+     "power_L8": 2
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39247630400601274,
+    "ratio_dd_mp256_expanse": 0.45610105777700544,
+    "over_continuous": 1.0997476456509707
+   },
+   "changed": {
+    "r": {},
+    "s": {}
+   }
+  },
+  "1.35e-4": {
+   "target_se": 6.21,
+   "continuous_literal_core_hours": 218076.00542634298,
+   "continuous_symmetry_core_hours": 73039.5538865712,
+   "stage5_freeze": {
+    "predicted_se_total": 6.08291470702871,
+    "literal_core_hours": 228776.4151025081,
+    "symmetry_core_hours": 76623.41056820241,
+    "expanse_su": 72124.5298039738,
+    "dd_mp256_symmetry_own_k": 30502.599755930027,
+    "dd_mp256_symmetry_expanse_k": 35505.32875466925,
+    "dd_mp256_expanse": 33435.19643625909,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 128,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 1024,
+     "free_L4": 2048,
+     "free_L5": 1024,
+     "free_L6": 512,
+     "free_L7": 128,
+     "free_L8": 16,
+     "free_L8_primitive": 64,
+     "power_L3": 64,
+     "power_L4": 128,
+     "power_L5": 128,
+     "power_L6": 64,
+     "power_L7": 16,
+     "power_L8": 4
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39808460012073854,
+    "ratio_dd_mp256_expanse": 0.4635759363302904,
+    "over_continuous": 1.0490673407890319
+   },
+   "f11_fixed": {
+    "predicted_se_total": 6.08291470702871,
+    "literal_core_hours": 228776.4151025081,
+    "symmetry_core_hours": 76623.41056820241,
+    "expanse_su": 72124.5298039738,
+    "dd_mp256_symmetry_own_k": 30502.599755930027,
+    "dd_mp256_symmetry_expanse_k": 35505.32875466925,
+    "dd_mp256_expanse": 33435.19643625909,
+    "r": {
+     "free_L8": 128,
+     "free_L3": 128,
+     "free_L4": 128,
+     "power_L4": 128,
+     "free_L5": 128,
+     "power_L6": 128,
+     "power_L5": 128,
+     "power_L7": 128,
+     "power_L8": 128,
+     "free_L7": 128,
+     "free_L6": 128,
+     "power_L3": 128
+    },
+    "s": {
+     "free_L3": 1024,
+     "free_L4": 2048,
+     "free_L5": 1024,
+     "free_L6": 512,
+     "free_L7": 128,
+     "free_L8": 16,
+     "free_L8_primitive": 64,
+     "power_L3": 64,
+     "power_L4": 128,
+     "power_L5": 128,
+     "power_L6": 64,
+     "power_L7": 16,
+     "power_L8": 4
+    },
+    "ratio_dd_mp256_symmetry_own_k": 0.39808460012073854,
+    "ratio_dd_mp256_expanse": 0.4635759363302904,
+    "over_continuous": 1.0490673407890319
+   },
+   "changed": {
+    "r": {},
+    "s": {}
+   }
+  }
+ },
+ "aperf5_dd_mp256_symmetry": {
+  "free_L3": {
+   "default_symmetry": 0.8970292602817102,
+   "k_symmetry": 0.896662032650647,
+   "dd_mp256_symmetry_own_k": 0.8043320798713045,
+   "dd_mp256_symmetry_expanse_k": 0.8570636958281638
+  },
+  "free_L4": {
+   "default_symmetry": 0.9442359065780339,
+   "k_symmetry": 1.093254174261488,
+   "dd_mp256_symmetry_own_k": 1.032289846354016,
+   "dd_mp256_symmetry_expanse_k": 0.9631448653312699
+  },
+  "free_L5": {
+   "default_symmetry": 1.062515191693737,
+   "k_symmetry": 1.0797511209735695,
+   "dd_mp256_symmetry_own_k": 1.1472519692827596,
+   "dd_mp256_symmetry_expanse_k": 1.0943429646299359
+  },
+  "free_L6": {
+   "default_symmetry": 1.010581412817153,
+   "k_symmetry": 1.020460073530651,
+   "dd_mp256_symmetry_own_k": 1.0312579828321013,
+   "dd_mp256_symmetry_expanse_k": 1.0293617175982113
+  },
+  "free_L7": {
+   "default_symmetry": 1.1248205359967292,
+   "k_symmetry": 2.7275413334600938,
+   "dd_mp256_symmetry_own_k": 3.067994504655816,
+   "dd_mp256_symmetry_expanse_k": 2.665642936476494
+  },
+  "free_L8": {
+   "default_symmetry": 1.1706785590802713,
+   "k_symmetry": 2.4852049894626442,
+   "dd_mp256_symmetry_own_k": 2.909376196083229,
+   "dd_mp256_symmetry_expanse_k": 2.473633484436515
+  },
+  "power_L3": {
+   "default_symmetry": 1.0573504579674091,
+   "k_symmetry": 1.2282975652651318,
+   "dd_mp256_symmetry_own_k": 1.2987409931533407,
+   "dd_mp256_symmetry_expanse_k": 1.2337637548929528
+  },
+  "power_L4": {
+   "default_symmetry": 1.1033992128751897,
+   "k_symmetry": 1.32245547400225,
+   "dd_mp256_symmetry_own_k": 1.4591963290765686,
+   "dd_mp256_symmetry_expanse_k": 1.7147295261680464
+  },
+  "power_L5": {
+   "default_symmetry": 1.0163587852371638,
+   "k_symmetry": 2.3933466464213464,
+   "dd_mp256_symmetry_own_k": 2.4324988902082394,
+   "dd_mp256_symmetry_expanse_k": 2.3989485306709164
+  },
+  "power_L6": {
+   "default_symmetry": 1.1607743430315367,
+   "k_symmetry": 3.1597834936479194,
+   "dd_mp256_symmetry_own_k": 3.6677956089610575,
+   "dd_mp256_symmetry_expanse_k": 3.3836792639462656
+  },
+  "power_L7": {
+   "default_symmetry": 1.1213645092199798,
+   "k_symmetry": 3.3440056727655576,
+   "dd_mp256_symmetry_own_k": 3.749849280069578,
+   "dd_mp256_symmetry_expanse_k": 3.3672095265789577
+  },
+  "power_L8": {
+   "default_symmetry": 1.1573555601304122,
+   "k_symmetry": 2.644063769219165,
+   "dd_mp256_symmetry_own_k": 3.0601219046451753,
+   "dd_mp256_symmetry_expanse_k": 2.666508330220796
+  }
+ }
+}

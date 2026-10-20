@@ -1,0 +1,113 @@
+PASS read and print back 2^64 and 2^70+1
+PASS driver: 2^128 overflows
+PASS driver: '12a' is refused
+PASS driver: truncated file
+PASS driver: surplus row (exactly NG rows)
+PASS driver: row with two tokens
+PASS driver: row with four tokens
+PASS driver: key wider than an n=4 class
+PASS driver: header n out of range
+PASS driver: non-decimal aut
+PASS driver: empty file
+PASS build_free: 2^128 overflows
+PASS build_free: '12a' is refused
+PASS build_free: truncated file
+PASS build_power: 2^128 overflows
+PASS build_power: '12a' is refused
+PASS build_power: truncated file
+PASS check_edge_forests: 2^128 overflows
+PASS check_edge_forests: '12a' is refused
+PASS check_edge_forests: truncated file
+PASS syntax driver round-trips the semantically invalid file: vertex of degree 6 (n=4, key 15)
+PASS test_keys --generator refuses: vertex of degree 6 (n=4, key 15)
+PASS build_free refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS build_power refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS check_edge_forests refuses before writing: vertex of degree 6 (n=4, key 15)
+PASS syntax driver round-trips the semantically invalid file: zero-edge key
+PASS test_keys --generator refuses: zero-edge key
+PASS build_free refuses before writing: zero-edge key
+PASS build_power refuses before writing: zero-edge key
+PASS check_edge_forests refuses before writing: zero-edge key
+PASS syntax driver round-trips the semantically invalid file: n=1 (L=0)
+PASS test_keys --generator refuses: n=1 (L=0)
+PASS build_free refuses before writing: n=1 (L=0)
+PASS build_power refuses before writing: n=1 (L=0)
+PASS check_edge_forests refuses before writing: n=1 (L=0)
+PASS syntax driver round-trips the semantically invalid file: seven edges at n=4
+PASS test_keys --generator refuses: seven edges at n=4
+PASS build_free refuses before writing: seven edges at n=4
+PASS build_power refuses before writing: seven edges at n=4
+PASS check_edge_forests refuses before writing: seven edges at n=4
+PASS syntax driver round-trips the semantically invalid file: disconnected graph
+PASS test_keys --generator refuses: disconnected graph
+PASS build_free refuses before writing: disconnected graph
+PASS build_power refuses before writing: disconnected graph
+PASS check_edge_forests refuses before writing: disconnected graph
+PASS syntax driver round-trips the semantically invalid file: aut 0
+PASS test_keys --generator refuses: aut 0
+PASS build_free refuses before writing: aut 0
+PASS build_power refuses before writing: aut 0
+PASS check_edge_forests refuses before writing: aut 0
+PASS syntax driver round-trips the semantically invalid file: orbit 0
+PASS test_keys --generator refuses: orbit 0
+PASS build_free refuses before writing: orbit 0
+PASS build_power refuses before writing: orbit 0
+PASS check_edge_forests refuses before writing: orbit 0
+PASS syntax driver round-trips the semantically invalid file: aut * orbit is not n!
+PASS test_keys --generator refuses: aut * orbit is not n!
+PASS build_free refuses before writing: aut * orbit is not n!
+PASS build_power refuses before writing: aut * orbit is not n!
+PASS check_edge_forests refuses before writing: aut * orbit is not n!
+PASS syntax driver round-trips the semantically invalid file: aut * orbit overflows
+PASS test_keys --generator refuses: aut * orbit overflows
+PASS build_free refuses before writing: aut * orbit overflows
+PASS build_power refuses before writing: aut * orbit overflows
+PASS check_edge_forests refuses before writing: aut * orbit overflows
+PASS syntax driver round-trips the semantically invalid file: repeated key
+PASS test_keys --generator refuses: repeated key
+PASS build_free refuses before writing: repeated key
+PASS build_power refuses before writing: repeated key
+PASS check_edge_forests refuses before writing: repeated key
+PASS syntax driver round-trips the semantically invalid file: NG=0
+PASS test_keys --generator refuses: NG=0
+PASS build_free refuses before writing: NG=0
+PASS build_power refuses before writing: NG=0
+PASS check_edge_forests refuses before writing: NG=0
+PASS syntax driver round-trips the semantically invalid file: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS test_keys --generator refuses: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS build_free refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS build_power refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS check_edge_forests refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)
+PASS classes1.txt round-trips byte for byte
+PASS classes1.txt passes the generator validation (same rows)
+PASS classes2.txt round-trips byte for byte
+PASS classes2.txt passes the generator validation (same rows)
+PASS classes3.txt round-trips byte for byte
+PASS classes3.txt passes the generator validation (same rows)
+PASS classes4.txt round-trips byte for byte
+PASS classes4.txt passes the generator validation (same rows)
+PASS classes5.txt round-trips byte for byte
+PASS classes5.txt passes the generator validation (same rows)
+PASS classes6.txt round-trips byte for byte
+PASS classes6.txt passes the generator validation (same rows)
+PASS classes7.txt round-trips byte for byte
+PASS classes7.txt passes the generator validation (same rows)
+PASS classes8.txt round-trips byte for byte
+PASS classes8.txt passes the generator validation (same rows)
+PASS classes8.txt holds 5,068 keys above 2^64
+PASS c8gen.hpp alone: no warning under -Wall -Wextra
+PASS build_free.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS build_power.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS check_edge_forests.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS test_keys.cpp: no -Wall -Wextra diagnostic in c8gen.hpp
+PASS UBSan build of test_keys (g++-16 -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of build_free (g++-16 -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of build_power (g++-16 -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan build of check_edge_forests (g++-16 -fsanitize=undefined -fno-sanitize-recover=undefined)
+PASS UBSan test_keys: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan build_free: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan build_power: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan check_edge_forests: the reviewer's key 2^72-1 (n=9) is refused with exit 2, the edge-count message and no sanitizer report, before any output
+PASS UBSan test_keys: every crafted file (22) is refused with exit 2 and no sanitizer report
+PASS UBSan test_keys --generator: classes1..8 pass with the same rows and no sanitizer report
+test_keys: 112/112 checks passed

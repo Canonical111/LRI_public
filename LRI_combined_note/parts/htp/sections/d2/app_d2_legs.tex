@@ -1,0 +1,644 @@
+% app_d2_legs.tex -- d = 2 appendix, part 3 of 3 (HT2dPert, 2026-10-16): descendant spacings at eps^2..eps^5, the
+% tagged-line test, the eps^3 external-line window W_cs and its tests, the partial eps^4 chi-line window W_cs4chi, and the
+% status of every window component with the outlook. Merged from the method write-up of package I.
+% Wording of the R_3 cancellation follows the 2026-10-15 review (expected, not established beyond L <= 16).
+% Numbers: as in app_d2_eps4.tex (macros where Sec. d2:sec quotes them; otherwise read from the named records).
+\section{Two dimensions: descendant spacings and the external-line windows}\label{htp:d2:app:legs}
+
+This appendix supports Section~\ref{htp:d2:desc} and the external-line window of Section~\ref{htp:d2:c5}. The spacings $R_n$ of
+Eq.~\eqref{htp:d2:eq:R} test a window at a fixed order without any continuum input; they exposed the defects that remain beyond
+the complete $\eps^4$ window, and a tagged external line located the $\eps^3$ defect exactly.
+
+\subsection{Descendant channels}\label{htp:d2:app:desc}
+{\small\raggedright\noindent Records: \code{complete\_exact/\allowbreak{}README.md} (\S\S4, 8 and 9),
+\code{complete\_exact/\allowbreak{}results/\allowbreak{}\{descendant\_summary.md,\allowbreak{}descendant\_fits.txt\}},
+\code{complete\_exact/\allowbreak{}results/\allowbreak{}descendant\_<scheme>\_L<L>.json}, \code{residual\_log/\allowbreak{}results/\allowbreak{}descendant\_e2.txt},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}\{descendant\_eps3,\allowbreak{}ce\_wc\_tables\}.txt}, \code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_wcs/\allowbreak{}verify.txt}; code \code{residual\_log/\allowbreak{}descendant\_e2.py}.\par}
+
+Two kinds of descendants are used: $\chi_{aa}=\partial^a\bar\partial^a\phi$ (one quantum $(a,a)$, level $2a$, primary
+$|1\rangle$) and $(\partial\bar\partial)^a\phi^2$ (primary $|2\rangle$). The reference of the latter at $\eps=0$ lies in a
+degenerate block and is fixed as the eigenvector of $H_1$ with eigenvalue $E_2^{(1)}$. The small-$L$ solver
+\code{complete\_exact/} and its $W_c$ copy \code{residual\_log/\allowbreak{}ce\_wc/} compute these channels exactly in every scheme for
+$L\le16$, and $R_0=R_1=0$ exactly everywhere. A spacing counts as restored if it decays like $1/L$.
+
+\paragraph{Order $\eps^2$.}\label{htp:d2:app:desc2} Since $z=0$ for $\chi_{aa}$, the consistent and zero-mode windows coincide on
+it. $R_2(\chi_{aa})$ is a sum over two kinds of intermediate states. In the nested ones the external quantum is absorbed and
+re-emitted. In the exchange ones the first vertex emits the new $\chi_{aa}$ together with a bubble, and the second absorbs
+the old $\chi_{aa}$ with the bubble. The exchange states hold two $(a,a)$ quanta, so the level cutoff leaves the bubble only
+$L-4a$ instead of $L$. For the sunset this is a deficit of $\frac2\pi(2a)\times g_1^2\cdot\frac23w_{aa}$, and all other finite
+parts cancel, so
+\begin{equation}
+ \lim_{L\to\infty}R_2(\chi_{aa})=\frac{8a\,w_{aa}}{27\pi}\neq0
+\end{equation}
+in the consistent, literal and zero-mode schemes; the raw truncation also lacks the vacuum window, which by
+Eq.~\eqref{htp:d2:eq:Ev2} grows linearly in $L$. The mass window repairs it. On the one-quantum state
+$\langle\chi_{aa}|M'|\chi_{aa}\rangle=2w_{aa}$ and $\ell=2a$, while $\langle1|D^M|1\rangle=0$, so at first order $D^M$ shifts $R_2$ by
+exactly $-\frac1{27\pi}\cdot4a\cdot2w_{aa}=-\frac{8a\,w_{aa}}{27\pi}$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}cllllll@{}}
+\toprule
+$a$ & $w_{aa}$ & $\frac{8a\,w_{aa}}{27\pi}$ & $R_2(2000)$ & $R_2(20000)$ & with $D^M$, $L=2000$ & with $D^M$, $L=20000$ \\\midrule
+1 & 0.25 & 0.023578510 & 0.023584405 & 0.023579100 & $5.90\times10^{-6}$ & $5.90\times10^{-7}$ \\
+2 & 0.140625 & 0.026525824 & 0.026532463 & 0.026526487 & $6.64\times10^{-6}$ & $6.63\times10^{-7}$ \\
+3 & 0.0976563 & 0.027631067 & 0.027637989 & 0.027631757 & $6.92\times10^{-6}$ & $6.91\times10^{-7}$ \\
+5 & 0.0605621 & 0.028559298 & 0.028566467 & 0.028560012 & $7.17\times10^{-6}$ & $7.14\times10^{-7}$ \\
+10 & 0.0310454 & 0.029280172 & 0.029287560 & 0.029280905 & $7.39\times10^{-6}$ & $7.33\times10^{-7}$ \\
+\bottomrule
+\end{tabular}
+\caption{The $\eps^2$ spacing of $\chi_{aa}$ in the consistent window at large $L$, and the residual
+$R_2-\frac{8a\,w_{aa}}{27\pi}$ left after adding $D^M$ (\code{residual\_log/\allowbreak{}results/\allowbreak{}descendant\_e2.txt}).}
+\label{htp:d2:tab:desc2}
+\end{table}
+
+Table~\ref{htp:d2:tab:desc2} gives the numbers: with $D^M$ the residual decays like $1/L$, with coefficient $1.2\times10^{-2}$
+($a=1$) to $1.5\times10^{-2}$ ($a=10$). The exact small-$L$ solver confirms this for the full schemes at $L\le16$. In the raw
+scheme $R_2$ grows ($\chi_{11}$: $0.1077$ at $L=16$). In the consistent and zero-mode schemes $R_2(\chi_{11})$ is constant
+($\NTwoRtwoCons$ at $L=16$), and the $\phi^2$ descendant decreases only slowly ($0.1459$ at $L=16$, effective exponent
+$-0.27$). In $W$, and in $W_c$, which is identical at this order, $R_2$ is restored: $\NTwoRtwoWcoef/L$ for $\chi_{11}$
+($0.000714$ at $L=16$), $0.0146/L$ for $\chi_{22}$ and $0.634/L$ for the $\phi^2$ descendant.
+
+\paragraph{Order $\eps^3$.}\label{htp:d2:app:desc3} None of the schemes $W$, $W_c$ and their variants restores the $\eps^3$
+spacing. The external-line window $W_{cs}$ (Appendix~\ref{htp:d2:app:wcs}) reduces it for $\chi_{aa}$ by at least
+$\HTpTwoIdentThree\%$ at $L=14$ and 16, but a $1/L$ decay is not established.
+Table~\ref{htp:d2:tab:desc3} collects $R_3(\chi_{11})$; the two sources agree where they overlap (scheme $W$ to all printed digits
+at $L=6$ to 14).
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+scheme & $L=4$ & $L=8$ & $L=12$ & $L=14$ & $L=16$ & behavior \\\midrule
+raw & 0.1617 & 0.2479 & 0.3355 & 0.3793 & 0.4232 & grows linearly \\
+consistent ($=$ zero-mode) & 0.04007 & 0.03941 & 0.04002 & 0.04037 & 0.04071 & constant \\
+$\eps^2$ windows only & 0.1874 & 0.2750 & 0.3643 & 0.4089 & & grows linearly \\
+$W$ without $D^M$ & 0.05598 & 0.05519 & 0.05577 & 0.05611 & & constant \\
+$W$ with $D^{M,(2)}$ only & 0.05812 & 0.06237 & 0.06598 & 0.06749 & & grows slowly \\
+$W$ & 0.02316 & 0.02686 & 0.02962 & 0.03074 & 0.03173 & grows, ${\sim}0.009\ln L$ \\
+$W{+}V$ & 0.08723 & 0.1138 & 0.1362 & 0.1469 & 0.1573 & grows \\
+$W_c$ & 0.01785 & 0.01618 & 0.01579 & 0.01570 & 0.01565 & constant \\
+$W_{cs}$ & 0.004225 & 0.000896 & 0.000121 & $-0.000049$ & $-0.000157$ & falls (Appendix~\ref{htp:d2:app:wcstests}) \\
+\bottomrule
+\end{tabular}
+\caption{$R_3$ of $\chi_{11}=\partial\bar\partial\phi$ by scheme, exact (\code{complete\_exact/\allowbreak{}README.md},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}eps5/\allowbreak{}\{descendant\_eps3,\allowbreak{}ce\_wc\_tables\}.txt}, \code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_wcs/\allowbreak{}verify.txt}).
+``$\eps^2$ windows only'' is the window of Appendix~\ref{htp:d2:app:window} with no $\eps^3$ part; ``without $D^M$'' and ``with
+$D^{M,(2)}$ only'' are $W$ without the mass window and with its $\eps^2$ part only (their $W_c$ versions are identical at this
+order).}
+\label{htp:d2:tab:desc3}
+\end{table}
+
+For the other descendants at $L=16$: $\chi_{22}$ has $R_3=0.04048$ (consistent), $0.03447$ ($W$, growing) and $0.01755$
+($W_c$, flat). The $\phi^2$ descendant of level 2 has $0.09469$ (consistent, growing), $0.03864$ ($W$, growing after a minimum of
+$0.0074$ near $L=6$ to 8) and $-0.0337$ ($W_c$; $-0.0306$, $-0.0413$ and $-0.0337$ at $L=6$, 10 and 16, not settled).
+
+\paragraph{Structure of the $\eps^3$ defect.} For $a\ll L/2$ the $\eps^3$ spacing of $\chi_{aa}$ is proportional to
+$a\,w_{aa}=\frac18\langle\chi_{aa}|\{\hat\ell,M'\}|\chi_{aa}\rangle$ in every scheme. At $L=12$, $R_3/(a\,w_{aa})=0.16$, $0.15$,
+$0.15$ for $a=1$, 2, 3 in the consistent scheme, $0.22$, $0.21$, $0.21$ in $W$ without $D^M$, $0.119$, $0.114$, $0.110$ in $W$,
+and $0.063$ to $0.068$ in $W_c$. This is the operator structure of a mass window attached to $\chi$ lines, as at $\eps^2$. The
+diagnostics locate it:
+\begin{itemize}
+\item $D^{\rm zm}$ is not the problem at $\eps^3$: $W$ without $D^M$ leaves a constant ($0.056$ for $\chi_{11}$).
+\item In $W$, $D^{M,(2)}$ acting at third order produces the slow growth, and $D^{M,(3)}$ shifts the spacing by an almost
+ $L$-independent $-0.036$. The growth is the double counting of Appendix~\ref{htp:d2:app:Wc}, which $W_c$ removes.
+\item $W_c$ leaves a near constant: at $L=16$, $R_3/(a\,w_{aa})=0.06259$, $0.06242$ and $0.06337$ for $a=1$, 2 and 3,
+ changing slowly with $L$. Section~\ref{htp:d2:c5} compares it with the first-order shift of the external-line window,
+ $4a\,w_{aa}\,\delta^{(3)}(L)\to-\frac{16}{81\pi}a\,w_{aa}$, with $\frac{16}{81\pi}=\frac23\cdot\frac8{27\pi}=0.06288$.
+\end{itemize}
+The factor $\frac23$ equals the $\Delta z=\pm2$ share of the angular average of Appendix~\ref{htp:d2:app:mech}, which suggested a
+missing channel of the $\eps^3$ exchange sunset that changes the zero-mode number. The tagged-line test of
+Appendix~\ref{htp:d2:app:tag} shows instead that the defect is the level budget of the external legs, charged in each slice only
+where the legs are present. Whether the $\frac23$ has a simple diagrammatic origin is not derived.
+
+\paragraph{Order $\eps^4$ and higher.} The defect propagates. In $W_c$, $R_4(\chi_{11})=0.019$, $0.037$, $0.049$, $0.057$,
+$0.063$, $0.068$, $0.073$ and $0.076$ for $L=2$, 4, \dots, 16; $R_4(\chi_{22})$ rises from $0.034$ ($L=6$) to $0.070$ ($L=16$), and
+$R_4$ of the $\phi^2$ descendant from $0.14$ to $0.40$. In $W$, $R_4(\chi_{11})=0.097$ at $L=16$, and orders 4 to 8 are
+violated by larger, growing amounts. Appendices~\ref{htp:d2:app:wcstests} and~\ref{htp:d2:app:wcs4chi} give the $\eps^4$ results of
+the external-line windows.
+
+\subsection{The tagged-line test}\label{htp:d2:app:tag}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}results/\allowbreak{}tag/\allowbreak{}tag\_L<L>\_a<a>\_*.json}; code
+\code{residual\_log/\allowbreak{}brute\_desc\_tag.py} (exact fraction arithmetic).\par}
+
+In the $\chi_{aa}$ channel the external line is tagged. The initial quantum is a separate copy $\tau_{\rm in}$ of the mode
+$(a,a)$ that can only be absorbed, and the final quantum a copy $\tau_{\rm out}$ that can only be created, once. The three
+one-quantum states $|\tau_{\rm in}\rangle$, $|\tau_{\rm out}\rangle$ and the regular $|\chi_{aa}\rangle$ all stand for the real
+descendant. All three are projected out of every resolvent, as the reference state is in ordinary perturbation theory. The
+order-$n$ energy is the sum of the components on $|\tau_{\rm in}\rangle$ and $|\tau_{\rm out}\rangle$ of the order-$n$
+right-hand side of the Rayleigh--Schr\"odinger recursion (the vector whose overlap with the reference gives $E^{(n)}$).
+Histories that end on the regular $|\chi_{aa}\rangle$ would count those ending on $|\tau_{\rm out}\rangle$ twice and are dropped. The tags count toward the level
+budget, and toward $\ell$ in every window, with charges $(\nu_{\rm in},\nu_{\rm out})$.
+\begin{itemize}
+\item With charges $(2a,2a)$ the construction is identical to the real channel; it reproduces $W_c$ exactly ($L=2$ to 14
+ for $a=1$, $L=6$ to 12 for $a=2$).
+\item With charges $(0,0)$ the external line is invisible to the cutoff and to the windows (budget-free). Its self-energy
+ then has exactly the budget of the $\phi$ self-energy, on which $r$ is tuned.
+\end{itemize}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rllllll@{}}
+\toprule
+$L$ & charged ($=W_c$): $R_2$ & $R_3$ & budget-free: $R_2$ & $R_3$ & in only: $R_3$ & out only: $R_3$ \\\midrule
+2 & 0.004630 & 0.021917 & 0.017361 & 0.028412 & 0.024564 & 0.026879 \\
+6 & 0.001808 & 0.016678 & 0.008545 & 0.012127 & 0.012487 & 0.013542 \\
+10 & 0.001122 & 0.015932 & 0.005728 & 0.007330 & 0.009882 & 0.010568 \\
+14 & 0.000813 & 0.015702 & 0.004317 & 0.005055 & 0.008861 & 0.009368 \\
+\bottomrule
+\end{tabular}
+\caption{$R_2$ and $R_3$ of $\chi_{11}$ with a tagged external line, $W_c$ windows (\code{residual\_log/\allowbreak{}results/\allowbreak{}tag/}).
+``In only'' and ``out only'' charge one leg by 2.}
+\label{htp:d2:tab:tag}
+\end{table}
+
+With the legs budget-free, $R_2\approx0.06/L$ and $R_3\approx0.07/L$ both go to zero (Table~\ref{htp:d2:tab:tag}); charged,
+$R_3$ tends to $\NTwoRthreeWcSixteen$. For $a=2$ the budget-free $R_3$ is $0.0313$, $0.0227$, $0.0177$ and $0.0144$ at $L=6$
+to 12, against $0.0221$, $0.0195$, $0.0185$ and $0.0180$ in $W_c$. So the whole $\eps^3$ remainder of $W_c$ is the level
+budget of the external legs; spectators, nested windows and the auxiliary objects are already treated correctly.
+
+\paragraph{Why average-level charging is exact at $\eps^2$ and not at $\eps^3$.} A mass-type sub-process on a $\chi$ line,
+one of the sub-bubbles that $rM'$ cancels, has two external legs, the legs of the $M'$ term. The truncation charges a leg only
+in the slices of the sub-process where it is present: an absorbed leg before its absorption, an emitted leg after its
+emission. $D^M$ instead charges both legs with their average level $\frac12(\ell_s+\ell_{s'})$ in every slice.
+\begin{itemize}
+\item At $\eps^2$ the sub-process is the sunset. It has two orderings, normal (no leg present) and exchange (both legs
+ present), whose weights are equal at large bubble level, so the average is exact and $R_2\to0$.
+\item At $\eps^3$ there are also mixed orderings. In the vertex-corrected sunset (vertices $v_1$, $v_2$, $v_3$; lines $v_1v_2$, twice $v_1v_3$ and twice $v_3v_2$;
+ the legs at $v_1$ and $v_2$) the six orderings have $(0,0)$, $(1,0)$, $(0,1)$, $(2,1)$, $(1,2)$ and $(2,2)$ external legs present in
+ their two internal slices. Their weights differ, so the response to the level of a leg is not half the response to a
+ spectator.
+\item The tadpole with a sunset on its loop has both legs at one vertex and charges exactly one leg in every slice, so it is
+ unaffected.
+\end{itemize}
+
+\subsection{The \texorpdfstring{$\eps^3$}{eps3} external-line window \texorpdfstring{$W_{cs}$}{Wcs}}\label{htp:d2:app:wcs}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (\S2.5a),
+\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}fits/\allowbreak{}delta3\_fits.txt}, \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}results/\allowbreak{}\{validation\_small.txt,\allowbreak{}tag3\_L16000.npz,\allowbreak{}tag3nu\_L4000.npz\}},
+\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}out\_wcs/}; code \code{residual\_log/\allowbreak{}\{brute\_desc\_tag,\allowbreak{}delta3\}.py},
+\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}\{tagchan,\allowbreak{}delta3\_fits\}.py}, \code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}\{ce\_core,\allowbreak{}ce\_solver,\allowbreak{}ce\_run,\allowbreak{}tables\_wcs\}.py}.\par}
+
+\paragraph{Definition.} Scheme $W_{cs}$ is $W_c$ with one more term at $\eps^3$. The full $\eps^3$ window is
+\begin{equation}
+ D^{(3)}=\tfrac14\big\{\Delta e_1^{(3)}(L,\hat\ell),M'_0\big\}+\tfrac14\big\{\Delta e_1^{(2)}(L,\hat\ell),M'_1\big\}+\frac{\delta^{(3)}(L)}2\,X_0,
+ \qquad \Delta e_1(L,\ell)=e_1(L)-e_1(L-\ell),
+ \label{htp:d2:eq:wcsfull}
+\end{equation}
+with $\delta^{(3)}$ of Eq.~\eqref{htp:d2:eq:wcs} and $M'_k$ the $\eps^k$ part of $M'$.
+\begin{itemize}
+\item $X$ is $M'$ with every term multiplied by $\eta$ times the sum of the levels of its $\chi$ legs. The crossing sign is
+ $\eta=+1$ for terms with one creator and one annihilator ($\chi$ hops and $Z\leftrightarrow\chi$ hops) and $\eta=-1$ for pair
+ creation and pair annihilation ($\chi\chi$ or $Z\chi$). Zero-mode legs have level 0.
+\item $e_1^{\rm tag}(\lambda;\nu_{\rm in},\nu_{\rm out})$ is $E-E_0$ of the $\phi$ channel $|1\rangle$ at sub-cutoff $\lambda$
+ whose external zero-mode line is tagged as in Appendix~\ref{htp:d2:app:tag}. The tags have level 0 in $H_0$ but add
+ $\nu_{\rm in}$, $\nu_{\rm out}$ to the budget level; $r$ and $g$ are those of the references at $L$. With zero charges the
+ tagged channel equals the $\phi$ channel exactly through $\eps^3$. $e_1^{(3)}$ and $e_1^{{\rm tag},(3)}$ are taken with $r_3$
+ removed.
+\item $\delta^{(3)}(L)$ is one number per outer cutoff, used in every channel, including the auxiliary ones (rule $W_c$).
+ Everything else ($D^{(2)}$, $D^{\rm zm}$ at all orders, $D^{M,(k)}$ for $k\ge4$, rule $W_c$) is unchanged.
+\end{itemize}
+
+\paragraph{Derivation of the operator form.} For a hop $s\to s'$ with spectator level $\ell_{\rm spec}$ and $\chi$ legs of
+levels $\nu_{\rm in}$, $\nu_{\rm out}$, the slice-resolved window is $\frac12[e_1(L)-e_1^{\rm tag}(L-\ell_{\rm spec};\nu_{\rm
+in},\nu_{\rm out})]M'_{s's}$. To first order in the charges this is $\frac12[e_1'\ell_{\rm spec}+\mu(\nu_{\rm in}+\nu_{\rm
+out})]M'_{s's}$, with $e_1'=de_1/d\lambda$ and $\mu=\frac12e_1'+\delta$ the response to one unit of leg level; $\delta$ is its
+departure from the average-level rule of $D^M$. As $L\to\infty$ in and out legs respond equally, by time reversal; at finite
+$L$ they differ by $\mathcal O(1/L)$ (below). Crossing a leg exchanges the slices in which it is present, so a pair leg
+responds with $e_1'-\mu=\frac12e_1'-\delta$. With $\frac12(\ell_s+\ell_{s'})=\ell_{\rm spec}+\frac12(\nu_{\rm in}+\nu_{\rm out})$ this is $D^M$
+plus $\frac\delta2X$. $\delta$ is calibrated on the smallest charges, $(2,2)$: with
+$\delta^{(3)}_\nu(L)=\frac1{2\nu}\big[e_1^{(3)}(L-\nu)-e_1^{{\rm tag},(3)}(L;\nu,\nu)\big]$ for symmetric charges $(\nu,\nu)$,
+$\delta^{(3)}=\delta^{(3)}_2$. For $\chi_{11}$ the window is therefore exactly
+the slice-resolved one; for larger $a$ it is its linearization, which becomes exact as $L\to\infty$ (below).
+
+\paragraph{What is fixed and what is assumed.} Nothing is fitted: $\delta^{(3)}(L)$ is an exact rational computed from the
+tagged $\phi$ channel at each $L$. The descendant tests do not probe the sign of the pair terms, because $R_3$ of any
+descendant involves only diagonal hop terms of $X$. The pair sign rests on the crossing argument and on the separate
+cancellation of $\ln L$ in the Z--$\chi$ and $\chi\chi$ parts of the $C_5$ response $S(L)$ (Appendix~\ref{htp:d2:app:wcstests}).
+
+\paragraph{$\delta^{(3)}(L)$ at large $L$.} A chain-sum version of the tagged $\phi$ channel
+(\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}tagchan.py}) evaluates $\delta^{(3)}(L)$ for every even $L\le\NTwoDeltaLmax$ in one run of 11
+minutes. It reproduces the exact rationals for $L=2$ to 16 to $\NTwoDeltaRational$ (relative $2.6\times10^{-14}$), including
+the values the $W_{cs}$ runs used, and runs with different $L_{\max}$ agree to $10^{-11}$. Table~\ref{htp:d2:tab:delta3} gives
+selected values; Fig.~\ref{htp:d2:fig}b shows the curve.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rccc@{}}
+\toprule
+$L$ & $\delta^{(3)}(L)$ & $\delta^{(3)}(L)+\frac4{81\pi}$ & $\delta^{(3)}_4(L)$ \\\midrule
+6 & $-0.0148018$ & $+9.2\times10^{-4}$ & $-0.014450$ \\
+10 & $-0.0155308$ & $+1.9\times10^{-4}$ & $-0.016733$ \\
+16 & $-0.0158036$ & $-8.5\times10^{-5}$ & $-0.016729$ \\
+34 (minimum) & $\NTwoDeltaMin$ & $-1.9\times10^{-4}$ & \\
+100 & $-0.0158494$ & $-1.3\times10^{-4}$ & $-0.015993$ \\
+400 & $-0.0157725$ & $-5.3\times10^{-5}$ & $-0.015806$ \\
+1000 & $-0.0157458$ & $-2.7\times10^{-5}$ & $-0.015759$ \\
+4000 & $-0.0157278$ & $-8.8\times10^{-6}$ & $-0.015731$ \\
+16000 & $-0.0157217$ & $-2.7\times10^{-6}$ & \\
+\bottomrule
+\end{tabular}
+\caption{$\delta^{(3)}(L)$: exact rationals for $L\le16$, chain sums beyond (\code{residual\_log/\allowbreak{}large\_L/\allowbreak{}fits/\allowbreak{}delta3\_fits.txt}).
+Third column: distance from $-\frac4{81\pi}=-0.0157190$. Last column: the coefficient $\delta^{(3)}_4$ calibrated on charges $(4,4)$ (the
+exact form for $\chi_{22}$).}
+\label{htp:d2:tab:delta3}
+\end{table}
+
+$\delta^{(3)}(L)$ falls to its minimum at $L=\NTwoDeltaMinL$ and then rises toward the limit of Eq.~\eqref{htp:d2:eq:delta}; the
+next term is $+0.013856/L$, followed by $\mathcal O(\ln L/L^2)$. Free-limit fits with a $\ln L/L$ term ($L_{\min}=200$ to
+2000, data to $L=16000$) give $\delta_\infty+\frac4{81\pi}$ between $-3\times10^{-11}$ and $+7\times10^{-11}$; without $\ln
+L/L$ they miss by $-5\times10^{-7}$ to $-1.5\times10^{-6}$. With the limit fixed, the $\ln L/L$ coefficient is $-0.0058946$,
+equal to $-\frac1{54\pi}$. A fit to $L\le4000$ predicts $L=16000$ to $4\times10^{-10}$ with the $\ln L/L$ term
+($-2\times10^{-6}$ without). Also $\delta^{(3)}(2)=-0.0093879$, $\delta^{(3)}(4)=-0.0136276$, and $\delta^{(3)}(16)$ is the
+rational $-17345700448126303825/1097581272385718321152$. Because $L\le16$ lies on the falling branch before the minimum,
+extrapolations in $1/L^2$ from $L\le16$, which do not see the $\ln L/L$ term, miss the limit: they give $-0.0158$ to $-0.0165$
+(\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_wcs/\allowbreak{}fits.txt}). With the limit identified numerically,
+$4|\delta_\infty|/\frac8{27\pi}=\frac23$: the leg coefficient is two thirds of the $\eps^2$ exchange-sunset defect.
+
+\paragraph{The nonlinearities are finite-$L$ effects.} Define the single-leg coefficients $d_{\rm in}$ and $d_{\rm out}$ as
+$\delta^{(3)}_2$ with only one leg charged (by 2); with the $(2,2)$ cross term they give $\delta^{(3)}_2=\frac12(d_{\rm in}+d_{\rm
+out})+\frac14(\text{cross term})$. At $L\le16$, $d_{\rm in}$ and $d_{\rm out}$ are smaller in magnitude than $\delta^{(3)}$, and
+the coefficients for larger charges are larger: at $L=16$, $\delta^{(3)}_4$ and $\delta^{(3)}_6$ (the exact $\chi_{22}$ and $\chi_{33}$ forms)
+exceed $\delta^{(3)}_2$ in magnitude by 6\% and 13\% (evaluated from the $\nu=4$ and $\nu=6$ lines of
+\code{delta3\_fits.txt}). At large $L$ both effects disappear
+(\code{delta3\_fits.txt}):
+\begin{itemize}
+\item $d_{\rm in}$ and $d_{\rm out}$ both tend to $-\frac4{81\pi}$. Their difference falls like $1/L$ ($1.6\times10^{-5}$ at
+ $L=1000$, $3.9\times10^{-6}$ at 4000), so time reversal is restored, and the $(2,2)$ cross term vanishes
+ ($-4.0\times10^{-4}$ at $L=1000$, $-1.2\times10^{-4}$ at 4000).
+\item $\delta^{(3)}_\nu$ for $\nu=4$, 6, 8 and 16 tends to the same limit, with differences of about $-(\nu-2)\times0.0062/L$ from
+ $\delta^{(3)}_2$ (last column of Table~\ref{htp:d2:tab:delta3}).
+\end{itemize}
+So the linearized window~\eqref{htp:d2:eq:wcsfull}, calibrated on the charges $(2,2)$, is asymptotically exact for every $a$.
+
+\subsection{Tests of \texorpdfstring{$W_{cs}$}{Wcs}}\label{htp:d2:app:wcstests}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_wcs/\allowbreak{}\{verify,\allowbreak{}fits,\allowbreak{}r3zero,\allowbreak{}blind16\}.txt},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}legw/\allowbreak{}legw\_L1000.npz}, \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}fits/\allowbreak{}legw\_logs.txt},
+\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}\{out\_wcs,\allowbreak{}out\_local,\allowbreak{}out\_wcs4\}/}, \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}results/\allowbreak{}tag3\_L16000.npz}; code \code{residual\_log/\allowbreak{}\{nm\_legw,\allowbreak{}brute\_legw\}.py}.\par}
+
+\paragraph{T1 passes.} $C_0$ to $C_4$, $r_1$ to $r_3$ and $g_1$ to $g_3$ of $W_{cs}$ are identical to those of $W_c$ as exact
+rationals for $L=2$ to 16 ($r_4$ differs).
+
+\paragraph{T2 passes, with the same caveat.} $C_5^{W_{cs}}(L)-C_5^{W_c}(L)=\delta^{(3)}(L)\,S(L)$ holds to
+$1.2\times10^{-16}$ or better for $L=2$ to 16, with $S(L)$ the $C_5$ response to $\frac12X$ inserted at $\eps^3$
+(\code{nm\_legw.py}, checked by brute force at $L=2$, 4, 6). $S(L)$ is known to $L=\NTwoShiftLmax$ and converges with no
+$\ln L$:
+\begin{center}\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lllllllll@{}}
+\toprule
+$L$ & 10 & 20 & 50 & 100 & 200 & 400 & 1000 & $\infty$ \\\midrule
+$S(L)$ & 0.286252 & 0.319024 & 0.344641 & 0.354908 & 0.360610 & 0.363699 & 0.365693 & \NTwoSinf \\
+\bottomrule
+\end{tabular}
+\end{center}
+A free $\ln L$ coefficient comes out at $7\times10^{-7}$ or less (\code{fits.txt}, $L_{\min}=100$ to 400; other tail towers give
+at most $4\times10^{-6}$, \code{legw\_logs.txt}). By type of $M'$ term the $\ln L$ coefficients of $S$ are $+\frac1{16}$
+(Z--$\chi$ hop), $-\frac1{16}$ (Z--$\chi$ pair), $-\frac1{16}$ ($\chi$ hop), $+\frac1{16}+\frac1{27}$ (pair creation) and
+$-\frac1{27}$ (pair annihilation). They cancel within the hop sector and within the pair sector separately, so a leg window with one
+coefficient per unit leg level for hops and another for pairs gives no $\ln L$ in $C_5$, whatever the two coefficients are;
+the large-$L$ check confirms this to $10^{-6}$. This holds for either sign of the pair terms. With the crossing sign the
+coefficients also cancel within the Z--$\chi$ sector and within the $\chi\chi$ sector; with an unsigned leg weight these two
+sectors would carry $\pm\frac18$ each. Only the signed weight therefore keeps $C_5$ free of $\ln L$ if the Z--$\chi$ and
+$\chi\chi$ parts of the window have independent coefficients, and this is the support for the sign. With the exact $\delta^{(3)}(L)$, $C_5^{W_{cs}}-C_5^{W_c}=-0.005478$, $-0.005625$ and $-0.005700$ at $L=50$,
+100 and 200 (evaluated from \code{tag3\_L16000.npz} and \code{legw\_L1000.npz}), tending to $\delta_\infty S_\infty=\NTwoDeltaS$ with no $\ln L$. The window shift is small compared with the
+effect of a residual $\ln L$ with $|b|\approx\NTwoBbound$, about $\pm\HTpCfiveTwoLog$ (Section~\ref{htp:d2:c5log}).
+
+\paragraph{T3 for $\chi_{aa}$: passes at $L\le16$, with a possible small remainder.} Table~\ref{htp:d2:tab:wcsr3} gives $R_3$ of
+$\chi_{11}$, $\chi_{22}$ and $\chi_{33}$ in $W_{cs}$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rlll@{}}
+\toprule
+$L$ & $\chi_{11}$ & $\chi_{22}$ & $\chi_{33}$ \\\midrule
+6 & $+0.001876$ [$0.016678$] & $+0.005487$ [$0.022139$] & $+0.029714$ [$0.047060$] \\
+8 & $+0.000896$ [$0.016183$] & $+0.002279$ [$0.019477$] & $+0.012071$ [$0.029985$] \\
+10 & $+0.000401$ [$0.015932$] & $+0.000987$ [$0.018459$] & $+0.003591$ [$0.021791$] \\
+12 & $+0.000121$ [$0.015789$] & $+0.000345$ [$0.017971$] & $+0.001503$ [$0.019864$] \\
+14 & $-0.000049$ [$0.015702$] & $-0.000012$ [$0.017707$] & $+0.000554$ [$0.019012$] \\
+16 & $-0.000157$ [$0.015647$] & $-0.000225$ [$0.017554$] & $+0.000046$ [$0.018566$] \\
+\bottomrule
+\end{tabular}
+\caption{$R_3$ in $W_{cs}$, exact, with the $W_c$ value in brackets (\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_wcs/\allowbreak{}verify.txt};
+$L=16$ from \code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}out\_wcs/\allowbreak{}wcs\_L16.json}).}
+\label{htp:d2:tab:wcsr3}
+\end{table}
+
+The table is the basis of the statement in Section~\ref{htp:d2:desc} (at most 3\% of the $W_c$ value left at $L=14$ and 16
+for $a=1$ to 3). In $W_{cs}$, $R_3(\chi_{11})$ is $0.0019$ at $L=6$ and below $2\times10^{-4}$ from $L=12$
+on, against about $0.0157$ in $W_c$; it crosses zero between $L=12$ and 14. Whether it tends to zero was tested by a hold-out test (\code{blind16.txt}, made when the $L=16$ value already existed):
+fits to $L\le14$ predict $L=16$.
+\begin{itemize}
+\item Free-limit models ($a+b/L^2$, $a+b/L^2+c/L^3$, $a+b/L+c/L^2$; $L_{\min}=6$, 8) give a $\chi_{11}$ limit of $-0.0005$ to
+ $-0.0007$ and miss $L=16$ by $5\times10^{-6}$ to $2.8\times10^{-5}$.
+\item The zero-limit model $b/L+c/L^2+d/L^3$ misses by $9\times10^{-6}$ ($L_{\min}=8$) and $2.1\times10^{-5}$ ($L_{\min}=6$), equally
+ well.
+\end{itemize}
+So for $\chi_{11}$ a zero limit is not excluded, and a small negative remainder of 3 to 5\% of the $W_c$ value is slightly
+favored. For $\chi_{22}$ the same free-limit fits give $-0.0014$ to $+0.0001$, up to about 8\% of its $W_c$ value ($0.0176$); for
+$\chi_{33}$ they scatter between $-0.008$ and $+0.022$ and decide nothing. The exact statement behind the window
+is the budget-free test of Appendix~\ref{htp:d2:app:tag}, where $R_3$ falls roughly like $1/L$ at $L\le14$ ($R_3\approx0.07/L$). The residual at $L\le16$ is consistent with
+finite-$L$ effects (the linearization and the slow convergence of $R_3$ in $W_c$), but $R_3$ itself has not been computed
+beyond $L=16$. The exact slice-resolved forms for $\chi_{22}$ and $\chi_{33}$ use $e_1^{\rm tag}(L;2a,2a)$ instead of the
+linearization. They give $-0.0004$, $-0.0009$, $-0.0012$ ($\chi_{22}$) and $+0.0019$, $-0.0013$, $-0.0022$ ($\chi_{33}$) at
+$L=10$, 12 and 14, drifting slowly negative. The linearized window is closer to zero at these $L$, and both forms share the
+same large-$L$ limit.
+
+\paragraph{T3 for the $\phi^2$ descendants: not settled.} The level-2 descendant is shifted by exactly $\frac32\delta^{(3)}(L)$
+(ratio $1.5000$ at every $L$), the first-order expectation value of $\frac\delta2X$ in that state. $W_{cs}$ is right for this
+state only if its $W_c$ spacing tends to $-\frac32\delta_\infty=\frac6{81\pi}=+0.0236$. Fits of the $W_c$ spacing at $L\le16$
+give $+0.005$ to $+0.039$ (\code{fits.txt}), so they neither confirm nor exclude it. At $L=16$ the spacings are
+$\NTwoPhiDescTwo$ (level 2; $W_c$: $-0.0337$) and $\NTwoPhiDescFour$ (level 4; $W_c$: $-0.0257$), and the level-4 one is still
+moving away from zero. Two-particle descendants have large finite-$L$ terms: their $R_2$ is still $0.04$ at $L=16$, against
+$0.0007$ for $\chi_{11}$.
+
+\paragraph{T4 ($\eps^4$ spacing) is not restored by $W_{cs}$.}
+\begin{itemize}
+\item $W_{cs}$ leaves $R_4$ of every $\chi_{aa}$ exactly unchanged. The direct effect of the $\delta^{(3)}$ term on $R_4$
+ ($+0.002115$ at $L=6$) is cancelled exactly by the change it makes in $e_1^{(4)}$ of the auxiliary channels, hence in
+ $D^{M,(4)}$.
+\item $R_4$ still grows: $R_4(\chi_{11})=0.0489$, $0.0570$, $0.0632$, $0.0682$, $0.0726$ and $0.0765$ at $L=6$ to 16, a local
+ slope of about $\NTwoRfourSlope$ per unit of $\ln L$ (least-squares slope over $L=8$ to 16).
+\item With budget-free legs (tagged, all windows of $W_{cs}$ through $\eps^3$), $R_4(\chi_{11})=-0.0235$, $-0.0164$, $-0.0118$,
+ $-0.0086$, $-0.0062$ and $-0.0043$ at $L=4$ to 14, going to zero. So the growth is the same leg defect at $\eps^4$.
+\item The direct transcription to $\eps^4$ (diagnostic scheme $W_{cs4}$: $D^{(4)}\mathrel{+}=\frac12[\delta^{(4)}X_0+\delta^{(3)}X_1]$,
+ with $\delta^{(4)}$ from the tagged $\phi$ channel) removes the growth but does not track the budget-free values:
+ $R_4(\chi_{11})=-0.0165$, $-0.0133$, $-0.0115$, $-0.0108$ and $-0.0107$ at $L=6$ to 14, flattening at $-0.0107$. The
+ reason is that the zero-mode proxy fails at $\eps^4$ (Appendix~\ref{htp:d2:app:wcs4chi}): in the tagged $\phi$ channel $D^{\rm zm}$
+ acts on the regular zero modes only, so the tag is a spectator of the zero-mode clusters, whereas the real external zero mode
+ joins them. At zero charge the proxy already differs from $e_1^{(4)}$, and $\delta^{(4)}(L)$ grows roughly like $\ln L$ ($-0.0802$
+ at $L=6$ to $-0.0991$ at $L=14$; Table~\ref{htp:d2:tab:d4chi}).
+\end{itemize}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rlllll@{}}
+\toprule
+$L$ & & $C_5$ & $C_6$ & $C_7$ & $C_8$ \\\midrule
+14 & $W_{cs}$ & $-20.25163$ & $157.8451$ & $-1440.041$ & $14711.12$ \\
+14 & $W_c$ & $-20.24684$ & $157.8302$ & $-1439.928$ & $14710.24$ \\
+14 & relative change & $-2.4\times10^{-4}$ & $+9.4\times10^{-5}$ & $-7.8\times10^{-5}$ & $+5.9\times10^{-5}$ \\\midrule
+16 & $W_{cs}$ & $-21.06383$ & $165.3880$ & $-1521.286$ & $15664.25$ \\
+16 & $W_c$ & $-21.05893$ & $165.3722$ & $-1521.165$ & $15663.31$ \\
+16 & relative change & $-2.3\times10^{-4}$ & $+9.6\times10^{-5}$ & $-7.9\times10^{-5}$ & $+6.0\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\caption{$C_5$ to $C_8$ in $W_{cs}$ and $W_c$ at $L=14$ and 16, exact rationals rounded (\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}out\_wcs/},
+\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}out\_local/}).}
+\label{htp:d2:tab:wcsCn}
+\end{table}
+
+\paragraph{Higher coefficients.} $W_{cs}$ changes $C_6$ to $C_8$ by about 0.01\% at $L\le16$ (Table~\ref{htp:d2:tab:wcsCn}), much
+less than the differences of about 1\% between $W_c$ and $W$. Every auxiliary object still follows rule $W_c$.
+
+\subsection{The \texorpdfstring{$\eps^4$}{eps4} \texorpdfstring{$\chi$}{chi}-line window \texorpdfstring{$W_{cs4\chi}$}{Wcs4chi}}\label{htp:d2:app:wcs4chi}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (\S2.5b),
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_p5/\allowbreak{}verify\_p5.txt}, \code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}\{out\_wcs,\allowbreak{}out\_wcs4,\allowbreak{}out\_wcs4c,\allowbreak{}out\_wcs4x,\allowbreak{}x4\}/}, \code{residual\_log/\allowbreak{}results/\allowbreak{}legw/\allowbreak{}legw\_L1000.npz},
+\code{residual\_log/\allowbreak{}results/\allowbreak{}tag/\allowbreak{}\{tag4bf\_*,\allowbreak{}tag4\_*,\allowbreak{}spec4\_*\}.json}; code
+\code{residual\_log/\allowbreak{}\{brute\_desc\_tag4,\allowbreak{}brute\_desc\_chi4,\allowbreak{}delta4chi,\allowbreak{}p5\_prepare\_x4\}.py}, \code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}tables\_p5.py},
+\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_p5/\allowbreak{}verify\_p5.py}.\par}
+
+\paragraph{Why the zero-mode proxy fails at $\eps^4$.} Through $\eps^3$ a $\chi$ line and the zero-mode line have the same
+self-energy function up to $\mathcal O(1/L)$. That is why $D^M$ can use $e_1$ and why the leg window can be calibrated on the
+tagged $\phi$ channel. At $\eps^4$ they differ: in the $\phi$ channel the external zero mode belongs to the zero-mode sector and
+joins the zero-mode clusters that $D^{\rm zm}$ windows, and a $\chi$ line cannot. Both parts of the $\chi$ mass window are then
+off.
+\begin{itemize}
+\item \emph{Leg part.} The transcription $W_{cs4}$ flattens at $R_4(\chi_{11})=-0.0107$, while the budget-free $\chi_{11}$
+ line goes to zero.
+\item \emph{Uniform (spectator) part.} Define the $\chi$-line function $e_1^\chi(\lambda)=\Sigma_\chi(\lambda)/w_{11}(\eps)$, with
+ $\Sigma_\chi(\lambda)=E(\chi_{11}\text{ line};\lambda)-E_0(\lambda)$ from the budget-free tagged $\chi_{11}$ channel at sub-cutoff
+ $\lambda$ under rule $W_c$, without a window on its own line, and the spectator function
+ $Y_n(L,\ell)=\Delta e_1^{\chi,(n)}(L,\ell)-\Delta e_1^{(n)}(L,\ell)$ (Table~\ref{htp:d2:tab:Y4}). At fixed $\ell$, $Y_2$ and $Y_3$
+ vanish like $1/L$, so $D^M$ with $e_1$ is right for $\chi$-line spectators through $\eps^3$. $Y_4(L,2)$ does not vanish: it is
+ $0.0829$, $0.0824$ and $0.0817$ at $L=12$, 14 and 16, about $+0.082$. $Y_4(L,4)$ levels off at $0.1426$ at $L=14$ and 16, $Y_4(L,6)$ is still
+ growing there, and for hard spectators ($\ell$ near $L$) every $Y_n$ is large.
+\end{itemize}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rcccccc@{}}
+\toprule
+$L$ & $Y_2(L,2)$ & $Y_3(L,2)$ & $Y_4(L,2)$ & $Y_4(L,4)$ & $Y_4(L,6)$ & $Y_4(L,L)$ \\\midrule
+6 & $-0.0114$ & $-0.0599$ & $+0.0624$ & $-0.0567$ & $-2.4772$ & $-2.477$ \\
+8 & $-0.0068$ & $-0.0346$ & $+0.0789$ & $+0.0971$ & $-0.1060$ & $-2.925$ \\
+10 & $-0.0045$ & $-0.0225$ & $+0.0826$ & $+0.1312$ & $+0.1085$ & $-3.328$ \\
+12 & $-0.0032$ & $-0.0158$ & $+0.0829$ & $+0.1405$ & $+0.1600$ & $-3.706$ \\
+14 & $-0.0024$ & $-0.0117$ & $+0.0824$ & $+0.1426$ & $+0.1756$ & $-4.067$ \\
+16 & $-0.0019$ & $-0.0090$ & $+0.0817$ & $+0.1426$ & $+0.1803$ & $-4.421$ \\
+\bottomrule
+\end{tabular}
+\caption{The spectator function $Y_n(L,\ell)$, exact rationals rounded (\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}x4/}).}
+\label{htp:d2:tab:Y4}
+\end{table}
+
+\paragraph{Definition.} Scheme $W_{cs4\chi}$ is $W_{cs}$ plus, at $\eps^4$,
+\begin{align}
+ D^{(4)}&\mathrel{+}=\tfrac14\big\{Y_4(L,\hat\ell),M'_{cc,0}\big\}+\tfrac12\big[\delta_{4\chi}(L)\,X_0+\delta^{(3)}(L)\,X_1\big],
+ \label{htp:d2:eq:wcs4chi}\\
+ \delta_{4\chi}(L)&=R^{\rm bf}_4(L)-R_4^{W_{cs}}(\chi_{11};L)+\delta^{(3)}(L)-\tfrac14Y_4(L,2).\nonumber
+\end{align}
+\begin{itemize}
+\item $M'_{cc}$ is the $\chi\chi$ part of $M'$ (hops and pair terms without a zero-mode leg). The anticommutator uses the same
+ per-state rule as $D^M$, and in auxiliary channels $Y_4$ is evaluated at the outer reference (rule $W_c$).
+\item $R^{\rm bf}_4(L)$ is the $\eps^4$ spacing of the budget-free $\chi_{11}$ line at cutoff $L$, and $X_1$ is the $\eps^1$
+ part of the leg operator $X$.
+\item The second term is a calibration on $\chi_{11}$. On that state the window adds $w_0Y_4(L,2)+4[w_0\delta_{4\chi}+w_1
+ \delta^{(3)}]$, with $w_{11}=w_0+w_1\eps+\dots$, $w_0=\frac14$, $w_1=-\frac14$; this is fixed so that the charged line has the
+ $\eps^4$ self-energy of the budget-free one. Hence $R_4(\chi_{11})=R^{\rm bf}_4(L)$ by construction, and $\chi_{11}$ is not a
+ test.
+\item Nothing is fitted: $R^{\rm bf}_4$ and $Y_4$ are exact brute-force rationals at each $L\le16$.
+\end{itemize}
+Two variants serve as comparisons. Variant ``all'' applies $Y_4$ also to the Z--$\chi$ terms of $M'$; whether a
+$Z\leftrightarrow\chi$ sub-process uses $e_1$, $e_1^\chi$ or a mixture is not derived, so the $\chi\chi$ form is the definition
+and ``all'' brackets the choice. The leg-only variant keeps the uniform part on $e_1$:
+$D^{(4)}\mathrel{+}=\frac12[(\delta_{4\chi}+\frac14Y_4(L,2))X_0+\delta^{(3)}X_1]$.
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rccccc@{}}
+\toprule
+$L$ & $\delta^{(3)}$ & $\delta_{4\chi,{\rm leg}}$ & $Y_4(L,2)$ & $\delta_{4\chi}$ & proxy $\delta^{(4)}$ \\\midrule
+6 & $-0.01480$ & $-0.08012$ & $+0.06243$ & $-0.09572$ & $-0.08023$ \\
+8 & $-0.01529$ & $-0.08409$ & $+0.07888$ & $-0.10381$ & $-0.08554$ \\
+10 & $-0.01553$ & $-0.08729$ & $+0.08258$ & $-0.10794$ & $-0.09023$ \\
+12 & $-0.01567$ & $-0.09007$ & $+0.08293$ & $-0.11080$ & $-0.09469$ \\
+14 & $-0.01575$ & $-0.09264$ & $+0.08240$ & $-0.11324$ & $-0.09908$ \\
+16 & $-0.01580$ & $-0.09509$ & $+0.08172$ & $-0.11552$ & \\
+\bottomrule
+\end{tabular}
+\caption{Coefficients of the $\eps^4$ windows (\code{residual\_log/\allowbreak{}ce\_wc/\allowbreak{}x4/}, \code{residual\_log/\allowbreak{}results/\allowbreak{}tag/}).
+$\delta_{4\chi,{\rm leg}}=\delta_{4\chi}+\frac14Y_4(L,2)$ is the coefficient of the leg-only variant; the proxy $\delta^{(4)}$ is that of
+$W_{cs4}$.}
+\label{htp:d2:tab:d4chi}
+\end{table}
+
+\paragraph{Exact invariances.} For the leg-only variant ($L=2$ to 16) and for $W_{cs4\chi}$ and ``all'' ($L=4$ to 16), the following are
+identical to $W_{cs}$ as exact rationals (\code{verify\_p5.txt}): $C_0$ to $C_5$; $r_1$ to $r_4$ and $g_1$ to $g_4$; $E_p$
+through $\eps^4$; $R_2$ and $R_3$ of every descendant. $r_5$, $g_5$ and $C_6$ change (at $L=16$, $r_5=10.4473$ against
+$10.2495$ and $g_5=-2.2890$ against $-2.2681$). $R_5$ of $\chi_{aa}$ is exactly unchanged, as $R_4$ was under the $\eps^3$
+window, and it grows: $R_5(\chi_{11})=0.0737$, $0.0839$, $0.0934$, $0.1042$, $0.1158$, $0.1285$ and $0.1420$ at $L=4$ to 16.
+That is the $\eps^5$ instance of the same leg defect.
+
+\paragraph{T4: the $\eps^4$ spacing.} $\chi_{11}$ matches the budget-free line by construction ($-0.0043$ at $L=14$, $-0.0028$ at
+16, going to zero). The tests are $\chi_{22}$ and $\chi_{33}$ against their own budget-free lines (Table~\ref{htp:d2:tab:r4chi}).
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+ & scheme & $L=6$ & 8 & 10 & 12 & 14 & 16 \\\midrule
+$\chi_{22}$ & $W_{cs}$ ($=W_c$) & $+0.0341$ & $+0.0398$ & $+0.0485$ & $+0.0564$ & $+0.0634$ & $+0.0697$ \\
+ & proxy $W_{cs4}$ & $-0.0340$ & $-0.0335$ & $-0.0297$ & $-0.0267$ & $-0.0245$ & \\
+ & leg only & $-0.0338$ & $-0.0319$ & $-0.0264$ & $-0.0215$ & $-0.0172$ & $-0.0136$ \\
+ & $W_{cs4\chi}$ & $-0.0594$ & $-0.0404$ & $-0.0312$ & $-0.0250$ & $-0.0204$ & $-0.0165$ \\
+ & budget-free & $-0.0497$ & $-0.0405$ & $-0.0338$ & $-0.0288$ & $-0.0248$ & \\\midrule
+$\chi_{33}$ & $W_{cs}$ ($=W_c$) & $+0.0894$ & $+0.0715$ & $+0.0448$ & $+0.0474$ & $+0.0544$ & $+0.0619$ \\
+ & proxy $W_{cs4}$ & $+0.0220$ & $-0.0013$ & $-0.0331$ & $-0.0354$ & $-0.0334$ & \\
+ & leg only & $+0.0221$ & $+0.0004$ & $-0.0296$ & $-0.0300$ & $-0.0259$ & $-0.0212$ \\
+ & $W_{cs4\chi}$ & $-0.2381$ & $-0.0331$ & $-0.0432$ & $-0.0387$ & $-0.0329$ & $-0.0275$ \\
+ & budget-free & & $-0.0723$ & $-0.0569$ & $-0.0490$ & $-0.0429$ & \\
+\bottomrule
+\end{tabular}
+\caption{$R_4$ of $\chi_{22}$ and $\chi_{33}$ by scheme, exact (\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_p5/\allowbreak{}verify\_p5.txt}). The
+$\chi\chi$ form ($W_{cs4\chi}$) and the variant ``all'' give identical $R_4$ for every descendant.}
+\label{htp:d2:tab:r4chi}
+\end{table}
+
+\begin{itemize}
+\item $\chi_{22}$: $W_{cs4\chi}$ closes $\NTwoGapTwo\%$ of the gap between $W_{cs}$ and the budget-free line at $L=14$ ($-0.0204$
+ against $-0.0248$) and agrees to $10^{-5}$ at $L=8$ ($-0.04044$ against $-0.04045$). The remaining gap, $+0.0026$, $+0.0037$ and $+0.0044$ at $L=10$, 12 and 14,
+ is not shrinking: $L$ times the gap grows ($0.026$, $0.044$, $0.062$). A zero limit for $a\ge2$ is therefore not established.
+ The gap reflects the dependence of the $\eps^4$ leg response on the charge, a few percent of the leg coefficient
+ (about 3.5\% at $L=14$), which the calibration on $\chi_{11}$, with charges $(2,2)$, cannot see. $R_4(\chi_{22})$ itself falls ($LR_4=-0.31$, $-0.30$, $-0.29$, $-0.26$ at $L=10$ to 16); the budget-free
+ $\chi_{22}$ line was not computed at $L=16$.
+\item $\chi_{33}$: $\NTwoGapThree\%$ of the gap is closed at $L=14$ ($-0.0329$ against $-0.0429$); the gap is $+0.0137$, $+0.0103$
+ and $+0.0101$ at $L=10$, 12 and 14.
+\item The leg-only variant misses $\chi_{22}$ by $0.0073$ to $0.0076$ and $\chi_{33}$ by $0.017$ to $0.019$ at $L=12$ and 14, so the uniform
+ part $Y_4$ is needed. The proxy $W_{cs4}$ happens to land near $\chi_{22}$ at $L=12$ and 14 but misses $\chi_{11}$ ($-0.0064$ at
+ $L=14$) and $\chi_{33}$ ($+0.0095$).
+\item The $\phi^2$ descendant of level 2 still grows in every scheme: $R_4=0.0404$, $0.1472$, $0.2080$, $0.2459$, $0.2710$ and
+ $0.2885$ in $W_{cs4\chi}$ at $L=6$ to 16 ($W_{cs}$: $0.1301$ to $0.3949$). It is not settled, as at $\eps^3$.
+\end{itemize}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}rccccc@{}}
+\toprule
+$L$ & $W_c$ & $W_{cs}$ & leg only & $W_{cs4\chi}$ & ``all'' \\\midrule
+12 & 149.30050 & 149.31434 & 149.29008 & 149.28512 & 149.28594 \\
+14 & 157.83017 & 157.84508 & 157.81947 & 157.81354 & 157.81431 \\
+16 & 165.37223 & 165.38804 & 165.36121 & 165.35460 & 165.35533 \\
+\bottomrule
+\end{tabular}
+\caption{$C_6$ by scheme, exact rationals rounded (\code{residual\_log/\allowbreak{}fits/\allowbreak{}parent\_check\_p5/\allowbreak{}verify\_p5.txt}); the continuum
+value is $\NTwoCsixCont$.}
+\label{htp:d2:tab:c6}
+\end{table}
+
+\paragraph{$C_6$.} The leg-only variant and the proxy $W_{cs4}$ add the same operator, $\frac12[\delta X_0+\delta^{(3)}X_1]$,
+with different coefficients $\delta$ of $X_0$. Their $C_6$ values therefore fix the response of $C_6$ to $\frac12X_0$
+inserted at $\eps^4$: it equals the $C_5$ response $S(L)$ of Appendix~\ref{htp:d2:app:wcstests} to $10^{-14}$ at $L=6$ to 14
+(replay check \code{p2.c6\_identity}). Relative to $W_{cs}$, the leg-only variant thus shifts $C_6$ by
+$\delta_{4\chi,{\rm leg}}(L)S(L)+\delta^{(3)}(L)S_1(L)$, where $S_1$ is the $C_6$ response to $\frac12X_1$; the second term is
+$+0.0018$ to $+0.0025$ at $L=6$ to 14 ($S_1=-0.12$ to $-0.16$). The shift is $-0.0256$ at $L=14$ and $-0.0268$ at $L=16$,
+and the uniform part of $W_{cs4\chi}$ adds $-0.0035$, $-0.0050$, $-0.0059$ and $-0.0066$ at $L=10$ to 16. The total
+$W_{cs4\chi}$ shift relative to $W_{cs}$ is $-0.032$ at $L=14$ and $-0.033$ at $L=16$ (Table~\ref{htp:d2:tab:c6}).
+
+\paragraph{The window coefficient grows with $\ln L$.} $\delta_{4\chi,{\rm leg}}=-0.0801$, $-0.0841$, $-0.0873$, $-0.0901$, $-0.0926$ and $-0.0951$ at
+$L=6$ to 16, a local slope of $-0.014$ to $-0.018$ per unit of $\ln L$ ($-0.0183$ between 14 and 16), and $\delta_{4\chi}$ runs
+from $-0.0957$ to $-0.1155$. This is forced: in $W_{cs}$, $R_4$ grows with a local slope of about $\NTwoRfourSlope$ per unit of $\ln L$, while the
+budget-free line goes to zero, so the slope should approach $-\NTwoRfourSlope$ as the budget-free spacing flattens. Since
+the $C_6$ response to the $\eps^4$ leg term is $S(L)$, the leg window's $C_6$ shift then tends to about
+$-\NTwoRfourSlope\,S_\infty\ln L\approx-0.010\ln L$, plus a uniform part of order 0.01.
+
+\paragraph{A structural prediction, not a measurement.} If this window is complete at $\eps^4$, $C_6$ in $W_c$ and $W_{cs}$
+carries the opposite divergence, about $\NTwoCsixLog\ln L$, from the missing $\chi$-line budget, and $W_{cs4\chi}$ removes it.
+This parallels $\eps^3$, where the missing constant leg window left $C_5^{W_c}$ about $0.006$ above $C_5^{W_{cs}}$. It cannot be
+tested at $L\le16$: there $C_6\approx\NTwoCsixSixteen$ in every scheme of Table~\ref{htp:d2:tab:c6}, against the continuum value
+$\NTwoCsixCont$, $C_6(L)$ still rises by about $\NTwoCsixStep$ per step of 2 in $L$, and the external-line windows shift $C_6$
+by about $2\times10^{-4}$ of its value. No statement
+about $C_6(\infty)$ is possible from $L\le16$ in any scheme.
+
+\paragraph{Cost.} The $\chi$-line objects are exact brute force. The budget-free line at $L=16$ took 6.1~hours and 76~GB, the
+$\chi$-line function 7.3~hours and 110~GB; $L=18$ would need about 20~hours and more than 200~GB per process, more than one
+node holds. A large-$L$ test needs an $\eps^6$ version of the shift machinery and a diagrammatic tagged $\chi$ channel for
+$\delta_{4\chi}(L)$ and $Y_4(L,\ell)$; neither is built.
+
+\subsection{Status of the window components and outlook}\label{htp:d2:app:status}
+{\small\raggedright\noindent Records: \code{residual\_log/\allowbreak{}WINDOW\_SPEC.md} (status table, \S\S2.5a and 2.5b),
+\code{zeromode\_exact/\allowbreak{}README.md} (\S\S9 and 10), \code{complete\_exact/\allowbreak{}README.md} (\S\S1 and 5),
+\code{continuum/\allowbreak{}fits\_summary.txt}.\par}
+
+\begin{table}[ht]
+\centering\footnotesize\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{6.4cm}p{8.6cm}@{}}
+\toprule
+component & status \\\midrule
+$D^{\rm zm}$ at $\eps^2$, Eq.~\eqref{htp:d2:eq:Dzm} & derived (linked clusters); exact agreement with brute force at $L\le12$; with $D^M$, the fitted limit of $C_4^W$ agrees with the continuum (Section~\ref{htp:d2:c4}) \\
+$D^M$ at $\eps^2$, Eq.~\eqref{htp:d2:eq:DM}, or in the $e_1$ form & derived at leading order in $1/L$; verified at $\eps^4$ \\
+Bloch $D^{\rm zm}$ at $\eps^3$ & supported at $\eps^5$: no linear term (scheme Bloch); the eigenvalue-diagonal form is excluded ($-0.0051\,L$) \\
+self-consistent auxiliary windows (scheme $W$) & double counting; $C_5^W$ diverges like $\NTwoCfiveWLin\,L$ \\
+rule $W_c$ (auxiliary windows referred to $L$) & provisional, not derived in full; T1 and T2 pass, T3 fails \\
+coupling window $D^V$ & invalid (finite $C_4$ shift of about 0.49; growing $\eps^3$ spacing) \\
+$\eps^3$ external-line window ($W_{cs}$, Eq.~\eqref{htp:d2:eq:wcsfull}) & provisional, not derived in full; $\delta_\infty=-\frac4{81\pi}$ identified numerically; linearization asymptotically exact; T1 and T2 pass; T3 for $\chi_{aa}$: at least $\HTpTwoIdentThree\%$ removed at $L=14$ and 16 ($a=1$ to 3); extrapolated remainder 3 to 5\% for $\chi_{11}$ (zero not excluded), up to about 8\% for $\chi_{22}$, undetermined for $\chi_{33}$; cancellation as $L\to\infty$ expected but not established; $\phi^2$ descendants not settled \\
+$C_5$ residual logarithm & no $\ln L$ term preferred by the fits with the $\ln^3L/L$ tail; $|b|\lesssim\NTwoBbound$ judged from the median of the fits to $L\le\HTpTwoLfive$ (Section~\ref{htp:d2:c5log}); bounding it well below $\NTwoBbound$ would need $L\gtrsim\NTwoLneeded$ \\
+$\eps^4$ $\chi$-line window ($W_{cs4\chi}$, Eq.~\eqref{htp:d2:eq:wcs4chi}) & provisional; exact invariances through $C_5$ and $R_3$; $\chi_{11}$ by construction; $\chi_{22}$, $\chi_{33}$ gaps $\NTwoGapTwo\%$, $\NTwoGapThree\%$ closed at $L=14$ ($\chi_{22}$ gap not shrinking); $\phi^2$ not settled; grows like $\ln L$ \\
+$\eps^5$ leg window & open: $R_5(\chi_{aa})$ grows \\
+coupling window with $\chi$ legs; higher-order windows; completeness & conjectured from power counting; not computed \\
+$C_6$ to $C_8$ with a complete window & not available \\
+\bottomrule
+\end{tabular}
+\caption{Status of the window components in $d=2$. Every component was derived after its effect had been seen and with the
+continuum values known (Section~\ref{htp:d2:caveats}); none has a fitted parameter.}
+\label{htp:d2:tab:status}
+\end{table}
+
+\paragraph{Structure at higher orders.} Since $C_n=-\frac13\Delta_p^3\mathcal E_p^{(n)}$ at every order, only degree three or
+more in $p$ survives, and at order $n$ the number of surviving $\chi$ lines is at most $\frac12(4n-6)$: five at $\eps^4$, seven at
+$\eps^5$, nine at $\eps^6$. The following is conjectured from power counting.
+\begin{itemize}
+\item Nested $\chi$ sunsets with $\chi$ spectators start at $\eps^5$. $\{\hat\ell,M'\}$ contains them, because $\hat\ell$ counts
+ every quantum present.
+\item Coupling bubbles with hard $\chi$ spectators give windows of order one from $\eps^5$ on. Their window behaves like
+ $\ln\frac L{L-\ell}$, so the leading form is not enough; $D^V$ as specified is not a correct form, and a correct one is open.
+\item The zero-mode effective Hamiltonian is needed at all orders as a matrix $h^{(k)}_{z'z}(\lambda)$, not only its
+ eigenvalues; the slope of the mass window acquires a $\ln L$ at $\eps^3$ ($r_3\sim L\ln L$); and divergent three-vertex
+ sub-bubbles with spectators appear.
+\item The double counting of Appendix~\ref{htp:d2:app:Wc} recurs at every order with nested windows; rule $W_c$ removes it by
+ construction.
+\end{itemize}
+
+\paragraph{Next steps.}
+\begin{enumerate}
+\item The residual logarithm of $C_5$: bounding $|b|$ well below $\NTwoBbound$ needs exact $C_5(L)$ to $L\gtrsim\NTwoLneeded$.
+\item Large-$L$ tests of the $\eps^4$ window: the prediction $C_6^{W_c}\supset\NTwoCsixLog\ln L$ and $C_6(\infty)$ need the
+ $\eps^6$ shift machinery and a diagrammatic tagged $\chi$ channel for $\delta_{4\chi}(L)$ and $Y_4(L,\ell)$, the analogue of
+ \code{residual\_log/\allowbreak{}large\_L/\allowbreak{}tagchan.py} with an external $\chi$ line. The $\chi_{22}$ gap would then show whether the
+ $a$-dependence of the leg response is a finite-$L$ effect, as it was at $\eps^3$.
+\item The $\eps^5$ leg window: $R_5(\chi_{aa})$ grows, and the same construction one order higher is needed before $C_7$.
+\item The $\phi^2$ descendants at $\eps^3$ and $\eps^4$ need larger $L$ or a treatment of two-particle legs beyond the
+ linearization.
+\end{enumerate}
+
+\paragraph{Consequences for the production solver.}
+\begin{itemize}
+\item The production solver computes its stated truncation correctly through $\eps^8$ (Section~\ref{htp:d2:solvers}); no
+ implementation change is needed for what it claims to compute.
+\item The windows it implements (consistent, literal) are incomplete in $d=2$ from $\eps^4$ on. Its consistent $C_4$ follows
+ $\NTwoCfourConsA-\frac{365}{4374\pi}\ln L+\dots$, and its consistent $C_5$ needs about $+0.2\ln L$
+ (\code{residual\_log/\allowbreak{}WINDOW\_SPEC.md}): fits without logarithms miss the continuum value by 1.6 to 1.7 (steps~3
+ and~4 of \code{residual\_log/\allowbreak{}fits/\allowbreak{}fits\_c5.txt}, $L\le160$). Fits of $C_4$ to $C_8$ from its data at $L\le30$ (the data available when they were made) fall short of the diagrammatic
+ values in magnitude, by 6 to 13\% for the medians over the tail towers (\code{continuum/\allowbreak{}fits\_summary.txt}); they are no
+ evidence against those values.
+\item The windows matter much more at high order. The diagonal zero-mode window alone changes $C_4$ by about $+0.10$ but $C_8$ by
+ $+67\%$ at $L=2$, $+23\%$ at $L=14$ and $+18.5\%$ at $L=18$ (\S9 of \code{zeromode\_exact/\allowbreak{}README.md}).
+\item A production implementation of the window must drop the assumption that $D$ is diagonal in the occupation basis.
+ It needs the Bloch matrices $h_{z'z}(\lambda)$ for every $\lambda\le L$ (in scheme $W$, zero-mode channels $z\le20$ for the references
+ through $\eps^8$, $z\le21$ with descendant channels), the Newton coefficients $e_1(\lambda)$, rule $W_c$ inside every
+ auxiliary channel, and the partners projected out of the window objects. It needs the non-diagonal $D^M$, which does not
+ vanish on the references and enters $r_3$ and $g_3$. The $\eps^3$ external-line window needs the tagged $\phi$ channel that
+ gives $\delta^{(3)}(L)$ and the reweighted operator $X$, and the $\eps^4$ window the budget-free and spectator $\chi$-line
+ channels.
+\item The exact Fock basis grows fast (463\,GiB at $L=34$). A reliable extrapolation needs exact large-$L$ sums of the kind
+ used here, or at least the exact window shifts, to fix the $\ln L$ structure.
+\end{itemize}

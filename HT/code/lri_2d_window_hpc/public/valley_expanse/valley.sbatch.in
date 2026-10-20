@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH -A <ACCOUNT> -p shared --nodes=1 --ntasks-per-node=1 --cpus-per-task=@CPUS@ --mem=@MEM@ -t @TIME@
+#SBATCH -J @NAME@ -o <HOME>/lri2d_window/logs/%x_%j.out
+# L=@L@ valley scan point (diagnostic only): frozen release afe69ab, frozen env, production solver settings.
+set -o pipefail
+module purge >/dev/null 2>&1; module load cpu/0.15.4 slurm/expanse/23.02.7 >/dev/null 2>&1
+say(){ echo "[$(date '+%F %T')] @NAME@ job ${SLURM_JOB_ID}: $*"; }
+R=<HOME>/lri2d_window
+STAGE=/scratch/${USER}/job_${SLURM_JOB_ID}
+mkdir -p "${STAGE}/tools" || { say "no stage"; exit 74; }
+cp -- "${R}/releases/ht2d_afe69ab143c8.tar" "${STAGE}/release.tar" && cp -- "${R}/releases/ht2d_afe69ab143c8.sha256" "${STAGE}/release.sha256" || { say "copy failed"; exit 74; }
+echo "ae101b111e778987a9f32326353e6969ff734fdef5595f1debe86d291527bd5f  ${STAGE}/release.tar" | sha256sum -c --quiet - || { say "tar sha mismatch"; exit 74; }
+echo "ab0cf5a709fb7b00cddae7bc265cb9b257037f1cb95f3f8660e6514e08641b5c  ${STAGE}/release.sha256" | sha256sum -c --quiet - || { say "manifest sha mismatch"; exit 74; }
+tar -xf "${STAGE}/release.tar" -C "${STAGE}" && ( cd "${STAGE}" && sha256sum -c --quiet release.sha256 ) || { say "staged release corrupted"; exit 74; }
+echo "@BASIS_SHA@  @BASIS@" | sha256sum -c --quiet - || { say "basis sha mismatch"; exit 74; }
+cp -- "${R}/valley/scan_valley.py" "${STAGE}/tools/" || exit 74
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 BLIS_NUM_THREADS=1
+export NUMBA_NUM_THREADS=${SLURM_CPUS_PER_TASK} NUMBA_CACHE_DIR=${STAGE}/numba
+mkdir -p "${NUMBA_CACHE_DIR}" "${R}/valley/out"
+say "host $(hostname); x=@X@ L=@L@ theta0=@T0@ theta1_guess=@T1@ -> @OUT@"
+"${R}/envs/c933a2e87b3c116a/bin/python" -E -s "${STAGE}/tools/scan_valley.py" "${STAGE}/ht2d/code" "@BASIS@" @X@ @L@ "${SLURM_CPUS_PER_TASK}" "@OUT@" @T0@ @T1@
+rc=$?; say "exit ${rc}"; exit ${rc}

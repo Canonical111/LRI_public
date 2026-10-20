@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --partition=amdq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
+#SBATCH --time=03:00:00
+#SBATCH --output=%x.%j.log
+source /etc/profile.d/modules.sh
+module load mathematica/15.0
+cd $SLURM_SUBMIT_DIR
+wolframscript -file "$@"

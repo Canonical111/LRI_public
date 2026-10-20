@@ -1,0 +1,48 @@
+--- flags(d12) exit 0, record present; F2 True
+--- flags(d6) exit 1, record present; F2 True
+stderr tail:
+
+stdout tail:
+[02:34:32] F2 seeds: 0 added, 49 present in /scratch/<USER>/job_54676921/tmp/c8d2_nf_jaewdnn0/auto_seeds.json
+[02:34:32] F2: paired mini-campaign
+[02:34:34] F2: replicates [0,4) done (12 blocks, 1 s)
+{
+ "mode": "profile",
+ "profile_name": "dd",
+ "status": "failed",
+ "verdicts": {
+  "F2": false
+ },
+ "development": [
+  "--f2-graphs 4",
+  "--f2-loops 3,4,7",
+  "fewer F2 replicates or points than 4 x 256",
+  "--f4-sample 3",
+  "--f4-loop 7",
+  "--f4-repeats 2",
+  "--fake-topology"
+ ],
+ "note": null,
+ "error": null
+}
+
+--- flags(dse) exit 1, record MISSING; F2 None
+stderr tail:
+/scratch/<USER>/job_54676921/tmp/c8d2_nf_jaewdnn0/c8d2_gmp_dd --describe failed: Traceback (most recent call last):
+  File "/scratch/<USER>/job_54676921/tmp/c8d2_nf_jaewdnn0/c8d2_gmp_dd", line 22, in <module>
+    DELTA=float(os.environ.get('C8_FAKE_PROFILE_DELTA','0'))if _prof else 0.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'np.float64(0.026970860377487114)'
+
+
+stdout tail:
+
+Traceback (most recent call last):
+  File "/scratch/<USER>/job_54676921/tmp/nfdbg.py", line 11, in <module>
+    try: T.test_f2_profile(); print('f2_profile PASSED')
+         ^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tests/test_numerics_flags.py", line 288, in test_f2_profile
+    f=r['F2'];assert f['doublings']==1 and f['replicates']==8,(f['doublings'],f['replicates'],f['gates']['total'])
+      ~^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+f2_profile FAILED

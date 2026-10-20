@@ -1,0 +1,254 @@
+--- base/Makefile
++++ optimized/Makefile
+@@ -28,17 +28,17 @@
+ 	@$(PYTHON) -c "print('Native worker ready. See README.md and slurm/ for cluster commands.')"
+ check-flags:
+ 	@$(FLAG_CHECK)
+-bin/c8d3_gmp: src/kernel.hpp src/c8d3_integrate.cpp Makefile tools/native_buildinfo.py
++bin/c8d3_gmp: src/kernel.hpp src/positive_quad.hpp src/c8d3_integrate.cpp Makefile tools/native_buildinfo.py
+ 	@mkdir -p bin
+ 	@$(FLAG_CHECK)
+ 	$(GMP_CMD)
+ 	@$(PYTHON) -B tools/native_buildinfo.py write bin/c8d3_gmp '$(CXX)' '$(CPPFLAGS)' -- $(GMP_CMD)
+-bin/c8d3_decimal: src/kernel.hpp src/c8d3_integrate.cpp Makefile tools/native_buildinfo.py
++bin/c8d3_decimal: src/kernel.hpp src/positive_quad.hpp src/c8d3_integrate.cpp Makefile tools/native_buildinfo.py
+ 	@mkdir -p bin
+ 	@$(FLAG_CHECK)
+ 	$(DECIMAL_CMD)
+ 	@$(PYTHON) -B tools/native_buildinfo.py write bin/c8d3_decimal '$(CXX)' '$(CPPFLAGS)' -- $(DECIMAL_CMD)
+-bin/point_checks_gmp: src/kernel.hpp tests/point_checks.cpp Makefile
++bin/point_checks_gmp: src/kernel.hpp src/positive_quad.hpp tests/point_checks.cpp Makefile
+ 	@mkdir -p bin
+ 	@$(FLAG_CHECK)
+ 	$(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) -DC8_USE_GMP tests/point_checks.cpp $(LDFLAGS) -lquadmath -lgmp $(LDLIBS) -o $@
+@@ -48,3 +48,32 @@
+ 	$(REFERENCE_CMD)
+ clean:
+ 	rm -f bin/c8d3_gmp bin/c8d3_decimal bin/c7d3_reference bin/point_checks_gmp bin/c8d3_gmp.buildinfo.json bin/c8d3_decimal.buildinfo.json
++
++.PHONY: baseline test-optimization
++baseline: bin/c8d3_baseline
++bin/c8d3_baseline: baseline/src/kernel.hpp baseline/src/c8d3_integrate.cpp
++	@mkdir -p bin
++	@$(FLAG_CHECK)
++	$(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) -DC8_USE_GMP baseline/src/c8d3_integrate.cpp $(LDFLAGS) -lquadmath -lgmp $(LDLIBS) -o $@
++bin/test_positive_quad: tests/test_positive_quad.cpp src/positive_quad.hpp
++	@mkdir -p bin
++	@$(FLAG_CHECK)
++	$(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) tests/test_positive_quad.cpp $(LDFLAGS) -lquadmath $(LDLIBS) -o $@
++test-optimization: optimized baseline bin/test_positive_quad
++	bin/test_positive_quad
++	OPENBLAS_NUM_THREADS=1 $(PYTHON) -B tests/test_optimization.py
++	OPENBLAS_NUM_THREADS=1 $(PYTHON) -B tests/test_hpc_dispatch.py
++	OPENBLAS_NUM_THREADS=1 $(PYTHON) -B tests/test_streaming_assembly.py
++
++.PHONY: optimized profile
++optimized: bin/c8d3_optimized
++bin/c8d3_optimized: src/kernel.hpp src/positive_quad.hpp src/c8d3_integrate.cpp Makefile tools/native_buildinfo.py
++	@mkdir -p bin
++	@$(FLAG_CHECK)
++	$(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) -DC8_USE_GMP src/c8d3_integrate.cpp $(LDFLAGS) -lquadmath -lgmp $(LDLIBS) -o $@
++	@$(PYTHON) -B tools/native_buildinfo.py write $@ '$(CXX)' '$(CPPFLAGS)' -- $(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) -DC8_USE_GMP src/c8d3_integrate.cpp $(LDFLAGS) -lquadmath -lgmp $(LDLIBS) -o $@
++profile: bin/c8d3_profile
++bin/c8d3_profile: baseline/src/kernel_profile.hpp baseline/src/profiling.hpp baseline/src/c8d3_profile.cpp
++	@mkdir -p bin
++	@$(FLAG_CHECK)
++	$(CXX) $(CPPFLAGS) $(OPTFLAGS) $(CXXFLAGS) $(STRICT) -DC8_USE_GMP baseline/src/c8d3_profile.cpp $(LDFLAGS) -lquadmath -lgmp $(LDLIBS) -o $@
+--- base/src/kernel.hpp
++++ optimized/src/kernel.hpp
+@@ -16,6 +16,7 @@
+ #include <utility>
+ #include <vector>
+ #include <quadmath.h>
++#include "positive_quad.hpp"
+ #include <boost/multiprecision/cpp_dec_float.hpp>
+ #ifdef C8_USE_GMP
+ #include <boost/multiprecision/gmp.hpp>
+@@ -56,6 +57,16 @@
+     std::vector<std::vector<std::pair<int,int>>> numerators;
+     std::vector<ld> choice_total;
+ };
++// Diagnostic only: excludes allocator bookkeeping, temporary parse tries and thread scratch.
++inline size_t resident_bytes(const Graph&g){
++    size_t n=sizeof(g)+g.masks.capacity()*sizeof(unsigned)+g.terms.capacity()*sizeof(Term)
++        +(g.alpha.capacity()+g.dp.capacity()+g.choice_total.capacity())*sizeof(ld)
++        +g.products.capacity()*sizeof(std::pair<int,int>)+(g.mon_ids.capacity()+g.addends.capacity())*sizeof(int)
++        +g.segments.capacity()*sizeof(Segment)+g.numerators.capacity()*sizeof(std::vector<std::pair<int,int>>);
++    for(const auto&t:g.terms)n+=(t.ids.capacity()+t.co.capacity())*sizeof(int);
++    for(const auto&v:g.numerators)n+=v.capacity()*sizeof(std::pair<int,int>);
++    return n;
++}
+ struct Scratch {
+     std::array<ld,MaxEdges> x{}, xs{},lx{},lt{};
+     std::array<int,MaxEdges> order{};
+@@ -69,8 +80,8 @@
+ struct Eval {ld y; int level;};
+ template<class T> T exponential(T x) { using std::exp; return exp(x); }
+ template<> inline Q exponential(Q x) { return expq(x); }
+-template<class T> T square_root(T x) { using std::sqrt; return sqrt(x); }
+-template<> inline Q square_root(Q x) { return sqrtq(x); }
++template<class T> T square_root(const T& x) { using std::sqrt; return sqrt(x); }
++template<> inline Q square_root(const Q& x) { return sqrtq(x); }
+ template<class T> T absolute(T x) { return x<0 ? -x : x; }
+ inline void rates(Graph&g,ld scale) {
+     int sz=1<<g.E;
+@@ -78,7 +89,7 @@
+     for(int s=1;s<sz-1;++s)if(!(g.alpha[s]>0) || !std::isfinite(g.alpha[s]))throw std::runtime_error("nonpositive/nonfinite rate");
+     for(auto&a:g.alpha)a*=scale;
+     g.dp.assign(sz,0);g.choice_total.assign(sz,0);g.dp[0]=1;
+-    for(int s=1;s<sz;++s){ld sum=0;for(int j=0;j<g.E;++j)if(s>>j&1)sum+=g.dp[s^(1<<j)];
++    for(int s=1;s<sz;++s){ld sum=0;unsigned bits=s;while(bits){int j=__builtin_ctz(bits);bits&=bits-1;sum+=g.dp[s^(1<<j)];}
+         g.choice_total[s]=sum; g.dp[s]=sum/(s==sz-1?1:g.alpha[s]);
+         if(!std::isfinite(g.dp[s]))throw std::runtime_error("nonfinite importance normalization");}
+     g.Z=g.dp.back();
+@@ -142,8 +153,10 @@
+     std::array<T,MaxEdges> x{},xs{};
+     std::vector<T> products,sums,numerator,abs_numerator;
+     void resize(const Graph&g) {
+-        products.resize(g.products.size()+1);sums.resize(g.segments.size()+1);
+-        numerator.resize(g.numerators.size());abs_numerator.resize(g.numerators.size());
++        if(products.size()<g.products.size()+1)products.resize(g.products.size()+1);
++        if(sums.size()<g.segments.size()+1)sums.resize(g.segments.size()+1);
++        if(numerator.size()<g.numerators.size())numerator.resize(g.numerators.size());
++        if(abs_numerator.size()<g.numerators.size())abs_numerator.resize(g.numerators.size());
+     }
+ };
+ template<class T,bool NeedError=true>
+@@ -153,14 +166,18 @@
+     for(int j=0;j<g.E;++j){s.x[j]=exponential(T(logx[j]));S+=s.x[j];
+         s.xs[j]=shift==0?s.x[j]:exponential(T(logx[j])-T(shift)/g.L);}
+     for(size_t j=0;j<g.products.size();++j){auto o=g.products[j];s.products[j+1]=s.products[o.first]*s.xs[o.second];}
+-    for(size_t j=0;j<g.segments.size();++j){auto a=g.segments[j];T v=s.sums[a.parent];
+-        for(int k=a.begin;k<a.end;++k)v+=s.products[g.addends[k]];s.sums[j+1]=v;}
+-    for(size_t j=0;j<g.numerators.size();++j){T n=0,ab=0;
+-        for(auto [i,c]:g.numerators[j]){T p=T(c)*s.x[i];n+=p;if constexpr(NeedError)ab+=absolute(p);}
+-        s.numerator[j]=n;if constexpr(NeedError)s.abs_numerator[j]=ab;}
+-    T val=0,err=0;
++    for(size_t j=0;j<g.segments.size();++j){auto a=g.segments[j];T&v=s.sums[j+1];v=s.sums[a.parent];
++        for(int k=a.begin;k<a.end;++k){
++            if constexpr(std::is_same<T,Q>::value) v=positive_quad_add(v,s.products[g.addends[k]]);
++            else v+=s.products[g.addends[k]];
++        }}
++    T p;
++    for(size_t j=0;j<g.numerators.size();++j){T&n=s.numerator[j];T&ab=s.abs_numerator[j];n=0;ab=0;
++        for(auto [i,c]:g.numerators[j]){p=T(c)*s.x[i];n+=p;if constexpr(NeedError)ab+=absolute(p);}
++        }
++    T val=0,err=0,root,den;
+     for(const auto&t:g.terms){const T&U=s.sums[t.denominator];
+-        T den=U*square_root(U);val+=s.numerator[t.numerator]/den;if constexpr(NeedError)err+=s.abs_numerator[t.numerator]/den;}
++        root=square_root(U);den=U*root;val+=s.numerator[t.numerator]/den;if constexpr(NeedError)err+=s.abs_numerator[t.numerator]/den;}
+     return {val/S,NeedError?err/S:T(0)};
+ }
+ inline Eval evaluate(const Graph&g,const ld*lx,ld factor,Scratch&s) {
+@@ -177,7 +194,7 @@
+     if(K<0||K>=JetSlots)throw std::runtime_error("invalid Taylor order");
+     int E=g.E,S=(1<<E)-1;ld fac=0,ou=uu[0];
+     for(int pos=0;pos<E;++pos){ld u=(layout==2?ou:uu[layout==0?2*pos:E-1+pos])*g.choice_total[S];int pick=-1;
+-        for(int j=0;j<E;++j)if(S>>j&1){u-=g.dp[S^(1<<j)];if(u<=0){pick=j;break;}}
++        for(unsigned bits=S;bits;bits&=bits-1){int j=__builtin_ctz(bits);u-=g.dp[S^(1<<j)];if(u<=0){pick=j;break;}}
+         if(pick<0)pick=31-__builtin_clz(S);
+         if(layout==2){ld pr=g.dp[S^(1<<pick)];ou=(u+pr)/pr;ou=std::max(0.L,std::min(nextafterl(1.L,0.L),ou));}
+         s.order[pos]=pick;S^=1<<pick;
+--- base/src/c8d3_integrate.cpp
++++ optimized/src/c8d3_integrate.cpp
+@@ -1,6 +1,8 @@
+ // Extended from the supplied C7 d=3 worker; see NATIVE_PROVENANCE.json.
+ #include "kernel.hpp"
+ #include <chrono>
++#include <cstdlib>
++#include <optional>
+ #include <iostream>
+ #include <memory>
+ #include <random>
+@@ -18,8 +20,9 @@
+     void point(ld*u)const {for(int j=0;j<dim;++j)u[j]=(ld(state[j])+.5L)/ld(uint64_t(1)<<bits);}
+ };
+ int main(int argc,char**argv){try {
++    if(std::fegetround()!=FE_TONEAREST)throw std::runtime_error("FE_TONEAREST is required");
+     if(argc==2 && std::string(argv[1])=="--describe"){
+-    std::cout<<"{\"schema\":\"c8-d3-build-1\",\"dimension\":3,\"order\":8,\"compiler\":\""<<__VERSION__<<"\",\"long_double_bits\":"<<std::numeric_limits<ld>::digits<<",\"mp_backend\":\""<<mp_backend<<"\",\"mp_digits10\":"<<std::numeric_limits<MP>::digits10<<",\"mp_max_digits10\":"<<std::numeric_limits<MP>::max_digits10<<",\"openmp\":"<<_OPENMP<<"}\n";return 0;}
++    std::cout<<"{\"schema\":\"c8-d3-build-1\",\"dimension\":3,\"order\":8,\"compiler\":\""<<__VERSION__<<"\",\"long_double_bits\":"<<std::numeric_limits<ld>::digits<<",\"mp_backend\":\""<<mp_backend<<"\",\"mp_digits10\":"<<std::numeric_limits<MP>::digits10<<",\"mp_max_digits10\":"<<std::numeric_limits<MP>::max_digits10<<",\"openmp\":"<<_OPENMP<<",\"execution\":\"bounded-graph-batches-v1\",\"quad_add\":\""<<quad_add_backend<<"\"}\n";return 0;}
+     if(argc!=12){std::cerr<<"graphs_root gamma net tasks output seed layout rate threads sum_mode grid_or_dash\n";return 1;}
+     std::string root=argv[1],out=argv[5],mode=argv[10];uint64_t seed=std::stoull(argv[6]);int layout=std::stoi(argv[7]),threads=std::stoi(argv[9]);ld scale=std::stold(argv[8]);
+     if(threads<1||layout<0||layout>2||!(scale>0&&scale<=1)|| (mode!="compensated"&&mode!="legacy"))throw std::runtime_error("bad execution options");
+@@ -36,21 +39,58 @@
+     if(gamma>>extra)throw std::runtime_error("extra gamma tokens");
+     if(!norm||!std::isfinite(norm))throw std::runtime_error("invalid normalization");
+     for(auto x:logs)if(!std::isfinite(x))throw std::runtime_error("nonfinite gamma jet");
+-    std::map<uint64_t,Graph>loaded;double start=omp_get_wtime();for(auto id:graphs){auto g=load_graph(root+"/L"+std::to_string(L)+"/G"+std::to_string(id)+".txt",scale);if(g.id!=int(id)||g.L!=L)throw std::runtime_error("graph identity mismatch");loaded.emplace(id,std::move(g));}
++    std::map<uint64_t,Graph>loaded;
+     // Optional frozen grid. Reading it does not silently normalize its endpoints.
+     using Grid=std::vector<std::array<ld,33>>;std::map<uint64_t,Grid>grids;
+     if(std::string(argv[11])!="-"){std::ifstream gf(argv[11]);int n,e,nb;gf>>n>>e>>nb;if(!gf||n<1||e!=2*L-1||nb!=32)throw std::runtime_error("invalid grid header");std::set<int>seen;
+         for(int k=0;k<n;++k){int id;gf>>id;if(!seen.insert(id).second)throw std::runtime_error("duplicate grid graph");Grid gr(e);for(auto&axis:gr){for(auto&x:axis)gf>>x;for(int j=0;j<32;++j)if(!std::isfinite(axis[j])||!std::isfinite(axis[j+1])||axis[j+1]<=axis[j])throw std::runtime_error("nonmonotonic grid");if(fabsl(axis[0])>1e-12L||fabsl(axis[32]-1)>1e-12L)throw std::runtime_error("grid endpoints outside tolerance");}if(graphs.count(id))grids.emplace(id,std::move(gr));}
+         if(!gf||grids.size()!=graphs.size())throw std::runtime_error("missing grid rows");}
+-    double load_seconds=omp_get_wtime()-start;std::vector<Row>rows(nt);std::string error;
+-    std::vector<int>order(nt);for(int i=0;i<nt;++i)order[i]=i;
+-    std::stable_sort(order.begin(),order.end(),[&](int a,int b){auto cost=[&](int i){auto&t=tasks[i];return ld(t.end-t.begin)*loaded.at(t.graph).addends.size();};return cost(a)>cost(b);});
+-    start=omp_get_wtime();
++    // Bound graph residency independently of the number of tasks in this invocation.
++    // Every task retains its original point interval and its original accumulation order.
++    int batch_limit=8;
++    if(const char* value=std::getenv("C8_GRAPH_BATCH"))batch_limit=std::stoi(value);
++    if(batch_limit<1||batch_limit>100000)throw std::runtime_error("invalid C8_GRAPH_BATCH");
++    int load_threads=1;
++    if(const char* value=std::getenv("C8_LOAD_THREADS"))load_threads=std::stoi(value);
++    if(load_threads<1||load_threads>threads)throw std::runtime_error("invalid C8_LOAD_THREADS");
++    double load_seconds=0,seconds=0,start=0;
++    size_t peak_graphs=0,peak_graph_bytes=0;
++    std::vector<Row>rows(nt);std::string error;
++    std::map<uint64_t,std::vector<int>>by_graph;
++    for(int i=0;i<nt;++i)by_graph[tasks[i].graph].push_back(i);
++    std::vector<uint64_t>graph_order(graphs.begin(),graphs.end());
++    std::stable_sort(graph_order.begin(),graph_order.end(),[&](uint64_t a,uint64_t b){
++        auto cost=[&](uint64_t id){ld n=0;for(int i:by_graph.at(id))n+=tasks[i].end-tasks[i].begin;return n;};
++        return cost(a)>cost(b);
++    });
++    for(size_t batch_begin=0;batch_begin<graph_order.size();batch_begin+=batch_limit){
++        size_t batch_end=std::min(graph_order.size(),batch_begin+size_t(batch_limit));
++        loaded.clear();start=omp_get_wtime();
++        std::vector<std::optional<Graph>> staging(batch_end-batch_begin);
++        #pragma omp parallel for num_threads(load_threads) schedule(dynamic,1)
++        for(size_t j=batch_begin;j<batch_end;++j){try{
++            uint64_t id=graph_order[j];
++            auto g=load_graph(root+"/L"+std::to_string(L)+"/G"+std::to_string(id)+".txt",scale);
++            if(g.id!=int(id)||g.L!=L)throw std::runtime_error("graph identity mismatch");
++            staging[j-batch_begin]=std::move(g);
++        }catch(const std::exception&e){
++            #pragma omp critical
++            {if(error.empty())error=e.what();}
++        }}
++        if(!error.empty())throw std::runtime_error(error);
++        std::vector<int>order;size_t graph_bytes=0;
++        for(size_t j=batch_begin;j<batch_end;++j){uint64_t id=graph_order[j];auto&g=*staging[j-batch_begin];
++            graph_bytes+=resident_bytes(g);
++            loaded.emplace(id,std::move(g));const auto&idx=by_graph.at(id);order.insert(order.end(),idx.begin(),idx.end());}
++        peak_graphs=std::max(peak_graphs,loaded.size());peak_graph_bytes=std::max(peak_graph_bytes,graph_bytes);
++        load_seconds+=omp_get_wtime()-start;
++        std::stable_sort(order.begin(),order.end(),[&](int a,int b){auto cost=[&](int i){auto&t=tasks[i];return ld(t.end-t.begin)*loaded.at(t.graph).addends.size();};return cost(a)>cost(b);});
++        int active=int(order.size());start=omp_get_wtime();
+     #pragma omp parallel num_threads(threads)
+     {
+         Scratch scratch;
+         #pragma omp for schedule(dynamic,1)
+-        for(int oi=0;oi<nt;++oi){int ti=order[oi];try {const auto&t=tasks[ti];const auto&g=loaded.at(t.graph);scratch.resize(g);Row&r=rows[ti];double t0=omp_get_wtime();
++        for(int oi=0;oi<active;++oi){int ti=order[oi];try {const auto&t=tasks[ti];const auto&g=loaded.at(t.graph);scratch.resize(g);Row&r=rows[ti];double t0=omp_get_wtime();
+             Net net(dim,bits,directions.at(t.rep),seed+0x9e3779b97f4a7c15ULL*(t.rep+1)+0xbf58476d1ce4e5b9ULL*(g.id+1),t.begin);
+             std::array<ld,MaxQmcDimension>u{};Jet sum{},comp{};auto git=grids.find(t.graph);
+             for(uint64_t i=t.begin;i<t.end;++i){if(i>t.begin)net.next(i);net.point(u.data());ld jac=1;
+@@ -65,10 +105,12 @@
+             {if(error.empty())error=e.what();}
+         }}
+     }
+-    if(!error.empty())throw std::runtime_error(error);double seconds=omp_get_wtime()-start;
++    if(!error.empty())throw std::runtime_error(error);seconds+=omp_get_wtime()-start;
++    } // next bounded graph batch
++
+     // Native output goes only to a temporary file supplied by the checked Python publisher.
+     std::ofstream f(out);if(!f)throw std::runtime_error("cannot open output");f<<std::setprecision(std::numeric_limits<ld>::max_digits10);
+-    f<<"{\"schema\":\"c8-d3-hpc-native-1\",\"L\":"<<L<<",\"seed\":"<<seed<<",\"layout\":"<<layout<<",\"bits\":"<<bits<<",\"rate\":\""<<scale<<"\",\"sum_mode\":\""<<mode<<"\",\"long_double_bits\":"<<std::numeric_limits<ld>::digits<<",\"mp_backend\":\""<<mp_backend<<"\",\"mp_digits10\":"<<std::numeric_limits<MP>::digits10<<",\"threads\":"<<threads<<",\"load_seconds\":"<<load_seconds<<",\"integration_seconds\":"<<seconds<<",\"graphs_loaded\":"<<loaded.size()<<",\"rows\":[";
++    f<<"{\"schema\":\"c8-d3-hpc-native-1\",\"L\":"<<L<<",\"seed\":"<<seed<<",\"layout\":"<<layout<<",\"bits\":"<<bits<<",\"rate\":\""<<scale<<"\",\"sum_mode\":\""<<mode<<"\",\"long_double_bits\":"<<std::numeric_limits<ld>::digits<<",\"mp_backend\":\""<<mp_backend<<"\",\"mp_digits10\":"<<std::numeric_limits<MP>::digits10<<",\"threads\":"<<threads<<",\"load_seconds\":"<<load_seconds<<",\"integration_seconds\":"<<seconds<<",\"graphs_loaded\":"<<graphs.size()<<",\"peak_graphs_resident\":"<<peak_graphs<<",\"peak_graph_vector_bytes\":"<<peak_graph_bytes<<",\"graph_batch_limit\":"<<batch_limit<<",\"rows\":[";
+     for(int i=0;i<nt;++i){if(i)f<<',';auto&t=tasks[i];auto&r=rows[i];f<<"{\"uid\":"<<t.uid<<",\"rep\":"<<t.rep<<",\"graph\":"<<t.graph<<",\"begin\":"<<t.begin<<",\"end\":"<<t.end<<",\"total\":"<<t.total<<",\"quad\":"<<r.q<<",\"mp\":"<<r.mp<<",\"seconds\":"<<r.seconds<<",\"max_abs\":\""<<r.maxabs<<"\",\"values\":[";for(int j=0;j<2*(K+1);++j){if(j)f<<',';f<<'"'<<r.value[j]<<'"';}f<<"]}";}f<<"]}\n";if(!f)throw std::runtime_error("output write failed");
+-    std::cerr<<"completed "<<nt<<" tasks, "<<loaded.size()<<" graphs; integration "<<seconds<<" s\n";
++    std::cerr<<"completed "<<nt<<" tasks, "<<graphs.size()<<" graphs; integration "<<seconds<<" s\n";
+  }catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;} }

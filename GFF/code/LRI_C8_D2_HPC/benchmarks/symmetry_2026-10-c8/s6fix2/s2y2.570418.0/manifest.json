@@ -1,0 +1,1134 @@
+{
+  "schema": "c8-d2-production-1",
+  "tool_sha256": {
+    "production.py": "493c7536e601206662de2056251834420f48b604572578ba8da1837770942301",
+    "common.py": "91a92d4a107ea5780dd7d70bf909e1eed2f65db989428daf71b0fe8a98c8964b",
+    "prepare_inputs.py": "31da9a8cfec3a370599e9ab7e24e3d70819681b940a72a6fa5cf8b0ed1d67e18",
+    "assemble.py": "f6490c35e7f18359d383b843dc0d115f556328ccad4a90cbe2ee997fa494d2af",
+    "lanes.py": "173b12764445d9a13ce363bf5b42a7710a4b33013a63ab71b52fd29d62066aa5",
+    "slurm_submit.py": "7097c3b36be966ddcc7c1e3cb48f4d3901cbe1866ed70361fe6ffd158f634398",
+    "stage_runtime.py": "6eca7432b26997907d3921fab6814d85b4263f98c737e7395e94baceca7ad640"
+  },
+  "dimension": 2,
+  "order": 8,
+  "epsilon": "2s-2",
+  "package": "<SCRATCH>/c8d2/pkg/e914701b042b",
+  "inputs": "inputs",
+  "inputs_manifest_sha256": "3813f24ac38c7d27645733a06812f890b03e21e1f0a62d9d820fcf5495d27356",
+  "skipped_packs": [],
+  "backend": "gmp",
+  "numerics": "exact",
+  "approved_numerics_change": null,
+  "numerics_route": null,
+  "build": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "exact",
+    "diagnostic": false,
+    "tail_top": 16,
+    "compiler": "11.4.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "build_record": {
+    "schema": "c8-d2-build-record-1",
+    "executable": "c8d2_gmp",
+    "backend": "gmp",
+    "executable_sha256": "2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17",
+    "command": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP",
+      "src/c8d2_integrate.cpp",
+      "-lquadmath",
+      "-lgmp",
+      "-o",
+      "bin/c8d2_gmp"
+    ],
+    "compiler_options": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "-fopenmp",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-DC8_USE_GMP"
+    ],
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "compiler_macro_version": "11.4.0",
+    "CXX": "g++",
+    "CPPFLAGS": "",
+    "OPTFLAGS": "-O3",
+    "CXXFLAGS": "",
+    "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+    "LDFLAGS": "",
+    "LDLIBS": "",
+    "NUMERICS": "exact",
+    "numerics_sources": null,
+    "parameter_overrides": [],
+    "development": false,
+    "GMP_PREFIX": "",
+    "diagnostic": null,
+    "describe": {
+      "schema": "c8-d2-build-1",
+      "dimension": 2,
+      "orders": [
+        7,
+        8
+      ],
+      "lmax": 8,
+      "kmax": 6,
+      "emax": 16,
+      "dimmax": 31,
+      "numerics": "exact",
+      "diagnostic": false,
+      "tail_top": 16,
+      "compiler": "11.4.0",
+      "long_double_bits": 64,
+      "mp_backend": "gmp350",
+      "mp_digits10": 350,
+      "mp_max_digits10": 372,
+      "openmp": 201511
+    },
+    "required_flags_present": true,
+    "macros": {
+      "_OPENMP": "201511",
+      "__FAST_MATH__": null,
+      "__FINITE_MATH_ONLY__": "0",
+      "__OPTIMIZE__": "1"
+    },
+    "BOOST_LIB_VERSION": "1_77",
+    "BOOST_VERSION": "107700",
+    "gmp_version": "6.2.1",
+    "gmp_header": {
+      "cc": "x86_64-linux-gnu-gcc",
+      "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+    },
+    "gmp_library": {
+      "soname": "libgmp.so.10",
+      "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+      "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+      "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+      "fat": false,
+      "rpath": null,
+      "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+      "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+    },
+    "optimized": true,
+    "preprocessor_probe": {
+      "flags": true,
+      "boost": true,
+      "gmp": true
+    },
+    "host": "<NODE>",
+    "created_utc": "2026-10-06T06:26:00Z"
+  },
+  "executable": "c8d2_gmp",
+  "executable_sha256": "2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17",
+  "rates_identity": "default",
+  "rates": {
+    "a": ".8",
+    "b": ".9"
+  },
+  "threads": 4,
+  "checkpoint_tasks": 256,
+  "allocation": {
+    "source": "pilot",
+    "points": 2048,
+    "replicates": 2,
+    "label": null
+  },
+  "design": null,
+  "seed": 5949820605861326415,
+  "seed_scheme": "hashed",
+  "forbidden_seed_sources": [
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/pilot1e-20261005-07ff5c1975e5)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/pilot_exact)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/pilot_map)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/sweep_exact)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/sweep_map)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t3)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t4)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/sweep1-81aa9770e6fe)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/sweep2e-07ff5c1975e5)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/temp_project/c8d2/sweep2e-07ff5c1975e5-r2)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/desb1-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/desb2-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/desc1-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/desc2-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/drills-2b3a9233353d/drR)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/drills-5d7586e9f1ab/drA)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/drills-5d7586e9f1ab/drB)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/drl23-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/io-2b3a9233353d)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/io-68ee571ee614)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/pilot1-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/smk4-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/smoke1-20261005)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/sweep2-5d7586e9f1ab)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (<SCRATCH>/c8-d2/sweepdd-3a250eaa5918)",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 1.35e-4 (<SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 1e-3 (<SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 2.5e-4 (<SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-DES-5 dry-run plan at target-rel 5e-4 (<SCRATCH>/c8d2/work/des5-5d7586e9f1ab/plans/des5_5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 base seed 820262401 (tests/numerics_flags.py --seed))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed a_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 native seed b_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed a_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_free_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L3 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L4 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L5 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L6 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L7 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (J-FLAG F2 net seed b_power_L8 of base 820262401 (tests/numerics_flags.py))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (L=2 control, A-IN-6(b), Expanse job 54637264 (Stage 3 part A))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (L=2 control, A-IN-6(b), final J-VAL-3 on symmetry (package 5d7586e9f1ab, Stage 5))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage 4c R7 plan-only acceptance check (<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/plan_fresh, never run, removed))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage-6 fix round 1 X8 real-Slurm check (<SCRATCH>/c8-d2/x8-c30bfc5f0bdf; test-only, 256 points, never a result))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 1.35e-4 (<SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 1e-3 (<SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 2.5e-4 (<SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (Stage-6 fix round 1: plan of the route (b) dd+mp256 re-freeze (new gate) at target-rel 5e-4 (<SCRATCH>/c8d2/work/s1des-c30bfc5f0bdf/plans/b_5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 1.35e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6x_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 1e-3 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6x_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 2.5e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6x_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, exact (F11-fixed design.py), target-rel 5e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6x_5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 1.35e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 1e-3 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6b_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 2.5e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6 J-DES-5 re-check plan, route (b) dd+mp256, target-rel 5e-4 (<SCRATCH>/c8d2/work/p6des-3a250eaa5918/plans/p6b_5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 1.35e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 1e-3 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 2.5e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the exact freeze at target-rel 5e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/x_5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 1.35e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1.35e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 1e-3 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_1e-3; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 2.5e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_2.5e-4; test-only, never submitted, deleted after measurement))",
+    "<SCRATCH>/c8-d2/forbidden_seeds.json (pre-Stage-6b check of the fixed design tool (77fab71), plan of the route (b) dd+mp256 freeze at target-rel 5e-4 (<SCRATCH>/c8d2/work/p6bdes-77fab7153c0e/plans/b_5e-4; test-only, never submitted, deleted after measurement))"
+  ],
+  "groups": [
+    {
+      "name": "a_free_L3",
+      "sha256": "e104819447c0e0316d8bbce6ef9f0c33c8e7cc56c721632a7640f1d8677f15cc"
+    },
+    {
+      "name": "a_free_L4",
+      "sha256": "e8c0b1175082adc547c44c969bcdba76cdcc029d25922e75df81183ab6e7a108"
+    },
+    {
+      "name": "a_free_L5",
+      "sha256": "d621b89d2da935e9be6420e74143ec5ebd5684dba24ab8c8d7791a29be60e38c"
+    },
+    {
+      "name": "a_free_L6",
+      "sha256": "7237ff1161204423925cfbf2dab11a1670f246bb01bdbf9e90414d4521cd4eb3"
+    },
+    {
+      "name": "a_free_L7",
+      "sha256": "6bb1f1bfd3bfd93f1bc8fd56a479173237c41336683256a4e6455cd2d1a97adb"
+    },
+    {
+      "name": "a_free_L8",
+      "sha256": "6096876c1d1351ceccfa5b5ad59e6114cbf4f56c96186276a501269346ac0eba"
+    },
+    {
+      "name": "a_power_L3",
+      "sha256": "8803d8e52b1e8e0b8a6d36e46a730842c7801ada064d57562b689fee058c5f5b"
+    },
+    {
+      "name": "a_power_L4",
+      "sha256": "d42d6171577a8871d7cc0b1a9d4c2b56c49e32de372ecbdcb87e5ebc1aa497e4"
+    },
+    {
+      "name": "a_power_L5",
+      "sha256": "53bce4588eecb63434602ab939abebb9c99196b8d5a7b7a0bd754c743dedce05"
+    },
+    {
+      "name": "a_power_L6",
+      "sha256": "11c54ed24b45fe2fa146fc0016db879205384ee3cbc8c707696877f4a47eee21"
+    },
+    {
+      "name": "a_power_L7",
+      "sha256": "73738f5e937da67df8065c27f1c8432dbd8b7c4d46ac5678dec0b77c6a59df26"
+    },
+    {
+      "name": "a_power_L8",
+      "sha256": "6bc7631e820a2384f289c099124c1d488b83be46492478b12450455021ef8cd2"
+    },
+    {
+      "name": "b_free_L3",
+      "sha256": "db4fed70901c182e0e1baab44988282489ff215a627aa6336a5176b5da76de31"
+    },
+    {
+      "name": "b_free_L4",
+      "sha256": "f266b217eaafb5fd53b860337d581f726d39ce2e8f0630a307c1e11e8bc96972"
+    },
+    {
+      "name": "b_free_L5",
+      "sha256": "3172edc4249c3b446027eb8f40067184dc99aa37825408990a69869dfdfbad01"
+    },
+    {
+      "name": "b_free_L6",
+      "sha256": "27f8d1ae008acf97c188634731884210a4d96b27ae0ca9b7bec99bbf69ec8884"
+    },
+    {
+      "name": "b_free_L7",
+      "sha256": "fef593e93fd3d6c560fec7f2b3bca16321a6d45f9b6caec9269b67e5423ad491"
+    },
+    {
+      "name": "b_free_L8",
+      "sha256": "2f8fe8e9f715f4c930099faf1ffb3abece7de495ec741b0ed00eda025766f589"
+    },
+    {
+      "name": "b_power_L3",
+      "sha256": "61a7725912f74496623ae53f1e2bd7f1579b7b7ac04616d509296d81d4090306"
+    },
+    {
+      "name": "b_power_L4",
+      "sha256": "07faea47c973c0bccf427c78d3641cde91223be7eb1760803e59f310bb1263e5"
+    },
+    {
+      "name": "b_power_L5",
+      "sha256": "40ab9850e7d4a57b5c78a41904aa3686903404bb03cd44e517fa6b037241e3b8"
+    },
+    {
+      "name": "b_power_L6",
+      "sha256": "c4a755866034219a3d6ddcda02bcbb36fd90bcc61c084ed4acd03e4242d6c42a"
+    },
+    {
+      "name": "b_power_L7",
+      "sha256": "15d2a725d3224678a1cab48b4ad4df5d47ada92e3df4b0e81d95b05906530e3e"
+    },
+    {
+      "name": "b_power_L8",
+      "sha256": "52c6f2166c2cbdd2e3384c880a1bed2d9ca18bc8178b203d9ae4d017a8204921"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 0,
+      "group": "a_free_L3",
+      "campaign": "a",
+      "sector": "free",
+      "L": 3,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L3/tasks/s000000.tsv",
+      "tasks_sha256": "57adf770f451d23fc188d303234981a8d869016f84366487c14d3e6b4a1df91a",
+      "tasks_bytes": 72,
+      "est_core_seconds": 0.009530527866445482,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553655788
+    },
+    {
+      "id": 1,
+      "group": "a_free_L4",
+      "campaign": "a",
+      "sector": "free",
+      "L": 4,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L4/tasks/s000000.tsv",
+      "tasks_sha256": "077c5b706aa7eb3e86c56d23af89652284c3cc134f169805ff0a688bc250942c",
+      "tasks_bytes": 74,
+      "est_core_seconds": 0.013673407956957817,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553676160
+    },
+    {
+      "id": 2,
+      "group": "a_free_L5",
+      "campaign": "a",
+      "sector": "free",
+      "L": 5,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L5/tasks/s000000.tsv",
+      "tasks_sha256": "617b2d655e830ac2a1dfb49892ae47fa56188b7f9a76d30545fa7c48dc6ded6f",
+      "tasks_bytes": 76,
+      "est_core_seconds": 0.022816591896116734,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553755024
+    },
+    {
+      "id": 3,
+      "group": "a_free_L6",
+      "campaign": "a",
+      "sector": "free",
+      "L": 6,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L6/tasks/s000000.tsv",
+      "tasks_sha256": "5f5161e8554bd469df4fff1e60f397d092c7a148d5a2f1977fe23648f29e8ce0",
+      "tasks_bytes": 80,
+      "est_core_seconds": 0.04537137597799301,
+      "est_proxy_units": null,
+      "est_peak_bytes": 554064640
+    },
+    {
+      "id": 4,
+      "group": "a_free_L7",
+      "campaign": "a",
+      "sector": "free",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L7/tasks/s000000.tsv",
+      "tasks_sha256": "b747c5fdd9d0cf5f4c192fca948b095f0ef83995498feacc7f91749630c79822",
+      "tasks_bytes": 84,
+      "est_core_seconds": 0.09212595596909523,
+      "est_proxy_units": null,
+      "est_peak_bytes": 555285952
+    },
+    {
+      "id": 5,
+      "group": "a_free_L8",
+      "campaign": "a",
+      "sector": "free",
+      "L": 8,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_free_L8/tasks/s000000.tsv",
+      "tasks_sha256": "e2c31196e7ff5b0744f15b69d5e027e7f00ce103e61e2b8956132e7c859073f3",
+      "tasks_bytes": 88,
+      "est_core_seconds": 0.22464251203928143,
+      "est_proxy_units": null,
+      "est_peak_bytes": 560119856
+    },
+    {
+      "id": 6,
+      "group": "a_power_L3",
+      "campaign": "a",
+      "sector": "power",
+      "L": 3,
+      "shard": 0,
+      "tasks": 2,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L3/tasks/s000000.tsv",
+      "tasks_sha256": "8d9d3131b37fde254d9c989cf8424830b479b07b39cccf6115e461d64ede240b",
+      "tasks_bytes": 36,
+      "est_core_seconds": 0.005175912054255605,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553651844
+    },
+    {
+      "id": 7,
+      "group": "a_power_L4",
+      "campaign": "a",
+      "sector": "power",
+      "L": 4,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L4/tasks/s000000.tsv",
+      "tasks_sha256": "1436556c1ad8e14182bc3f8f2d2f952a4f9438ef4ce7c5e9764492cf987cef22",
+      "tasks_bytes": 76,
+      "est_core_seconds": 0.024961800081655383,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553676156
+    },
+    {
+      "id": 8,
+      "group": "a_power_L5",
+      "campaign": "a",
+      "sector": "power",
+      "L": 5,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L5/tasks/s000000.tsv",
+      "tasks_sha256": "8327f33e4ab432a5c7cf87e8d852893aa287f964f48fee798195e76311a98fce",
+      "tasks_bytes": 78,
+      "est_core_seconds": 0.09482472809031606,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553751928
+    },
+    {
+      "id": 9,
+      "group": "a_power_L6",
+      "campaign": "a",
+      "sector": "power",
+      "L": 6,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L6/tasks/s000000.tsv",
+      "tasks_sha256": "c3980b5f55e22415f97fd7c7c463d826cdfddd25fd0e8236aa11a02f6dfe19a6",
+      "tasks_bytes": 80,
+      "est_core_seconds": 0.06436303595546633,
+      "est_proxy_units": null,
+      "est_peak_bytes": 554057848
+    },
+    {
+      "id": 10,
+      "group": "a_power_L7",
+      "campaign": "a",
+      "sector": "power",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L7/tasks/s000000.tsv",
+      "tasks_sha256": "fce9841c472bfd907f1fd0766e7ec714f2c6da574bdb9135c0a347db963cfdb3",
+      "tasks_bytes": 84,
+      "est_core_seconds": 0.19950841600075364,
+      "est_proxy_units": null,
+      "est_peak_bytes": 555267636
+    },
+    {
+      "id": 11,
+      "group": "a_power_L8",
+      "campaign": "a",
+      "sector": "power",
+      "L": 8,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/a_power_L8/tasks/s000000.tsv",
+      "tasks_sha256": "83e076c051759cfd8755fe334405c1dabf8fea8c38d94309402f484727457b65",
+      "tasks_bytes": 88,
+      "est_core_seconds": 0.4591273160185665,
+      "est_proxy_units": null,
+      "est_peak_bytes": 560063348
+    },
+    {
+      "id": 12,
+      "group": "b_free_L3",
+      "campaign": "b",
+      "sector": "free",
+      "L": 3,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L3/tasks/s000000.tsv",
+      "tasks_sha256": "57adf770f451d23fc188d303234981a8d869016f84366487c14d3e6b4a1df91a",
+      "tasks_bytes": 72,
+      "est_core_seconds": 0.013159595895558596,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553655788
+    },
+    {
+      "id": 13,
+      "group": "b_free_L4",
+      "campaign": "b",
+      "sector": "free",
+      "L": 4,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L4/tasks/s000000.tsv",
+      "tasks_sha256": "077c5b706aa7eb3e86c56d23af89652284c3cc134f169805ff0a688bc250942c",
+      "tasks_bytes": 74,
+      "est_core_seconds": 0.013548087910749018,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553676160
+    },
+    {
+      "id": 14,
+      "group": "b_free_L5",
+      "campaign": "b",
+      "sector": "free",
+      "L": 5,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L5/tasks/s000000.tsv",
+      "tasks_sha256": "f4a45b3a9823731d1a5727a96ff65227ef4f8b4b2f577c81f7c1360c127a94fa",
+      "tasks_bytes": 76,
+      "est_core_seconds": 0.022875780006870627,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553755024
+    },
+    {
+      "id": 15,
+      "group": "b_free_L6",
+      "campaign": "b",
+      "sector": "free",
+      "L": 6,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L6/tasks/s000000.tsv",
+      "tasks_sha256": "5f5161e8554bd469df4fff1e60f397d092c7a148d5a2f1977fe23648f29e8ce0",
+      "tasks_bytes": 80,
+      "est_core_seconds": 0.04251595609821379,
+      "est_proxy_units": null,
+      "est_peak_bytes": 554064640
+    },
+    {
+      "id": 16,
+      "group": "b_free_L7",
+      "campaign": "b",
+      "sector": "free",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L7/tasks/s000000.tsv",
+      "tasks_sha256": "b747c5fdd9d0cf5f4c192fca948b095f0ef83995498feacc7f91749630c79822",
+      "tasks_bytes": 84,
+      "est_core_seconds": 0.0931962919421494,
+      "est_proxy_units": null,
+      "est_peak_bytes": 555285952
+    },
+    {
+      "id": 17,
+      "group": "b_free_L8",
+      "campaign": "b",
+      "sector": "free",
+      "L": 8,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_free_L8/tasks/s000000.tsv",
+      "tasks_sha256": "993d87dddc1b695d2800a2369ed5f9ecaacaa7e21a16ed5dcecd9041c3f2cbb1",
+      "tasks_bytes": 88,
+      "est_core_seconds": 0.22790062392596155,
+      "est_proxy_units": null,
+      "est_peak_bytes": 560119856
+    },
+    {
+      "id": 18,
+      "group": "b_power_L3",
+      "campaign": "b",
+      "sector": "power",
+      "L": 3,
+      "shard": 0,
+      "tasks": 2,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L3/tasks/s000000.tsv",
+      "tasks_sha256": "8d9d3131b37fde254d9c989cf8424830b479b07b39cccf6115e461d64ede240b",
+      "tasks_bytes": 36,
+      "est_core_seconds": 0.0049356159288436174,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553651844
+    },
+    {
+      "id": 19,
+      "group": "b_power_L4",
+      "campaign": "b",
+      "sector": "power",
+      "L": 4,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L4/tasks/s000000.tsv",
+      "tasks_sha256": "1436556c1ad8e14182bc3f8f2d2f952a4f9438ef4ce7c5e9764492cf987cef22",
+      "tasks_bytes": 76,
+      "est_core_seconds": 0.020791176124475896,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553676156
+    },
+    {
+      "id": 20,
+      "group": "b_power_L5",
+      "campaign": "b",
+      "sector": "power",
+      "L": 5,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L5/tasks/s000000.tsv",
+      "tasks_sha256": "8327f33e4ab432a5c7cf87e8d852893aa287f964f48fee798195e76311a98fce",
+      "tasks_bytes": 78,
+      "est_core_seconds": 0.05513385194353759,
+      "est_proxy_units": null,
+      "est_peak_bytes": 553751928
+    },
+    {
+      "id": 21,
+      "group": "b_power_L6",
+      "campaign": "b",
+      "sector": "power",
+      "L": 6,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L6/tasks/s000000.tsv",
+      "tasks_sha256": "c3980b5f55e22415f97fd7c7c463d826cdfddd25fd0e8236aa11a02f6dfe19a6",
+      "tasks_bytes": 80,
+      "est_core_seconds": 0.05424757197033614,
+      "est_proxy_units": null,
+      "est_peak_bytes": 554057848
+    },
+    {
+      "id": 22,
+      "group": "b_power_L7",
+      "campaign": "b",
+      "sector": "power",
+      "L": 7,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L7/tasks/s000000.tsv",
+      "tasks_sha256": "a494c733ea749c3c4ecb8d22353533aacbe2466e25668fe68ffbc09d9121d8d1",
+      "tasks_bytes": 84,
+      "est_core_seconds": 0.15110617585014552,
+      "est_proxy_units": null,
+      "est_peak_bytes": 555267636
+    },
+    {
+      "id": 23,
+      "group": "b_power_L8",
+      "campaign": "b",
+      "sector": "power",
+      "L": 8,
+      "shard": 0,
+      "tasks": 4,
+      "blocks": 1,
+      "tasks_file": "groups/b_power_L8/tasks/s000000.tsv",
+      "tasks_sha256": "83e076c051759cfd8755fe334405c1dabf8fea8c38d94309402f484727457b65",
+      "tasks_bytes": 88,
+      "est_core_seconds": 0.38220113201532513,
+      "est_proxy_units": null,
+      "est_peak_bytes": 560063348
+    }
+  ],
+  "campaign_weights": {
+    "a": 0.5,
+    "b": 0.5
+  },
+  "power_sector": "explicitly integrated; NOT assumed zero",
+  "sampling_unit": "complete graph-summed randomized replicate, not chunk",
+  "test_only": true,
+  "test_graphs": 2,
+  "test_selection": "cheapest",
+  "cost_basis": "measured",
+  "cost_model_sha256": "a1b6e5d2a8c089a51378bbe7b38e1d5b710c98d943353b509fdf36454a723692",
+  "cost_model_numerics": "exact",
+  "cost_model_numerics_exception": null,
+  "calibration_sha256": null,
+  "bootstrap_proxy": null,
+  "chunking": {
+    "task_seconds": 60.0,
+    "min_chunk": 256,
+    "max_task_seconds": 120.0
+  },
+  "index_sizing": {
+    "index_hours": null,
+    "shards": 1,
+    "assumed_efficiency": 0.9
+  },
+  "scale": {
+    "tasks": 92,
+    "checkpoints": 24,
+    "jobs": 24,
+    "projected_files": 320,
+    "merge_fan_in": 64,
+    "merge": {
+      "a_free_L3": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_free_L4": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_free_L5": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_free_L6": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_free_L7": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_free_L8": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_power_L3": {
+        "rows": 2,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0005333333333333334
+      },
+      "a_power_L4": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_power_L5": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_power_L6": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_power_L7": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "a_power_L8": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L3": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L4": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L5": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L6": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L7": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_free_L8": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_power_L3": {
+        "rows": 2,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0005333333333333334
+      },
+      "b_power_L4": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_power_L5": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_power_L6": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_power_L7": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      },
+      "b_power_L8": {
+        "rows": 4,
+        "runs": 1,
+        "passes": 1,
+        "projected_seconds": 0.0010666666666666667
+      }
+    },
+    "merge_projected_max_seconds": 0.0010666666666666667,
+    "suggested_merge_time": "01:00:00"
+  },
+  "estimates": {
+    "basis": "measured",
+    "unit": "seconds per point (cost model)",
+    "groups": {
+      "a_free_L3": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 2.647368851790412e-06,
+        "proxy_units": 212992,
+        "max_index_core_seconds": 0.009530527866445482
+      },
+      "a_free_L4": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 3.798168876932727e-06,
+        "proxy_units": 512000,
+        "max_index_core_seconds": 0.013673407956957817
+      },
+      "a_free_L5": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 6.337942193365759e-06,
+        "proxy_units": 1056768,
+        "max_index_core_seconds": 0.022816591896116734
+      },
+      "a_free_L6": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 1.2603159993886948e-05,
+        "proxy_units": 2981888,
+        "max_index_core_seconds": 0.04537137597799301
+      },
+      "a_free_L7": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 2.5590543324748674e-05,
+        "proxy_units": 8323072,
+        "max_index_core_seconds": 0.09212595596909523
+      },
+      "a_free_L8": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 6.240069778868928e-05,
+        "proxy_units": 23592960,
+        "max_index_core_seconds": 0.22464251203928143
+      },
+      "a_power_L3": {
+        "tasks": 2,
+        "shards": 1,
+        "core_hours": 1.4377533484043346e-06,
+        "proxy_units": 81920,
+        "max_index_core_seconds": 0.005175912054255605
+      },
+      "a_power_L4": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 6.9338333560153845e-06,
+        "proxy_units": 819200,
+        "max_index_core_seconds": 0.024961800081655383
+      },
+      "a_power_L5": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 2.6340202247310017e-05,
+        "proxy_units": 1343488,
+        "max_index_core_seconds": 0.09482472809031606
+      },
+      "a_power_L6": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 1.7878621098740646e-05,
+        "proxy_units": 3686400,
+        "max_index_core_seconds": 0.06436303595546633
+      },
+      "a_power_L7": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 5.541900444465379e-05,
+        "proxy_units": 10190848,
+        "max_index_core_seconds": 0.19950841600075364
+      },
+      "a_power_L8": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 0.0001275353655607129,
+        "proxy_units": 28114944,
+        "max_index_core_seconds": 0.4591273160185665
+      },
+      "b_free_L3": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 3.655443304321832e-06,
+        "proxy_units": 212992,
+        "max_index_core_seconds": 0.013159595895558596
+      },
+      "b_free_L4": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 3.7633577529858382e-06,
+        "proxy_units": 512000,
+        "max_index_core_seconds": 0.013548087910749018
+      },
+      "b_free_L5": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 6.354383335241841e-06,
+        "proxy_units": 1056768,
+        "max_index_core_seconds": 0.022875780006870627
+      },
+      "b_free_L6": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 1.1809987805059386e-05,
+        "proxy_units": 2981888,
+        "max_index_core_seconds": 0.04251595609821379
+      },
+      "b_free_L7": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 2.5887858872819278e-05,
+        "proxy_units": 8323072,
+        "max_index_core_seconds": 0.0931962919421494
+      },
+      "b_free_L8": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 6.330572886832265e-05,
+        "proxy_units": 23592960,
+        "max_index_core_seconds": 0.22790062392596155
+      },
+      "b_power_L3": {
+        "tasks": 2,
+        "shards": 1,
+        "core_hours": 1.3710044246787826e-06,
+        "proxy_units": 81920,
+        "max_index_core_seconds": 0.0049356159288436174
+      },
+      "b_power_L4": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 5.775326701243305e-06,
+        "proxy_units": 819200,
+        "max_index_core_seconds": 0.020791176124475896
+      },
+      "b_power_L5": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 1.5314958873204886e-05,
+        "proxy_units": 1343488,
+        "max_index_core_seconds": 0.05513385194353759
+      },
+      "b_power_L6": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 1.5068769991760038e-05,
+        "proxy_units": 3686400,
+        "max_index_core_seconds": 0.05424757197033614
+      },
+      "b_power_L7": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 4.197393773615153e-05,
+        "proxy_units": 10190848,
+        "max_index_core_seconds": 0.15110617585014552
+      },
+      "b_power_L8": {
+        "tasks": 4,
+        "shards": 1,
+        "core_hours": 0.00010616698111536809,
+        "proxy_units": 28114944,
+        "max_index_core_seconds": 0.38220113201532513
+      }
+    },
+    "total_core_hours": 0.0006493703998664081,
+    "max_index_wall_seconds": 0.1275353655607129,
+    "suggested_time_seconds": 900,
+    "predicted_max_task_seconds": {
+      "a_free_L3": 0.0024943819735199213,
+      "a_free_L4": 0.003463747911155224,
+      "a_free_L5": 0.005718335974961519,
+      "a_free_L6": 0.011593986011575907,
+      "a_free_L7": 0.02338929200777784,
+      "a_free_L8": 0.05639205401530489,
+      "a_power_L3": 0.0025879560271278024,
+      "a_power_L4": 0.008217126014642417,
+      "a_power_L5": 0.03969668201170862,
+      "a_power_L6": 0.016434645978733897,
+      "a_power_L7": 0.05112277198350057,
+      "a_power_L8": 0.12718242598930374,
+      "b_free_L3": 0.004232593986671418,
+      "b_free_L4": 0.00344096397748217,
+      "b_free_L5": 0.005722662026528269,
+      "b_free_L6": 0.010831170016899705,
+      "b_free_L7": 0.023998902004677802,
+      "b_free_L8": 0.05705879197921604,
+      "b_power_L3": 0.0024678079644218087,
+      "b_power_L4": 0.0065914400038309395,
+      "b_power_L5": 0.021900007966905832,
+      "b_power_L6": 0.01357435598038137,
+      "b_power_L7": 0.03815128997666761,
+      "b_power_L8": 0.10385723400395364
+    },
+    "estimate": "available",
+    "mem_suggestion_mb": 1826,
+    "note": "planning estimates from a hardware-specific cost model or calibration, not measurements"
+  }
+}

@@ -1,0 +1,130 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ORC-6 merge_scale",
+ "rows_requested": 20000,
+ "python": "3.11.3",
+ "host": "<NODE>",
+ "platform": "linux",
+ "scale": {
+  "points": 8,
+  "rows": 39056,
+  "shards": 16,
+  "plan_seconds": 2.4339756965637207,
+  "run_seconds": 1.710146188735962,
+  "blocks": 16,
+  "parallel": {
+   "jobs": 4,
+   "wall_seconds": 0.657684326171875,
+   "peak_rss_bytes": 38522880,
+   "phase1_rows_per_s": 161724,
+   "phase1_rows_per_s_per_process": 40431.0,
+   "phase1_seconds": 0.24,
+   "phase2_rows_per_s": 140660,
+   "phase2_seconds": 0.28
+  },
+  "serial": {
+   "wall_seconds": 0.8873355388641357,
+   "peak_rss_bytes": 53559296
+  },
+  "byte_identical": true,
+  "passed": true
+ },
+ "many_shards": {
+  "shards": 500,
+  "rows": 4882,
+  "passed": true,
+  "rlimit48": {
+   "code": 0,
+   "identical": true,
+   "passes": 3,
+   "fan_in": 16,
+   "expected_passes": 3,
+   "expected_fan_in": 16,
+   "stderr": ""
+  },
+  "fanin2": {
+   "code": 0,
+   "identical": true,
+   "passes": 9,
+   "fan_in": 2,
+   "expected_passes": 9,
+   "expected_fan_in": 2,
+   "stderr": ""
+  },
+  "rlimit33": {
+   "code": 1,
+   "refused": true
+  }
+ },
+ "memory_scaling": {
+  "checkpoint_tasks": 256,
+  "fan_in": 16,
+  "max_traced_growth_bytes": 2097152,
+  "max_rss_growth_bytes": 16777216,
+  "rss_bound": {
+   "platform": "linux",
+   "mb": 16.0,
+   "source": "platform default (16 MB; macOS 48 MB)"
+  },
+  "cases": {
+   "shards_1": {
+    "points": {
+     "4": {
+      "rows": 19528,
+      "rows_per_shard": 19528.0,
+      "blocks": 77,
+      "peak_rss_bytes": 35934208,
+      "traced_peak_bytes": 12488783,
+      "identical": true,
+      "wall_seconds": 0.6234390735626221
+     },
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 156224.0,
+      "blocks": 611,
+      "peak_rss_bytes": 37593088,
+      "traced_peak_bytes": 12488783,
+      "identical": true,
+      "wall_seconds": 4.555570125579834
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 0,
+    "rss_growth_bytes": 1658880,
+    "rss_growth_bytes_per_extra_row": 12.135541639843156,
+    "passed": true
+   },
+   "shards_4": {
+    "points": {
+     "4": {
+      "rows": 19528,
+      "rows_per_shard": 4882.0,
+      "blocks": 80,
+      "peak_rss_bytes": 36278272,
+      "traced_peak_bytes": 12488783,
+      "identical": true,
+      "wall_seconds": 0.634840726852417
+     },
+     "32": {
+      "rows": 156224,
+      "rows_per_shard": 39056.0,
+      "blocks": 612,
+      "peak_rss_bytes": 37691392,
+      "traced_peak_bytes": 12488783,
+      "identical": true,
+      "wall_seconds": 4.470929861068726
+     }
+    },
+    "rows_ratio": 8.0,
+    "rows_per_shard_ratio": 8.0,
+    "traced_growth_bytes": 0,
+    "rss_growth_bytes": 1413120,
+    "rss_growth_bytes_per_extra_row": 10.33768361912565,
+    "passed": true
+   }
+  },
+  "passed": true
+ },
+ "passed": true
+}

@@ -1,0 +1,138 @@
+[
+ {
+  "id": "rf.inputs",
+  "macro": null,
+  "what": "record binding: the sha256 recorded by the delta-stage outputs (inputs of the five hi = 72 tables and of the run-1 table, derived_from of the four derived tables, the six tables of delta_v1_hi72_smooth.json, the frozen forecast's .sha256) equal the shipped files",
+  "quoted": "recorded sha256 = shipped files",
+  "rule": "46 bindings",
+  "compare": "exact"
+ },
+ {
+  "id": "rf.blind",
+  "macro": null,
+  "what": "blind check of the delta-v1 continuation: forecast frozen from L <= 44 (2026-10-08 08:35, before the production records) vs the exact dC6..dC8 at L = 46..72 (42 points): max |forecast - exact| / dC_unc_typ",
+  "quoted": "0.099",
+  "rule": "2 significant figures; forecast creation time before the validation job (08:59)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C4",
+  "macro": "\\NOneCfourSolver",
+  "what": "C4 with the complete window (solver fits): union of central values of (a) pre-registered bases A-F, Dconn_full, lo = 40..70, hi = 118 (refit_rc.json, 24 fits), (b) the joint floor+stat ensemble median of the weighted dataset dconn_w (summary_dconn_w.json dconn_w_hi118_C4_floor_stat, n = 627), (c) the model-independent lens's held-out calibrated value (headline.json). Note-only macro of the HT_Pert note (renamed 2026-10-14; the paper's \\HTpCfourOne now comes from the exact sums, code/lri_1d_c4_exact row x4.c4).",
+  "quoted": "45.415\\text{--}45.420",
+  "rule": "union of the three components; both ends rounded to 3 decimals (nearest; outward rounding gives the same)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C4dev",
+  "macro": "\\NOneCfourSolverDev",
+  "what": "max |end - C4| / C4 over the unrounded union ends of rf.C4, C4 = \\CfourOne = 45.42488010356. Note-only macro of the HT_Pert note (renamed 2026-10-14).",
+  "quoted": "2\\times10^{-4}",
+  "rule": "1 significant figure (computed 2.11e-4)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C5",
+  "macro": "\\NOneCfiveSolver",
+  "what": "C5 (solver fits): union of (a) the freed-leading-tail family (i) of freelead2.json (L^-1/2 and L^-1/2 log L freed at orders 4, 5; bases A-F, lo = 50..70; 18 fits) and (b) the joint floor+stat ensemble 16-84 range of the weighted dataset dconn_w (dconn_w_hi118_C5_floor_stat, n = 141). Note-only macro of the HT_Pert note (renamed 2026-10-14; the paper's \\HTpCfiveOne now comes from the exact sums, code/lri_1d_c5_exact row x5.c5).",
+  "quoted": "-731.36\\text{ to }{-730.97}",
+  "rule": "union -731.3562 .. -730.9651; both ends rounded to 2 decimals, NEAREST (outward would give -731.36 to -730.96)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C5dev",
+  "macro": "\\NOneCfiveSolverDev",
+  "what": "max |end - C5| / |C5| over the unrounded union ends of rf.C5, C5 = \\CfiveOne. Note-only macro of the HT_Pert note (renamed 2026-10-14).",
+  "quoted": "3\\times10^{-4}",
+  "rule": "1 significant figure (computed 2.96e-4)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C6",
+  "macro": "\\HTpCsixOne",
+  "what": "C6: union of (a) fixed bases A-F of the UNWEIGHTED dataset dconn, 16-84 (r72_summary.json C_low.dconn_hi118.fixed_AF.miss6 + 14331.68703277), (b) the joint floor+stat 16-84 range of the weighted dataset dconn_w (summary_dconn_w.json dconn_w_hi118_C6_floor_stat), (c) the model-independent lens's variants (headline.json uncal, uncal_hi118, held-out mean, the four calibration rules, l^2 T2 family; final72.json delta-free hi = 72 uncal and cal; accelerators excluded as biased)",
+  "quoted": "14\\,320\\text{--}14\\,342",
+  "rule": "union 14320.33 .. 14341.76; ends rounded to integers (nearest; outward identical). The weighted fixed A-F (dconn_w) gives the same range (row rf.C7w)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C6dev",
+  "macro": "\\HTpCsixOneDev",
+  "what": "max |end - C6| / C6 over the unrounded ends, C6 = \\CsixOne",
+  "quoted": "8\\times10^{-4}",
+  "rule": "1 significant figure (computed 7.93e-4)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C7",
+  "macro": "\\HTpCsevenOne",
+  "what": "C7: the same three components: (a) fixed A-F of the UNWEIGHTED dataset dconn, miss7 16-84 + (-322550) (r72_summary.json C_low.dconn_hi118.fixed_AF), (b) floor+stat 16-84 of the weighted dataset dconn_w, (c) the model-independent lens's variants including the Neville/BST accelerators, widened by the stated delta-model error +-6 (-322709.21 .. -322575.65)",
+  "quoted": "-322\\,890\\text{ to }{-322\\,230}",
+  "rule": "union -322884.30 .. -322233.55, rounded OUTWARD to tens. With the weighted fixed A-F (dconn_w, -322890.94 .. -322582.46) the lower end would round outward to -322 900 (row rf.C7w, INFO)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C7dev",
+  "macro": "\\HTpCsevenOneDev",
+  "what": "max |end - (-322550)| / 322550 over the unrounded ends",
+  "quoted": "1\\times10^{-3}",
+  "rule": "1 significant figure (computed 1.04e-3)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C7w",
+  "macro": null,
+  "what": "sensitivity, not quoted: the weighted fixed A-F (r72_summary.json C_low.dconn_w_hi118.fixed_AF) in place of the unweighted one in the C6 and C7 unions",
+  "quoted": "not quoted (sensitivity: weighted fixed A-F)",
+  "rule": "INFO: C6 weighted fixed A-F 14332.80 .. 14342.06, union still 14 320--14 342 (nearest); C7 weighted fixed A-F -322890.94 .. -322582.46, union would be -322 900 to -322 230 (outward to tens); the quoted ranges use the unweighted fixed A-F",
+  "compare": "none (INFO)"
+ },
+ {
+  "id": "rf.C8",
+  "macro": "\\HTpCeightOne",
+  "what": "calibrated C8: joint-lens estimator prior_crit_full_grid:sel67 (selection on |C6 rel| <= 1e-4 and |C7 + 322550| <= 82, hi = 92, weighted fits, n = 138; summary_dconn_w.json C8_calibrated)",
+  "quoted": "8.0652\\times10^{6}",
+  "rule": "5 significant figures (value 8,065,157)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C8dev",
+  "macro": "\\HTpCeightOneDev",
+  "what": "|C8(HT) / C8(1) - 1| with C8(1) = 8059766.723129955 (the estimator behind \\CeightOne)",
+  "quoted": "7\\times10^{-4}",
+  "rule": "1 significant figure (computed 6.69e-4)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.C8cal",
+  "macro": "\\HTpCeightOneCalRange",
+  "what": "'realistic calibrated range' of the joint stage (spread over estimator, family, anchoring and window choices); judgement, not a stored number",
+  "quoted": "8.061\\text{--}8.067",
+  "rule": "INFO: the stored span of the 16 calibrated estimators (8.0636..8.0655) is printed, with a reconstruction: union of the stored components the stage names (16 estimators hi = 92; FL and free family selections; anchoring on C4..C7; hi = 70/80 selections; delta-free hi = 72 estimators) = 8.0615..8.0669, both ends rounded OUTWARD to 3 decimals = 8.061--8.067",
+  "compare": "none (INFO)"
+ },
+ {
+  "id": "rf.C8uncal",
+  "macro": "\\HTpCeightOneUncal",
+  "what": "uncalibrated C8, 16-84 across the tail families, 'unchanged' from run 1",
+  "quoted": "8.045\\text{--}8.073",
+  "rule": "union of the 16-84 ranges of the five prior-criterion families on the S1B weighted data (dconn_w, the joint lens's primary), both ends rounded to 3 decimals (nearest): 8.0455..8.0729 -> 8.045--8.073 (author decision 2026-10-14; the macro held the run-1 value 8.047--8.072 before; the S1B unweighted and s46 data give 8.046--8.072)",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.paired",
+  "macro": null,
+  "what": "window effects at orders 6-8: median paired shifts (identical fit configurations, exact dC6..dC8 at 46..72 minus the run-1 continuation; r72_summary.json D_paired, unweighted): C6, C7 from o7 hi = 118 (fixed, FL); C8 from o8 hi = 92 (windows th118 and same; fixed, FL)",
+  "quoted": "C6 -0.01..-0.04; C7 +4..+19; C8 +17..+32 (fixed), -240..-490 (FL)",
+  "rule": "C6 2 decimals, C7 and C8 fixed integers, C8 FL to tens",
+  "compare": "exact string"
+ },
+ {
+  "id": "rf.noise",
+  "macro": null,
+  "what": "S10 noise of dC6, dC7, dC8 at L = 46..72 (caveat): rms of (exact - floor-mean curve), the shipped joint/code/data.py noise model",
+  "quoted": "3.95e-10, 1.34e-8, 2.32e-7",
+  "rule": "3 significant figures",
+  "compare": "exact string"
+ }
+]

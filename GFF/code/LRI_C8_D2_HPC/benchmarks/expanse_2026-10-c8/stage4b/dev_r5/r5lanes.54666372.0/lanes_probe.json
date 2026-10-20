@@ -1,0 +1,409 @@
+{
+ "schema": "c8-d2-dev-r5b-lanes-probe-1",
+ "host": "<NODE>",
+ "affinity_cpus": 128,
+ "vendor": "vendor_id\t: AuthenticAMD",
+ "physical_cores": 128,
+ "numa_nodes": {
+  "0": 16,
+  "1": 16,
+  "2": 16,
+  "3": 16,
+  "4": 16,
+  "5": 16,
+  "6": 16,
+  "7": 16
+ },
+ "lanes_py": "<SCRATCH>/temp_project/c8d2/pkg/2c8b28f46538/tools/lanes.py",
+ "cases": {
+  "default_threads8": {
+   "spec": null,
+   "plan_threads": 8,
+   "sizes": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "what": "default lanes (NUMA nodes in lanes of at most the plan's --threads 8 on AMD, sockets elsewhere)",
+   "numa_aligned": true,
+   "lanes": [
+    {
+     "cpus": "0-7",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "8-15",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "16-23",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "24-31",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "32-39",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "40-47",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "48-55",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "56-63",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "64-71",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "72-79",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "80-87",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "88-95",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "96-103",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "104-111",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "112-119",
+     "numa_nodes": [
+      7
+     ]
+    },
+    {
+     "cpus": "120-127",
+     "numa_nodes": [
+      7
+     ]
+    }
+   ],
+   "as_expected": true
+  },
+  "default_threads16": {
+   "spec": null,
+   "plan_threads": 16,
+   "sizes": [
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16
+   ],
+   "what": "default lanes (NUMA nodes in lanes of at most the plan's --threads 16 on AMD, sockets elsewhere)",
+   "numa_aligned": true,
+   "lanes": [
+    {
+     "cpus": "0-15",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "16-31",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "32-47",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "48-63",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "64-79",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "80-95",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "96-111",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "112-127",
+     "numa_nodes": [
+      7
+     ]
+    }
+   ],
+   "as_expected": true
+  },
+  "numa_threads8": {
+   "spec": "numa",
+   "plan_threads": 8,
+   "sizes": [
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16
+   ],
+   "what": "C8_LANES=numa",
+   "numa_aligned": true,
+   "lanes": [
+    {
+     "cpus": "0-15",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "16-31",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "32-47",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "48-63",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "64-79",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "80-95",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "96-111",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "112-127",
+     "numa_nodes": [
+      7
+     ]
+    }
+   ],
+   "as_expected": true
+  },
+  "equal16_threads8": {
+   "spec": "16",
+   "plan_threads": 8,
+   "sizes": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "what": "C8_LANES=16",
+   "numa_aligned": true,
+   "lanes": [
+    {
+     "cpus": "0-7",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "8-15",
+     "numa_nodes": [
+      0
+     ]
+    },
+    {
+     "cpus": "16-23",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "24-31",
+     "numa_nodes": [
+      1
+     ]
+    },
+    {
+     "cpus": "32-39",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "40-47",
+     "numa_nodes": [
+      2
+     ]
+    },
+    {
+     "cpus": "48-55",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "56-63",
+     "numa_nodes": [
+      3
+     ]
+    },
+    {
+     "cpus": "64-71",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "72-79",
+     "numa_nodes": [
+      4
+     ]
+    },
+    {
+     "cpus": "80-87",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "88-95",
+     "numa_nodes": [
+      5
+     ]
+    },
+    {
+     "cpus": "96-103",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "104-111",
+     "numa_nodes": [
+      6
+     ]
+    },
+    {
+     "cpus": "112-119",
+     "numa_nodes": [
+      7
+     ]
+    },
+    {
+     "cpus": "120-127",
+     "numa_nodes": [
+      7
+     ]
+    }
+   ],
+   "as_expected": true
+  },
+  "sweep_threads8": {
+   "line": "sweep: 0 indices on 16 process slots of [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8] CPUs (default lanes), heaviest first",
+   "as_expected": true
+  },
+  "sweep_threads16": {
+   "line": "sweep: 0 indices on 8 process slots of [16, 16, 16, 16, 16, 16, 16, 16] CPUs (default lanes), heaviest first",
+   "as_expected": true
+  }
+ },
+ "status": "passed"
+}

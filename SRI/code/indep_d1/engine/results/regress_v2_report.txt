@@ -1,0 +1,65 @@
+=== A. direct: phase-1 binary vs v2 binary (same cfg, node, compiler, 64 threads)
+  D_A3_vdE.cfg.json            BIT-IDENTICAL (91 values; v2 tasks: 1 shift(s)/task, 2 point block(s); cpu v1 573s v2 582s, wall v1 11s v2 10s); rep-mean vs value 1.2e-16 (rel. to L1)
+  D_A5_vd_N16001.cfg.json      BIT-IDENTICAL (520 values; v2 tasks: 1 shift(s)/task, 2 point block(s); cpu v1 464s v2 506s, wall v1 9s v2 9s); rep-mean vs value 1.7e-16 (rel. to L1)
+  D_A7_v_s180-240_N1009.cfg.json BIT-IDENTICAL (976 values; v2 tasks: 1 shift(s)/task, 1 point block(s); cpu v1 1475s v2 1510s, wall v1 26s v2 24s); rep-mean vs value 1.5e-16 (rel. to L1)
+  D_Q4_dE.cfg.json             BIT-IDENTICAL (427 values; v2 tasks: 1 shift(s)/task, 1 point block(s); cpu v1 1269s v2 1294s, wall v1 23s v2 21s); rep-mean vs value 1.6e-16 (rel. to L1)
+  D_Q6_E_c000.cfg.json         BIT-IDENTICAL (2212 values; v2 tasks: 1 shift(s)/task, 1 point block(s); cpu v1 1156s v2 1298s, wall v1 27s v2 20s); rep-mean vs value 8.4e-17 (rel. to L1)
+  D_Q8_s0-315_N1009.cfg.json   BIT-IDENTICAL (2212 values; v2 tasks: 1 shift(s)/task, 1 point block(s); cpu v1 2881s v2 3388s, wall v1 55s v2 53s); rep-mean vs value 5.8e-16 (rel. to L1)
+=== B. replay5 (v2) vs stored phase-1 outputs in runs/pilot5
+  60 outputs bit-identical, 24 different
+    Q6_E_k0_c007.cfg.json              max pull 0.13  max rel 1.5e-02 
+    A5_vd_k0_c000.cfg.json             max pull 0.11  max rel 3.0e-16 
+    Q6_E_k0_c000.cfg.json              max pull 0.08  max rel 1.0e-02 
+    Q6_E_k0_c005.cfg.json              max pull 0.05  max rel 1.2e-02 
+    Q6_base_k1_c000.cfg.json           max pull 0.05  max rel 1.1e-01 
+    Q6_E_k0_c004.cfg.json              max pull 0.03  max rel 3.2e-03 
+    Q6_E_k0_c002.cfg.json              max pull 0.03  max rel 8.7e-03 
+    A5_v_k0_c000.cfg.json              max pull 0.03  max rel 1.8e-16 
+    A5_d_k0_c000.cfg.json              max pull 0.03  max rel 1.9e-16 
+    A5_vv_k0_c000.cfg.json             max pull 0.03  max rel 1.9e-16 
+    Q4_dd_k0_c000.cfg.json             max pull 0.02  max rel 4.7e-03 
+    Q6_E_k0_c001.cfg.json              max pull 0.00  max rel 2.7e-03 
+    Z4_E_k-1_c000.cfg.json             max pull 0.00  max rel 6.7e-03 
+    Z6_base_k0_c000.cfg.json           max pull 0.00  max rel 2.8e-03 
+    A3_vvE_k0_c000.cfg.json            max pull 0.00  max rel 2.7e-04 
+=== B. replay4 (v2) vs stored phase-1 outputs in runs/pilot4
+  23 outputs bit-identical, 17 different
+    A7_base_N64007_k0_c000.cfg.json    max pull 2.22  max rel 1.3e-01 
+    A7_base_N16001_k0_c000.cfg.json    max pull 1.16  max rel 9.8e-02 
+    A7_v_N16001_k0_c000.cfg.json       max pull 0.63  max rel 5.1e-02 
+    Q6_E_N16001_k0_c000.cfg.json       max pull 0.01  max rel 2.5e-02 
+    Q6_base_N16001_k1_c000.cfg.json    max pull 0.00  max rel 5.0e-02 
+    Z4_E_N16001_k-1_c000.cfg.json      max pull 0.00  max rel 2.1e-02 
+    A3_vvE_N16001_k0_c000.cfg.json     max pull 0.00  max rel 1.1e-03 
+    Q6_E_N64007_k0_c000.cfg.json       max pull 0.00  max rel 2.7e-04 
+    Z6_v_N16001_k0_c000.cfg.json       max pull 0.00  max rel 7.3e-04 
+    Z6_base_N16001_k0_c000.cfg.json    max pull 0.00  max rel 9.4e-04 
+    Q6_v_N16001_k0_c000.cfg.json       max pull 0.00  max rel 5.8e-16 
+    Q6_d_N16001_k0_c000.cfg.json       max pull 0.00  max rel 5.3e-15 
+    A5_vd_N16001_k0_c000.cfg.json      max pull 0.00  max rel 3.0e-16 
+    A5_E_N64007_k0_c000.cfg.json       max pull 0.00  max rel 1.5e-16 
+    Q6_base_N16001_k0_c000.cfg.json    max pull 0.00  max rel 2.2e-16 
+=== B2. phase1_check: the phase-1 binary (final phase-1 source) on stored-output cfgs that differ (job 569290)
+  A7_base_N16001_k0_c000.cfg.json    phase-1 binary vs v2: BIT-IDENTICAL; stored pilot4 output vs phase-1 binary: different (max pull 1.16)
+  A7_v_N16001_k0_c000.cfg.json       phase-1 binary vs v2: BIT-IDENTICAL; stored pilot4 output vs phase-1 binary: different (max pull 0.63)
+=== C. replicate-based error / phase-1 quadrature error of the same assembled coefficients (replay5)
+  A5_vd   [0,1] 0.07  [0,2] 0.20  [0,3] 0.46  [0,4] 1.46  [0,5] 1.75  [0,6] 0.00
+  Q6_v    [0,0] 0.29  [0,1] 0.24  [0,2] 1.02  [0,3] 1.54  [0,4] 1.46  [0,5] 18.84
+  A5_vv   [0,0] 0.20  [0,1] 0.15  [0,2] 0.50  [0,3] 1.33  [0,4] 0.00  [0,5] 18.45
+  A5_d    [0,1] 0.29  [0,2] 0.48  [0,3] 1.35  [0,4] 0.94  [0,5] 31.30
+  Q4_vd   [0,0] 0.15  [0,1] 0.31  [0,2] 1.17  [0,3] 0.80  [0,4] 0.33  [0,5] 0.00
+  A3_vdE  [0,0] 0.87  [0,1] 1.05  [0,2] 0.99  [0,3] 1.94  [0,4] 0.49  [0,5] 0.00
+  Q6_base [0,0] 0.93  [0,1] 1.03  [0,2] 1.16  [0,3] 1.01  [0,4] 50.81  [1,1] 1.26  [1,2] 1.09  [1,3] 0.00
+  Z6_v    [0,1] 0.17  [0,2] 0.72  [0,3] 1.39  [0,4] 1.03  [0,5] 19.25
+  multi-channel: 147 coefficients, ratio median 0.78, min 0.00, max 31.30
+  single-channel: 113 coefficients, ratio median 1.00, min 0.00, max 50.81
+=== D. new campaign (hashed seeds, regress-v2) vs pilot5 / replay5 (seed 1234567): pulls
+  all coefficients: n=343, rms pull 0.62, |z|>2: 8 (2.3%), |z|>3: 3 (0.9%)
+  needed coefficients: n=113, rms pull 0.42, |z|>2: 0 (0.0%), |z|>3: 0 (0.0%)
+    |z|=3.8 Q6_d[0,2] new 541.612470313129 vs pilot5(quadrature) 541.612464735745 (sigma 1.5e-06)
+    |z|=3.1 Q4_E[0,1] new -88.2954834274344 vs replay5 -88.2954834278597 (sigma 1.4e-10)
+    |z|=3.1 Q4_E[0,2] new -14.1594725347826 vs replay5 -14.1594725347929 (sigma 3.3e-12)
+=== E. refinement round on the new campaign (job 569201): flagged Z4_E sectors at 4 x N, substituted per replicate
+  Z4_E[-1,0]: before 1.2898681337303 +- 3.8e-11   after 1.2898681336867 +- 1.8e-11
+  Z4_E[0,0]: before 9.3324998414982 +- 1.5e-08   after 9.3324998414982 +- 1.5e-08
+  refined sectors: {'-1': [6, 48, 50], '0': []}

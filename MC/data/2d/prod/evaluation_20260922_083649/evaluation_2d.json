@@ -1,0 +1,1716 @@
+{
+ "protocol": "/home/zzheng8/lri2d/FIT_MODEL_2D.md",
+ "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+ "evaluator_sha256": "0fe221e860a0c4f9ac34d9f6f22688d42c182ad52c4804283a2182f6f0012117",
+ "manifest": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/manifest.json",
+ "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+ "campaign_id": "prod2d-20260921",
+ "time": "2026-09-22_08:36:50",
+ "design": {
+  "replicas": 12,
+  "measurements": 1000000,
+  "warmup": 50000,
+  "beta_points": 5,
+  "sizes": [
+   64,
+   128,
+   256,
+   512,
+   1024
+  ],
+  "s": [
+   1.05,
+   1.1,
+   1.2,
+   1.3,
+   1.4,
+   1.5,
+   1.6,
+   1.7
+  ],
+  "beta_halfwidth": 0.0015,
+  "window_exponent": 0.75,
+  "reference_length": 64
+ },
+ "index_check": true,
+ "centers": "/home/zzheng8/lri2d/production_centers.csv",
+ "centers_sha256": "1a7e4f89986affe9bd88574def1f9263105400f81eee64773d7b58652310ee20",
+ "extensions": {},
+ "extensions_sha256": null,
+ "settings": {
+  "pairs": [
+   "64->128",
+   "128->256",
+   "256->512",
+   "512->1024"
+  ],
+  "omega_grid": [
+   0.2,
+   2.0,
+   0.01
+  ],
+  "omega_margin": 0.02,
+  "chi2_dof_max": 2.0,
+  "resolution_max": 5.0,
+  "common_valid_frac": 0.9,
+  "ess_min": 0.5,
+  "ratio_label": 3.0,
+  "reblock_tol": 0.3,
+  "reblocks": [
+   1000,
+   4000
+  ],
+  "primary_block": 2000,
+  "production_bootstrap": 500,
+  "production_seed": 571239,
+  "production_min_ess": 0.2,
+  "target_sigma": 0.003,
+  "population": {
+   "z_hard": 4.0,
+   "z_soft": 3.0,
+   "frac_max": 0.02,
+   "drift_z_max": 4.0,
+   "block_over_tau_min": 20.0
+  }
+ },
+ "points": {
+  "1.05": {
+   "s": 1.05,
+   "Delta_sigma": 0.475,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.05/results.json",
+    "results_sha256": "ac1fcade346342116930281e3d1cd43c77269cc6911b1d8ebd085a1c6c66100c",
+    "draws_sha256": "1c5aa4a1cece25b1cacdd0650e8ff99693d87e5a5ea3909ac22a344606fb3168",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9707783139834465,
+     "sigma_U4": 0.0020103911720239635,
+     "Delta_eff_Y": 0.8863121729660595,
+     "sigma_Y": 0.0020540017671924512
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9701847153938257,
+     "sigma_U4": 0.002483874811601294,
+     "Delta_eff_Y": 0.8964406622557068,
+     "sigma_Y": 0.0022838780214188663
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.002483874811601294,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.56,
+     "Delta_inf": 0.9749627760036071,
+     "chi2": 0.5055823568802691,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.009094943902124675,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9632510778712697,
+      0.9660685812191012,
+      0.9707783139834465,
+      0.9701847153938257
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.84,
+     "Delta_inf": 0.9719105743880484,
+     "chi2": 0.28638723166169144,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.009254036791909892,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9620612485506668,
+      0.965781016071307,
+      0.9697553473883018,
+      0.9693545070600729
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.96,
+     "Delta_inf": 0.9700203962482823,
+     "chi2": 0.1379682906176628,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.011256267125341612,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9585556895389824,
+      0.9637462096313016,
+      0.9675791937896083,
+      0.9679309632660811
+     ]
+    },
+    "Y": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.6,
+     "Delta_inf": 0.9207842479318118,
+     "chi2": 0.44002370177521777,
+     "dof": 1,
+     "omega_interval": [
+      0.43,
+      0.76
+     ],
+     "Delta_omega": 0.014520584843451145,
+     "sigma_inf": 0.0018097482401489894,
+     "central": [
+      0.8390068392047494,
+      0.8658043434784128,
+      0.8863121729660595,
+      0.8964406622557068
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.26,
+     "Delta_inf": 0.9839997293620187,
+     "chi2": 8.328656116451072,
+     "dof": 4,
+     "omega_interval": [
+      0.26,
+      0.27
+     ],
+     "Delta_omega": 0.001267962282170687,
+     "reason": "chi2/dof 2.08 > 2.0",
+     "central": [
+      0.9632510778712697,
+      0.9660685812191012,
+      0.9707783139834465,
+      0.9701847153938257,
+      0.8390068392047494,
+      0.8658043434784128,
+      0.8863121729660595,
+      0.8964406622557068
+     ]
+    }
+   },
+   "eligible": [
+    "Y"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9207842479318118,
+    "sigma_stat": 0.0018097482401489894,
+    "sigma_sys": null,
+    "reference_series": "Y",
+    "omega": 0.6,
+    "omega_interval": [
+     0.43,
+     0.76
+    ],
+    "Delta_omega": 0.014520584843451145,
+    "values": {
+     "Y": 0.9207842479318118
+    },
+    "median_series": "Y",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range"
+   },
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0019000365208982255,
+      "primary": 0.0018097482401489894,
+      "ratio": 1.0498899674254156,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0018997749143749832,
+      "primary": 0.0018097482401489894,
+      "ratio": 1.0497454133280895,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "CONDITIONAL"
+  },
+  "1.1": {
+   "s": 1.1,
+   "Delta_sigma": 0.44999999999999996,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.1/results.json",
+    "results_sha256": "6e83f23faf051be6ceaf171becc4094db5a7b036724af7863e1957023a4949b7",
+    "draws_sha256": "35393ab55320c9b1ebd96842dbe318639d414b6b4d24e9b0e16406fd42743c30",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.966395254204065,
+     "sigma_U4": 0.002008219380729201,
+     "Delta_eff_Y": 0.9044795998447412,
+     "sigma_Y": 0.001913579517307763
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.965919435910064,
+     "sigma_U4": 0.0022938510022225017,
+     "Delta_eff_Y": 0.9171893183184434,
+     "sigma_Y": 0.0023026643077881702
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0022938510022225017,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.17,
+     "Delta_inf": 0.9669922059213583,
+     "chi2": 0.11327132944225912,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.00628759380999927,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9608980099337319,
+      0.963872621910886,
+      0.966395254204065,
+      0.965919435910064
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.33,
+     "Delta_inf": 0.966347543133606,
+     "chi2": 0.10102548755432553,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.00718470817167588,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9595604900002315,
+      0.9632785572713671,
+      0.9658363153332647,
+      0.9654118662912909
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 1.41,
+     "Delta_inf": 0.9651129549494458,
+     "chi2": 0.033841372045095616,
+     "dof": 1,
+     "omega_interval": [
+      0.39,
+      2.0
+     ],
+     "Delta_omega": 0.004438670460884253,
+     "reason": "omega' interval [0.39, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9558465761223878,
+      0.9614354247378165,
+      0.964100285571525,
+      0.964341067648355
+     ]
+    },
+    "Y": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.8,
+     "Delta_inf": 0.9284606927222704,
+     "chi2": 1.095318855414182,
+     "dof": 1,
+     "omega_interval": [
+      0.61,
+      1.0
+     ],
+     "Delta_omega": 0.008503663188234811,
+     "sigma_inf": 0.001451915538467186,
+     "central": [
+      0.8608441782099567,
+      0.8912226098509943,
+      0.9044795998447412,
+      0.9171893183184434
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.35,
+     "Delta_inf": 0.971998706710118,
+     "chi2": 15.278614119109811,
+     "dof": 4,
+     "omega_interval": [
+      0.35,
+      0.36
+     ],
+     "Delta_omega": 0.0005937576032040703,
+     "reason": "chi2/dof 3.82 > 2.0",
+     "central": [
+      0.9608980099337319,
+      0.963872621910886,
+      0.966395254204065,
+      0.965919435910064,
+      0.8608441782099567,
+      0.8912226098509943,
+      0.9044795998447412,
+      0.9171893183184434
+     ]
+    }
+   },
+   "eligible": [
+    "Y"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9284606927222704,
+    "sigma_stat": 0.001451915538467186,
+    "sigma_sys": null,
+    "reference_series": "Y",
+    "omega": 0.8,
+    "omega_interval": [
+     0.61,
+     1.0
+    ],
+    "Delta_omega": 0.008503663188234811,
+    "values": {
+     "Y": 0.9284606927222704
+    },
+    "median_series": "Y",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range"
+   },
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0014218699869914242,
+      "primary": 0.001451915538467186,
+      "ratio": 0.9793062676996477,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0014380577235401722,
+      "primary": 0.001451915538467186,
+      "ratio": 0.9904554951304924,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "CONDITIONAL"
+  },
+  "1.2": {
+   "s": 1.2,
+   "Delta_sigma": 0.4,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.2/results.json",
+    "results_sha256": "37a12b51b05968a6155ae2d7d25e8aa3153d58536dfb0b45c2c696ddcb753b98",
+    "draws_sha256": "253a59e8c13d773d0f0510df72e95f3c05c29929589848c24ba6e5284e486b5d",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9616096593982071,
+     "sigma_U4": 0.0019258456904726442,
+     "Delta_eff_Y": 0.9391189367606354,
+     "sigma_Y": 0.001879425393973715
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9631249315953354,
+     "sigma_U4": 0.002182371813125057,
+     "Delta_eff_Y": 0.9478263253769286,
+     "sigma_Y": 0.0022055564821154153
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.002182371813125057,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9654463061789501,
+     "chi2": 3.565827479102225,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.002381727558205149,
+     "reason": "chi2/dof 3.57 > 2.0",
+     "central": [
+      0.9610294684625424,
+      0.9575673275875507,
+      0.9616096593982071,
+      0.9631249315953354
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9656716323665407,
+     "chi2": 3.65731093448119,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.44
+     ],
+     "Delta_omega": 0.0026644480392856718,
+     "reason": "chi2/dof 3.66 > 2.0",
+     "central": [
+      0.960157969344922,
+      0.9569715036625661,
+      0.960840697627598,
+      0.962826672347187
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9685647497203225,
+     "chi2": 2.7329573458844996,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.78
+     ],
+     "Delta_omega": 0.003959258389798825,
+     "reason": "chi2/dof 2.73 > 2.0",
+     "central": [
+      0.9573069229615951,
+      0.955710726754595,
+      0.9594082627145393,
+      0.9619263041532593
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.34,
+     "Delta_inf": 0.98057817924433,
+     "chi2": 0.0001610013408282385,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.6
+     ],
+     "Delta_omega": 0.027694685749049264,
+     "reason": "omega' interval [0.2, 0.6] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9141605664241499,
+      0.9281337747993372,
+      0.9391189367606354,
+      0.9478263253769286
+     ]
+    },
+    "J": {
+     "eligible": true,
+     "complete_draws": 500,
+     "omega": 0.55,
+     "Delta_inf": 0.9620212269716172,
+     "chi2": 5.84604424370016,
+     "dof": 4,
+     "omega_interval": [
+      0.53,
+      0.57
+     ],
+     "Delta_omega": 0.0005873925397497093,
+     "sigma_inf": 0.001622160985766174,
+     "central": [
+      0.9610294684625424,
+      0.9575673275875507,
+      0.9616096593982071,
+      0.9631249315953354,
+      0.9141605664241499,
+      0.9281337747993372,
+      0.9391189367606354,
+      0.9478263253769286
+     ]
+    }
+   },
+   "eligible": [
+    "J"
+   ],
+   "quoted": {
+    "Delta_epsilon": 0.9620212269716172,
+    "sigma_stat": 0.001622160985766174,
+    "sigma_sys": null,
+    "reference_series": "J",
+    "omega": 0.55,
+    "omega_interval": [
+     0.53,
+     0.57
+    ],
+    "Delta_omega": 0.0005873925397497093,
+    "values": {
+     "J": 0.9620212269716172
+    },
+    "median_series": "J",
+    "note": "Delta_epsilon and sigma_stat from the reference series (J, else U4); sigma_sys = half-range over E + the reference omega-profile half-range"
+   },
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0017433501047640907,
+      "primary": 0.001622160985766174,
+      "ratio": 1.0747084414317096,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0017247508129055742,
+      "primary": 0.001622160985766174,
+      "ratio": 1.0632426917177675,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "CONDITIONAL"
+  },
+  "1.3": {
+   "s": 1.3,
+   "Delta_sigma": 0.35,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.3/results.json",
+    "results_sha256": "3b96baf0fe4e9287cf198588565f1d33d42548280f6fb06481c688bff9aec4b2",
+    "draws_sha256": "5d3b107fe207e42f0767b75ed45e9a7a4185f19b63343de292dd5bb5661dab0b",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9604822477992789,
+     "sigma_U4": 0.0017116588304755872,
+     "Delta_eff_Y": 0.9708537845819316,
+     "sigma_Y": 0.0017895639542801973
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9583826317424682,
+     "sigma_U4": 0.0020001639321455236,
+     "Delta_eff_Y": 0.9697517860584828,
+     "sigma_Y": 0.001953691867402178
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0020001639321455236,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9594899446305303,
+     "chi2": 0.4916652539392847,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0014318939256512953,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9581248355039373,
+      0.9585957717937663,
+      0.9604822477992789,
+      0.9583826317424682
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.959525165040304,
+     "chi2": 0.5581813545158225,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0022002953227349686,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9574240592873648,
+      0.9584731775591586,
+      0.9605253181515032,
+      0.9583132786826898
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.959485572509963,
+     "chi2": 0.6966079893167061,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.004213503758808912,
+     "reason": "omega' interval [0.2, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.95563876943354,
+      0.9579125489921405,
+      0.9604710296241479,
+      0.9582309875365056
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 2.0,
+     "Delta_inf": 0.9713936767731987,
+     "chi2": 0.724097964945454,
+     "dof": 1,
+     "omega_interval": [
+      1.58,
+      2.0
+     ],
+     "Delta_omega": 0.00043958498987800576,
+     "reason": "omega' interval [1.58, 2.0] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9560675049091447,
+      0.9682657960846945,
+      0.9708537845819316,
+      0.9697517860584828
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9831918828569725,
+     "chi2": 201.09187123377382,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 50.27 > 2.0",
+     "central": [
+      0.9581248355039373,
+      0.9585957717937663,
+      0.9604822477992789,
+      0.9583826317424682,
+      0.9560675049091447,
+      0.9682657960846945,
+      0.9708537845819316,
+      0.9697517860584828
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.002092141300813621,
+      "primary": 0.0020001639321455236,
+      "ratio": 1.045984915131149,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0020608157473250748,
+      "primary": 0.0020001639321455236,
+      "ratio": 1.0303234220979536,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE"
+  },
+  "1.4": {
+   "s": 1.4,
+   "Delta_sigma": 0.30000000000000004,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.4/results.json",
+    "results_sha256": "d8cbb919efc5334092232ed5c8122d43eee76307b8d915508705f02b04a40e74",
+    "draws_sha256": "278c8516281684ce747067b2f576f830f21ba0bedadcc764453310a875863a28",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9582433002555455,
+     "sigma_U4": 0.0017290361302283958,
+     "Delta_eff_Y": 0.998569136661849,
+     "sigma_Y": 0.0016320844236658518
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9627269619978782,
+     "sigma_U4": 0.0019720742214445505,
+     "Delta_eff_Y": 0.9977057925358555,
+     "sigma_Y": 0.0018519862962122617
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0019720742214445505,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9624020007355448,
+     "chi2": 2.377034878199238,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.001334013068292672,
+     "reason": "chi2/dof 2.38 > 2.0",
+     "central": [
+      0.9599075322477113,
+      0.9589626190085734,
+      0.9582433002555455,
+      0.9627269619978782
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9643309677078485,
+     "chi2": 2.3022367319033044,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      2.0
+     ],
+     "Delta_omega": 0.0020749578972101834,
+     "reason": "chi2/dof 2.30 > 2.0",
+     "central": [
+      0.9596004140606664,
+      0.9594166224678666,
+      0.9584253054599272,
+      0.9632995791130472
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.968861852817773,
+     "chi2": 1.8281801163352456,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.32
+     ],
+     "Delta_omega": 0.003642816542003491,
+     "reason": "omega' interval [0.2, 1.32] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9588941572481331,
+      0.9601134698528693,
+      0.9592712476913361,
+      0.964245076461556
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9868050084295483,
+     "chi2": 1.848114175753523,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.76
+     ],
+     "Delta_omega": 0.005159082999231013,
+     "reason": "omega' interval [0.2, 0.76] reaches the grid boundary (unresolved)",
+     "central": [
+      1.0024242542391257,
+      1.0032045799435985,
+      0.998569136661849,
+      0.9977057925358555
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9729958532548699,
+     "chi2": 93.97479482803465,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 23.49 > 2.0",
+     "central": [
+      0.9599075322477113,
+      0.9589626190085734,
+      0.9582433002555455,
+      0.9627269619978782,
+      1.0024242542391257,
+      1.0032045799435985,
+      0.998569136661849,
+      0.9977057925358555
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0019804135319369935,
+      "primary": 0.0019720742214445505,
+      "ratio": 1.0042287001177543,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0020862242415641786,
+      "primary": 0.0019720742214445505,
+      "ratio": 1.0578832271515688,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE"
+  },
+  "1.5": {
+   "s": 1.5,
+   "Delta_sigma": 0.25,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.5/results.json",
+    "results_sha256": "2eb27cfc61d7e64f0ddfca91c944cf5607e507f1be8543af357e270e0d125456",
+    "draws_sha256": "d00d77d17fc988785d4e8dc9d82d4514942f728b5ccfe5b80c5eabd92b45c9d0",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9640326036031146,
+     "sigma_U4": 0.001625647273304384,
+     "Delta_eff_Y": 1.033892439602317,
+     "sigma_Y": 0.0014524778222666946
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9661175860395073,
+     "sigma_U4": 0.0018409877351369178,
+     "Delta_eff_Y": 1.0245082124759652,
+     "sigma_Y": 0.0016524315498992336
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0018409877351369178,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9759288985620879,
+     "chi2": 0.4808032731629851,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.98
+     ],
+     "Delta_omega": 0.005204040228828144,
+     "reason": "omega' interval [0.2, 0.98] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9607892566415157,
+      0.9614961852152966,
+      0.9640326036031146,
+      0.9661175860395073
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9777353970562632,
+     "chi2": 0.45591503563106056,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.92
+     ],
+     "Delta_omega": 0.00548542062589219,
+     "reason": "omega' interval [0.2, 0.92] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9614175955400523,
+      0.9623045987233478,
+      0.9650484878762762,
+      0.9670781590581863
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9818954518624429,
+     "chi2": 0.28516484175149087,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.91
+     ],
+     "Delta_omega": 0.0063830204789211975,
+     "reason": "omega' interval [0.2, 0.91] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9625286225278042,
+      0.9640547836648397,
+      0.9672447781596363,
+      0.9689637752630749
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9810399097604185,
+     "chi2": 3.1469965923025374,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.27
+     ],
+     "Delta_omega": 0.007386149331876868,
+     "reason": "chi2/dof 3.15 > 2.0",
+     "central": [
+      1.0484441833787923,
+      1.042293715380728,
+      1.033892439602317,
+      1.0245082124759652
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.979222980339566,
+     "chi2": 18.484858265057767,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 4.62 > 2.0",
+     "central": [
+      0.9607892566415157,
+      0.9614961852152966,
+      0.9640326036031146,
+      0.9661175860395073,
+      1.0484441833787923,
+      1.042293715380728,
+      1.033892439602317,
+      1.0245082124759652
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0018143153951511186,
+      "primary": 0.0018409877351369178,
+      "ratio": 0.9855119404237555,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.001986944501143173,
+      "primary": 0.0018409877351369178,
+      "ratio": 1.0792817699002215,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE"
+  },
+  "1.6": {
+   "s": 1.6,
+   "Delta_sigma": 0.19999999999999996,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.6/results.json",
+    "results_sha256": "f249cccd155da3246a7d1888e31a58075b2963d3f7a39e60b7721e150152bb96",
+    "draws_sha256": "bac91fc6380ace26a2d25517ab423bfccee673b6558be550fd0f02493c20dba2",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9691055105172839,
+     "sigma_U4": 0.0015459063757118307,
+     "Delta_eff_Y": 1.0728719428544629,
+     "sigma_Y": 0.0013451188930744694
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9697605083909089,
+     "sigma_U4": 0.0018307382061930211,
+     "Delta_eff_Y": 1.0619776799463831,
+     "sigma_Y": 0.0015257878443049706
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0018307382061930211,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.979882466612604,
+     "chi2": 1.088195276360667,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.97
+     ],
+     "Delta_omega": 0.005065513085038664,
+     "reason": "omega' interval [0.2, 0.97] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9653482692630289,
+      0.9652067563115005,
+      0.9691055105172839,
+      0.9697605083909089
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9821779574458979,
+     "chi2": 0.5870240289670339,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.1
+     ],
+     "Delta_omega": 0.005474130284756185,
+     "reason": "omega' interval [0.2, 1.1] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9665641882353337,
+      0.9671676633579971,
+      0.9706311263510099,
+      0.9713911182197008
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.25,
+     "Delta_inf": 0.9838582764646828,
+     "chi2": 0.17853212109778918,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      1.47
+     ],
+     "Delta_omega": 0.006429374871188331,
+     "reason": "omega' interval [0.2, 1.47] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9688505579878468,
+      0.9707181012791195,
+      0.9736822569637236,
+      0.9744654934782015
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9919226630446225,
+     "chi2": 6.335865770873871,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.23
+     ],
+     "Delta_omega": 0.005819604213888052,
+     "reason": "chi2/dof 6.34 > 2.0",
+     "central": [
+      1.0977094554810432,
+      1.0884635097086401,
+      1.0728719428544629,
+      1.0619776799463831
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9915013112451224,
+     "chi2": 56.29163156997052,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 14.07 > 2.0",
+     "central": [
+      0.9653482692630289,
+      0.9652067563115005,
+      0.9691055105172839,
+      0.9697605083909089,
+      1.0977094554810432,
+      1.0884635097086401,
+      1.0728719428544629,
+      1.0619776799463831
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0016973188442197928,
+      "primary": 0.0018307382061930211,
+      "ratio": 0.9271226429197263,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.001832269788026041,
+      "primary": 0.0018307382061930211,
+      "ratio": 1.0008365924892149,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE"
+  },
+  "1.7": {
+   "s": 1.7,
+   "Delta_sigma": 0.15000000000000002,
+   "block": 2000,
+   "bootstrap": 500,
+   "bootstrap_seed": 571239,
+   "inputs": {
+    "results": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/analysis_b2000_s1.7/results.json",
+    "results_sha256": "aee4fb66a89bb232673df7b37df135776eb8e1858cf70a1a10920082b8c765a8",
+    "draws_sha256": "0d94905742744a0ceb01a0c908dc1c417d0944d6de45e70c4e53e8aa29c509a1",
+    "plan_sha256": "4d2efc635701a4ad699dae4b3acb948dc27f9709a947754a47523e65f129acfb",
+    "manifest_sha256": "89d6ba8658c93d0a4e7cc3f7ea1c675f3e13147bfe7271f16ba631ae3b452326",
+    "campaign_id": "prod2d-20260921",
+    "index_path": "/expanse/lustre/scratch/zzheng8/temp_project/lri2d/prod2d/hist_b2000/index.json",
+    "index_sha256": "1e18b2a79068ca576294e129173f48e179c2578416213139d8065a4f217cd2a2",
+    "analysis_code_sha256": {
+     "precision_analysis.py": "73f920db38b777de76d660a79c5c4ca7a440f15a118a77324a6d75914121805c",
+     "multihist.py": "5a86f797596a9547f14bd7dabe6e25a52e04dd0667ab091693a12166c4a25d11",
+     "pack_histograms.py": "17564def166286c8b0940b22ce396fa2975f7c1fec4ed1eec6b1b3fddf954a88",
+     "analyze.py": "52b5513c70988c87a42c23f81272d552d793abb81e1647eedc0971251a286869"
+    }
+   },
+   "required_measurements": 1000000,
+   "equilibration": {
+    "passed": true,
+    "groups": 25,
+    "chains": 300,
+    "hard_outliers": [],
+    "fraction_above_3": 0.0033333333333333335,
+    "flagged_tasks": {},
+    "groups_without_consensus": [],
+    "incomplete_groups": []
+   },
+   "production": true,
+   "non_production_reasons": [],
+   "missing_pairs": [],
+   "analysis_warnings": [],
+   "coverage": {
+    "passed": true,
+    "missing": [],
+    "low_ess": []
+   },
+   "largest_pairs": [
+    {
+     "pair": "256->512",
+     "Delta_eff_U4": 0.9751031495425784,
+     "sigma_U4": 0.0015539518538242268,
+     "Delta_eff_Y": 1.1253935796190917,
+     "sigma_Y": 0.001372912372272986
+    },
+    {
+     "pair": "512->1024",
+     "Delta_eff_U4": 0.9773066082489981,
+     "sigma_U4": 0.0017160158003688994,
+     "Delta_eff_Y": 1.1088284067367171,
+     "sigma_Y": 0.0014362359336924934
+    }
+   ],
+   "precision": {
+    "target": 0.003,
+    "pair": "512->1024",
+    "sigma_U4": 0.0017160158003688994,
+    "met": true,
+    "known": true
+   },
+   "complete_draws": 500,
+   "series": {
+    "U4": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 0.9984449867182119,
+     "chi2": 0.5081680973379065,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.66
+     ],
+     "Delta_omega": 0.009147932155245342,
+     "reason": "omega' interval [0.2, 0.66] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9671112944382656,
+      0.9698807724758567,
+      0.9751031495425784,
+      0.9773066082489981
+     ]
+    },
+    "U6": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0011876753318896,
+     "chi2": 0.5013954191266994,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.75
+     ],
+     "Delta_omega": 0.00979003382861171,
+     "reason": "omega' interval [0.2, 0.75] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9690855982939766,
+      0.9722165426587215,
+      0.9775647136405956,
+      0.9793252803040333
+     ]
+    },
+    "U8": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.36,
+     "Delta_inf": 0.9934955889916206,
+     "chi2": 0.5679441701365384,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.97
+     ],
+     "Delta_omega": 0.010667811514261494,
+     "reason": "omega' interval [0.2, 0.97] reaches the grid boundary (unresolved)",
+     "central": [
+      0.9727754172150087,
+      0.9765036649753478,
+      0.9818145498732644,
+      0.9829369505275303
+     ]
+    },
+    "Y": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0311011306540743,
+     "chi2": 5.8173177848203075,
+     "dof": 1,
+     "omega_interval": [
+      0.2,
+      0.23
+     ],
+     "Delta_omega": 0.006563109470870798,
+     "reason": "chi2/dof 5.82 > 2.0",
+     "central": [
+      1.1516073635899584,
+      1.1381370000368412,
+      1.1253935796190917,
+      1.1088284067367171
+     ]
+    },
+    "J": {
+     "eligible": false,
+     "complete_draws": 500,
+     "omega": 0.2,
+     "Delta_inf": 1.0260466559989736,
+     "chi2": 225.4516384940924,
+     "dof": 4,
+     "omega_interval": [
+      0.2,
+      0.2
+     ],
+     "Delta_omega": 0.0,
+     "reason": "chi2/dof 56.36 > 2.0",
+     "central": [
+      0.9671112944382656,
+      0.9698807724758567,
+      0.9751031495425784,
+      0.9773066082489981,
+      1.1516073635899584,
+      1.1381370000368412,
+      1.1253935796190917,
+      1.1088284067367171
+     ]
+    }
+   },
+   "eligible": [],
+   "quoted": null,
+   "crosscheck": {
+    "status": "unavailable"
+   },
+   "reblocking": {
+    "available": true,
+    "comparisons": {
+     "1000": {
+      "sigma": 0.0016853269858292553,
+      "primary": 0.0017160158003688994,
+      "ratio": 0.982116240110932,
+      "note": null
+     },
+     "4000": {
+      "sigma": 0.0017274841478241703,
+      "primary": 0.0017160158003688994,
+      "ratio": 1.0066831246267112,
+      "note": null
+     }
+    },
+    "record_problems": [],
+    "passed": true
+   },
+   "decision": "MODEL-LIMITED, EXTRAPOLATION UNAVAILABLE"
+  }
+ }
+}

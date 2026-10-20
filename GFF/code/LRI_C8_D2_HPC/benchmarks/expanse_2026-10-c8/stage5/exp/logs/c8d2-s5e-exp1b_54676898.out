@@ -1,0 +1,70 @@
+job 54676898 on <NODE> partition debug at 2026-10-05T02:14:56-07:00; package <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5; evidence <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+CPU(s):              128
+NUMA node(s):        8
+Model name:          AMD EPYC 7742 64-Core Processor
+99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf  bin/c8d2_decimal
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+63c194fd8bd6822cf9da737fa953c155ea4b7dece8d729e2864f2578e21a0002  bin/c8d2_inspect
+4537dcfd501dec8ba28062e1d09a5308f9ba604919bd7deabdec5ee768faaaaf  bin/ref/c7d2_decimal
+6c82938635462c881b22d8ae92cfb1497ef3efe7bbd9c08cfa5ffda0e2770a52  bin/ref/c7d2_gmp
+16 commands of make test:
+OPENBLAS_NUM_THREADS=1 python3 -B tests/validate.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/test/va
+OPENBLAS_NUM_THREADS=1 python3 -B tests/unit_orchestration.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_pipeline.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/te
+OPENBLAS_NUM_THREADS=1 python3 -B tests/ast_scan.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/test/as
+OPENBLAS_NUM_THREADS=1 python3 -B gen/test_regress.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/test/
+OPENBLAS_NUM_THREADS=1 python3 -B tests/merge_scale.py --rows 20000 --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54
+OPENBLAS_NUM_THREADS=1 python3 -B tests/check_vendored.py --no-review-record --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5
+OPENBLAS_NUM_THREADS=1 python3 -B tests/vendored_isolated.py --in-place --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_delivery_verifier.py
+OPENBLAS_NUM_THREADS=1 python3 -B tests/check_inputs.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/tes
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_profiling.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/t
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_gmp_prefix.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_numerics_flags.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.5467689
+OPENBLAS_NUM_THREADS=1 python3 -B tests/test_dd_profile.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/
+OPENBLAS_NUM_THREADS=1 python3 -B tests/workflow.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/test/wo
+OPENBLAS_NUM_THREADS=1 python3 -B tests/staging.py --output <SCRATCH>/temp_project/c8d2/evidence/07ff5c1975e5/s5eexp1b.54676898.0/test/sta
+== [1] validate 2026-10-05T02:14:57-07:00
+== [1] validate exit 0 after 71 s
+== [2] unit_orchestration 2026-10-05T02:16:08-07:00
+== [2] unit_orchestration exit 1 after 239 s
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676898/tmp/c8d2_orch__n6plgho/lanes')) failed (64):
+== [3] test_pipeline 2026-10-05T02:20:07-07:00
+== [3] test_pipeline exit 0 after 190 s
+== [4] ast_scan 2026-10-05T02:23:17-07:00
+== [4] ast_scan exit 0 after 1 s
+== [5] test_regress 2026-10-05T02:23:18-07:00
+== [5] test_regress exit 0 after 1 s
+== [6] merge_scale 2026-10-05T02:23:19-07:00
+== [6] merge_scale exit 0 after 307 s
+== [7] check_vendored 2026-10-05T02:28:26-07:00
+== [7] check_vendored exit 0 after 22 s
+== [8] vendored_isolated 2026-10-05T02:28:48-07:00
+== [8] vendored_isolated exit 0 after 85 s
+== [9] test_delivery_verifier 2026-10-05T02:30:13-07:00
+== [9] test_delivery_verifier exit 0 after 1 s
+== [10] check_inputs 2026-10-05T02:30:14-07:00
+== [10] check_inputs exit 0 after 7 s
+== [11] test_profiling 2026-10-05T02:30:21-07:00
+== [11] test_profiling exit 0 after 11 s
+== [12] test_gmp_prefix 2026-10-05T02:30:32-07:00
+== [12] test_gmp_prefix exit 0 after 4 s
+== [13] test_numerics_flags 2026-10-05T02:30:36-07:00
+== [13] test_numerics_flags exit 1 after 24 s
+== [14] test_dd_profile 2026-10-05T02:31:00-07:00
+== [14] test_dd_profile exit 0 after 8 s
+== [15] workflow 2026-10-05T02:31:08-07:00
+== [15] workflow exit 0 after 16 s
+== [16] staging 2026-10-05T02:31:24-07:00
+== [16] staging exit 0 after 18 s
+== lanes group alone, whole affinity (128 CPUs) 2026-10-05T02:31:42-07:00
+exit 1
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676898/tmp/c8d2_orch_584wq4s7/lanes')) failed (64):
+C8: C8_LANES=2 gives lanes of up to 64 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 16 or re-plan with a larger --checkpoint-tasks
+C8: C8_LANES=2 gives lanes of up to 64 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 16 or re-plan with a larger --checkpoint-tasks
+== lanes group alone, taskset -c 0-15 2026-10-05T02:31:45-07:00
+exit 0
+PASS lanes_worker_claims_requeue_stale_timeguard_unlimited_class_factor_failures_race_width_slurm_memory_limit
+executables unchanged
+finished 2026-10-05T02:32:13-07:00, make-test commands status 1, lanes full 1, lanes taskset16 0

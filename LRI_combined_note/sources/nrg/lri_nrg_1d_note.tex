@@ -1,0 +1,1384 @@
+% =====================================================================================================================
+%  Thermal dimension of the d = 1 long-range Ising model from bosonic NRG of the sub-ohmic spin-boson model.
+%  Self-contained note (status 2026-10-15), released with the code and records in the NRG/ folder of the public
+%  repository. Compiles on its own with pdflatex (three passes, `make note`); standard TeX Live packages only.
+%  Every table body under tables/ and every number written as a \nrg... macro is generated from the released records by
+%  code/analysis/build_tables.py and code/analysis/note_numbers.py; the figures by make_figures.py and check_figures.py.
+%  `make replay` regenerates all of them and checks that they equal the released files (verify/verify.py).
+% =====================================================================================================================
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{dsfont}
+\usepackage{booktabs,longtable,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\usepackage{url}
+\usepackage[hidelinks,pdftitle={Thermal dimension of the one-dimensional long-range Ising model from bosonic NRG},pdfauthor={Z. Zheng}]{hyperref}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=1pt,topsep=3pt}
+\setlength{\LTcapwidth}{\textwidth}
+\emergencystretch=3em
+\newcommand{\Ds}{\Delta_\sigma}
+\newcommand{\De}{\Delta_\varepsilon}
+\newcommand{\DE}{\Delta_E}
+\newcommand{\Dloc}{\Delta_{\rm loc}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\dd}{\delta_{\rm depth}}
+\newcommand{\dK}{\delta_K}
+\newcommand{\dL}{\delta_\Lambda}
+\newcommand{\dtot}{\delta_{\rm tot}}
+\newcommand{\nq}{n_q}
+\newcommand{\one}{\mathds{1}}
+\input{tables/numbers.tex}
+
+\title{Thermal dimension of the one-dimensional long-range Ising model\\ from bosonic NRG of the sub-ohmic spin--boson model\\[4pt]
+\large Method, data, checks, results, limitations and reproduction}
+\author{Z.~Zheng}  % author list as in the accompanying paper; drafted by Claude Code, see App. C
+\date{Status of 15 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}\noindent
+We compute the scaling dimension $\De$ of the energy operator of the one-dimensional long-range Ising model, with couplings
+decaying as $1/r^{1+s}$, at thirteen values of the spin dimension $\Ds=(1-s)/2$ between $0.249$ and $0.001$. The critical point is
+realized as the quantum critical point of the sub-ohmic spin--boson model, which we solve with a bosonic numerical renormalization
+group (NRG); the relevant eigenvalue $y_t=1-\De$ is obtained from the exact derivative of the truncated NRG map with respect to the
+bath coupling. At ten points, $0.001\le\Ds\le0.2$, we give final values, for example $\De=\nrgDEOneHundred$ at $s=0.8$ and
+$\nrgDETwoHundred$ at $s=0.6$. At eight of them, $0.001\le\Ds\le0.15$, the local exponent settles on a plateau along the chain, and
+the error scales are $\nrgerrLow$ for $0.01\le\Ds\le0.125$, $\nrgerrOneFifty$ at $\Ds=0.15$ and $\nrgerrOne$ at $\Ds=0.001$. At
+$\Ds=0.175$ and $0.2$ the local exponent is still drifting at the end of the usable chain and is extrapolated, with error scales
+$\nrgerrOneSeventyFive$ and $\nrgerrTwoHundred$. Each error adds three parts linearly: the drift along the chain, the spread over kept
+states and oscillator levels, and a discretization error, the larger of the spread over the values of $\Lambda$ that were run and the
+change of the $\Lambda=2.5$ value when the number of kept states is doubled; the latter sets it at $\nrgnLambdaKdbl$ of the 10 final
+points. The errors are not standard deviations. Near $s=1/2$ the leading correction exponent $\omega\approx\varepsilon$ vanishes, and
+within the chain depth reachable in double precision the flow does not reach its fixed point: at $\Ds=0.249$, $0.24$ and $0.225$ the
+values where it comes closest lie $\nrgexcTwoFortyNine$, $\nrgexcTwoForty$ and $\nrgexcTwoTwentyFive$ above the $\varepsilon$
+expansion, and at $\Ds=0.249$ the inverse excess grows along the renormalization-group time at a rate of the size that one loop
+predicts. We label these three points not converged in chain depth, a label assigned after the comparison with the series, show
+their values, and use them in no comparison. Near $s=1$ the results reproduce the strong--weak dual expansion of $\De$ through its
+fifth coefficient. At the $\nrgmcAccN$ points where the project's cluster Monte Carlo study accepts its own value, NRG differs from it
+by at most $\nrgmcAccDiffMax$. That is within the sum of the Monte Carlo statistical error, its fit-model half-range and the NRG
+error at $\nrgmcAccWithinLin$ points, and $\nrgmcAccRatioMax$ times that sum at the fifth; but it is up to $\nrgmcAccStatRatioMax$
+Monte Carlo statistical errors, with the same sign at neighboring points, so only the fit-model half-range reconciles the two. The
+Monte Carlo crossing extrapolations agree with NRG within $\nrgmcCrossStatMax$ of their statistical errors at these points. A second
+solver, written by a separate Claude agent from a physics-only specification, reproduces the chain coefficients to better than
+$\nrgindChain$ (rounding level), the critical couplings bitwise or to $\nrgindAlpha$, and $\DE$ to $\nrgindDE$ in every window its
+finite differences can reach. The code was written by GPT-6 astra (OpenAI) and ported to the cluster, run and analyzed by Claude Code
+(Anthropic); every number in this note is regenerated from the released records by \code{make replay}.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+% =====================================================================================================================
+\section{Overview}\label{sec:overview}
+% =====================================================================================================================
+\subsection{Scope}
+This note is written for a physicist outside the project. Section~\ref{sec:model} states the problem and what is known analytically.
+Sections~\ref{sec:method} and~\ref{sec:budget} describe the numerical method, the estimator and the error budget in enough detail to
+re-implement them. Section~\ref{sec:software} describes the code and how it was validated, Sec.~\ref{sec:campaigns} the production
+runs, Sec.~\ref{sec:results} the results, and Sec.~\ref{sec:checks} the checks against a second implementation, against two methods
+that do not use NRG and against published values. Section~\ref{sec:limits} collects the limitations and Sec.~\ref{sec:repro}
+explains how to recompute every number. The appendices give the data formats (App.~\ref{app:formats}), the production on the
+cluster (App.~\ref{app:cluster}), the provenance of code, analysis and review (App.~\ref{app:provenance}), every production run
+(App.~\ref{app:items}), the estimator used before this revision and its values (App.~\ref{app:midpoint}), and the terms and symbols
+(App.~\ref{app:symbols}).
+
+\paragraph{Who did what.} The NRG solver was written by GPT-6 astra (OpenAI, through ChatGPT) in two stages: a reference solver for
+an earlier, unreleased study of the project (the \emph{original study}; shipped as \code{code/lri\_spin\_boson\_hpc/reference/}) and
+an optimized package built on it. Claude Code (Anthropic) reviewed the package, ported it to a Slurm cluster, ran the production,
+wrote the analysis and drafted this note; OpenAI Codex reviewed the cluster port. Two rounds of read-only reviews of the analysis
+and of this note, three reviews each, were made by Claude agents on 13 October 2026, and an independent reader reviewed the text on
+15 October. This version follows them; the changes made after the second round and after the reading were not reviewed again.
+There was no human referee. App.~\ref{app:provenance} gives the details, including which model ran where. In this note ``the
+author'' is Z.~Zheng, who made the decisions marked as his, and ``we'' is the study as a whole: the author and the AI systems that
+worked for him.
+
+\paragraph{Vocabulary.} A \emph{point} is one value of $\Ds$. An \emph{item} is one complete NRG calculation at fixed
+$(\Ds,\Lambda,K,n_b,N)$: the search for the critical coupling, the exact derivative of the critical flow, and the window audit
+(Sec.~\ref{sec:method}). Its \emph{record} is the JSON file that holds the result. The \emph{central item} of a point is the one at
+$\Lambda=3$, $K=128$, $n_b=16$; all other items are convergence scans. A \emph{campaign} is a set of items submitted together
+(Sec.~\ref{sec:campaigns}), and \emph{production} means the $\nrgnItems$ items whose records are released. A \emph{window} is a
+stretch of consecutive chain sites over which the growth of the derivative is fitted (Sec.~\ref{sec:windows}). We write $\DE$ for the
+NRG estimate of $\De$; despite the notation it is not an energy difference. App.~\ref{app:symbols} lists all terms and symbols.
+
+\subsection{Headline results}
+Table~\ref{tab:headline} is the main result, and Fig.~\ref{fig:checks} shows it with the references of Sec.~\ref{sec:checks}.
+``Final'' values are the estimates of Sec.~\ref{sec:estimator} with the total error $\dtot$ of Sec.~\ref{sec:budget}. The three values
+in gray brackets are not converged in chain depth (Sec.~\ref{sec:approach}): they are shown, carry no error, and enter no comparison
+and no agreement statement in this note. That label is not an outcome of the estimator; it was assigned after the comparison with
+the $\varepsilon$ series (Sec.~\ref{sec:estimator}).
+
+\begin{table}[ht]\centering\small\setlength{\tabcolsep}{4pt}
+\caption{Thermal dimension $\De$ of the $d=1$ long-range Ising model from bosonic NRG: $\DE=1-y_t$ at $\Lambda=3$, $K=128$ kept states
+per parity sector and $n_b=16$ oscillator levels, with the total error $\dtot$ in parentheses (Sec.~\ref{sec:budget}: chain depth
+plus $K$/$n_b$ spread plus discretization error, the last mostly an allowance for the convergence in $K$ at $\Lambda=2.5$; PDG
+rounding). ``Final'' is the plateau value of Sec.~\ref{sec:estimator}; ``final, extrapolated'' is the extrapolation of the local
+exponent. Gray: not converged in chain depth; the settled value, no error, not used in any comparison, and its excess over the
+$\varepsilon$ series in the last column. External test: the $\varepsilon$ series (Sec.~\ref{sec:series}), whose spread at $\Ds=0.2$
+is far larger than the NRG error; the label that the Monte Carlo study gives its own value (Sec.~\ref{sec:mc}) and, where that value
+is accepted, NRG minus Monte Carlo with its ratio to $\sigma_{\rm stat}+\sigma_{\rm sys}+\dtot$; at $\Ds\le0.01$ only the expansion
+about $s=1$ of Sec.~\ref{sec:s1}.}\label{tab:headline}
+\input{tables/headline_table.tex}
+\end{table}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\textwidth]{figures/fig_checks.pdf}
+\caption{(a) $\DE$ against $\Ds$: NRG (filled circles with $\dtot$; open: not converged in chain depth, not used), the project's 1D
+cluster Monte Carlo study (filled squares: label ACCEPTED; open: CROSS-CHECK FAILED or CONDITIONAL, which that study does not certify as
+infinite-size values; bars $\sigma_{\rm stat}+\sigma_{\rm sys}$, added linearly), the resummed $\varepsilon$ series (diamonds; bars:
+spread over Pad\'e approximants, at $\Ds=0.249$ the partial-sum error) and $1-2\sqrt{\Ds}$ near $s=1$. (b) NRG minus reference; bars
+are $\dtot$ plus the reference's error, added linearly. Open symbols are not used in any comparison.}\label{fig:checks}
+\end{figure}
+
+What the checks establish:
+\begin{itemize}
+\item \textbf{The code computes what it claims.} A second implementation written from a physics-only specification
+  (Sec.~\ref{sec:indep}) agrees with the production solver in eight configurations: chain coefficients to better than $\nrgindChain$ (relative, rounding level),
+  critical couplings bitwise in $\nrgindAlphaBitwise$ of $\nrgindN$ configurations and to $\nrgindAlpha$ in the others, and $\DE$
+  window by window to $\nrgindDE$ wherever its finite differences are reliable. This tests the numerical map, not the estimator.
+\item \textbf{Comparison with methods that do not use NRG.} Near $s=1$ the final values reproduce the dual expansion of $\De$ in
+  $\sqrt{\Ds}$ through its fifth coefficient (Sec.~\ref{sec:s1}). At the $\nrgmcAccN$ points where the Monte Carlo study accepts its
+  own value they differ from it by at most $\nrgmcAccDiffMax$: within $\sigma_{\rm stat}+\sigma_{\rm sys}+\dtot$ at
+  $\nrgmcAccWithinLin$ points and $\nrgmcAccRatioMax$ times that sum at $\Ds=\nrgmcAccDiffMaxAt$. The sum adds a standard deviation, a
+  fit-model half-range and an error scale and is only a scale, not a test of statistical consistency. The differences are up to
+  $\nrgmcAccStatRatioMax$ Monte Carlo statistical errors and have the same sign at neighboring points, so only the Monte Carlo
+  half-range $\sigma_{\rm sys}$ reconciles the two, and the comparison tests the Monte Carlo systematics more than NRG
+  (Sec.~\ref{sec:mc}). At $\Ds=0.2$ the resummed series has a spread of $\nrgserSpreadTwoHundred$ and does not test NRG.
+\item \textbf{Near $s=1/2$ the chain is too short.} The flow approaches its fixed point at a rate $\omega\approx\varepsilon\to0$ in
+  the RG time $l$. At $\Ds=0.249$ the inverse distance to the series value grows nearly linearly in $l$, with slopes $\nrgslopeEarly$
+  to $\nrgslopeLate$, of the size of the one-loop prediction ($\nrgslopePredEarly$ to $\nrgslopePredLate$; Fig.~\ref{fig:flow}c,
+  Sec.~\ref{sec:approach}). Convergence scans in $K$, $n_b$ or $\Lambda$ at fixed depth cannot reveal this, because once $K$ and
+  $n_b\ge12$ are converged the effect depends only on $l$.
+\end{itemize}
+The errors are error scales built from measured spreads and a few stated judgements (Sec.~\ref{sec:budget}); they are not standard
+deviations. In the text they are quoted with two significant digits; in the tables value(error) follows the PDG rounding (two digits
+if the leading digits are 10--35, else one). Bounds in the text (``at most'', ``agree to'', ``below'') are rounded up, so they can
+exceed the corresponding table entry by one unit of the last digit. Monte Carlo values and the coefficients $C_7$, $C_8$ are quoted
+as their sources give them.
+
+% =====================================================================================================================
+\section{The problem and what is known}\label{sec:model}
+% =====================================================================================================================
+\subsection{The long-range Ising chain and its thermal dimension}
+The ferromagnetic long-range Ising (LRI) chain has spins $S_i=\pm1$ on the sites of a line ($d=1$) and couplings
+$J_{ij}\propto1/|i-j|^{1+s}$. It has a finite-temperature transition for $0<s\le1$; the transition is mean-field for $s<1/2$, of
+Kosterlitz--Thouless type at $s=1$~\cite{Kosterlitz1976,LM01}, and for $1/2<s<1$ its critical point is neither mean-field nor
+short-range~\cite{Fisher1972,Sak1973}. There the spin field has the exactly known dimension
+\begin{equation}
+\Ds=\frac{d-s}{2}=\frac{1-s}{2},\qquad s=1-2\Ds,\qquad \varepsilon\equiv2s-d=2s-1=1-4\Ds ,\label{eq:ds}
+\end{equation}
+because long-range interactions are not renormalized~\cite{Sak1973}. The quantity of interest is the dimension of the energy
+operator, the leading $\mathbb Z_2$-even scalar,
+\begin{equation}
+\De=d-\frac1\nu=1-y_t ,\label{eq:De}
+\end{equation}
+where $\nu$ is the correlation-length exponent and $y_t=1/\nu$ the renormalization-group (RG) eigenvalue of the temperature.
+
+Two limits are known analytically:
+\begin{itemize}
+\item \textbf{$s\to1/2^+$ ($\Ds\to1/4$, $\varepsilon\to0$).} The fixed point becomes Gaussian, $\De\to1/2$, and $\De$ has an
+  expansion $\De=\sum_nC_n\varepsilon^n$ with $C_0=1/2$, $C_1=-1/6$ and higher coefficients known through $C_8$ (Sec.~\ref{sec:series},
+  Ref.~\cite{Paper}). The series is asymptotic, but close to $s=1/2$ it is far more precise than any numerical method. The leading
+  irrelevant coupling ($\varphi^4$) has the correction exponent $\omega=\varepsilon+O(\varepsilon^2)$, so corrections to scaling
+  decay ever more slowly as $s\to1/2$.
+\item \textbf{$s\to1^-$ ($\delta\equiv1-s=2\Ds\to0$).} The two lowest $\mathbb Z_2$-even dimensions are
+  $\Delta_\pm=1\pm\sqrt{2\delta}+\delta/4+O(\delta^{3/2})$~\cite{BLMV25,BLMV26}; the leading term is Kosterlitz's~\cite{Kosterlitz1976}.
+  With $\Delta_-\sim\varphi^2$ the energy operator~\cite{BLMV25},
+  \begin{equation}
+  y_t=\sqrt{2\delta}-\frac\delta4+O(\delta^{3/2}),\qquad \omega=\Delta_+-1=\sqrt{2\delta}+\frac\delta4+O(\delta^{3/2}).\label{eq:s1}
+  \end{equation}
+  So $\omega\approx y_t$ near $s=1$: both are small, but they are comparable (Sec.~\ref{sec:depth}). Beyond this order the dual
+  description gives $\De$ as a series in $\sqrt{\Ds}$,
+  \begin{equation}
+  \De=1+\sum_{n\ge1}C^{\rm SR}_n(1)\,\Ds^{n/2},\qquad C^{\rm SR}_1(1)=-2,\quad C^{\rm SR}_2(1)=\tfrac12,\label{eq:dual}
+  \end{equation}
+  equivalent to Eq.~\eqref{eq:s1} through its second term, with $C^{\rm SR}_3(1)$ to $C^{\rm SR}_8(1)$ computed in the accompanying
+  paper~\cite{Paper}; $C^{\rm SR}_3(1)=\frac{39}{16}+2\zeta(2)$, $C^{\rm SR}_4(1)=4-4\zeta(2)-8\zeta(3)$,
+  $C^{\rm SR}_5(1)=\frac{11249}{1024}-\frac{361}{16}\zeta(2)+24\zeta(3)+\frac{49}{2}\zeta(4)$ and
+  $C^{\rm SR}_6(1)=26-38\zeta(2)+104\zeta(3)-80\zeta(4)-272\zeta(5)+112\zeta(2)\zeta(3)$.
+\end{itemize}
+
+\subsection{The spin--boson model}
+The spin--boson model without a static bias field describes a two-level system coupled to a bath of harmonic
+oscillators~\cite{Leggett1987}:
+\begin{equation}
+H=-\frac{\Omega}{2}\,\sigma_x+\sum_j\omega_j\,b_j^\dagger b_j+\frac{\sigma_z}{2}\sum_j\lambda_j\,\big(b_j+b_j^\dagger\big),\qquad
+\rho(\omega)\equiv\sum_j\lambda_j^2\,\delta(\omega-\omega_j)=2\alpha\,\omega^{s}\quad(0<\omega\le1).
+\label{eq:H}
+\end{equation}
+Here $\sigma_{x,z}$ are Pauli matrices, $\Omega$ is the tunneling amplitude (often called $\Delta$ in the literature), $b_j$
+annihilates a bath oscillator of frequency
+$\omega_j$, $\lambda_j$ is its coupling, $\rho(\omega)$ is the bath spectral density (the convention of Ref.~\cite{Bulla2003}, equal to
+$J(\omega)/\pi$ in Ref.~\cite{Leggett1987}), $\alpha$ is the dimensionless dissipation strength and $0<s<1$ (``sub-ohmic''). The bath
+cutoff frequency is the unit of energy, and $\Omega=0.1$ throughout; universality in $\Omega$ was not tested (Sec.~\ref{sec:limits}).
+
+For $0<s<1$ the model has a quantum phase transition at a critical coupling $\alpha_c(s,\Omega)$~\cite{Bulla2003,Vojta2006}. For
+$\alpha<\alpha_c$ (delocalized phase) the ground state is unique; for $\alpha>\alpha_c$ (localized phase) it is twofold degenerate,
+the spin being trapped in one of the eigenstates of $\sigma_z$. In the $\sigma_z$ basis the imaginary-time path integral is a classical
+Ising chain along the imaginary-time axis, with lattice spacing of order the inverse cutoff~\cite{Leggett1987,Vojta2006}: the
+tunneling $\Omega$ gives a short-range coupling between neighboring time slices, and integrating out the bath gives a long-range
+coupling $\propto\alpha/\tau^{1+s}$, so $\alpha$ plays the role of the inverse temperature. The quantum critical point is therefore in
+the universality class of the $d=1$ LRI model with the same $s$: $\langle\sigma_z(\tau)\sigma_z(0)\rangle\propto\tau^{-2\Ds}$ there,
+and $\alpha-\alpha_c$, which is $\mathbb Z_2$-even, couples to the energy operator, so its RG eigenvalue is the $y_t$ of
+Eq.~\eqref{eq:De}. The other even coupling, $\Omega$, feeds the same single relevant even direction.
+
+\subsection{The thirteen points}
+The study covers the thirteen values of $\Ds$ in Table~\ref{tab:headline}, chosen for a point-by-point comparison with other methods
+of the project. The outer points $\Ds=0.249$ ($s=0.502$) and $0.001$ ($s=0.998$) are the hardest for every method: near $s=1/2$ the
+fixed point is almost Gaussian and the approach to it is slow, near $s=1$ the exponent $y_t$ is small.
+
+% =====================================================================================================================
+\section{Method: bosonic NRG with an exact \texorpdfstring{$\alpha$}{alpha}-derivative}\label{sec:method}
+% =====================================================================================================================
+NRG~\cite{Wilson1975,Bulla2008}, extended to bosonic baths in Refs.~\cite{Bulla2003,Bulla2005}, solves an impurity coupled to a bath
+by mapping the bath onto a chain whose sites carry exponentially decreasing energy scales, and then diagonalizing the chain one site
+at a time, keeping only the lowest states. We use the standard formulation; the non-standard elements are the way $y_t$ is extracted
+(Secs.~\ref{sec:tangent}--\ref{sec:estimator}).
+
+\subsection{Logarithmic discretization}
+The bath interval $(0,1]$ is divided into bins $I_m=(\Lambda^{-(m+1)},\Lambda^{-m}]$, $m=0,1,2,\dots$, with a discretization ratio
+$\Lambda>1$. Each bin is replaced by a single oscillator $c_m$ that carries the bin's spectral weight at its mean
+frequency~\cite{Bulla2003,Bulla2005}. With $q=1/\Lambda$, this ``star'' representation has
+\begin{equation}
+\gamma_m^2=\int_{I_m}\!\rho(\omega)\,d\omega=\frac{2\alpha\,(1-q^{s+1})}{s+1}\,q^{m(s+1)},\qquad
+\xi_m=\frac{\int_{I_m}\omega\rho(\omega)\,d\omega}{\gamma_m^2}=\xi_0\,q^m,\qquad \xi_0=\frac{s+1}{s+2}\,\frac{1-q^{s+2}}{1-q^{s+1}},
+\label{eq:star}
+\end{equation}
+where $\gamma_m$ is the coupling and $\xi_m$ the frequency of oscillator $m$. Every decade of frequency gets the same number of modes,
+however low; dropping all other modes of a bin is the approximation of this step, which becomes exact as $\Lambda\to1$.
+
+\subsection{Wilson chain}
+An orthogonal change of basis among the $c_m$ (Lanczos tridiagonalization, started from the combination $\sum_m\gamma_mc_m$ that
+couples to the spin) maps the star onto a semi-infinite chain:
+\begin{equation}
+H=-\frac{\Omega}{2}\sigma_x+\frac{\lambda_{\rm tot}}{2}\,\sigma_z\,(b_0+b_0^\dagger)+\sum_{n\ge0}e_n\, b_n^\dagger b_n
++\sum_{n\ge1}t_{n-1}\,(b_{n-1}^\dagger b_n+b_n^\dagger b_{n-1}),\qquad \lambda_{\rm tot}^2=\sum_m\gamma_m^2=\frac{2\alpha}{s+1}.
+\label{eq:chain}
+\end{equation}
+The spin now couples only to site 0, and each site only to its neighbors; $e_n$ are the on-site energies and $t_n$ the hoppings. The
+star has weights $\gamma_m^2\propto(aq)^m$ at the nodes $\xi_0q^m$, with $a=q^s$: this is the orthogonality measure of the little
+$q$-Jacobi polynomials $p_n(x;a,1|q)$~\cite{KLS10}, so the recurrence coefficients are known in closed form. With
+\begin{gather}
+\mathcal A_n=\frac{(1-aq^{n+1})^2}{(1-aq^{2n+1})(1-aq^{2n+2})},\qquad
+\mathcal B_n=\frac{a\,(1-q^n)^2}{(1-aq^{2n})(1-aq^{2n+1})},\nonumber\\
+\bar e_n\equiv\Lambda^{n}e_n=\xi_0\,(\mathcal A_n+\mathcal B_n),\qquad
+\bar t_n\equiv\Lambda^{n}t_{n-1}=\xi_0\,\sqrt{\mathcal A_{n-1}\mathcal B_n/q}\quad(n\ge1).\label{eq:coeff}
+\end{gather}
+(cf.\ also the orthogonal-polynomial chain mappings of Ref.~\cite{Chin2010}). The code evaluates these closed forms
+(\code{lri\_spin.config.chain\_coefficients}); the independent implementation of Sec.~\ref{sec:indep} obtains the same numbers by a
+high-precision Lanczos recursion. Both rescaled coefficients tend to constants, so site $n$ carries the energy scale $\Lambda^{-n}$.
+A plain Lanczos recursion on the star is unstable even in multiple-precision arithmetic: without reorthogonalization it loses the
+coefficients after 13 sites with 49 digits and after 33 sites with 268 digits (\code{independent\_check/NOTES.md}). The closed form
+avoids the problem.
+
+\subsection{Iterative diagonalization and truncation}
+Let $H_n$ be the chain~\eqref{eq:chain} truncated to the sites $0,\dots,n$ and multiplied by $\Lambda^n$. Adding one site is the step
+\begin{equation}
+H_{n}=\Lambda\,H_{n-1}\otimes\one+\bar e_n\,\one\otimes b^\dagger b
++\bar t_n\,\big(\bar b_{n-1}^\dagger\otimes b+\bar b_{n-1}\otimes b^\dagger\big),\qquad
+H_0=-\frac{\Omega}{2}\sigma_x+\bar e_0\,b_0^\dagger b_0+\frac{\lambda_{\rm tot}}{2}\sigma_z\,(b_0+b_0^\dagger),
+\label{eq:step}
+\end{equation}
+where $\one$ is the identity, $\bar b_{n-1}$ is the annihilation operator of site $n-1$ written in the basis kept at step $n-1$, and
+$b$ acts on the new site. The factor $\Lambda$ brings the previous levels to the new energy scale, so the levels of $H_n$ stay of order
+one and their evolution with $n$ is an RG flow; its plateaus are fixed points.
+
+Three truncation parameters make each step finite:
+\begin{itemize}
+\item \textbf{Oscillator cutoff $n_b$.} Each new oscillator keeps its $n_b$ lowest number states. This suffices near the
+  delocalized and critical fixed points, where the chain sites hold few bosons~\cite{Bulla2005}.
+\item \textbf{Parity sectors.} The model conserves the parity $P=\sigma_x\,(-1)^{\sum_nb_n^\dagger b_n}$, which implements the Ising
+  symmetry. $H_n$ is diagonalized separately in the even and odd sectors, each of dimension at most $Kn_b$.
+\item \textbf{Kept states $K$.} In each sector the $K$ lowest eigenstates are kept and the rest discarded. After each step all
+  energies are shifted so that the ground state is at zero.
+\end{itemize}
+Together with $\Lambda$ and the number $N$ of chain sites (the last site sits at energy scale $\Lambda^{-N}$), these parameters
+define a finite numerical map from $\alpha$ to a sequence of spectra, which we call the \emph{finite map}. Dense diagonalization costs
+of order $(Kn_b)^3$ per sector and site, which limits $K$ and $n_b$.
+
+\subsection{Parity-gap flow and critical coupling}\label{sec:critical}
+The observable is the rescaled parity gap
+\begin{equation}
+g_n(\alpha)=E^{\rm odd}_{0,n}-E^{\rm even}_{0,n},
+\end{equation}
+the difference between the lowest levels of $H_n$ in the odd and even sectors. In the delocalized phase $g_n$ flows to its value in
+the decoupled chain, where the spin is frozen by $\Omega$ and $g_n$ is the lowest one-boson level; in the localized phase the ground
+state becomes degenerate and $g_n\to0$; at $\alpha_c$ it stays on the value of the critical fixed point over an intermediate range
+of $n$.
+
+For a chain of $N$ sites, $n=0,\dots,N-1$, the critical coupling of the finite map is located by bisection on the sign of
+\begin{equation}
+f(\alpha)=g_{N-1}(\alpha)-0.3\,g_{N-1}(0),\label{eq:bisect}
+\end{equation}
+the last gap measured against 30\% of the last gap of the decoupled chain ($\alpha=0$) with the same parameters; $f>0$ on the
+delocalized side and $f<0$ on the localized side. The rule is:
+\begin{itemize}
+\item \textbf{Bracket.} Start from $[0.01,2]$; halve the lower end (up to 40 times) until $f>0$; double the upper end until $f<0$,
+  never evaluating $\alpha>100$. Without a sign change the item fails.
+\item \textbf{Bisection.} At most 48 steps, stopping when the bracket is narrower than $5\times10^{-14}\max(1,|\alpha|)$. A bisection
+  that does not reach this width is rejected.
+\item \textbf{Result.} $\alpha_c$ is the midpoint of the final bracket. The \emph{terminal residual} is $f(\alpha_c)$.
+\end{itemize}
+This follows the script of the original study, with two conservative differences: the original evaluated $\alpha$ up to 128 and
+accepted an exhausted bisection. The fraction 0.3 is a convention, like the level used to define the crossover
+scale in Refs.~\cite{Bulla2003,Bulla2005}. The value of $\alpha_c$ is not universal: it depends on $\Lambda$, $K$ and $n_b$
+(Fig.~\ref{fig:alpha}) and enters no result.
+
+\subsection{Exact \texorpdfstring{$\alpha$}{alpha}-derivative of the truncated map}\label{sec:tangent}
+A small detuning $\delta\alpha=\alpha-\alpha_c$ points along the relevant direction of the critical fixed point and grows by a
+factor $\Lambda^{y_t}$ per site, so near the fixed point
+\begin{equation}
+\partial_\alpha g_n\big|_{\alpha_c}\propto\Lambda^{y_tn}.\label{eq:growth}
+\end{equation}
+The production code measures this growth without finite differences, by differentiating every step~\eqref{eq:step} with respect to
+$\alpha$, including the change of the kept states. In each parity block write $H=U\,{\rm diag}(E)\,U^{\rm T}$, with kept
+eigenvectors $U_k$ (energies $E_k$) and discarded eigenvectors $U_d$ (energies $E_d$), and let $\dot H=\partial_\alpha H$. In the
+gauge without rotations among kept states,
+\begin{equation}
+\dot U_k=U_d\,Z,\qquad Z_{ij}=\frac{\big(U_d^{\rm T}\dot H\,U_k\big)_{ij}}{E_{k,j}-E_{d,i}},\qquad
+T=U_k^{\rm T}\dot H\,U_k-\dot E_0\,\one,
+\label{eq:tangent}
+\end{equation}
+where $\dot E_0$ is the derivative of the ground-state energy (the shift to zero is part of the step). $T$, the derivative of the kept
+Hamiltonian, and the derivative of the projected site operator, $\dot{\bar b}=\dot U_k^{\rm T}B\,U_k+U_k^{\rm T}B\,\dot U_k$ with $B$
+the site-$n$ annihilation operator in the unrotated product basis, are carried to the next step, where
+$\dot H_{n+1}=\Lambda\,T\otimes\one+\bar t_{n+1}(\dot{\bar b}^\dagger\otimes b+{\rm h.c.})$. Only $H_0$ depends on $\alpha$
+explicitly, through $\lambda_{\rm tot}\propto\alpha^{1/2}$. The derivative of the gap is $\partial_\alpha g_n=T^{\rm odd}_{00}-T^{\rm
+even}_{00}$. This is the exact derivative of the finite map wherever the kept and discarded levels are separated; if the gap between
+them falls below $5\times10^{-13}\max(1,|E|)$ the item fails and no record is written. A finite difference in $\alpha$ would instead
+turn nonlinear once $\delta\alpha\,\Lambda^{y_tn}$ is no longer small, and lose digits to rounding as $\delta\alpha\to0$.
+
+\subsection{The window audit}\label{sec:windows}
+Near the fixed point, Eq.~\eqref{eq:growth} gives $\ln|\partial_\alpha g_n|=\kappa+y_t\,n\ln\Lambda$. The window audit, inherited from
+the analyzer of the original study, is:
+\begin{enumerate}
+\item \textbf{Windows.} Windows of $w=\max(12,\lfloor0.13N\rfloor)$ consecutive sites, with first sites from $\max(8,\lfloor0.13N\rfloor)$
+  up to (excluding) $\lfloor0.76N\rfloor-w$. A window is skipped if any gap $g_n\le0$ or any $\ln|\partial_\alpha g_n|$ is not finite.
+\item \textbf{Fit.} In each window a least-squares line in $n$ is fitted to $\ln|\partial_\alpha g_n|$; its slope divided by $\ln\Lambda$
+  is $y_t$, and $\DE=1-y_t$. The \emph{fit residual} is the largest absolute deviation from the line.
+\item \textbf{Flatness.} The \emph{relative variation} of the window is $(\max g_n-\min g_n)/|\overline{g_n}|$.
+\item \textbf{Quality windows} have relative variation $<0.005$ and fit residual $<0.003$ (inherited conventions). Their number is
+  $\nq$, and their $\DE$ values span the \emph{quality range}.
+\end{enumerate}
+The audit uses no target value of any exponent.
+
+\subsection{The estimate: settled value, plateau and extrapolation}\label{sec:estimator}
+The window values of an item are not constant (Fig.~\ref{fig:plateau}). Along the chain the flow first approaches the fixed point,
+with irrelevant corrections decaying as $e^{-\omega l}$ in the \emph{RG time} $l=n\ln\Lambda$; once the residual detuning has grown
+(Sec.~\ref{sec:depth}) it leaves the fixed point again. The estimate is taken where the flow is closest to the fixed point, by a rule
+with three steps (\code{code/analysis/estimator.py}):
+\begin{enumerate}
+\item \textbf{Settled value.} The \emph{settled window} is the window with the smallest fit residual plus relative variation; its
+  $\DE$ is the \emph{settled value}. This is the window the original analyzer reports, stored in every record as \code{selected}.
+\item \textbf{Plateau test.} Take the windows whose first site lies within $h=\lceil w/4\rceil$ sites of that of the settled window.
+  The largest $|\DE-\text{settled value}|$ among them is the \emph{plateau drift}. A point has a \emph{plateau} if the plateau drift
+  of its central item is at most $\tau_{\rm p}=\nrgtau$. Its value is then the settled value, and the plateau drift is its chain-depth
+  error.
+\item \textbf{Extrapolation}, where there is no plateau. The local exponent
+  \begin{equation}
+  \Dloc(n)=1-\frac{\ln|\partial_\alpha g_{n+1}|-\ln|\partial_\alpha g_{n-1}|}{2\ln\Lambda}\label{eq:loc}
+  \end{equation}
+  is fitted with $\Delta_\infty+A\,e^{-\omega(l-l_0)}$ (free $\Delta_\infty$, $A$, $\omega$; unweighted least squares) on
+  $l_{\rm hi}-S\le l\le l_{\rm hi}$ for $S=\nrgspans$, where $l_{\rm hi}$ is the RG time of the last site of the settled window and
+  $l_0$ that of the first fitted site. The value is the median of the three $\Delta_\infty$, and the chain-depth error is the larger of
+  $|\text{extrapolated}-\text{settled}|$ and the spread of the three fits. Details: a range with fewer than 8 sites is skipped; the
+  start values are $\Delta_\infty$ = last point, $A$ = first minus last, $\omega=0.2$; the fit is Levenberg--Marquardt. The
+  extrapolation counts as \emph{determined} only if every fit converged with $\omega>0.01$; otherwise it is reported as not
+  determined (n.d.), and a point that needs it would stop the analysis.
+\end{enumerate}
+Every item of a point is evaluated with that point's estimator, so the scans of Sec.~\ref{sec:budget} compare like with like. The rule
+was written on 13 October 2026 and its constants were not varied afterwards (Sec.~\ref{sec:budget}, App.~\ref{app:provenance}). It replaces the midpoint of
+the quality range used before; App.~\ref{app:midpoint} explains why and lists the old values.
+
+At $\Ds=0.001$ the rule's own fit ranges lie entirely on the flat plateau, so its extrapolation is not determined (n.d.); the point
+has a plateau and is not extrapolated.
+
+\textbf{Classification of the points.} The rule puts each point in one of two classes, \emph{plateau} or \emph{extrapolated}. The eight
+points with $\Ds\le0.15$ have a plateau: their plateau drift is at most $\nrgdriftMaxPlateau$ (at $\Ds=\nrgdriftMaxPlateauAt$) and at
+most $\nrgdriftMaxLow$ for $\Ds\le0.125$. None of the five points with $\Ds\ge0.175$ has one: their smallest drift is
+$\nrgdriftMinNoPlateau$ (at $\Ds=\nrgdriftMinNoPlateauAt$). Every threshold between these two numbers gives the same classification.
+The drift grows smoothly with $\Ds$, so the split also depends on $h$ and on the window width $w$, which the rule fixes. At $\Ds=0.15$
+the drift is $\nrgdriftHalfOneFifty$ with $h=w/2$ and $\nrgdriftTwentyOneFifty$ with windows of 20 sites, above $\tau_{\rm p}$ in both
+cases, so the point would be extrapolated; every point with $\Ds\le0.125$ keeps its plateau (drifts below $\nrgdriftHalfLow$ and
+$\nrgdriftTwentyLow$). The values hardly depend on the class: extrapolating at $\Ds=0.15$ would move the value by $\nrgreclassOneFifty$,
+windows of 20 sites move its settled value by $\nrgsettledTwentyShiftOneFifty$, and taking the settled value at $0.175$ would move it by
+$\nrgreclassOneSeventyFive$, all well inside $\dtot$. At the two final points without a plateau the extrapolation is the value
+(Table~\ref{tab:extrap}).
+
+A third label, \emph{not converged in chain depth}, is not an outcome of the rule. The author assigned it on 13 October 2026 to the
+three points closest to $s=1/2$, $\Ds=0.249$, $0.24$ and $0.225$, when the comparison with the $\varepsilon$ series was already known
+(App.~\ref{app:provenance}). The reasons: there $\omega\,l_{\max}\approx61\varepsilon$ is small (Sec.~\ref{sec:depth}); at
+$\Ds=0.249$ the excess over the series decays at a rate of the one-loop size (Sec.~\ref{sec:approach}); and the excess of the settled
+values over the series falls smoothly with $\varepsilon$ (Sec.~\ref{sec:series}). At $\Ds=0.225$ the rule alone would extrapolate: its
+three fits converge, with $\omega=\nrgruleOmTwoTwentyFive$, and give $\nrgruleTwoTwentyFive$ with $\dd=\nrgruleDepthTwoTwentyFive$.
+The label there rests on the trend from the two other points and on the Borel--Pad\'e sum of the series; optimal truncation of the
+series, $\nrgserOptTwoTwentyFive$, does not exclude the settled value. For the three labeled points the settled value is shown, the
+extrapolations are cross-checks only, and no error is quoted. That they ``enter no comparison'' means that no agreement or
+disagreement is claimed from their values; the label itself came from a comparison.
+
+\subsection{Cross-check fits (not adopted)}\label{sec:crosscheck}
+The rule's fits end at the settled window and contain no term for the departure from the fixed point, so on a plateau they return the
+plateau almost by construction. Two fits that include that departure test the rule from outside (\code{code/analysis/crosscheck.py},
+written for the second review round, App.~\ref{app:provenance}). Neither is adopted, and no value in this note is taken from them. Both
+fit $\Dloc(l)$ of the central item with an approach term plus a \emph{detuning term} $A_{\rm d}\,e^{(1-\Delta_\infty)(l-l_{\rm end})}$,
+whose growth rate $1-\Delta_\infty=y_t$ is that of the residual detuning (Sec.~\ref{sec:depth}). Each fit range runs from a start
+$l_{\rm a}$ to $l_{\rm end}=l_N-k/y_t$, where $l_N=N\ln\Lambda$ is the end of the chain and $y_t$ is taken from the settled value, so the
+last stretch of RG time, where the detuning dominates, is left out. The fits are Levenberg--Marquardt; the result is the median over the
+accepted fits, with their range and number $n_{\rm fit}$.
+\begin{itemize}
+\item \textbf{Late fit.} Approach term $A\,e^{-\omega(l-l_{\rm a})}$; $l_{\rm a}\in\{20,25,30,35\}$ ($\{40,50,60,70\}$ at
+  $\Ds=0.001$), $k\in\{8,10,12\}$, at least 10 sites per range; a fit is accepted if its largest residual is below $2\times10^{-6}$
+  (below $2\times10^{-5}$ if no fit reaches $2\times10^{-6}$). It is computed at every point and shown for the final points
+  (Table~\ref{tab:budget}).
+\item \textbf{Crossover fit.} Approach term $A/(e^{\omega(l-l_0)}-1)$, the one-loop crossover form of Eq.~\eqref{eq:oneloop} with a
+  free $l_0$, or $A\,e^{-\omega(l-l_{\rm a})}$; $l_{\rm a}\in\{13,18,22\}$, $k\in\{12,15\}$, at least 8 sites per range; a fit is
+  accepted if its largest residual is below $2\times10^{-5}$ and $0<\omega<2$. It is computed at $\Ds\ge0.2$, where the approach is
+  slowest (Tables~\ref{tab:extrap} and~\ref{tab:series}).
+\end{itemize}
+\textbf{The late fit against the rule.} It reproduces the plateau values to $\nrglateMaxLow$ at $0.001\le\Ds\le0.125$, and differs from
+the final values by $\nrglateOneFifty$, $\nrglateOneSeventyFive$ and $\nrglateTwoHundred$ at $\Ds=0.15$, $0.175$ and $0.2$. This is
+inside $\dd$ except at $\Ds=\nrglateOutside$, where it is $\nrglateOne$ against $\dd=\nrgdepthOne$, far inside $\dtot$. At $\Ds=0.01$
+its fitted $\omega=\nrglateOmTen$ agrees with $\sqrt{2\delta}+\delta/4=\nrgnloOmTen$ from Eq.~\eqref{eq:s1}. At $\Ds=0.2$ it suggests
+that the rule's extrapolation, which ends where the detuning already bends $\Dloc$, lies slightly low, by about a tenth of $\dtot$.
+The crossover fit is discussed with the $\varepsilon$ series in Sec.~\ref{sec:series}.
+
+\subsection{Chain depth}\label{sec:depth}
+The bisection stops when its bracket is narrower than $5\times10^{-14}$ (relative), so the critical coupling of the finite map is
+located to $\delta\alpha\approx5\times10^{-14}$. This width is at the rounding level of the map: the same item run on 1 and on 2 threads
+gives values of $\alpha_c$ that differ by up to $\nrgexRel$, and the two implementations of Sec.~\ref{sec:indep} differ by up to
+$\nrgindAlpha$ (relative), so a narrower bracket would not locate the critical coupling better in double precision. The residual
+detuning also grows as $\Lambda^{y_tn}$, and the flow therefore stays near the fixed point only up to
+\begin{equation}
+n\lesssim n_{\max}\simeq\frac{\ln(1/\delta\alpha)}{y_t\ln\Lambda}\approx\frac{30.6}{y_t\ln\Lambda},\qquad
+l\lesssim l_{\max}=n_{\max}\ln\Lambda\approx\frac{30.6}{y_t},\label{eq:nmax}
+\end{equation}
+with $30.6=\ln(2\times10^{13})$: the usable RG time is fixed whatever $\Lambda$. The chain lengths follow this estimate: at
+$\Lambda=3$, $N=65$ for $s\le0.8$, then $70$, $80$, $90$ and $105$ for $s=0.85$, $0.9$, $0.95$, $0.98$, and $N=250$ at $s=0.998$; for
+other $\Lambda$, $N(\Lambda)=N(3)\ln3/\ln\Lambda$. Where $N\approx n_{\max}$ the terminal residual $|f(\alpha_c)|$ is of order 0.1--0.4,
+which is expected and not a failure. At $\Ds=0.025$, where $N=90$ and $n_{\max}\approx\nrgnmaxTwentyFive$, the terminal residuals are
+$\nrgtermTwentyFiveLo$ to $\nrgtermTwentyFiveHi$; at $\Ds\le0.01$ the chains are clearly shorter than $n_{\max}$ (at $s=0.98$, $N=105$
+against $n_{\max}\approx146$) and they are at most $\nrgtermTenMax$ at $\Ds=0.01$ and $\nrgtermOneMax$ at $0.001$ (App.~\ref{app:items}).
+
+The flow reaches its fixed point within the usable depth only if $\omega\,l_{\max}\approx30.6\,\omega/y_t$ is large. Near $s=1$,
+Eq.~\eqref{eq:s1} gives $\omega/y_t\to1$, so $\omega l_{\max}\approx30$ however small $y_t$ becomes. Near $s=1/2$, $\omega\approx\varepsilon$
+and $y_t\approx1/2$, so $\omega l_{\max}\approx61\varepsilon$: about 0.25, 2.4 and 6 at $\Ds=0.249$, $0.24$ and $0.225$. This is why the
+plateau is lost as $s\to1/2$ and not as $s\to1$. Extended-precision arithmetic would lengthen $l_{\max}$ in proportion to the number of
+digits.
+
+% =====================================================================================================================
+\section{Error budget}\label{sec:budget}
+% =====================================================================================================================
+For each final point the value is that of Sec.~\ref{sec:estimator} for the central item. Its error has three components, each computed
+with the point's estimator:
+\begin{itemize}
+\item $\dd$ (chain depth): the plateau drift of the central item; at an extrapolated point, the larger of $|\text{extrapolated}-
+  \text{settled}|$ and the spread of the three fits (Sec.~\ref{sec:estimator}).
+\item $\dK$ ($K$ and $n_b$): the spread (maximum minus minimum) over all $\Lambda=3$ items with $K\ge64$ and $n_b\ge10$; at $\Ds\ge0.2$,
+  where $n_b=10$ is not converged (Sec.~\ref{sec:keepnb}), items with $n_b=10$ are left out.
+\item $\dL$ (discretization): the larger of two numbers.
+  \begin{itemize}
+  \item[(a)] The spread over the items at different $\Lambda$, each at the largest $K$ run there, with equal $n_b$ ($16$ at $\Ds\ge0.2$,
+    else $10$): $\Lambda=2.5$ and $3$ at $K=128$ at every point; for $\Ds<0.2$ also $\Lambda=4$, run only at $K=64$; and $\Lambda=2$ at
+    $K=256$ at $\Ds=0.1$ and $0.05$. The $K$ convergence of $\Lambda=4$ at $K=64$ is assumed, not tested: larger $\Lambda$ needs
+    fewer kept states (Sec.~\ref{sec:lambda}), and at $\Lambda=3$ the values are converged at $K=48$ already (Sec.~\ref{sec:keepnb}).
+  \item[(b)] The shift of the $\Lambda=2.5$ value under its one doubling of $K$, from 64 to 128, at $n_b=10$, the only $n_b$ run at
+    $\Lambda=2.5$, $K=64$ (at $\Ds\ge0.2$, $n_b=10$ is not converged).
+  \end{itemize}
+  Part (b) allows for the untested $K$ convergence at $\Lambda=2.5$. It is the larger part at $\nrgnLambdaKdbl$ of the ten final points,
+  so at most points the quoted error is mainly this allowance, not a measured systematic of the central value.
+\end{itemize}
+The total is the linear sum
+\begin{equation}
+\dtot=\dd+\dK+\dL,\label{eq:budget}
+\end{equation}
+listed in Table~\ref{tab:budget} and shown in Fig.~\ref{fig:budget}. The points that are not converged in chain depth have no $\dd$
+and no $\dtot$. At $\Ds=0.2$, $\dK$ mostly measures how the extrapolation itself scatters between items (the detuning fits of
+Sec.~\ref{sec:estimator} bring those items within about $2\times10^{-5}$ of each other), so it partly counts $\dd$ twice; this is
+conservative.
+
+\textbf{What this error is, and is not.} None of the components is a standard deviation: $\dd$ is a resolution or an extrapolation
+length, $\dK$ and $\dL$ are ranges of convergence scans. They are therefore added linearly, not in quadrature. Five choices are
+judgements, not measurements:
+\begin{itemize}
+\item the plateau threshold $\tau_{\rm p}$, the neighborhood $h$ and the window width $w$ (the classification is the same for every
+  $\tau_{\rm p}$ between $\nrgdriftMaxPlateau$ and $\nrgdriftMinNoPlateau$; for $h$ and $w$ see Sec.~\ref{sec:estimator});
+\item the fit form, the fit ranges $S$ and the end point $l_{\rm hi}$ of the extrapolation;
+\item taking the full extrapolation length as $\dd$ at an extrapolated point;
+\item the allowance (b) in $\dL$ for one $K$ doubling at $\Lambda=2.5$;
+\item no allowance below $\Lambda=2$: over $2\le\Lambda\le4$ the values agree to $\nrgLspreadPilot$ at the two points where $\Lambda=2$
+  is $K$-converged ($\Ds=0.1$, $0.05$), with a small monotone rise with $\Lambda$ far inside the error, but the limit $\Lambda\to1$
+  itself is not tested (Sec.~\ref{sec:lambda}).
+\end{itemize}
+The window rule of Sec.~\ref{sec:windows} (width, range, thresholds) is inherited and was not varied in production. Its quality
+thresholds do not set the value, because the settled window passes any reasonable threshold. The window width does enter the plateau
+test, and with it the class of $\Ds=0.15$, but not its value beyond $2\times10^{-5}$ (Sec.~\ref{sec:estimator}).
+
+\textbf{When the choices were made.} The rule and its constants were fixed on 13 October 2026, after the NRG data, the earlier
+comparisons with the $\varepsilon$ series and the Monte Carlo study, and the reviews' exploratory comparisons had been seen; no
+protocol was registered in advance. App.~\ref{app:provenance} gives the timeline.
+
+\begin{table}[ht]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Error budget. Columns: estimator (plateau, extrapolated, or settled for the points not converged in chain depth); $\DE$ to six
+decimals; the chain-depth error $\dd$, the $K$/$n_b$ spread $\dK$, the discretization error $\dL$ and their linear sum $\dtot$, in
+units of $10^{-4}$; the number $\nq$ of quality windows of the central item; the late fit of Sec.~\ref{sec:crosscheck} minus $\DE$
+(cross-check, not adopted; shown for the final points). n.c.: not converged in chain depth.}\label{tab:budget}
+\input{tables/budget_table.tex}
+\end{table}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.72\textwidth]{figures/fig_error_budget.pdf}
+\caption{Components of the error at each $\Ds$ and their linear sum $\dtot$. Hatched: the three points not converged in chain depth,
+which have no $\dd$ and no total. At the plateau points $\dL$ dominates, mostly through the $K$-doubling allowance at $\Lambda=2.5$; at
+$\Ds=0.2$ the extrapolation length $\dd$ dominates.}\label{fig:budget}
+\end{figure}
+
+% =====================================================================================================================
+\section{Software and validation}\label{sec:software}
+% =====================================================================================================================
+\subsection{Code}
+The solver is the Python package \code{lri\_spin} (\code{code/lri\_spin\_boson\_hpc/src/lri\_spin}; NumPy, SciPy and threadpoolctl;
+float64 throughout).
+\begin{itemize}
+\item \textbf{Backend.} The \code{ordered} backend builds one parity block at a time in the basis order of the reference solver
+  (\code{code/lri\_spin\_boson\_hpc/reference/}) and reproduces its flows bitwise and its derivative to rounding (tested). The
+  reordered \code{dense} and \code{banded} backends are experimental and were not used.
+\item \textbf{Workflows.} The critical search writes checkpoints every 8 sites and persists the bisection state, so an interrupted
+  item resumes where it stopped.
+\item \textbf{Records.} Each item ends in one result record (App.~\ref{app:formats}) carrying a SHA-256 checksum and an
+  \emph{identity}: the configuration, the kind of run, bracket and tolerances, the SHA-256 of the solver source and the runtime
+  (Python, NumPy, SciPy and OpenBLAS versions, BLAS kernel and threading layer). A record from another source or runtime is refused by
+  the analysis.
+\end{itemize}
+Before production Claude Code read the package line by line against the reference solver (App.~\ref{app:provenance}); no numerical
+defect was found and no numerical code was changed.
+
+\subsection{Acceptance gates and tests}
+Every result record passed these gates before it was accepted: eigen-residual $\max|HU-UE|\le10^{-8}$ and orthogonality error
+$\max|U^{\rm T}U-\one|\le10^{-9}$ at sites $0,1,2$, every 16th site and the last; finite observables and sorted spectra; boson
+occupation within $[0,n_b-1]$ and top-level probability (the weight of the highest kept level of the newest oscillator,
+$p_{\rm edge}$) within $[0,1]$; for derivatives, a positive gap between kept and discarded levels. Over all $\nrgnItems$ production
+records the largest checked eigen-residual is $\nrgmaxEigRes$ and the largest orthogonality error $\nrgmaxOrth$.
+
+The test suite (\code{make test}) has 85 tests. Physics: chain moments, small untruncated spectra against exact diagonalization,
+Kronecker products against block operators, reference trajectories, finite differences against the exact derivative. Software:
+workflows, record corruption, signals and locks, and the cluster tools of App.~\ref{app:cluster} (campaign ownership, generations,
+lanes, submission against a simulated Slurm, exports, stopping). Before production it passed on a compute node of the cluster for the
+final code, in the validation job that issued the receipt \code{inputs/validation\_receipt/receipt.json}. The receipt binds the
+solver source to the node runtime: AMD EPYC 7543 nodes, Python 3.13.3, NumPy 2.1.2, SciPy 1.15.2, OpenBLAS 0.3.27/0.3.28 with the
+Haswell kernel.
+
+\subsection{Reproducibility across machines}
+With the same runtime and thread counts, results are bitwise identical across nodes: a repeated smoke run on a second node reproduced
+the first bitwise (App.~\ref{app:cluster}). Across runtimes, rounding differences are amplified along the relevant direction as
+$\Lambda^{y_tn}$: at a \emph{fixed} $\alpha$, late flows of two machines differ, and even two implementations with bitwise identical
+$\alpha_c$ (configuration c1 of Sec.~\ref{sec:indep}) have flows that differ by more than $10^{-8}$ from site $\nrgindDivCone$ on.
+Archived values of $\alpha_c$ are therefore not portable, and every item retunes $\alpha_c$ on its own runtime. The critical coupling
+itself and the exponent are robust: the production values of $\alpha_c$ reproduce the three couplings archived by the original study
+on another machine to $\nrgarchRel$ (relative); the three example items, run on 2 threads, reproduce the $\alpha_c$ of the same items
+run on 1 thread bitwise in $\nrgexBitwise$ cases and to $\nrgexRel$ in the third; and the exponents of two implementations agree to
+$\nrgindDE$ (Sec.~\ref{sec:indep}).
+
+% =====================================================================================================================
+\section{Production campaigns}\label{sec:campaigns}
+% =====================================================================================================================
+All items are critical searches followed by the exact derivative and the window audit, with $\Omega=0.1$, bracket $[0.01,2]$ and
+the \code{ordered} backend. Item IDs read \code{ds<$\Ds$>\_L<$\Lambda$>\_K<$K$>\_B<$n_b$>\_N<$N$>}; the example items use
+\code{s<$s$>\_L<$\Lambda$>\_K<$K$>\_B<$n_b$>}. Items of the ds13 campaign and the $\Lambda$ campaigns ran on 1 thread if
+$Kn_b\le1000$, 2 threads if $Kn_b<1600$ and 4 otherwise; the example items ran on 2 threads, as in the package's example list.
+\begin{description}
+\item[Example] ($\nrgnItemsExample$ items). The package's example list: $s=0.8$, $0.9$, $0.98$ at $K=64$, $n_b=10$, $\Lambda=3$
+  (Table~\ref{tab:example}). They duplicate three items of the ds13 campaign, which makes them a test of thread-count
+  independence (Sec.~\ref{sec:software}).
+\item[ds13] ($\nrgnItemsDs$ items). All thirteen points at $\Lambda=3$ with
+  \begin{itemize}
+  \item a scan in kept states, $K\in\{48,64,96,128\}$ at $n_b=10$;
+  \item a scan in oscillator levels, $n_b\in\{8,12,16\}$ at $K=64$;
+  \item $\Lambda\in\{2,4\}$ at $K=64$, $n_b=10$;
+  \item the central item $K=128$, $n_b=16$;
+  \item extras at the ends: $n_b\in\{20,24\}$ for $\Ds\ge0.2$ and $K\in\{160,192\}$ for $\Ds\le0.05$.
+  \end{itemize}
+\item[$\Lambda$ pilot] ($\nrgnItemsPilot$ items). $\Ds\in\{0.2,0.1,0.05\}$ at $\Lambda=1.5$ ($K\in\{64,128\}$ at $n_b=10$, $K=64$ at
+  $n_b=16$), $\Lambda=2$ ($K=128$) and $\Lambda=2.5$ ($K\in\{64,128\}$), $n_b=10$ unless stated. ($\Lambda=2$, $K=64$ is part of the
+  ds13 campaign.)
+\item[$\Lambda$ follow-up] ($\nrgnItemsFollowup$ items). $\Lambda=2.5$ at $K\in\{64,128\}$ for the other ten points, plus $K=128$,
+  $n_b=16$ for $\Ds\ge0.2$; and $\Lambda=2$ at $K\in\{192,256\}$ for $\Ds\in\{0.2,0.1,0.05\}$.
+\end{description}
+The runs used $\nrgthreadHours$ thread-hours (sum over items of wall time times threads) on whole cluster nodes. The allocations
+summed to $\nrgnodeHours$ node-hours, i.e.\ about $\nrgcoreHoursCharged$ core-hours as charged for 64-core nodes; the longest item
+took $\nrglongestItem$\,h, and the production finished within two days including a cluster outage (Table~\ref{tab:resources} in
+App.~\ref{app:cluster}). The largest peak memory of an item was $\nrgpeakRSS$\,MiB.
+
+\begin{table}[ht]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{The example items ($K=64$, $n_b=10$, $\Lambda=3$, 2 threads): critical coupling, bisection steps, terminal residual
+$f(\alpha_c)$, number of quality windows, quality range and settled value. The terminal residuals near $-0.16$ reflect $N\approx n_{\max}$
+(Sec.~\ref{sec:depth}); at $s=0.98$, $N<n_{\max}$.}\label{tab:example}
+\input{tables/example_table.tex}
+\end{table}
+
+% =====================================================================================================================
+\section{Results}\label{sec:results}
+% =====================================================================================================================
+\subsection{The approach to the fixed point}\label{sec:approach}
+Figure~\ref{fig:flow} shows the local exponent~\eqref{eq:loc} against the RG time, which is the quantity the estimator works on.
+\begin{itemize}
+\item \textbf{Plateau ($\Ds=0.1$, panel a).} After the transient, $\Dloc$ is flat over $30\lesssim l\lesssim55$ and the same at
+  $\Lambda=2$, $2.5$, $3$ and $4$; the fitted correction exponent is $\omega=\nrgomOneHundred$. The settled window lies on the plateau.
+\item \textbf{No plateau ($\Ds=0.2$, panel b).} $\Dloc$ is still falling when the detuning sets in. The settled value,
+  $\nrgsetTwoHundred$, is the deepest usable value; the extrapolation (Table~\ref{tab:extrap}; $\omega=\nrgomTwoHundred$) gives
+  $\nrgextTwoHundred$, $\nrgextShiftTwoHundred$ from it, and the extrapolations at $\Lambda=2.5$ and $3$ agree to $\nrgextLamTwoHundred$.
+  At $\Ds=0.175$ ($\omega=\nrgomOneSeventyFive$) the shift is $\nrgextShiftOneSeventyFive$.
+\item \textbf{Near $s=1/2$ ($\Ds=0.249$, panel c).} At one loop, with the $\varphi^4$ coupling $u$ normalized so that
+  $du/dl=\varepsilon u-u^2$ (fixed point $u^*=\varepsilon$), the local dimension of the energy operator is
+  $\frac12-\frac\varepsilon2+\frac u3$; the factor $\frac13=(\mathcal N+2)/(\mathcal N+8)$ is that of the Ising case $\mathcal N=1$
+  of the O($\mathcal N$) model~\cite{Fisher1972}, and at $u^*$ it gives $\De=\frac12-\frac\varepsilon6$. A strong bare coupling,
+  $u\to\infty$ at some RG time $l_0$, then gives
+  \begin{equation}
+  \Dloc-\De=\frac{\varepsilon/3}{e^{\varepsilon(l-l_0)}-1},\qquad \frac1{\Dloc-\De}=\frac3\varepsilon\big(e^{\varepsilon(l-l_0)}-1\big),
+  \label{eq:oneloop}
+  \end{equation}
+  if $\Dloc$ follows the running coupling. The inverse excess thus grows with local slope $3e^{\varepsilon(l-l_0)}$, which tends to 3
+  as $\varepsilon(l-l_0)\to0$. With the series value $\De=\nrgserTwoFortyNine$ the measured inverse excess grows nearly linearly in $l$
+  at every $K$, $n_b$ and $\Lambda$ shown, with slope $\nrgslopeEarly$ for $15\le l\le25$, $\nrgslopeMid$ over $20\le l\le45$ and
+  $\nrgslopeLate$ for $38\le l\le48$. Inferring $l_0$ from the data at $20\le l\le40$ gives $l_0=\nrglzeroLo$ to $\nrglzeroHi$, for
+  which Eq.~\eqref{eq:oneloop} predicts local slopes $\nrgslopePredEarly$ at $l=20$ and $\nrgslopePredLate$ at $l=43$. The measured
+  slopes are 10--20\% lower and rise with $l$ as predicted. Terms of higher order in $u$, largest early in the flow where $u$ is
+  largest, could account for the difference, but we have not shown that. The test is semi-quantitative: it shows an approach of the
+  one-loop kind, at a rate set by $\varepsilon$, not a precise coefficient. At $\Ds=0.249$, $0.24$ and $0.225$ the window $\DE$ still changes by $\nrgdriftSiteTwoFortyNine$,
+  $\nrgdriftSiteTwoForty$ and $\nrgdriftSiteTwoTwentyFive$ per site at the settled window. Single-exponential fits give
+  $\omega=\nrgomTwoFortyNine$, $\nrgomTwoForty$ and $\nrgomTwoTwentyFive$, which approach $\varepsilon$ ($0.004$, $0.04$, $0.1$) only at the
+  largest $\varepsilon$, since an exponential cannot represent a $1/l$ approach, and the three fits scatter by up to
+  $\nrgextSpreadTwoTwentyFive$ (Table~\ref{tab:extrap}). The data do not determine the fixed-point value at these
+  points to the precision of the others: they are \emph{not converged in chain depth}. A scan in $K$, $n_b$ or $\Lambda$ at fixed
+  $l_{\max}$ cannot reveal this, because once $K$ is converged and $n_b\ge12$ the effect depends only on $l$ ($n_b=8$ and $10$ are
+  off by up to $\nrgnbEight$ and $\nrgnbTen$ near $s=1/2$, Sec.~\ref{sec:keepnb}).
+\item \textbf{Near $s=1$ ($\Ds=0.001$, panel d).} $\Dloc$ rises to a long plateau ($75\lesssim l\lesssim120$), as Eq.~\eqref{eq:nmax}
+  allows. At the $10^{-4}$ level the plateau depends on the truncation away from $\Lambda=3$: at $\Lambda=2.5$ it moves by
+  $\nrgKdblOne$ between $K=64$ and $128$, at $\Lambda=4$ ($K=64$) it overshoots by about $10^{-4}$ before settling, and at $\Lambda=2$,
+  $K=64$ is far from converged ($\nrgLtwoOne$). At the largest $K$ run the values at $\Lambda=2.5$, $3$ and $4$ agree to $\nrgLspreadOne$,
+  but at $\Lambda=2.5$ that is a single doubling. The
+  plateau value is therefore ambiguous at the $10^{-4}$ level; the budget carries this through the $K$-doubling allowance, which gives
+  $\dL=\nrgKdblOne$ at this point (Sec.~\ref{sec:budget}).
+\end{itemize}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_flow.pdf}
+\caption{Local exponent $\Dloc$, Eq.~\eqref{eq:loc}, against the RG time $l=n\ln\Lambda$. (a), (b), (d): $10^4\,(\Dloc-\DE)$ relative to
+the final value; gray band: the settled window of the central item. (a) $\Ds=0.1$, items at four values of $\Lambda$, each at the
+largest $K$ run (at $\Lambda=4$ only $K=64$): a common plateau. (b) $\Ds=0.2$: no plateau; the zero line is the extrapolated value. (d)
+$\Ds=0.001$: $\Lambda$ and $K$ at the $10^{-4}$ level. (c) $\Ds=0.249$: inverse distance to the $\varepsilon$-series value against $l$,
+for four truncations; dashed: slope 3, the one-loop value for $\varepsilon(l-l_0)\to0$ (Eq.~\eqref{eq:oneloop}).}\label{fig:flow}
+\end{figure}
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{2.5pt}
+\caption{The points without a plateau (central items). Settled value; plateau drift; change of the window $\DE$ per site at the settled
+window; the three fitted $\Delta_\infty$ and $\omega$ for $S=30,25,20$; their median (the extrapolated value). At $\Ds=0.2$ and $0.175$
+the median is the final value. Last column: the crossover fit of Sec.~\ref{sec:crosscheck} (median, number $n_{\rm fit}$ of accepted
+fits), computed at $\Ds\ge0.2$ only; a cross-check, not adopted. $^\ast$Not converged in chain depth: cross-check only, not
+used.}\label{tab:extrap}
+\input{tables/extrap_table.tex}
+\end{table}
+
+\subsection{Convergence in kept states and oscillator levels}\label{sec:keepnb}
+Table~\ref{tab:keepnb} and Fig.~\ref{fig:keepnb} show the deviation of every $\Lambda=3$ item from the central value.
+\begin{itemize}
+\item \textbf{Kept states.} The estimates are converged at $K=48$ already: for $\Ds\le0.125$ the spread over $K$ is at most
+  $\nrgkeepSpread$.
+\item \textbf{Oscillator levels.} $n_b$ matters mainly near $s=1/2$, where $n_b=8$ is off by up to $\nrgnbEight$ and $n_b=10$ by up to
+  $\nrgnbTen$, while at the final points all items with $n_b\ge12$ (and $K\ge64$) agree with the central value to $\nrgnbTwelve$.
+\item \textbf{Top-level probability.} $p_{\rm edge}$ is the weight of the highest level, $n_b-1$, of the newest oscillator in the
+  ground state, evaluated at every site of the critical flow; App.~\ref{app:items} lists its maximum over the chain. That maximum is
+  reached at the last sites, where the flow leaves the fixed point, and depends on the side it leaves to: for the items with
+  $n_b\ge12$ its median is $\nrgedgeNegMed$ when the flow ends toward the localized phase (negative terminal residual; the bosons are
+  displaced there) and $\nrgedgePosMed$ when it ends toward the delocalized phase. This is why it changes by many decades between
+  items that differ only in $K$. For $n_b\ge12$ it is at most $\nrgedgeMax$, at most $\nrgedgeCentralMax$ for the central items, and
+  below $\nrgedgeMaxLow$ at $\Ds\le0.15$. It is largest near $s=1/2$, where the critical fixed point holds the most bosons.
+\end{itemize}
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{Deviation $10^4\,[\DE(K,n_b)-\DE^{\rm central}]$ at $\Lambda=3$ (central: $K=128$, $n_b=16$), each item evaluated with its
+point's estimator. In the scan over $K$, the offsets at $\Ds\ge0.2$ come from $n_b=10$, not from $K$. Empty cells were not
+run.}\label{tab:keepnb}
+\input{tables/keep_nb_table.tex}
+\end{table}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.92\textwidth]{figures/fig_keep_nb.pdf}
+\caption{$|\DE-\DE^{\rm central}|$ against $K$ (left, $n_b=10$) and $n_b$ (right, $K=64$) at $\Lambda=3$; zero deviations are drawn at
+$10^{-7}$. Flat curves mean converged. Dashed: the three points not converged in chain depth. In the left panel the level of the
+$\Ds\ge0.2$ curves is set by $n_b=10$.}\label{fig:keepnb}
+\end{figure}
+
+\subsection{Dependence on the discretization \texorpdfstring{$\Lambda$}{Lambda}}\label{sec:lambda}
+The chain length is scaled as $N\propto1/\ln\Lambda$, so all items of a point reach the same RG time. The $\Lambda$ studies separate
+truncation from discretization (Tables~\ref{tab:lambda} and~\ref{tab:lshift}, Fig.~\ref{fig:lambda}):
+\begin{itemize}
+\item \textbf{Smaller $\Lambda$ needs many more kept states.} At $\Lambda=1.5$, going from $K=64$ to $128$ moves $\DE$ by
+  $\nrgLonefiveMove$, and $K=128$ is still $\nrgLonefiveOff$ away from the converged $\Lambda=2$ value; raising $n_b$ to 16 changes
+  $\DE$ by only $\nrgLonefiveNb$. At $\Lambda=2$, $K=192$ and $256$ agree to $\nrgLtwoKconv$. At $\Lambda=2.5$, $K=64$ and $128$ (one
+  doubling) agree to $\nrgLtwofiveKconv$ for $0.01\le\Ds\le0.15$, to $\nrgKdblOne$ at $0.001$, and differ by up to $\nrgLtwofiveKconvHigh$
+  at the final points with $\Ds\ge0.175$ (up to $\nrgLtwofiveKconvNc$ at the points not converged in chain depth). At $\Lambda=2$, $K=64$ is not converged: it lies $\nrgLtwoKsixfourSmall$ above $\Lambda=3$ at $\Ds\le0.05$.
+\item \textbf{A small $\Lambda$ dependence, far inside the error.} At the largest $K$ run at each $\Lambda$ (at $\Lambda=4$ only
+  $K=64$, whose convergence is assumed), the plateau values at $\Lambda=2$, $2.5$, $3$ and $4$ agree to $\nrgLspreadPilot$ at $\Ds=0.1$ and $0.05$, and rise monotonically with $\Lambda$: relative to $\Lambda=3$, $\Lambda=2$,
+  $2.5$ and $4$ lie at $\nrgLtwoOneHundred$, $\nrgLtwofiveOneHundred$ and $\nrgLfourOneHundred$ at $\Ds=0.1$, and at $\nrgLtwoFifty$,
+  $\nrgLtwofiveFifty$ and $\nrgLfourFifty$ at $0.05$. Extended to $\Lambda\to1$ this would put the $\Lambda=3$ value a few $10^{-6}$ above
+  the limit, far below $\dtot$. Over $\Lambda=2.5$--$4$ the largest spread at a plateau point is $\nrgLspreadMax$ (at
+  $\Ds=\nrgLspreadMaxAt$, set by $\Lambda=4$). How many kept states the limit $\Lambda\to1$ needs was not determined, and the limit
+  is not tested.
+\item \textbf{At $\Ds=0.2$} only $\Lambda=2.5$ and $3$ were run with the converged $n_b=16$; their extrapolations agree to
+  $\nrgextLamTwoHundred$. At $n_b=10$ the extrapolated values spread by $\nrgLtenSpreadTwoHundred$ over $\Lambda=2$--$4$
+  (Fig.~\ref{fig:lambda}). We attribute this to an interplay of $\Lambda$ with the $n_b=10$ truncation (the $\Lambda=2.5$ minus
+  $\Lambda=3$ difference changes sign between $n_b=10$ and $16$), but that is inferred, not measured; it is within $\dtot$ only through
+  the large $\dd$.
+\end{itemize}
+An earlier version of this note reported that $\DE$ rises as $\Lambda$ decreases and covered the continuum limit with twice the
+$\Lambda=2.5$ shift. Both came from the midpoint estimator: the window rule counts sites while the chain length scales as
+$1/\ln\Lambda$, so smaller $\Lambda$ admitted a larger share of transient windows (App.~\ref{app:midpoint}).
+
+\begin{table}[ht]\centering\scriptsize
+\caption{The $\Lambda$ study at three points ($n_b=10$ unless stated): $\DE$ with this note's estimator (plateau value at $\Ds=0.1$,
+$0.05$; extrapolated at $0.2$), the superseded midpoint with its half-width, and $\alpha_c$. $N$ is scaled with $\Lambda$ so that the
+infrared scale $\Lambda^{-N}$ is fixed. At $\Lambda=1.5$ no item is converged in $K$.}\label{tab:lambda}
+\input{tables/lambda_table.tex}
+\end{table}
+
+\begin{table}[ht]\centering\scriptsize
+\caption{$\Lambda$ and $K$ shifts at all thirteen points, in units of $10^{-4}$, relative to $\Lambda=3$ at the same $K$ and $n_b$
+($\Lambda=2.5$ uses $n_b=16$ for $\Ds\ge0.2$, else $10$). The $\Lambda=2$, $K=64$ column is not converged in $K$. Last columns: the $K$
+doubling at $\Lambda=2.5$ ($n_b=10$) and the number of quality windows of the $\Lambda=2.5$, $K=128$, $n_b=10$ item.}\label{tab:lshift}
+\input{tables/lambda_shift_table.tex}
+\end{table}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_lambda.pdf}
+\caption{Left: $\DE$ against $\Lambda$ for all $K$ at $n_b=10$ (open symbols by $K$, color by $\Ds$); at $\Lambda=1.5$ no item is
+converged in $K$. Right: $K$-converged items relative to $\Lambda=3$ with this note's estimator (bars: plateau drift) and, dotted, the
+superseded midpoints, whose apparent $\Lambda$ dependence is an artifact of the window rule.}\label{fig:lambda}
+\end{figure}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.6\textwidth]{figures/fig_alpha_c.pdf}
+\caption{The critical coupling is not universal: it depends on $\Lambda$ and weakly on $K$ and $n_b$. It enters no
+result.}\label{fig:alpha}
+\end{figure}
+
+\subsection{The final table}\label{sec:final}
+Table~\ref{tab:headline} gives the final values and Table~\ref{tab:budget} their errors. Starting from the Gaussian value $1/2$ at
+$s=1/2$, $\De$ first decreases (the $\varepsilon$ series at $\Ds\ge0.2$), passes through a shallow minimum of about $\nrgDEmin$ near
+$\Ds=\nrgDEminAt$, and rises toward 1 as $s\to1$. The window audits of three central items are shown in Fig.~\ref{fig:plateau}. The
+number of quality windows falls from $\nrgnqOne$ at $\Ds=0.001$ to $\nrgnqTwoFortyNine$ at $\Ds=0.249$ (Table~\ref{tab:budget}).
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_plateau.pdf}
+\caption{Window audit of three central items: $\DE$ of every window (gray dots) and of the quality windows (open circles) against the
+first site of the window; star and orange band: the settled window and its neighborhood $\pm h$; gray band and dotted line: the quality
+range and its midpoint, the superseded estimate; dashed (at $\Ds=0.2$): the extrapolated value. The vertical scales differ between
+panels. At $\Ds=0.05$ and $0.001$ the quality windows end on a flat plateau, at $0.2$ they drift downward to the end.}\label{fig:plateau}
+\end{figure}
+
+\subsection{The limit \texorpdfstring{$s\to1$}{s -> 1}}\label{sec:s1}
+Table~\ref{tab:s1} compares $y_t=1-\DE$ with the leading form $\sqrt{2\delta}=2\sqrt{\Ds}$ and the next-to-leading form of
+Eq.~\eqref{eq:s1}. The ratio to the leading form approaches 1 as $s\to1$: $y_t=\nrgytOne$ against $\nrgktOne$ at $\Ds=0.001$
+($\nrgktPctOne$\%) and $\nrgytTen$ against $\nrgktTen$ at $0.01$ ($\nrgktPctTen$\%). Against the next-to-leading form $\nrgnloOne$ the
+difference at $\Ds=0.001$ is $\nrgnloDiffOne$. The remainder divided by $\delta^{3/2}$ changes smoothly over $0.001\le\Ds\le0.075$
+($\nrgnloRatioRange$): it is $\nrgnloRatioTen$ at $\Ds=0.01$, where $\dtot/\delta^{3/2}=\nrgnloRatioErrTen$, and $\nrgnloRatioOne$ at
+$0.001$, where $\dtot/\delta^{3/2}=\nrgnloRatioErrOne$ is as large as the entry. The dual expansion~\eqref{eq:dual} fixes the coefficient
+of $\delta^{3/2}$ in $y_t$, $-C^{\rm SR}_3(1)/2^{3/2}=\nrgnloThreeCoef$, which the remainder approaches as $s\to1$.
+
+The accompanying paper~\cite{Paper} tests the dual expansion directly at $\Ds=0.01$, where $\dtot=\nrgerrTen$. The difference
+between $\DE$ and the series~\eqref{eq:dual} summed through $C^{\rm SR}_n(1)$ is $\nrgsrDiffTwo$, $\nrgsrDiffThree$, $\nrgsrDiffFour$
+and $\nrgsrDiffFive$ for $n=2$, 3, 4 and 5: it shrinks to the size of $\dtot$ as $C^{\rm SR}_3(1)$, $C^{\rm SR}_4(1)$ and
+$C^{\rm SR}_5(1)$ are added. The term of $C^{\rm SR}_6(1)$, of magnitude $\nrgsrTermSix$, is itself of the size of $\dtot$ and brings
+the difference to $\nrgsrDiffSix$; the higher terms lie below $\dtot$. NRG thus reproduces the dual expansion through
+$C^{\rm SR}_5(1)$ and is consistent with $C^{\rm SR}_6(1)$.
+
+\begin{table}[ht]\centering\small
+\caption{$y_t=1-\DE$ near $s=1$ against the leading form $\sqrt{2\delta}$ ($\delta=1-s=2\Ds$) and the next-to-leading form
+$\sqrt{2\delta}-\delta/4$ of Refs.~\cite{BLMV25,BLMV26}; the remainder in units of $\delta^{3/2}$, and $\dtot$ in the same units (the
+uncertainty of the remainder).}\label{tab:s1}
+\input{tables/s1_table.tex}
+\end{table}
+
+% =====================================================================================================================
+\section{Checks}\label{sec:checks}
+% =====================================================================================================================
+A second implementation of the same numerical map tests the code (Sec.~\ref{sec:indep}); two methods that do not use NRG test the
+method (Secs.~\ref{sec:series} and~\ref{sec:mc}); Sec.~\ref{sec:literature} lists published values. Figure~\ref{fig:checks} summarizes
+the comparisons.
+
+\subsection{A second implementation}\label{sec:indep}
+\paragraph{Design.} Claude Code, which knew the production code, wrote a specification of the physics and conventions only
+(\code{independent\_check/SPEC.md}). It fixed the discretization, the chain, the truncation per parity sector, the critical-search rule
+and the window rule, and forbade access to the production code, data and this note. From it a separate Claude agent wrote a second
+solver (\code{independent\_check/indep\_nrg.py}); that it did not open the forbidden files rests on the instruction and on the agent's
+own statement in \code{NOTES.md}, not on an access log. Every algorithmic choice differs from production:
+\begin{center}\footnotesize
+\begin{tabular}{@{}p{2.6cm}p{5.4cm}p{7.6cm}@{}}\toprule
+ & production (\code{lri\_spin}) & second implementation (\code{indep\_nrg.py})\\\midrule
+chain coefficients & closed form~\eqref{eq:coeff} & Lanczos with full reorthogonalization on the star, in mpmath\\
+parity blocks & basis order of the reference solver & NumPy Kronecker order, generic operators\\
+eigensolver & partial spectrum (flows), full (derivative) & full spectrum everywhere\\
+$y_t$ & exact derivative~\eqref{eq:tangent} & central finite differences in $\alpha$, relative steps $\eta=10^{-9},10^{-10},10^{-11}$\\
+window audit & package code & written from the specification\\\bottomrule
+\end{tabular}
+\end{center}
+The Lanczos recursion runs with $40+1.3N\log_{10}\Lambda$ decimal digits and is repeated with 40 more digits and 40 more star modes to
+check convergence. The second implementation has its own 38 self-tests (for example, the chain reproduces the star to $3\times10^{-50}$,
+and the NRG reproduces exact diagonalization of untruncated systems to $5\times10^{-15}$). Eight configurations c1--c8 with
+$0.502\le s\le0.998$, $\Lambda=2$, $2.5$ and $3$, $K=48$ or $64$ and $n_b=10$--$16$ ran on one cluster node, one single-core process
+each, the longest in $\nrgindWall$\,min; each is compared with the production record of the same item.
+
+\paragraph{Result.} Table~\ref{tab:indep} lists the comparison.
+\begin{itemize}
+\item The chain coefficients agree to better than $\nrgindChain$ (relative): to rounding, whose last bits depend on the platform. The
+  closed form is confirmed.
+\item The critical couplings are bitwise identical in $\nrgindAlphaBitwise$ configurations and agree to $\nrgindAlpha$ in the others.
+  The critical flows agree to $\nrgindFlow$ over the first eleven sites.
+\item A window's finite-difference $\DE$ is \emph{trusted} when two neighboring steps $\eta$ agree to $10^{-6}$. In all
+  $\nrgindTrusted$ trusted windows ($\nrgindTrustedMin$ to $\nrgindTrustedMax$ per configuration) the two implementations agree to
+  $\nrgindDE$, with median $\nrgindDEmedian$, far below the quoted errors. In the $\nrgindSettledN$ configurations whose settled window
+  is trusted, they agree there to $\nrgindSettled$.
+\item The latest windows of a chain lie beyond the reach of finite differences, because $\eta\,\alpha\,\Lambda^{y_tn}$ is no longer
+  small there. Only $\nrgindCovered$ of the $\nrgindQuality$ production quality windows are within reach. All quality windows of a
+  configuration are within reach only in $\nrgindFullList$; at $s=0.502$ (c5) none is. This is a limit of the check, not a
+  disagreement.
+\end{itemize}
+The check verifies the numerical map at $K\le64$. It does not test the central items at $K=128$, $n_b=16$ directly (they differ only in
+$K$ and $n_b$), the estimator (it shares the window rule by construction), or the limit $\Lambda\to1$. Both implementations come from
+the same model family, and the specification was written by the agent that knew the production code: the check tests the code, not
+shared conceptual choices.
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Second implementation against production. Columns: configuration $(s,\Lambda,K,n_b,N)$; largest relative difference of the
+rescaled chain coefficients (a rounding-level bound); relative difference of $\alpha_c$; number of trusted windows; largest window-by-window difference
+$|\delta\DE|$ over them; production quality windows within finite-difference reach (covered/all); production quality range.}\label{tab:indep}
+\input{tables/indep_table.tex}
+\end{table}
+
+\subsection{The \texorpdfstring{$\varepsilon$}{epsilon} expansion near \texorpdfstring{$s=1/2$}{s = 1/2}}\label{sec:series}
+\paragraph{Reference.} The accompanying paper gives $\De=\sum_{n=0}^{8}C_n\varepsilon^n$ for $d=1$~\cite{Paper}, with
+$C_0=1/2$, $C_1=-1/6$, $C_2=0.657131263981$, $C_3=-3.719856322902$, $C_4=45.42488010356$, $C_5=-731.13947662454$ and
+$C_6=14331.6870328$ (exact to the digits shown), $C_7=-322550\pm40$ and $C_8=(8.060\pm0.017)\times10^6$. The uncertainties of $C_7$
+and $C_8$ are the paper's allowances, mostly four sampling standard errors. They are not part of the Borel--Pad\'e spread below;
+shifting $C_7$ or $C_8$ by about its allowance moves the $[4/4]$ approximant by at most $\nrgserSensTwoTwentyFive$ at $\Ds=0.225$ and
+$\nrgserSensTwoHundred$ at $0.2$, less than the spread at both points. The coefficients grow factorially, so the series is asymptotic.
+We evaluate it in two ways (\code{method\_comparison/compare\_methods.py}):
+\begin{itemize}
+\item \textbf{optimal truncation}: the partial sum up to, but excluding, the smallest term, with that term as its error;
+\item \textbf{Borel--Pad\'e}: Pad\'e approximants $[L/M]$ of the Borel transform $\sum_nC_nu^n/n!$ with $L+M=6,7,8$, keeping those
+  without a pole on the positive axis and with a value between 0.3 and 1.2, Laplace-transformed back. The central value is the upper
+  of the two middle values of the $L+M=8$ approximants (there are four at $0.2\le\Ds\le0.24$), not their mean; the error is the
+  half-range of all approximants with $L+M\ge7$. The $L+M=6$ approximants are computed but enter neither. The choice of the upper
+  middle value is a convention of the comparison script of 8 October 2026, unchanged since and not chosen with the present NRG values
+  in view; it has no further justification. At $\Ds\ge0.225$, where the approximants agree to within the quoted spread, it hardly
+  matters; at $\Ds=0.2$ it does (below).
+\end{itemize}
+The reference is the partial sum at $\Ds=0.249$ ($\varepsilon=0.004$), where all terms decrease and the error is
+$\nrgserOptErrTwoFortyNine$ (Borel--Pad\'e gives $\nrgserBpTwoFortyNine$ too), and the Borel--Pad\'e sum at larger $\varepsilon$. At
+$\Ds=0.24$ the two evaluations agree to $\nrgserAgreeTwoForty$. At $0.225$ the Borel--Pad\'e sum, $\nrgserTwoTwentyFive$, has a small
+spread, but optimal truncation gives $\nrgserOptTwoTwentyFive$, so the reference there depends on the resummation. At $\Ds=0.2$ the
+spread, $\nrgserSpreadTwoHundred$, is too large to test NRG at the $10^{-3}$ level.
+
+\paragraph{Result.} Table~\ref{tab:series}. At $\Ds=0.2$ the series does not test NRG: the extrapolated NRG value lies
+$\nrgdiffTwoHundred$ from the central approximant, a coincidence of the convention above, and $\nrgdiffMedTwoHundred$ from the median
+$\nrgbpMedTwoHundred$ of the $\nrgbpNTwoHundred$ approximants with $L+M=8$, which range from $\nrgbpLoTwoHundred$ to
+$\nrgbpHiTwoHundred$; both differences are well inside the spread, and neither is evidence for or against NRG. At the three points not converged in chain depth the settled values lie above the series by $\nrgexcTwoFortyNine$,
+$\nrgexcTwoForty$ and $\nrgexcTwoTwentyFive$, decreasing with $\varepsilon$, as the slow approach of Sec.~\ref{sec:approach} predicts.
+Two extrapolations serve as cross-checks; neither is adopted:
+\begin{itemize}
+\item \textbf{The rule's own extrapolation} (Sec.~\ref{sec:estimator}) is not stable there. Over the three fit ranges and
+  $\Lambda=2.5$, $3$ it gives $\nrgextLoTwoForty$--$\nrgextHiTwoForty$ ($\nrgextExcLoTwoForty$ to $\nrgextExcHiTwoForty$ from the series)
+  at $\Ds=0.24$, and $\nrgextLoTwoTwentyFive$--$\nrgextHiTwoTwentyFive$ ($\nrgextExcLoTwoTwentyFive$ to $\nrgextExcHiTwoTwentyFive$) at
+  $0.225$. At $\Ds=0.249$, where $\varepsilon l_{\max}\approx0.25$, a single exponential cannot represent the $1/l$ approach, and the
+  extrapolation ($\nrgextLoTwoFortyNine$--$\nrgextHiTwoFortyNine$) removes less than half of the excess.
+\item \textbf{The crossover fit} of Sec.~\ref{sec:crosscheck} is stable and moves the values toward the series, but not onto it. At
+  $\Ds=0.225$ it gives $\nrgcrossTwoTwentyFive$ ($\nrgcrossNTwoTwentyFive$ accepted fits, $\nrgcrossLoTwoTwentyFive$ to
+  $\nrgcrossHiTwoTwentyFive$, i.e.\ $\nrgcrossExcLoTwoTwentyFive$ to $\nrgcrossExcHiTwoTwentyFive$ from the series value
+  $\nrgserTwoTwentyFive$). At $0.24$ it gives $\nrgcrossTwoForty$ ($\nrgcrossLoTwoForty$ to $\nrgcrossHiTwoForty$): every accepted fit
+  lies above the series value $\nrgserTwoForty$, by $\nrgcrossExcLoTwoForty$ to $\nrgcrossExcHiTwoForty$, against $\nrgexcTwoForty$ for
+  the settled value. At $0.249$ it gives $\nrgcrossTwoFortyNine$, $\nrgcrossExcTwoFortyNine$ from the series: there the fit is
+  ill-conditioned, and the one-loop test of Sec.~\ref{sec:approach} is the relevant check.
+\end{itemize}
+
+\paragraph{Interpretation.} The excess is the expected crossover from the strong bare coupling of the spin--boson model to the
+interacting fixed point, whose correction exponent $\omega\approx\varepsilon$ vanishes at $s=1/2$; within $l_{\max}$ the flow has not
+arrived. It depends only on the RG time, not on $K$, $n_b$ or $\Lambda$ at fixed depth (Sec.~\ref{sec:approach}), and at
+$\Ds=0.249$ it decays at a rate of the one-loop size. Logarithmic corrections of this kind were already seen in NRG at $s=1/2$~\cite{Vojta2005}.
+An earlier version of this note attributed the excess to the known truncation errors of bosonic NRG near Gaussian fixed points
+(Hilbert-space truncation and mass flow~\cite{Vojta2005,Vojta2010,Vojta2012}). The data do not support that: those errors affect
+order-parameter exponents below $s=1/2$, and for $s>1/2$ the mass-flow correction changes the flows only quantitatively
+(at $s=0.6$, ``no qualitative difference between the flows without and with mass-flow correction''~\cite{Vojta2010}); we have no run
+that isolates either effect. The same mechanism acts at $\Ds=0.2$ and $0.175$ at a smaller level (shifts $\nrgextShiftTwoHundred$ and
+$\nrgextShiftOneSeventyFive$ from settled to extrapolated), where the extrapolation is stable and its full length is in $\dd$.
+
+\paragraph{Decision.} The three values at $\Ds=0.249$, $0.24$ and $0.225$ are kept as computed (the settled values), marked ``not
+converged in chain depth'', shown in the tables and figures, and used in no comparison and no agreement statement. This is the
+author's decision. The label is not an outcome of the estimator, and it was assigned when this comparison was already known
+(Sec.~\ref{sec:estimator}); App.~\ref{app:provenance} gives its history, including an earlier recommendation that the author
+overruled.
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{NRG against the $\varepsilon$ series near $s=1/2$. Optimal truncation with its smallest term; Borel--Pad\'e central value with
+the spread over approximants; NRG minus the reference (the partial sum at $\Ds=0.249$, the Borel--Pad\'e sum otherwise; at $\Ds=0.2$
+this difference is not meaningful, see text); the range of the rule's extrapolations and the crossover fit of
+Sec.~\ref{sec:crosscheck} (cross-checks, not adopted). Bracketed: settled values not converged in chain depth, not used.}\label{tab:series}
+\input{tables/series_table.tex}
+\end{table}
+
+\subsection{The 1D cluster Monte Carlo study}\label{sec:mc}
+\paragraph{Reference.} The Monte Carlo study of the same model in this repository (\code{MC/} folder~\cite{MCnote}; Fukui--Todo
+cluster algorithm~\cite{FukuiTodo2009,LB95} with finite-size scaling) is the project's own, run by the same AI systems; it is
+independent of NRG in method, not in authorship. We use only its quoted values and labels; their definitions are in its
+note~\cite{MCnote}. In brief, its value of $\De$ comes from a finite-size-scaling fit of all lattice sizes, with a statistical error
+$\sigma_{\rm stat}$ and a systematic scale $\sigma_{\rm sys}$, the half-range of the values over a family of fit models (a sensitivity
+scale, not a standard deviation). As a cross-check it also extrapolates in the lattice size the crossings, between pairs of sizes, of a
+finite-size-scaling observable; this \emph{crossing extrapolation} is quoted as $\De^\infty(\sigma_\infty)(\Delta_{\omega'})$, with
+error $\sigma_\infty$ and sensitivity $\Delta_{\omega'}$ to the assumed correction exponent $\omega'$ ($\Delta_{\omega'}$ is a
+sensitivity, not a dimension). Each value carries a label: \textbf{accepted}, the fit value and the crossing extrapolation agree within
+twice the error of their difference (``$\sigma_{\rm sys}$-dominated'' marks values whose $\sigma_{\rm sys}$ is much larger than
+$\sigma_{\rm stat}$); \textbf{cross-check failed}, they differ by more, and the study does not certify the value as an infinite-size
+value; \textbf{cross-check unavailable}, fewer than two size series are available for the crossing extrapolation; \textbf{conditional},
+$\sigma_{\rm sys}$ could not be estimated.
+
+\paragraph{Result.} Table~\ref{tab:mc}.
+\begin{itemize}
+\item \textbf{Accepted ($\Ds=\nrgmcAccList$).} NRG and Monte Carlo differ by at most $\nrgmcAccDiffMax$ (at $\Ds=\nrgmcAccDiffMaxAt$).
+  The differences exceed the Monte Carlo statistical errors, by up to $\nrgmcAccStatRatioMax\,\sigma_{\rm stat}$, and have the same
+  sign at neighboring points (below). They lie within $\sigma_{\rm sys}$ at $\nrgmcAccWithinSys$ of the $\nrgmcAccN$ points and within
+  $\sigma_{\rm stat}+\sigma_{\rm sys}+\dtot$ at $\nrgmcAccWithinLin$, the largest ratio being $\nrgmcAccRatioMax$ at
+  $\Ds=\nrgmcAccDiffMaxAt$. This linear sum adds a standard deviation, a fit-model half-range and an NRG error scale; we use it as a
+  scale for the size of the differences, not as a test of statistical consistency. At $\Ds=\nrgmcAccDiffMaxAt$ the Monte Carlo
+  crossing extrapolation agrees with NRG to $\nrgmcCrossOneHundred\,\sigma_\infty$; at all $\nrgmcAccN$ accepted points it agrees
+  within $\nrgmcCrossStatMax\,\sigma_\infty$, and within $\nrgmcCrossRatioMax$ of $\sigma_\infty+\Delta_{\omega'}+\dtot$. The NRG
+  errors are smaller than $\sigma_{\rm sys}$ by factors $\nrgmcAccSysRatio$, so the comparison tests the Monte Carlo systematics more
+  than it tests NRG; only $\sigma_{\rm sys}$ reconciles the two.
+\item \textbf{Cross-check failed ($\Ds=\nrgmcCcfList$).} These are not infinite-size values, and we use them only to say where NRG lies:
+  at $0.175$ between the fit and the crossing extrapolation ($\nrgmcFitOneSeventyFive$ from the fit, $\nrgmcCrossOneSeventyFive$ from
+  the crossing), at $0.15$ below both ($\nrgmcFitOneFifty$ and $\nrgmcCrossOneFifty$). Including these two points, the crossing
+  extrapolations agree with NRG within $\nrgmcCrossAllMax\,\sigma_\infty$ at all $\nrgmcCrossAllN$ common points.
+\item \textbf{Correlated signs.} NRG lies below the Monte Carlo fit at $\nrgmcNeg$ consecutive points of the $\nrgmcBoth$
+  ($0.175$ to $0.075$) and above it at $0.05$ and $0.025$. The differences are therefore not independent fluctuations; they look like
+  a smooth systematic of one of the two methods, which the Monte Carlo $\sigma_{\rm sys}$ is meant to cover.
+\item \textbf{$\Ds=0.225$} is conditional in the Monte Carlo study and not converged in NRG; the Monte Carlo value lies
+  $\nrgmcTwoTwentyFiveSer$ from the series. It enters no comparison.
+\end{itemize}
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{NRG against the 1D cluster Monte Carlo study at the common points. MC value with $\sigma_{\rm stat}$ and $\sigma_{\rm sys}$ in
+units of the last digit, and its label (Sec.~\ref{sec:mc}); NRG minus MC; ``ratio'' is $|{\rm NRG}-{\rm MC}|$ divided by
+$\sigma_{\rm stat}+\sigma_{\rm sys}+\dtot$ (shown also for the cross-check-failed points, which are not infinite-size values); MC
+crossing extrapolation with $\sigma_\infty$ and $\Delta_{\omega'}$. MC values are quoted as that study gives them. $^\ast$Not
+converged in NRG, not used.}\label{tab:mc}
+\input{tables/mc_table.tex}
+\end{table}
+
+\subsection{Published values}\label{sec:literature}
+\begin{itemize}
+\item \textbf{1D LRI Monte Carlo.} Uzelac, Glumac and Ani\v{c}i\'c~\cite{UGA01} give $1/\nu=0.50(2)$, $0.51(2)$, $0.47(2)$ and $0.40(1)$ at
+  $s=0.6$, $0.7$, $0.8$ and $0.9$, i.e.\ $\De=0.50(2)$, $0.49(2)$, $0.53(2)$ and $0.60(1)$ at $\Ds=0.2$, $0.15$, $0.1$ and $0.05$. NRG
+  differs from them by $\nrgugaTwoHundred$, $\nrgugaOneFifty$, $\nrgugaOneHundred$ and $\nrgugaFifty$ of their errors; at $\Ds=0.05$ the
+  project's Monte Carlo value, $0.61987(55)(220)$, also lies above theirs. Angelini, Parisi and Ricci-Tersenghi~\cite{APR14} give
+  $1/\nu=0.4124(13)$ at $s=0.875$ ($\De=0.5876(13)$ at $\Ds=0.0625$) and $0.506(14)$ at $s=0.65453$; neither point is on our grid.
+  Four interpolations of our final values (a cubic spline over $0.01\le\Ds\le0.15$ and polynomials through three or four neighboring
+  points) give $\nrgaprLo$--$\nrgaprHi$ at $\Ds=0.0625$, $\nrgaprSigLo$ to $\nrgaprSigHi$ of their errors above $0.5876$; the project's
+  Monte Carlo study gives $0.59003(35)(150)$ there (label: cross-check unavailable).
+\item \textbf{The spin--boson model.} Bosonic NRG~\cite{Bulla2003,Vojta2005} and continuous-time quantum Monte
+  Carlo~\cite{WRVB09} give $1/\nu$ (or $\nu z$) for $s>1/2$ only in figures. Read off the figures by eye, the NRG values of
+  Ref.~\cite{Vojta2005} are about $0.50$, $0.50$, $0.46$, $0.37$ and $0.28$ at $s=0.6$, $0.7$, $0.8$, $0.9$ and $0.95$, against our
+  $y_t=\nrgytFig$, and the quantum Monte Carlo values agree with both within their error bars; this is
+  agreement at the resolution of the figures, a few hundredths, not a quantitative test. Other methods for this
+  model~\cite{AF09,Guo2012} report order-parameter exponents, not $\nu$.
+\item \textbf{Functional RG and the hierarchical model}~\cite{PGTD26} give $1/\nu$ for $1/2<s<1$ in figures; near $s=1$ they quote
+  the form of Eq.~\eqref{eq:s1}.
+\end{itemize}
+
+% =====================================================================================================================
+\section{Limitations and open problems}\label{sec:limits}
+% =====================================================================================================================
+\begin{enumerate}
+\item \textbf{Chain depth near $s=1/2$.} At $\Ds=0.249$, $0.24$ and $0.225$ the flow does not reach its fixed point within the RG time
+  that double precision allows (Sec.~\ref{sec:approach}). The crossover fit of Sec.~\ref{sec:crosscheck} (cross-check, not adopted) is
+  stable there and gives $\nrgcrossTwoTwentyFive$ and $\nrgcrossTwoForty$ at $\Ds=0.225$ and $0.24$, closer to the series than the
+  settled values but above it at $0.24$; it is ill-conditioned at $0.249$ (Sec.~\ref{sec:series}). Extended precision (longer
+  $l_{\max}$) would remove the need to extrapolate. At $\Ds=0.2$ and $0.175$ the values are extrapolations; they depend on the fit
+  form, and $\dd$ covers the full extrapolation length.
+\item \textbf{Continuum limit.} Over $2\le\Lambda\le4$ the plateau values change by at most a few $10^{-5}$, monotonically, but
+  $\Lambda<2$ is not reached, $K$ convergence at $\Lambda=2.5$ rests on one doubling (covered by an allowance) and at $\Lambda=4$ is
+  assumed. At $\Ds=0.001$ the plateau depends on $K$ at $\Lambda\neq3$ at the $10^{-4}$ level. Runs at $\Lambda\le1.5$ with more than
+  128 kept states, or at $\Lambda=2$ with $K\ge192$ at all points, would improve this. At $K=512$ and $n_b=10$ a parity block has
+  dimension about 5000, which dense diagonalization handles, but it must be repeated at every site of every bisection step.
+\item \textbf{Universality in $\Omega$.} All runs use $\Omega=0.1$. A second $\Omega$ at one or two points would test universality and
+  the reading of the approach as a correction to scaling (the $l$ dependence should move, the plateau value not).
+\item \textbf{Error model.} The errors are scales, not standard deviations; the linear sum, the plateau threshold, the fit form and
+  ranges, the full extrapolation length and the $K$-doubling allowance are judgements (Sec.~\ref{sec:budget}). The estimator was
+  chosen after the NRG data and after an earlier comparison had been seen, and the label ``not converged in chain depth'' was assigned
+  after the comparison with the $\varepsilon$ series.
+\item \textbf{Coverage of the second implementation.} It ran at $K\le64$, could not reach the latest windows, including both quality
+  windows at $s=0.502$, and shares the window rule (Sec.~\ref{sec:indep}).
+\item \textbf{Review.} The analysis, the estimator and this note were reviewed only by AI agents: two rounds on 13 October 2026 by
+  agents of the same family as the AI that wrote them, and a reading on 15 October (App.~\ref{app:provenance}). The changes made after
+  the second round and after the reading have not been reviewed again.
+\item \textbf{Not needed.} Hamiltonian-truncation calculations of the same model~\cite{Paper,HTnote} need a correction for a fixed energy cutoff on a free
+  Fock space. NRG truncates iteratively in the interacting basis, keeps the complete new site for every kept state and is
+  non-perturbative in $\alpha$, so no such correction applies, and none was added.
+\end{enumerate}
+
+% =====================================================================================================================
+\section{Reproduction}\label{sec:repro}
+% =====================================================================================================================
+\subsection{The released folder}
+The \code{NRG/} folder of the repository contains:
+\begingroup\raggedright
+\begin{itemize}
+\item \code{code/lri\_spin\_boson\_hpc/}: the solver, its tests, the reference solver of the original study and the cluster tools
+  (App.~\ref{app:provenance} lists what was removed from the original tree);
+\item \code{code/campaigns/}: the generators of the item lists in \code{inputs/items/};
+\item \code{code/analysis/}: the analysis stages (\code{summarize.py}, \code{estimator.py},
+  \code{build\_tables.py}, \code{make\_figures.py}, \code{note\_numbers.py}, \code{check\_figures.py}) and the
+  collector of cluster records, \code{collect\_records.py};
+\item \code{inputs/}: the item lists, the frozen manifests that were submitted, the validation receipt and the environment record;
+\item \code{data/}: the $\nrgnItems$ result records, the per-job lane logs and the job accounting;
+\item \code{results/}: the final table (\code{ds13\_final.json}, \code{ds13\_final\_table.md}) and the $\Lambda$ study;
+\item \code{independent\_check/}, \code{independent\_check\_compare/}, \code{method\_comparison/}: the checks of Sec.~\ref{sec:checks};
+\item \code{verify/}: the verifier, the expected values and the smoke-test reference; \code{slurm/}: job templates; \code{note/}: this
+  note.
+\end{itemize}
+\endgroup
+\noindent\code{README.md}, \code{REPRODUCE.md}, \code{PROVENANCE.md}, \code{REVIEWS.md} and \code{data/DATA.md} in that folder give the details.
+
+\subsection{How to run}
+From \code{NRG/}, with Python $\ge3.10$, NumPy, SciPy, threadpoolctl, mpmath, matplotlib and pytest:
+\begin{itemize}
+\item \code{make test} (about 75\,s on one core of a recent laptop): the 85 solver tests, the checksum list of the code, and the 38
+  self-tests of the second implementation.
+\item \code{make replay} (20--30\,s): checks the solver source hash, verifies every record (checksum, identity against its manifest and
+  the receipt, numerical gates), recomputes all results, tables, in-text numbers and figures of this note in a hidden workspace
+  \code{.work/}, and compares them with the released files and with \code{verify/expected.json}. It also needs the Monte Carlo table of
+  the repository, \code{../MC/data/1d/scan\_data/FIT\_V3\_SCAN.json} (\code{make replay MCSCAN=<path>} to point elsewhere). The
+  extrapolations are least-squares fits whose last bits depend on the NumPy/SciPy build and the CPU, so the comparison uses
+  tolerances (about $10^{-9}$ for values, one unit of the last printed digit for tables), not byte identity (\code{REPRODUCE.md}).
+\item \code{make smoke} (about 15\,s): one small critical search with both solvers, compared with each other and with the
+  reference values in \code{verify/smoke\_expected.json}.
+\item \code{make note}: rebuilds this note in place from the released tables and figures.
+\end{itemize}
+Rerunning production needs a Slurm cluster: $\nrgthreadHours$ thread-hours, about $\nrgnodeHours$ node-hours of whole-node allocations
+(\code{REPRODUCE.md}). On another runtime the exponents are expected to agree within the quoted errors, while $\alpha_c$ moves at the
+$10^{-13}$ level and late flows at fixed $\alpha$ differ (Sec.~\ref{sec:software}); no full rerun on a second runtime was made.
+
+% =====================================================================================================================
+\begin{thebibliography}{99}
+\bibitem{Paper} The accompanying paper on the long-range Ising model (in preparation): $\varepsilon$-expansion coefficients
+  $C_0,\dots,C_8$ for $d=1$, with their derivations in the \code{GFF/} folder of this repository.
+\bibitem{MCnote} \emph{Monte Carlo determination of the thermal dimension $\De(\Ds)$ of the long-range Ising model in $d=1,2,3$},
+  note in the \code{MC/} folder of this repository (2026).
+\bibitem{HTnote} Notes on Hamiltonian truncation of the long-range Ising model, in the \code{HT/} folder of this repository (2026).
+\bibitem{Fisher1972} M.~E.~Fisher, S.-k.~Ma, and B.~G.~Nickel, \emph{Critical exponents for long-range interactions}, Phys.\ Rev.\
+  Lett.\ \textbf{29}, 917 (1972).
+\bibitem{Sak1973} J.~Sak, \emph{Recursion relations and fixed points for ferromagnets with long-range interactions}, Phys.\ Rev.\ B
+  \textbf{8}, 281 (1973).
+\bibitem{Kosterlitz1976} J.~M.~Kosterlitz, \emph{Phase transitions in long-range ferromagnetic chains}, Phys.\ Rev.\ Lett.\
+  \textbf{37}, 1577 (1976).
+\bibitem{LM01} E.~Luijten and H.~Me\ss{}ingfeld, \emph{Criticality in one dimension with inverse square-law potentials}, Phys.\ Rev.\
+  Lett.\ \textbf{86}, 5305 (2001), arXiv:cond-mat/0104175.
+\bibitem{BLMV25} D.~Benedetti, E.~Lauria, D.~Maz\'a\v{c}, and P.~van Vliet, \emph{One-dimensional Ising model with $1/r^{1.99}$
+  interaction}, Phys.\ Rev.\ Lett.\ \textbf{134}, 201602 (2025), arXiv:2412.12243.
+\bibitem{BLMV26} D.~Benedetti, E.~Lauria, D.~Maz\'a\v{c}, and P.~van Vliet, \emph{A strong-weak duality for the 1d long-range Ising
+  model}, SciPost Phys.\ \textbf{20}, 029 (2026), arXiv:2509.05250.
+\bibitem{Leggett1987} A.~J.~Leggett, S.~Chakravarty, A.~T.~Dorsey, M.~P.~A.~Fisher, A.~Garg, and W.~Zwerger, \emph{Dynamics of the
+  dissipative two-state system}, Rev.\ Mod.\ Phys.\ \textbf{59}, 1 (1987).
+\bibitem{Wilson1975} K.~G.~Wilson, \emph{The renormalization group: Critical phenomena and the Kondo problem}, Rev.\ Mod.\ Phys.\
+  \textbf{47}, 773 (1975).
+\bibitem{Bulla2003} R.~Bulla, N.-H.~Tong, and M.~Vojta, \emph{Numerical renormalization group for bosonic systems and application to
+  the sub-Ohmic spin-boson model}, Phys.\ Rev.\ Lett.\ \textbf{91}, 170601 (2003), arXiv:cond-mat/0306708.
+\bibitem{Bulla2005} R.~Bulla, H.-J.~Lee, N.-H.~Tong, and M.~Vojta, \emph{Numerical renormalization group for quantum impurities in a
+  bosonic bath}, Phys.\ Rev.\ B \textbf{71}, 045122 (2005), arXiv:cond-mat/0407559.
+\bibitem{Bulla2008} R.~Bulla, T.~A.~Costi, and T.~Pruschke, \emph{Numerical renormalization group method for quantum impurity
+  systems}, Rev.\ Mod.\ Phys.\ \textbf{80}, 395 (2008).
+\bibitem{Vojta2005} M.~Vojta, N.-H.~Tong, and R.~Bulla, \emph{Quantum phase transitions in the sub-Ohmic spin-boson model: Failure of
+  the quantum-classical mapping}, Phys.\ Rev.\ Lett.\ \textbf{94}, 070604 (2005); Erratum: Phys.\ Rev.\ Lett.\ \textbf{102}, 249904
+  (2009), arXiv:cond-mat/0410132.
+\bibitem{Vojta2006} M.~Vojta, \emph{Impurity quantum phase transitions}, Philos.\ Mag.\ \textbf{86}, 1807 (2006).
+\bibitem{Vojta2010} M.~Vojta, R.~Bulla, F.~G\"uttge, and F.~Anders, \emph{Mass-flow error in the numerical renormalization-group
+  method and the critical behavior of the sub-Ohmic spin-boson model}, Phys.\ Rev.\ B \textbf{81}, 075122 (2010), arXiv:0911.4490.
+\bibitem{Vojta2012} M.~Vojta, \emph{Numerical renormalization group for the sub-Ohmic spin-boson model: A conspiracy of errors},
+  Phys.\ Rev.\ B \textbf{85}, 115113 (2012), arXiv:1201.4922.
+\bibitem{Guo2012} C.~Guo, A.~Weichselbaum, J.~von Delft, and M.~Vojta, \emph{Critical and strong-coupling phases in one- and two-bath
+  spin-boson models}, Phys.\ Rev.\ Lett.\ \textbf{108}, 160401 (2012), arXiv:1110.6314.
+\bibitem{WRVB09} A.~Winter, H.~Rieger, M.~Vojta, and R.~Bulla, \emph{Quantum phase transition in the sub-Ohmic spin-boson model:
+  Quantum Monte Carlo study with a continuous imaginary time cluster algorithm}, Phys.\ Rev.\ Lett.\ \textbf{102}, 030601 (2009),
+  arXiv:0807.4716.
+\bibitem{AF09} A.~Alvermann and H.~Fehske, \emph{Sparse polynomial space approach to dissipative quantum systems: Application to the
+  sub-Ohmic spin-boson model}, Phys.\ Rev.\ Lett.\ \textbf{102}, 150601 (2009), arXiv:0812.2808.
+\bibitem{Chin2010} A.~W.~Chin, \'A.~Rivas, S.~F.~Huelga, and M.~B.~Plenio, \emph{Exact mapping between system-reservoir quantum models
+  and semi-infinite discrete chains using orthogonal polynomials}, J.\ Math.\ Phys.\ \textbf{51}, 092109 (2010).
+\bibitem{KLS10} R.~Koekoek, P.~A.~Lesky, and R.~F.~Swarttouw, \emph{Hypergeometric Orthogonal Polynomials and Their $q$-Analogues}
+  (Springer, Berlin, 2010), Sec.~14.12.
+\bibitem{FukuiTodo2009} K.~Fukui and S.~Todo, \emph{Order-N cluster Monte Carlo method for spin systems with long-range interactions},
+  J.\ Comput.\ Phys.\ \textbf{228}, 2629 (2009), arXiv:0802.0272.
+\bibitem{LB95} E.~Luijten and H.~W.~J.~Bl\"ote, \emph{Monte Carlo method for spin models with long-range interactions}, Int.\ J.\ Mod.\
+  Phys.\ C \textbf{6}, 359 (1995).
+\bibitem{UGA01} K.~Uzelac, Z.~Glumac, and A.~Ani\v{c}i\'c, \emph{Critical behavior of the long-range Ising chain from the
+  largest-cluster probability distribution}, Phys.\ Rev.\ E \textbf{63}, 037101 (2001), arXiv:cond-mat/0011306.
+\bibitem{APR14} M.~C.~Angelini, G.~Parisi, and F.~Ricci-Tersenghi, \emph{Relations between short-range and long-range Ising models},
+  Phys.\ Rev.\ E \textbf{89}, 062120 (2014), arXiv:1401.6805.
+\bibitem{PGTD26} V.~Pagni, G.~Giachetti, A.~Trombettoni, and N.~Defenu, \emph{One-dimensional long-range Ising model: Two almost
+  equivalent approximations}, Phys.\ Rev.\ B \textbf{113}, 014406 (2026), arXiv:2510.02458.
+\end{thebibliography}
+
+\appendix
+% =====================================================================================================================
+\section{Data formats}\label{app:formats}
+% =====================================================================================================================
+\paragraph{Result records} (\code{data/records/<campaign>/<item>.json}; campaign folders \code{example\_K64\_B10}, \code{ds13} (the
+ds13 campaign), \code{lambda\_pilot}, \code{lambda\_followup}). JSON with three keys:
+\begin{itemize}
+\item \code{sha256}: SHA-256 of the canonical JSON (sorted keys, no spaces) of the identity and the payload;
+\item \code{identity}: configuration (\code{s}, \code{Lambda} $=\Lambda$, \code{nb} $=n_b$, \code{keep} $=K$, \code{nsites} $=N$,
+  \code{tunneling} $=\Omega$, \code{nlevels}, threads), kind, bracket, fraction (0.3), tolerance, iteration limit, whether the
+  derivative was computed, the solver source hash (\code{source\_sha256}, \code{3a40deb333e1\ldots}) and the runtime;
+\item \code{payload}: \code{critical\_flow} (the flow at $\alpha_c$ with per-site records and the bisection summary), \code{tuning}
+  (bisection history and final bracket), \code{tangent} (the derivative flow, with per-site $\partial_\alpha g_n$ and
+  $\ln|\partial_\alpha g_n|$), \code{analysis} (the window audit: every window with its $\DE$, fit residual and variation, the quality
+  range and the settled window under the key \code{selected}) and \code{scope} (a statement of what the audit means).
+\end{itemize}
+Per-site records hold the parity gap \code{odd\_gap} $=g_n$, the lowest levels of each sector, the boson occupation and top-level
+probability of the newest site, and correlations of the spin with the bath. \code{INDEX.json} in each campaign folder lists the
+generation (App.~\ref{app:cluster}) of every record.
+
+\paragraph{Manifests and receipt} (\code{inputs/manifests}, \code{inputs/validation\_receipt}). A manifest is the frozen list of items
+submitted to the cluster together with the solver source hash; the receipt is itself a record, issued by the validation job, that
+binds the source hash to the compute-node runtime. \code{summarize.py} refuses any record whose identity differs from its manifest
+item or whose runtime differs from the receipt.
+
+\paragraph{Summaries and results.} \code{make replay} writes per-item summaries (critical coupling, bisection data, quality range,
+settled window, largest top-level probability and occupation, gate maxima) and per-item details (all windows, per-site gap and
+$\ln|\partial_\alpha g_n|$) to \code{.work/data/summaries}. \code{results/ds13\_final.json} holds, per $\Ds$, the estimator, $\DE$,
+all error components, the settled and extrapolated values with every fit, the $\Lambda$ values used in $\dL$, the number of quality
+windows, $\alpha_c$, the limiting forms, the superseded midpoint budget, and the late and crossover fits of \code{crosscheck.py}
+under \code{crosschecks}. An extrapolation that is not determined is written as \code{null}.
+
+% =====================================================================================================================
+\section{Production on the cluster}\label{app:cluster}
+% =====================================================================================================================
+All production ran on the AMD nodes of the \emph{symmetry} cluster of the Perimeter Institute (whole nodes with 64 cores and 240\,GB,
+24\,h limit, Slurm batch scheduler). One node with AVX-512 was excluded, since its runtime would not match the receipt. Code was used
+from a read-only frozen copy with its commit recorded in \code{GIT\_SHA}.
+
+\paragraph{Lanes.} One Slurm job (a \emph{lane}) runs many items concurrently on one node, admitting an item while the total threads
+stay $\le64$ and the total memory reservation $\le232$\,GiB. Each lane verifies the SHA-256 of its manifest and receipt and logs the
+start, end, exit code, threads and peak memory of every item (\code{data/lane\_logs}). The memory planner of the code overestimates
+the need by factors of $\nrgplanLo$ to $\nrgplanHi$ (median $\nrgplanMed$) against the peaks in the lane logs.
+
+\paragraph{Ownership.} The shared file system of the cluster does not support file locks across nodes, so items are owned
+explicitly. Only the submitter, running on the login host under a campaign-wide lock, creates an item's owner file (a random token,
+a generation number, the job, and the hash of the item definition). A writer must present the current token, and generation $g$
+writes only inside its own subdirectory, seeded from the previous generation's checkpoints, so a surviving old process cannot touch
+new files. An item is reclaimed only when its job is gone from the queue and terminal in the accounting; jobs are never requeued
+silently.
+
+\paragraph{Validation, smoke runs and drills.} The test suite passed on a compute node for each code state, and the last run issued
+the receipt. A smoke lane of five small items ran packed on one node; a repeat on a second node of the same runtime reproduced it
+bitwise. At a warning signal 300\,s before the wall limit, or by hand, a lane asks every item to checkpoint and exit: an interrupted
+item resumed from its checkpoint in a second generation and completed; writes without the token were refused from the login node and
+from another compute node; and two simultaneous reclaim calls produced exactly one winner.
+
+\paragraph{Outage.} Two lanes of the $\Lambda$ follow-up ended with \code{NODE\_FAIL} when every compute node of the cluster stopped
+responding (3 October 2026, for about 22\,h). Their 21 unfinished items were reclaimed as generation 2 and resumed from their
+checkpoints.
+
+\begin{table}[ht]\centering\scriptsize
+\caption{Every job of the study (node names anonymized). Thread-h is the sum over items of wall time times threads, from the lane
+logs; each job held a whole node for its elapsed time.}\label{tab:resources}
+\input{tables/resources_table.tex}
+\end{table}
+
+% =====================================================================================================================
+\section{Provenance and review}\label{app:provenance}
+% =====================================================================================================================
+\paragraph{Origin of the code.} The reference solver and analyzer (\code{code/lri\_spin\_boson\_hpc/reference/}) and the three
+archived critical couplings (\code{code/lri\_spin\_boson\_hpc/inputs/}) come from the original study, an earlier, unreleased study of
+the project (archive \code{lri\_extended\_comparison\_study.zip}, SHA-256 \code{04bb8d30\ldots}; \code{REFERENCE\_PROVENANCE.json}). The
+optimized package \code{lri\_spin\_boson\_hpc} was built on it and supplied by the author as the starting point of this study. Both
+were written by GPT-6 astra (OpenAI), used through ChatGPT; the package itself carries no authorship information.
+
+\paragraph{Review and port to the cluster.} Claude Code read the package line by line against the reference solver (no numerical
+defect; operational defects only) and adapted it to the cluster in a plan--review--build--inspect loop with OpenAI Codex as reviewer.
+Codex (requested model gpt-6-astra at extra-high reasoning effort; the command-line tool did not report which model ran) approved the
+plan after four rounds and inspected the built code twice in fresh sessions (10 and 4 findings, all fixed and tested). The last fix
+round (commit \code{af9b1dc}: scripts and benchmarks only, solver source unchanged) was not re-inspected. Codex reviewed the cluster port:
+plan and code. It did not review the numerics, the analysis, the estimator or the table. \code{REVIEWS.md} summarizes all reviews.
+
+\paragraph{Analysis, checks and this note.} Claude Code wrote the analysis scripts (3--8 October), the specification of the second
+implementation and the comparison scripts (8 October), and drafted this note (13 October; this revision with Claude Opus 5.5). The
+models of the earlier Claude Code sessions are not recorded in the package. The second implementation was written by a separate Claude
+agent from the specification only (Sec.~\ref{sec:indep}).
+
+\paragraph{The review of 13 October 2026 and this revision.} Three read-only reviews of the previous version of this note (physics,
+statistics, readability) were made by Claude Opus 5.5 agents, launched one per review from a written brief by a separate Claude Code
+session that coordinated the public release; they did not see the session that drafted this note or each other's reports. They are
+independent of each other,
+not of the model family. They found that the quality-range midpoint sits on the transient before the plateau, that the
+$\Lambda$ dependence and the factor 2 were artifacts of it, and that the excess near $s=1/2$ is slow approach to the fixed point, not
+NRG truncation. Claude Code verified these findings from the records with its own scripts before changing anything, and the author
+decided (13 October): (i) the settled late-window value with a chain-depth error, extrapolated where there is no plateau, with the rule
+fixed before the comparisons were recomputed; (ii) the label ``not converged in chain depth'' for the three points near $s=1/2$, which
+stay shown and unused, the extrapolation at $\Ds=0.225$ being a cross-check only; (iii) the measured $\Lambda$ spread instead of the
+factor 2; (iv) the old values in App.~\ref{app:midpoint}. The use of the midpoint was this study's choice of 4 October, not part of the
+inherited analyzer, whose own output is the settled window; the package's analyzer calls the quality range ``not a physical
+uncertainty interval''.
+
+\paragraph{Second review round (13 October 2026).} Three further read-only reviews by the same kind of agents (numbers against the
+records, note against code on the assembled release, and a recheck of the first round with a scrutiny of the new rule) reproduced
+every value and error component of Table~\ref{tab:headline} independently from the raw records, and found the rule's classification
+robust and the errors not too small. They found that \code{make replay} failed with the oldest library versions that
+\code{requirements.txt} allows (the fits differ in their last bits), several wrong literal numbers and wording issues, and they
+supplied the fits that are now the late and crossover fits of Sec.~\ref{sec:crosscheck}. All were addressed in this version; these
+last fixes have not been reviewed again.
+
+\paragraph{Reading of 15 October 2026.} At the author's request an independent reader without project context, coordinated by a
+separate Claude Code session, reviewed this note for precision and readability. This version addresses its findings: the status of
+the label ``not converged in chain depth'', the definition of the cross-check fits, the one-loop test, the statements about the
+Monte Carlo comparison and the error budget, the uncertainties near $s=1$, and notation. These changes were not reviewed again.
+
+\paragraph{Timeline of the choices.} The production ran on 3--4 October 2026, after validation on 2 October. On 4 October, after the
+NRG data had been seen but before any external comparison, Claude Code fixed the first estimate: the quality-range midpoint, the
+central item, the $K$/$n_b$ set, the $\Lambda=2.5$ follow-up, a factor 2 on the $\Lambda$ shift and a quadrature sum. The comparisons
+with the $\varepsilon$ series and the Monte Carlo study followed on 8 October. The reviews of 13 October showed that the midpoint sits
+on the transient before the plateau (App.~\ref{app:midpoint}). The present rule was written the same day, before the comparisons were
+recomputed, and none of its constants was changed afterwards. It was not written blind, however. The earlier comparisons were known,
+and the reviews had already compared candidate estimators with the references: the last quality window at $\Ds=0.2$ with the series,
+an extrapolation at $0.225$ with the series, and the plateau value at $0.1$ with the Monte Carlo crossing value. The exploration that
+fixed the rule's constants read only the NRG records. No protocol was registered in advance. The label ``not converged in chain depth''
+was assigned by the author on 13 October, with the series comparison known (Sec.~\ref{sec:estimator}).
+
+\paragraph{Earlier decision on the points near $s=1/2$.} After the comparisons of 8 October a Claude Code analysis (not released)
+recommended excluding $\Ds=0.249$ and $0.24$ or replacing them by series values, and enlarging the error at $0.225$. The author
+overruled this and kept the three values as computed, with their excess stated, and unused (Sec.~\ref{sec:series}).
+
+\paragraph{The released code tree.} \code{code/lri\_spin\_boson\_hpc} is commit \code{af9b1dc} (\code{GIT\_SHA}) minus files not
+needed to test, replay or rerun the study: \code{adapters/}, the benchmark results and all benchmark scripts except the four that
+the tests run, \code{PERFORMANCE.md}, \code{VALIDATION.md}, \code{validation/}, \code{slurm/} (replaced by \code{NRG/slurm/}),
+\code{review/} (summarized in \code{REVIEWS.md}), \code{docs/ALGORITHM.md} (Sec.~\ref{sec:method} of this note),
+\code{cluster/symmetry/freeze.sh} and a duplicate of \code{inputs/items/example\_items.json}. The package's own \code{README.md} and
+\code{docs/SYMMETRY.md} still point to some of these; use \code{NRG/slurm/} and this note instead. The checksum list
+\code{MANIFEST.sha256.json} was regenerated for the remaining files. The solver \code{src/lri\_spin/} is byte-identical to
+\code{af9b1dc}, so its SHA-256 still binds every record. Outside the code tree the analysis was revised as described above
+(\code{estimator.py} is new; \code{build\_tables.py}, \code{make\_figures.py}, \code{note\_numbers.py} and \code{check\_figures.py}
+changed), the comparison scripts take their paths as arguments and no longer compute a quadrature ``pull'', and $C_8$ in
+\code{compare\_methods.py} was updated to the current value, which changes the series references by at most $3\times10^{-6}$ (at
+$\Ds=0.2$; $2\times10^{-7}$ at $0.225$; at $\Ds=0.24$ optimal truncation now stops one order later). \code{crosscheck.py} (the
+late and crossover fits) is new and \code{run\_all.sh} now only calls \code{make replay}.
+
+% =====================================================================================================================
+\section{All production items}\label{app:items}
+% =====================================================================================================================
+The $\nrgnItemsAll$ records of the three campaigns D (ds13, folder \code{ds13}), P ($\Lambda$ pilot) and F
+($\Lambda$ follow-up); the three example items are in Table~\ref{tab:example}. Columns: critical coupling; number of quality windows
+$\nq$; quality range; settled value; plateau drift; largest top-level probability $p_{\rm edge}$ over the sites of the critical flow
+(Sec.~\ref{sec:keepnb}).
+\begingroup\scriptsize\setlength{\tabcolsep}{3pt}
+\input{tables/all_items.tex}
+\endgroup
+
+% =====================================================================================================================
+\section{The superseded midpoint estimator}\label{app:midpoint}
+% =====================================================================================================================
+Until 13 October 2026 the value of a point was the midpoint of the quality range of its central item, with the half-width $\delta_{\rm
+w}$ as one error component and the total $\dtot^{\rm old}=[\delta_{\rm w}^2+\dK^2+(2\delta^{\rm old}_\Lambda)^2]^{1/2}$, where
+$\delta^{\rm old}_\Lambda$ was the midpoint shift from $\Lambda=3$ to $2.5$. Claude Code chose it when the final table was first built
+(4 October); the inherited analyzer reports the settled window. Table~\ref{tab:midpoint} lists the old values.
+
+\textbf{Why it was replaced.} Along the quality windows $\DE$ falls monotonically at $\nrgnMonoDec$ of 13 points (Fig.~\ref{fig:plateau}): the
+early quality windows are the transient toward the fixed point. The midpoint therefore lies $\nrgmidOffLo$ to $\nrgmidOffHi\times10^{-4}$
+above the plateau at $0.025\le\Ds\le0.15$ (and $\nrgmidOffOne$ from it at $\Ds=0.001$, where the windows rise), and $\delta_{\rm w}$
+measures the length of the transient, not a resolution of the plateau; the earlier claim of a precision floor of about $10^{-4}$ was
+wrong. Because the window rule counts sites while the chain length scales as $1/\ln\Lambda$, a smaller $\Lambda$ admits a larger share
+of transient windows, which produced an apparent rise of $\DE$ as $\Lambda$ decreases (the midpoint at $\Lambda=2$ lay
+$\nrgmidLtwoOneHundred$ and $\nrgmidLtwoFifty$ above $\Lambda=3$ at $\Ds=0.1$ and $0.05$, against $\nrgLtwoOneHundred$ and $\nrgLtwoFifty$
+on plateau values). The factor 2 on $\delta^{\rm old}_\Lambda$ multiplied this artifact. At $0.01\le\Ds\le0.15$ the new errors are
+smaller than the old ones by factors $\nrgerrShrink$. At $\nrgmidWithin$ of the 13 points the old value lies within its old
+$\dtot^{\rm old}$ of the new one, but only because $\delta_{\rm w}$ equalled the offset: the old interval was in effect one-sided.
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{The superseded estimator. Old value: quality-range midpoint with $\dtot^{\rm old}$ (two significant digits, as given in the
+earlier version of this note); the half-width $\delta_{\rm w}$ and $2|\delta^{\rm old}_\Lambda|$ in units of $10^{-4}$; the value of
+this note; the difference; the old status labels: (a) far above the $\varepsilon$ series compared with the old error, attributed to a
+truncation bias of bosonic NRG, not used; (b) above the Borel--Pad\'e sum by about the old error, same attribution, not used; (c) at
+$\Ds=0.2$, the series cannot test the point at the $10^{-3}$ level. The attribution to a truncation bias has since been withdrawn
+(Sec.~\ref{sec:series}).}\label{tab:midpoint}
+\input{tables/midpoint_table.tex}
+\end{table}
+
+% =====================================================================================================================
+\section{Terms and symbols}\label{app:symbols}
+% =====================================================================================================================
+\paragraph{Abbreviations.} LRI: long-range Ising; NRG: numerical renormalization group; RG: renormalization group; MC: Monte Carlo;
+BLAS: basic linear algebra subprograms; SHA-256: a cryptographic checksum.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.4cm}p{12.2cm}@{}}\toprule
+term & meaning\\\midrule\endhead
+point & one value of $\Ds$\\
+item, record & one NRG calculation at fixed $(\Ds,\Lambda,K,n_b,N)$; the JSON file holding its result\\
+central item & the item at $\Lambda=3$, $K=128$, $n_b=16$\\
+campaign, production & a set of items submitted together; the released items\\
+finite map & the truncated NRG at fixed $\Lambda$, $K$, $n_b$, $N$ as a function of $\alpha$\\
+window, quality window & $w$ consecutive sites over which $\ln|\partial_\alpha g_n|$ is fitted; a window with relative variation $<0.005$ and fit residual $<0.003$\\
+quality range & the range of $\DE$ over the quality windows of an item\\
+settled window, settled value & the window with the smallest fit residual plus relative variation; its $\DE$\\
+plateau, plateau drift & a point whose central item has plateau drift $\le\tau_{\rm p}$; the largest change of $\DE$ within $\pm h$ sites of the settled window\\
+extrapolated & a point without a plateau; its value is the extrapolation of $\Dloc$ (Sec.~\ref{sec:estimator})\\
+not converged in chain depth & label assigned by the author to $\Ds=0.249$, $0.24$, $0.225$, not an outcome of the estimator: the flow does not reach its fixed point within $l_{\max}$; no error quoted, not used\\
+trusted window & a window whose finite-difference $\DE$ in the second implementation is stable under a change of the step $\eta$\\
+late fit, crossover fit & cross-check fits of $\Dloc$ with a detuning term (Sec.~\ref{sec:crosscheck}); not adopted\\
+n.d. & not determined: an extrapolation whose fitted $\omega$ is below 0.01\\
+fit residual, terminal residual, eigen-residual & largest deviation from the window fit; $f(\alpha_c)$; $\max|HU-UE|$\\
+top-level probability $p_{\rm edge}$ & weight of the highest level $n_b-1$ of the newest oscillator in the ground state, at one site of the critical flow\\
+receipt, manifest, identity, runtime & see App.~\ref{app:formats}\\
+lane, generation, drill & see App.~\ref{app:cluster}\\
+\midrule
+symbol & meaning\\\midrule
+$d$, $s$ & dimension (1); exponent of the coupling decay $1/r^{1+s}$ and of the bath spectrum $\rho\propto\omega^s$\\
+$\Ds$, $\varepsilon$, $\delta$ & spin dimension $(1-s)/2$; $2s-1=1-4\Ds$; $1-s=2\Ds$\\
+$\De$, $y_t$, $\nu$, $\omega$ & dimension of the energy operator; thermal RG eigenvalue $1/\nu$; $\De=1-y_t$; leading correction exponent (also, in $\rho(\omega)$ and $\omega_j$, a frequency)\\
+$C^{\rm SR}_n(1)$ & coefficients of the dual expansion~\eqref{eq:dual} of $\De$ in $\sqrt{\Ds}$\\
+$u$, $l_0$, $\mathcal N$ & $\varphi^4$ coupling of the one-loop flow; RG time where it is infinite; number of components of the O($\mathcal N$) model\\
+$\DE$, $\DE^{\rm central}$ & NRG estimate of $\De$; that of the central item\\
+$\Dloc$, $l$, $l_{\max}$ & local exponent, Eq.~\eqref{eq:loc}; RG time $n\ln\Lambda$; its usable maximum, Eq.~\eqref{eq:nmax}\\
+$\Delta_\infty$, $A$, $l_0$, $l_{\rm hi}$, $S$ & extrapolated value, amplitude, first and last RG time and span of an extrapolation fit\\
+$A_{\rm d}$, $l_{\rm a}$, $l_{\rm end}$, $k$, $n_{\rm fit}$ & detuning amplitude, first and last RG time, end offset $k/y_t$ and number of accepted fits of a cross-check fit\\
+$\tau_{\rm p}$, $h$ & plateau threshold; half-width of the plateau neighborhood, $\lceil w/4\rceil$ sites\\
+$\tau$ & imaginary time (Sec.~\ref{sec:model})\\
+$C_n$ & coefficients of the $\varepsilon$ expansion of $\De$ for $d=1$\\
+$\Omega$, $\alpha$, $\alpha_c$, $\delta\alpha$ & tunneling amplitude (0.1); dissipation strength; its critical value for the finite map; residual detuning\\
+$\rho(\omega)$, $J(\omega)$, $\omega_j$, $\lambda_j$, $b_j$ & bath spectral density; $\pi\rho$; oscillator frequencies, couplings and annihilation operators\\
+$\Lambda$, $q$, $I_m$ & discretization ratio; $1/\Lambda$; frequency bins\\
+$c_m$, $\gamma_m$, $\xi_m$, $\xi_0$ & star oscillators, their couplings and frequencies $\xi_m=\xi_0q^m$\\
+$e_n$, $t_n$, $\bar e_n$, $\bar t_n$ & chain on-site energies and hoppings; rescaled by $\Lambda^n$\\
+$\mathcal A_n$, $\mathcal B_n$, $a$ & little $q$-Jacobi recurrence quantities of Eq.~\eqref{eq:coeff}; $a=q^s$\\
+$\lambda_{\rm tot}$ & total coupling of the spin to the bath, $\sqrt{2\alpha/(s+1)}$\\
+$H_n$, $\bar b_n$, $\one$ & rescaled Hamiltonian of sites $0,\dots,n$; site-$n$ operator in the kept basis; identity\\
+$K$, $n_b$, $N$, $N(\Lambda)$ & kept states per parity sector; oscillator levels; chain sites; chain sites at $\Lambda$\\
+$P$ & parity $\sigma_x(-1)^{\sum b^\dagger b}$\\
+$g_n$, $E^{\rm odd/even}_{0,n}$ & parity gap; lowest level of $H_n$ in each sector\\
+$f(\alpha)$ & bisection function, Eq.~\eqref{eq:bisect}\\
+$U_k$, $U_d$, $E_k$, $E_d$ & kept and discarded eigenvectors and energies\\
+$\dot H$, $Z$, $T$, $\dot E_0$, $B$ & $\partial_\alpha H$; rotation of the kept states; derivative of the kept Hamiltonian; of the ground energy; site operator\\
+$w$, $\kappa$, $\nq$ & window width; intercept of the window fit; number of quality windows\\
+$\dd$, $\dK$, $\dL$, $\dtot$ & chain-depth error; $K$/$n_b$ spread; discretization error; their sum\\
+$\delta_{\rm w}$, $\delta^{\rm old}_\Lambda$, $\dtot^{\rm old}$ & quantities of the superseded estimator (App.~\ref{app:midpoint})\\
+$n_{\max}$ & estimated last site near the fixed point in double precision\\
+$\sigma_{\rm stat}$, $\sigma_{\rm sys}$, $\sigma_\infty$, $\Delta_{\omega'}$ & statistical error and systematic scale of the Monte Carlo fit; error and sensitivity of its crossing extrapolation (not a dimension)\\
+$\eta$ & relative step of the finite differences of the second implementation (\code{h} in its code)\\
+$L$, $M$, $u$ & Pad\'e orders and Borel variable\\
+c1--c8; D, P, F & configurations of the second implementation; campaign tags of App.~\ref{app:items}\\\bottomrule
+\end{longtable}
+
+\end{document}

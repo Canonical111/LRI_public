@@ -1,0 +1,197 @@
+{
+ "default": {
+  "bin/c8d2_decimal": {
+   "sha256": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "final": "99a51c1d3f520f16a846eea90149e6cb9d42772db819dbdb2286cb12cb13bcbf",
+   "identical": true
+  },
+  "bin/c8d2_gmp": {
+   "sha256": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "final": "1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa",
+   "identical": true
+  }
+ },
+ "profiles": {
+  "dd": {
+   "built": true,
+   "sha256": "516148208820b00cf6490b9fee4d9caaa72112b0e45404cf2c204463a9807492",
+   "gate_sha256": "516148208820b00cf6490b9fee4d9caaa72112b0e45404cf2c204463a9807492",
+   "identical_to_gate": true,
+   "numerics_params": {
+    "dd": {
+     "dd_ratio": "1e-20",
+     "routing": "cascade",
+     "cascade_low": "1e-23",
+     "range": 300,
+     "guard": "products",
+     "product_range": [
+      "2^-900",
+      "2^900"
+     ],
+     "exp": "dd-k-ln2-r64-taylor11-x6",
+     "sum": "compensated-b8-x4",
+     "err": "double",
+     "development": false
+    }
+   },
+   "development_profiles": [],
+   "build_record_parameter_overrides": [],
+   "build_record_development": false,
+   "plan_refusal": null,
+   "ok": true
+  },
+  "mp256": {
+   "built": true,
+   "sha256": "9e884b1bb61795a6a84013c9328d754e23c3dc005928cc6ff3e0d4138644674b",
+   "gate_sha256": "9e884b1bb61795a6a84013c9328d754e23c3dc005928cc6ff3e0d4138644674b",
+   "identical_to_gate": true,
+   "numerics_params": {
+    "mp256": {
+     "digits10": 77,
+     "mpf_precision_bits": 320,
+     "ratio": "1e-63",
+     "error_estimate": "calculate_shared<MP77,true>",
+     "escalation": "mp350"
+    }
+   },
+   "development_profiles": [],
+   "build_record_parameter_overrides": [],
+   "build_record_development": false,
+   "plan_refusal": null,
+   "ok": true
+  },
+  "exp1": {
+   "built": true,
+   "sha256": "0bf3f1a8ca32e0d99aac92af5e7ce37cb5387f51f4964d567ebfa2b26da3de27",
+   "gate_sha256": "0bf3f1a8ca32e0d99aac92af5e7ce37cb5387f51f4964d567ebfa2b26da3de27",
+   "identical_to_gate": true,
+   "numerics_params": {
+    "exp1": {
+     "xs": "x_j*exp(-shift/L) per shifted call",
+     "tiers": "binary128,mp",
+     "binary128_range": 5000
+    }
+   },
+   "development_profiles": [],
+   "build_record_parameter_overrides": [],
+   "build_record_development": false,
+   "plan_refusal": null,
+   "ok": true
+  },
+  "dd+mp256+exp1": {
+   "built": true,
+   "sha256": "6bc26966935378211e54b4922d9a4ff1700c1a2f4e4f5148d4e02b3a6820f1de",
+   "gate_sha256": "6bc26966935378211e54b4922d9a4ff1700c1a2f4e4f5148d4e02b3a6820f1de",
+   "identical_to_gate": true,
+   "numerics_params": {
+    "dd": {
+     "dd_ratio": "1e-20",
+     "routing": "cascade",
+     "cascade_low": "1e-23",
+     "range": 300,
+     "guard": "products",
+     "product_range": [
+      "2^-900",
+      "2^900"
+     ],
+     "exp": "dd-k-ln2-r64-taylor11-x6",
+     "sum": "compensated-b8-x4",
+     "err": "double",
+     "development": false
+    },
+    "mp256": {
+     "digits10": 77,
+     "mpf_precision_bits": 320,
+     "ratio": "1e-63",
+     "error_estimate": "calculate_shared<MP77,true>",
+     "escalation": "mp350"
+    },
+    "exp1": {
+     "xs": "x_j*exp(-shift/L) per shifted call",
+     "tiers": "binary128,mp",
+     "binary128_range": 5000
+    }
+   },
+   "development_profiles": [],
+   "build_record_parameter_overrides": [],
+   "build_record_development": false,
+   "plan_refusal": null,
+   "ok": true
+  }
+ },
+ "overrides": {
+  "mp256": {
+   "built": true,
+   "sha256": "43e7bf596358be80b819caca5af20f10d07383262ad08ce89090d2a5cfd60cda",
+   "numerics_params": {
+    "digits10": 77,
+    "mpf_precision_bits": 320,
+    "ratio": "1e-60",
+    "error_estimate": "calculate_shared<MP77,true>",
+    "escalation": "mp350",
+    "development": true,
+    "overrides": [
+     "C8_MP256_RATIO"
+    ]
+   },
+   "build_record_parameter_overrides": [
+    "-DC8_MP256_RATIO=1e-60"
+   ],
+   "build_record_development": true,
+   "CPPFLAGS": "-DC8_MP256_RATIO=1e-60",
+   "plan_describe_refusal": "ov_mp256/bin/c8d2_gmp_mp256 is a development build of profile(s) ['mp256'] (--describe numerics_params: \"development\":true, a measurement variant); plan accepts production builds only (A-FLAG-1)",
+   "plan_build_record_refusal": "ov_mp256/bin/c8d2_gmp_mp256 is a development build (profile-parameter overrides ['-DC8_MP256_RATIO=1e-60'] in c8d2_gmp_mp256.build.json); plan accepts production builds only (A-FLAG-1)",
+   "ok": true
+  },
+  "exp1": {
+   "built": true,
+   "sha256": "5463fb834bc0252ebee081c3ec6f2da9dcdc7746768d82268b0cb876c96ad7c8",
+   "numerics_params": {
+    "xs": "x_j*exp(-shift/L) per shifted call",
+    "tiers": "binary128,mp",
+    "binary128_range": 4000,
+    "development": true,
+    "overrides": [
+     "C8_EXP1_RANGE"
+    ]
+   },
+   "build_record_parameter_overrides": [
+    "-DC8_EXP1_RANGE=4000"
+   ],
+   "build_record_development": true,
+   "CPPFLAGS": "-DC8_EXP1_RANGE=4000",
+   "plan_describe_refusal": "ov_exp1/bin/c8d2_gmp_exp1 is a development build of profile(s) ['exp1'] (--describe numerics_params: \"development\":true, a measurement variant); plan accepts production builds only (A-FLAG-1)",
+   "plan_build_record_refusal": "ov_exp1/bin/c8d2_gmp_exp1 is a development build (profile-parameter overrides ['-DC8_EXP1_RANGE=4000'] in c8d2_gmp_exp1.build.json); plan accepts production builds only (A-FLAG-1)",
+   "ok": true
+  },
+  "dd": {
+   "built": true,
+   "sha256": "8704298451c815ead82d30ede1729f0c3ebdce8ec27c86e9167b4ddf544ceb9d",
+   "numerics_params": {
+    "dd_ratio": "1e-21",
+    "routing": "cascade",
+    "cascade_low": "1e-23",
+    "range": 300,
+    "guard": "products",
+    "product_range": [
+     "2^-900",
+     "2^900"
+    ],
+    "exp": "dd-k-ln2-r64-taylor11-x6",
+    "sum": "compensated-b8-x4",
+    "err": "double",
+    "development": true
+   },
+   "build_record_parameter_overrides": [
+    "-DC8_DD_DEVELOPMENT",
+    "-DC8_DD_RATIO=1e-21"
+   ],
+   "build_record_development": true,
+   "CPPFLAGS": "-DC8_DD_DEVELOPMENT -DC8_DD_RATIO=1e-21",
+   "plan_describe_refusal": "ov_dd/bin/c8d2_gmp_dd is a development build of profile(s) ['dd'] (--describe numerics_params: \"development\":true, a measurement variant); plan accepts production builds only (A-FLAG-1)",
+   "plan_build_record_refusal": "ov_dd/bin/c8d2_gmp_dd is a development build (profile-parameter overrides ['-DC8_DD_DEVELOPMENT', '-DC8_DD_RATIO=1e-21'] in c8d2_gmp_dd.build.json); plan accepts production builds only (A-FLAG-1)",
+   "ok": true
+  }
+ },
+ "ok": true
+}

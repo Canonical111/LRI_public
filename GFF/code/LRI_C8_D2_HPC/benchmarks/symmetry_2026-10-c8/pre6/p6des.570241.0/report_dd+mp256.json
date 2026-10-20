@@ -1,0 +1,581 @@
+{
+  "schema": "c8-d2-design-report-1",
+  "pilot": {
+    "campaign": "<SCRATCH>/c8-d2/sweep2-5d7586e9f1ab",
+    "manifest_sha256": "cc148e858e604c5e0a19db3949b80b8d83d8429040a2ec19c6fed27ee69942d9",
+    "seed": 2594661941911898802,
+    "executable_sha256": "2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17",
+    "numerics": "exact",
+    "rates_identity": "default",
+    "inputs_manifest_sha256": "3813f24ac38c7d27645733a06812f890b03e21e1f0a62d9d820fcf5495d27356",
+    "test_only": true,
+    "backend": "gmp",
+    "threads": 8,
+    "allocation": {
+      "source": "pilot",
+      "points": 512,
+      "replicates": 2,
+      "label": null
+    },
+    "two_loop_sha256": "ae60f779f7487b9816e740cafff9358836745d918a73b46dfec568f9737cf0e9",
+    "accepted_tool_changes": {
+      "production.py": {
+        "planned": "237dda88186c32695a1c2ed906a58af66957aff5f16e992ca7aac2e67b5e933e",
+        "current": "c142fb35706a10ecb5bd850611d802c0a8420ee225959aa7db6b7bff7188a3d5"
+      },
+      "common.py": {
+        "planned": "a242c277027fe2bd81751a2b8eef1789930118d979bc4837d82fe2549dcc601e",
+        "current": "fd0ccf832fd0e980538cb83281b8b8d3a9f0f662cdfe199ed9b561986f7af96c"
+      },
+      "assemble.py": {
+        "planned": "43fcb84bdba64a2ec6aaaeb4f18788811e574579291f500a61d74ccd9f96856a",
+        "current": "fe2d30fd6cb11d7dcfa736e7c2f6d09c959615d9b906255261801a8bd82535e8"
+      },
+      "lanes.py": {
+        "planned": "4c22fbd6f26cf2dc3039cc839b38c453d80fa02998f39176af5e2e802704caff",
+        "current": "7e6bd9320b9e75a0581b7c845bb87fb659d8d3f84e38eed4d0df0693d1da7327"
+      },
+      "stage_runtime.py": {
+        "planned": "94497b053ee35df887999b34bf1556bd9499763257827e8b3f50962c97d6fd49",
+        "current": "6eca7432b26997907d3921fab6814d85b4263f98c737e7395e94baceca7ad640"
+      }
+    },
+    "dimension": 2,
+    "schema_prefix": "c8-d2",
+    "half_d": 1.0,
+    "verified_by": "production.verify_base (pinned tools, inputs, vendored assembly)"
+  },
+  "c8_magnitude": 46000.0,
+  "variance_margin": 1.5,
+  "eta_node": 0.3063259633746171,
+  "eta_source": "tools/accounting.py (18.560 work core-h, 1 sacct records, complete)",
+  "numerics": "dd+mp256",
+  "profile_recost": {
+    "route": "b",
+    "rule": "route (b) (host decision 2026-10-05): an approved numerics profile (production.APPROVED_PROFILES) for a bundle frozen from an EXACT default-rate pilot. sigma_g^2 is the exact pilot's, kept because the profile's J-FLAG F2 gate bounds its change of C8 (|dC8| + 3 SE_d) far below any target SE (dd+mp256: 4.25e-16, job 570210); every graph's cost per point is the cost model's, measured under the profile (tools/sweep.py --numerics), so the base counts, the multipliers, the allocated cost and the caps are re-costed; eta_omp,g and eta_node are the exact pilot's (tasks are sized to the same seconds under either numerics)",
+    "profile": "dd+mp256",
+    "approval": null,
+    "approved_set": [
+      "dd+mp256"
+    ],
+    "approved_set_reference": "user check-in 2026-10-05: dd+mp256 approved for production after the pilot (C62d PLAN-REVIEW-LOG)",
+    "gates": [],
+    "exact_pilot": {
+      "campaign": "<SCRATCH>/c8-d2/sweep2-5d7586e9f1ab",
+      "manifest_sha256": "cc148e858e604c5e0a19db3949b80b8d83d8429040a2ec19c6fed27ee69942d9",
+      "seed": 2594661941911898802,
+      "executable_sha256": "2cc5e88e76386c0d5c062eaf347cad95c0731a12d62a1af529660797ed715c17",
+      "numerics": "exact",
+      "rates_identity": "default",
+      "inputs_manifest_sha256": "3813f24ac38c7d27645733a06812f890b03e21e1f0a62d9d820fcf5495d27356",
+      "backend": "gmp",
+      "test_only": true
+    },
+    "cost_model": {
+      "path": "<SCRATCH>/c8d2/work/p6des-3a250eaa5918/cost_models/gmp_symmetry_amd_c8_dd+mp256.json",
+      "sha256": "9b0dfec6d35d0c17bcfa1d0ae4b4c666829958a6770c7cdbbaf3cbace0d06042",
+      "numerics": "dd+mp256",
+      "backend": "gmp",
+      "rates_identity": "default",
+      "executable_sha256": "d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d",
+      "cpu_models": [
+        "AMD EPYC 7543 32-Core Processor"
+      ],
+      "source_manifest_sha256": "2a7c0d24205512e738932337b93a8a9134eadb96322e50944977a272f550184d",
+      "keys": 48346,
+      "executable_gated": null
+    },
+    "variance": "sigma_g^2 of the exact pilot (unchanged; the gate F2 bounds the profile change of C8)",
+    "efficiencies": "eta_omp,g and eta_node of the exact pilot"
+  },
+  "targets": [
+    {
+      "target_rel": 0.001,
+      "target_se": 46.0,
+      "batches": 1,
+      "predicted_se_with_margin": 35.82763023805114,
+      "predicted_se_raw": 23.88508682536743,
+      "allocated_core_hours": 2755.780736303653,
+      "replicates": {
+        "free_L5": 128,
+        "power_L8": 32,
+        "free_L8": 32,
+        "free_L4": 128,
+        "free_L3": 128,
+        "power_L3": 64,
+        "power_L4": 128,
+        "power_L6": 128,
+        "free_L7": 128,
+        "power_L7": 32,
+        "power_L5": 128,
+        "free_L6": 128
+      },
+      "s": {
+        "free_L3": 16,
+        "free_L4": 16,
+        "free_L5": 16,
+        "free_L6": 8,
+        "free_L7": 4,
+        "free_L8": 2,
+        "free_L8_primitive": 4,
+        "power_L3": 2,
+        "power_L4": 2,
+        "power_L5": 4,
+        "power_L6": 2,
+        "power_L7": 2,
+        "power_L8": 1
+      },
+      "imputed_variance_share": 0.0
+    },
+    {
+      "target_rel": 0.0005,
+      "target_se": 23.0,
+      "batches": 1,
+      "predicted_se_with_margin": 18.52644206691618,
+      "predicted_se_raw": 12.350961377944119,
+      "allocated_core_hours": 9919.369514902135,
+      "replicates": {
+        "free_L5": 128,
+        "power_L8": 32,
+        "free_L8": 128,
+        "free_L4": 128,
+        "free_L3": 128,
+        "power_L3": 128,
+        "power_L4": 128,
+        "power_L6": 128,
+        "free_L7": 128,
+        "power_L7": 128,
+        "power_L5": 128,
+        "free_L6": 128
+      },
+      "s": {
+        "free_L3": 64,
+        "free_L4": 64,
+        "free_L5": 64,
+        "free_L6": 32,
+        "free_L7": 16,
+        "free_L8": 2,
+        "free_L8_primitive": 4,
+        "power_L3": 4,
+        "power_L4": 8,
+        "power_L5": 16,
+        "power_L6": 8,
+        "power_L7": 2,
+        "power_L8": 1
+      },
+      "imputed_variance_share": 0.0
+    },
+    {
+      "target_rel": 0.00025,
+      "target_se": 11.5,
+      "batches": 1,
+      "predicted_se_with_margin": 9.26322103345809,
+      "predicted_se_raw": 6.175480688972059,
+      "allocated_core_hours": 39677.47805960854,
+      "replicates": {
+        "free_L5": 128,
+        "power_L8": 64,
+        "free_L8": 128,
+        "free_L4": 128,
+        "free_L3": 128,
+        "power_L3": 128,
+        "power_L4": 128,
+        "power_L6": 128,
+        "free_L7": 128,
+        "power_L7": 128,
+        "power_L5": 128,
+        "free_L6": 128
+      },
+      "s": {
+        "free_L3": 256,
+        "free_L4": 256,
+        "free_L5": 256,
+        "free_L6": 128,
+        "free_L7": 64,
+        "free_L8": 8,
+        "free_L8_primitive": 16,
+        "power_L3": 16,
+        "power_L4": 32,
+        "power_L5": 64,
+        "power_L6": 32,
+        "power_L7": 8,
+        "power_L8": 2
+      },
+      "imputed_variance_share": 0.0
+    },
+    {
+      "target_rel": 0.000135,
+      "target_se": 6.21,
+      "batches": 1,
+      "predicted_se_with_margin": 5.9055877918862105,
+      "predicted_se_raw": 3.9370585279241403,
+      "allocated_core_hours": 101448.4091929111,
+      "replicates": {
+        "free_L5": 128,
+        "power_L8": 128,
+        "free_L8": 128,
+        "free_L4": 128,
+        "free_L3": 128,
+        "power_L3": 128,
+        "power_L4": 128,
+        "power_L6": 128,
+        "free_L7": 128,
+        "power_L7": 128,
+        "power_L5": 128,
+        "free_L6": 128
+      },
+      "s": {
+        "free_L3": 1024,
+        "free_L4": 1024,
+        "free_L5": 1024,
+        "free_L6": 512,
+        "free_L7": 256,
+        "free_L8": 16,
+        "free_L8_primitive": 64,
+        "power_L3": 64,
+        "power_L4": 128,
+        "power_L5": 128,
+        "power_L6": 64,
+        "power_L7": 32,
+        "power_L8": 4
+      },
+      "imputed_variance_share": 0.0
+    }
+  ],
+  "extra": [],
+  "strata": {
+    "free_L3": {
+      "V1": 217.33244814020705,
+      "C1": 0.30225909791490874,
+      "V1_imputed": 0.0,
+      "graphs": 10,
+      "piloted": 10,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L4": {
+      "V1": 915.3586442385941,
+      "C1": 1.097929786244458,
+      "V1_imputed": 0.0,
+      "graphs": 32,
+      "piloted": 32,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L5": {
+      "V1": 4943.18978339783,
+      "C1": 9.572967182201783,
+      "V1_imputed": 0.0,
+      "graphs": 152,
+      "piloted": 152,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L6": {
+      "V1": 9706.60065190762,
+      "C1": 110.78410873001228,
+      "V1_imputed": 0.0,
+      "graphs": 790,
+      "piloted": 790,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L7": {
+      "V1": 73630.6361912947,
+      "C1": 3679.894064078023,
+      "V1_imputed": 0.0,
+      "graphs": 4882,
+      "piloted": 4882,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L8": {
+      "V1": 24361.981222448037,
+      "C1": 100385.30633147211,
+      "V1_imputed": 0.0,
+      "graphs": 31632,
+      "piloted": 31632,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "free_L8_primitive": {
+      "V1": 635.0493500437358,
+      "C1": 306.90996149932494,
+      "V1_imputed": 0.0,
+      "graphs": 496,
+      "piloted": 496,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L3": {
+      "V1": 0.23017281883887605,
+      "C1": 0.12162446354740868,
+      "V1_imputed": 0.0,
+      "graphs": 2,
+      "piloted": 2,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L4": {
+      "V1": 3.703079067040089,
+      "C1": 0.38907225037600285,
+      "V1_imputed": 0.0,
+      "graphs": 6,
+      "piloted": 6,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L5": {
+      "V1": 71.08034687462828,
+      "C1": 4.102886441417872,
+      "V1_imputed": 0.0,
+      "graphs": 40,
+      "piloted": 40,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L6": {
+      "V1": 268.2207503624864,
+      "C1": 59.21409980124812,
+      "V1_imputed": 0.0,
+      "graphs": 214,
+      "piloted": 214,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L7": {
+      "V1": 908.3123994277564,
+      "C1": 1483.8450691578723,
+      "V1_imputed": 0.0,
+      "graphs": 1418,
+      "piloted": 1418,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    },
+    "power_L8": {
+      "V1": 423.334561946969,
+      "C1": 41390.75363671795,
+      "V1_imputed": 0.0,
+      "graphs": 8672,
+      "piloted": 8672,
+      "graph_campaigns": 0,
+      "kurtosis": null,
+      "skewness": null,
+      "max_abs_z": null,
+      "largest_share": null,
+      "varQ": null,
+      "blocks": 0,
+      "P8": null,
+      "P8_flag": false,
+      "alpha": null
+    }
+  },
+  "alpha_note": "no nested pilot: alpha = 0.5 assumed (Monte Carlo scaling) for every stratum",
+  "sector_P8": {
+    "free": {
+      "basis": "L8 graph-campaigns at 4096 points per replicate (C63d action 4; stage-A equivalent)",
+      "graph_campaigns": 0,
+      "blocks": 0,
+      "excluded_L8_other_points": 32128,
+      "excluded_L_le_7": 5866,
+      "varQ": null,
+      "P8": null,
+      "R16_advised": false
+    },
+    "power": {
+      "basis": "L8 graph-campaigns at 4096 points per replicate (C63d action 4; stage-A equivalent)",
+      "graph_campaigns": 0,
+      "blocks": 0,
+      "excluded_L8_other_points": 8672,
+      "excluded_L_le_7": 1680,
+      "varQ": null,
+      "P8": null,
+      "R16_advised": false
+    }
+  },
+  "tails": {
+    "rule": {
+      "hill_k": 16,
+      "xi_screen": 0.38,
+      "share_screen": 0.05,
+      "xi_confirm_two_campaign_mean": 0.44,
+      "confirm_points": 32768,
+      "thresholds_apply_to": "L8 only; L <= 7 statistics are diagnostics",
+      "source": "C63d: LRI_C8_D3_HPC_loop/PLAN.md C.3 and E.6, RECON.md 6.3.6, recon/cost_d3/tail_calib.py"
+    },
+    "screened": [],
+    "confirmed": [],
+    "undefined": [],
+    "diagnostics_L_le_7": {
+      "free_L3": {
+        "graph_campaigns": 10,
+        "undefined": 0,
+        "xi_hat_median": 0.09138121054739035,
+        "xi_hat_max": 0.1369307170516002,
+        "largest_share_max": 0.00855058895705457
+      },
+      "free_L4": {
+        "graph_campaigns": 32,
+        "undefined": 0,
+        "xi_hat_median": 0.17895235394516,
+        "xi_hat_max": 0.255798949327432,
+        "largest_share_max": 0.023727700762476586
+      },
+      "free_L5": {
+        "graph_campaigns": 152,
+        "undefined": 0,
+        "xi_hat_median": 0.2624670230057006,
+        "xi_hat_max": 0.5667629883393885,
+        "largest_share_max": 0.05772178828085472
+      },
+      "free_L6": {
+        "graph_campaigns": 790,
+        "undefined": 0,
+        "xi_hat_median": 0.3576695656344073,
+        "xi_hat_max": 0.8490863523074312,
+        "largest_share_max": 0.23367362384534598
+      },
+      "free_L7": {
+        "graph_campaigns": 4882,
+        "undefined": 0,
+        "xi_hat_median": 1.0790143683508129,
+        "xi_hat_max": 3.040289708441124,
+        "largest_share_max": 0.9494381828929559
+      },
+      "power_L3": {
+        "graph_campaigns": 2,
+        "undefined": 0,
+        "xi_hat_median": 0.2282179949677675,
+        "xi_hat_max": 0.2303784631633066,
+        "largest_share_max": 0.03396938097705321
+      },
+      "power_L4": {
+        "graph_campaigns": 6,
+        "undefined": 0,
+        "xi_hat_median": 0.774927780734521,
+        "xi_hat_max": 1.3270787274646363,
+        "largest_share_max": 0.15963265902158333
+      },
+      "power_L5": {
+        "graph_campaigns": 40,
+        "undefined": 0,
+        "xi_hat_median": 1.3222184236142134,
+        "xi_hat_max": 1.8949252540609711,
+        "largest_share_max": 0.8211113950048846
+      },
+      "power_L6": {
+        "graph_campaigns": 214,
+        "undefined": 0,
+        "xi_hat_median": 1.8003073053023926,
+        "xi_hat_max": 3.0584849511240666,
+        "largest_share_max": 0.9569025101160341
+      },
+      "power_L7": {
+        "graph_campaigns": 1418,
+        "undefined": 0,
+        "xi_hat_median": 2.301504209716999,
+        "xi_hat_max": 4.720608175590822,
+        "largest_share_max": 0.9994676495937922
+      }
+    },
+    "graph_campaigns": 48346,
+    "graph_campaigns_L8": 40800
+  },
+  "bundle": null
+}

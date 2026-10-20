@@ -1,0 +1,143 @@
+{
+  "schema": "c8-d2-build-record-1",
+  "executable": "c8d2_gmp_dd+mp256",
+  "backend": "gmp",
+  "executable_sha256": "d5df32ac87d612b2e94cee8dee770160d04f98ce48a421418ce750835f2fc33d",
+  "command": [
+    "g++",
+    "-O3",
+    "-mavx2",
+    "-mfma",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "-DC8_NUMERICS_MP256",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_dd+mp256"
+  ],
+  "compiler_options": [
+    "g++",
+    "-O3",
+    "-mavx2",
+    "-mfma",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_DD",
+    "-DC8_NUMERICS_MP256"
+  ],
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "compiler_macro_version": "11.4.0",
+  "CXX": "g++",
+  "CPPFLAGS": "",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "NUMERICS": "dd+mp256",
+  "numerics_sources": {
+    "defines": [
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_DD",
+      "-DC8_NUMERICS_MP256"
+    ],
+    "files": {
+      "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+      "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+      "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+      "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb"
+    }
+  },
+  "parameter_overrides": [],
+  "development": false,
+  "GMP_PREFIX": "",
+  "diagnostic": null,
+  "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "dd+mp256",
+    "diagnostic": false,
+    "numerics_params": {
+      "dd": {
+        "dd_ratio": "1e-20",
+        "routing": "cascade",
+        "cascade_low": "1e-23",
+        "range": 300,
+        "guard": "products",
+        "product_range": [
+          "2^-900",
+          "2^900"
+        ],
+        "exp": "dd-k-ln2-r64-taylor11-x6",
+        "sum": "compensated-b8-x4",
+        "err": "double",
+        "development": false
+      },
+      "mp256": {
+        "digits10": 77,
+        "mpf_precision_bits": 320,
+        "ratio": "1e-63",
+        "error_estimate": "calculate_shared<MP77,true>",
+        "escalation": "mp350"
+      }
+    },
+    "tail_top": 16,
+    "compiler": "11.4.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": "6.2.1",
+  "gmp_header": {
+    "cc": "x86_64-linux-gnu-gcc",
+    "cflags": "-g -O2 -ffile-prefix-map=/build/gmp-Wr5pU1/gmp-6.2.1+dfsg=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -O3"
+  },
+  "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "/lib/x86_64-linux-gnu/libgmp.so.10",
+    "realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1",
+    "sha256": "4dc20a901c6951e678e216e959da2534bcef7053e6efdf1492509baf142282b0",
+    "fat": false,
+    "rpath": null,
+    "runpath": "/cm/local/apps/boost/1.77.0//lib64",
+    "LD_LIBRARY_PATH": "/cm/local/apps/boost/1.77.0//lib64"
+  },
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": true
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-06T08:27:35Z"
+}

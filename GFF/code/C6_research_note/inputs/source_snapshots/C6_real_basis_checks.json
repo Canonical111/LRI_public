@@ -1,0 +1,104 @@
+{
+  "recommended": "Nine fixed values: Ls3 and multiple Clausen; no explicit Re/Im, no quintic, 18 polynomial monomials. Weight-five real-Clausen substitution is conventional, not a new summation theorem.",
+  "single_family_alternative": "Ten fixed values: three real log-sine values; no explicit Re/Im, no quintic, 18 polynomial monomials.",
+  "runs": [
+    {
+      "requested_digits": 45,
+      "working_digits": 60,
+      "scope": "Floating-point implementation checks, not interval certificates; no full C6 reevaluation.",
+      "old_HPL_reference": "Own series at i/2 then Taylor continuation to i; inherited code.",
+      "new_methods": "Ls3, Ls23, Ls41 by real quadrature; C5 by real Euler-weighted cosine coefficients at two cutoffs.",
+      "values": {
+        "Ls3_pi2": "-2.033576506072054600912068969700518249992376075613",
+        "Cl212_pi2": "0.032383901800869146760958099191565832743421490993408",
+        "Ls23_pi2": "-0.65654690311815897886395438618861899539937153923897",
+        "Ls41_pi2": "-9.0598821356014307567790482449490973217305099911751",
+        "old_D3": "-0.1136489175999036434415395019711459084182756078247",
+        "old_D5": "0.032383901800869146760958099191565832743421490993408",
+        "old_polylog_block_r6": "-67450.561644824807019583716044906233538627991056206",
+        "new_two_value_block_r6": "513745.28089972915684424343977698064731593722281182",
+        "two_value_polynomial_shift": "-581195.84254455396386382715582188688085456521386803",
+        "new_three_value_block_r6": "1539970.3361853852489839905951250359080140267179819",
+        "three_value_polynomial_shift": "-1607420.8978302100560035743111699421415526547090381"
+      },
+      "absolute_discrepancies": {
+        "D3_Ls3": "4.86173068583e-62",
+        "C5_real_cosine_vs_reference": "0.0",
+        "C5_Euler_cutoff_change": "0.0",
+        "C5_pure_log_sine_identity": "7.53568256303e-61",
+        "complete_two_value_replacement": "8.156630585e-56",
+        "complete_three_log_sine_replacement": "1.631326117e-55"
+      },
+      "exact_checks": {
+        "two_value_weighted_replacement": true,
+        "three_value_weighted_replacement": true,
+        "Ls3_polynomial_at_pi_over_2": true,
+        "G_pi3_new_coefficient": true,
+        "pi5_new_coefficient": true
+      },
+      "seconds": 0.9006304740905762
+    },
+    {
+      "requested_digits": 90,
+      "working_digits": 105,
+      "scope": "Floating-point implementation checks, not interval certificates; no full C6 reevaluation.",
+      "old_HPL_reference": "Own series at i/2 then Taylor continuation to i; inherited code.",
+      "new_methods": "Ls3, Ls23, Ls41 by real quadrature; C5 by real Euler-weighted cosine coefficients at two cutoffs.",
+      "values": {
+        "Ls3_pi2": "-2.033576506072054600912068969700518249992376075613046185506487429858439689686915123555411633066",
+        "Cl212_pi2": "0.032383901800869146760958099191565832743421490993408168591163619729535619974898033708257859352482",
+        "Ls23_pi2": "-0.65654690311815897886395438618861899539937153923897198608143998652216753465948218967078822749906",
+        "Ls41_pi2": "-9.0598821356014307567790482449490973217305099911750652346626000791245866203071153211719256028995",
+        "old_D3": "-0.11364891759990364344153950197114590841827560782470479192910923677205496985581297084191349194733",
+        "old_D5": "0.032383901800869146760958099191565832743421490993408168591163619729535619974898033708257859352482",
+        "old_polylog_block_r6": "-67450.561644824807019583716044906233538627991056206318436807854648262644440741295318199540796557",
+        "new_two_value_block_r6": "513745.28089972915684424343977698064731593722281181919131739725486806194851927715815692021415246",
+        "two_value_polynomial_shift": "-581195.84254455396386382715582188688085456521386802550975420510951632459296001845347511975494902",
+        "new_three_value_block_r6": "1539970.3361853852489839905951250359080140267179818757740087212991748379309154736790213712481842",
+        "three_value_polynomial_shift": "-1607420.8978302100560035743111699421415526547090380820924455291538231005753562149743395707889808"
+      },
+      "absolute_discrepancies": {
+        "D3_Ls3": "1.22629243392e-106",
+        "C5_real_cosine_vs_reference": "6.81273574401e-108",
+        "C5_Euler_cutoff_change": "0.0",
+        "C5_pure_log_sine_identity": "2.24820279552e-106",
+        "complete_two_value_replacement": "1.14298739128e-100",
+        "complete_three_log_sine_replacement": "2.28597478256e-100"
+      },
+      "exact_checks": {
+        "two_value_weighted_replacement": true,
+        "three_value_weighted_replacement": true,
+        "Ls3_polynomial_at_pi_over_2": true,
+        "G_pi3_new_coefficient": true,
+        "pi5_new_coefficient": true,
+        "general_angle_D5_derivative": true,
+        "general_angle_D5_boundary": true
+      },
+      "seconds": 3.196741819381714
+    }
+  ],
+  "preservation": {
+    "recommended_nine: preserved univariate_meijer_g_terms": true,
+    "recommended_nine: preserved bivariate_fox_H_terms": true,
+    "recommended_nine: preserved source_correction_unchanged": true,
+    "recommended_nine: preserved lower_parameters": true,
+    "recommended_nine: preserved eighth_parameters": true,
+    "recommended_nine: preserved primitive_compression_parameters": true,
+    "recommended_nine: preserved wheel_reduction": true,
+    "recommended_nine: preserved seventh_reduction": true,
+    "recommended_nine: no old projections or values": true,
+    "recommended_nine: polynomial 18 monomials": true,
+    "single_family_ten: preserved univariate_meijer_g_terms": true,
+    "single_family_ten: preserved bivariate_fox_H_terms": true,
+    "single_family_ten: preserved source_correction_unchanged": true,
+    "single_family_ten: preserved lower_parameters": true,
+    "single_family_ten: preserved eighth_parameters": true,
+    "single_family_ten: preserved primitive_compression_parameters": true,
+    "single_family_ten: preserved wheel_reduction": true,
+    "single_family_ten: preserved seventh_reduction": true,
+    "single_family_ten: no old projections or values": true,
+    "single_family_ten: polynomial 18 monomials": true
+  },
+  "new_full_C6_certificate": false,
+  "independence_or_minimality_proved": false
+}

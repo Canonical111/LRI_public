@@ -1,0 +1,127 @@
+{
+  "schema": "c8-d2-build-record-1",
+  "executable": "c8d2_gmp_exp1",
+  "backend": "gmp",
+  "executable_sha256": "5463fb834bc0252ebee081c3ec6f2da9dcdc7746768d82268b0cb876c96ad7c8",
+  "command": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-DC8_EXP1_RANGE=4000",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_EXP1",
+    "src/c8d2_integrate.cpp",
+    "-lquadmath",
+    "-lgmp",
+    "-o",
+    "bin/c8d2_gmp_exp1"
+  ],
+  "compiler_options": [
+    "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+    "-DC8_EXP1_RANGE=4000",
+    "-O3",
+    "-std=c++17",
+    "-fopenmp",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-DC8_USE_GMP",
+    "-DC8_NUMERICS",
+    "-DC8_NUMERICS_EXP1"
+  ],
+  "compiler": "g++ (Spack GCC) 13.3.0",
+  "compiler_macro_version": "13.3.0",
+  "CXX": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/bin/g++",
+  "CPPFLAGS": "-DC8_EXP1_RANGE=4000",
+  "OPTFLAGS": "-O3",
+  "CXXFLAGS": "",
+  "required_flags": "-std=c++17 -fopenmp -ffp-contract=off -fno-fast-math",
+  "LDFLAGS": "",
+  "LDLIBS": "",
+  "NUMERICS": "exp1",
+  "numerics_sources": {
+    "defines": [
+      "-DC8_NUMERICS",
+      "-DC8_NUMERICS_EXP1"
+    ],
+    "files": {
+      "src/numerics/dd.hpp": "d851fd5708dc8abe1592066e6549296d6d11f5d324979eeeee4d401c85dc16be",
+      "src/numerics/exp1.hpp": "7d197fc66c9ec1912082953ee6ab0027d790ae93e8eeb423d97dd506c96ed048",
+      "src/numerics/mp256.hpp": "b7b75ddbe7d3594691152a6ff40fab13228ebe866a8fae1b196adb1b99274637",
+      "src/numerics/numerics.hpp": "44f4b512be5bf3f2b01b00c4049b5dab20b0445cdd06d13c0ec332e504b86abb"
+    }
+  },
+  "parameter_overrides": [
+    "-DC8_EXP1_RANGE=4000"
+  ],
+  "development": true,
+  "GMP_PREFIX": "",
+  "diagnostic": null,
+  "describe": {
+    "schema": "c8-d2-build-1",
+    "dimension": 2,
+    "orders": [
+      7,
+      8
+    ],
+    "lmax": 8,
+    "kmax": 6,
+    "emax": 16,
+    "dimmax": 31,
+    "numerics": "exp1",
+    "diagnostic": false,
+    "numerics_params": {
+      "exp1": {
+        "xs": "x_j*exp(-shift/L) per shifted call",
+        "tiers": "binary128,mp",
+        "binary128_range": 4000,
+        "development": true,
+        "overrides": [
+          "C8_EXP1_RANGE"
+        ]
+      }
+    },
+    "tail_top": 16,
+    "compiler": "13.3.0",
+    "long_double_bits": 64,
+    "mp_backend": "gmp350",
+    "mp_digits10": 350,
+    "mp_max_digits10": 372,
+    "openmp": 201511
+  },
+  "required_flags_present": true,
+  "macros": {
+    "_OPENMP": "201511",
+    "__FAST_MATH__": null,
+    "__FINITE_MATH_ONLY__": "0",
+    "__OPTIMIZE__": "1"
+  },
+  "BOOST_LIB_VERSION": "1_77",
+  "BOOST_VERSION": "107700",
+  "gmp_version": "6.2.1",
+  "gmp_header": {
+    "cc": "/cm/shared/apps/spack/0.21.2/cpu/dev/lib/spack/env/gcc/gcc",
+    "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+  },
+  "gmp_library": {
+    "soname": "libgmp.so.10",
+    "path": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10",
+    "realpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib/libgmp.so.10.4.1",
+    "sha256": "470e376a088da9789b46f946ae6e4f0eff1fbff0c3bab0c106d1d3402a93dd40",
+    "fat": false,
+    "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64",
+    "runpath": null,
+    "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+  },
+  "optimized": true,
+  "preprocessor_probe": {
+    "flags": true,
+    "boost": true,
+    "gmp": true
+  },
+  "host": "<NODE>",
+  "created_utc": "2026-10-05T08:34:13Z"
+}

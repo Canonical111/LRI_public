@@ -1,0 +1,26 @@
+{
+ "status": "failed",
+ "requested": [
+  "w14_group_cleanup",
+  "w15_launch_cleanup"
+ ],
+ "executed": [
+  "w14_group_cleanup",
+  "w15_launch_cleanup"
+ ],
+ "tests": [],
+ "failed": [
+  {
+   "test": "w14_group_cleanup",
+   "error": "AssertionError: ([], None)",
+   "traceback": "Traceback (most recent call last):\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3922, in run\n    try:fn(ctx)\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3867, in <lambda>\n    TESTS+=(('w14_group_cleanup',lambda c:test_group_cleanup(c.E)),('w15_launch_cleanup',lambda c:test_launch_boundary_cleanup(c.E)))\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3812, in test_group_cleanup\n    assert caught is not None and 'deliberate failure after the leader was reaped'in str(caught)and 'Z13 cleanup: owned processes at the failure'in str(caught)and str(helper)in str(caught),str(caught)[-800:]\nAssertionError: ([], None)\n"
+  },
+  {
+   "test": "w15_launch_cleanup",
+   "error": "AssertionError: (143, 'warning: checkpoint_tasks=8 < 16 x 2 threads; per-block barriers and start-up will idle cores\\nrun: stopped by signal 15; native work stopped, job-private runtime removed, committed checkpoints kept\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3922, in run\n    try:fn(ctx)\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3867, in <lambda>\n    TESTS+=(('w14_group_cleanup',lambda c:test_group_cleanup(c.E)),('w15_launch_cleanup',lambda c:test_launch_boundary_cleanup(c.E)))\n  File \"<PROJECT>/LRI_C8_D2_HPC_wt_fx4g4/tests/unit_orchestration.py\", line 3862, in test_launch_boundary_cleanup\n    assert caught is not None and kids and 'Z13 cleanup: owned processes at the failure'in str(caught)and str(kids[0].pid)in str(caught),str(caught)[-800:]\nAssertionError: (143, 'warning: checkpoint_tasks=8 < 16 x 2 threads; per-block barriers and start-up will idle cores\\nrun: stopped by signal 15; native work stopped, job-private runtime removed, committed checkpoints kept\\n')\n"
+  }
+ ],
+ "python": "3.10.11",
+ "platform": "darwin"
+}

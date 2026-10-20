@@ -1,0 +1,58 @@
+{
+  "even_gap": 8.0,
+  "odd_gap": 7.0,
+  "padding": 1.0,
+  "multiplier": 0.6,
+  "iterations": 10,
+  "status": "infeasible",
+  "steps": [
+    {
+      "script": "errors_and_crossing.py",
+      "arguments": [],
+      "returncode": 0,
+      "elapsed_seconds": 12.001045227050781,
+      "stdout_tail": "14125403657e-06}\n{'name': 'odd_other_l0_d0.5181489', 'Delta': 0.518148806, 'ell': 0, 'sector': 'odd', 'error_effect_f': np.float64(-1.5084099194671703e-06), 'error_effect_h': 0.0, 'error_effect_Delta': 0.0, 'quadrature': 1.5084099194671703e-06}\n{'name': 'odd_other_l0_d5.2906', 'Delta': 5.2906, 'ell': 0, 'sector': 'odd', 'error_effect_f': np.float64(-1.3341524192769122e-06), 'error_effect_h': 0.0, 'error_effect_Delta': np.float64(5.432115221467727e-07), 'quadrature': 1.440500411542965e-06}\n{'name': 'even_other_l0_d7.2535', 'Delta': 7.2535, 'ell': 0, 'sector': 'even', 'error_effect_f': np.float64(-1.15133332268284e-06), 'error_effect_h': np.float64(-2.57313394537926e-07), 'error_effect_Delta': np.float64(2.6629949040605996e-08), 'quadrature': 1.1800371846320961e-06}\n{'name': 'even_other_l0_d6.8956', 'Delta': 6.8956, 'ell': 0, 'sector': 'even', 'error_effect_f': np.float64(-2.2902188422503095e-07), 'error_effect_h': np.float64(-7.241905164861488e-07), 'error_effect_Delta': np.float64(8.482046019993286e-08), 'quadrature': 7.642626761074931e-07}\n{'name': 'odd_other_l2_d6.9873', 'Delta': 6.9873, 'ell': 2, 'sector': 'odd', 'error_effect_f': np.float64(7.261400048525937e-07), 'error_effect_h': 0.0, 'error_effect_Delta': np.float64(-3.154402515027762e-08), 'quadrature': 7.268248290819503e-07}\ncrossing sigma max 2.7327442241440484e-05 first [-3.6998035269719085e-06, -1.248457081422233e-05, 0.0, 0.0, 3.6998035272169462e-06, 1.248457081422233e-05]\ncrossing epsilon max 0.010418905746206266 first [0.006603389880876444, 0.0019536359087876836, 0.0, 0.0, -0.006603389880876184, -0.0019536359087876836]\ncrossing mixed max 0.0006065282997321727 first [3.816655433556527e-05, 4.009154952635113e-06, -7.358545789818791e-05, 0.00012633619749185211, -0.00013031906147075375, 0.000508827220742303]\n"
+    },
+    {
+      "script": "complete_input_errors.py",
+      "arguments": [
+        "global"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 20.144906282424927,
+      "stdout_tail": "S 3.369442146725077e-06\nE -5.004770009475745e-06\nsse -1.0571445969581594e-06\neee 2.0024943828689246e-06\nct -7.398016366177984e-09\n"
+    },
+    {
+      "script": "complete_input_errors.py",
+      "arguments": [
+        "box"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 12.035472631454468,
+      "stdout_tail": "{'delta_b_min': -0.0008559725466668656, 'delta_b_max': 0.0008545928185447699, 'delta_F_min': -0.025390060950302475, 'delta_F_max': 0.025524825740133084, 'C1_min': 0.27108045218347876, 'C1_max': 0.2752353930314924}\n"
+    },
+    {
+      "script": "build_crossing.py",
+      "arguments": [
+        40
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 10.51932406425476,
+      "stdout_tail": "row 10 of 60\nrow 20 of 60\nrow 30 of 60\nrow 40 of 60\nrow 50 of 60\nfinished 92 154 maxpad [6.06034879e-06 8.62649261e-02 7.37851118e-04]\n"
+    },
+    {
+      "script": "final_run.py",
+      "arguments": [
+        8.0,
+        7.0,
+        1.0,
+        10
+      ],
+      "returncode": 1,
+      "elapsed_seconds": 8.886027574539185,
+      "stdout_tail": " 'input_linear_C1_shift': [-0.0014462379604303212, 0.0004669127625498003], 'objective_nonlinear_allowance': 5e-05, 'tail_integrals': [5.9152384587467604e-05, 0.00390599607469316, 0.014077231769619634], 'tail_C1': np.float64(0.0014687483981211812), 'interval': [np.float64(0.2701872160365389), np.float64(0.27513823327971026)]}\n8.0 7.0 3 {'iteration': 3, 'input_linear_C1_shift': [-0.0011673257589826008, 0.00017369233843617742], 'objective_nonlinear_allowance': 5e-05, 'tail_integrals': [3.072992357511519e-05, 0.0028153089583598675, 0.01219848912965468], 'tail_C1': np.float64(0.0012258096557693833), 'interval': [np.float64(0.27070911162030314), np.float64(0.27460203070955785)]}\nTraceback (most recent call last):\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/final_run.py\", line 13, in <module>\n    o=env.run(nit)\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 117, in run\n    self.anchors();integ=self.integral();tail=(integ[1]+integ[2]+C*integ[0])/b\n    ~~~~~~~~~~~~^^\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 47, in anchors\n    mx=np.array([self.d_extrema(k,i)[1] for i in range(n)])\n                 ~~~~~~~~~~~~~~^^^^^\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 43, in d_extrema\n    vals=self.extrema(self.J[k,i]);return self.d0[k,i]+np.array(vals)+self.pad[k,i]*np.array([-1,1])\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 39, in extrema\n    if not rr.success:raise RuntimeError('LP infeasible or failed: '+rr.message)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: LP infeasible or failed: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)\n"
+    }
+  ],
+  "diagnostic_message": "Traceback (most recent call last):\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/final_run.py\", line 13, in <module>\n    o=env.run(nit)\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 117, in run\n    self.anchors();integ=self.integral();tail=(integ[1]+integ[2]+C*integ[0])/b\n    ~~~~~~~~~~~~^^\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 47, in anchors\n    mx=np.array([self.d_extrema(k,i)[1] for i in range(n)])\n                 ~~~~~~~~~~~~~~^^^^^\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 43, in d_extrema\n    vals=self.extrema(self.J[k,i]);return self.d0[k,i]+np.array(vals)+self.pad[k,i]*np.array([-1,1])\n  File \"/tmp/c1-review-stress-f7qk6u06/c1_refinement/crossing_envelope.py\", line 39, in extrema\n    if not rr.success:raise RuntimeError('LP infeasible or failed: '+rr.message)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: LP infeasible or failed: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)\n",
+  "elapsed_seconds": 63.592172622680664
+}

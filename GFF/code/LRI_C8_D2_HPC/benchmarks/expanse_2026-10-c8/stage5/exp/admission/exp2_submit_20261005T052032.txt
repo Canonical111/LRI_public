@@ -1,0 +1,22 @@
+== 2026-10-05T02:20:33-07:00 on login01: C8_RUN=<SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2 C8_SBATCH_ARGS=-A <ACCOUNT> -p shared --mem=62G C8_LANE_MEM= C8_LANE_TIME= C8_LANES= C8_MERGE_TIME=
+== expanse-client project <ACCOUNT> -p
+bash: expanse-client: command not found
+== squeue -A <ACCOUNT> before
+54676895|RUNNING|compute|normal|1|<USER>|c8d2-s5e-zen2
+54676898|RUNNING|debug|debug-normal|1|<USER>|c8d2-s5e-exp1b
+54507317|PENDING|shared|shared-oneweek|1|vdommes|bash
+54505594_14|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+54505594_7|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+54505594_1|PENDING|shared|shared-normal|1|dsd|hwpar-su4j32-rest
+== <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/slurm/submit.sh 
+C8: admission {"account": "<ACCOUNT>", "account_running_normal": 1, "admission_ref": null, "caps": {"C8_EXP_ACCOUNT_RUNNING": 32, "C8_EXP_NODES": 4, "C8_EXP_RUNNING": 11, "C8_EXP_SHARED": 32, "C8_EXP_SUBMITTED": 27}, "k": 3, "limits": {"c8d2 shared-partition jobs": {"new": 3, "room": 32}}, "my_compute_nodes_live": 2, "my_running_normal": 1, "my_shared_live": 0, "my_submitted_normal": 1, "new_jobs": {"array": {"count": 2, "partitions": ["shared"]}, "merge": {"count": 1, "partitions": ["shared"]}}, "partitions": ["shared"], "room": 32, "site": "expanse"}
+C8: partition shared: 595 idle node(s)
+array 54676902: C8_INDEX_OFFSET=0, indices 5,11 (%64); logs <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2/slurm_logs/work-54676902_<i>.log
+merge 54676904 (afterok:54676902); log <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2/slurm_logs/merge-54676904.log
+status: <HOME>/c8d2/venv/bin/python3 <SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tools/production.py status <SCRATCH>/temp_project/c8d2/s5e-07ff5c1975e5/t2   (recovery: slurm/resubmit.sh)
+== submit.sh exit 0
+54676895 c8d2-s5e-zen2 RUNNING compute 6:08 1:00:00 None
+54676898 c8d2-s5e-exp1b RUNNING debug 5:38 30:00 None
+54676902_11 c8d2-array PENDING shared 0:00 15:00 None
+54676902_5 c8d2-array PENDING shared 0:00 15:00 None
+54676904 c8d2-merge PENDING shared 0:00 2:00:00 Dependency

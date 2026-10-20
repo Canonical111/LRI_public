@@ -1,0 +1,597 @@
+{
+ "_about": "Expected values of LRI_C5_general_d (note Section 20; owner of every row unless \"owner\" says cross-check). Quoted strings are copied from the condensed note at fa71533 (line numbers there) or from the paper (values it no longer prints at f496d39a are kept as cross-checks). Rules: value = the record rounded to the printed digits equals the quoted number (a trailing ellipsis also accepts truncation); bound = the record truncated to the printed significant digits is <= the quoted bound; range = the record minimum and maximum, rounded or truncated to the printed digits, equal the quoted ends; lower = the record is >= the quoted number; exact = equal integers. Checked by GFF/code/LRI_C5_general_d/public/replay.py.",
+ "note": {
+  "path": "GFF/note/long_range_ising_condensed.tex",
+  "commit": "fa71533"
+ },
+ "rows": {
+  "C5_1_end_to_end": {
+   "quoted": "-731.139476624539825853869126582527231",
+   "where": "note l.6916",
+   "rule": "value",
+   "tex": "C_5(1)&=-731.139476624539825853869126582527231",
+   "what": "C5(1) from gdr:C5reduced with 60-digit samples, K_d by gdk:Kr3 (five-node r3), P5(1) at 60 digits",
+   "record": "review/joint/numerics-end-to-end/e2e_report.json [\"1\"][\"values\"][\"C5_reduced_jetK_P5hp\"]"
+  },
+  "C5_2_end_to_end": {
+   "quoted": "-38.8336458962253605529369824675329232",
+   "where": "note l.6917",
+   "rule": "value",
+   "tex": "C_5(2)&=-38.8336458962253605529369824675329232",
+   "what": "C5(2), same route",
+   "record": "e2e_report.json [\"2\"][\"values\"][\"C5_reduced_jetK_P5hp\"]"
+  },
+  "C5_3_end_to_end": {
+   "quoted": "-5.850351420751327229217944230497744300111",
+   "where": "note l.6918",
+   "rule": "value",
+   "tex": "C_5(3)&=-5.850351420751327229217944230497744300111",
+   "what": "C5(3), same route",
+   "record": "e2e_report.json [\"3\"][\"values\"][\"C5_reduced_jetK_P5hp\"]"
+  },
+  "C5_1_vs_note": {
+   "quoted": "3e-34",
+   "where": "note l.7095 (73ae60b)",
+   "rule": "bound",
+   "tex": "printed to 33 decimals in Section~\\ref{sec:checks}, to $3\\cdot10^{-34}$",
+   "what": "|C5(1) end to end - the 33-digit C5(1) of note l.2531| / |C5(1)|",
+   "record": "recomputed from e2e_report.json and the note string; also e2e checks C5red_jetK_P5hp_vs_note"
+  },
+  "C5_2_vs_closed": {
+   "quoted": "2e-50",
+   "where": "note l.6921",
+   "rule": "bound",
+   "tex": "\\eqref{gc:C5twoClosed} to $2\\cdot10^{-50}$",
+   "what": "C5(2) end to end vs gc:C5twoClosed evaluated at 60 digits",
+   "record": "e2e_report.json [\"2\"][\"checks\"][\"C5red_jetK_vs_C5_twoClosed\"]"
+  },
+  "C5_3_vs_d3": {
+   "quoted": "5e-45",
+   "where": "note l.6921-6922",
+   "rule": "bound",
+   "tex": "\\path{LRI_C5_d3} to $5\\cdot10^{-45}$",
+   "what": "C5(3) end to end vs the 50-digit C5(3) of LRI_C5_d3 (note l.6078): five-node K and three-node K",
+   "record": "e2e_report.json [\"3\"][\"checks\"][\"C5red_jetK_P5hp_vs_LRI_C5_d3_json\"] (five-node K) and e2e_k3.log (three-node K), both at full precision"
+  },
+  "masters_vs_codes": {
+   "quoted": "2.1e-48",
+   "where": "note l.6908",
+   "rule": "bound",
+   "tex": "(50 digits): $\\le2.1\\cdot10^{-48}$",
+   "what": "P4, L, Q, Z compact forms vs the five-Horn and two-node codes, d = 1, 2, 3, 0.8, 1.25, 1.5, 2.5, 2.75",
+   "record": "specialize/results/c5_assembly_dps50.json dev_P4_compact, dev_L_compact, dev_Z_Qform, dev_Q_c0form"
+  },
+  "block_reduced_form": {
+   "quoted": "1.2e-48",
+   "where": "note l.6909",
+   "rule": "bound",
+   "tex": "\\eqref{gdr:C5reduced}: $\\le1.2\\cdot10^{-48}$",
+   "what": "the block 384AP4-576L-1728Q^2+(720A^2+1008R)Q+7152Z vs its reduced form",
+   "record": "c5_assembly_dps50.json dev_Bred_vs_B"
+  },
+  "block_vs_closed_d12": {
+   "quoted": "4e-50",
+   "where": "note l.6910",
+   "rule": "bound",
+   "tex": "($d=1,2$) $\\le4\\cdot10^{-50}$",
+   "what": "masters and block vs the closed forms at d = 1, 2",
+   "record": "c5_assembly_dps50.json dev_*_ref at d = 1, 2"
+  },
+  "block_vs_spectral_refs": {
+   "quoted": "4e-50",
+   "where": "note l.6910",
+   "rule": "bound",
+   "tex": "against the independent spectral references $4\\cdot10^{-50}$",
+   "what": "the block from the code records vs the block from the spectral reference masters, d = 0.8, 1.25, 1.5, 2.5, 2.75",
+   "record": "recomputed from L/results/val50.json, Z/results/zj90.json, references/reference_values.json; record.json \"block <= 4.0e-50\""
+  },
+  "block_d3_Q3_limited": {
+   "quoted": "6e-34",
+   "where": "note l.6912",
+   "rule": "bound",
+   "tex": "$d=3$ $6\\cdot10^{-34}$",
+   "what": "block at d = 3 vs the reference masters (limited by the 33-digit Q3)",
+   "record": "c5_assembly_dps50.json dev_B_ref at d = 3"
+  },
+  "lattice_identities_d12": {
+   "quoted": [
+    "1e-44",
+    "1e-46"
+   ],
+   "where": "note l.6899-6900",
+   "rule": "range",
+   "tex": "$10^{-44}$--$10^{-46}$",
+   "what": "d=1 duplication and d=2 square-lattice identities vs the five-Horn samples (r = 3, 4)",
+   "record": "output of specialize/check_special.py (rerun by replay)"
+  },
+  "landen_relations": {
+   "quoted": "5e-46",
+   "where": "note l.6900",
+   "rule": "bound",
+   "tex": "$\\mathcal A,\\mathcal B$ against $B_\\pm$: $5\\cdot10^{-46}$",
+   "what": "first-derivative relations at x = 1/2 and A, B against B+-",
+   "record": "check_special.py output"
+  },
+  "P4_L_from_modes_d12": {
+   "quoted": "2e-45",
+   "where": "note l.6901",
+   "rule": "bound",
+   "tex": "from the modes: $\\le2\\cdot10^{-45}$",
+   "what": "P4(1), L1, P4(2), L2 from the modes",
+   "record": "check_special.py output"
+  },
+  "d3_dictionary": {
+   "quoted": "1.2e-51",
+   "where": "note l.6902-6903",
+   "rule": "bound",
+   "tex": "all to $1.2\\cdot10^{-51}$",
+   "what": "c_{4,k}, X0, a4, b4, dH, da, P4(3), L3 vs the 160-digit LRI_C5_d3 values",
+   "record": "specialize/results/check_d3_dps50.log"
+  },
+  "d3_L3_formula": {
+   "quoted": "5e-64",
+   "where": "note l.6904",
+   "rule": "bound",
+   "tex": "formula $5\\cdot10^{-64}$",
+   "what": "C63d's L3 formula with this dictionary vs L3",
+   "record": "specialize/results/check_d3_dps50.log"
+  },
+  "DL_identity": {
+   "quoted": "1e-57",
+   "where": "note l.6772",
+   "rule": "bound",
+   "tex": "the identity holds to $10^{-57}$",
+   "what": "(2/(pi S^7)) D_L = Phat' - 8 sqrt2 N^4 c41 + 32 N^4 c42 at d = 3",
+   "record": "public/check_DL_Phat.py from samples_dps60.json and specialize/L3_final_values.json"
+  },
+  "DL_value_d3": {
+   "quoted": "-1332.48",
+   "where": "note l.6772",
+   "rule": "value",
+   "tex": "numerically $-1332.48$",
+   "what": "(2/(pi S^7)) D_L at d = 3",
+   "record": "public/check_DL_Phat.py"
+  },
+  "Phat_prime_d3": {
+   "quoted": "274.55",
+   "where": "note l.6772",
+   "rule": "value",
+   "tex": "$\\widehat P'=274.55$",
+   "what": "C63d's Phat' at b = 3/2",
+   "record": "specialize/L3_final_values.json Phat_prime"
+  },
+  "pole_node_vs_multinode": {
+   "quoted": [
+    "5e-21",
+    "3e-23"
+   ],
+   "quoted_fa71533": [
+    "3e-21",
+    "3e-23"
+   ],
+   "note_change": "N9",
+   "where": "note l.6905-6906",
+   "rule": "range",
+   "tex": "$3\\cdot10^{-21}$--$3\\cdot10^{-23}$",
+   "tex_after": "$5\\cdot10^{-21}$--$3\\cdot10^{-23}$",
+   "what": "gdr:taylorW vs the multi-node values (d = 1.5, 2.5; r = 3, 4)",
+   "record": "specialize/results/check_taylor_dps30.log"
+  },
+  "topmode_balanced": {
+   "quoted": [
+    "2.4e-51",
+    "1.6e-49"
+   ],
+   "where": "note l.6446-6447",
+   "rule": "range",
+   "tex": "between $2.4\\cdot10^{-51}$ and\n$1.6\\cdot10^{-49}$",
+   "what": "|c_{r,r-1}|/max|c| at the 22 balanced configurations (r = 2..6, 0.8 <= d <= 3.2, complex b)",
+   "record": "review/topmode-numeric/results/probe_*.json (superseded entries as in summarize.py)"
+  },
+  "topmode_balanced_count": {
+   "quoted": "22",
+   "where": "note l.6447",
+   "rule": "exact",
+   "tex": "at 22 configurations",
+   "what": "number of balanced configurations",
+   "record": "review/topmode-numeric/results/probe_*.json"
+  },
+  "topmode_surviving": {
+   "quoted": [
+    "1.6e-3",
+    "1"
+   ],
+   "where": "note l.6447-6448",
+   "rule": "range",
+   "tex": "surviving modes of\n$1.6\\cdot10^{-3}$ to $1$",
+   "what": "surviving modes |m| <= r-2, relative",
+   "record": "review/topmode-numeric/results/probe_*.json"
+  },
+  "topmode_unbalanced": {
+   "quoted": [
+    "6.7e-4",
+    "4.6e-2"
+   ],
+   "where": "note l.6444-6445",
+   "rule": "range",
+   "tex": "modes of $6.7\\cdot10^{-4}$ to $4.6\\cdot10^{-2}$",
+   "what": "unbalanced controls U1, U2 (spoke half-exponent shifted)",
+   "record": "probe_ctrl.json"
+  },
+  "topmode_no_1plusz": {
+   "quoted": "1.9e-3",
+   "where": "note l.6445",
+   "rule": "value",
+   "tex": "and $1.9\\cdot10^{-3}$ when the factor $1+z$",
+   "what": "top mode when the factor 1+z is dropped (N1r4)",
+   "record": "probe_ctrl.json N1r4"
+  },
+  "higher_modes_c53_c64": {
+   "quoted": [
+    "1.6e-3",
+    "0.16"
+   ],
+   "where": "note l.6462",
+   "rule": "range",
+   "tex": "$c_{5,3}$ and $c_{6,4}$ are $1.6\\cdot10^{-3}$ to $0.16$",
+   "what": "c_{5,3} and c_{6,4} relative to the largest mode",
+   "record": "probe_*.json, r = 5, 6"
+  },
+  "unbalanced_control_fr": {
+   "quoted": "0.017",
+   "where": "note l.6443",
+   "rule": "value",
+   "tex": "equal to $1.7\\%$ of the largest mode",
+   "what": "unbalanced wheel d=1, r=4, sigma=0.2, half-exponent 0.25: |gamma_{+-3}|/max",
+   "record": "review/foundation-rigor/results/control_unbalanced.log (17-node summary \"top\")"
+  },
+  "lemmaG_mixed": {
+   "quoted": [
+    "2.8e-48",
+    "4.7e-44"
+   ],
+   "where": "note l.6449, 6925",
+   "rule": "range",
+   "tex": "between $2.8\\cdot10^{-48}$ and $4.7\\cdot10^{-44}$",
+   "what": "top modes at the 12 mixed wheels A1-A6, B1-B6 (48 digits)",
+   "record": "review/lemmaG-numeric/results/summary.json"
+  },
+  "lemmaG_R": {
+   "quoted": [
+    "6.5e-47",
+    "5.2e-45"
+   ],
+   "where": "note l.6451-6452, 6926",
+   "rule": "range",
+   "tex": "$6.5\\cdot10^{-47}$--$5.2\\cdot10^{-45}$ at four $R$ kernels",
+   "what": "R1-R4",
+   "record": "summary.json"
+  },
+  "lemmaG_W0": {
+   "quoted": "3.0e-46",
+   "where": "note l.6926",
+   "rule": "value",
+   "tex": "$3.0\\cdot10^{-46}$ at one wheel",
+   "what": "equal wheel W0",
+   "record": "summary.json"
+  },
+  "lemmaG_fine": {
+   "quoted": "9.3e-54",
+   "where": "note l.6452, 6927",
+   "rule": "bound",
+   "tex": "at most $9.3\\cdot10^{-54}$",
+   "what": "54-digit reruns inside (C)",
+   "record": "summary.json *_fine"
+  },
+  "lemmaG_continued": {
+   "quoted": "2e-47",
+   "where": "note l.6928",
+   "rule": "bound",
+   "tex": "below $2\\cdot10^{-47}$ (54 digits)",
+   "what": "four analytically continued points outside (C), 54 digits",
+   "record": "summary.json *_cont_fine"
+  },
+  "lemmaG_controls": {
+   "quoted": [
+    "0.0013",
+    "0.047"
+   ],
+   "where": "note l.6930",
+   "rule": "range",
+   "tex": "$0.047$ down to $0.0013$ for $\\delta_{\\rm bal}=0.15$ down to $0.0015$",
+   "what": "per-factor imbalance at fixed total balance, delta = 0.0015 and 0.15",
+   "record": "review/lemmaG-numeric/results/summary_controls.json imbalance_A1"
+  },
+  "lemmaG_external": {
+   "quoted": "1e-15",
+   "where": "note l.6625 (73ae60b)",
+   "rule": "bound",
+   "tex": "its modes agree with those of the 48-digit lattice-sum code to $10^{-15}$",
+   "what": "C63d's per-spin modes (R5, G2, C1) vs the probe, the 48-digit lattice-sum code of review/lemmaG-numeric",
+   "record": "results/external_comparison.json"
+  },
+  "check_topG_modes": {
+   "quoted": [
+    "1e-24",
+    "9e-16"
+   ],
+   "where": "note l.6459",
+   "rule": "range",
+   "tex": "finds $10^{-24}$ to $9\\cdot10^{-16}$",
+   "what": "top modes at the larger cutoff, four mixed points",
+   "record": "foundation/check_topG.log"
+  },
+  "check_topG_controls": {
+   "quoted": [
+    "9e-10",
+    "2e-5"
+   ],
+   "where": "note l.6461",
+   "rule": "range",
+   "tex": "against $9\\cdot10^{-10}$ to $2\\cdot10^{-5}$",
+   "what": "controls with right shifts +-0.1",
+   "record": "foundation/check_topG.log"
+  },
+  "check_topG_identities": {
+   "quoted": "1e-29",
+   "where": "note l.6935",
+   "rule": "bound",
+   "tex": "\\eqref{gdr:mixed} to $10^{-29}$",
+   "what": "kernel identity (Step 5) and mixed-wheel dictionary",
+   "record": "foundation/check_topG.log"
+  },
+  "review_offcentre_digits": {
+   "quoted": [
+    "44",
+    "53"
+   ],
+   "where": "note l.6940",
+   "rule": "range",
+   "tex": "to $44$--$53$ digits",
+   "what": "off-centre W3, W4 from exact big-integer samples",
+   "record": "review/formula-from-text/compare.out"
+  },
+  "review_P4_digits": {
+   "quoted": [
+    "31",
+    "39"
+   ],
+   "where": "note l.6940-6941",
+   "rule": "range",
+   "tex": "spectral references to $31$--$39$",
+   "what": "P4 vs spectral references",
+   "record": "compare.out"
+  },
+  "review_L_digits": {
+   "quoted": [
+    "31",
+    "38"
+   ],
+   "where": "note l.6941",
+   "rule": "range",
+   "tex": "and $31$--$38$ digits",
+   "what": "L_d vs spectral references",
+   "record": "compare.out"
+  },
+  "review_coeff_functions": {
+   "quoted": "1.2e-38",
+   "where": "note l.6942",
+   "rule": "bound",
+   "tex": "at 11 values of $d$ to $1.2\\cdot10^{-38}$",
+   "what": "coefficient functions of the five-Horn formula",
+   "record": "review/L-rigor/coeff_check.log \"worst\""
+  },
+  "review_Z1_digits": {
+   "quoted": "30.7",
+   "where": "note l.6942",
+   "rule": "value",
+   "tex": "$Z_1,Z_2,Z_3$ to $30.7$, $35.2$, $29.5$",
+   "what": "Z1 digits",
+   "record": "compare.out (d = 1)"
+  },
+  "review_Z2_digits": {
+   "quoted": "35.2",
+   "where": "note l.6942",
+   "rule": "value",
+   "tex": "$35.2$",
+   "what": "Z2 digits",
+   "record": "compare.out (d = 2)"
+  },
+  "review_Z3_digits": {
+   "quoted": "29.5",
+   "where": "note l.6942",
+   "rule": "value",
+   "tex": "$29.5$",
+   "what": "Z3 digits",
+   "record": "compare.out (d = 3)"
+  },
+  "review_block_digits": {
+   "quoted": [
+    "30.4",
+    "35.6"
+   ],
+   "where": "note l.6943",
+   "rule": "range",
+   "tex": "to $30.4$--$35.6$ digits",
+   "what": "reduced C5 block vs reference-master block",
+   "record": "compare.out"
+  },
+  "c0hat_gamma_offcentre": {
+   "quoted": "1e-40",
+   "where": "note l.6981",
+   "rule": "bound",
+   "tex": "also at $b=0.8$ and complex $b$",
+   "what": "d=3 Gamma form of c0hat at b = 0.8, 1.2, 1.35, 1.6 and complex b (largest deviation)",
+   "record": "review/Z-rigor/d3_gamma_offcenter.log"
+  },
+  "pslq_c0hat": {
+   "quoted": "1e11",
+   "where": "note l.6887",
+   "rule": "lower",
+   "tex": "no relation with coefficients below $10^{11}$",
+   "what": "smallest max coefficient of the PSLQ outputs for log|c0hat| at d = 4/5, 8/5, 12/5, 16/5",
+   "record": "specialize/results/gamma_c0_dps80.json"
+  },
+  "pslq_DL": {
+   "quoted": "3e3",
+   "where": "note l.6889-6892",
+   "rule": "lower",
+   "tex": "none with coefficients below about $10^4$",
+   "what": "smallest max coefficient of the PSLQ outputs for L_d at d = 4/3, 8/3 (two precisions; the relations differ)",
+   "record": "specialize/results/pslq_L_dps110.json"
+  },
+  "k3_three_node": {
+   "quoted": [
+    "3.8e-45",
+    "5.0e-44",
+    "-8.1e-43"
+   ],
+   "where": "note l.7631",
+   "rule": "values",
+   "tex": "$3.8\\cdot10^{-45}$, $5.0\\cdot10^{-44}$ and $-8.1\\cdot10^{-43}$",
+   "what": "K_d from three-node jets via gdk:Kr3 vs Mellin-Barnes, d = 1.5, 2.5, 3",
+   "record": "review/joint/numerics-end-to-end/e2e_k3.log"
+  },
+  "xc_C5_table_sec1": {
+   "quoted": [
+    "-731.13947662454",
+    "-38.833645896",
+    "-5.850351421"
+   ],
+   "where": "note l.101; paper Table tab:pt \\CfiveOne, \\CfiveTwo, \\CfiveThree",
+   "rule": "values",
+   "tex": "$-731.13947662454$ & $-38.833645896$ & $-5.850351421$",
+   "owner": "cross-check",
+   "what": "Section 1 table C5(1..3)",
+   "record": "e2e_report.json"
+  },
+  "xc_C5_status": {
+   "quoted": [
+    "-731.139476624…",
+    "-38.8336458962…",
+    "-5.85035142075…"
+   ],
+   "where": "note l.6996",
+   "rule": "values",
+   "tex": "$C_5(1)=-731.139476624\\ldots$",
+   "owner": "cross-check",
+   "what": "gdr:status abbreviated values",
+   "record": "e2e_report.json"
+  },
+  "xc_C5_1_note33": {
+   "quoted": "-731.139476624539825853869126582527…",
+   "where": "note l.2531",
+   "rule": "value",
+   "owner": "cross-check (d = 1 analytic)",
+   "tex": "$-731.139476624539825853869126582527\\ldots$",
+   "what": "33-digit C5(1)",
+   "record": "e2e_report.json"
+  },
+  "xc_C5_2_note25": {
+   "quoted": "-38.83364589622536055293698…",
+   "where": "note l.3915",
+   "rule": "value",
+   "owner": "cross-check (closed_forms_2)",
+   "tex": "$C_5(2)=-38.83364589622536055293698\\ldots$",
+   "what": "25-digit C5(2)",
+   "record": "e2e_report.json"
+  },
+  "xc_paper_C5_3": {
+   "quoted": "-5.85035142075132722921794423049774…",
+   "where": "note l.390 (50 digits); not printed in the paper at f496d39a (was app_closed_forms.tex l.588)",
+   "rule": "value",
+   "owner": "cross-check (LRI_C5_d3)",
+   "what": "C5(3) (33 digits)",
+   "record": "e2e_report.json"
+  },
+  "xc_paper_L3": {
+   "quoted": "-62.7105849683876693472961734335348…",
+   "where": "note 953aa45 l.4348; not printed in the paper at f496d39a (was l.585)",
+   "rule": "value",
+   "owner": "cross-check (LRI_C5_d3)",
+   "what": "L3",
+   "record": "e2e_report.json [\"3\"][\"values\"][\"L\"]"
+  },
+  "xc_paper_dH": {
+   "quoted": "2539.52445251775601935…",
+   "where": "earlier versions of the paper (app_closed_forms.tex l.572); a check of the record",
+   "rule": "value",
+   "owner": "cross-check (LRI_C5_d3)",
+   "what": "d_H (not printed in the paper at f496d39a)",
+   "record": "specialize/results/check_d3_dps50.log"
+  },
+  "xc_paper_da": {
+   "quoted": "11.38885029910005086619…",
+   "where": "earlier versions of the paper (app_closed_forms.tex l.572); a check of the record",
+   "rule": "value",
+   "owner": "cross-check (LRI_C5_d3)",
+   "what": "d_a (not printed in the paper at f496d39a)",
+   "record": "specialize/results/check_d3_dps50.log"
+  }
+ },
+ "record_sha256": {
+  "review/joint/numerics-end-to-end/e2e_report.json": "7cdae268866e166a5bca5983e8c077293b2a9890808898c018468aa287ceaf7f",
+  "review/joint/numerics-end-to-end/record.json": "75ea149099e4a0bceeaea94b6f712a8cd1de3a28957565e10c8d8c5b359bb665",
+  "review/joint/numerics-end-to-end/e2e_k3.log": "738a963959c726440c6864edd1f6994afdb23ad06b293fd747cf76d796689ecb",
+  "review/joint/numerics-end-to-end/k3_jets.json": "23fea6d378a5d2afc020c4c1414dcce63af2e1589e66813510ab605ab482799f",
+  "specialize/results/c5_assembly_dps50.json": "92d4d9982a26e1165971b9da269aa44336979d7cd2b0f8b88e961142e1cbf8c3",
+  "specialize/results/check_d3_dps50.log": "9f0d46e3920aad253d77a4f15da398b52fd2b5c791a02eeebd484012b2d637a4",
+  "specialize/results/check_taylor_dps30.log": "13fceb7c2ac0ecdb162aa2adc9139976084832e6795ec5748c6b1f41fda75106",
+  "specialize/results/gamma_c0_dps80.json": "a48af9546c19d364d7c1838c636ad43390e660c90e0d66b8115be80d8712a0a2",
+  "specialize/results/pslq_L_dps110.json": "f50c85a8b52e11f23a2786ad621639f4e004bd7cace08d2b04480d756dbd6f60",
+  "specialize/L3_final_values.json": "6d091e6ff138c241a0a944e683531ad624e4e98dcc2df65c076fd84673cb5672",
+  "L/results/val50.json": "761b17d0d3f0ea8f6a84afbda890a4c5ccb7eab27ace5e3de841713b94b42f25",
+  "L/results/val70.json": "b4640532e9864090da859981206ed9a3ef0840f4e21f7b7889fc0f2a98472009",
+  "Z/results/zj60.json": "d55e94da537d6132ef69e1aca07d28aa096bca8295719b88a3b86b377305ff58",
+  "Z/results/zj90.json": "0895f7768075d014bc6866a270c9ff5f74434ff0036d3c0ae7ba1f9ce826fd43",
+  "Z/results/Z_values.json": "6469769ea1b6ff821e6779d1d6c52b75cfec4a3b7370491892d0502616411346",
+  "references/reference_values.json": "a081adc4c7dfc3449631e4327bf717c5b45426a1679137b0d059480d021b7a5f",
+  "foundation/check_topG.log": "1b015c8f4b7bc1a54886d5fee577a71140bd61ed60b4a728d744e0af507d23bb",
+  "review/lemmaG-numeric/results/summary.json": "5e85f95450e67055bc9640e16940d4ae92e60545b930affb49cb2da001292677",
+  "review/lemmaG-numeric/results/summary_controls.json": "d3d3cc002c65b707912803c7e2759e3ad785232e540ac60cf8266bfb90549b18",
+  "review/lemmaG-numeric/results/external_comparison.json": "7745a5fc4564123a889e5128a845195f2a8d7b5e4d24e07dbfb35d2f1d49fe5d",
+  "review/L-rigor/coeff_check.log": "935f1dbf904b1bd6c7f64dd62fb0ba7afc6e2069dfefbec5a70f4ff907154ad4",
+  "review/formula-from-text/compare.out": "900e29f688a8bcf8dd667e725ca91fe169403e9fc17fcb55a04046b4f6d04783",
+  "review/foundation-rigor/results/control_unbalanced.log": "bc7efd1a317ab8516d6550277a0864b6a892bad33d76189bd6c52e4fb835d414",
+  "review/Z-rigor/d3_gamma_offcenter.log": "5d4d3da14a9d4833eca30b2185f725bd528c2afb00572b278b956d4d8300ec3d",
+  "K_general/position_space/K_d_values_mb_D100.json": "f57381be10fde721edd9bd059f96fc05dc459f5aeff2fdfa650008c444d6e48c",
+  "review/topmode-numeric/results/probe_ctrl.json": "cef794a2aea2d4977361845c75a4c545cf707a7f3a9b05ef0bdc84e48003130c",
+  "review/topmode-numeric/results/probe_ctrl2.json": "8b40e37ec08a5eb2316e61db02f1dd10f393e4a6bf00820fd3a7fd72d5998db0",
+  "review/topmode-numeric/results/probe_extra1.json": "878a773fb94804c5b9fd5ba0da6c76add4c5e0bf38164d07bfd955b639103d64",
+  "review/topmode-numeric/results/probe_extra2.json": "76cd075029e746b79d6595904096d3b3e6662cdc7ecce9b6fed6a5862d76fc8d",
+  "review/topmode-numeric/results/probe_hA1r2.json": "d17215b5189c2c0b54a8d8e270b3268993497625c31385eee31dff8e5f3cb3c0",
+  "review/topmode-numeric/results/probe_hA4r3.json": "ba67c9e00632464c7097e36652d86f1c3ad96f6e2618329b779c6f20a635c50d",
+  "review/topmode-numeric/results/probe_mainD2fix.json": "9d8b83c3f5eaed2db9284641471689866fba6ec7a25c74edae1a07c4e265caf3",
+  "review/topmode-numeric/results/probe_mainG1.json": "cb951131fde4d4e508894252b1a6fea18d73ee183a33ef7bf7970b816a6094e8",
+  "review/topmode-numeric/results/probe_mainG2.json": "c06d007b5cff2077150a840b78986349a0459e398264a3c7172ae013d7386bc2",
+  "review/topmode-numeric/results/probe_mainG3.json": "90210977cafc8566c25124adf195901706f42ef9a661749c9d3b482c1a42d42d",
+  "K_general/R_part/prod/prod_B_d0.8.json": "21f228630a945fa4f28e2688844c8750e0ca9ac84552a84f8c048557b57a1a00",
+  "K_general/R_part/prod/prod_B_d1.25.json": "eafce65768a722a84b4df79e612faf6497e831cc5d1cc5ad3093f14da2241715",
+  "K_general/R_part/prod/prod_B_d1.5.json": "1d4637be4473ba95ef054f5275d9754a35fb83d0f92d1c45a062f8d829cbebf3",
+  "K_general/R_part/prod/prod_B_d1.json": "a2d68c6983dd6c96bd76b3312668d1eb04e2b3b02dbe3b0d22c59747032676e2",
+  "K_general/R_part/prod/prod_B_d2.5.json": "4548af81d5d0f402c1429c12b10461694c7a0e46debc719c5525453ef62b11d9",
+  "K_general/R_part/prod/prod_B_d2.75.json": "dccfab17613f08e949b26813ec769f88803fbd079e1dace78e989fb3c598d405",
+  "K_general/R_part/prod/prod_B_d2.json": "4968d89586d087712208d23f346269235562ef90e29b26552be592b87cc6787d",
+  "K_general/R_part/prod/prod_B_d3.json": "a22f008019fc7faea3b8f5d16cda194d5fcd121ac49cc2474554710c687d5416"
+ },
+ "code_md5": {
+  "L/L_general.py": "805c42c1a1d348fbdad1ee1c522dafb3",
+  "Z/Z_general.py": "6d2d7c5913c85ead3df3ed8dd57259d3",
+  "foundation/hypsums.py": "9c9a4543ad6a07d073eadf29d939936c",
+  "review/lemmaG-numeric/lg_engine.py": "9b5d269f3352b9354e30006a8dbafbd0",
+  "references/reference_values.json": "905dae8d9e10cf1fbbe4294d6f5fac18",
+  "K_general/R_part/rblocks.py": "6652a7dd5bf374fddb279690b11b7b7d"
+ },
+ "code_md5_recorded": {
+  "L/L_general.py": "805c42c1",
+  "Z/Z_general.py": "6d2d7c59",
+  "foundation/hypsums.py": "9c9a4543",
+  "review/lemmaG-numeric/lg_engine.py": "9b5d269f",
+  "references/reference_values.json": "905dae8d",
+  "K_general/R_part/rblocks.py": "6652a7dd"
+ },
+ "not_bound": [
+  "review/joint/numerics-end-to-end/samples_dps60.json (field \"root\" names a cluster path; replay uses only \"values\")",
+  "review/lemmaG-numeric/probe_report.json (names cluster nodes; a model-written record cited by the note)"
+ ]
+}

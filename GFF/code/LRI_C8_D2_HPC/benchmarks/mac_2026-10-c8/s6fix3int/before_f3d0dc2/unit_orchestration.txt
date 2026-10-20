@@ -1,0 +1,40 @@
+FAIL route_b_records: AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'F1_coverage': {'free': {'binary128_accepted': 29284, 'mp_promoted': 3541}, 'power': {'binary128_accepted': 50625, 'mp_promoted': 12568}}, 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True}]
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3830, in run
+    try:fn(ctx)
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3752, in <lambda>
+    ('inputs',lambda c:test_inputs_refusals(c.E)),('exe',lambda c:test_executable_identity(c.E)),('route_b_records',lambda c:test_route_b_records(c.E)),
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 596, in test_route_b_records
+    try:p.route_b(meta(gates=gs),**kw);raise AssertionError(f'route_b accepted the gate entry {gs}')
+AssertionError: route_b accepted the gate entry [{'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'profile_executable_sha256': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'slurm_job': '570210', 'F1_coverage': {'free': {'binary128_accepted': 29284, 'mp_promoted': 3541}, 'power': {'binary128_accepted': 50625, 'mp_promoted': 12568}}, 'source_snapshot_sha256': '5555555555555555555555555555555555555555555555555555555555555555', 'F5_team_sizes_verified': True}]
+
+FAIL z3_build_record: AssertionError: non-test plan z3_13: exit 0, expected 1
+warning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores
+projected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)
+C8: base seed 771100431 registered in <tmp>/c8d2_orch_zq32drpx/nontest_seeds.json (source <tmp>/c8d2_orch_zq32drpx/z3_13; 1 entries) before the campaign was published (
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3830, in run
+    try:fn(ctx)
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3773, in <lambda>
+    TESTS+=(('z3_build_record',lambda c:test_build_record_required(c.E)),('z15_plan_seed',lambda c:test_plan_registers_seed(c.E)),
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3533, in test_build_record_required
+    d=E.td/f'z3_{n}';cp=N.plan(d,seed=SEED+200,expect=1)
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3504, in plan
+    if (cp.returncode==0)!=(expect==0):raise AssertionError(f'non-test plan {d.name}: exit {cp.returncode}, expected {expect}\n{cp.stderr[-2500:]}')
+AssertionError: non-test plan z3_13: exit 0, expected 1
+warning: --checkpoint-tasks 8 < 16 x 2 threads; per-block barriers will idle cores
+projected files: 320 (per-index task files 24, checkpoints 24, lane done markers and attempt logs 48, group files)
+C8: base seed 771100431 registered in <tmp>/c8d2_orch_zq32drpx/nontest_seeds.json (source <tmp>/c8d2_orch_zq32drpx/z3_13; 1 entries) before the campaign was published (Z15)
+
+
+FAIL z9_plan_counts: AssertionError: read_bundle accepted a counts file with repeated graph
+Traceback (most recent call last):
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3830, in run
+    try:fn(ctx)
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3801, in <lambda>
+    TESTS+=(('z9_plan_counts',lambda c:test_plan_bundle_counts_strict(c.E)),)
+  File "<f3d0dc2-export>/tests/unit_orchestration.py", line 3793, in test_plan_bundle_counts_strict
+    try:p.read_bundle(B);raise AssertionError(f'read_bundle accepted a counts file with {what}')
+AssertionError: read_bundle accepted a counts file with repeated graph
+
+{"status": "failed", "requested": ["route_b_records", "z3_build_record", "z9_plan_counts"], "executed": 3, "tests": 0, "failed": ["route_b_records", "z3_build_record", "z9_plan_counts"]}

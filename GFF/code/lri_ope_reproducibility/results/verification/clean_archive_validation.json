@@ -1,0 +1,61 @@
+{
+  "test": "Clean extraction of a ZIP containing the complete release computation and source tree; manifest verified before execution.",
+  "candidate_sha256": "67b0106b54eb1d2ad4aaf87b73244f263efda2ec29401ec7828402901cc5774f",
+  "commands": [
+    "python scripts/check_manifest.py",
+    "python run.py all",
+    "python scripts/check_standalone_note.py"
+  ],
+  "tasks": {
+    "quick": {
+      "status": "passed",
+      "seconds": 5.255
+    },
+    "symbolic": {
+      "status": "passed",
+      "seconds": 53.654
+    },
+    "numeric": {
+      "status": "passed",
+      "seconds": 162.145
+    },
+    "integrals": {
+      "status": "passed",
+      "seconds": 52.443
+    },
+    "masters": {
+      "status": "passed",
+      "seconds": 7.639
+    },
+    "figures": {
+      "status": "passed",
+      "seconds": 11.472
+    },
+    "note": {
+      "status": "passed",
+      "seconds": 4.284
+    }
+  },
+  "source_and_input_files_unchanged": true,
+  "runner_identical": true,
+  "latex_source_identical": true,
+  "exact_output_matches": {
+    "results/coefficients.json": true,
+    "results/coefficient_table.csv": true,
+    "results/bootstrap/historical/comparison_results.json": true,
+    "results/bootstrap/current/comparison_results.json": true
+  },
+  "pdf_text_and_page_structure_match": true,
+  "pdf_pages": 34,
+  "standalone_compilation": {
+    "only_input": "note/lri_ope_note.tex",
+    "external_bibliography": false,
+    "figure_inputs": [],
+    "compiled": true,
+    "unresolved_references": false,
+    "overfull_boxes": [],
+    "pdf_summary": "Output written on lri_ope_note.pdf (33 pages, 556868 bytes)."
+  },
+  "post_test_additions": "Final inspection reports, this validation record, and final SHA-256 manifest. No computational source or input modifications.",
+  "qualification": "A clean computational reproduction, not independent physical validation of shared master identities or resummation uncertainties."
+}

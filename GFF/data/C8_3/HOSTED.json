@@ -1,0 +1,410 @@
+{
+ "schema": "gff-hosted-2",
+ "package": "C8_3",
+ "base_url": "https://zenodo.org/records/23466766/files",
+ "about": "Hosted files of C8(3), in the project's Zenodo data record (https://doi.org/10.5281/zenodo.23466766). Paths (\"name\") are relative to GFF/data/C8_3/; \"remote\" is the file of the record that holds it: its repository path with / replaced by __, or one of the two bundles. base_url is the record's file URL; a file is base_url/remote. Tiers: replay (optional replay steps H), test (test-native, test-full, test-replay), rerun (a production rerun), optional (prod_tails.py only). Fetched and placed by code/LRI_C8_D3_HPC/public/fetch_data.py (make -f public.mk fetch-data [TIER=...] [ZENODO=...]).",
+ "not_hosted": {
+  "d3_payload/46341a3c0f11 (9.2 GB)": "the intermediate the L7/L8 packs were built from; regenerate it (REPRODUCE \"Regenerating the inputs\")",
+  "the production run tree (13 GB)": "symmetry and the Drive archive (catalog id c8d3)"
+ },
+ "files": [
+  {
+   "name": "store/packs/d60ccb8ce14fdc115c6e78b77b913578e446775a1d7186245237d952b4cfb295.pack",
+   "bytes": 7121248655,
+   "sha256": "d60ccb8ce14fdc115c6e78b77b913578e446775a1d7186245237d952b4cfb295",
+   "tier": "rerun",
+   "what": "free_L8 pack (16,064 kernels); larger than 2^32 bytes",
+   "pinned_by": "code/LRI_C8_D3_HPC/inputs/manifest.json sha256[\"packs/free_L8.pack\"]",
+   "place": "kept in data/C8_3/store/packs/; `make link-l8 STORE=../../data/C8_3/store` (run by fetch_data.py) hard-links it to inputs/packs/free_L8.pack",
+   "source": "the production store on the symmetry cluster ($C8_STORE/packs/)",
+   "remote": "GFF__data__C8_3__store__packs__d60ccb8ce14fdc115c6e78b77b913578e446775a1d7186245237d952b4cfb295.pack"
+  },
+  {
+   "name": "store/packs/92b70b366efb892c01bce7619a77af8fae334920a8aa334c59df5b57c51f4d13.pack",
+   "bytes": 1674690805,
+   "sha256": "92b70b366efb892c01bce7619a77af8fae334920a8aa334c59df5b57c51f4d13",
+   "tier": "rerun",
+   "what": "power_L8 pack (4,336 kernels)",
+   "pinned_by": "code/LRI_C8_D3_HPC/inputs/manifest.json sha256[\"packs/power_L8.pack\"]",
+   "place": "as free_L8 (inputs/packs/power_L8.pack)",
+   "source": "the production store on the symmetry cluster ($C8_STORE/packs/)",
+   "remote": "GFF__data__C8_3__store__packs__92b70b366efb892c01bce7619a77af8fae334920a8aa334c59df5b57c51f4d13.pack"
+  },
+  {
+   "name": "packs/free_L7.pack",
+   "bytes": 268190810,
+   "sha256": "b5bd6c128baab4741763b69e6608153c70e2c12347aa2658bc26d8007f0e4e8d",
+   "tier": "test",
+   "what": "free_L7 pack (C7(3) members + the s_G = 4 kernels of the d=3 payload)",
+   "pinned_by": "code/LRI_C8_D3_HPC/inputs/manifest.json sha256[\"packs/free_L7.pack\"]",
+   "place": "copied to code/LRI_C8_D3_HPC/inputs/packs/free_L7.pack",
+   "source": "LRI_C8_D3_HPC/inputs/packs/free_L7.pack (git-tracked at 4fbd1bae)",
+   "remote": "GFF__data__C8_3__packs__free_L7.pack"
+  },
+  {
+   "name": "packs/power_L7.pack",
+   "bytes": 67974745,
+   "sha256": "0e5c6eabe134f4abd1e6a98638f41e6d62845e59dd2415a85b123a730953fa66",
+   "tier": "test",
+   "what": "power_L7 pack (C7(3) members + the s_G = 4 kernels of the d=3 payload)",
+   "pinned_by": "code/LRI_C8_D3_HPC/inputs/manifest.json sha256[\"packs/power_L7.pack\"]",
+   "place": "copied to code/LRI_C8_D3_HPC/inputs/packs/power_L7.pack",
+   "source": "LRI_C8_D3_HPC/inputs/packs/power_L7.pack (git-tracked at 4fbd1bae)",
+   "remote": "GFF__data__C8_3__packs__power_L7.pack"
+  },
+  {
+   "name": "c7d3_reference_L7_inputs.tar",
+   "bytes": 311080960,
+   "sha256": "d507cbd3ebc202fa31345ad568c7ce2262d5e3c2c9de4017209b28879bf0560a",
+   "tier": "test",
+   "what": "reference/inputs/free/L7/ (2,299 files, 252,190,551 bytes) and reference/inputs/power/L7/ (591 files, 56,655,776 bytes): the C7(3) L7 member files",
+   "members_verified_by": "code/LRI_C8_D3_HPC/reference/DELIVERY_MANIFEST.json (path relative to reference/)",
+   "place": "extracted into code/LRI_C8_D3_HPC/ (members reference/inputs/{free,power}/L7/* only)",
+   "source": "tar of LRI_C8_D3_HPC/reference/inputs/{free,power}/L7 at 4fbd1bae (byte-identical to LRI_C7_D3_HPC/reference/inputs/*/L7)",
+   "remote": "GFF__data__C8_3__c7d3_reference_L7_inputs.tar"
+  },
+  {
+   "name": "c7d3_reference_production_records.tar",
+   "bytes": 43980800,
+   "sha256": "e4d7030b1138befd201640f4de597dff97e1a8232c351ac6748615dac4c45cbe",
+   "tier": "test",
+   "what": "reference/records/production_{a,b}/ without config.json and manifest.json (500 files, 43,557,506 bytes): the archived C7(3) production",
+   "members_verified_by": "code/LRI_C8_D3_HPC/reference/DELIVERY_MANIFEST.json",
+   "place": "extracted into code/LRI_C8_D3_HPC/ (members reference/records/production_[ab]/* only)",
+   "source": "tar of LRI_C8_D3_HPC/reference/records/production_{a,b} at 4fbd1bae minus the two small files kept in git",
+   "remote": "GFF__data__C8_3__c7d3_reference_production_records.tar"
+  },
+  {
+   "name": "results/groups/a_free_L3/graph_replicates.csv",
+   "bytes": 150165,
+   "sha256": "20e5ed032fe3f183f0b367fe980ee2b7409f0ab1a1124f00d68267ae62846402",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L3",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L3/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L3/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L4/graph_replicates.csv",
+   "bytes": 435999,
+   "sha256": "d3b11415a8a6a0b3bed3533d5d1e588bd72fd3877c5c8d6b1f11da1d0b2d95e5",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L4",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L4/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L4/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L5/graph_replicates.csv",
+   "bytes": 1574518,
+   "sha256": "b35049c2e9e6ed5d3c6e86ad07d40ad321b5563f7d1f765170fadd77437f210a",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L5",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L5/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L5/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L6/graph_replicates.csv",
+   "bytes": 6255581,
+   "sha256": "696f3b9e580a0da92502ea0fc8ac021a9633f61a1d507ab11738511cca2feb3a",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L6",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L6/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L6/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L7/graph_replicates.csv",
+   "bytes": 26136005,
+   "sha256": "60910c2edbb0230406929e336c79d522469373fd4e8cc6a10cde738cb3aecb43",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L7",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L7/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L7/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L8/graph_replicates.csv",
+   "bytes": 94078318,
+   "sha256": "2da2309cd908736fd49b9f9d75fde25e770f5348585ffc48beca9a67c2ed83b9",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_free_L8",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_free_L8/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_free_L8/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L3/graph_replicates.csv",
+   "bytes": 36687,
+   "sha256": "d46e3c6304aa7d65abcf33bc12d7374a418dd5fe20cdaac93adbfe5d6d2992dc",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L3",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L3/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L3/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L4/graph_replicates.csv",
+   "bytes": 92462,
+   "sha256": "3b353f0d5112866b31f7170a3144de5d31ae19e30780775252877a8cb75ba0b1",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L4",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L4/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L4/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L5/graph_replicates.csv",
+   "bytes": 463080,
+   "sha256": "7aae038490f36075cbf12fa0c8e5e8641c894e71efe6bb66983ba39f966f3186",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L5",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L5/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L5/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L6/graph_replicates.csv",
+   "bytes": 1861117,
+   "sha256": "172d9c56a5ba2d256dfee82f415bbefd2bddbded11c9fbda1db815e9dd0c9bb3",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L6",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L6/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L6/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L7/graph_replicates.csv",
+   "bytes": 8198161,
+   "sha256": "3f6f12be824870ec6d063bb775d770ed2c6e0972defc417f4f32035acc3b3315",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L7",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L7/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L7/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L8/graph_replicates.csv",
+   "bytes": 26756452,
+   "sha256": "af3abb8b1b4d74b53ac60712c0fb8f522a9af0a631f747d2ec5a40f6cc724870",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group a_power_L8",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/a_power_L8/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/a_power_L8/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L3/graph_replicates.csv",
+   "bytes": 150207,
+   "sha256": "1b7f70d135214f96748adfe3b968bbeb55caa88d6932f0cb51179dfccbcc7155",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L3",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L3/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L3/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L4/graph_replicates.csv",
+   "bytes": 436140,
+   "sha256": "b495bfd45295b0bdcf4fb3166d691f69ef59bf1efea9939c92c10a2e4efae7f9",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L4",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L4/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L4/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L5/graph_replicates.csv",
+   "bytes": 1574636,
+   "sha256": "40c40ce1e2844c79d149f6777caa22f0ce94e7ba9a0a7ad1d311ba3e0e23bf2f",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L5",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L5/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L5/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L6/graph_replicates.csv",
+   "bytes": 6255393,
+   "sha256": "1c850ec7df7df794df457e4c0738315b63c07c794a0caefb81c48deed79c365a",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L6",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L6/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L6/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L7/graph_replicates.csv",
+   "bytes": 26137553,
+   "sha256": "ca4c690bd5dc52fba9b5e839ec805a83596137c756bc75831fa9017d5743b2b9",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L7",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L7/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L7/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L8/graph_replicates.csv",
+   "bytes": 94080036,
+   "sha256": "bf27195072c2fe3b11b8da0fd7db3342d0d174e291ed31897bf4a28df394a9b0",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_free_L8",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_free_L8/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_free_L8/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L3/graph_replicates.csv",
+   "bytes": 36676,
+   "sha256": "b0a8ce360677f9b901649c7c79108b9eb901bc03081d7879f7e1b8660e7dfc21",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L3",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L3/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L3/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L4/graph_replicates.csv",
+   "bytes": 92534,
+   "sha256": "d81a6a2b95e8eed238d6f531ae01b12cd6ff68edd8ffdf697aef02234701ecd7",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L4",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L4/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L4/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L5/graph_replicates.csv",
+   "bytes": 463088,
+   "sha256": "4af02928327dbce817d85686ed0ffa5a1c758e1f768f1d5368f034a24d34d1a7",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L5",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L5/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L5/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L6/graph_replicates.csv",
+   "bytes": 1861216,
+   "sha256": "31a7c06c649fa77128cabddf64376e910f81522fa2ee769a2205bd8fe7c4d4d5",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L6",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L6/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L6/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L7/graph_replicates.csv",
+   "bytes": 8199169,
+   "sha256": "60e25c4badc97c1987eaf41331585e1fa7889642a203cb31ded2a198492a3743",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L7",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L7/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L7/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L8/graph_replicates.csv",
+   "bytes": 26764340,
+   "sha256": "e1ee2d0fe2ac3ae43c1995fb0a83319606792f46d846bf3cb818601b1b700f09",
+   "tier": "replay",
+   "what": "per-graph replicate jets of group b_power_L8",
+   "pinned_by": "results/C8_3/SHA256SUMS.symmetry and groups/b_power_L8/merged.json graph_replicates_sha256",
+   "place": "stays in data/C8_3/results/ (public/replay_c8_3.py reads it there)",
+   "source": "LRI_C8_D3_HPC_production/results_prod1-20261008/groups/b_power_L8/graph_replicates.csv",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz"
+  },
+  {
+   "name": "results/groups/a_free_L8/graph_tails.csv",
+   "bytes": 848154529,
+   "sha256": "2a9299bb8a3349e2ead90c1870b34f3bff933b6d692fc5c86f49a70dc4a31ba2",
+   "tier": "optional",
+   "what": "per-graph tail statistics of group a_free_L8 (top 16 |t| per replicate)",
+   "pinned_by": "results/C8_3/groups/a_free_L8/merged.json graph_tails_sha256",
+   "place": "stays in data/C8_3/results/; used only by prod1/tail_ntrend/prod_tails.py",
+   "source": "symmetry production run directory prod1-20261008/groups/a_free_L8/graph_tails.csv",
+   "remote": "GFF__data__C8_3__optional_graph_tails.tar.gz"
+  },
+  {
+   "name": "results/groups/a_power_L8/graph_tails.csv",
+   "bytes": 227941843,
+   "sha256": "baef6406d4bff18227beb07bb616ea7190c4657dc7941e42ae570fac8581c717",
+   "tier": "optional",
+   "what": "per-graph tail statistics of group a_power_L8 (top 16 |t| per replicate)",
+   "pinned_by": "results/C8_3/groups/a_power_L8/merged.json graph_tails_sha256",
+   "place": "stays in data/C8_3/results/; used only by prod1/tail_ntrend/prod_tails.py",
+   "source": "symmetry production run directory prod1-20261008/groups/a_power_L8/graph_tails.csv",
+   "remote": "GFF__data__C8_3__optional_graph_tails.tar.gz"
+  },
+  {
+   "name": "results/groups/b_free_L8/graph_tails.csv",
+   "bytes": 848180895,
+   "sha256": "ecfe83a4a2c2acf956f65d306c9dfa94701a7df0c2347c03b7cf9065e091db45",
+   "tier": "optional",
+   "what": "per-graph tail statistics of group b_free_L8 (top 16 |t| per replicate)",
+   "pinned_by": "results/C8_3/groups/b_free_L8/merged.json graph_tails_sha256",
+   "place": "stays in data/C8_3/results/; used only by prod1/tail_ntrend/prod_tails.py",
+   "source": "symmetry production run directory prod1-20261008/groups/b_free_L8/graph_tails.csv",
+   "remote": "GFF__data__C8_3__optional_graph_tails.tar.gz"
+  },
+  {
+   "name": "results/groups/b_power_L8/graph_tails.csv",
+   "bytes": 227936656,
+   "sha256": "f7fc4d796a15d5c6d8c9e3273d6a089582a040b5ef00f8eb47284a64434e7715",
+   "tier": "optional",
+   "what": "per-graph tail statistics of group b_power_L8 (top 16 |t| per replicate)",
+   "pinned_by": "results/C8_3/groups/b_power_L8/merged.json graph_tails_sha256",
+   "place": "stays in data/C8_3/results/; used only by prod1/tail_ntrend/prod_tails.py",
+   "source": "symmetry production run directory prod1-20261008/groups/b_power_L8/graph_tails.csv",
+   "remote": "GFF__data__C8_3__optional_graph_tails.tar.gz"
+  }
+ ],
+ "bundles": [
+  {
+   "name": "replay_graph_replicates.tar.gz",
+   "remote": "GFF__data__C8_3__replay_graph_replicates.tar.gz",
+   "bytes": 154828288,
+   "sha256": "e597f238639961ca9de027c30fd90bbdcf122a75e53c0ea20365f513b91d70ee",
+   "tier": "replay",
+   "n_members": 24,
+   "what": "the 24 replay-tier tables results/groups/<group>/graph_replicates.csv",
+   "place": "downloaded to data/C8_3/replay_graph_replicates.tar.gz; its members are extracted into data/C8_3/ and each is checked against its entry in \"files\"",
+   "made_by": "GNU tar 1.34 --sort=name --owner=0 --group=0 --numeric-owner --mtime=\"2026-10-18 00:00:00Z\" --mode=u=rw,go=r --format=gnu --transform s,^groups/,results/groups/, of the production run directory, | gzip -n -9 (GNU gzip 1.10), on the symmetry cluster, 2026-10-19"
+  },
+  {
+   "name": "optional_graph_tails.tar.gz",
+   "remote": "GFF__data__C8_3__optional_graph_tails.tar.gz",
+   "bytes": 1049867032,
+   "sha256": "b373df42cb8a1c233c9cad811fefe77b9f448e66026b700ebf06eff7afcffa0f",
+   "tier": "optional",
+   "n_members": 4,
+   "what": "the 4 optional-tier tables results/groups/<group>_L8/graph_tails.csv",
+   "place": "downloaded to data/C8_3/optional_graph_tails.tar.gz; its members are extracted into data/C8_3/ and each is checked against its entry in \"files\"",
+   "made_by": "GNU tar 1.34 --sort=name --owner=0 --group=0 --numeric-owner --mtime=\"2026-10-18 00:00:00Z\" --mode=u=rw,go=r --format=gnu --transform s,^groups/,results/groups/, of the production run directory, | gzip -n -9 (GNU gzip 1.10), on the symmetry cluster, 2026-10-19"
+  }
+ ]
+}

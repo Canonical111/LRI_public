@@ -1,0 +1,198 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-ASM-1(a)+(b)",
+ "handoff_sha256": "f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "the HANDOFF copy is at the sha256 VENDORED.json records",
+   "passed": true,
+   "detail": "{\"copy\": \"f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437\", \"vendored\": \"f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437\"}"
+  },
+  {
+   "check": "VENDORED.json records an accepting review of this HANDOFF with a step-0 verdict-gate decision",
+   "passed": true,
+   "detail": "{\"record\": \"LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json\", \"record_sha256_at_vendoring\": \"e9460d50c8b2d95393773a7a2161e4d0f102c3a388ee4f7fe96b93681cc0ad2a\", \"reviewer\": \"C62d (Claude workflow)\", \"date\": \"2026-10-03\", \"overall_verdict\": \"ACCEPT_WITH_MINOR\", \"verdict_gate\": \"accepted_documentation_only_minor_fixes\", \"verdict_gate_scope\": \"this HANDOFF version only (step_0_handoff.host_decision of the review record)\"}"
+  },
+  {
+   "check": "vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy",
+   "passed": true,
+   "detail": "{\"extra\": [], \"missing\": []}"
+  },
+  {
+   "check": "every vendored file is a regular file at the sha256, md5 and size the HANDOFF records",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "VENDORED.json lists the HANDOFF deliverables with the HANDOFF pins",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "vendor/c8_assembly_fixtures holds exactly the VENDORED.json fixtures",
+   "passed": true,
+   "detail": "{\"extra\": [], \"missing\": []}"
+  },
+  {
+   "check": "every fixture is a regular file at its pin (reference copies at their checksum-list entries)",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "no symlink is tracked anywhere in the package",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "the review record exists, accepts this HANDOFF with the same verdict gate and has steps 0-10",
+   "passed": true,
+   "detail": "{\"record\": \"<PROJECT>/LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json\", \"steps\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"statuses\": {\"step_0_handoff\": \"PASS_WITH_RECORDED_INTERPRETATION\", \"step_1_runs\": \"PASS\", \"step_2_coefficients\": \"PASS\", \"step_3_exact_check_independence\": \"PASS\", \"step_4_ms8_source\": \"PASS\", \"step_5_gates\": \"PASS_WITH_NOTES\", \"step_6_power_protocol_requirements\": \"LISTED\", \"step_7_key_classification\": \"COMMITTED\", \"step_8_external_read_set\": \"BUILT\", \"step_9_joint_decisions\": \"CONFIRMED\", \"step_10_vendor_and_prove\": \"PASS (i), PASS (ii); (iii) deferred to G2a\"}}"
+  },
+  {
+   "check": "the vendored order8_assembly exports every used name with the signature VENDORED.json records",
+   "passed": true,
+   "detail": "[]"
+  },
+  {
+   "check": "vendor/ rule: prepare_inputs build opens vendored files only through the hash helper and imports nothing from vendor/",
+   "passed": true,
+   "detail": "{\"error\": null, \"opened\": [], \"vendored_modules\": []}"
+  },
+  {
+   "check": "vendor/ rule: prepare_inputs verify opens vendored files only through the hash helper and imports nothing from vendor/",
+   "passed": true,
+   "detail": "{\"error\": null, \"opened\": [\"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/HANDOFF_assembly.json\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/POWER_PROTOCOL.md\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/README.md\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/exact_check.py\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/exact_check_results.json\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/inputs_d2_check/checks.json\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/inputs_d2_check/gamma_d2_8.txt\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/inputs_d2_check/two_loop.json\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/inputs_d3/checks.json\", \"<PROJECT>/LRI_C8_D2_HPC/vendor/c8_assembly/inputs_d3/gamma_d3_8.txt\"], \"vendored_modules\": []}"
+  },
+  {
+   "check": "vendor/ rule: production.py plan (test-only, scratch copy) opens vendored files only through the hash helper and imports nothing from vendor/",
+   "passed": true,
+   "detail": "dor_rule_pr_a582lavc/pkg/vendor/c8_assembly/POWER_PROTOCOL.md\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/README.md\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/exact_check.py\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/exact_check_results.json\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/inputs_d2_check/checks.json\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/inputs_d2_check/gamma_d2_8.txt\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/inputs_d2_check/two_loop.json\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/inputs_d3/checks.json\", \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_rule_pr_a582lavc/pkg/vendor/c8_assembly/inputs_d3/gamma_d3_8.txt\"], \"vendored_modules\": [], \"relative\": [], \"stderr\": \"\"}"
+  },
+  {
+   "check": "vendor/ rule: production.py run --index 0 (test-only, scratch copy) opens nothing under vendor/ and imports nothing from vendor/",
+   "passed": true,
+   "detail": "{\"error\": null, \"opened\": [], \"vendored_modules\": [], \"relative\": [], \"stderr\": \"\"}"
+  },
+  {
+   "check": "A-ASM-1(b): inputs/manifest.json records the HANDOFF sha256 and every vendored pin, equal to VENDORED.json and the HANDOFF",
+   "passed": true,
+   "detail": "{\"handoff\": \"f5ff6a353371abdc22a296d106e83af03885dfa672a25662fa59f468b9948437\", \"files\": 13}"
+  },
+  {
+   "check": "A-ASM-1(b): prepare_inputs.verify() passes with the vendored pins",
+   "passed": true,
+   "detail": "True"
+  },
+  {
+   "check": "A-ASM-1(b): a one-byte change to a vendored file makes prepare_inputs.verify() fail (the untouched scratch export verifies)",
+   "passed": true,
+   "detail": "ACCEPTED\nSKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack\nREFUSED Checksum mismatch in the inputs: vendor/c8_assembly/order8_assembly.py; restore the shipped files (git checkout, or make inputs-l8 INVENTORY=... for the L8 packs) before planning\n"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py vendors a clean sandbox with both reviewed digests",
+   "passed": true,
+   "detail": "{\n \"handoff_sha256\": \"ef093544f4f3ccd72172c59335eb74d8b50e0d6fc5c23fa0197811d6e5c89694\",\n \"vendored\": 3,\n \"fixtures\": 2,\n \"fixture_bytes\": 74,\n \"output\": \"tools/VENDORED.json\"\n}\n"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a read-set path ../../tools/common.py with a valid reference copy (the reviewer's example) before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: '../../tools/common.py' is not a canonical relative path (traversal or absolute path refused)\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a HANDOFF file path ../../tools/common.py before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"HANDOFF file: '../../tools/common.py' is not a canonical relative path (traversal or absolute path refused)\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses an absolute read-set path before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/abs.txt' is not a canonical relative path (traversal or absolute path refused)\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a '.' component before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: 'X/./data.txt' is not a canonical relative path (traversal or absolute path refused)\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a repeated fixture path before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: destination 'X/data.txt' collides with 'X/data.txt' under vendor/c8_assembly_fixtures\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses two fixture paths equal ignoring case before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: destination 'x/DATA.txt' collides with 'X/data.txt' under vendor/c8_assembly_fixtures\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a fixture path that is the directory of another before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"read-set fixture: destination 'X' collides with 'X/data.txt' under vendor/c8_assembly_fixtures\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a HANDOFF file named like the HANDOFF copy before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"HANDOFF file: destination 'HANDOFF_assembly.json' collides with 'the HANDOFF copy' under vendor/c8_assembly\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a c8d2_reference_copy outside reference/ before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"c8d2_reference_copy 'tools/common.py' is not under reference/\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses a read set not at the reviewed digest before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"external_read_set.json has sha256 918df79c3abaa2abbde7690819ce82e1c377a9aecd76d5d231903411dc2a90b1, not the reviewed 226a36d131264a0437fb2154cc74e272e79feb7251a442a4f89e9358d87fc9e1: stop, the read set changed after the H2 review\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses vendor/ a symlink to a directory outside the package before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"HANDOFF file: /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/case10/pkg/vendor is a symlink or not a directory: refusing to write 'order8_assembly.py' through it\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses an order8_assembly.py that lacks a used name (slots) before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"the vendored order8_assembly lacks ['slots']: Stage 2b must adapt (PLAN F01 correction); nothing written\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6-B-04: vendor_assembly.py refuses an order8_assembly.py whose execution fails before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"the vendored order8_assembly.py does not execute (RuntimeError: broken at import): nothing written\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6R2-B-02: vendor_assembly.py refuses a tools/VENDORED.json that is a dangling symlink to the staged ../vendor/c8_assembly/order8_assembly.py (the reviewer's example) before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/case13/pkg/tools/VENDORED.json exists (or is a symlink): a HANDOFF revision needs a new review, a new pin and an explicit step\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6R2-B-02: vendor_assembly.py refuses a tools/VENDORED.json that is a dangling symlink to a path outside the package before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/case14/pkg/tools/VENDORED.json exists (or is a symlink): a HANDOFF revision needs a new review, a new pin and an explicit step\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6R2-B-02: vendor_assembly.py refuses a vendor/c8_assembly that is a dangling symlink before any write",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/case15/pkg/vendor/c8_assembly exists (or is a symlink): a HANDOFF revision needs a new review, a new pin and an explicit step\\n\", \"changed\": [], \"outside\": []}"
+  },
+  {
+   "check": "S6R2-B-02: a failure of the VENDORED.json write (the last one) leaves the package as it was (no vendor/ tree, no VENDORED.json)",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail0/pkg/tools/vendor_assembly.py\\\", line 297, in main\\n    write_all(staged)\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail0/pkg/tools/vendor_assembly.py\\\", line 152, in write_all\\n    with p.open('xb') as f:\\n  File \\\"<string>\\\", line 5, in guarded\\nOSError: injected write failure: /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail0/pkg/tools/VENDORED.json\\n\", \"changed\": []}"
+  },
+  {
+   "check": "S6R2-B-02: a failure of a fixture write (data.txt) leaves the package as it was (no vendor/ tree, no VENDORED.json)",
+   "passed": true,
+   "detail": "{\"rc\": 1, \"out\": \"_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail1/pkg/tools/vendor_assembly.py\\\", line 297, in main\\n    write_all(staged)\\n  File \\\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail1/pkg/tools/vendor_assembly.py\\\", line 152, in write_all\\n    with p.open('xb') as f:\\n  File \\\"<string>\\\", line 5, in guarded\\nOSError: injected write failure: /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_vendor_assembly_g2yyad0q/fail1/pkg/vendor/c8_assembly_fixtures/X/data.txt\\n\", \"changed\": []}"
+  }
+ ],
+ "notes": [
+  "none: the HANDOFF arrived before Stage 3, so no stand-in Jacobian module was written",
+  "prepare_inputs build opened 0 vendored files (it reads the pins from tools/VENDORED.json)",
+  "prepare_inputs verify opened 14 vendored files, each through common.digest",
+  "production.py plan opened 14 vendored files (the inputs manifest pins, through common.digest)",
+  "production.py run opened 0 vendored files"
+ ],
+ "python": "3.10.11",
+ "host": "personal desktop"
+}

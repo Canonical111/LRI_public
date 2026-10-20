@@ -1,0 +1,33 @@
+\section{Independent checks}\label{sec:checks}
+In each dimension a second solver, written without using the production code, reproduces the production spectra at
+finite cutoff. These checks verify that we compute the stated model, not that its limit is the CFT.
+
+\paragraph{One dimension.}\label{d1:checks}
+\begin{itemize}
+\item \emph{Authorship.} A Claude Code subagent wrote the solver (\code{code/lri\_dressed\_phi4\_independent\_check})
+ from the definition of the model. It was not allowed to read the production code, results or analysis. Of the
+ package documentation it read only the definition of the window (\code{docs/WINDOW.md}) and of the Hamiltonian
+ (\code{docs/ALGORITHM.md}). It derived $H$ itself from the GFF radial
+ quantization, and its derivation agrees with Eqs.~\eqref{eq:Hz}--\eqref{eq:Lj}.
+\item \emph{Own numerics.} The zero mode is a sinc discrete-variable representation, the bath Fock space is its own,
+ and both the literal and consistent windows are implemented. Newton tuning continues from weak coupling. Every point
+ is verified on 1.5 times finer and 1.5 times wider grids.
+\item \emph{Comparison set.} 38 points: raw and consistent at $\Ds=0.249$, 0.2, 0.1, 0.05, 0.025 and 0.01 with
+ $N=12$, 16 and 20, plus literal at 0.2 and 0.1 with $N=12$.
+\item \emph{Agreement with the production records} (\code{dens\_v1}, density basis, $n_z=16$). At the 18
+ consistent-window points ($N=12$, 16, 20) the records agree with the blind solver to $5.6\times10^{-7}$ or better,
+ the truncation error of the density basis.
+\item \emph{Agreement with the energy-basis records} (\code{prod1--7}).
+ \begin{itemize}
+ \item $\DE$ agrees to $1.3\times10^{-9}$ where these records used $n_z=48$ or $\Ds\ge0.2$.
+ \item It agrees to $4.8\times10^{-9}$ where they used $n_z=24$ or 32 at strong coupling, which is that basis's
+ truncation error.
+ \item Over all 38 points this gives $5\times10^{-9}$. The other levels and the tuned $(g,r)$ agree at the same level.
+ \end{itemize}
+\item \emph{Weak coupling.} The solver reproduces $C_2(N)$, Eq.~\eqref{eq:C2N}, to $3\times10^{-7}$. It also shows
+ that the window changes $\DE$ only at order $\eps^4$: the fitted exponent is 4.05 to 4.11.
+\end{itemize}
+
+\input{checks_d2}
+
+\input{checks_d3}

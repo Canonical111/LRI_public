@@ -1,0 +1,97 @@
+{
+ "note": "tests/exact_scalars_C8.py: the four tier-C scalars flagged by the phase-3 mathematics verifier; computed by the engine in tier C, values and proofs documented here",
+ "scalars": [
+  {
+   "name": "A3[eps^3 l^1]",
+   "engine_group": "A3_base",
+   "eps_power": 3,
+   "log_power": 1,
+   "exact": "0",
+   "tier_C_job": "A3_base k=3, coeffs [0, 1] (specs/production_C8_tierC_sigma3.json)",
+   "engine_pole_bound": {
+    "sectors": 1,
+    "min_sector_lo": -1,
+    "max_subtracted_vars": 1,
+    "lowest_laurent_order_olo": -1,
+    "laurent_order_of_this_coeff": -2
+   },
+   "proof": "structural zero: Laurent order -2 lies below the lowest order olo = -1 of the job (engine Hepp-sector pole bound; every sector has at most 1 subtracted variable(s)); also exact from the A3 closed form (log terms 2 l^2 + 6 l - 6 eps l)",
+   "status": "PASS",
+   "closed_form": {
+    "sympy_coefficient": "0",
+    "closed_form_vs_quadrature_max_rel": 1.4646821798256353e-26
+   }
+  },
+  {
+   "name": "A3[eps^3 l^0]",
+   "engine_group": "A3_base",
+   "eps_power": 3,
+   "log_power": 0,
+   "exact": "-5/9",
+   "tier_C_job": "A3_base k=3, coeffs [0, 1] (specs/production_C8_tierC_sigma3.json)",
+   "engine_pole_bound": {
+    "sectors": 1,
+    "min_sector_lo": -1,
+    "max_subtracted_vars": 1,
+    "lowest_laurent_order_olo": -1,
+    "laurent_order_of_this_coeff": -1
+   },
+   "closed_form": {
+    "sympy_coefficient": "-5/9",
+    "closed_form_vs_quadrature_max_rel": 1.4646821798256353e-26
+   },
+   "proof": "A3 closed form, sympy expansion: [eps^3 l^0] = -5/9; engine value cross-checked",
+   "status": "PASS"
+  },
+  {
+   "name": "A5[eps^-2 l^1]",
+   "engine_group": "A5_base",
+   "eps_power": -2,
+   "log_power": 1,
+   "exact": "0",
+   "tier_C_job": "A5_base k=-2, coeffs [0, 1] (specs/production_C8_tierC_sigma3.json)",
+   "engine_pole_bound": {
+    "sectors": 12,
+    "min_sector_lo": -1,
+    "max_subtracted_vars": 1,
+    "lowest_laurent_order_olo": -1,
+    "laurent_order_of_this_coeff": -2
+   },
+   "proof": "structural zero: Laurent order -2 lies below the lowest order olo = -1 of the job (engine Hepp-sector pole bound; every sector has at most 1 subtracted variable(s)); region argument: the leading pole comes only from 2 disjoint opposite-charge gaps at scale eps, each a pure power 1/eps",
+   "status": "PASS"
+  },
+  {
+   "name": "Z6[eps^-3 l^1]",
+   "engine_group": "Z6_base",
+   "eps_power": -3,
+   "log_power": 1,
+   "exact": "0",
+   "tier_C_job": "Z6_base k=-3, coeffs [0, 1] (specs/production_C8_tierC_sigma3.json)",
+   "engine_pole_bound": {
+    "sectors": 60,
+    "min_sector_lo": -1,
+    "max_subtracted_vars": 1,
+    "lowest_laurent_order_olo": -1,
+    "laurent_order_of_this_coeff": -2
+   },
+   "proof": "structural zero: Laurent order -2 lies below the lowest order olo = -1 of the job (engine Hepp-sector pole bound; every sector has at most 1 subtracted variable(s)); region argument: the leading pole comes only from 3 disjoint opposite-charge gaps at scale eps, each a pure power 1/eps",
+   "status": "PASS"
+  }
+ ],
+ "A3_eps3_logs_closed_form": {
+  "0": "-5/9",
+  "1": "0",
+  "2": "0"
+ },
+ "data": [
+  {
+   "run": "c8val",
+   "scalar": "A3[eps^3 l^0]",
+   "value": -0.5555555555555555,
+   "err": 5.577698142042626e-16,
+   "structural_zero": false,
+   "exact": "-5/9",
+   "ok": true
+  }
+ ]
+}

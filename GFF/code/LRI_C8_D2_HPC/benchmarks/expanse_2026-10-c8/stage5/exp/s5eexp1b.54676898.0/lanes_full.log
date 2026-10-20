@@ -1,0 +1,25 @@
+FAIL lanes: AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676898/tmp/c8d2_orch_584wq4s7/lanes')) failed (64):
+C8: C8_LANES=2 gives lanes of up to 64 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 16 or re-plan with a larger --checkpoint-tasks
+
+released own stale claim 0 (job 4242, restart None; now restart 0)
+
+Traceback (most recent call last):
+  File "<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tests/unit_orchestration.py", line 2164, in run
+    try:fn(ctx)
+        ^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tests/unit_orchestration.py", line 2131, in <lambda>
+    ('arrays',lambda c:test_slurm_arrays(c.E)),('lane_units',lambda c:test_lane_units(c.E)),('p4_defaults',lambda c:test_p4_defaults(c.E)),('lanes',lambda c:test_lanes(c.E)),('scan',lambda c:test_lane_scan_cost(c.E)),
+                                                                                                                                                             ^^^^^^^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tests/unit_orchestration.py", line 1275, in test_lanes
+    cp=tool(E.pkg,'lanes.py','worker',d,env=env);assert cp.returncode==0,cp.stderr[-800:]
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/07ff5c1975e5/tests/unit_orchestration.py", line 65, in tool
+    if check and cp.returncode:raise AssertionError(f'{script} {args} failed ({cp.returncode}):\n{cp.stderr[-3000:]}\n{cp.stdout[-1000:]}')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: lanes.py ('worker', PosixPath('/scratch/<USER>/job_54676898/tmp/c8d2_orch_584wq4s7/lanes')) failed (64):
+C8: C8_LANES=2 gives lanes of up to 64 cores, more than the plan's checkpoint_tasks=8; use C8_LANES >= 16 or re-plan with a larger --checkpoint-tasks
+
+released own stale claim 0 (job 4242, restart None; now restart 0)
+
+
+{"status": "failed", "requested": ["lanes"], "executed": 1, "tests": 0, "failed": ["lanes"]}

@@ -1,0 +1,131 @@
+{
+ "O01_cached_run_forgeries": {
+  "held": true,
+  "result": {
+   "group": "a_free_L3",
+   "level1": 3,
+   "level2": 2,
+   "swap_values_across_runs": {
+    "rebuilt_reported": 2,
+    "touched": 2,
+    "equal_to_serial": true
+   },
+   "consistent_edit_level1_and_level2": {
+    "rebuilt_reported": 2,
+    "touched": 2,
+    "equal_to_serial": true
+   },
+   "level2_run_replaced_by_sibling": {
+    "rebuilt_reported": 1,
+    "touched": 1,
+    "equal_to_serial": true
+   },
+   "crlf_in_one_line": {
+    "rebuilt_reported": 1,
+    "touched": 1,
+    "equal_to_serial": true
+   }
+  },
+  "seconds": 31.4
+ },
+ "O02_phase1_traced_memory_flat_in_rows": {
+  "held": true,
+  "result": {
+   "64": {
+    "tasks": 384,
+    "blocks": 6,
+    "rows": 384,
+    "traced_peak": 1068454
+   },
+   "512": {
+    "tasks": 3072,
+    "blocks": 48,
+    "rows": 3072,
+    "traced_peak": 1124443
+   },
+   "growth_bytes": 55989,
+   "growth_bytes_per_extra_row": 20.829241071428573
+  },
+  "seconds": 4.4
+ },
+ "O05_effective_options_edge_cases": {
+  "held": true,
+  "result": {
+   "exclusive_mode_value": {
+    "exclusive": "user"
+   },
+   "directive_after_blank_and_comment": {
+    "exclusive": true
+   },
+   "directive_after_command_ignored": {},
+   "short_partition_glued": {
+    "partition": "cliq"
+   },
+   "unknown_directive": {
+    "code": 64
+   },
+   "lane_worker.sh": {
+    "job-name": "c8d2-lanes",
+    "nodes": "1",
+    "ntasks": "1",
+    "mem": "180G",
+    "time": "24:00:00",
+    "output": "c8d2-lanes-%j.log"
+   },
+   "merge.sh": {
+    "job-name": "c8d2-merge",
+    "nodes": "1",
+    "ntasks": "1",
+    "cpus-per-task": "24",
+    "mem": "64G",
+    "time": "02:00:00",
+    "output": "c8d2-merge-%j.log"
+   },
+   "run_array.sh": {
+    "job-name": "c8d2-array",
+    "nodes": "1",
+    "ntasks": "1",
+    "cpus-per-task": "8",
+    "mem": "4G",
+    "time": "02:00:00",
+    "output": "c8d2-array-%A_%a.log"
+   }
+  },
+  "seconds": 0.0
+ },
+ "O06_accounting_coverage_edge_cases": {
+  "held": true,
+  "result": {
+   "parsed": 1,
+   "malformed": 3,
+   "ledger_attempt_restart2_with_two_records": [
+    "job 901: 2 sacct record(s), 3 attempt(s) recorded"
+   ],
+   "checkpoint_element_outside_spec": [
+    "array job 900: checkpoints name element 5, which its ledger record does not list"
+   ],
+   "requeued_array_element": [
+    "array job 900 element 2: 1 sacct record(s), 2 attempt(s) recorded"
+   ]
+  },
+  "seconds": 0.0
+ },
+ "O09_reuse_identical_edge_cases": {
+  "held": true,
+  "result": {
+   "reuse_same_but_note": "reused",
+   "value": "/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/cm.json exists and is not this campaign's cost mode",
+   "extra_key": "/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/cm.json exists and is not this campaign's cost mode",
+   "no_reuse_refuses": "FileExistsError",
+   "corrupt": "/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/cm.json exi"
+  },
+  "seconds": 0.0
+ },
+ "O10_combination_and_identity_edges": {
+  "held": false,
+  "error": "FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/pkg/reference/c7d2_production_2026/C7_result.json'",
+  "traceback": "Traceback (most recent call last):\n  File \"<TMP>/scratchpad/mac/probes.py\", line 22, in probe\n    R[name] = dict(held=True, result=fn())\n  File \"<TMP>/scratchpad/mac/probes.py\", line 285, in o10\n    ar=synthetic_ar(np.random.default_rng(7), R=6))\n  File \"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/pkg/tests/assembly_checks.py\", line 99, in synthetic_ar\n    res = json.loads((PROD / 'C7_result.json').read_bytes())\n  File \"<HOME>/anaconda3/lib/python3.10/pathlib.py\", line 1126, in read_bytes\n    with self.open(mode='rb') as f:\n  File \"<HOME>/anaconda3/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\nFileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_probe_6_at6wu0/pkg/reference/c7d2_production_2026/C7_result.json'\n",
+  "seconds": 0.0
+ },
+ "all_held": false
+}

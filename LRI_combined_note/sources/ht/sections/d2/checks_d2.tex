@@ -1,0 +1,30 @@
+% checks_d2.tex -- d = 2 paragraph of the independent-checks section (from phi4HT2d, 2026-10-14; review 2026-10-15).
+% Checks i2.*, d2.*.
+\paragraph{Two dimensions.}\label{d2:checks}
+A second solver, \code{lri\_2d\_window\_indep}, implements the $d=2$ model of Section~\ref{d2:modes} from its written
+definition, without using the production code. Its numerics differ:
+\begin{itemize}
+\item bath vertices from explicit annihilation amplitudes, on a dictionary representation of the Fock states;
+\item reflection-even states as explicit symmetric combinations;
+\item the zero mode in the energy basis, the lowest eigenstates of $H_z$ with $K$ states per parity, instead of the
+ density basis;
+\item its own Newton iteration for the window fixed points, and tuning by a finite-difference Newton method.
+\end{itemize}
+It is not blind: its author had earlier prepared the production code for the cluster. Its self-tests compare the
+vertices with a brute-force construction in the full Fock space at $N=5$, and its Lanczos solver with dense
+diagonalization. At the production couplings it reproduces the production spectra (155 runs at 13 values of $\Ds$; each
+comparison is bound to the shipped record by its hash):
+\begin{itemize}
+\item With a converged zero-mode basis ($K\ge32$) it reproduces $\DE$ to $1.4\times10^{-12}$ at $N=12$ and 16 for every
+ $\Ds$, and the five lowest even and odd levels and the whole vacuum table $E_v(M)$ to $7.6\times10^{-12}$. At $N=18$
+ ($\Ds\le0.15$) $\DE$ agrees to $4.5\times10^{-12}$, and at $N=20$ ($\Ds\le0.175$) to $4.6\times10^{-11}$.
+\item At $N=22$, $\Ds=0.125$ and 0.126, it agrees to $4.4\times10^{-10}$ and $4.0\times10^{-10}$ ($K=32$). There the
+ differences grow by a factor of about nine from one cutoff to the next and keep one sign. This is the signature of the
+ truncation at $K=32$, not of either code.
+\item With $K=24$ the agreement degrades at strong coupling as $K$ runs out ($6\times10^{-9}$ at $N=16$ and
+ $2.4\times10^{-7}$ at $N=20$, $\Ds=0.125$). This tests the check rather than production.
+\item Re-tuned independently from couplings shifted by $(0.05,-0.05)$ in $\theta$, the solver returns to the production
+ root: $\DE$ agrees to $9\times10^{-11}$ at $N\le12$, and to $3.6\times10^{-8}$ at $N=16$ with $K=24$.
+\end{itemize}
+The production zero-mode basis is itself converged: $n_z=20$ and 16 agree to $9.4\times10^{-11}$ over all chains and
+cutoffs. These checks verify that we compute the stated model; they do not test its continuum limit.

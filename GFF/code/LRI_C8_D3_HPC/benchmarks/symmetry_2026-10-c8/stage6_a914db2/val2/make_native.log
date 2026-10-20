@@ -1,0 +1,7 @@
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c8d3_integrate.cpp  -lquadmath -lgmp  -o bin/c8d3_gmp
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math src/c8d3_integrate.cpp  -lquadmath  -o bin/c8d3_decimal
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP reference/src/c7d3_integrate.cpp  -lquadmath -lgmp  -o bin/ref/c7d3_gmp
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math reference/src/c7d3_integrate.cpp  -lquadmath  -o bin/ref/c7d3_decimal
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP src/c8d3_inspect.cpp  -lquadmath -lgmp  -o bin/c8d3_inspect
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP -DC8_NO_TAIL_FIELDS src/c8d3_integrate.cpp  -lquadmath -lgmp  -o bin/diag/c8d3_gmp_notail
+g++  -O3  -std=c++17 -fopenmp -ffp-contract=off -fno-fast-math -DC7_USE_GMP -DC8_ORDER_TRACE src/c8d3_integrate.cpp  -lquadmath -lgmp  -o bin/diag/c8d3_gmp_ordertrace

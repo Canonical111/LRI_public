@@ -1,0 +1,29 @@
+host <NODE> Wed Sep 30 05:38:36 PM EDT 2026 model name	: AMD EPYC 7532 32-Core Processor phys_cores 64
+verify_delivery --strict (before build) rc=0: passed 4909 0
+build OK
+24b2b941fea9c3040226a5ab75f1752ed8614a0cbb4cb070dee7b2afa3d86fcc  bin/c7d3_decimal
+635428f9f9f462b74d261185120b5ea1553fb7989196feef644dd85dd687ae5f  bin/c7d3_gmp
+{"schema":"c7-d3-build-1","dimension":3,"order":7,"compiler":"11.4.0","long_double_bits":64,"mp_backend":"decimal300","mp_digits10":300,"mp_max_digits10":328,"openmp":201511}
+
+{"schema":"c7-d3-build-1","dimension":3,"order":7,"compiler":"11.4.0","long_double_bits":64,"mp_backend":"gmp350","mp_digits10":350,"mp_max_digits10":372,"openmp":201511}
+
+delivery_verifier PASS 1 s
+reassemble PASS 2 s
+staging PASS 3 s
+workflow PASS 12 s
+validate PASS 18 s
+check_points PASS 43 s
+validate_full PASS 96 s
+THREADCHECK rows=5776 mismatches=0 quad=255396 mp=20511
+=== pilot start 17:41:55
+pilot jobs 80
+=== pilot runs end 17:46:35
+cost model written
+pilot task core-s total 1180.8
+{"a_free_L3": 0.3, "a_free_L4": 1.8, "a_free_L5": 8.4, "a_free_L6": 68.2, "a_free_L7": 341.1, "a_power_L3": 0.0, "a_power_L4": 0.2, "a_power_L5": 1.2, "a_power_L6": 11.8, "a_power_L7": 104.8, "b_free_L3": 0.3, "b_free_L4": 1.9, "b_free_L5": 9.8, "b_free_L6": 83.6, "b_free_L7": 399.4, "b_power_L3": 0.0, "b_power_L4": 0.1, "b_power_L5": 1.6, "b_power_L6": 15.6, "b_power_L7": 130.7}
+{"C7_full": -223.30894870393206, "sampling_standard_error": 8.177186716033638, "primitive_mode": "recompute", "test_only": false}
+
+pilot C7 None SE 8.177186716033638
+error_by_group {"3": {"free": 0.0699530961206934, "power": 0.01850927897989387}, "4": {"free": 0.20175964867360563, "power": 0.07176124012412478}, "5": {"free": 0.770997258558755, "power": 0.625887215060191}, "6": {"free": 2.3886020033440136, "power": 1.7025537192600249}, "7": {"free": 6.940540525850845, "power": 3.0089710635681954}}
+verify_delivery passed 3 ['bin/c7d3_decimal', 'bin/c7d3_gmp', 'tools/__pycache__/common.cpython-311.pyc']
+done Wed Sep 30 05:46:41 PM EDT 2026

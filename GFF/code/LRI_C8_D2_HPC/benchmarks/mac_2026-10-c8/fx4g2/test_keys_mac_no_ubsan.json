@@ -1,0 +1,572 @@
+{
+ "schema": "c8-d2-gate-1",
+ "gate": "A-INV-1 test_keys",
+ "passed": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "read and print back 2^64 and 2^70+1",
+   "passed": true,
+   "detail": "9 2\n18446744073709551616 1 1\n1180591620717411303425 2 3\n"
+  },
+  {
+   "check": "driver: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\""
+  },
+  {
+   "check": "driver: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\""
+  },
+  {
+   "check": "driver: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/truncated_file.txt: row 3 of 3: missing (file truncated)\\n'"
+  },
+  {
+   "check": "driver: surplus row (exactly NG rows)",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/surplus_row_exactly_NG_rows.txt: trailing token '2' after the 1 declared rows\\n\""
+  },
+  {
+   "check": "driver: row with two tokens",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/row_with_two_tokens.txt: row 1 of 1: expected 'key aut orbit', got 2 tokens in '1 1'\\n\""
+  },
+  {
+   "check": "driver: row with four tokens",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/row_with_four_tokens.txt: row 1 of 1: expected 'key aut orbit', got 4 tokens in '1 1 1 1'\\n\""
+  },
+  {
+   "check": "driver: key wider than an n=4 class",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/key_wider_than_an_n=4_class.txt: row 1 of 1: key token '4096' does not fit 12 bits (n=4)\\n\""
+  },
+  {
+   "check": "driver: header n out of range",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/header_n_out_of_range.txt: header n=10 outside [1, 9]\\n'"
+  },
+  {
+   "check": "driver: non-decimal aut",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/non-decimal_aut.txt: row 1 of 1: aut token 'x1' is not a decimal number\\n\""
+  },
+  {
+   "check": "driver: empty file",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/empty_file.txt: empty file, expected the header 'n NG'\\n\""
+  },
+  {
+   "check": "build_free: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "build_free: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "build_free: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "build_power: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "build_power: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "build_power: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: 2^128 overflows",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/2128_overflows.txt: row 1 of 1: key token '340282366920938463463374607431768211456' overflows 2^128\\n\" out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: '12a' is refused",
+   "passed": true,
+   "detail": "rc=2 stderr=\"/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/12a_is_refused.txt: row 2 of 2: key token '12a' is not a decimal number\\n\" out_exists=False"
+  },
+  {
+   "check": "check_edge_forests: truncated file",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/truncated_file.txt: row 3 of 3: missing (file truncated)\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: vertex of degree 6 (n=4, key 15)",
+   "passed": true,
+   "detail": "rc=0 stdout='4 1\\n15 1 1\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: vertex of degree 6 (n=4, key 15)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_vertex_of_degree_6__n_4__key_15_.txt: row 1 of 1 (key 15): vertex 0 has degree 6 > 4\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: vertex of degree 6 (n=4, key 15)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_vertex_of_degree_6__n_4__key_15_.txt: row 1 of 1 (key 15): vertex 0 has degree 6 > 4\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: vertex of degree 6 (n=4, key 15)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_vertex_of_degree_6__n_4__key_15_.txt: row 1 of 1 (key 15): vertex 0 has degree 6 > 4\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: vertex of degree 6 (n=4, key 15)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_vertex_of_degree_6__n_4__key_15_.txt: row 1 of 1 (key 15): vertex 0 has degree 6 > 4\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: zero-edge key",
+   "passed": true,
+   "detail": "rc=0 stdout='4 1\\n0 24 1\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: zero-edge key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_zero_edge_key.txt: row 1 of 1 (key 0): 0 edges, an n=4 class (L=3) has exactly 6\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: zero-edge key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_zero_edge_key.txt: row 1 of 1 (key 0): 0 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: zero-edge key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_zero_edge_key.txt: row 1 of 1 (key 0): 0 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: zero-edge key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_zero_edge_key.txt: row 1 of 1 (key 0): 0 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: n=1 (L=0)",
+   "passed": true,
+   "detail": "rc=0 stdout='1 1\\n0 1 1\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: n=1 (L=0)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_n_1__L_0_.txt: header n=1: the generator needs 2 <= n <= 9 (L = n - 1 loops in [1, 8])\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: n=1 (L=0)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_n_1__L_0_.txt: header n=1: the generator needs 2 <= n <= 9 (L = n - 1 loops in [1, 8])\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: n=1 (L=0)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_n_1__L_0_.txt: header n=1: the generator needs 2 <= n <= 9 (L = n - 1 loops in [1, 8])\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: n=1 (L=0)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_n_1__L_0_.txt: header n=1: the generator needs 2 <= n <= 9 (L = n - 1 loops in [1, 8])\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: seven edges at n=4",
+   "passed": true,
+   "detail": "rc=0 stdout='4 1\\n1366 24 1\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: seven edges at n=4",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_seven_edges_at_n_4.txt: row 1 of 1 (key 1366): 7 edges, an n=4 class (L=3) has exactly 6\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: seven edges at n=4",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_seven_edges_at_n_4.txt: row 1 of 1 (key 1366): 7 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: seven edges at n=4",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_seven_edges_at_n_4.txt: row 1 of 1 (key 1366): 7 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: seven edges at n=4",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_seven_edges_at_n_4.txt: row 1 of 1 (key 1366): 7 edges, an n=4 class (L=3) has exactly 6\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: disconnected graph",
+   "passed": true,
+   "detail": "rc=0 stdout='4 1\\n138 6 4\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: disconnected graph",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_disconnected_graph.txt: row 1 of 1 (key 138): the graph is not connected (2 components)\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: disconnected graph",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_disconnected_graph.txt: row 1 of 1 (key 138): the graph is not connected (2 components)\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: disconnected graph",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_disconnected_graph.txt: row 1 of 1 (key 138): the graph is not connected (2 components)\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: disconnected graph",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_disconnected_graph.txt: row 1 of 1 (key 138): the graph is not connected (2 components)\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: aut 0",
+   "passed": true,
+   "detail": "rc=0 stdout='3 1\\n37 0 3\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: aut 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut_0.txt: row 1 of 1 (key 37): aut=0 and orbit=3 must both be >= 1\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: aut 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut_0.txt: row 1 of 1 (key 37): aut=0 and orbit=3 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: aut 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut_0.txt: row 1 of 1 (key 37): aut=0 and orbit=3 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: aut 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut_0.txt: row 1 of 1 (key 37): aut=0 and orbit=3 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: orbit 0",
+   "passed": true,
+   "detail": "rc=0 stdout='3 1\\n37 2 0\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: orbit 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_orbit_0.txt: row 1 of 1 (key 37): aut=2 and orbit=0 must both be >= 1\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: orbit 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_orbit_0.txt: row 1 of 1 (key 37): aut=2 and orbit=0 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: orbit 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_orbit_0.txt: row 1 of 1 (key 37): aut=2 and orbit=0 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: orbit 0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_orbit_0.txt: row 1 of 1 (key 37): aut=2 and orbit=0 must both be >= 1\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: aut * orbit is not n!",
+   "passed": true,
+   "detail": "rc=0 stdout='3 2\\n37 2 3\\n40 2 4\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: aut * orbit is not n!",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_is_not_n_.txt: row 2 of 2 (key 40): aut * orbit = 2 * 4 differs from n! = 6\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: aut * orbit is not n!",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_is_not_n_.txt: row 2 of 2 (key 40): aut * orbit = 2 * 4 differs from n! = 6\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: aut * orbit is not n!",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_is_not_n_.txt: row 2 of 2 (key 40): aut * orbit = 2 * 4 differs from n! = 6\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: aut * orbit is not n!",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_is_not_n_.txt: row 2 of 2 (key 40): aut * orbit = 2 * 4 differs from n! = 6\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: aut * orbit overflows",
+   "passed": true,
+   "detail": "rc=0 stdout='3 1\\n37 9223372036854775807 2\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: aut * orbit overflows",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_overflows.txt: row 1 of 1 (key 37): aut * orbit overflows a long long\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: aut * orbit overflows",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_overflows.txt: row 1 of 1 (key 37): aut * orbit overflows a long long\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: aut * orbit overflows",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_overflows.txt: row 1 of 1 (key 37): aut * orbit overflows a long long\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: aut * orbit overflows",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_aut___orbit_overflows.txt: row 1 of 1 (key 37): aut * orbit overflows a long long\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: repeated key",
+   "passed": true,
+   "detail": "rc=0 stdout='3 2\\n37 2 3\\n37 2 3\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: repeated key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_repeated_key.txt: row 2 of 2 (key 37): the key of row 1 again\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: repeated key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_repeated_key.txt: row 2 of 2 (key 37): the key of row 1 again\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: repeated key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_repeated_key.txt: row 2 of 2 (key 37): the key of row 1 again\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: repeated key",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_repeated_key.txt: row 2 of 2 (key 37): the key of row 1 again\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: NG=0",
+   "passed": true,
+   "detail": "rc=0 stdout='3 0\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: NG=0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_NG_0.txt: header NG=0: the generator needs at least one class\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: NG=0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_NG_0.txt: header NG=0: the generator needs at least one class\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: NG=0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_NG_0.txt: header NG=0: the generator needs at least one class\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: NG=0",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_NG_0.txt: header NG=0: the generator needs at least one class\\n' out_exists=False"
+  },
+  {
+   "check": "syntax driver round-trips the semantically invalid file: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)",
+   "passed": true,
+   "detail": "rc=0 stdout='9 1\\n4722366482869645213695 1 362880\\n' stderr=''"
+  },
+  {
+   "check": "test_keys --generator refuses: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_the_reviewer_s_key_2_72_1_at_n_9__all_36_multiplicities_3_.txt: row 1 of 1 (key 4722366482869645213695): 108 edges, an n=9 class (L=8) has exactly 16\\n'"
+  },
+  {
+   "check": "build_free refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_the_reviewer_s_key_2_72_1_at_n_9__all_36_multiplicities_3_.txt: row 1 of 1 (key 4722366482869645213695): 108 edges, an n=9 class (L=8) has exactly 16\\n' out_exists=False"
+  },
+  {
+   "check": "build_power refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_the_reviewer_s_key_2_72_1_at_n_9__all_36_multiplicities_3_.txt: row 1 of 1 (key 4722366482869645213695): 108 edges, an n=9 class (L=8) has exactly 16\\n' out_exists=False"
+  },
+  {
+   "check": "check_edge_forests refuses before writing: the reviewer's key 2^72-1 at n=9 (all 36 multiplicities 3)",
+   "passed": true,
+   "detail": "rc=2 stderr='/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_test_keys_yutm3tsy/sem_the_reviewer_s_key_2_72_1_at_n_9__all_36_multiplicities_3_.txt: row 1 of 1 (key 4722366482869645213695): 108 edges, an n=9 class (L=8) has exactly 16\\n' out_exists=False"
+  },
+  {
+   "check": "classes1.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes1.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes2.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes2.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes3.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes3.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes4.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes4.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes5.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes5.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes6.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes6.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes7.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes7.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes8.txt round-trips byte for byte",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes8.txt passes the generator validation (same rows)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classes8.txt holds 5,068 keys above 2^64",
+   "passed": true,
+   "detail": "5068"
+  },
+  {
+   "check": "check_edge_forests: the frozen power L4 tree passes (5 power classes, no failure)",
+   "passed": true,
+   "detail": "rc=0 doc={'L': 4, 'graphs': 5, 'failures': 0, 'seconds': 0.000715, 'rows': [{'id': 5, 'subgraphs': 6, 'forests': 32, 'terms': 0, 'matches_induced': True}, {'id': 17, 'subgraphs': 8, 'forests': 28, 'terms': 0, 'matches_induced': True}, {'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': T stderr='L 4 done 5 fail 0 time 0.000739\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt cut after its magic fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': 'truncated or malformed header'} failures=1 stderr='L 4 done 5 fail 1 time 0.000343\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt cut before its first term's denominator size fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': 'truncated or malformed term 0 (its denominator size)'} failures=1 stderr='L 4 done 5 fail 1 time 0.000352\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt cut inside its first term fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': 'truncated or malformed term 0'} failures=1 stderr='L 4 done 5 fail 1 time 0.000361\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt with M = -1 fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': \"header counts M=-1, T=6 outside the loader's bounds\"} failures=1 stderr='L 4 done 5 fail 1 time 0.00034\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt with M = 2^31-1 fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': \"header counts M=2147483647, T=6 outside the loader's bounds\"} failures=1 stderr='L 4 done 5 fail 1 time 0.000348\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt with T = 0 fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': \"header counts M=28, T=0 outside the loader's bounds\"} failures=1 stderr='L 4 done 5 fail 1 time 0.000349\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt with a denominator size of -1 fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': 'term 0: denominator size -1 outside [1, M]'} failures=1 stderr='L 4 done 5 fail 1 time 0.000364\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt with a denominator size above M fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': 'term 0: denominator size 99 outside [1, M]'} failures=1 stderr='L 4 done 5 fail 1 time 0.000354\\n'"
+  },
+  {
+   "check": "check_edge_forests (W6): G18.txt naming another id fails that graph only, with its error, and nothing crashes",
+   "passed": true,
+   "detail": "rc=1 row={'id': 18, 'subgraphs': 8, 'forests': 32, 'terms': 6, 'matches_induced': False, 'error': \"header magic, L or id is not the class's\"} failures=1 stderr='L 4 done 5 fail 1 time 0.000363\\n'"
+  },
+  {
+   "check": "c8gen.hpp alone: no warning under -Wall -Wextra",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "build_free.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "build_power.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "check_edge_forests.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "test_keys.cpp: no -Wall -Wextra diagnostic in c8gen.hpp",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "skipped": [
+  "UBSan builds and the ASan hostile-NG check (--no-ubsan)"
+ ],
+ "cxx": "g++-16 (Homebrew GCC 16.2.0) 16.2.0"
+}

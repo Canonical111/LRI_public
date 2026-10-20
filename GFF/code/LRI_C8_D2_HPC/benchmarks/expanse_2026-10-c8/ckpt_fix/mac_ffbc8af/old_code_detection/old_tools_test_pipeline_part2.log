@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "<TMP>/scratchpad/hyb/tests/test_pipeline.py", line 619, in <module>
+    if __name__=='__main__':sys.exit(main())
+  File "<TMP>/scratchpad/hyb/tests/test_pipeline.py", line 612, in main
+    executed.append(name);fn(X)
+  File "<TMP>/scratchpad/hyb/tests/test_pipeline.py", line 457, in part2
+    r=X.T('sweep.py',*sweep_args,'--cost-model-out',td/'cm.json','--calibration',td/'calibration_scratch.json',env={'SLURM_JOB_ID':'9001'})
+  File "<TMP>/scratchpad/hyb/tests/test_pipeline.py", line 85, in T
+    if (cp.returncode==0)!=(expect==0):raise AssertionError(f'{script} {args}: exit {cp.returncode}, expected {expect}\n{cp.stderr[-2500:]}\n{cp.stdout[-800:]}')
+AssertionError: sweep.py (PosixPath('/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/sweep'), '--seed', 88001, '--points', 128, '--replicates', 2, '--threads', 1, '--procs', 2, '--bootstrap-chunk', 128, '--shards', 2, '--merge-jobs', 2, '--cost-model-out', PosixPath('/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/cm.json'), '--calibration', PosixPath('/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/calibration_scratch.json')): exit 1, expected 0
+Traceback (most recent call last):
+  File "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/pkg/tools/make_cost_model.py", line 88, in <module>
+    if __name__=='__main__':sys.exit(main())
+  File "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/pkg/tools/make_cost_model.py", line 86, in main
+    doc=build(a.run,a.note);dump(a.output,doc)
+  File "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/pkg/tools/common.py", line 39, in dump
+    def dump(path:Path,obj)->None:publish(path,json.dumps(obj,indent=2,allow_nan=False)+'\n')
+  File "/private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/pkg/tools/common.py", line 25, in publish
+    os.link(tmp,path)
+FileExistsError: [Errno 17] File exists: '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/cm.json.tmp.okt6kg1f' -> '/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/cm.json'
+sweep: make_cost_model.py /private/var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/sweep /var/folders/_m/k5_md00x64756gsk0lbvlf_80000gp/T/c8d2_pipe_gtl3m64p/p2/cm.json --note sweep sweep (2026-10-04T09:17:32Z) failed (exit 1)
+
+rged and valid; skipped
+a_power_L4: already merged and valid; skipped
+a_power_L5: already merged and valid; skipped
+a_power_L6: already merged and valid; skipped
+a_power_L7: already merged and valid; skipped
+a_power_L8: already merged and valid; skipped
+b_free_L3: already merged and valid; skipped
+b_free_L4: already merged and valid; skipped
+b_free_L5: already merged and valid; skipped
+b_free_L6: already merged and valid; skipped
+b_free_L7: already merged and valid; skipped
+b_free_L8: already merged and valid; skipped
+b_power_L3: already merged and valid; skipped
+b_power_L4: already merged and valid; skipped
+b_power_L5: already merged and valid; skipped
+b_power_L6: already merged and valid; skipped
+b_power_L7: already merged and valid; skipped
+b_power_L8: already merged and valid; skipped
+

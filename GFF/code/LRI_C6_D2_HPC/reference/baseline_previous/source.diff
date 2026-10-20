@@ -1,0 +1,409 @@
+--- previous_note.tex
++++ long_range_ising_complete.tex
+@@ -22,7 +22,7 @@
+ \title{The thermal dimension of the\\long-range Ising model\\through fifth order, with\\numerical sixth order at $d=1,2,3$\\[2mm]
+ \large One-dimensional closed forms and finite multivariable hypergeometric forms in general dimension}
+ \author{Research calculation record}
+-\date{Three-dimensional numerical sixth order: 14 September 2026\\Original consolidation: 7 September 2026\\One-dimensional numerical sixth order: 11 September 2026\\Two-dimensional numerical sixth order: 14 September 2026}
++\date{Precision refinement: 14 September 2026\\Three-dimensional numerical sixth order: 14 September 2026\\Original consolidation: 7 September 2026\\One-dimensional numerical sixth order: 11 September 2026\\Two-dimensional numerical sixth order: 14 September 2026}
+ 
+ \setcounter{tocdepth}{2}\newcommand{\ii}{\mathrm i}\newcommand{\GG}{\mathcal G}\newcommand{\rep}[1]{(#1)^{\times7}}\newcommand{\repeatparams}[2]{(#1)^{\times #2}}\newcommand{\Aut}{\operatorname{Aut}}
+ \hypersetup{pdftitle={Long-range Ising thermal dimension: sixth order in one, two and three dimensions},pdfauthor={Research calculation record},pdfsubject={Consolidated derivation and evidence boundaries}}
+@@ -131,6 +131,9 @@
+ lower-order controls and endpoint arithmetic checks are documented.
+ The quoted allowance is empirical, not a rigorous error enclosure.
+ 
++
++\par\smallskip
++The current precision update in Appendix~\ref{app:C6Precision} supersedes the earlier numerical error bars with $C_6(2)=362.3\pm1.0$ and $C_6(3)=33.58\pm0.20$. These are empirical numerical allowances, not rigorous bounds. Graph-stratified randomized integration, independent campaigns, full regulator-jet covariance and the common two-dimensional finite-kernel uncertainty are documented; previous analytic formulas are unchanged.
+ \end{abstract}
+ \tableofcontents
+ \clearpage
+@@ -11222,6 +11225,378 @@
+ of \eqref{d3six:result}; the qualifications concern numerical error and
+ shared-framework validation rather than an omitted remainder.
+ 
++\clearpage
++\section{Precision refinement of the complete sixth-order coefficients in two and three dimensions}
++\label{app:C6Precision}
++
++\subsection{Results and evidence boundary}
++The convention is unchanged:
++\begin{equation}
++ \epsilon=2s-d,\qquad
++ \Delta_{\mathcal E}(d,\epsilon)
++   =\frac{d-\epsilon}{2}+\gamma_r(g_*(\epsilon),\epsilon)
++   =\sum_{n=0}^{6}C_n(d)\epsilon^n+O(\epsilon^7).
++ \label{prec:convention}
++\end{equation}
++This appendix refines the numerical integration of the complete physical
++combination already derived in Appendices U and V.  It is not a new
++primitive-only estimate, interpolation in dimension, or prediction from
++lower-order coefficients.  The retained power-subgraph corrections and
++critical-mass prescription are unchanged.  Their previous audits are
++carried forward; they are not rerun here.
++
++\begin{center}\begin{tabular}{crrrr}
++\toprule
++Dimension & Previous center & Previous SE & New center & New SE\\\midrule
++$d=2$ & 362.20966953 & 0.480333 & 362.25767208 & 0.226352\\
++$d=3$ & 33.50373572 & 0.130855 & 33.57555796 & 0.039354\\
++\bottomrule
++\end{tabular}\end{center}
++\begin{equation}\boxed{C_6(2)=362.3\pm1.0,\qquad C_6(3)=33.58\pm0.20.}\label{prec:reported}\end{equation}
++The estimated sampling standard errors decrease by factors 2.12 and 3.33, respectively.  For transparency, the reporting convention is four sampling standard errors rounded upward to 0.1 at $d=2$ and to 0.05 at $d=3$; it is not a probabilistic coverage theorem.
++
++The raw central values and sampling standard errors are provided so that
++rounding does not conceal the actual numerical precision.  The separate
++reporting allowances are deliberately broader than the estimated
++sampling errors.  They are \emph{empirical}, not rigorous enclosures,
++confidence guarantees, or bounds on the truncation of the epsilon series.
++They cannot exclude an error shared by the graph enumeration,
++subtraction formula and fixed-point assembly.  Extra printed digits in
++the machine-readable records are not certified accurate physical digits.
++
++The final estimator uses only the two new production campaigns described
++below, together with one explicitly retained two-dimensional group of
++independently measured finite kernels.  The old full $C_6$ estimates,
++pilots and validation runs are not averaged into the new estimator.
++In particular, the known $C_3,C_4,C_5$ values are comparisons, not
++constraints, fitted controls or inputs used to select a central value.
++
++\subsection{Unchanged finite integrals and regulator dependence}
++For a power-free $L$-loop graph $G$ with $E=2L$ edges, the retained
++finite forest kernel is
++\begin{equation}
++ K_G^{(d)}(x)=\sum_F(-1)^{|F|}
++ \frac{\displaystyle\sum_{e\in E_R(F)}x_e}
++      {S(x)\,U_F(x)^{d/2}},\qquad S(x)=\sum_{e=1}^{E}x_e.
++ \label{prec:kernel}
++\end{equation}
++The sum is over the same compatible forests as before; $U_F$ is the
++product of the first Symanzik polynomials of the forest blocks.  Terms
++with identical denominators are combined before floating-point
++integration.  The rational graph weights, normalized edge measure,
++critical-mass prescription, and signs are inherited from the preceding
++calculation.  No forest is added or dropped in this precision update.
++There are respectively 5, 16, 76 and 395 nonzero finite kernels at loops
++3, 4, 5 and 6.  This is a count after exact algebraic cancellation, not
++the count of all six-loop graph classes.
++
++The dimension-dependent prefactor, including its regulator dependence, is
++\begin{equation}
++ G_{L,d}(z)=\Gamma(1+Lz/2)
++  \left[\frac{\Gamma(d/2+z/2)}{\Gamma(1+z/2)}\right]^L
++  \Gamma(d/4+z/4)^{-2L}.
++ \label{prec:prefactor}
++\end{equation}
++The overall sign and factor are $2(-1)^{L+1}G_{L,d}(0)$ times the
++retained coupling or mass graph weight.  Put
++\begin{equation}
++ \ell_j=[z^j]\log G_{L,d}(z),\qquad
++ s_G(x)=\frac14\sum_e\log x_e-\frac L2\log S(x).
++ \label{prec:logjet}
++\end{equation}
++At each integration point the Taylor coefficients needed through
++$z^{6-L}$ are generated by the finite recurrence
++\begin{equation}
++ e_0(x)=1,\qquad
++ e_n(x)=\frac1n\sum_{j=1}^{n}j
++       \bigl(\ell_j+\delta_{j1}s_G(x)\bigr)e_{n-j}(x).
++ \label{prec:jetrecursion}
++\end{equation}
++The scalar prefactors and their logarithmic Taylor coefficients were
++recomputed at 70 decimal working digits and checked against the retained
++configuration.  The separately evaluated two-loop data remain inputs.  Four
++additional independently seeded two-loop sampling checks use both ordering
++maps in both dimensions and a different, constant-exponent importance
++density.  All five required Taylor coefficients agree with the retained
++exact master within 1.46 estimated standard errors.  Their total 8,388,608
++samples are controls only and do not enter the final estimate.
++
++For every loop the stored vector contains all required beta-function
++Taylor coefficients followed by all required mass-anomalous-dimension
++Taylor coefficients:
++\begin{equation}
++ \boldsymbol v_L=(b_{L,0},\ldots,b_{L,6-L},
++                   c_{L,0},\ldots,c_{L,6-L}).
++ \label{prec:jetvector}
++\end{equation}
++Their covariance is not discarded.  Setting $z=\epsilon$ only after
++forming these Taylor series, the coefficient map $F_d$ is defined by
++\begin{align}
++ 0&=-\epsilon g_*+3g_*^2+
++    \sum_{L=2}^{6}\widehat b_L(\epsilon)g_*^{L+1}
++       +O(\epsilon^8),\
++ \Delta_{\mathcal E}
++   &=\frac{d-\epsilon}{2}+g_*+
++    \sum_{L=2}^{6}\widehat c_L(\epsilon)g_*^L
++       +O(\epsilon^7).
++ \label{prec:assembly}
++\end{align}
++Using only the values of the finite-scheme RG functions at $z=0$ would
++not reproduce this calculation.  An independent finite two-variable
++Lagrange expansion checks the fixed-point iteration used by $F_d$.
++
++\subsection{Graph stratification and fixed pilot allocation}
++Previously a graph was selected randomly on every sample.  The new
++estimator instead integrates every graph as a separate stratum, using a
++fixed sample count $n_G$ within each independent randomized replicate.
++For a generic component of the integral,
++\begin{equation}
++ \widehat I_b=\sum_G w_G\frac1{n_G}
++       \sum_{i=0}^{n_G-1}f_G(X_{bGi})/p_G(X_{bGi}).
++ \label{prec:stratified}
++\end{equation}
++Here $p_G$ is the normalized, unchanged importance density for graph $G$;
++there is no inverse random-graph selection probability.  This removes
++random fluctuations in the number of times a graph is visited without
++changing the integral being estimated.
++
++The counts are powers of two, at least four.  A separate pilot and two
++validation calculations estimate the graphwise variance of the linearized
++$C_6$ contribution.  These estimates determine the allocation, with a
++uniform floor; the allocation is frozen before either production
++campaign.  No production samples are recycled as a training pilot and no
++allocation is selected by agreement with a known physical coefficient.
++This target-aware allocation is a variance-reduction design, not an
++identity for $C_6$ and not a claim of mathematically optimal allocation.
++
++Each graph stratum uses a linearly scrambled Sobol net with a separate
++random digital shift.  Powers-of-two net sizes preserve the intended
++balance; the first point is retained and the sequence is not thinned.
++The direction matrices are generated with the documented SciPy Sobol
++construction, then checked against its public point generator
++\cite{PrecisionSobol}.  Every campaign has 64 independent randomized
++replicates at every loop order.  The same linear scrambling is shared
++within a replicate while different graph shifts are independently
++seeded; covariance is measured from the \emph{total} replicate vector.
++
++Campaign A uses 52-bit digital coordinates and the original sequence of
++conditional draws for the edge ordering.  Campaign B uses 60-bit digital
++coordinates and the equivalent one-coordinate ordering construction below.
++The integer net coordinate $k$ is mapped to $(k+1/2)/2^b$ before taking
++logarithms.  This avoids evaluating an endpoint singularity at zero.
++Finite digital resolution is itself an approximation; comparing 52 and
++60 bits is an empirical control, not a proof of a bound on its bias.
++The production arithmetic begins at long-double precision in both
++campaigns; the optional guarded-double experimental build is not used.
++
++\subsection{An exact compressed map for the edge ordering}
++Let $S$ be the set of edges not yet selected and let $D(S)$ be the
++positive dynamic-programming weight used by the importance sampler.
++The probability of choosing edge $j\in S$ next is
++\begin{equation}
++ p(j\mid S)=\frac{D(S\setminus\{j\})}
++                  {\sum_{k\in S}D(S\setminus\{k\})}.
++ \label{prec:conditional}
++\end{equation}
++One may use a fresh uniform coordinate for every such draw.  Alternatively,
++start with a single $u\in(0,1)$, choose the interval $[P_j,P_j+p_j)$
++containing $u$, and replace it by
++\begin{equation}
++ u\longmapsto\frac{u-P_j}{p_j}.
++ \label{prec:compression}
++\end{equation}
++Conditional on selecting $j$, the new variable is again uniform on
++$(0,1)$.  Induction proves that an entire ordering $\sigma$ has exactly
++its original probability $\prod p(j\mid S)$ under this map.  The gap
++coordinates are sampled separately, so the continuous density and the
++importance weight do not change.
++
++For $E=2L$, the original map uses $2E-1$ digital coordinates after graph
++stratification: $E$ ordering draws and $E-1$ scale draws.  The compressed
++map uses $E$ coordinates: one ordering coordinate and $E-1$ scales.
++At six loops the counts are thus 23 and 12.  This reduces the dimension
++of the sampling map, \emph{not} the physical Schwinger integral.  It is
++not claimed to improve every integrand, and the two campaigns test its
++empirical behavior rather than assuming an improvement.  The probability
++identity also passed exhaustive exact rational checks for 870 edge
++permutations in smaller examples.
++
++\subsection{Production design and actual sample counts}
++{\footnotesize
++\setlength{\tabcolsep}{3.2pt}
++\begin{center}\begin{tabular}{ccrrrrrr}
++\toprule
++$d$ & Run & $L=3$ & $L=4$ & $L=5$ & $L=6$ & $C_6$ & SE\\\midrule
++2 & A & 3,801,088 & 9,502,720 & 33,095,680 & 69,569,536 & 362.210403 & 0.285271\\
++2 & B & 3,801,088 & 9,502,720 & 33,095,680 & 69,569,536 & 362.304943 & 0.292944\\
++3 & A & 4,456,448 & 9,502,720 & 32,768,000 & 67,076,096 & 33.590772 & 0.057948\\
++3 & B & 4,456,448 & 9,502,720 & 32,768,000 & 67,076,096 & 33.560344 & 0.053265\\
++\bottomrule
++\end{tabular}\end{center}
++}
++In total the new production uses 459,544,576 kernel samples across both dimensions, campaigns and all four loop orders. Pilot and validation samples are additional and are excluded from the result.
++
++Counts in this table are sums over graph strata, not counts per graph.
++They are the actual rounded power-of-two allocations, not nominal
++budgets.  Both campaigns use the same frozen graph allocation and
++importance exponents; seeds, net precision and ordering maps differ.
++The two campaigns are pooled with the fixed weights $1/2,1/2$ at the
++level of the RG Taylor vectors.  The weights were not optimized after
++observing the production central values or their empirical variances.
++
++The older full physical estimates are kept only as comparisons.  The
++new independent streams do not share sampled points with them.  The
++exception to fully new input is the following explicitly accounted
++finite-kernel group in two dimensions.
++
++\subsection{The common two-dimensional input must not be averaged twice}
++For $d=2$, 76 six-loop finite MOM kernels have the independently measured
++combined contribution
++\begin{equation}
++ K_{76}=528.2946383532544,\qquad
++ \widehat\sigma_{76}=0.1373774929551.
++ \label{prec:known76}
++\end{equation}
++It is the sum of the primitive, one-subgraph and two-subgraph contributions
++in the \emph{finite scheme}.  It must not be confused with their separate
++MS-converted values.  Their retained component estimates are
++\begin{center}\begin{tabular}{lrr}
++\toprule Finite-kernel group & Mean & Sampling standard error\\\midrule
++Primitive, 10 classes & 718.7129769223 & 0.0414043283\\
++One-subgraph, 26 classes & -188.2890632769 & 0.1002179258\\
++Two-subgraph, 40 classes & -2.1292752922 & 0.0843482337\\
++\bottomrule\end{tabular}\end{center}
++The noisy production estimates of these 76 graphs are excluded from the
++final six-loop vector.  The retained $K_{76}$ is then added once to the
++physical coefficient; its error is propagated once as a common input.
++The 28 six-loop classes with zero target weight remain exact zeros.
++Thus 291 nonzero six-loop target kernels are sampled for the new
++remainder.  Minimal samples retained for excluded strata are diagnostic
++only and are not used to reduce the error of $K_{76}$.
++
++In particular, the two new $d=2$ campaign estimates are correlated by
++$\operatorname{Cov}_{76}=\widehat\sigma_{76}^{\,2}$ even though their new
++sample streams are independent.  Treating this shared input as two
++independent measurements would underestimate the final error.
++There is no analogous carried numerical group in the $d=3$ estimator.
++The uncertainty in \eqref{prec:known76} also gives a floor for improving
++$d=2$ precision without recalculating that group.
++
++\subsection{Covariance propagation and consistency diagnostics}
++Write $\overline{\boldsymbol v}_{aL}$ for the mean vector of campaign
++$a\in\{A,B\}$ at loop $L$, and $S_{aL}$ for the sample covariance of
++its 64 replicate vectors.  Set
++\begin{equation}
++ \overline{\boldsymbol v}_L
++  =\tfrac12(\overline{\boldsymbol v}_{AL}
++                  +\overline{\boldsymbol v}_{BL}),\qquad
++ V_L=\tfrac14\left(\frac{S_{AL}}{64}+\frac{S_{BL}}{64}\right).
++ \label{prec:jetcov}
++\end{equation}
++If $J_L$ is the Jacobian of the complete coefficient vector $F_d$ with
++respect to $\boldsymbol v_L$, evaluated at the pooled mean, then
++\begin{equation}
++ \widehat V_C=\sum_{L=3}^{6}J_LV_LJ_L^{\mathsf T}
++       +\delta_{d,2}\widehat\sigma_{76}^{\,2}
++          \boldsymbol e_6\boldsymbol e_6^{\mathsf T}.
++ \label{prec:covariance}
++\end{equation}
++The independent loops have separate randomizations.  Within each loop,
++beta/mass and regulator-Taylor covariance are fully preserved.  The
++statistical unit is the independently scrambled \emph{replicate}, not
++an individual quasi-random point: the latter are not independent
++Monte Carlo observations \cite{PrecisionQMC}.
++
++\begin{center}\begin{tabular}{crrrrrr}
++\toprule
++$d$ & Three-loop & Four-loop & Five-loop & Six-loop & Shared input & Total SE\\\midrule
++2 & 0.008834 & 0.056651 & 0.115334 & 0.125592 & 0.137377 & 0.226352\\
++3 & 0.001691 & 0.008273 & 0.017826 & 0.034054 & 0.000000 & 0.039354\\
++\bottomrule
++\end{tabular}\end{center}
++Each row lists standard-error contributions; independent contributions combine in quadrature, not by addition.
++\begin{center}\begin{tabular}{ccrrrr}
++\toprule
++$d$ & Order & New estimate & SE & Retained value & Pull\\\midrule
++2 & 3 & -0.8748973045 & 0.0000689 & -0.8748500127 & -0.69\\
++2 & 4 & 5.0488829119 & 0.0017433 & 5.0488684314 & 0.01\\
++2 & 5 & -38.8338751616 & 0.0190475 & -38.8336458962 & -0.01\\
++3 & 3 & -0.3536648455 & 0.0000464 & -0.3535815204 & -1.80\\
++3 & 4 & 1.2276033552 & 0.0005919 & 1.2280635453 & -0.78\\
++3 & 5 & -5.8524964805 & 0.0047647 & -5.8503514208 & -0.45\\
++\bottomrule
++\end{tabular}\end{center}
++\begin{center}\begin{tabular}{crrrr}
++\toprule
++$d$ & Campaign difference pull & First half & Second half & Bias estimate\\\midrule
++2 & -0.263 & 362.060899 & 362.454447 & 8.26e-07\\
++3 & 0.387 & 33.537764 & 33.613354 & 1.07e-07\\
++\bottomrule
++\end{tabular}\end{center}
++The campaign-difference pull uses the variance of the difference; the common two-dimensional input cancels from that difference.
++
++The known lower coefficients were never used to calibrate the estimator.
++Half-run splits, the two different ordering maps, and the change of bit
++resolution are additional diagnostics.  The per-replicate influence
++records also expose whether a single rare sample batch dominates an
++estimated variance; no outlying replicate is discarded.
++
++The nonlinear fixed-point map has a small finite-sample bias.  A
++leave-one-replicate-out calculation estimates its leading effect;
++the central estimate remains the direct pooled estimator, rather than
++silently applying a data-dependent correction.  A separate finite
++Lagrange expansion checks the same input jets, and a replicate bootstrap
++checks variance propagation.  Bootstrap intervals in the records are
++approximate diagnostics, not rigorous error certificates.  The common
++$K_{76}$ uncertainty is varied once per complete bootstrap sample.  For
++this diagnostic it is modeled by one normal draw with its recorded
++variance; this modeling choice is not a proof that the retained input
++error is normally distributed.  The reported covariance formula itself
++uses only that variance.
++
++\subsection{Arithmetic, checks and reproducibility}
++For cancellation monitoring, the original long-double kernel evaluation
++is repeated in binary128 when its signed sum is small compared with the
++sum of absolute terms.  Extremely severe cancellation invokes a
++300-decimal-digit emergency branch.  All fallback counts are recorded,
++and no nonfinite sampled point is accepted.
++
++The independently constructed reference uses Kirchhoff cofactor
++\emph{determinants}, not the sampler's list of spanning-tree monomials.
++There are 1,038 successful kernel comparisons over dimensions 2 and 3,
++including all finite kernels and endpoint configurations extending to
++$10^{-130}$.  Ordinary points use 70 reference digits and extreme points
++use 650.  The 70-digit Gamma-jet checks and the exact rational ordering
++checks are separate tests.  These validate the changed integration
++implementation, not all preceding field-theory reductions.
++
++An optional guarded-double path was tested on exactly the same pilot
++samples and compared against the original path.  Its differences in the
++assembled $C_6$ were negligible at the new sampling scale.  Production
++nevertheless uses the original long-double entry path in both campaigns;
++the optional performance experiment is not part of the estimator.
++
++The accompanying archive contains each raw production replicate and its
++individual graph contributions, frozen graph allocations, randomization
++seeds and direction matrices, two-loop and known-sector inputs, the
++retained power-audit records, the kernel source and independent check
++scripts.  From the archive root the primary commands are
++\begin{lstlisting}[language=bash]
++python code/final_analysis.py
++python code/extra_checks.py
++python code/check_structure.py
++sh code/build.sh
++python code/check_kernels.py
++\end{lstlisting}
++The first command recomputes both full coefficients and their covariance
++without running an expensive integration.  New samples can be generated
++with a new tag using \texttt{code/run\_precision.py}; existing result files
++are never overwritten.  The exact delivered campaign is specified in
++\texttt{inputs/production\_plan.json}.  The source audit preserves all
++previous displayed mathematical blocks in order.  Earlier error bars
++remain visible as historical results; the present numerical precision
++supersedes them, without changing any analytic coefficient formula.
++
+ \begin{thebibliography}{99}
+ \bibitem{BrownKreimerLocal} F.~Brown and D.~Kreimer,
+ \emph{Angles, scales and parametric renormalization},
+@@ -11340,5 +11715,8 @@
+ \emph{Feynman integrals in two dimensions and single-valued hypergeometric functions},
+ JHEP \textbf{02} (2024), 179, arXiv:2309.12772.
+ 
++
++\bibitem{PrecisionSobol} SciPy developers, \emph{scipy.stats.qmc.Sobol}: LMS scrambling, digital shifts, powers-of-two balance and bit resolution. Documentation accessed 14 September 2026. \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html}.
++\bibitem{PrecisionQMC} SciPy developers, \emph{Quasi-Monte Carlo submodule}: independent randomizations, approximate error estimation and limits of convergence claims. Documentation accessed 14 September 2026. \url{https://docs.scipy.org/doc/scipy/reference/stats.qmc.html}.
+ \end{thebibliography}
+ \end{document}

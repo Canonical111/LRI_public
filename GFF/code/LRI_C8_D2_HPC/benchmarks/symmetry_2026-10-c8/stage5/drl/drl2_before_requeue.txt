@@ -1,0 +1,22 @@
+2026-10-05T06:05:14-04:00
+== before requeue
+570076 c8d2-merge PENDING amdq 0:00 2:00:00 (Dependency)
+570075 c8d2-lanes RUNNING amdq 4:27 2:00:00 <NODE>
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:04:27 TimeLimit=02:00:00 TimeMin=N/A
+-- claims
+{"job": "570075", "restart": "0", "lane": 5, "node": "<NODE>", "cpu_model": "AMD EPYC 7543 32-Core Processor", "pid": 293055, "threads": 8, "index": 12, "start_epoch": 1791194447.5908046}
+
+{"job": "570075", "restart": "0", "lane": 1, "node": "<NODE>", "cpu_model": "AMD EPYC 7543 32-Core Processor", "pid": 293051, "threads": 8, "index": 18, "start_epoch": 1791194447.5986202}
+
+{"job": "570075", "restart": "0", "lane": 0, "node": "<NODE>", "cpu_model": "AMD EPYC 7543 32-Core Processor", "pid": 293050, "threads": 8, "index": 24, "start_epoch": 1791194447.6024532}
+
+{"job": "570075", "restart": "0", "lane": 2, "node": "<NODE>", "cpu_model": "AMD EPYC 7543 32-Core Processor", "pid": 293052, "threads": 8, "index": 5, "start_epoch": 1791194447.6070297}
+
+{"job": "570075", "restart": "0", "lane": 3, "node": "<NODE>", "cpu_model": "AMD EPYC 7543 32-Core Processor", "pid": 293053, "threads": 8, "index": 6, "start_epoch": 1791194447.6153843}
+
+-- checkpoints: 93
+scontrol requeue 570075 exit 0 at 2026-10-05T06:05:14-04:00
+   JobState=PENDING Reason=BeginTime Dependency=(null)
+   Requeue=1 Restarts=1 BatchFlag=1 Reboot=0 ExitCode=0:0

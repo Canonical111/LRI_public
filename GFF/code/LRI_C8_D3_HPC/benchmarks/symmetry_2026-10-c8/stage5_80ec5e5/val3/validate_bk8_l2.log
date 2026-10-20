@@ -1,0 +1,34 @@
+{"test": "identity", "gmp": {"gmp": {"applicable": true, "header_version": "6.2.1", "runtime_version": "6.2.1", "library": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1"}, "libraries": 10}, "decimal": {"gmp": {"applicable": false}, "libraries": 9}, "ref_probe": {"libgmp": {"ldd_realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1", "loader_realpath": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.4.1", "version": "6.2.1"}}}
+{"test": "G-BK8", "sector": "free", "L": 7, "graphs": 400, "points": "2 x 256", "rows": 800, "mp_rows": 440, "max_normalized_on_mp_rows": "0", "gate": "counters identical; exact where mp = 0; <= 1e-13 normalized where mp > 0"}
+{"test": "G-BK8", "sector": "power", "L": 7, "graphs": 400, "points": "2 x 256", "rows": 800, "mp_rows": 765, "max_normalized_on_mp_rows": "0", "gate": "counters identical; exact where mp = 0; <= 1e-13 normalized where mp > 0"}
+{"test": "G-BK8", "sector": "free", "L": 8, "graphs": 400, "points": "2 x 256", "rows": 800, "mp_rows": 502, "max_normalized_on_mp_rows": "0", "gate": "counters identical; exact where mp = 0; <= 1e-13 normalized where mp > 0"}
+{"test": "G-BK8", "sector": "power", "L": 8, "graphs": 400, "points": "2 x 256", "rows": 800, "mp_rows": 779, "max_normalized_on_mp_rows": "0", "gate": "counters identical; exact where mp = 0; <= 1e-13 normalized where mp > 0"}
+{"test": "A-IN-6 L2 control (order 8, K = 6)", "replicates": 32, "points": 65536, "seed": 6602215, "a": {"pulls": ["0.826", "-0.082", "0.419", "-1.567", "1.847", "-1.888", "1.845"], "mean": ["-9.78593816200976247560875", "13.1771254384838046888625", "-16.375838460554912738609375", "19.572808638095294805478125", "-22.786196295280646319090625", "26.005850624891142555215625", "-29.218013115710256907378125"], "se": ["4.633e-5", "1.403e-4", "2.921e-4", "7.929e-4", "2.773e-3", "8.244e-3", "2.174e-2"]}, "b": {"pulls": ["0.061", "0.500", "-0.990", "1.834", "-2.306", "1.987", "-1.183"], "mean": ["-9.785973190274493319155625", "13.1771810262361684120125", "-16.37614545792095499526875", "19.574854430299849029396875", "-22.793543870378343626540625", "26.025815633603545281665625", "-29.264510715858403811721875"], "se": ["5.262e-5", "8.816e-5", "1.865e-4", "4.378e-4", "9.656e-4", "2.213e-3", "5.399e-3"]}, "combined": {"pulls": ["0.592", "0.196", "-0.180", "-0.486", "0.986", "-1.309", "1.506"]}, "gate": "|pull| <= 4 for b_0..b_6 per campaign and combined; wb/wa = 1/6; |b_j - 6 c_j| <= 2^-60 |b_j| per row and merged"}
+{
+  "status": "passed",
+  "full": false,
+  "parts": [
+    "identity",
+    "bk8",
+    "l2_control"
+  ],
+  "smoke": false,
+  "threads": 32,
+  "host": {
+    "node": "<NODE>",
+    "cpu_model": "AMD EPYC 7543 32-Core Processor"
+  },
+  "executables": {
+    "c8d3_gmp": "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_gmp",
+    "c8d3_decimal": "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_decimal",
+    "ref/c7d3_gmp": "<SCRATCH>/c8d3/work/val3_570319/bin/ref/c7d3_gmp",
+    "ref/c7d3_decimal": "<SCRATCH>/c8d3/work/val3_570319/bin/ref/c7d3_decimal"
+  },
+  "sha256": {
+    "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_gmp": "8f3a36aa5c6d14d7fe0f38522e302a299f700e6a9e97305dc2d8b957632f7273",
+    "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_decimal": "cbe5125a0a2f02adf7edfb986e3bb1856e6bb5b8c04f47621c44147c41923e27",
+    "<SCRATCH>/c8d3/work/val3_570319/bin/ref/c7d3_gmp": "635428f9f9f462b74d261185120b5ea1553fb7989196feef644dd85dd687ae5f",
+    "<SCRATCH>/c8d3/work/val3_570319/bin/ref/c7d3_decimal": "24b2b941fea9c3040226a5ab75f1752ed8614a0cbb4cb070dee7b2afa3d86fcc"
+  },
+  "wall_seconds": 98.2
+}

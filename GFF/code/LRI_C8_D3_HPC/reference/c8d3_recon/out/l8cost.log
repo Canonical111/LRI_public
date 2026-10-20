@@ -1,0 +1,52 @@
+[A] backtest on L6->L7 (promotion fit on L5-L6, cost law fitted on L6; flat kappa = (mean sqrt c)^2 ratio)
+    a_free: actual  4.32; predicted bias-cancelled E  4.64 (1.08x) G  4.87 (1.13x); direct E  5.06 G  5.31 (1.23x)
+    b_free: actual  3.97; predicted bias-cancelled E  4.64 (1.17x) G  4.84 (1.22x); direct E  4.89 G  5.10 (1.29x)
+    a_power: actual  3.55; predicted bias-cancelled E  4.34 (1.22x) G  4.59 (1.29x); direct E  5.77 G  6.10 (1.72x)
+    b_power: actual  3.49; predicted bias-cancelled E  3.95 (1.13x) G  4.18 (1.20x); direct E  4.91 G  5.19 (1.49x)
+[B] L7 cost law (NNLS on all L7 graphs, mixed CPUs): c0 7.35 us, ld 1.131 ns/op, quad 14.7 us + 25.48 ns/op, GMP 515 us + 63.52 ns/op
+    fixed parts (c0, quad, GMP) grow L7->L8 by: variant E (1.14, 1.14, 1.14); variant G (fitted L6->L7 growth) (1.68, 1.52, 1.46)
+    L8 kernels: free 16064 (primitive 248), power 4336
+  a_free: L7 actual per-graph mean q 0.262 mp 0.0090; model at L7 q 0.269 mp 0.0108; calibration actual/model (mean sqrt c)^2 = 0.962
+     low     E: L8 mean q 0.315 mp 0.0183 (T>=96: q 0.65 mp 0.050); mean cost   465 us; kappa  3.75 (direct  3.89; sample-mean cost ratio  8.15); CPU tiers ld 0.15 quad 0.73 GMP 0.12
+     low     G: L8 mean q 0.315 mp 0.0183 (T>=96: q 0.65 mp 0.050); mean cost   474 us; kappa  3.86 (direct  4.01; sample-mean cost ratio  8.31); CPU tiers ld 0.16 quad 0.72 GMP 0.12
+     central E: L8 mean q 0.354 mp 0.0318 (T>=96: q 0.70 mp 0.087); mean cost   551 us; kappa  4.42 (direct  4.60; sample-mean cost ratio  9.66); CPU tiers ld 0.13 quad 0.70 GMP 0.17
+     central G: L8 mean q 0.354 mp 0.0318 (T>=96: q 0.70 mp 0.087); mean cost   562 us; kappa  4.55 (direct  4.73; sample-mean cost ratio  9.86); CPU tiers ld 0.14 quad 0.69 GMP 0.18
+     high    E: L8 mean q 0.394 mp 0.0539 (T>=96: q 0.75 mp 0.146); mean cost   667 us; kappa  5.33 (direct  5.54; sample-mean cost ratio 11.69); CPU tiers ld 0.11 quad 0.65 GMP 0.24
+     high    G: L8 mean q 0.394 mp 0.0539 (T>=96: q 0.75 mp 0.146); mean cost   682 us; kappa  5.49 (direct  5.70; sample-mean cost ratio 11.96); CPU tiers ld 0.11 quad 0.64 GMP 0.25
+  b_free: L7 actual per-graph mean q 0.313 mp 0.0178; model at L7 q 0.319 mp 0.0207; calibration actual/model (mean sqrt c)^2 = 0.936
+     low     E: L8 mean q 0.363 mp 0.0333 (T>=96: q 0.71 mp 0.090); mean cost   564 us; kappa  3.71 (direct  3.96; sample-mean cost ratio  8.29); CPU tiers ld 0.12 quad 0.70 GMP 0.18
+     low     G: L8 mean q 0.363 mp 0.0333 (T>=96: q 0.71 mp 0.090); mean cost   575 us; kappa  3.82 (direct  4.08; sample-mean cost ratio  8.46); CPU tiers ld 0.13 quad 0.68 GMP 0.18
+     central E: L8 mean q 0.400 mp 0.0529 (T>=96: q 0.76 mp 0.141); mean cost   667 us; kappa  4.38 (direct  4.68; sample-mean cost ratio  9.81); CPU tiers ld 0.10 quad 0.65 GMP 0.24
+     central G: L8 mean q 0.400 mp 0.0529 (T>=96: q 0.76 mp 0.141); mean cost   682 us; kappa  4.51 (direct  4.82; sample-mean cost ratio 10.03); CPU tiers ld 0.11 quad 0.64 GMP 0.25
+     high    E: L8 mean q 0.437 mp 0.0814 (T>=96: q 0.79 mp 0.214); mean cost   802 us; kappa  5.25 (direct  5.61; sample-mean cost ratio 11.80); CPU tiers ld 0.09 quad 0.60 GMP 0.31
+     high    G: L8 mean q 0.437 mp 0.0814 (T>=96: q 0.79 mp 0.214); mean cost   822 us; kappa  5.42 (direct  5.78; sample-mean cost ratio 12.09); CPU tiers ld 0.09 quad 0.58 GMP 0.32
+  a_power: L7 actual per-graph mean q 0.762 mp 0.1718; model at L7 q 0.747 mp 0.2057; calibration actual/model (mean sqrt c)^2 = 0.800
+     low     E: L8 mean q 0.793 mp 0.2264 (T>=48: q 0.90 mp 0.262); mean cost   904 us; kappa  2.88 (direct  3.60; sample-mean cost ratio  3.98); CPU tiers ld 0.04 quad 0.47 GMP 0.49
+     low     G: L8 mean q 0.793 mp 0.2264 (T>=48: q 0.90 mp 0.262); mean cost   950 us; kappa  3.04 (direct  3.80; sample-mean cost ratio  4.18); CPU tiers ld 0.04 quad 0.45 GMP 0.51
+     central E: L8 mean q 0.840 mp 0.3649 (T>=48: q 0.92 mp 0.413); mean cost  1185 us; kappa  3.81 (direct  4.77; sample-mean cost ratio  5.21); CPU tiers ld 0.03 quad 0.38 GMP 0.60
+     central G: L8 mean q 0.840 mp 0.3649 (T>=48: q 0.92 mp 0.413); mean cost  1254 us; kappa  4.06 (direct  5.08; sample-mean cost ratio  5.52); CPU tiers ld 0.03 quad 0.36 GMP 0.61
+     high    E: L8 mean q 0.879 mp 0.5294 (T>=48: q 0.95 mp 0.583); mean cost  1503 us; kappa  4.89 (direct  6.11; sample-mean cost ratio  6.62); CPU tiers ld 0.02 quad 0.31 GMP 0.67
+     high    G: L8 mean q 0.879 mp 0.5294 (T>=48: q 0.95 mp 0.583); mean cost  1600 us; kappa  5.23 (direct  6.54; sample-mean cost ratio  7.04); CPU tiers ld 0.02 quad 0.29 GMP 0.69
+  b_power: L7 actual per-graph mean q 0.813 mp 0.2351; model at L7 q 0.798 mp 0.2659; calibration actual/model (mean sqrt c)^2 = 0.904
+     low     E: L8 mean q 0.836 mp 0.2982 (T>=48: q 0.93 mp 0.354); mean cost  1068 us; kappa  2.84 (direct  3.14; sample-mean cost ratio  3.49); CPU tiers ld 0.03 quad 0.42 GMP 0.55
+     low     G: L8 mean q 0.836 mp 0.2982 (T>=48: q 0.93 mp 0.354); mean cost  1126 us; kappa  3.01 (direct  3.33; sample-mean cost ratio  3.68); CPU tiers ld 0.03 quad 0.40 GMP 0.57
+     central E: L8 mean q 0.876 mp 0.4278 (T>=48: q 0.95 mp 0.494); mean cost  1328 us; kappa  3.57 (direct  3.94; sample-mean cost ratio  4.34); CPU tiers ld 0.02 quad 0.35 GMP 0.63
+     central G: L8 mean q 0.876 mp 0.4278 (T>=48: q 0.95 mp 0.494); mean cost  1407 us; kappa  3.80 (direct  4.21; sample-mean cost ratio  4.60); CPU tiers ld 0.03 quad 0.33 GMP 0.64
+     high    E: L8 mean q 0.908 mp 0.5676 (T>=48: q 0.96 mp 0.636); mean cost  1596 us; kappa  4.33 (direct  4.79; sample-mean cost ratio  5.21); CPU tiers ld 0.02 quad 0.30 GMP 0.68
+     high    G: L8 mean q 0.908 mp 0.5676 (T>=48: q 0.96 mp 0.636); mean cost  1698 us; kappa  4.64 (direct  5.13; sample-mean cost ratio  5.55); CPU tiers ld 0.02 quad 0.28 GMP 0.70
+[C] flat kappa(L7->L8) = (mean sqrt c8)^2/(mean sqrt c7)^2 per campaign, central [band]; CPU tier shares at the optimum (central):
+    free|a       4.55  [3.75, 5.49]   ld 0.14 quad 0.69 GMP 0.18
+    free|b       4.51  [3.71, 5.42]   ld 0.11 quad 0.64 GMP 0.25
+    power|a      4.06  [2.88, 5.23]   ld 0.03 quad 0.36 GMP 0.61
+    power|b      3.80  [2.84, 4.64]   ld 0.03 quad 0.33 GMP 0.64
+[D] promotion part of the [A] backtest (repair round 2, finding 7): the L5-L6 logistic fit evaluated at L = 7 on every L7 graph
+    (per-graph means over all L7 graphs of the group; primitives promote 0 in both), against the measured run1 fractions:
+    a_free: q predicted 0.2735 actual 0.2624 (+4.2%);  mp predicted 0.01188 actual 0.00900 (+32%)
+    b_free: q predicted 0.3198 actual 0.3126 (+2.3%);  mp predicted 0.02242 actual 0.01782 (+26%)
+    a_power: q predicted 0.7450 actual 0.7616 (-2.2%);  mp predicted 0.24796 actual 0.17184 (+44%)
+    b_power: q predicted 0.7932 actual 0.8128 (-2.4%);  mp predicted 0.30239 actual 0.23512 (+29%)
+[E] central (promotion at L = 8, variant G) with the L8 mp fractions deflated by the [D] mp over-prediction (repair round 3):
+    free|a      mp / 1.319: L8 mean mp 0.0241; kappa  4.36 (undeflated 4.55); CPU tiers ld 0.14 quad 0.72 GMP 0.14 (undeflated GMP 0.18)
+    free|b      mp / 1.258: L8 mean mp 0.0420; kappa  4.28 (undeflated 4.51); CPU tiers ld 0.12 quad 0.67 GMP 0.21 (undeflated GMP 0.25)
+    power|a     mp / 1.443: L8 mean mp 0.2529; kappa  3.29 (undeflated 4.06); CPU tiers ld 0.04 quad 0.44 GMP 0.52 (undeflated GMP 0.61)
+    power|b     mp / 1.286: L8 mean mp 0.3326; kappa  3.26 (undeflated 3.80); CPU tiers ld 0.03 quad 0.39 GMP 0.58 (undeflated GMP 0.64)

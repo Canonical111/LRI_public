@@ -1,0 +1,341 @@
+{
+  "status": "passed",
+  "parts": [
+    "blocks",
+    "chunks"
+  ],
+  "tests": [
+    {
+      "test": "A-RPL-6 threads and lane processes (L8 blocks)",
+      "gate": "identical scientific fields at every thread count and lane split",
+      "threads": [
+        1,
+        16,
+        64,
+        128
+      ],
+      "numa_nodes": 8,
+      "numa_sizes": [
+        8
+      ],
+      "four_core_domains": false,
+      "split_32x4": "not applicable (no 4-core NUMA domains)",
+      "blocks": {
+        "free_gmp": {
+          "kernels": [
+            4000,
+            5397,
+            5804,
+            6682,
+            6813,
+            7066,
+            7397,
+            9010,
+            9384,
+            10887,
+            13229,
+            15333,
+            15361,
+            16194,
+            16905,
+            17203,
+            18155,
+            18295,
+            18544,
+            18717,
+            19059,
+            19761,
+            20163,
+            21026,
+            22105,
+            22282,
+            23174,
+            23780,
+            23836,
+            24688,
+            25140,
+            25783
+          ],
+          "tasks": 64,
+          "points": 256,
+          "rows": 64,
+          "mp_points": 300,
+          "quad_points": 5331,
+          "threads": {
+            "1": 5.97,
+            "16": 0.48,
+            "64": 0.4,
+            "128": 0.53
+          },
+          "splits": {
+            "numa": {
+              "lanes": 8,
+              "cores_per_lane": [
+                8
+              ]
+            },
+            "numa:2": {
+              "lanes": 4,
+              "cores_per_lane": [
+                16
+              ]
+            },
+            "numa:4": {
+              "lanes": 2,
+              "cores_per_lane": [
+                32
+              ]
+            }
+          }
+        },
+        "free_decimal": {
+          "kernels": [
+            4000,
+            5397,
+            5804,
+            6682,
+            6813,
+            7066,
+            7397,
+            9010,
+            9384,
+            10887,
+            13229,
+            15333,
+            15361,
+            16194,
+            16905,
+            17203,
+            18155,
+            18295,
+            18544,
+            18717,
+            19059,
+            19761,
+            20163,
+            21026,
+            22105,
+            22282,
+            23174,
+            23780,
+            23836,
+            24688,
+            25140,
+            25783
+          ],
+          "tasks": 64,
+          "points": 256,
+          "rows": 64,
+          "mp_points": 300,
+          "quad_points": 5331,
+          "threads": {
+            "1": 11.7,
+            "16": 2.29,
+            "64": 1.99,
+            "128": 1.79
+          },
+          "splits": {
+            "numa": {
+              "lanes": 8,
+              "cores_per_lane": [
+                8
+              ]
+            },
+            "numa:2": {
+              "lanes": 4,
+              "cores_per_lane": [
+                16
+              ]
+            },
+            "numa:4": {
+              "lanes": 2,
+              "cores_per_lane": [
+                32
+              ]
+            }
+          }
+        },
+        "power_gmp": {
+          "kernels": [
+            1029,
+            1485,
+            1806,
+            1808,
+            2042,
+            3968,
+            6113,
+            6216,
+            6237,
+            7301,
+            7633,
+            8545,
+            8553,
+            8611,
+            9876,
+            10073,
+            11816,
+            12633,
+            12834,
+            14756,
+            15446,
+            17034,
+            18564,
+            20601,
+            21279,
+            21326,
+            21774,
+            22455,
+            24121,
+            25020,
+            25045,
+            25867
+          ],
+          "tasks": 64,
+          "points": 256,
+          "rows": 64,
+          "mp_points": 4581,
+          "quad_points": 13666,
+          "threads": {
+            "1": 14.68,
+            "16": 1.93,
+            "64": 2.01,
+            "128": 2.04
+          },
+          "splits": {
+            "numa": {
+              "lanes": 8,
+              "cores_per_lane": [
+                8
+              ]
+            },
+            "numa:2": {
+              "lanes": 4,
+              "cores_per_lane": [
+                16
+              ]
+            },
+            "numa:4": {
+              "lanes": 2,
+              "cores_per_lane": [
+                32
+              ]
+            }
+          }
+        },
+        "power_decimal": {
+          "kernels": [
+            1029,
+            1485,
+            1806,
+            1808,
+            2042,
+            3968,
+            6113,
+            6216,
+            6237,
+            7301,
+            7633,
+            8545,
+            8553,
+            8611,
+            9876,
+            10073,
+            11816,
+            12633,
+            12834,
+            14756,
+            15446,
+            17034,
+            18564,
+            20601,
+            21279,
+            21326,
+            21774,
+            22455,
+            24121,
+            25020,
+            25045,
+            25867
+          ],
+          "tasks": 64,
+          "points": 256,
+          "rows": 64,
+          "mp_points": 4581,
+          "quad_points": 13666,
+          "threads": {
+            "1": 49.42,
+            "16": 4.94,
+            "64": 4.54,
+            "128": 4.31
+          },
+          "splits": {
+            "numa": {
+              "lanes": 8,
+              "cores_per_lane": [
+                8
+              ]
+            },
+            "numa:2": {
+              "lanes": 4,
+              "cores_per_lane": [
+                16
+              ]
+            },
+            "numa:4": {
+              "lanes": 2,
+              "cores_per_lane": [
+                32
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "test": "A-RPL-6 chunk splits (23 points) and layouts 0/1/2 at L7 and L8",
+      "gate": "<= 1e-12 normalized; quad and mp counters add up",
+      "comparisons": 24,
+      "max_normalized": "1.261e-18",
+      "per_case": {
+        "free_L7_layout0_gmp": "1.261e-18",
+        "free_L7_layout0_decimal": "1.261e-18",
+        "free_L7_layout1_gmp": "9.514e-20",
+        "free_L7_layout1_decimal": "9.514e-20",
+        "free_L7_layout2_gmp": "6.870e-19",
+        "free_L7_layout2_decimal": "6.870e-19",
+        "power_L7_layout0_gmp": "5.993e-20",
+        "power_L7_layout0_decimal": "5.993e-20",
+        "power_L7_layout1_gmp": "1.200e-19",
+        "power_L7_layout1_decimal": "1.200e-19",
+        "power_L7_layout2_gmp": "1.089e-19",
+        "power_L7_layout2_decimal": "1.089e-19",
+        "free_L8_layout0_gmp": "1.746e-19",
+        "free_L8_layout0_decimal": "1.746e-19",
+        "free_L8_layout1_gmp": "1.476e-19",
+        "free_L8_layout1_decimal": "1.476e-19",
+        "free_L8_layout2_gmp": "5.227e-19",
+        "free_L8_layout2_decimal": "5.227e-19",
+        "power_L8_layout0_gmp": "7.496e-20",
+        "power_L8_layout0_decimal": "7.496e-20",
+        "power_L8_layout1_gmp": "9.226e-20",
+        "power_L8_layout1_decimal": "9.226e-20",
+        "power_L8_layout2_gmp": "1.495e-19",
+        "power_L8_layout2_decimal": "1.495e-19"
+      },
+      "backends": [
+        "gmp",
+        "decimal"
+      ]
+    }
+  ],
+  "host": {
+    "node": "<NODE>",
+    "cpu_model": "AMD EPYC 7543 32-Core Processor"
+  },
+  "seed": 8806401,
+  "sha256": {
+    "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_gmp": "8f3a36aa5c6d14d7fe0f38522e302a299f700e6a9e97305dc2d8b957632f7273",
+    "<SCRATCH>/c8d3/work/val3_570319/bin/c8d3_decimal": "cbe5125a0a2f02adf7edfb986e3bb1856e6bb5b8c04f47621c44147c41923e27"
+  },
+  "wall_seconds": 164.3
+}

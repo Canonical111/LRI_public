@@ -1,0 +1,26 @@
+% s07_caveats.tex (HT1dPert); d = 2, 3 paragraphs are \input from their folders.
+\section{Caveats}\label{sec:caveats}
+
+\paragraph{One dimension.}
+\begin{itemize}
+\item The windows were derived after their effects had been seen and with the continuum values known, though with no
+ fitted parameter.
+\item The extrapolation dominates the error, and the exponents \eqref{eq:omega} are an assumption. Fits that reach the
+ exact $C_5$ need an effective $\omega_3$ of $\HTpOmegaThreeEff$, not the gap value $\HTpOmegaThree$. A second channel
+ with the leading power $\Lambda^{-1/2}$, from the phase operator of the cutoff kernel, enters at $\eps^4$ (cited check
+ \code{code/lri\_d1\_fullblock\_tail\_response}); it does not affect the top logarithm \eqref{eq:toplog} but does affect
+ the lower ones, so tying them to $\omega_2$, $\omega_3$ is not exact.
+\item The $\eps^4$ top-log coefficient fitted from the exact $C_4(\Lambda)$ lies $\NOneTopLogFour$ from
+ Eq.~\eqref{eq:toplog}, depending on the basis; whether this is a real violation is undecided. Taking $c_5$ from the
+ $C_2$ chain of Eq.~\eqref{eq:toplog} instead, a value $0.3\%$ smaller, moves the constrained $C_5$ by $4\times10^{-4}$ to
+ $1.4\times10^{-3}$ (absolute), far below its quoted uncertainty (\code{xchk/REPORT\_blind.md} of \code{lri\_1d\_c5\_exact}).
+\item A test protocol for the raw $C_4$ and $C_5$, fixed before most of the large-cutoff data had been seen, had mixed
+ results: its held-out predictions passed; window stability failed for $C_5$ in two of three bases and for $C_4$ in one,
+ and tail insensitivity failed for $C_5$. Every $d=1$ fit beyond $C_3$ involves choices made after the data were seen, apart from the blind
+ predictions of the exact sums. The constrained $C_5$ fit's selection thresholds were set after a run had printed the
+ exact value; the separately written fit is the quoted determination.
+\item $C_8$, calibrated on the diagrammatic $C_6$ and $C_7$, is not an independent determination.
+\item We have not constructed an effective Hamiltonian beyond the windows.
+\end{itemize}
+\IfFileExists{sections/d2/caveats_d2.tex}{\input{caveats_d2}}{}
+\IfFileExists{sections/d3/caveats_d3.tex}{\input{caveats_d3}}{}

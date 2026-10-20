@@ -1,0 +1,68 @@
+job 54666321 on exp-1-16 at 2026-10-04T17:07:12-07:00; variant host; package /expanse/lustre/scratch/zzheng8/temp_project/c8d2/pkg/913e56a97a6b; evidence /expanse/lustre/scratch/zzheng8/temp_project/c8d2/evidence/913e56a97a6b/r4fgmp-host.54666321.0; workers /expanse/lustre/scratch/zzheng8/temp_project/c8d2/work/913e56a97a6b/r4f-host
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  /home/zzheng8/c8d2/env_expanse.sh
+/home/zzheng8/c8d2/src/gmp/gmp-6.2.1.tar.bz2: OK
+gpg: Signature made Sat Nov 14 11:57:51 2020 PST
+gpg: Good signature from "Niels Möller <nisse@lysator.liu.se>" [expired]
+[GNUPG:] VALIDSIG 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298 2020-11-14 1605383871 0 4 0 1 10 00 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
+zen2-pc-linux-gnu
+build 63 s
+using ABI="64"
+      CC="gcc"
+      CFLAGS="-O2 -pedantic -fomit-frame-pointer -m64 -mtune=znver2 -march=znver2"
+      MPN_PATH=" x86_64/zen2 x86_64/zen x86_64 generic"
+{"make_check_exit": 0, "summaries": 8, "totals": {"TOTAL": 197, "PASS": 197, "SKIP": 0, "XFAIL": 0, "FAIL": 0, "XPASS": 0, "ERROR": 0}, "passed": true}
+gmp built and checked in 88 s
+#define __GMP_CC "gcc"
+#define __GMP_CFLAGS "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=znver2 -march=znver2"
+gmp.h vs Spack: 4 changed lines
+4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2  /home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1
+# nm -D (dynamic)
+000000000002f240 T __gmpn_mul_basecase
+# nm (symtab)
+000000000002f240 T __gmpn_mul_basecase
+__gmpn_add_n insns=69 mulx=0 adox_adcx=0 mul=0
+__gmpn_addmul_1 insns=69 mulx=16 adox_adcx=0 mul=0
+__gmpn_copyi insns=75 mulx=0 adox_adcx=0 mul=0
+__gmpn_mul_1 insns=72 mulx=16 adox_adcx=0 mul=0
+__gmpn_mul_basecase insns=330 mulx=71 adox_adcx=0 mul=0
+__gmpn_sqr_basecase insns=362 mulx=62 adox_adcx=10 mul=0
+bin/c8d2_gmp.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1), optimized=True
+bin/c8d2_gmp_prof.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP 6.2.1 (/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1), optimized=True
+bin/c8d2_decimal.build.json: g++ (Spack GCC) 13.3.0, Boost 1_77, GMP None, optimized=True
+3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a  /expanse/lustre/scratch/zzheng8/temp_project/c8d2/work/913e56a97a6b/r4f-host/bin/c8d2_decimal
+0a77b88e81e4e8b779684fcacf078a817a5f7ff866b861726ebb1a1c6cc622ee  /expanse/lustre/scratch/zzheng8/temp_project/c8d2/work/913e56a97a6b/r4f-host/bin/c8d2_gmp
+c722d5f81e592f449c74029ceecc7c871942b41b2d8a8f47a8105003dfb0b94d  /expanse/lustre/scratch/zzheng8/temp_project/c8d2/work/913e56a97a6b/r4f-host/bin/c8d2_gmp_prof
+	libgmp.so.10 => /home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10 (0x0000155554e67000)
+ 0x0000000000000001 (NEEDED)             Shared library: [libgmp.so.10]
+ 0x000000000000000f (RPATH)              Library rpath: [/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib]
+{
+ "prefix": "/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2",
+ "libgmp_realpath": "/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+ "libgmp_sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+ "decimal_sha256": "3dbd51bb1bd658927e3521059fbc77309fb112384145dabf1cc6347eb890805a",
+ "gmp_sha256": "0a77b88e81e4e8b779684fcacf078a817a5f7ff866b861726ebb1a1c6cc622ee",
+ "gmp_prof_sha256": "c722d5f81e592f449c74029ceecc7c871942b41b2d8a8f47a8105003dfb0b94d",
+ "decimal_equals_stage3": true,
+ "build_record_GMP_PREFIX": "/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2",
+ "build_record_gmp_header": {
+  "cc": "gcc",
+  "cflags": "-O2 -pedantic -fomit-frame-pointer -m64 -mtune=znver2 -march=znver2"
+ },
+ "build_record_gmp_library": {
+  "soname": "libgmp.so.10",
+  "path": "/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10",
+  "realpath": "/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib/libgmp.so.10.4.1",
+  "sha256": "4267ffeb5e20d1ee2a27e3b3afd51c9b4733125a7cf57554349c23df81ea3ee2",
+  "fat": false,
+  "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib",
+  "runpath": null,
+  "LD_LIBRARY_PATH": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen2/gcc-13.3.0/gmp-6.2.1-eywq454gcb355knxklm3gnfrkmj3nscw/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64"
+ },
+ "resolves_to_prefix": true,
+ "rpath": "/cm/shared/apps/spack/0.21.2/cpu/a/opt/spack/linux-rocky8-zen/gcc-8.5.0/gcc-13.3.0-t46rsdvjjujldykahnkgwwxg4mx3gjj4/lib64:/home/zzheng8/c8d2/opt/gmp-6.2.1-zen2/lib",
+ "runpath": null,
+ "rpath_has_prefix": true,
+ "ok": true
+}
+finished 2026-10-04T17:08:52-07:00

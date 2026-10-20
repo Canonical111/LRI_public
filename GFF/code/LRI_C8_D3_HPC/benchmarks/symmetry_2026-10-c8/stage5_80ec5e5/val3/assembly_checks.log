@@ -1,0 +1,26 @@
+<SCRATCH>/c8d3/work/val3_570319/tests/assembly_checks.py:198: SyntaxWarning: invalid decimal literal
+  assert [x['order']for x in hv['null_rows']]==[3,4,5,6,7]and nh[4]['pull']==2.and abs(nh[5]['pull']-4.5)<1e-12 and abs(nh[6]['pull']-.5)<1e-12 and nh[7]['pull']==4.,'PP3'
+PASS A-ASM-2: the vendored coefficients(vals, B2, 7, 1.5) and jacobians equal a6ce987's assemble.py (pinned byte copy) and reference/code/analyze.py exactly on 96 synthetic jet sets (seed 51892) and on run1's means, with B2 of 6 and of 7 entries
+PASS A-ASM-4: top_slot (J_L 3^(L+1) = (-1, +3) to 1e-12, L = 3..8), loop7 ((-16A, 42A)/19683) and the float affinity gate (loops 5..8; [4, 5] fails) on run1's means with synthetic new slots and 16 random points; Fraction mode: 210 exact second differences vanish; coefficients = ms8_value in 16 constant-coefficient cases; ms8_rows = RECON:620-625; coverage: every missing loop refuses before any gate, a dropped top-slot row and affinity loops [5, 6, 7] are caught; combine(order=7) never calls loop7_gate; an injected coefficient violation fails
+FLAG pp8: power_differences[6] is flagged "not proved zero": must be investigated: a flag at order 6 contradicts an MS numerical zero (POWER_PROTOCOL.md:96-98)
+FLAG pp8: power_differences[6] is flagged "not proved zero": must be investigated: a flag at order 6 contradicts an MS numerical zero (POWER_PROTOCOL.md:96-98)
+PASS A-ASM-5: lower-order pulls C3..C7 with both SEs; null rows 3..7 (order 3 at rounding level without pull, |pull| > 3 "not proved zero") and the order-8 diagnostic row without flag; PP8 marks an order-6 flag only (FLAG line), PP6 (every flag forced, identical numbers); the power_null_rows guards (short vectors, NaN, SE 0 at order >= 4, a None or NaN pull at each order 4..8 naming the row); PP1-PP5, PP7, PP9, PP10 one check each; the a/b pull (3.5 flagged, 2.5 not) and the bootstrap ratio (0.75, 1.25 flagged, 0.9 not); error_by_loop sums to Var(C8); half streams and the bootstrap; a 4-sigma C7 FLAG line; test, pilot and partial views hold no physical number; the tail monitor lists an injected heavy L8 graph and an undefined entry
+{
+ "status": "passed",
+ "tests": 3,
+ "results": [
+  {
+   "test": "A-ASM-2: the vendored coefficients(vals, B2, 7, 1.5) and jacobians equal a6ce987's assemble.py (pinned byte copy) and reference/code/analyze.py exactly on 96 synthetic jet sets (seed 51892) and on run1's means, with B2 of 6 and of 7 entries",
+   "cases": 97
+  },
+  {
+   "test": "A-ASM-4: top_slot (J_L 3^(L+1) = (-1, +3) to 1e-12, L = 3..8), loop7 ((-16A, 42A)/19683) and the float affinity gate (loops 5..8; [4, 5] fails) on run1's means with synthetic new slots and 16 random points; Fraction mode: 210 exact second differences vanish; coefficients = ms8_value in 16 constant-coefficient cases; ms8_rows = RECON:620-625; coverage: every missing loop refuses before any gate, a dropped top-slot row and affinity loops [5, 6, 7] are caught; combine(order=7) never calls loop7_gate; an injected coefficient violation fails",
+   "exact_check": "passed on the classified keys"
+  },
+  {
+   "test": "A-ASM-5: lower-order pulls C3..C7 with both SEs; null rows 3..7 (order 3 at rounding level without pull, |pull| > 3 \"not proved zero\") and the order-8 diagnostic row without flag; PP8 marks an order-6 flag only (FLAG line), PP6 (every flag forced, identical numbers); the power_null_rows guards (short vectors, NaN, SE 0 at order >= 4, a None or NaN pull at each order 4..8 naming the row); PP1-PP5, PP7, PP9, PP10 one check each; the a/b pull (3.5 flagged, 2.5 not) and the bootstrap ratio (0.75, 1.25 flagged, 0.9 not); error_by_loop sums to Var(C8); half streams and the bootstrap; a 4-sigma C7 FLAG line; test, pilot and partial views hold no physical number; the tail monitor lists an injected heavy L8 graph and an undefined entry"
+  }
+ ],
+ "numpy": "2.3.5",
+ "python": "3.11.3"
+}

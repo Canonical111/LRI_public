@@ -1,0 +1,42 @@
+# Formal comparison stage, run by the host after Codex inspection 6 APPROVED (runs/inspect6, 6d94e80).
+# command: python3 code/c8_assemble.py --compare --expect-sha 0d463b29d9ec474cacf2ab96afff62ae56b0ec262d766684ebbf0b7b8b20ec0c
+# date: 2026-10-17 22:47 EDT; HEAD 6d94e80
+C3..C7 from the same assembly vs the closed forms:
+  C3:      5.72736813369645287294483  exact      5.72736813369645287294483  rel 3.27e-39
+  C4:    -12.19619149266966002908757  exact    -12.19619149266966002908757  rel 2.44e-29
+  C5:     29.23781158099003956882694  exact     29.23781158099003956882694  rel 3.25e-28
+  C6:    -58.66569747422530894971715  exact    -58.66569747422530894971715  rel 6.65e-26
+  C7:     51.06898861292810883118393  exact     51.06898861292810883118394  rel 4.17e-26
+confirmatory cx delta^0 check recorded: PASS ; bound into the C8 record: True
+
+C8 = 247.381179745789  +- 0.131 (linear sum; quadrature 0.13)
+  components: 2 x sigma(f_2_0_2) = 3.32e-7, 3/4 x sigma(f_3_0_1) = 0.13, other inputs 3.59e-15
+
+Stage 2: comparison (C8 uncertainty = empirical numerical estimate, not a calibrated standard deviation)
+  C8 (this work)                        = 247.381179746 +- 0.131 (empirical numerical uncertainty)
+  compendium value (unproved candidate) = 247.3812048049935
+    difference Delta = -2.506e-5;  Delta / (our empirical uncertainty) = -0.000192
+  independent estimate                  = 242.83 (quoted uncertainty 2.37)
+    difference Delta = 4.551;  Delta / (our empirical uncertainty) = 34.9;  Delta / 2.37 (ratio to that value's own quoted uncertainty) = 1.92
+
+C8 COMPARISON checks (value / threshold / result):
+  M2_flow_coefficients.json matches the frozen registry and is current         ok  <=      all  PASS
+  M3_flow_coefficients.json matches the frozen registry and is current         ok  <=      all  PASS
+  M4A_flow_coefficients.json matches the frozen registry and is current         ok  <=      all  PASS
+  M4B_flow_coefficients_v2.json matches the frozen registry and is current         ok  <=      all  PASS
+  Bethe-ansatz fit residual (degree 4)                       1.08e-63  <=  1.0e-40  PASS
+  uncertainty inputs finite, nonnegative; M4B roundoff factor >= 0.01         ok  <=      all  PASS
+  all 29 inputs of C3..C8 resolved and finite                      ok  <=      all  PASS
+  C3 vs closed form (relative)                               3.27e-39  <=  1.0e-20  PASS
+  C4 vs closed form (relative)                               2.44e-29  <=  1.0e-20  PASS
+  C5 vs closed form (relative)                               3.25e-28  <=  1.0e-20  PASS
+  C6 vs closed form (relative)                               6.65e-26  <=  1.0e-20  PASS
+  C7 vs closed form (relative)                               4.17e-26  <=  1.0e-20  PASS
+  dC8/df_2_0_2 = 2 (symbolic)                                5.18e-31  <=  1.0e-20  PASS
+  dC8/df_3_0_1 = 3/4 (symbolic)                               1.7e-30  <=  1.0e-20  PASS
+  sigma(C8) finite, >= 0 and <= 0.3 (linear sum)                0.131  <=      0.3  PASS
+  record identical to the recorded file and --expect-sha           ok  <=      all  PASS
+  C8 record matches the frozen registry and is current             ok  <=      all  PASS
+  C8 record bound to the current M4B record                        ok  <=      all  PASS
+  confirmatory cx check frozen, pass = true, bound into the C8 record         ok  <=      all  PASS
+C8 COMPARISON PASS

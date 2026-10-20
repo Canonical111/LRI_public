@@ -1,0 +1,131 @@
+{
+ "schema": "c8-d2-ast-scan-fuzz-2",
+ "python": "3.10.11",
+ "scanner": "tests/ast_scan.py at 2ae3db7",
+ "runs": [
+  {
+   "seed": 1,
+   "checked": 1500,
+   "false_negatives": 298,
+   "missed_by_name": {
+    "p": 31,
+    "q": 172,
+    "r": 39,
+    "w": 76
+   },
+   "functions_raising_by_name": {
+    "e": 281,
+    "p": 31,
+    "q": 180,
+    "r": 39,
+    "w": 76,
+    "x": 438,
+    "y": 442
+   },
+   "cases_with_false_positives": 623,
+   "examples": [
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    try:\n        class K:\n            v = [0 for _ in s for q in q]\n            u = (lambda: ((b < a < p) if ((r := 2) < r < (r := 2)) else a))()\n        _ = (lambda: r)()\n    except ValueError as e:\n        for i in s:\n            _ = y + 1\n            _ = y\n            assert (x := 1)\n        x = 1\n        match s:\n            case [y]:\n                pass\n                _ = y\n    else:\n        n1 = len(s)\n        while n1 > 0:\n            n1 -= 1\n            if not a:\n                if a: break\n            for i in s:\n                try:\n                    if a: raise ValueError()\n                except ValueError as e:\n                    if b: continue\n                    _ = (a and (y := 2))\n            del x\n        n1 = len(s)\n        while n1 > 0:\n            n1 -= 1\n            try:\n                if b: continue\n            except ValueError as e:\n                y = a\n                assert (x := 1)\n    return e\n"
+    },
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    try:\n        _ = [(lambda: (q, (q := 1)))() for q in s]\n    except ValueError as e:\n        class K:\n            v = [0 for _ in s for q in q]\n            u = (lambda: (r := 2))()\n        pass\n    else:\n        _ = (lambda: a)()\n        for i in s:\n            _ = e + 1\n            break\n            class K:\n                v = [q for q in q]\n                u = (lambda: (lambda: ((r := 2), 1))())()\n    _ = {1: e, (x := 3): 0}\n    _ = (lambda: (lambda: a)())()\n    return e\n"
+    },
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    class K:\n        v = [(lambda: (q, (q := 1)))() for q in s]\n        u = (lambda: (((r := 2) < 1 < 1) if [(p := a) for w in s if (p := a)] else a))()\n    return y\n"
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "checked": 1500,
+   "false_negatives": 273,
+   "missed_by_name": {
+    "p": 27,
+    "q": 151,
+    "r": 32,
+    "w": 84
+   },
+   "functions_raising_by_name": {
+    "e": 282,
+    "p": 27,
+    "q": 164,
+    "r": 32,
+    "w": 84,
+    "x": 490,
+    "y": 434
+   },
+   "cases_with_false_positives": 624,
+   "examples": [
+    {
+     "missed": [
+      "r"
+     ],
+     "source": "def f(a, b, s):\n    class K:\n        v = [x for q in s if x]\n        u = (lambda: ((r if 1 else b) and {r: (r := 2), (p := a): 0}))()\n    return x\n"
+    },
+    {
+     "missed": [
+      "w"
+     ],
+     "source": "def f(a, b, s):\n    if b:\n        for i in s:\n            if b: continue\n            for i in s:\n                _ = (lambda: b)()\n            n2 = len(s)\n            while n2 > 0:\n                n2 -= 1\n                if b: raise ValueError()\n                if b: continue\n        match s:\n            case [x]:\n                _ = e + 1\n                _ = a < b < (x := 1)\n            case {\"k\": x}:\n                _ = (lambda: ((((p := 1) < (p := a) < (p := 1)), (p := 1)) < ((r := 2) if [w for _ in s for w in w] else (lambda: (p := a))()) < (p, (p if b else b))))()\n                _ = (lambda p=1: ((r := 2), ((p := 1) if 1 else b)))()\n                assert (y := 1)\n            case _:\n                _ = (lambda p=1: (p := 1))()\n                _ = {1: e, (y := 3): 0}\n                if b: raise ValueError()\n        if not a:\n            y += 1\n        else:\n            _ = {1: x, (x := 3): 0}\n            _ = {1: x, (x := 3): 0}\n            _ = [(lambda: q)() for q in s]\n    else:\n        match s:\n            case [x]:\n                if b: raise ValueError()\n    x += 1\n    return x\n"
+    },
+    {
+     "missed": [
+      "r"
+     ],
+     "source": "def f(a, b, s):\n    _ = (lambda p=1: ((lambda: a)() < (r < 1 < 1) < (1 < (r := 2) < 1)))()\n    try:\n        pass\n    except ValueError as e:\n        class K:\n            v = [(lambda: q)() for q in s]\n            u = (lambda: p)()\n    finally:\n        del y\n        try:\n            x = 1\n            for i in s:\n                x += 1\n                break\n                _ = {1: y, (x := 3): 0}\n            _ = {q: (x := 1) for q in s}\n        except ValueError as e:\n            _ = (lambda: (((p := a), p) if b else (((p := a) or r) < (p if (p := 1) else a) < (1 or (p := 1)))))()\n            class K:\n                v = {y: x for q in s}\n                u = (lambda: [p for w in s if (p := 1)])()\n        finally:\n            try:\n                _ = a < b < (y := 1)\n                _ = a < b < (y := 1)\n                pass\n            except ValueError as e:\n                pass\n                _ = (lambda: (r := 2))()\n        try:\n            _ = y\n        finally:\n            if a:\n                _ = {x: q for q in s}\n            n2 = len(s)\n            while n2 > 0:\n                n2 -= 1\n                _ = (a and (x := 2))\n            match s:\n                case [y]:\n                    pass\n                    _ = x + 1\n                case {\"k\": x}:\n                    _ = [y for _ in s if (x := 1) for q in s]\n                case _:\n                    _ = (lambda: b)()\n                    _ = (lambda p=1: [[w for _ in s for w in w] for _ in s if w for w in s])()\n                    if b: raise ValueError()\n    _ = (lambda: r)()\n    return e\n"
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "checked": 1500,
+   "false_negatives": 294,
+   "missed_by_name": {
+    "p": 35,
+    "q": 159,
+    "r": 32,
+    "w": 89
+   },
+   "functions_raising_by_name": {
+    "e": 237,
+    "p": 35,
+    "q": 169,
+    "r": 32,
+    "w": 89,
+    "x": 484,
+    "y": 460
+   },
+   "cases_with_false_positives": 598,
+   "examples": [
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    n0 = len(s)\n    while n0 > 0:\n        n0 -= 1\n        class K:\n            v = [(lambda: (q, (q := 1)))() for q in s]\n            u = (lambda: ((p := 1) or [w for _ in s for w in w]))()\n        _ = (lambda: (p := 1))()\n    return x\n"
+    },
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    try:\n        try:\n            y = b\n            _ = (a and (y := 2))\n            try:\n                _ = e + 1\n            finally:\n                if b: raise ValueError()\n        except ValueError as e:\n            _ = [0 for _ in s for q in q]\n        finally:\n            assert (y := 1)\n            y = a\n        try:\n            _ = [(lambda: q)() for q in s]\n        finally:\n            _ = x\n    except ValueError as e:\n        try:\n            match s:\n                case [y]:\n                    x = b\n                    x += 1\n                    _ = y + 1\n                case _:\n                    y = 1\n        except ValueError as e:\n            try:\n                del x\n                _ = {q: q for q in s}\n                x = a\n            finally:\n                assert (y := 1)\n                assert (y := 1)\n    finally:\n        try:\n            try:\n                del y\n                y = a\n                _ = {1: y, (y := 3): 0}\n            finally:\n                _ = (a and (x := 2))\n                _ = x\n                del x\n            _ = a < b < (x := 1)\n        except ValueError as e:\n            if b: raise ValueError()\n            class K:\n                v = [0 for _ in s for q in q]\n                u = (lambda: (r if r else p))()\n            _ = (lambda: {a: {(1 or r): (p := 1), ((p := 1) and 1): 0}, (lambda: (b and r))(): 0})()\n    pass\n    _ = a < b < (y := 1)\n    return e\n"
+    },
+    {
+     "missed": [
+      "q"
+     ],
+     "source": "def f(a, b, s):\n    x = 1\n    _ = [0 for _ in s for q in q]\n    _ = (lambda p=1: ({b: (r := 2), (p := a): 0} < [w for _ in s for w in w] < ((p := 1) or (r := 2))))()\n    return y\n"
+    }
+   ]
+  }
+ ],
+ "passed": false
+}

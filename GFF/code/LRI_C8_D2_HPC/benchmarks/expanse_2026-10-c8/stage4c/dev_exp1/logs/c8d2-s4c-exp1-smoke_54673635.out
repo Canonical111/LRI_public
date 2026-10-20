@@ -1,0 +1,73 @@
+job 54673635 on <NODE> at 2026-10-04T22:27:19-07:00; package <SCRATCH>/temp_project/c8d2/pkg/6eedd3f55b65; evidence <SCRATCH>/temp_project/c8d2/evidence/6eedd3f55b65/s4cexp1smoke.54673635.0
+Model name:          AMD EPYC 7742 64-Core Processor
+6f85cb502b75494b9dada14431677e6878d3304b5129bb0636b9071e3ceb0c19  <HOME>/c8d2/env_expanse.sh
+scratch /scratch/<USER>/job_54673635
+1d2a218147ef52b5d0ac37dd8aaead55045ab4fe68e48ec963ea4b8e93024faa  bin/c8d2_gmp
+22d71322f11cfc1ec8574647cdb28687b1385fef04f5e78712a69c344b1b1c29  bin/c8d2_gmp_exp1
+== exp1_probe.py --census-graphs 6 --census-points 256 --lxcensus-points 4096 --forced-graphs 4 --forced-points 2 --timing-graphs 2 --timing-points 1 --timing-rounds 1 --timing-reps 2
+[22:27:28] compiled probe_exact from c8d2_gmp's build command in 9 s
+[22:27:37] compiled probe_exp1 from c8d2_gmp_exp1's build command in 9 s
+[22:27:38] census free L7 rate .8: 1536 points, 0 shifted, min lx -4.835e+01 (0.1 s)
+[22:27:38] census free L7 rate .9: 1536 points, 0 shifted, min lx -4.298e+01 (0.1 s)
+[22:27:38] census free L8 rate .8: 1536 points, 0 shifted, min lx -5.764e+01 (0.2 s)
+[22:27:39] census free L8 rate .9: 1536 points, 0 shifted, min lx -5.124e+01 (0.2 s)
+[22:27:39] census power L7 rate .8: 1536 points, 0 shifted, min lx -5.989e+01 (0.1 s)
+[22:27:39] census power L7 rate .9: 1536 points, 0 shifted, min lx -5.324e+01 (0.1 s)
+[22:27:39] census power L8 rate .8: 1536 points, 0 shifted, min lx -6.104e+01 (0.3 s)
+[22:27:39] census power L8 rate .9: 1536 points, 0 shifted, min lx -5.426e+01 (0.2 s)
+[22:27:39] lxcensus free L7 rate .8: 24576 points, 0 shifted, min lx -7.700e+01 (0.1 s)
+[22:27:39] lxcensus free L7 rate .9: 24576 points, 0 shifted, min lx -6.845e+01 (0.1 s)
+[22:27:40] lxcensus free L8 rate .8: 24576 points, 0 shifted, min lx -6.504e+01 (0.2 s)
+[22:27:40] lxcensus free L8 rate .9: 24576 points, 0 shifted, min lx -5.781e+01 (0.3 s)
+[22:27:40] lxcensus power L7 rate .8: 24576 points, 0 shifted, min lx -7.156e+01 (0.1 s)
+[22:27:40] lxcensus power L7 rate .9: 24576 points, 0 shifted, min lx -6.360e+01 (0.2 s)
+[22:27:41] lxcensus power L8 rate .8: 24576 points, 0 shifted, min lx -6.730e+01 (0.3 s)
+[22:27:41] lxcensus power L8 rate .9: 24576 points, 0 shifted, min lx -5.982e+01 (0.3 s)
+[22:27:41] forced free L7: 40 points (40 shifted), F1 max rel exact 4.114e+97 exp1 2.374e+97, new violations F1 0 q 0 mp 0, xs ulps exp1 8.782e+02 exact 8.780e+02, mp eps exp1 7.798e-03 exact 7.798e-03
+[22:27:42] forced free L8: 40 points (40 shifted), F1 max rel exact 1.000e+00 exp1 1.000e+00, new violations F1 0 q 0 mp 0, xs ulps exp1 1.121e+00 exact 4.708e-01, mp eps exp1 8.736e-03 exact 8.128e-03
+[22:27:42] forced power L7: 40 points (40 shifted), F1 max rel exact 1.000e+00 exp1 1.000e+00, new violations F1 0 q 0 mp 0, xs ulps exp1 8.784e+02 exact 8.781e+02, mp eps exp1 8.733e-03 exact 8.792e-03
+[22:27:43] forced power L8: 40 points (40 shifted), F1 max rel exact 1.772e+98 exp1 2.659e+98, new violations F1 0 q 0 mp 0, xs ulps exp1 1.051e+00 exact 4.791e-01, mp eps exp1 6.820e-03 exact 7.731e-03
+Traceback (most recent call last):
+  File "<SCRATCH>/temp_project/c8d2/pkg/6eedd3f55b65/benchmarks/expanse_2026-10-c8/stage4c/dev_exp1/scripts/exp1_probe.py", line 171, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/6eedd3f55b65/benchmarks/expanse_2026-10-c8/stage4c/dev_exp1/scripts/exp1_probe.py", line 149, in main
+    dump(a.output/'exp1_probe.json',rec)
+  File "<SCRATCH>/temp_project/c8d2/pkg/6eedd3f55b65/tools/common.py", line 55, in dump
+    def dump(path:Path,obj)->None:publish(path,json.dumps(obj,indent=2,allow_nan=False)+'\n')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<SCRATCH>/temp_project/c8d2/pkg/6eedd3f55b65/tools/common.py", line 41, in publish
+    os.link(tmp,path)
+FileExistsError: [Errno 17] File exists: '<SCRATCH>/temp_project/c8d2/evidence/6eedd3f55b65/s4cexp1smoke.54673635.0/probe/exp1_probe.json.tmp.epbp8tsq' -> '<SCRATCH>/temp_project/c8d2/evidence/6eedd3f55b65/s4cexp1smoke.54673635.0/probe/exp1_probe.json'
+== numerics_flags.py --profile exp1 --parts F1,F4 --f1-scale 0.05 --f4-sample 10 --f4-repeats 1
+[22:27:45] F1: the exact baseline (450-digit references)
+[22:27:53] compiled numerics_f1_exact from c8d2_gmp's build command in 8 s
+[22:27:56] F1 baseline free L7 [0,256) in 2 s
+[22:27:59] F1 baseline free L8 [0,64) in 3 s
+[22:28:00] F1 baseline power L7 [0,256) in 1 s
+[22:28:03] F1 baseline power L8 [0,64) in 2 s
+[22:28:11] compiled numerics_f1_profile from c8d2_gmp_exp1's build command in 8 s
+[22:28:11] F1 free L7 [0,256) in 0 s
+[22:28:12] F1 free L8 [0,64) in 1 s
+[22:28:12] F1 power L7 [0,256) in 0 s
+[22:28:13] F1 power L8 [0,64) in 1 s
+[22:28:13] F4: speed
+[22:28:14] F4 exact r0: lane-thread s 31.7 (free 13.0, power 18.7), digest 37bf763b7c57
+[22:28:16] F4 profile r0: lane-thread s 31.1 (free 12.7, power 18.4), digest 37bf763b7c57
+{
+ "mode": "profile",
+ "profile_name": "exp1",
+ "status": "development run (would pass)",
+ "verdicts": {
+  "F1": true,
+  "F4_rows": true
+ },
+ "development": [
+  "--f1-scale 0.05",
+  "--f4-sample 10",
+  "--f4-repeats 1"
+ ],
+ "note": null,
+ "error": null
+}
+finished 2026-10-04T22:28:17-07:00, status 1

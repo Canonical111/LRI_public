@@ -1,0 +1,25 @@
+{
+  "name": "M4d extraction checks for the arbitrary-N continuum analysis: DIAGNOSTIC records only, never estimates",
+  "physical_delta": 0,
+  "status": "PLANNED_2026-10-13",
+  "description": "Independent coefficient-extraction checks required by PLAN_ANALYSIS.md rev 4, item M4d (sha256 bf30ba3c...). Rows 0-2 rerun one lambda per regulator order of the N=768 production records on the already published N=1024 grid (oversample 4, radius_cost 4.5: a different Cauchy grid because the radius exp(-c/K) and the FFT length depend on K); the overlap n <= 768 covers both selected spectral windows of the N=768 records. Rows 3-4 rerun the two smallest-lambda N=1024 production rows on ONE variant N=1024 grid with radius_cost 4.0 at the same oversample 4, i.e. the same FFT length and the same memory footprint; the overlap covers n <= 1024. The variant is the plan's stated default; data/hamiltonian/diagnostics/oversample4_check.json carries no record of which two grids it compared, so no other variant could be justified from it. All auxiliary cutoffs equal the production values (mixed 16384, collapsed 800000, tail 8192). The records of this plan form the DIAGNOSTIC pool of the continuum analysis (M5): they enter only epsilon_grid on their overlap with the primary record they check, and are never promoted to estimates.",
+  "science_rules": {
+    "lambda_N_minimum": {"1": 50, "2": 60, "3": 75},
+    "lambda_N_basis": "Same science rules as cluster/production_plan.json.",
+    "minimum_mixed_cutoff": 16384
+  },
+  "checks": {
+    "0": "checks P1_N768_order1 at lambda 0.075 (primary N=768, grid N768_o4_r4p5)",
+    "1": "checks P1_N768_order2 at lambda 0.1 (primary N=768, grid N768_o4_r4p5)",
+    "2": "checks P1_N768_order3 at lambda 0.1 (primary N=768, grid N768_o4_r4p5)",
+    "3": "checks P2_N1024_order1 at lambda 0.05 (primary N=1024, grid N1024_o4_r4p5)",
+    "4": "checks P2_N1024_order2 at lambda 0.0625 (primary N=1024, grid N1024_o4_r4p5)"
+  },
+  "jobs": [
+    {"id": "M4d_N1024_r4p5_order1", "stage": "M4D", "cutoff": 1024, "order": 1, "lambda": [0.075], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d_N1024_r4p5_order2", "stage": "M4D", "cutoff": 1024, "order": 2, "lambda": [0.1], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d_N1024_r4p5_order3", "stage": "M4D", "cutoff": 1024, "order": 3, "lambda": [0.1], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.5},
+    {"id": "M4d_N1024_r4p0_order1", "stage": "M4D", "cutoff": 1024, "order": 1, "lambda": [0.05], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.0},
+    {"id": "M4d_N1024_r4p0_order2", "stage": "M4D", "cutoff": 1024, "order": 2, "lambda": [0.0625], "mixed_cutoff": 16384, "collapsed_cutoff": 800000, "tail_cutoff": 8192, "oversample": 4, "radius_cost": 4.0}
+  ]
+}

@@ -1,0 +1,92 @@
+# c5_fits300.py: raw C_5 from results/c5_L300.npz (every even L <= 300); delta from tag3_L16000.npz
+# overlap with the L = 200 production run, raw_C2: max |diff| 1.8e-14, max rel 5.8e-14
+# overlap with the L = 200 production run, raw_C3: max |diff| 4.1e-13, max rel 4.8e-13
+# overlap with the L = 200 production run, raw_C4: max |diff| 2.3e-12, max rel 5.1e-13
+# overlap with the L = 200 production run, raw_C5: max |diff| 2.5e-11, max rel 7.6e-13
+# C_5^Wcs(300) = -34.85898217, C_5^Wc(300) = -34.85325798, C_4^W(300) = 4.7645437216
+
+== 1. tail structure: max ln power k1 of the 1/L tail (no-log, towers T(k1,1..2,-1), Lmin 40, 60, 80); blind fit <= 240 -> 242..300 (median max error) and A - exact at L <= 300
+   C_4: k1=0: e=6.1e-04 A-ex=-3.8e-02  k1=1: e=9.7e-06 A-ex=-3.9e-03  k1=2: e=1.1e-07 A-ex=-4.3e-05  k1=3: e=5.2e-08 A-ex=-4.5e-06  k1=4: e=6.5e-08 A-ex=+1.1e-03  -> best k1 = 3
+   C_5: k1=0: e=1.2e-02 A-ex=+8.1e-01  k1=1: e=3.5e-04 A-ex=+1.6e-01  k1=2: e=5.3e-06 A-ex=+1.5e-02  k1=3: e=3.7e-07 A-ex=-3.0e-03  k1=4: e=5.7e-07 A-ex=+1.2e-02  -> best k1 = 3
+
+== 2. free ln L coefficient b (median [min, max]) and no-log limit A - exact (median [min, max]) vs Lmax; towers with the ln^3 L / L tail T(3,0..2,-1), Lmin 30, 40, 60, 80
+   C_5^Wcs  Lmax=120: b -0.1126 [-31.6114, +52.1836]   A-exact +0.00672 [-15.81217, +0.59178]
+   C_5^Wcs  Lmax=140: b -0.0474 [-2.6418, +94.4206]   A-exact +0.00424 [-1.32829, +0.05163]
+   C_5^Wcs  Lmax=160: b -0.0320 [-0.4875, +13.1805]   A-exact +0.00071 [-0.25043, +0.03700]
+   C_5^Wcs  Lmax=180: b -0.0220 [-0.1793, +3.1344]   A-exact -0.00384 [-0.07271, +0.03181]
+   C_5^Wcs  Lmax=200: b -0.0134 [-0.1006, +1.0273]   A-exact -0.00491 [-0.02769, +0.02776]
+   C_5^Wcs  Lmax=220: b -0.0080 [-0.0718, +0.4159]   A-exact -0.00506 [-0.01271, +0.02451]
+   C_5^Wcs  Lmax=240: b -0.0005 [-0.0649, +0.1946]   A-exact -0.00429 [-0.01120, +0.02186]
+   C_5^Wcs  Lmax=260: b +0.0030 [-0.0591, +0.1025]   A-exact -0.00324 [-0.01048, +0.01965]
+   C_5^Wcs  Lmax=280: b +0.0047 [-0.0542, +0.0587]   A-exact -0.00235 [-0.00987, +0.01780]
+   C_5^Wcs  Lmax=300: b +0.0054 [-0.0500, +0.0358]   A-exact -0.00171 [-0.00933, +0.01621]
+   C_5^Wc   Lmax=120: b -0.1127 [-31.6114, +52.1836]   A-exact +0.01250 [-15.80640, +0.59756]
+   C_5^Wc   Lmax=140: b -0.0474 [-2.6418, +94.4206]   A-exact +0.01001 [-1.32252, +0.05741]
+   C_5^Wc   Lmax=160: b -0.0320 [-0.4875, +13.1805]   A-exact +0.00648 [-0.24466, +0.04277]
+   C_5^Wc   Lmax=180: b -0.0220 [-0.1793, +3.1344]   A-exact +0.00193 [-0.06694, +0.03759]
+   C_5^Wc   Lmax=200: b -0.0134 [-0.1006, +1.0273]   A-exact +0.00086 [-0.02192, +0.03353]
+   C_5^Wc   Lmax=220: b -0.0080 [-0.0718, +0.4159]   A-exact +0.00071 [-0.00694, +0.03029]
+   C_5^Wc   Lmax=240: b -0.0005 [-0.0649, +0.1946]   A-exact +0.00149 [-0.00542, +0.02763]
+   C_5^Wc   Lmax=260: b +0.0030 [-0.0591, +0.1025]   A-exact +0.00253 [-0.00471, +0.02543]
+   C_5^Wc   Lmax=280: b +0.0047 [-0.0542, +0.0587]   A-exact +0.00342 [-0.00409, +0.02357]
+   C_5^Wc   Lmax=300: b +0.0054 [-0.0500, +0.0358]   A-exact +0.00406 [-0.00356, +0.02199]
+   calibration: 7.7 C_4^W + 2 ln^3 L / L + beta ln L (same towers and Lmin)
+     beta=+0.00 Lmax=160: b +0.0147 [-0.4444, +10.2959]   A-exact +0.00448
+     beta=+0.00 Lmax=180: b +0.0026 [-0.2364, +2.4599]   A-exact +0.00456
+     beta=+0.00 Lmax=200: b -0.0007 [-0.1382, +0.8078]   A-exact +0.00418
+     beta=+0.00 Lmax=220: b -0.0021 [-0.0865, +0.3285]   A-exact +0.00346
+     beta=+0.00 Lmax=240: b -0.0028 [-0.0570, +0.1552]   A-exact +0.00318
+     beta=+0.00 Lmax=260: b -0.0033 [-0.0391, +0.0823]   A-exact +0.00309
+     beta=+0.00 Lmax=280: b -0.0035 [-0.0277, +0.0476]   A-exact +0.00301
+     beta=+0.00 Lmax=300: b -0.0036 [-0.0201, +0.0296]   A-exact +0.00294
+     beta=-0.01 Lmax=160: b +0.0047 [-0.4544, +10.2859]   A-exact -0.08652
+     beta=-0.01 Lmax=180: b -0.0074 [-0.2464, +2.4499]   A-exact -0.08817
+     beta=-0.01 Lmax=200: b -0.0107 [-0.1482, +0.7978]   A-exact -0.09080
+     beta=-0.01 Lmax=220: b -0.0121 [-0.0965, +0.3185]   A-exact -0.09177
+     beta=-0.01 Lmax=240: b -0.0128 [-0.0670, +0.1452]   A-exact -0.09257
+     beta=-0.01 Lmax=260: b -0.0133 [-0.0491, +0.0723]   A-exact -0.09339
+     beta=-0.01 Lmax=280: b -0.0135 [-0.0377, +0.0376]   A-exact -0.09418
+     beta=-0.01 Lmax=300: b -0.0136 [-0.0301, +0.0196]   A-exact -0.09487
+     beta=-0.03 Lmax=160: b -0.0153 [-0.4744, +10.2659]   A-exact -0.27269
+     beta=-0.03 Lmax=180: b -0.0274 [-0.2664, +2.4299]   A-exact -0.27909
+     beta=-0.03 Lmax=200: b -0.0307 [-0.1682, +0.7779]   A-exact -0.28213
+     beta=-0.03 Lmax=220: b -0.0321 [-0.1165, +0.2985]   A-exact -0.28453
+     beta=-0.03 Lmax=240: b -0.0328 [-0.0870, +0.1252]   A-exact -0.28655
+     beta=-0.03 Lmax=260: b -0.0333 [-0.0691, +0.0523]   A-exact -0.28831
+     beta=-0.03 Lmax=280: b -0.0335 [-0.0577, +0.0176]   A-exact -0.28988
+     beta=-0.03 Lmax=300: b -0.0336 [-0.0501, -0.0004]   A-exact -0.29130
+
+== 3a. blind test: fit [Lmin, 200], predict 202..300; towers T(k1, 0..2, -1), Lmin 30, 40, 60, 80; median max error without (e0) and with (e1) a free ln L, free b (median [min, max]), no-log A - exact
+   C_5^Wcs  k1=2: e0 7.66e-05  e1 8.98e-06  (no-log better in 1/12); b -0.0368 [-0.0589, -0.0143];  A(L<=200)-exact +0.03358
+   C_5^Wcs  k1=3: e0 4.68e-06  e1 9.56e-06  (no-log better in 6/12); b -0.0134 [-0.1006, +1.0273];  A(L<=200)-exact -0.00491
+   C_5^Wcs  k1=4: e0 7.70e-06  e1 1.36e-05  (no-log better in 9/12); b +0.0955 [-10.2809, +2.2428];  A(L<=200)-exact -0.01489
+   C_5^Wc   k1=2: e0 7.66e-05  e1 8.98e-06  (no-log better in 1/12); b -0.0368 [-0.0589, -0.0143];  A(L<=200)-exact +0.03935
+   C_5^Wc   k1=3: e0 4.68e-06  e1 9.56e-06  (no-log better in 6/12); b -0.0134 [-0.1006, +1.0273];  A(L<=200)-exact +0.00086
+   C_5^Wc   k1=4: e0 7.70e-06  e1 1.36e-05  (no-log better in 9/12); b +0.0955 [-10.2809, +2.2428];  A(L<=200)-exact -0.00912
+   C_4^W    k1=2: e0 1.98e-06  e1 8.63e-07  (no-log better in 4/12); b +0.0012 [-0.0030, +0.0022];  A(L<=200)-exact -0.00043
+   C_4^W    k1=3: e0 3.14e-07  e1 1.06e-06  (no-log better in 8/12); b -0.0001 [-0.0179, +0.1050];  A(L<=200)-exact +0.00054
+   C_4^W    k1=4: e0 9.02e-07  e1 1.29e-06  (no-log better in 11/12); b -0.0060 [-1.1793, +0.3554];  A(L<=200)-exact +0.00051
+
+== 3. blind tests: fit [Lmin, Lfit], predict (Lfit, Lpred]: median max error no-log (e0) and free-log (e1)
+   C_5^Wcs          fit <= 200 -> 300: e0 4.68e-06  e1 9.56e-06; no-log better in 6/12; b(free) median -0.0134
+   C_5^Wcs          fit <= 240 -> 300: e0 1.18e-06  e1 1.15e-06; no-log better in 5/12; b(free) median -0.0005
+   C_5^Wcs          fit <= 260 -> 300: e0 5.52e-07  e1 3.62e-07; no-log better in 4/12; b(free) median +0.0030
+   C_5^Wc           fit <= 200 -> 300: e0 4.68e-06  e1 9.56e-06; no-log better in 6/12; b(free) median -0.0134
+   C_5^Wc           fit <= 240 -> 300: e0 1.18e-06  e1 1.15e-06; no-log better in 5/12; b(free) median -0.0005
+   C_5^Wc           fit <= 260 -> 300: e0 5.52e-07  e1 3.62e-07; no-log better in 4/12; b(free) median +0.0030
+   C_4^W (c1 form)  fit <= 200 -> 300: e0 1.98e-06  e1 8.63e-07; no-log better in 4/12; b(free) median +0.0012
+   C_4^W (c1 form)  fit <= 240 -> 300: e0 7.61e-07  e1 2.07e-07; no-log better in 3/12; b(free) median +0.0009
+   C_4^W (c1 form)  fit <= 260 -> 300: e0 4.47e-07  e1 9.74e-08; no-log better in 1/12; b(free) median +0.0008
+   calib beta=-0.01       fit <= 240 -> 300: e0 2.04e-06  e1 5.38e-07; no-log better in 4/12; b(free) median -0.0128
+   calib beta=-0.03       fit <= 240 -> 300: e0 4.27e-06  e1 5.38e-07; no-log better in 3/12; b(free) median -0.0328
+
+== 4. profile in b (fit y - b ln L without log on [Lmin, 240], blind 242..300; factor-2 band)
+   C_5^Wcs  b* = +0.0150 (median blind error 6.8e-07); band [-0.0175, +0.0175]
+   C_5^Wc   b* = +0.0150 (median blind error 6.8e-07); band [-0.0175, +0.0175]
+   calib beta=+0.00: b* = -0.0125 (median blind error 3.5e-07); band [-0.0150, +0.0000]
+   calib beta=-0.01: b* = -0.0225 (median blind error 3.5e-07); band [-0.0250, -0.0100]
+   calib beta=-0.03: b* = -0.0425 (median blind error 3.5e-07); band [-0.0450, -0.0300]
+
+== 5. refit, L <= 300, no ln L, tail ln^0..3 L / L + ln^0..k2 L / L^2 (k2 = 0..2), Lmin 30, 40, 60, 80, 100
+   C_5^Wcs  A = -38.83544 +- 0.01277  [-38.84297, -38.81743]  (median - exact -0.00180)
+   C_5^Wc   A = -38.82967 +- 0.01277  [-38.83720, -38.81166]  (median - exact +0.00397)

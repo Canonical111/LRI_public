@@ -1,0 +1,130 @@
+PASS identical files
+PASS free L3: legacy rate values are rate-only
+PASS free L3: rate-only counts the differing entries
+PASS free L3: a rate line differing only in its trailing space is rate-only
+PASS free L3: ... and counted as whitespace-only
+PASS CK-K02: only wa changed (identity permutation) is refused
+PASS CK-K02: only wb changed is refused
+PASS CK-K02: wa changed below binary64 resolution is refused (exact header text)
+PASS CK-K02: wa and a rate value changed is refused
+PASS CK-K02: a rate table one entry short is refused
+PASS CK-K02: a rate table one entry long is refused
+PASS a changed 2^E line is refused
+PASS a changed id is refused
+PASS a mask reordering under the recorded identity permutation is refused
+PASS a mask reordering under a recorded automorphism (free L3 G0) is refused
+PASS a relabelling by the inverse of the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS a relabelling by the recorded permutation with legacy rates is accepted (free L4 G2)
+PASS the relabelled control really differs in masks and terms
+PASS the relabelling with the rate values kept is accepted too
+PASS CK-K02: relabelled with wa changed is refused
+PASS CK-K02: relabelled with wb changed is refused
+PASS CK-K02: relabelled with the id changed is refused
+PASS CK-K02: relabelled with a rate table one entry short is refused
+PASS relabelled with a changed 2^E line is refused
+PASS a relabelling by a permutation that is not the recorded one is refused
+PASS a recorded permutation that only reorders the terms (free L4 G23) proves no relabelling
+PASS a mask value no permutation explains is refused
+PASS power L3: a rate change is refused
+PASS free L7: a rate change is refused (parity rule)
+PASS a malformed file is classified, not raised
+PASS a file without its final newline is refused
+PASS W5: equal bytes are identical
+PASS W5: power L3 G7 with CRLF line ends is not identical (structure)
+PASS W5: power L3 G7 with one CR before its last line end is not identical
+PASS W5: free L3 G1 with CRLF line ends and legacy rate values is not rate-only
+PASS W5: free L3 G1 with legacy rate values (bytes) is still rate-only
+PASS W5: free L7 with CRLF line ends is not identical (byte identity required)
+PASS W4: a relabelling with a no-break space in its mask line is refused (free L4 G2)
+PASS W4: legacy rates with a rate that is no plain decimal are refused (free L3 G1)
+PASS W4: legacy rates with a no-break space in the rate line are refused (free L3 G1)
+PASS the frozen trees: every G-file header agrees with its inventory row
+PASS a clean copy agrees
+PASS CK-K02: G1 header wa changed, its inventory row kept: reported
+PASS CK-K02: G1 header wb changed, its inventory row kept: reported
+PASS CK-K02: G1 header masks changed, its inventory row kept: reported
+PASS CK-K02: G1 header id changed, its inventory row kept: reported
+PASS a G-file without an inventory row is reported
+PASS an inventory row naming a missing G-file is reported
+PASS end to end: regress.py --loops 3 passes on copies of the frozen trees
+PASS end to end: every builder gets OMP_NUM_THREADS and OMP_DYNAMIC=FALSE and no inherited OpenMP control
+PASS builder_env (also gen/gates.py check_edge_forests): only PATH, OMP_NUM_THREADS=8 and OMP_DYNAMIC=FALSE
+PASS gen/gates.py runs check_edge_forests in builder_env
+PASS the generator job scripts and gen/run_l8.sh unset inherited OpenMP controls before any builder
+PASS end to end, CK-K02: only wa changed in the built free L3 G1.txt fails A-INV-2 (G-file and header checks)
+PASS end to end, CK-K02: a built free L3 rate table one entry short fails A-INV-2
+PASS end to end, W5: a built power L3 G7.txt with a CRLF line end fails A-INV-2 (not byte-identical)
+PASS end to end, W5: a built free L3 G1.txt with a CRLF line end fails A-INV-2 (not byte-identical)
+PASS end to end: the --loops 3 run records partial coverage (no H1 evidence)
+PASS regress.py refuses '--loops 7-3' before building
+PASS regress.py refuses '--loops 3,3' before building
+PASS regress.py refuses '--loops 8' before building
+PASS regress.py refuses '--loops ' before building
+PASS regress.py refuses '--threads ' before building
+PASS regress.py refuses '--threads 0,8' before building
+PASS regress.py refuses '--threads 8,8' before building
+PASS loops_arg('3-7') = [3, 4, 5, 6, 7]
+PASS loops_arg('3') = [3]
+PASS loops_arg('5,3') = [5, 3]
+PASS loops_arg('7-7') = [7]
+PASS loops_arg('7-3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,3') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('8') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('2-4') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3-') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('x') is refused (empty, reversed, repeated or out of 3..7)
+PASS loops_arg('3,,4') is refused (empty, reversed, repeated or out of 3..7)
+PASS threads_arg('1,8') -> [1, 8]
+PASS threads_arg('1') -> [1]
+PASS threads_arg('') -> refused
+PASS threads_arg('0') -> refused
+PASS threads_arg('1,1') -> refused
+PASS threads_arg('-2') -> refused
+PASS threads_arg('a') -> refused
+PASS h1_problems: a complete synthetic record is H1 evidence
+PASS h1_problems refuses partial evidence: loops [3] (gen/regress.py --loops 3)
+PASS h1_problems refuses partial evidence: no loop at all
+PASS h1_problems refuses partial evidence: one thread count (--threads 1)
+PASS h1_problems refuses partial evidence: no serial run (threads 2 and 8)
+PASS h1_problems refuses partial evidence: a sector missing
+PASS h1_problems refuses partial evidence: thread identity false
+PASS h1_problems refuses partial evidence: a build that failed
+PASS h1_problems refuses partial evidence: free L7 not byte-identical
+PASS h1_problems refuses partial evidence: no header-row check (before CK-K02)
+PASS h1_problems refuses partial evidence: the L7 control false
+PASS h1_problems refuses partial evidence: failures listed
+PASS h1_problems refuses partial evidence: passed false
+PASS h1_problems refuses partial evidence: another gate name
+PASS h1_problems accepts the real J-GEN-1 record of the CK-K02 fix (Expanse 54658874)
+PASS h1_problems refuses the Stage-1 record (Expanse 54631551): it predates the CK-K02 header-row check
+PASS Z5: check_gfile accepts a well-formed G-file (frozen free L3 G1, C8 rate table)
+PASS Z5: check_gfile refuses the first mask negated (-m)
+PASS Z5: check_gfile refuses the first mask as int()'s '0_m' (an underscore)
+PASS Z5: check_gfile refuses the first mask as '+m'
+PASS Z5: regress.parse_gfile refuses the negated first mask too (the parser check_gfile now matches)
+PASS Z5: check_gfile refuses a term coefficient of 2^31 (outside the loader's int)
+PASS Z5: check_gfile refuses a term coefficient written 1_0
+PASS W4: check_gfile accepts the well-formed bytes
+PASS W4: check_gfile refuses a no-break space (U+00A0) between two masks
+PASS W4: regress.parse_gfile refuses a no-break space (U+00A0) between two masks (decoded without newline translation)
+PASS W4: check_gfile refuses a U+001C (str.split() splits there, the loader does not) between two masks
+PASS W4: regress.parse_gfile refuses a U+001C (str.split() splits there, the loader does not) between two masks (decoded without newline translation)
+PASS W4: check_gfile refuses a tab between two masks
+PASS W4: regress.parse_gfile refuses a tab between two masks (decoded without newline translation)
+PASS W4: check_gfile refuses CRLF line ends
+PASS W4: regress.parse_gfile refuses CRLF line ends (decoded without newline translation)
+PASS W4: check_gfile refuses a CR before the last line end
+PASS W4: regress.parse_gfile refuses a CR before the last line end (decoded without newline translation)
+PASS W4: check_gfile refuses a header and inventory row of M = T = 0 (load_graph needs M >= 1 and T >= 1)
+PASS W4: regress.parse_gfile refuses M = T = 0 too
+PASS W4: regress.parse_gfile accepts the well-formed file
+PASS kirchhoff.stored reads the frozen free L3 G1 as before (the same Fraction)
+FAIL kirchhoff.stored refuses a G-file the loader refuses: U+00A0 between masks: {"new": "accepted", "old_reader_accepted": true}
+FAIL kirchhoff.stored refuses a G-file the loader refuses: U+001C between masks: {"new": "accepted", "old_reader_accepted": true}
+FAIL kirchhoff.stored refuses a G-file the loader refuses: '+' on a mask: {"new": "accepted", "old_reader_accepted": true}
+FAIL kirchhoff.stored refuses a G-file the loader refuses: '_' in a mask: {"new": "accepted", "old_reader_accepted": true}
+FAIL kirchhoff.stored refuses a G-file the loader refuses: M = T = 0: {"new": "accepted", "old_reader_accepted": true}
+FAIL kirchhoff.check records a malformed G-file as the kernel's failure: {"loop": 3, "sector": "free", "id": 1, "masks": 16, "terms": 1, "checks": [{"endpoint_scaled": false, "forests": 0, "exact_match": false, "point": ["3/7", "4/9", "5/11", "6/13", "7/15", "8/17"]}, {"endpoint_scaled": true, "forests": 0, "exact_match": false, "point": ["3/7", "4/9", "5/11", "6/13", "7/15", "8/17"]}], "exact_match": false, "seconds": 0.0}
+test_regress: 123/129 checks passed

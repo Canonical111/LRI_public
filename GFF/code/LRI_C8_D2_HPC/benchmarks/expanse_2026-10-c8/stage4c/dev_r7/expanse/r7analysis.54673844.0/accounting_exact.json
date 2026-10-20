@@ -1,0 +1,43 @@
+{
+ "schema": "c8-d2-accounting-1",
+ "schema_prefix": "c8-d2",
+ "ledger_schema": "c8-d2-ledger-1",
+ "campaign": "<SCRATCH>/temp_project/c8d2/r7-ebf01f62e833/sweep_exact",
+ "manifest_sha256": "73d6d7315a1ed47096e344405e85344f1038dc8f5f28a67561c4dd3f8281e242",
+ "derived_utc": "2026-10-05T06:08:28Z",
+ "ledger_jobs": 1,
+ "sacct_records": 1,
+ "jobs_without_sacct_record": [],
+ "records": [
+  {
+   "jobid_raw": "54673843",
+   "jobid": "54673843",
+   "elapsed": 318,
+   "alloc_cpus": 128,
+   "nodelist": "<NODE>",
+   "state": "COMPLETED",
+   "partition": "compute",
+   "role": "sweep",
+   "threads_per_core": 1,
+   "physical_cores": 128.0,
+   "core_seconds": 40704.0
+  }
+ ],
+ "complete": true,
+ "incomplete": [],
+ "malformed_sacct_lines": [],
+ "core_hours_by_role": {
+  "sweep": 11.306666666666667
+ },
+ "hours_are": "exact",
+ "allocated_core_hours": 11.306666666666667,
+ "work_core_hours": 11.306666666666667,
+ "overhead_core_hours": 0.0,
+ "busy_thread_core_hours": 5.4353892682741085,
+ "busy_source": "merged.json thread_seconds_sum",
+ "eta_node": 0.4807242866987714,
+ "eta_node_unavailable": null,
+ "checkpoints_with_slurm_id": 512,
+ "unaccounted_local_checkpoints": 0,
+ "rule": "every sacct -X --duplicates attempt of every ledger job, physical cores = AllocCPUS/ThreadsPerCore; eta_node over the work roles lane, array, sweep, only when every sacct line parses and the records cover every ledger job, array element and recorded attempt"
+}

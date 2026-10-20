@@ -1,0 +1,127 @@
+job 54633368 on <NODE> at 2026-10-03T15:32:23-07:00; package <SCRATCH>/temp_project/c8d2/pkg/cb401889a37f; evidence <SCRATCH>/temp_project/c8d2/evidence/cb401889a37f/g2b.54633368.0
+Model name:          AMD EPYC 7742 64-Core Processor
+b3f044da1169ef169916ce4cfc4ca91d6f6ab1ae00967f86843c2b10b233cc6d  <HOME>/c8d2/env_expanse.sh
+python 3.11.9 numpy 2.3.5 sympy 1.14.0 mpmath 1.3.0 pytest 9.1.1
+== check_vendored
+PASS the HANDOFF copy is at the sha256 VENDORED.json records
+PASS VENDORED.json records an accepting review of this HANDOFF with a step-0 verdict-gate decision
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS every vendored file is a regular file at the sha256, md5 and size the HANDOFF records
+PASS VENDORED.json lists the HANDOFF deliverables with the HANDOFF pins
+PASS vendor/c8_assembly_fixtures holds exactly the VENDORED.json fixtures
+PASS every fixture is a regular file at its pin (reference copies at their checksum-list entries)
+PASS no symlink is tracked anywhere in the package
+PASS the vendored order8_assembly exports every used name with the signature VENDORED.json records
+PASS vendor/ rule: prepare_inputs build opens vendored files only through the hash helper and imports nothing from vendor/
+PASS vendor/ rule: prepare_inputs verify opens vendored files only through the hash helper and imports nothing from vendor/
+PASS A-ASM-1(b): inputs/manifest.json records the HANDOFF sha256 and every vendored pin, equal to VENDORED.json and the HANDOFF
+SKIPPED (no L8 packs here; plans made now are test-only): packs/free_L8.pack, packs/power_L8.pack
+PASS A-ASM-1(b): prepare_inputs.verify() passes with the vendored pins
+PASS A-ASM-1(b): a one-byte change to a vendored file makes prepare_inputs.verify() fail (the untouched scratch export verifies)
+NOTE git pin of LRI_C7_D3_HPC/inputs/gamma_d3_7.txt not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/inputs/two_loop.json not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE git pin of LRI_C7_D3_HPC/tools/assemble.py not re-read: LRI_C7_D3_HPC is not reachable here
+NOTE review record not checked here (--no-review-record): LRI_C8_shared/inventory/reviews/order8_assembly_f5ff6a353371.json
+NOTE none: the HANDOFF arrived before Stage 3, so no stand-in Jacobian module was written
+NOTE prepare_inputs build opened 0 vendored files (it reads the pins from tools/VENDORED.json)
+NOTE prepare_inputs verify opened 14 vendored files, each through common.digest
+NOTE vendor/ rule for `plan` and `run --index`: deferred to G3 (production.py does not plan order 8 before Stage 3); G3 re-runs this check (PLAN "On HANDOFF")
+check_vendored: 14/14 checks passed
+== vendored_isolated
+PASS vendor/c8_assembly holds exactly the HANDOFF deliverables plus the HANDOFF copy
+PASS vendored tests, LRI_ROOT=fixtures: counts equal the HANDOFF ({'passed': 30, 'skipped': 0, 'failed': 0, 'errors': 0})
+PASS vendored tests, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation
+PASS vendored tests, no LRI_ROOT: counts equal the HANDOFF ({'passed': 21, 'skipped': 9, 'failed': 0, 'errors': 0})
+PASS vendored tests, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation
+PASS exact_check.py completes, LRI_ROOT=fixtures
+PASS exact_check.py, LRI_ROOT=fixtures: no file opened outside the export, the temporary directory and the Python installation
+PASS exact_check.py completes, no LRI_ROOT
+PASS exact_check.py, no LRI_ROOT: no file opened outside the export, the temporary directory and the Python installation
+PASS the export is unchanged by the runs (no __pycache__, .pytest_cache or other new or changed file)
+vendored_isolated: 10/10 checks passed
+== assembly_checks
+PASS B2: the 7-entry inputs/two_loop.json extends C7(2)'s 6 entries
+PASS A-ASM-2: order-7 coefficients bitwise equal to C7(2)'s assemble.py and analyze.py (96 sets and the 2026 production means, B2 with 6 or 7 entries)
+PASS A-ASM-2: the Jacobians are equal (every 8th set and the production means)
+PASS A = -B2[0]/6 = 4 log 2 to 1e-12
+PASS A-ASM-4: top-slot rule (-1,+3)/3^(L+1), L = 3..8, to 1e-12 with no lower-order dependence (17 points)
+PASS A-ASM-4: loop-7 entry (-16A, 42A)/19683 to 1e-12
+PASS A-ASM-4: float affinity of loops 5..8 to 1e-10 at every point
+PASS A-ASM-4: the affinity gate fails when loop 4 is perturbed (loops=[4,5])
+PASS A-ASM-4: Fraction mode, all 210 exact second differences over loops 5..8 vanish
+PASS A-ASM-4: Fraction mode, coefficients = ms8_value (both forms) and reproduces C4, C5, c6:RGassembly and ms7 (16 constant-coefficient cases)
+PASS A-ASM-4: ms8_rows equals the RECON section 1.1 polynomial (34 monomials)
+PASS A-ASM-4: tools/assemble.py evaluates the top-slot, loop-7 and affinity gates on synthetic data built on the production means
+PASS A-ASM-4: an injected gate violation (monkeypatched coefficients) is a hard failure
+PASS PP1: C8_full = F8(f+p)[8], recomputed by hand from the replicates
+PASS PP2: C8^pf, Delta_p C8 = C8 - C8^pf with SE sqrt(V_Delta[8,8]), and the cross term
+PASS PP3: null rows 3..7 with pull = Delta/SE (hand values)
+PASS PP4: |pull| > 3 is flagged "not proved zero"
+PASS PP5: order 3 at rounding level (|Delta| < 1e-12), no pull
+PASS PP7: the order-8 pull is a diagnostic with no flag
+PASS PP8: a flag at order 6, or at order 5 (d=2), is marked "must be investigated"; order 7 is not
+PASS guard: a non-finite power difference is refused
+PASS guard: a null row with SE 0 is flagged explicitly
+PASS PP6: flags never change C8, C8^pf, Delta_p C8 or any uncertainty (every null row forced flagged)
+PASS PP9: V_C = sum_L J_L (V_f + V_p) J_L^T and V_C = V_pf + V_Delta + cross + cross^T
+PASS PP10: the result pins POWER_PROTOCOL.md at the HANDOFF sha256, recorded in docs/NUMERICS.md
+PASS A-ASM-5: lower-order pulls C3..C7 use both SEs (hand values), with the C6 secondary reference
+PASS A-ASM-5: an injected 4-sigma C7 deviation prints a FLAG line
+PASS A-ASM-5: error_by_loop sums to Var(C8) and its shares to 1
+PASS A-ASM-5: the half streams equal hand values
+PASS A-ASM-5: the bootstrap (seed 70530413, 16 replicates) equals hand values
+PASS A-ASM-5: a test-only result holds no physical number (every field null at the top level, values under test_partial)
+PASS A-ASM-5: verify_result accepts the synthetic result and its test-only form
+PASS --exact: exact_check.py completes with LRI_ROOT = the pinned fixtures
+PASS --exact: every exact key (33) present and equal to exact_check_results.json
+PASS --exact: every float diagnostic (6) within its bound
+PASS --exact: no unclassified or new key
+PASS --exact: the provenance keys match their patterns and are recorded, not compared
+assembly_checks: 37/37 checks passed
+== compat_2026
+{
+ "passed": true,
+ "C7_full": -3876.1260927949925,
+ "published_C7_full": -3876.1260927949925,
+ "ulp_offset_C7": 0.0,
+ "max_relative_difference": 0.0,
+ "numpy": "2.3.5"
+}
+== verify_result_tamper
+PASS an untouched result verifies
+PASS its test-only form verifies
+PASS rejects a tampered C8_full (relative 1e-6)
+PASS rejects a tampered coefficient
+PASS rejects a tampered loop-3 mean (the stored coefficients no longer follow)
+PASS rejects a tampered stored pull
+PASS rejects a forged null-row flag
+PASS rejects a tampered gate value
+PASS rejects a deleted gates block
+PASS rejects a deleted gate inside the gates block
+PASS rejects an added top-level key
+PASS rejects an added key inside a block
+PASS rejects error_by_loop no longer summing to Var(C8)
+PASS rejects a test-only result with a physical value at the top level
+PASS rejects a tampered test-only partial value
+PASS the coverage guard accepts the complete campaign (24 groups)
+PASS the coverage guard refuses a campaign with one L8 group removed
+PASS the coverage guard refuses a group with one graph removed
+PASS the coverage guard refuses a graph with no points
+PASS the coverage guard accepts counts equal to the bundle counts x s
+PASS the coverage guard refuses counts that are not the bundle counts x s
+PASS the coverage guard refuses a bundle counts file altered after the freeze (its digest)
+verify_result_tamper: 22/22 checks passed
+== combine_core
+PASS two batches combine into the assembly of the concatenated replicates
+PASS per-batch C8 and the chi-square about the combination equal hand values
+PASS one batch of two gives a partial result (final false)
+PASS refuses a different design bundle
+PASS refuses a different inputs manifest
+PASS refuses a different numerics profile
+PASS refuses a different rates identity
+PASS refuses a repeated group seed
+PASS refuses a repeated label
+PASS refuses fewer batches than the bundle without --partial
+PASS refuses --partial with the full batch count
+combine_core: 11/11 checks passed
+finished 2026-10-03T15:34:22-07:00, status 0

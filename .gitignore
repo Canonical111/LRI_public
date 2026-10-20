@@ -1,0 +1,123 @@
+# LaTeX build products (only in note/ and paper/, so data logs are not dropped)
+**/note/*.aux
+**/note/*.log
+**/note/*.out
+**/note/*.toc
+**/note/*.fls
+**/note/*.fdb_latexmk
+**/note/*.synctex.gz
+**/note/*.bbl
+**/note/*.blg
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.bbl
+paper/*.blg
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv*/
+# OS
+.DS_Store
+# hidden workspace of `make replay` (symlinks only)
+.work/
+**/.work/
+# raw data is archived, not committed
+data/raw/
+**/data/raw/
+# maintainer tooling: names internal source paths, never published
+.maintainer/
+
+# GFF d=3 run-time artefacts (C63d export entries, 2026-10-13)
+GFF/code/LRI_C5_d3/.work*/
+GFF/code/LRI_C6_D3_HPC/.work/
+GFF/code/LRI_C6_D3_HPC/bin/
+GFF/code/LRI_C6_D3_HPC/reference
+GFF/code/LRI_C7_D3_HPC/.work/
+GFF/code/LRI_C7_D3_HPC/benchmarks/validation.json
+GFF/code/LRI_C7_D3_HPC/bin/
+GFF/code/LRI_C7_D3_HPC/inputs/packs/
+GFF/code/LRI_C7_D3_HPC/reference/inputs/free/L[3-7]/G*.txt
+GFF/code/LRI_C7_D3_HPC/reference/inputs/power/L[3-7]/G*.txt
+GFF/code/LRI_C7_D3_HPC/reference/records/
+GFF/code/LRI_C8_D3_HPC/.public_out/
+GFF/code/LRI_C8_D3_HPC/bin/
+GFF/code/LRI_C8_D3_OPT/.work/
+GFF/code/LRI_C8_D3_OPT/bin/
+GFF/code/lri_C6_d3_complete_update/.work*/
+GFF/code/lri_d3_matrix_update/.work*/
+GFF/code/lri_d3_reduction_update/.work*/
+GFF/data/C6_3/*.tgz
+GFF/data/C7_3/*.tar.gz
+GFF/data/C7_3/*.tgz
+GFF/data/C8_3/*.pack
+GFF/data/C8_3/*.tar*
+GFF/data/C8_3_check/*.tar.xz
+
+# GFF d=2 run-time artefacts (C62d, 2026-10-13)
+GFF/code/*/public/out/
+GFF/code/LRI_C7_D2_HPC/inputs/packs/
+GFF/code/LRI_C7_D2_HPC/bin/
+GFF/code/LRI_C8_D2_HPC_optimized/bin/*
+!GFF/code/LRI_C8_D2_HPC_optimized/bin/*.build.json
+GFF/code/LRI_C8_D2_HPC_optimized/build/
+# LRI_C8_D2_HPC setup products (copied from LRI_C7_D2_HPC/reference by public.mk setup; C62d)
+GFF/code/LRI_C8_D2_HPC/reference/LRI_C7_d2_progress/
+GFF/code/LRI_C8_D2_HPC/reference/power_mass/
+GFF/code/LRI_C8_D2_HPC/reference/code/
+GFF/code/LRI_C8_D2_HPC/reference/notes/
+GFF/code/LRI_C8_D2_HPC/reference/verification/
+GFF/code/LRI_C8_D2_HPC/reference/Makefile
+GFF/code/LRI_C8_D2_HPC/reference/README.md
+GFF/code/LRI_C8_D2_HPC/reference/RESULT.json
+GFF/code/LRI_C8_D2_HPC/reference/SHA256SUMS
+GFF/code/LRI_C8_D2_HPC/reference/requirements.txt
+GFF/code/LRI_C8_D2_HPC/inputs/packs/free_L7.pack
+GFF/code/LRI_C8_D2_HPC/inputs/packs/power_L7.pack
+GFF/code/LRI_C8_D2_HPC/bin/
+GFF/code/LRI_C8_D2_HPC/build/
+# LRI_C8_HPC: public.mk setup links reference -> ../LRI_C7_HPC/reference (C71d)
+GFF/code/LRI_C8_HPC/reference
+# HT d=3 run-time folders (phi4HT3d)
+HT/code/lri_3d_window_hpc/.work/
+HT/code/lri_3d_window_indep/.work/
+# hosted archives (fetch-data), never in git
+GFF/data/C7_1/*.tar.gz
+GFF/data/*/*.tar.gz
+GFF/data/*/*.tgz
+
+
+# replay outputs written next to the packages (HT d=2 writes .public_out/replay_d2.json)
+**/.public_out/
+
+# files written by fetch-data from the Zenodo record (doi:10.5281/zenodo.23466766)
+HT_Pert/code/lri_1d_dconn_refit/joint/out/r72/scan_*.jsonl.gz
+HT_Pert/code/lri_1d_dconn_refit/model-independent/out/*/grid.json
+HT_Pert/code/lri_1d_dconn_refit/model-independent/out/*/accel.json
+HT_Pert/code/lri_1d_dconn_refit/model-independent/out/mem1/members_prop.npz
+HT_Pert/code/lri_1d_dconn_refit/model-independent/out/mem1/members_full.json
+HT_Pert/code/lri_1d_dconn_refit/model-independent/out/mem1/members_prop_index.json
+HT_Pert/code/lri_1d_c5_exact/fits/explore/constrained_L500/xchk/cfit_blind/results_*.jsonl
+MC/data/1d/scan_data/ds*/stage*_an_b*/
+MC/data/1d/scan_data/ds*/merged_b*/
+MC/data/1d/scan_data/ds*/fits_v3_*/fits/*.json
+GFF/data/C6_2/hosted/
+GFF/data/C8_2_check/hosted/
+GFF/data/C8_2_check/LRI_C8_D2_HPC.zip
+GFF/code/LRI_C8_shared/inventory/inventory8_d2/payload/*.tar
+GFF/data/C8_3/store/
+# build products of the Supplemental Material's opening part
+paper/supplement/*.aux
+paper/supplement/*.bbl
+paper/supplement/*.blg
+paper/supplement/*.fdb_latexmk
+paper/supplement/*.fls
+paper/supplement/*.log
+paper/supplement/*.out
+paper/supplement/*.pdf
+paper/supplement/*.synctex.gz
