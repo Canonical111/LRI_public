@@ -1,7 +1,5 @@
 # The long-range Ising CFT from five descriptions: code, data and notes
 
-**Status: in preparation. Nothing here is final yet.**
-
 This repository accompanies the Article *The long-range Ising CFT: perturbative and nonperturbative approaches* ([arXiv:2610.25940](https://arxiv.org/abs/2610.25940)). It contains the code, the data and the notes needed to reproduce every numerical result of the Article and of its Supplemental Material.
 
 The long-range Ising (LRI) fixed point is studied with five descriptions whose errors are unrelated. Each has its own folder, with a self-contained note, the code, the merged data, and a verifier:
